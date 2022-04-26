@@ -71,7 +71,7 @@ class Profile_Operations{
     public List<Profile> search(string Name, Filters filters){}
     public bool Share(List<Mailaddress> mailaddress,string profile_id){}
     public bool Export(string profile_id){}
-    //public bool RequesttoUpdate(string mailaddress,string profile_id){}
+    public bool RequesttoUpdate(string mailaddress,string profile_id){}
     public List<Profile> ViewProfileHistories(string profile_id){}
     public Profile ViewProfileHistory(string profile_history_id){}
 
