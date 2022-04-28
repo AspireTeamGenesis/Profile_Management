@@ -1,0 +1,122 @@
+[2022-04-28 11:44:42.216 +05:30 INF] Now listening on: https://localhost:7258
+[2022-04-28 11:44:42.245 +05:30 INF] Now listening on: http://localhost:5188
+[2022-04-28 11:44:42.248 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 11:44:42.249 +05:30 INF] Hosting environment: Development
+[2022-04-28 11:44:42.249 +05:30 INF] Content root path: D:\ProfileManagement\
+[2022-04-28 11:44:52.352 +05:30 INF] Request starting HTTP/2 GET https://localhost:7258/swagger/index.html - -
+[2022-04-28 11:44:52.456 +05:30 INF] Request finished HTTP/2 GET https://localhost:7258/swagger/index.html - - - 200 - text/html;charset=utf-8 106.2140ms
+[2022-04-28 11:44:52.474 +05:30 INF] Request starting HTTP/2 GET https://localhost:7258/swagger/swagger-ui.css - -
+[2022-04-28 11:44:52.495 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 11:44:52.495 +05:30 INF] Request finished HTTP/2 GET https://localhost:7258/swagger/swagger-ui.css - - - 200 143632 text/css 20.5810ms
+[2022-04-28 11:44:52.608 +05:30 INF] Request starting HTTP/2 GET https://localhost:7258/swagger/v1/swagger.json - -
+[2022-04-28 11:44:52.614 +05:30 INF] Request starting HTTP/2 GET https://localhost:7258/swagger/favicon-32x32.png - -
+[2022-04-28 11:44:52.616 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-28 11:44:52.619 +05:30 INF] Request finished HTTP/2 GET https://localhost:7258/swagger/favicon-32x32.png - - - 200 628 image/png 3.8607ms
+[2022-04-28 11:44:52.713 +05:30 INF] Request finished HTTP/2 GET https://localhost:7258/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 104.8621ms
+[2022-04-28 11:44:59.299 +05:30 INF] Request starting HTTP/2 GET https://localhost:7258/User/Getuser?id=4 - -
+[2022-04-28 11:44:59.305 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: text/plain
+Host: localhost:7258
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 11:44:59.322 +05:30 INF] Executing endpoint 'ProfileManagement.UserController.Getuser (ProfileManagement)'
+[2022-04-28 11:44:59.341 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature ProfileManagement.User Getuser(Int32) on controller ProfileManagement.UserController (ProfileManagement).
+[2022-04-28 11:45:00.557 +05:30 INF] Executing ObjectResult, writing value of type 'ProfileManagement.User'.
+[2022-04-28 11:45:00.561 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-28 11:45:00.567 +05:30 INF] Executed action ProfileManagement.UserController.Getuser (ProfileManagement) in 1220.3024ms
+[2022-04-28 11:45:00.567 +05:30 INF] Executed endpoint 'ProfileManagement.UserController.Getuser (ProfileManagement)'
+[2022-04-28 11:45:00.568 +05:30 INF] ResponseBody: {"id":4,"name":"Gokul","email":"gokul@gmail.com","userName":"gokul.raj","password":"95451045","gender":"Male","mobileNo":6932145201,"organization":"Development","designation":"SE","reporting_Person":"Yoga"}
+[2022-04-28 11:45:00.568 +05:30 INF] Request finished HTTP/2 GET https://localhost:7258/User/Getuser?id=4 - - - 200 - application/json;+charset=utf-8 1269.9360ms
+[2022-04-28 11:49:37.372 +05:30 INF] Request starting HTTP/2 GET https://localhost:7258/User/Getallusers - -
+[2022-04-28 11:49:37.375 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getallusers
+Accept: text/plain
+Host: localhost:7258
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 11:49:37.376 +05:30 INF] Executing endpoint 'ProfileManagement.UserController.Getallusers (ProfileManagement)'
+[2022-04-28 11:49:37.380 +05:30 INF] Route matched with {action = "Getallusers", controller = "User"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[ProfileManagement.User] Getallusers() on controller ProfileManagement.UserController (ProfileManagement).
+[2022-04-28 11:49:37.383 +05:30 INF] Getting all users
+[2022-04-28 11:49:37.384 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1[[ProfileManagement.User, ProfileManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-04-28 11:49:37.426 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-28 11:49:37.433 +05:30 INF] Executed action ProfileManagement.UserController.Getallusers (ProfileManagement) in 52.6625ms
+[2022-04-28 11:49:37.433 +05:30 INF] Executed endpoint 'ProfileManagement.UserController.Getallusers (ProfileManagement)'
+[2022-04-28 11:49:37.434 +05:30 INF] ResponseBody: [{"id":4,"name":"Gokul","email":"gokul@gmail.com","userName":"gokul.raj","password":"95451045","gender":"Male","mobileNo":6932145201,"organization":"Development","designation":"SE","reporting_Person":"Yoga"},{"id":9,"name":"Gugan R","email":"gugan@gmail.com","userName":"gugan.gug","password":"95784621","gender":"Male","mobileNo":9632587412,"organization":"Devlopment","designation":"SSE","reporting_Person":"Brindha"}]
+[2022-04-28 11:49:37.435 +05:30 INF] Request finished HTTP/2 GET https://localhost:7258/User/Getallusers - - - 200 - application/json;+charset=utf-8 62.7935ms
+[2022-04-28 11:57:28.016 +05:30 INF] Now listening on: https://localhost:7258
+[2022-04-28 11:57:28.042 +05:30 INF] Now listening on: http://localhost:5188
+[2022-04-28 11:57:28.046 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 11:57:28.046 +05:30 INF] Hosting environment: Development
+[2022-04-28 11:57:28.046 +05:30 INF] Content root path: D:\PMS.API\ProfileManagement\
+[2022-04-28 11:57:28.297 +05:30 INF] Request starting HTTP/2 GET https://localhost:7258/swagger/index.html - -
+[2022-04-28 11:57:28.395 +05:30 INF] Request finished HTTP/2 GET https://localhost:7258/swagger/index.html - - - 200 - text/html;charset=utf-8 99.9074ms
+[2022-04-28 11:57:28.411 +05:30 INF] Request starting HTTP/2 GET https://localhost:7258/swagger/swagger-ui.css - -
+[2022-04-28 11:57:28.422 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 11:57:28.423 +05:30 INF] Request finished HTTP/2 GET https://localhost:7258/swagger/swagger-ui.css - - - 200 143632 text/css 11.7009ms
+[2022-04-28 11:57:28.604 +05:30 INF] Request starting HTTP/2 GET https://localhost:7258/swagger/v1/swagger.json - -
+[2022-04-28 11:57:28.616 +05:30 INF] Request starting HTTP/2 GET https://localhost:7258/swagger/favicon-32x32.png - -
+[2022-04-28 11:57:28.617 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-28 11:57:28.617 +05:30 INF] Request finished HTTP/2 GET https://localhost:7258/swagger/favicon-32x32.png - - - 200 628 image/png 0.7626ms
+[2022-04-28 11:57:28.705 +05:30 INF] Request finished HTTP/2 GET https://localhost:7258/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 100.5174ms
+[2022-04-28 11:57:34.931 +05:30 INF] Request starting HTTP/2 GET https://localhost:7258/User/Getuser?id=4 - -
+[2022-04-28 11:57:34.939 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: text/plain
+Host: localhost:7258
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 11:57:34.945 +05:30 INF] Executing endpoint 'ProfileManagement.UserController.Getuser (ProfileManagement)'
+[2022-04-28 11:57:34.963 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature ProfileManagement.User Getuser(Int32) on controller ProfileManagement.UserController (ProfileManagement).
+[2022-04-28 11:57:36.162 +05:30 INF] Executing ObjectResult, writing value of type 'ProfileManagement.User'.
+[2022-04-28 11:57:36.165 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-28 11:57:36.172 +05:30 INF] Executed action ProfileManagement.UserController.Getuser (ProfileManagement) in 1201.9091ms
+[2022-04-28 11:57:36.172 +05:30 INF] Executed endpoint 'ProfileManagement.UserController.Getuser (ProfileManagement)'
+[2022-04-28 11:57:36.173 +05:30 INF] ResponseBody: {"id":4,"name":"Gokul","email":"gokul@gmail.com","userName":"gokul.raj","password":"95451045","gender":"Male","mobileNo":6932145201,"organization":"Development","designation":"SE","reporting_Person":"Yoga"}
+[2022-04-28 11:57:36.173 +05:30 INF] Request finished HTTP/2 GET https://localhost:7258/User/Getuser?id=4 - - - 200 - application/json;+charset=utf-8 1242.1148ms
+[2022-04-28 11:57:51.773 +05:30 INF] Application is shutting down...
