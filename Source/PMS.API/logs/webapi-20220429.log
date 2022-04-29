@@ -1771,3 +1771,152 @@ Content-Type: application/json; charset=utf-8
 [2022-04-29 12:03:28.609 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getallusers (PMS.API)'
 [2022-04-29 12:03:28.609 +05:30 INF] ResponseBody: [{"id":1,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"9874563214","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha","isActive":false,"createdBy":null,"createdOn":"0001-01-01T00:00:00","updatedBy":null,"updatedOn":"0001-01-01T00:00:00"},{"id":2,"name":"string","email":"string","userName":"string","password":"string","gender":"string","mobileNo":0,"organization":"string","designation":"string","reporting_Person":"string","isActive":false,"createdBy":null,"createdOn":"0001-01-01T00:00:00","updatedBy":null,"updatedOn":"0001-01-01T00:00:00"},{"id":3,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"965478123","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha","isActive":true,"createdBy":"Testing","createdOn":"2022-04-29T12:03:19.2295323","updatedBy":"string","updatedOn":"2022-04-29T06:31:53.599"}]
 [2022-04-29 12:03:28.611 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getallusers - - - 200 - application/json;+charset=utf-8 272.1681ms
+[2022-04-29 12:46:31.150 +05:30 INF] Application is shutting down...
+[2022-04-29 12:46:39.999 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 12:46:40.023 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 12:46:40.026 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 12:46:40.026 +05:30 INF] Hosting environment: Development
+[2022-04-29 12:46:40.026 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 12:46:49.179 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 12:46:49.281 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 104.0607ms
+[2022-04-29 12:46:49.301 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 12:46:49.314 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 12:46:49.315 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 13.9153ms
+[2022-04-29 12:46:49.507 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 12:46:49.516 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 12:46:49.516 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 12:46:49.517 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.9126ms
+[2022-04-29 12:46:49.600 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 93.3487ms
+[2022-04-29 12:46:58.754 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=1 - -
+[2022-04-29 12:46:58.763 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 12:46:58.768 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 12:46:58.784 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 12:46:59.880 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
+[2022-04-29 12:46:59.882 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-29 12:46:59.889 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1098.4249ms
+[2022-04-29 12:46:59.890 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 12:46:59.891 +05:30 INF] ResponseBody: true
+[2022-04-29 12:46:59.891 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=1 - - - 200 - application/json;+charset=utf-8 1137.2547ms
+[2022-04-29 13:16:24.473 +05:30 INF] Application is shutting down...
+[2022-04-29 13:16:31.768 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 13:16:31.792 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 13:16:31.795 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 13:16:31.795 +05:30 INF] Hosting environment: Development
+[2022-04-29 13:16:31.795 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 13:16:34.785 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:16:34.892 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 110.3931ms
+[2022-04-29 13:16:34.912 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 13:16:34.926 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 13:16:34.927 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 14.6840ms
+[2022-04-29 13:16:35.241 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:16:35.247 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:16:35.247 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:16:35.247 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.5813ms
+[2022-04-29 13:16:35.339 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 98.4279ms
+[2022-04-29 13:17:36.388 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:17:36.389 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.8447ms
+[2022-04-29 13:17:36.404 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 13:17:36.415 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 13:17:36.416 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 12.0891ms
+[2022-04-29 13:17:36.649 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:17:36.664 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 15.1174ms
+[2022-04-29 13:17:36.679 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:17:36.680 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:17:36.681 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 1.4372ms
+[2022-04-29 13:17:38.033 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:17:38.033 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.4737ms
+[2022-04-29 13:17:38.104 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:17:38.111 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:17:38.111 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:17:38.111 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.3871ms
+[2022-04-29 13:17:38.111 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 7.6782ms
+[2022-04-29 13:17:38.346 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:17:38.347 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.5714ms
+[2022-04-29 13:17:38.399 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:17:38.402 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2.9308ms
+[2022-04-29 13:17:38.410 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:17:38.410 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:17:38.411 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.7864ms
+[2022-04-29 13:18:00.651 +05:30 INF] Application is shutting down...
+[2022-04-29 13:18:11.688 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 13:18:11.712 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 13:18:11.715 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 13:18:11.715 +05:30 INF] Hosting environment: Development
+[2022-04-29 13:18:11.715 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 13:18:22.073 +05:30 INF] Application is shutting down...
+[2022-04-29 13:18:28.158 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 13:18:28.182 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 13:18:28.186 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 13:18:28.186 +05:30 INF] Hosting environment: Development
+[2022-04-29 13:18:28.186 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 13:18:39.363 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:18:39.458 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 96.8876ms
+[2022-04-29 13:18:39.572 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:18:39.572 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:18:39.586 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:18:39.587 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 14.1970ms
+[2022-04-29 13:18:39.661 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 88.4512ms
+[2022-04-29 13:21:24.339 +05:30 INF] Application is shutting down...
+[2022-04-29 13:21:30.977 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 13:21:31.012 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 13:21:31.015 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 13:21:31.015 +05:30 INF] Hosting environment: Development
+[2022-04-29 13:21:31.015 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 13:21:32.019 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:21:32.119 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 101.2881ms
+[2022-04-29 13:21:32.235 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:21:32.235 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:21:32.251 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:21:32.251 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 16.0216ms
+[2022-04-29 13:21:32.332 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 97.1586ms
+[2022-04-29 13:21:37.335 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getallusers - -
+[2022-04-29 13:21:37.349 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getallusers
+Accept: text/plain
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 13:21:37.352 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getallusers (PMS.API)'
+[2022-04-29 13:21:37.363 +05:30 INF] Route matched with {action = "Getallusers", controller = "User"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[PMS.API.User] Getallusers() on controller PMS.API.UserController (PMS.API).
+[2022-04-29 13:21:37.424 +05:30 INF] Getting all users
+[2022-04-29 13:21:38.414 +05:30 INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[PMS.API.User, PMS.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-04-29 13:21:38.420 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-29 13:21:38.426 +05:30 INF] Executed action PMS.API.UserController.Getallusers (PMS.API) in 1057.98ms
+[2022-04-29 13:21:38.427 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getallusers (PMS.API)'
+[2022-04-29 13:21:38.429 +05:30 INF] ResponseBody: [{"id":1,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"9874563214","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha","isActive":false,"createdBy":null,"createdOn":"0001-01-01T00:00:00","updatedBy":null,"updatedOn":"0001-01-01T00:00:00"},{"id":2,"name":"string","email":"string","userName":"string","password":"string","gender":"string","mobileNo":0,"organization":"string","designation":"string","reporting_Person":"string","isActive":false,"createdBy":null,"createdOn":"0001-01-01T00:00:00","updatedBy":null,"updatedOn":"0001-01-01T00:00:00"},{"id":3,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"965478123","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha","isActive":true,"createdBy":"Testing","createdOn":"2022-04-29T12:03:19.2295323","updatedBy":"string","updatedOn":"2022-04-29T06:31:53.599"}]
+[2022-04-29 13:21:38.429 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getallusers - - - 200 - application/json;+charset=utf-8 1094.2184ms

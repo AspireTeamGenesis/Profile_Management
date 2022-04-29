@@ -22,14 +22,15 @@ namespace PMS.API
         //getting all users 
         public IEnumerable<User> getAll()
         {
-            
+            List<User> result = new List<User>();
             try{
-                return _context.users;
+                result=_context.users.ToList();
+                return result;
             }
             catch(Exception ex){
                 logger.LogWarning("Unable to get the all users!try again");
             }
-           return null;
+           return result;
         }
         //getting user based on id
         public User getUser(int id)
@@ -47,29 +48,44 @@ namespace PMS.API
         //adding user to Database
         public void Add(User item)
         {
+            try{
             item.CreatedBy="Testing";
             item.CreatedOn=DateTime.Now;
             _context.users.Add(item);
             _context.SaveChanges();
+            }
+            catch(Exception ex){
+                logger.LogError("Error occured while inserting data");
+            }
         }
-        //Enabling user to active state to false based on id
+        //Enabling user to active state to false on id
         public void Delete(int id)
         {
             User user = getUser(id);
+            try{
             if(user.IsActive){
                 user.IsActive=false;
                 _context.users.Update(user);
                 _context.SaveChanges();
+            }
+            }
+            catch(Exception ex){
+                logger.LogInformation("Error while Disabling");
             }
             
         }
         //Updating user details based on id
         public void Update(User item)
         {
+            try{
             item.UpdatedBy="Testing";
             item.UpdatedOn=DateTime.Now;
             _context.users.Update(item);
             _context.SaveChanges();
+            }
+            catch(Exception ex){
+                logger.LogWarning("Error while updating");
+            }
         }
         public bool save()
         {

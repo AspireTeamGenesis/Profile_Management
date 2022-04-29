@@ -43,6 +43,7 @@ namespace PMS.API
         [HttpPost]
         public IActionResult AddUser(User user){
             if(user ==null || !ModelState.IsValid ) return BadRequest();
+
             //Adding user via userservice
             _userServices.Add(user);
             return Ok("User Added");
@@ -52,24 +53,36 @@ namespace PMS.API
          
          public IActionResult UpdateUser(User user,[FromQuery]int id){
              if(user ==null || id==0||!ModelState.IsValid ||!user.IsActive)return BadRequest();
-            if(id==user.Id){
-                //updating user via userservices
-             _userServices.Update(user);
-             return Ok("User Updated");
+            //updating user via userservices
+            try{
+                if(id==user.Id){
+                    
+                _userServices.Update(user);
+                return Ok("User Updated");
+                }
+                return BadRequest("User Not Found");
             }
-            return BadRequest("User Not Found");
-            
+            catch(Exception ex){
+                _logger.LogInformation("Error occured while updating");
+                return BadRequest("User Not Found");
+            }
              
          } 
-         [HttpDelete]
-         public IActionResult Delete(int id,User user){
+         [HttpDelete(Name="Disable")]
+         public IActionResult Disable(int id,User user){
              if(user ==null || id==0||!ModelState.IsValid||!user.IsActive)return BadRequest();
+             try{
             if(id==user.Id){
                 //updating isactive via userservices
              _userServices.Delete(id);
              return Ok("User Updated");
             }
             return BadRequest("User Not found");
+             }
+             catch(Exception ex){
+                _logger.LogInformation("Error occured while updating");
+                return BadRequest("User Not Found");
+             }
        
         }
 

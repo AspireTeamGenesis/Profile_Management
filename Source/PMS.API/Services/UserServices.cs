@@ -15,10 +15,10 @@ namespace PMS.API{
         }
         public User GetUser(int id)
         {
-            
             return userData.getUser(id);
         }
         public void Add(User item)
+        
         {
              userData.Add(item);
         }
