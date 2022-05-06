@@ -6,7 +6,7 @@ using System.Net;
 namespace PROFILE.Controllers;
 
 [ApiController]
-[Route("[controller]/[action]")]
+[Route("[College]/[action]")]
 public class CollegeController : ControllerBase
 {
     private readonly ILogger _logger;

@@ -2,16 +2,16 @@ using PROFILE.Models;
 using Microsoft.EntityFrameworkCore;
 namespace PROFILE.DataAccessLayer
 {
-    public class DesignationDataAccessLayer:IDesignationDataAccessLayer
+    public class ProfileStatusDataAccessLayer:IProfileStatusDataAccessLayer
     {
        private MasterContext _db = DataFactory.DbContextDataFactory.GetDbContextObject();  
-       private ILogger<DesignationDataAccessLayer> _logger;
+       private ILogger<ProfileStatusDataAccessLayer> _logger;
         
-         public List<Designation> GetDesignations() //List of Designtion
+         public List<ProfileStatus> GetProfileStatuss() // List of ProfileStatuss
         {
             try
             {
-                return _db.Designations.ToList();
+                return _db.ProfileStatuss.ToList();
             }
             catch (DbUpdateException ex)              //DB Update Exception Occured
             {
@@ -28,8 +28,7 @@ namespace PROFILE.DataAccessLayer
             catch (Exception ex)                      //unknown exception occured
             {
                 _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
-                throw ex;
-        
+                 throw ex;
                 
             }
         }

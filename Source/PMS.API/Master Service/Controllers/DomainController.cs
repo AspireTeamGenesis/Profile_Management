@@ -6,7 +6,7 @@ using System.Net;
 namespace PROFILE.Controllers;
 
 [ApiController]
-[Route("[controller]/[action]")]
+[Route("[Domain]/[action]")]
 public class DomainController : ControllerBase
 {
     private readonly ILogger _logger;

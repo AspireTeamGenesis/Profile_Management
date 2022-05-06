@@ -517,3 +517,135 @@ Content-Type: application/json; charset=utf-8
 Date: Fri, 06 May 2022 07:32:48 GMT
 Server: Kestrel
 [2022-05-06 13:02:49.200 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/Technology/ViewTechnologies - - - 200 - application/json;+charset=utf-8 16.5801ms
+[2022-05-06 18:41:57.208 +05:30 INF] Now listening on: https://localhost:7224
+[2022-05-06 18:41:57.237 +05:30 INF] Now listening on: http://localhost:5235
+[2022-05-06 18:41:57.241 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-06 18:41:57.242 +05:30 INF] Hosting environment: Development
+[2022-05-06 18:41:57.242 +05:30 INF] Content root path: C:\Users\brindha.muruga\Desktop\Profile\Profile\
+[2022-05-06 18:42:30.995 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/College/ViewColleges - -
+[2022-05-06 18:42:31.049 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /College/ViewColleges
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7224
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-06 18:42:31.052 +05:30 INF] Executing endpoint 'PROFILE.Controllers.CollegeController.ViewColleges (Profile)'
+[2022-05-06 18:42:31.062 +05:30 INF] Route matched with {action = "ViewColleges", controller = "College"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewColleges() on controller PROFILE.Controllers.CollegeController (Profile).
+[2022-05-06 18:42:31.128 +05:30 INF] List of Colleges......
+[2022-05-06 18:42:32.142 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+WhereListIterator`1[[PROFILE.Models.College, Profile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-06 18:42:32.163 +05:30 INF] Executed action PROFILE.Controllers.CollegeController.ViewColleges (Profile) in 1095.4976ms
+[2022-05-06 18:42:32.164 +05:30 INF] Executed endpoint 'PROFILE.Controllers.CollegeController.ViewColleges (Profile)'
+[2022-05-06 18:42:32.164 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+Date: Fri, 06 May 2022 13:12:31 GMT
+Server: Kestrel
+[2022-05-06 18:42:32.167 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/College/ViewColleges - - - 200 - application/json;+charset=utf-8 1177.8186ms
+[2022-05-06 18:42:33.654 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/College/ViewColleges - -
+[2022-05-06 18:42:33.656 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /College/ViewColleges
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7224
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-06 18:42:33.656 +05:30 INF] Executing endpoint 'PROFILE.Controllers.CollegeController.ViewColleges (Profile)'
+[2022-05-06 18:42:33.657 +05:30 INF] Route matched with {action = "ViewColleges", controller = "College"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewColleges() on controller PROFILE.Controllers.CollegeController (Profile).
+[2022-05-06 18:42:33.663 +05:30 INF] List of Colleges......
+[2022-05-06 18:42:33.672 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+WhereListIterator`1[[PROFILE.Models.College, Profile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-06 18:42:33.672 +05:30 INF] Executed action PROFILE.Controllers.CollegeController.ViewColleges (Profile) in 14.9264ms
+[2022-05-06 18:42:33.673 +05:30 INF] Executed endpoint 'PROFILE.Controllers.CollegeController.ViewColleges (Profile)'
+[2022-05-06 18:42:33.673 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+Date: Fri, 06 May 2022 13:12:33 GMT
+Server: Kestrel
+[2022-05-06 18:42:33.673 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/College/ViewColleges - - - 200 - application/json;+charset=utf-8 19.3082ms
+[2022-05-06 18:42:45.467 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/swagger - -
+[2022-05-06 18:42:45.468 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/swagger - - - 301 0 - 1.2509ms
+[2022-05-06 18:42:45.472 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/swagger/index.html - -
+[2022-05-06 18:42:45.510 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 38.3978ms
+[2022-05-06 18:42:45.527 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/swagger/swagger-ui.css - -
+[2022-05-06 18:42:45.527 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/swagger/swagger-ui-bundle.js - -
+[2022-05-06 18:42:45.529 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-06 18:42:45.542 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-06 18:42:45.544 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/swagger/swagger-ui.css - - - 200 143632 text/css 16.8391ms
+[2022-05-06 18:42:45.545 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-06 18:42:45.547 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 18.1115ms
+[2022-05-06 18:42:45.548 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-06 18:42:45.548 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 20.8838ms
+[2022-05-06 18:42:47.461 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/swagger - -
+[2022-05-06 18:42:47.461 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/swagger - - - 301 0 - 0.2039ms
+[2022-05-06 18:42:47.465 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/swagger/index.html - -
+[2022-05-06 18:42:47.466 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 0.5962ms
+[2022-05-06 18:42:47.479 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/swagger/swagger-ui.css - -
+[2022-05-06 18:42:47.479 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/swagger/swagger-ui-bundle.js - -
+[2022-05-06 18:42:47.480 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-06 18:42:47.484 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-06 18:42:47.484 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/swagger/swagger-ui.css - - - 200 143632 text/css 4.8727ms
+[2022-05-06 18:42:47.493 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-06 18:42:47.493 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 13.0162ms
+[2022-05-06 18:42:47.503 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-06 18:42:47.503 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 23.2729ms
+[2022-05-06 18:42:47.677 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/swagger/v1/swagger.json - -
+[2022-05-06 18:42:47.726 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 49.5312ms
+[2022-05-06 18:42:52.803 +05:30 INF] Request starting HTTP/2 GET https://localhost:7224/ProfileStatus/ViewProfileStatuss - -
+[2022-05-06 18:42:52.803 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /ProfileStatus/ViewProfileStatuss
+Accept: */*
+Host: localhost:7224
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-06 18:42:52.803 +05:30 INF] Executing endpoint 'PROFILE.Controllers.ProfileStatusController.ViewProfileStatuss (Profile)'
+[2022-05-06 18:42:52.805 +05:30 INF] Route matched with {action = "ViewProfileStatuss", controller = "ProfileStatus"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewProfileStatuss() on controller PROFILE.Controllers.ProfileStatusController (Profile).
+[2022-05-06 18:42:52.806 +05:30 INF] List of ProfileStatuss......
+[2022-05-06 18:42:52.864 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+WhereListIterator`1[[PROFILE.Models.ProfileStatus, Profile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-06 18:42:52.865 +05:30 INF] Executed action PROFILE.Controllers.ProfileStatusController.ViewProfileStatuss (Profile) in 60.6367ms
+[2022-05-06 18:42:52.865 +05:30 INF] Executed endpoint 'PROFILE.Controllers.ProfileStatusController.ViewProfileStatuss (Profile)'
+[2022-05-06 18:42:52.865 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+Date: Fri, 06 May 2022 13:12:52 GMT
+Server: Kestrel
+[2022-05-06 18:42:52.866 +05:30 INF] Request finished HTTP/2 GET https://localhost:7224/ProfileStatus/ViewProfileStatuss - - - 200 - application/json;+charset=utf-8 62.5166ms
+[2022-05-06 19:21:35.588 +05:30 INF] Application is shutting down...

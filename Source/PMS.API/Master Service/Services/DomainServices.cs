@@ -23,7 +23,7 @@ namespace PROFILE.Services
             catch (Exception ex)
             {
                 _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
-                throw new Exception();
+                 throw new Exception();
                 
             }
         }

@@ -84,6 +84,27 @@ namespace Profile.Migrations
                     b.ToTable("Domains");
                 });
 
+            modelBuilder.Entity("PROFILE.Models.ProfileStatus", b =>
+                {
+                    b.Property<int>("ProfileStatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProfileStatusId"), 1L, 1);
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ProfileStatusName")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.HasKey("ProfileStatusId");
+
+                    b.ToTable("ProfileStatuss");
+                });
+
             modelBuilder.Entity("PROFILE.Models.Technology", b =>
                 {
                     b.Property<int>("TechnologyId")

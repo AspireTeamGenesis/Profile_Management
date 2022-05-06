@@ -28,7 +28,7 @@ namespace PROFILE.DataAccessLayer
             catch (Exception ex)                      //unknown exception occured
             {
                 _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
-                throw new Exception();
+                throw ex;
                 
             }
         }

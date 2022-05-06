@@ -1,11 +1,11 @@
 using PROFILE.Models;
 
 namespace PROFILE.Services{
-    public interface IDesignationServices
+    public interface IProfileStatusServices
     {
         // public  bool CreateCollege(string collegeName);
         // public bool RemoveCollege(int collegeId);
-        public IEnumerable<Designation> ViewDesignations();
+        public IEnumerable<ProfileStatus> ViewProfileStatuss();
 
     }
 }
