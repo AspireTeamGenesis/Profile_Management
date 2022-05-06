@@ -16,18 +16,29 @@ namespace PMS.API
            
         }
         //Calling all users 
-        [HttpGet(Name ="GetUsers")]
+        [HttpGet(Name ="GetallUsers")]
         public IActionResult Getallusers(){
             try{
                 
-                return Ok(_userServices.GetAll());
+                return Ok(_userServices.GetallUsers());
             }
            catch(Exception exception){
-               _logger.LogInformation($"UserController :GetAllUsers()-service throwed exception while fetching records{exception.Message}{exception.StackTrace}");
+               _logger.LogInformation($"UserController :GetAllUsers()-exception occured while fetching records{exception.Message}{exception.StackTrace}");
                return BadRequest(exception.Message);
            }
             
             
+        }
+        [HttpGet]
+        public IActionResult GetUserById(int id){
+            if(id<=0){_logger.LogError($"UserController:GetUserById()-user id supplies as {id}");return BadRequest($"user id supplies as {id}");}
+            try{
+                return Ok(_userServices.GetUser(id));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"UserController :GetUserById()-exception occured while fetching {id} record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
         }
         
         [HttpPost]
@@ -42,7 +53,7 @@ namespace PMS.API
             try{
 
                 //Adding user via userservice
-                return _userServices.Add(user)?Ok("User Added"):Problem("Sorry internal error occured");
+                return _userServices.AddUser(user)?Ok("User Added"):Problem("Sorry internal error occured");
                 
                 
             }
@@ -70,7 +81,7 @@ namespace PMS.API
              if(ModelState.IsValid){
              try{
 
-                return _userServices.Update(user)? Ok("User Updated Successfully"):BadRequest("Sorry internal error occured");
+                return _userServices.UpdateUser(user)? Ok("User Updated Successfully"):BadRequest("Sorry internal error occured");
 
             }
              
@@ -91,7 +102,7 @@ namespace PMS.API
          public IActionResult Disable(int id){
             try{
                 
-                return _userServices.Delete(id)?Ok("User Disabled Successfully"):BadRequest("Sorry internal error occured");
+                return _userServices.Disable(id)?Ok("User Disabled Successfully"):BadRequest("Sorry internal error occured");
             }
              
              catch(Exception exception){

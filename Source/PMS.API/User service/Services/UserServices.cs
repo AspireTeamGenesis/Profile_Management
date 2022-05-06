@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 namespace PMS.API{
    
 
@@ -13,12 +14,12 @@ namespace PMS.API{
             userData=DataFactory.GetUserObject(logger);
         }
         
-        public IEnumerable<User> GetAll()
+        public IEnumerable<User> GetallUsers()
         {
             try{
-                IEnumerable<User> userDetails = new List<User>();
+               
              
-                return userDetails = from  user in userData.getAll() where user.IsActive==true select user;
+                return  from  user in userData.getAll() where user.IsActive==true select user;
                 
             
             
@@ -29,7 +30,8 @@ namespace PMS.API{
                 throw exception;
             }
         }
-        public bool Add(User item)
+       
+        public bool AddUser(User item)
 
         {
             if(item==null)
@@ -38,11 +40,8 @@ namespace PMS.API{
             {
                 item.CreatedBy="HR";
                 item.CreatedOn=DateTime.Now;
-                if(userData.Add(item))              //Ternary operator
-                    return true;
-                else{
-                    return false;
-                }
+                return userData.Add(item)?true:false ;           //Ternary operator
+               
             }
             
             catch(Exception exception){
@@ -52,23 +51,19 @@ namespace PMS.API{
             }
              
         }
-        public bool Delete(int id)
+        public bool Disable(int id)
         {
             if(id<=0)
-                throw new ArgumentNullException($"ID is not provided{id}");
+                throw new ValidationException($"ID is not provided{id}");
 
             
             try
             {
 
-                if(userData.Delete(id)){
+                return userData.Delete(id)?true:false;
                     return true;
-                }
-                else{
-                    //log error in DAL
-                     _logger.LogError($"unable to disable the data{id}");      //Ternary operator
-                    return false;
-                }
+               
+                
             }
             
             catch(Exception exception){
@@ -80,7 +75,7 @@ namespace PMS.API{
             
  
         }
-        public bool Update(User item)
+        public bool UpdateUser(User item)
         {
             if(item==null){throw new ArgumentNullException(" UserServices:Update()-user values not be null");}
             try{
