@@ -1,0 +1,85 @@
+[2022-05-03 14:35:53.187 +05:30 INF] Entity Framework Core 6.0.4 initialized 'UserContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-03 14:36:22.207 +05:30 INF] Entity Framework Core 6.0.4 initialized 'UserContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-03 14:36:23.240 +05:30 INF] Executed DbCommand (615ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [ProfileManagement];
+[2022-05-03 14:36:23.332 +05:30 INF] Executed DbCommand (89ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ProfileManagement] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+[2022-05-03 14:36:23.447 +05:30 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-03 14:36:23.546 +05:30 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+[2022-05-03 14:36:23.548 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-03 14:36:23.565 +05:30 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-05-03 14:36:23.572 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2022-05-03 14:36:23.588 +05:30 INF] Applying migration '20220503090553_changeduser'.
+[2022-05-03 14:36:23.631 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [admin] (
+    [CreatedBy] nvarchar(max) NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(max) NULL,
+    [UpdatedOn] datetime2 NOT NULL
+);
+[2022-05-03 14:36:23.633 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [designation] (
+    [CreatedBy] nvarchar(max) NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(max) NULL,
+    [UpdatedOn] datetime2 NOT NULL
+);
+[2022-05-03 14:36:23.635 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [hr] (
+    [Admin_Id] nvarchar(max) NOT NULL,
+    [CreatedBy] nvarchar(max) NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(max) NULL,
+    [UpdatedOn] datetime2 NOT NULL
+);
+[2022-05-03 14:36:23.638 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [organization] (
+    [CreatedBy] nvarchar(max) NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(max) NULL,
+    [UpdatedOn] datetime2 NOT NULL
+);
+[2022-05-03 14:36:23.640 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [reporting_person] (
+    [CreatedBy] nvarchar(max) NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(max) NULL,
+    [UpdatedOn] datetime2 NOT NULL
+);
+[2022-05-03 14:36:23.645 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [users] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [UserName] nvarchar(max) NOT NULL,
+    [Password] nvarchar(max) NOT NULL,
+    [Gender] nvarchar(max) NOT NULL,
+    [MobileNo] bigint NOT NULL,
+    [Organization_Id] nvarchar(max) NOT NULL,
+    [Designation_Id] nvarchar(max) NOT NULL,
+    [Reporting_Person_Id] nvarchar(max) NOT NULL,
+    [HR_Id] nvarchar(max) NOT NULL,
+    [IsActive] bit NOT NULL,
+    [CreatedBy] nvarchar(max) NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(max) NULL,
+    [UpdatedOn] datetime2 NOT NULL,
+    CONSTRAINT [PK_users] PRIMARY KEY ([Id])
+);
+[2022-05-03 14:36:23.647 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220503090553_changeduser', N'6.0.4');
