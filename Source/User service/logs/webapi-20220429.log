@@ -1,0 +1,1965 @@
+[2022-04-28 14:30:38.115 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-28 14:30:38.142 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-28 14:30:38.145 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 14:30:38.145 +05:30 INF] Hosting environment: Development
+[2022-04-28 14:30:38.145 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-28 14:31:08.279 +05:30 INF] Application is shutting down...
+[2022-04-28 14:31:16.193 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-28 14:31:16.216 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-28 14:31:16.219 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 14:31:16.219 +05:30 INF] Hosting environment: Development
+[2022-04-28 14:31:16.224 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-28 14:31:31.190 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 14:31:31.291 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 104.0003ms
+[2022-04-28 14:31:31.310 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-28 14:31:31.321 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 14:31:31.322 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 11.7396ms
+[2022-04-28 14:31:31.540 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-28 14:31:31.544 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-28 14:31:31.544 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-28 14:31:31.545 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.9101ms
+[2022-04-28 14:31:31.633 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 93.6087ms
+[2022-04-28 14:33:01.464 +05:30 INF] Request starting HTTP/2 POST https://localhost:7024/User/AddUser application/json 250
+[2022-04-28 14:33:01.472 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /User/AddUser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 250
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 14:33:01.477 +05:30 INF] Executing endpoint 'PMS.API.UserController.AddUser (PMS.API)'
+[2022-04-28 14:33:01.495 +05:30 INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddUser(PMS.API.User) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 14:33:01.576 +05:30 INF] RequestBody: {
+  "id": 0,
+  "name": "Mahi",
+  "email": "mahi@gmail.com",
+  "userName": "mahi.ram",
+  "password": "9874563214",
+  "gender": "Male",
+  "mobileNo": 6303363863,
+  "organization": "Development",
+  "designation": "SSE",
+  "reporting_Person": "Brindha"
+}
+[2022-04-28 14:33:02.639 +05:30 INF] Executing StatusCodeResult, setting HTTP status code 200
+[2022-04-28 14:33:02.644 +05:30 INF] Executed action PMS.API.UserController.AddUser (PMS.API) in 1144.8313ms
+[2022-04-28 14:33:02.644 +05:30 INF] Executed endpoint 'PMS.API.UserController.AddUser (PMS.API)'
+[2022-04-28 14:33:02.644 +05:30 INF] Response:
+StatusCode: 200
+[2022-04-28 14:33:02.644 +05:30 INF] Request finished HTTP/2 POST https://localhost:7024/User/AddUser application/json 250 - 200 0 - 1180.5455ms
+[2022-04-28 14:33:34.041 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getallusers - -
+[2022-04-28 14:33:34.043 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getallusers
+Accept: text/plain
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 14:33:34.043 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getallusers (PMS.API)'
+[2022-04-28 14:33:34.044 +05:30 INF] Route matched with {action = "Getallusers", controller = "User"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[PMS.API.User] Getallusers() on controller PMS.API.UserController (PMS.API).
+[2022-04-28 14:33:34.049 +05:30 INF] Getting all users
+[2022-04-28 14:33:34.051 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1[[PMS.API.User, PMS.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-04-28 14:33:34.318 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-28 14:33:34.324 +05:30 INF] Executed action PMS.API.UserController.Getallusers (PMS.API) in 280.0857ms
+[2022-04-28 14:33:34.324 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getallusers (PMS.API)'
+[2022-04-28 14:33:34.325 +05:30 INF] ResponseBody: [{"id":1,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"9874563214","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha"}]
+[2022-04-28 14:33:34.326 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getallusers - - - 200 - application/json;+charset=utf-8 285.1019ms
+[2022-04-28 16:53:23.360 +05:30 INF] Application is shutting down...
+[2022-04-28 16:53:33.076 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-28 16:53:33.100 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-28 16:53:33.103 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 16:53:33.103 +05:30 INF] Hosting environment: Development
+[2022-04-28 16:53:33.103 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-28 16:54:03.724 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 16:54:03.825 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 103.1776ms
+[2022-04-28 16:54:03.850 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-28 16:54:03.863 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 16:54:03.865 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 13.9871ms
+[2022-04-28 16:54:04.071 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-28 16:54:04.082 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-28 16:54:04.082 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-28 16:54:04.082 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.5515ms
+[2022-04-28 16:54:04.163 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 91.2358ms
+[2022-04-28 16:54:17.979 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - -
+[2022-04-28 16:54:17.989 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 16:54:17.993 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:54:18.010 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 16:54:19.134 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 16:54:19.139 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1123.7477ms
+[2022-04-28 16:54:19.140 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:54:19.140 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 16:54:19.140 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - - - 204 0 - 1161.2890ms
+[2022-04-28 16:54:38.133 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 16:54:38.135 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 16:54:38.135 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:54:38.135 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 16:54:38.151 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 16:54:38.152 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 16.3117ms
+[2022-04-28 16:54:38.152 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:54:38.152 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 16:54:38.152 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 19.0626ms
+[2022-04-28 16:54:49.211 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=3 - -
+[2022-04-28 16:54:49.211 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 16:54:49.212 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:54:49.212 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 16:54:49.274 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 16:54:49.274 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 62.4771ms
+[2022-04-28 16:54:49.274 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:54:49.274 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 16:54:49.274 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=3 - - - 204 0 - 63.3415ms
+[2022-04-28 16:54:55.905 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - -
+[2022-04-28 16:54:55.905 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 16:54:55.905 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:54:55.905 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 16:54:55.907 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 16:54:55.907 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1.8289ms
+[2022-04-28 16:54:55.907 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:54:55.907 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 16:54:55.908 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - - - 204 0 - 2.4494ms
+[2022-04-28 16:55:29.921 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 16:55:29.921 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 16:55:29.922 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:55:29.922 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 16:55:29.925 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 16:55:29.925 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 3.739ms
+[2022-04-28 16:55:29.925 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:55:29.925 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 16:55:29.926 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 4.4842ms
+[2022-04-28 16:55:31.056 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 16:55:31.056 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 16:55:31.056 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:55:31.057 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 16:55:31.058 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 16:55:31.058 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1.5384ms
+[2022-04-28 16:55:31.058 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:55:31.058 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 16:55:31.058 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 2.1351ms
+[2022-04-28 16:55:31.248 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 16:55:31.248 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 16:55:31.248 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:55:31.249 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 16:55:31.251 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 16:55:31.251 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1.992ms
+[2022-04-28 16:55:31.251 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:55:31.251 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 16:55:31.251 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 2.6639ms
+[2022-04-28 16:55:31.456 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 16:55:31.456 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 16:55:31.456 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:55:31.456 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 16:55:31.459 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 16:55:31.459 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 2.948ms
+[2022-04-28 16:55:31.459 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:55:31.459 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 16:55:31.459 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 3.6727ms
+[2022-04-28 16:55:43.195 +05:30 INF] Application is shutting down...
+[2022-04-28 16:55:48.026 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-28 16:55:48.050 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-28 16:55:48.053 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 16:55:48.054 +05:30 INF] Hosting environment: Development
+[2022-04-28 16:55:48.054 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-28 16:57:28.311 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/ - -
+[2022-04-28 16:57:28.381 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 16:57:28.382 +05:30 INF] Response:
+StatusCode: 404
+[2022-04-28 16:57:28.388 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/ - - - 404 0 - 80.2588ms
+[2022-04-28 16:57:34.122 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger - -
+[2022-04-28 16:57:34.123 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger - - - 301 0 - 1.5381ms
+[2022-04-28 16:57:34.131 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 16:57:34.186 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 54.7936ms
+[2022-04-28 16:57:34.211 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-28 16:57:34.211 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - -
+[2022-04-28 16:57:34.211 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - -
+[2022-04-28 16:57:34.239 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 16:57:34.239 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-04-28 16:57:34.239 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-04-28 16:57:34.240 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 28.7146ms
+[2022-04-28 16:57:34.240 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 28.9073ms
+[2022-04-28 16:57:34.240 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 28.8470ms
+[2022-04-28 16:57:34.435 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-28 16:57:34.531 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 95.8384ms
+[2022-04-28 16:57:39.218 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 16:57:39.220 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 16:57:39.223 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:57:39.245 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 16:57:40.323 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 16:57:40.328 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1077.7619ms
+[2022-04-28 16:57:40.328 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 16:57:40.328 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 16:57:40.329 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 1110.7087ms
+[2022-04-28 17:01:06.692 +05:30 INF] Application is shutting down...
+[2022-04-28 17:01:39.531 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-28 17:01:39.554 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-28 17:01:39.557 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 17:01:39.557 +05:30 INF] Hosting environment: Development
+[2022-04-28 17:01:39.557 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-28 17:01:57.628 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 17:01:57.691 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:01:57.694 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:01:57.712 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:01:58.900 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 17:01:58.905 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1188.1608ms
+[2022-04-28 17:01:58.906 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:01:58.907 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 17:01:58.913 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 1290.9220ms
+[2022-04-28 17:02:09.220 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger - -
+[2022-04-28 17:02:09.222 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger - - - 301 0 - 1.3185ms
+[2022-04-28 17:02:09.228 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 17:02:09.289 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 60.9491ms
+[2022-04-28 17:02:09.309 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - -
+[2022-04-28 17:02:09.309 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - -
+[2022-04-28 17:02:09.309 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-28 17:02:09.340 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-04-28 17:02:09.340 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 17:02:09.343 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 33.3471ms
+[2022-04-28 17:02:09.343 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 33.8078ms
+[2022-04-28 17:02:09.357 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-04-28 17:02:09.357 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 47.4987ms
+[2022-04-28 17:02:09.543 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-28 17:02:09.623 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 79.5163ms
+[2022-04-28 17:02:27.307 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 17:02:27.310 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:02:27.310 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:02:27.310 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:02:27.327 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 17:02:27.328 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 17.7384ms
+[2022-04-28 17:02:27.328 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:02:27.328 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 17:02:27.329 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 21.2426ms
+[2022-04-28 17:02:40.873 +05:30 INF] Application is shutting down...
+[2022-04-28 17:03:52.577 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-28 17:03:52.601 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-28 17:03:52.604 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 17:03:52.605 +05:30 INF] Hosting environment: Development
+[2022-04-28 17:03:52.605 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-28 17:04:00.843 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 17:04:00.941 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 101.7664ms
+[2022-04-28 17:04:00.958 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-28 17:04:00.970 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 17:04:00.970 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 12.1758ms
+[2022-04-28 17:04:01.087 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-28 17:04:01.100 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-28 17:04:01.101 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-28 17:04:01.102 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 1.0534ms
+[2022-04-28 17:04:01.200 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 113.4745ms
+[2022-04-28 17:04:06.301 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 17:04:06.309 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:04:06.314 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:04:06.332 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:04:07.408 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 17:04:07.413 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1076.0463ms
+[2022-04-28 17:04:07.414 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:04:07.414 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 17:04:07.414 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 1113.5683ms
+[2022-04-28 17:04:17.666 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 17:04:17.668 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:04:17.668 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:04:17.669 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:04:17.691 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 17:04:17.691 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 22.2257ms
+[2022-04-28 17:04:17.691 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:04:17.691 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 17:04:17.691 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 25.8057ms
+[2022-04-28 17:04:19.504 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 17:04:19.504 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:04:19.504 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:04:19.504 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:04:19.558 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 17:04:19.558 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 53.7174ms
+[2022-04-28 17:04:19.558 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:04:19.558 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 17:04:19.558 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 54.9475ms
+[2022-04-28 17:06:05.820 +05:30 INF] Application is shutting down...
+[2022-04-28 17:06:15.272 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-28 17:06:15.297 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-28 17:06:15.300 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 17:06:15.300 +05:30 INF] Hosting environment: Development
+[2022-04-28 17:06:15.300 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-28 17:06:39.550 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 17:06:39.641 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 93.5357ms
+[2022-04-28 17:06:39.656 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-28 17:06:39.671 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 17:06:39.673 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 16.9601ms
+[2022-04-28 17:06:39.750 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-28 17:06:39.757 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-28 17:06:39.758 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-28 17:06:39.758 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.6478ms
+[2022-04-28 17:06:39.844 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 94.2873ms
+[2022-04-28 17:06:44.324 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 17:06:44.333 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:06:44.337 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:06:44.354 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:06:45.454 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 17:06:45.460 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1100.4242ms
+[2022-04-28 17:06:45.461 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:06:45.461 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 17:06:45.461 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 204 0 - 1137.0644ms
+[2022-04-28 17:06:55.604 +05:30 INF] Application is shutting down...
+[2022-04-28 17:07:11.399 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-28 17:07:11.435 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-28 17:07:11.439 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 17:07:11.439 +05:30 INF] Hosting environment: Development
+[2022-04-28 17:07:11.439 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-28 17:07:37.367 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 17:07:37.487 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 122.1776ms
+[2022-04-28 17:07:37.507 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-28 17:07:37.523 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 17:07:37.523 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 16.1830ms
+[2022-04-28 17:07:37.605 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 17:07:37.607 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 3.7470ms
+[2022-04-28 17:07:37.705 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-28 17:07:37.710 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-28 17:07:37.711 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-28 17:07:37.711 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.6333ms
+[2022-04-28 17:07:37.777 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 17:07:37.778 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.6193ms
+[2022-04-28 17:07:37.816 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 110.4168ms
+[2022-04-28 17:07:37.876 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-28 17:07:37.880 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-28 17:07:37.880 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-28 17:07:37.881 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 1.0900ms
+[2022-04-28 17:07:37.881 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 5.0290ms
+[2022-04-28 17:15:31.288 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-28 17:15:31.313 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-28 17:15:31.317 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 17:15:31.317 +05:30 INF] Hosting environment: Development
+[2022-04-28 17:15:31.317 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-28 17:16:52.109 +05:30 INF] Application is shutting down...
+[2022-04-28 17:22:38.762 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-28 17:22:38.786 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-28 17:22:38.789 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-28 17:22:38.789 +05:30 INF] Hosting environment: Development
+[2022-04-28 17:22:38.789 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-28 17:23:28.197 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/ - -
+[2022-04-28 17:23:28.282 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:23:28.286 +05:30 INF] Response:
+StatusCode: 404
+[2022-04-28 17:23:28.291 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/ - - - 404 0 - 98.5352ms
+[2022-04-28 17:23:32.158 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger - -
+[2022-04-28 17:23:32.159 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger - - - 301 0 - 0.9986ms
+[2022-04-28 17:23:32.161 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 17:23:32.209 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 48.1353ms
+[2022-04-28 17:23:32.222 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-28 17:23:32.223 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - -
+[2022-04-28 17:23:32.231 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - -
+[2022-04-28 17:23:32.240 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 17:23:32.240 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-04-28 17:23:32.241 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 10.8432ms
+[2022-04-28 17:23:32.241 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 19.3651ms
+[2022-04-28 17:23:32.242 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-04-28 17:23:32.242 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 19.0867ms
+[2022-04-28 17:23:32.413 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger - -
+[2022-04-28 17:23:32.418 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger - - - 301 0 - 5.0089ms
+[2022-04-28 17:23:32.421 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 17:23:32.421 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.5368ms
+[2022-04-28 17:23:32.462 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - -
+[2022-04-28 17:23:32.462 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - -
+[2022-04-28 17:23:32.462 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-28 17:23:32.467 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 17:23:32.470 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 7.9389ms
+[2022-04-28 17:23:32.472 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-04-28 17:23:32.476 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-04-28 17:23:32.476 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 13.5871ms
+[2022-04-28 17:23:32.482 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 19.7752ms
+[2022-04-28 17:23:32.671 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-28 17:23:32.757 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 85.2955ms
+[2022-04-28 17:23:38.756 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - -
+[2022-04-28 17:23:38.758 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:23:38.762 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:38.782 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:23:38.850 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2022-04-28 17:23:38.852 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: application/problem+json; charset=utf-8
+[2022-04-28 17:23:38.858 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 70.0874ms
+[2022-04-28 17:23:38.859 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:38.859 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"Bad Request","status":400,"traceId":"00-2815d63160feccf0770d99f049a21fad-1a185d08788fd73e-00"}
+[2022-04-28 17:23:38.860 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - - - 400 - application/problem+json;+charset=utf-8 103.4892ms
+[2022-04-28 17:23:43.694 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 17:23:43.696 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:23:43.696 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:43.696 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:23:43.701 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2022-04-28 17:23:43.701 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: application/problem+json; charset=utf-8
+[2022-04-28 17:23:43.701 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 4.9657ms
+[2022-04-28 17:23:43.702 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:43.702 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"Bad Request","status":400,"traceId":"00-a4349e8a95828cb000246a3a187f905a-b4d91d03557e5a4d-00"}
+[2022-04-28 17:23:43.702 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 400 - application/problem+json;+charset=utf-8 7.4225ms
+[2022-04-28 17:23:46.114 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 17:23:46.114 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:23:46.115 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:46.115 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:23:46.117 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2022-04-28 17:23:46.117 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: application/problem+json; charset=utf-8
+[2022-04-28 17:23:46.117 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 2.5743ms
+[2022-04-28 17:23:46.117 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:46.118 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"Bad Request","status":400,"traceId":"00-6f41c9e51bfa46fc737dbca6e56d77f6-10a3617e3777739a-00"}
+[2022-04-28 17:23:46.118 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 400 - application/problem+json;+charset=utf-8 3.7305ms
+[2022-04-28 17:23:46.599 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-28 17:23:46.599 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:23:46.599 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:46.599 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:23:46.600 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2022-04-28 17:23:46.600 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: application/problem+json; charset=utf-8
+[2022-04-28 17:23:46.600 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 0.4584ms
+[2022-04-28 17:23:46.600 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:46.600 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"Bad Request","status":400,"traceId":"00-6ee4f4ee4da5264c743be50a0bfa3a73-21d1d98cf2c00511-00"}
+[2022-04-28 17:23:46.600 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 400 - application/problem+json;+charset=utf-8 0.9763ms
+[2022-04-28 17:23:49.423 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - -
+[2022-04-28 17:23:49.423 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:23:49.423 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:49.423 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:23:50.459 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 17:23:50.459 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1035.5341ms
+[2022-04-28 17:23:50.459 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:50.459 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 17:23:50.459 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - - - 204 0 - 1036.0798ms
+[2022-04-28 17:23:59.404 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - -
+[2022-04-28 17:23:59.404 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:23:59.404 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:59.404 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:23:59.416 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 17:23:59.416 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 12.0337ms
+[2022-04-28 17:23:59.416 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:23:59.416 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 17:23:59.416 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - - - 204 0 - 12.5323ms
+[2022-04-28 17:24:05.063 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=1 - -
+[2022-04-28 17:24:05.063 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:24:05.063 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:24:05.063 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:24:05.167 +05:30 INF] Executing OkObjectResult, writing value of type 'PMS.API.User'.
+[2022-04-28 17:24:05.169 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-28 17:24:05.170 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 106.3894ms
+[2022-04-28 17:24:05.170 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:24:05.170 +05:30 INF] ResponseBody: {"id":1,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"9874563214","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha"}
+[2022-04-28 17:24:05.170 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=1 - - - 200 - application/json;+charset=utf-8 107.0218ms
+[2022-04-28 17:24:13.633 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - -
+[2022-04-28 17:24:13.634 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:24:13.634 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:24:13.634 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:24:13.635 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 17:24:13.635 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1.6915ms
+[2022-04-28 17:24:13.636 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:24:13.636 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 17:24:13.636 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - - - 204 0 - 2.3341ms
+[2022-04-28 17:28:45.617 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 17:28:45.618 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 1.0851ms
+[2022-04-28 17:28:45.632 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-28 17:28:45.635 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 17:28:45.635 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 2.6488ms
+[2022-04-28 17:28:45.702 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-28 17:28:45.706 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-28 17:28:45.707 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-28 17:28:45.707 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 4.4116ms
+[2022-04-28 17:28:45.707 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.4372ms
+[2022-04-28 17:28:52.058 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - -
+[2022-04-28 17:28:52.058 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:28:52.058 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:28:52.058 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:28:52.062 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 17:28:52.062 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 3.9008ms
+[2022-04-28 17:28:52.062 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:28:52.062 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 17:28:52.062 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - - - 204 0 - 4.4906ms
+[2022-04-28 17:31:53.372 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-28 17:31:53.372 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.5504ms
+[2022-04-28 17:31:53.389 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-28 17:31:53.391 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-28 17:31:53.391 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 2.0222ms
+[2022-04-28 17:31:53.611 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-28 17:31:53.631 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-28 17:31:53.631 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-28 17:31:53.631 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.3285ms
+[2022-04-28 17:31:53.632 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 20.3531ms
+[2022-04-28 17:31:59.797 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - -
+[2022-04-28 17:31:59.798 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:31:59.798 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:31:59.798 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:31:59.801 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-28 17:31:59.801 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 3.4722ms
+[2022-04-28 17:31:59.801 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:31:59.801 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-28 17:31:59.801 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - - - 204 0 - 3.9615ms
+[2022-04-28 17:32:08.721 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=1 - -
+[2022-04-28 17:32:08.721 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:32:08.721 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:32:08.721 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:32:08.725 +05:30 INF] Executing OkObjectResult, writing value of type 'PMS.API.User'.
+[2022-04-28 17:32:08.725 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-28 17:32:08.725 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 4.1875ms
+[2022-04-28 17:32:08.725 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:32:08.725 +05:30 INF] ResponseBody: {"id":1,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"9874563214","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha"}
+[2022-04-28 17:32:08.725 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=1 - - - 200 - application/json;+charset=utf-8 4.6593ms
+[2022-04-28 17:44:13.107 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=1 - -
+[2022-04-28 17:44:13.107 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-28 17:44:13.107 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:44:13.107 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-28 17:44:13.193 +05:30 INF] Executing OkObjectResult, writing value of type 'PMS.API.User'.
+[2022-04-28 17:44:13.193 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-28 17:44:13.193 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 86.3642ms
+[2022-04-28 17:44:13.194 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-28 17:44:13.194 +05:30 INF] ResponseBody: {"id":1,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"9874563214","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha"}
+[2022-04-28 17:44:13.194 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=1 - - - 200 - application/json;+charset=utf-8 86.9198ms
+[2022-04-29 08:56:04.355 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 08:56:04.379 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 08:56:04.382 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 08:56:04.382 +05:30 INF] Hosting environment: Development
+[2022-04-29 08:56:04.382 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 08:57:11.960 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger - -
+[2022-04-29 08:57:12.006 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger - - - 301 0 - 49.5197ms
+[2022-04-29 08:57:12.010 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 08:57:12.052 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 41.9766ms
+[2022-04-29 08:57:12.064 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 08:57:12.064 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - -
+[2022-04-29 08:57:12.067 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - -
+[2022-04-29 08:57:12.085 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 08:57:12.085 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-04-29 08:57:12.087 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-04-29 08:57:12.087 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 23.4804ms
+[2022-04-29 08:57:12.087 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 20.0837ms
+[2022-04-29 08:57:12.087 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 23.1958ms
+[2022-04-29 08:57:12.638 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger - -
+[2022-04-29 08:57:12.638 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger - - - 301 0 - 0.4121ms
+[2022-04-29 08:57:12.641 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 08:57:12.642 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.6865ms
+[2022-04-29 08:57:12.685 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - -
+[2022-04-29 08:57:12.685 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - -
+[2022-04-29 08:57:12.685 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 08:57:12.697 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 08:57:12.697 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 12.4199ms
+[2022-04-29 08:57:12.702 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-04-29 08:57:12.702 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 17.0205ms
+[2022-04-29 08:57:12.717 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-04-29 08:57:12.717 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 32.0987ms
+[2022-04-29 08:57:12.907 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 08:57:12.996 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 89.2249ms
+[2022-04-29 08:57:19.705 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - -
+[2022-04-29 08:57:19.711 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 08:57:19.717 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 08:57:19.734 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 08:57:19.803 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2022-04-29 08:57:19.804 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: application/problem+json; charset=utf-8
+[2022-04-29 08:57:19.810 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 70.1024ms
+[2022-04-29 08:57:19.810 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 08:57:19.811 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"Bad Request","status":400,"traceId":"00-5ef350debc6d417ade3ebdfd0504be7b-ae91adb5cf9707cf-00"}
+[2022-04-29 08:57:19.812 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - - - 400 - application/problem+json;+charset=utf-8 106.7735ms
+[2022-04-29 09:02:49.206 +05:30 INF] Application is shutting down...
+[2022-04-29 09:02:55.513 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 09:02:55.538 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 09:02:55.541 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 09:02:55.541 +05:30 INF] Hosting environment: Development
+[2022-04-29 09:02:55.541 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 09:03:04.199 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 09:03:04.297 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 100.1253ms
+[2022-04-29 09:03:04.317 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 09:03:04.332 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 09:03:04.333 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 15.3695ms
+[2022-04-29 09:03:04.409 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 09:03:04.413 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 09:03:04.413 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 09:03:04.414 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.8768ms
+[2022-04-29 09:03:04.497 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 87.6039ms
+[2022-04-29 09:03:10.041 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - -
+[2022-04-29 09:03:10.049 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 09:03:10.054 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 09:03:10.072 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 09:03:10.141 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2022-04-29 09:03:10.143 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: application/problem+json; charset=utf-8
+[2022-04-29 09:03:10.149 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 71.987ms
+[2022-04-29 09:03:10.150 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 09:03:10.151 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"Bad Request","status":400,"traceId":"00-f527cb28d84b615c1576e676faec4817-f9cae3ebe171f271-00"}
+[2022-04-29 09:03:10.151 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - - - 400 - application/problem+json;+charset=utf-8 109.4247ms
+[2022-04-29 09:03:16.695 +05:30 INF] Request starting HTTP/2 POST https://localhost:7024/User/AddUser application/json 228
+[2022-04-29 09:03:16.698 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /User/AddUser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 228
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 09:03:16.698 +05:30 INF] Executing endpoint 'PMS.API.UserController.AddUser (PMS.API)'
+[2022-04-29 09:03:16.700 +05:30 INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddUser(PMS.API.User) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 09:03:16.710 +05:30 INF] RequestBody: {
+  "id": 0,
+  "name": "string",
+  "email": "string",
+  "userName": "string",
+  "password": "string",
+  "gender": "string",
+  "mobileNo": 0,
+  "organization": "string",
+  "designation": "string",
+  "reporting_Person": "string"
+}
+[2022-04-29 09:03:17.820 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-04-29 09:03:17.820 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: text/plain; charset=utf-8
+[2022-04-29 09:03:17.820 +05:30 INF] Executed action PMS.API.UserController.AddUser (PMS.API) in 1120.3854ms
+[2022-04-29 09:03:17.821 +05:30 INF] Executed endpoint 'PMS.API.UserController.AddUser (PMS.API)'
+[2022-04-29 09:03:17.821 +05:30 INF] ResponseBody: User Added
+[2022-04-29 09:03:17.821 +05:30 INF] Request finished HTTP/2 POST https://localhost:7024/User/AddUser application/json 228 - 200 - text/plain;+charset=utf-8 1125.7141ms
+[2022-04-29 09:03:32.287 +05:30 INF] Request starting HTTP/2 PUT https://localhost:7024/User/UpdateUser?id=0 application/json 228
+[2022-04-29 09:03:32.287 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: PUT
+Scheme: https
+PathBase: 
+Path: /User/UpdateUser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 228
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 09:03:32.287 +05:30 INF] Executing endpoint 'PMS.API.UserController.UpdateUser (PMS.API)'
+[2022-04-29 09:03:32.290 +05:30 INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult UpdateUser(PMS.API.User, Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 09:03:32.292 +05:30 INF] RequestBody: {
+  "id": 0,
+  "name": "string",
+  "email": "string",
+  "userName": "string",
+  "password": "string",
+  "gender": "string",
+  "mobileNo": 0,
+  "organization": "string",
+  "designation": "string",
+  "reporting_Person": "string"
+}
+[2022-04-29 09:03:32.293 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2022-04-29 09:03:32.293 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: application/problem+json; charset=utf-8
+[2022-04-29 09:03:32.294 +05:30 INF] Executed action PMS.API.UserController.UpdateUser (PMS.API) in 3.6024ms
+[2022-04-29 09:03:32.294 +05:30 INF] Executed endpoint 'PMS.API.UserController.UpdateUser (PMS.API)'
+[2022-04-29 09:03:32.294 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"Bad Request","status":400,"traceId":"00-104d692d74686a7b3e661e4035477863-fa80f414672cb3a1-00"}
+[2022-04-29 09:03:32.295 +05:30 INF] Request finished HTTP/2 PUT https://localhost:7024/User/UpdateUser?id=0 application/json 228 - 400 - application/problem+json;+charset=utf-8 7.6950ms
+[2022-04-29 09:03:39.917 +05:30 INF] Request starting HTTP/2 DELETE https://localhost:7024/User/Delete?id=0 - -
+[2022-04-29 09:03:39.918 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: DELETE
+Scheme: https
+PathBase: 
+Path: /User/Delete
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Origin: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 09:03:39.918 +05:30 INF] Executing endpoint 'PMS.API.UserController.Delete (PMS.API)'
+[2022-04-29 09:03:39.918 +05:30 INF] Route matched with {action = "Delete", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Delete(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 09:03:39.919 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2022-04-29 09:03:39.919 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: application/problem+json; charset=utf-8
+[2022-04-29 09:03:39.919 +05:30 INF] Executed action PMS.API.UserController.Delete (PMS.API) in 0.7235ms
+[2022-04-29 09:03:39.919 +05:30 INF] Executed endpoint 'PMS.API.UserController.Delete (PMS.API)'
+[2022-04-29 09:03:39.920 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"Bad Request","status":400,"traceId":"00-3094ad0481b3e78393fba33def241d7c-c1762e8556608544-00"}
+[2022-04-29 09:03:39.921 +05:30 INF] Request finished HTTP/2 DELETE https://localhost:7024/User/Delete?id=0 - - - 400 - application/problem+json;+charset=utf-8 3.3574ms
+[2022-04-29 10:00:54.580 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 10:00:54.581 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.7119ms
+[2022-04-29 10:00:54.596 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 10:00:54.607 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 10:00:54.609 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 12.9080ms
+[2022-04-29 10:00:54.817 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 10:00:54.822 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 4.6605ms
+[2022-04-29 10:00:54.825 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 10:00:54.825 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 10:00:54.825 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.3651ms
+[2022-04-29 10:01:00.235 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - -
+[2022-04-29 10:01:00.235 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 10:01:00.235 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 10:01:00.236 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 10:01:00.588 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-29 10:01:00.588 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 352.028ms
+[2022-04-29 10:01:00.588 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 10:01:00.588 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-29 10:01:00.588 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - - - 204 0 - 352.9971ms
+[2022-04-29 10:05:20.979 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 10:05:20.979 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.4993ms
+[2022-04-29 10:05:20.994 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 10:05:20.996 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 10:05:20.996 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 2.1783ms
+[2022-04-29 10:05:21.255 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 10:05:21.257 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2.3207ms
+[2022-04-29 10:05:21.262 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 10:05:21.262 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 10:05:21.262 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.2904ms
+[2022-04-29 10:05:26.237 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - -
+[2022-04-29 10:05:26.237 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 10:05:26.237 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 10:05:26.237 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 10:05:26.255 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-29 10:05:26.256 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 18.7043ms
+[2022-04-29 10:05:26.256 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 10:05:26.256 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-29 10:05:26.256 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - - - 204 0 - 19.3921ms
+[2022-04-29 10:05:37.530 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getallusers - -
+[2022-04-29 10:05:37.530 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getallusers
+Accept: text/plain
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 10:05:37.531 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getallusers (PMS.API)'
+[2022-04-29 10:05:37.533 +05:30 INF] Route matched with {action = "Getallusers", controller = "User"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[PMS.API.User] Getallusers() on controller PMS.API.UserController (PMS.API).
+[2022-04-29 10:05:37.534 +05:30 INF] Getting all users
+[2022-04-29 10:05:37.535 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1[[PMS.API.User, PMS.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-04-29 10:05:37.587 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-29 10:05:37.592 +05:30 INF] Executed action PMS.API.UserController.Getallusers (PMS.API) in 58.4063ms
+[2022-04-29 10:05:37.592 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getallusers (PMS.API)'
+[2022-04-29 10:05:37.592 +05:30 INF] ResponseBody: [{"id":1,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"9874563214","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha"},{"id":2,"name":"string","email":"string","userName":"string","password":"string","gender":"string","mobileNo":0,"organization":"string","designation":"string","reporting_Person":"string"}]
+[2022-04-29 10:05:37.593 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getallusers - - - 200 - application/json;+charset=utf-8 62.5590ms
+[2022-04-29 10:05:42.114 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - -
+[2022-04-29 10:05:42.114 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 10:05:42.114 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 10:05:42.114 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 10:05:42.115 +05:30 INF] Executing OkObjectResult, writing value of type 'null'.
+[2022-04-29 10:05:42.115 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1.4665ms
+[2022-04-29 10:05:42.116 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 10:05:42.116 +05:30 INF] Response:
+StatusCode: 204
+Content-Length: 0
+[2022-04-29 10:05:42.116 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - - - 204 0 - 2.0619ms
+[2022-04-29 10:09:14.221 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 10:09:14.221 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.4458ms
+[2022-04-29 10:09:14.236 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 10:09:14.237 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 10:09:14.237 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 1.0877ms
+[2022-04-29 10:09:14.409 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 10:09:14.412 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3.3774ms
+[2022-04-29 10:09:14.417 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 10:09:14.417 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 10:09:14.417 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.3461ms
+[2022-04-29 10:09:46.415 +05:30 INF] Application is shutting down...
+[2022-04-29 10:10:00.111 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 10:10:00.134 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 10:10:00.137 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 10:10:00.137 +05:30 INF] Hosting environment: Development
+[2022-04-29 10:10:00.137 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 11:00:01.141 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 11:00:01.246 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 106.8805ms
+[2022-04-29 11:00:01.268 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 11:00:01.281 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 11:00:01.281 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 13.4385ms
+[2022-04-29 11:00:01.475 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 11:00:01.481 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 11:00:01.483 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 11:00:01.484 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 2.3237ms
+[2022-04-29 11:00:01.578 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 102.8414ms
+[2022-04-29 11:00:06.917 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - -
+[2022-04-29 11:00:06.927 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 11:00:06.930 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 11:00:06.948 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 11:00:08.075 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2022-04-29 11:00:08.077 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: application/problem+json; charset=utf-8
+[2022-04-29 11:00:08.083 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1129.5133ms
+[2022-04-29 11:00:08.083 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 11:00:08.084 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"Bad Request","status":400,"traceId":"00-24822d4108b16ac6a2e70f76f449aaea-13b4e93828862c0c-00"}
+[2022-04-29 11:00:08.084 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - - - 400 - application/problem+json;+charset=utf-8 1166.8742ms
+[2022-04-29 11:21:00.022 +05:30 INF] Application is shutting down...
+[2022-04-29 11:21:09.553 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 11:21:09.581 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 11:21:09.584 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 11:21:09.584 +05:30 INF] Hosting environment: Development
+[2022-04-29 11:21:09.584 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 11:21:15.755 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 11:21:15.856 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 103.2504ms
+[2022-04-29 11:21:15.878 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 11:21:15.893 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 11:21:15.894 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 16.2369ms
+[2022-04-29 11:21:16.092 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 11:21:16.102 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 11:21:16.103 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 11:21:16.106 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 3.1428ms
+[2022-04-29 11:21:16.187 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 95.3957ms
+[2022-04-29 11:21:23.603 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser - -
+[2022-04-29 11:21:23.610 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 11:21:23.615 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 11:21:23.632 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 11:21:23.695 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+[2022-04-29 11:21:23.695 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: text/plain; charset=utf-8
+[2022-04-29 11:21:23.701 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 63.4273ms
+[2022-04-29 11:21:23.701 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 11:21:23.702 +05:30 INF] ResponseBody: The id is zero
+[2022-04-29 11:21:23.702 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser - - - 400 - text/plain;+charset=utf-8 99.4116ms
+[2022-04-29 11:21:31.187 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - -
+[2022-04-29 11:21:31.189 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 11:21:31.189 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 11:21:31.189 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 11:21:31.201 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+[2022-04-29 11:21:31.201 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: text/plain; charset=utf-8
+[2022-04-29 11:21:31.202 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 12.2795ms
+[2022-04-29 11:21:31.202 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 11:21:31.202 +05:30 INF] ResponseBody: The id is zero
+[2022-04-29 11:21:31.202 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=0 - - - 400 - text/plain;+charset=utf-8 15.0849ms
+[2022-04-29 11:21:38.395 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - -
+[2022-04-29 11:21:38.395 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 11:21:38.395 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 11:21:38.395 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 11:21:39.465 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+[2022-04-29 11:21:39.465 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: text/plain; charset=utf-8
+[2022-04-29 11:21:39.465 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1070.1748ms
+[2022-04-29 11:21:39.466 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 11:21:39.466 +05:30 INF] ResponseBody: User not Found 
+[2022-04-29 11:21:39.466 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - - - 400 - text/plain;+charset=utf-8 1070.8713ms
+[2022-04-29 11:55:59.040 +05:30 INF] Application is shutting down...
+[2022-04-29 11:56:33.410 +05:30 INF] Entity Framework Core 6.0.4 initialized 'UserContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-04-29 11:56:50.340 +05:30 INF] Entity Framework Core 6.0.4 initialized 'UserContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-04-29 11:56:50.675 +05:30 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-04-29 11:56:50.699 +05:30 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-04-29 11:56:50.702 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-04-29 11:56:50.702 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-04-29 11:56:50.721 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2022-04-29 11:56:50.735 +05:30 INF] Applying migration '20220429062633_Audit'.
+[2022-04-29 11:56:50.789 +05:30 INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [users] ADD [CreatedBy] nvarchar(max) NULL;
+[2022-04-29 11:56:50.795 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [users] ADD [CreatedOn] datetime2 NOT NULL DEFAULT '0001-01-01T00:00:00.0000000';
+[2022-04-29 11:56:50.796 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [users] ADD [IsActive] bit NOT NULL DEFAULT CAST(0 AS bit);
+[2022-04-29 11:56:50.797 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [users] ADD [UpdatedBy] nvarchar(max) NULL;
+[2022-04-29 11:56:50.801 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [users] ADD [UpdatedOn] datetime2 NOT NULL DEFAULT '0001-01-01T00:00:00.0000000';
+[2022-04-29 11:56:50.803 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220429062633_Audit', N'6.0.4');
+[2022-04-29 12:00:24.458 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 12:00:24.482 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 12:00:24.485 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 12:00:24.485 +05:30 INF] Hosting environment: Development
+[2022-04-29 12:00:24.485 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 12:00:33.746 +05:30 INF] Application is shutting down...
+[2022-04-29 12:00:38.160 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 12:00:38.185 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 12:00:38.188 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 12:00:38.188 +05:30 INF] Hosting environment: Development
+[2022-04-29 12:00:38.188 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 12:01:07.203 +05:30 INF] Application is shutting down...
+[2022-04-29 12:01:23.034 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 12:01:23.058 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 12:01:23.061 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 12:01:23.061 +05:30 INF] Hosting environment: Development
+[2022-04-29 12:01:23.061 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 12:01:32.355 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 12:01:32.474 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 123.0665ms
+[2022-04-29 12:01:32.495 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 12:01:32.510 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 12:01:32.511 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 16.0141ms
+[2022-04-29 12:01:32.716 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 12:01:32.725 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 12:01:32.726 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 12:01:32.726 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.5843ms
+[2022-04-29 12:01:32.806 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 90.3964ms
+[2022-04-29 12:03:19.117 +05:30 INF] Request starting HTTP/2 POST https://localhost:7024/User/AddUser application/json 405
+[2022-04-29 12:03:19.125 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /User/AddUser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 405
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 12:03:19.129 +05:30 INF] Executing endpoint 'PMS.API.UserController.AddUser (PMS.API)'
+[2022-04-29 12:03:19.149 +05:30 INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddUser(PMS.API.User) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 12:03:19.215 +05:30 INF] RequestBody: {
+  "id": 0,
+  "name": "Mahi",
+  "email": "mahi@gmail.com",
+  "userName": "mahi.ram",
+  "password": "965478123",
+  "gender": "Male",
+  "mobileNo": 6303363863,
+  "organization": "Development",
+  "designation": "SSE",
+  "reporting_Person": "Brindha",
+  "isActive": true,
+  "createdBy": "string",
+  "createdOn": "2022-04-29T06:31:53.599Z",
+  "updatedBy": "string",
+  "updatedOn": "2022-04-29T06:31:53.599Z"
+}
+[2022-04-29 12:03:20.630 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-04-29 12:03:20.631 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: text/plain; charset=utf-8
+[2022-04-29 12:03:20.636 +05:30 INF] Executed action PMS.API.UserController.AddUser (PMS.API) in 1482.041ms
+[2022-04-29 12:03:20.637 +05:30 INF] Executed endpoint 'PMS.API.UserController.AddUser (PMS.API)'
+[2022-04-29 12:03:20.638 +05:30 INF] ResponseBody: User Added
+[2022-04-29 12:03:20.638 +05:30 INF] Request finished HTTP/2 POST https://localhost:7024/User/AddUser application/json 405 - 200 - text/plain;+charset=utf-8 1520.9061ms
+[2022-04-29 12:03:28.338 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getallusers - -
+[2022-04-29 12:03:28.340 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getallusers
+Accept: text/plain
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 12:03:28.340 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getallusers (PMS.API)'
+[2022-04-29 12:03:28.342 +05:30 INF] Route matched with {action = "Getallusers", controller = "User"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[PMS.API.User] Getallusers() on controller PMS.API.UserController (PMS.API).
+[2022-04-29 12:03:28.349 +05:30 INF] Getting all users
+[2022-04-29 12:03:28.354 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1[[PMS.API.User, PMS.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-04-29 12:03:28.603 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-29 12:03:28.608 +05:30 INF] Executed action PMS.API.UserController.Getallusers (PMS.API) in 266.3548ms
+[2022-04-29 12:03:28.609 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getallusers (PMS.API)'
+[2022-04-29 12:03:28.609 +05:30 INF] ResponseBody: [{"id":1,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"9874563214","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha","isActive":false,"createdBy":null,"createdOn":"0001-01-01T00:00:00","updatedBy":null,"updatedOn":"0001-01-01T00:00:00"},{"id":2,"name":"string","email":"string","userName":"string","password":"string","gender":"string","mobileNo":0,"organization":"string","designation":"string","reporting_Person":"string","isActive":false,"createdBy":null,"createdOn":"0001-01-01T00:00:00","updatedBy":null,"updatedOn":"0001-01-01T00:00:00"},{"id":3,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"965478123","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha","isActive":true,"createdBy":"Testing","createdOn":"2022-04-29T12:03:19.2295323","updatedBy":"string","updatedOn":"2022-04-29T06:31:53.599"}]
+[2022-04-29 12:03:28.611 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getallusers - - - 200 - application/json;+charset=utf-8 272.1681ms
+[2022-04-29 12:46:31.150 +05:30 INF] Application is shutting down...
+[2022-04-29 12:46:39.999 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 12:46:40.023 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 12:46:40.026 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 12:46:40.026 +05:30 INF] Hosting environment: Development
+[2022-04-29 12:46:40.026 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 12:46:49.179 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 12:46:49.281 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 104.0607ms
+[2022-04-29 12:46:49.301 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 12:46:49.314 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 12:46:49.315 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 13.9153ms
+[2022-04-29 12:46:49.507 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 12:46:49.516 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 12:46:49.516 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 12:46:49.517 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.9126ms
+[2022-04-29 12:46:49.600 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 93.3487ms
+[2022-04-29 12:46:58.754 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=1 - -
+[2022-04-29 12:46:58.763 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 12:46:58.768 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 12:46:58.784 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 12:46:59.880 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
+[2022-04-29 12:46:59.882 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-29 12:46:59.889 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 1098.4249ms
+[2022-04-29 12:46:59.890 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 12:46:59.891 +05:30 INF] ResponseBody: true
+[2022-04-29 12:46:59.891 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=1 - - - 200 - application/json;+charset=utf-8 1137.2547ms
+[2022-04-29 13:16:24.473 +05:30 INF] Application is shutting down...
+[2022-04-29 13:16:31.768 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 13:16:31.792 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 13:16:31.795 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 13:16:31.795 +05:30 INF] Hosting environment: Development
+[2022-04-29 13:16:31.795 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 13:16:34.785 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:16:34.892 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 110.3931ms
+[2022-04-29 13:16:34.912 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 13:16:34.926 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 13:16:34.927 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 14.6840ms
+[2022-04-29 13:16:35.241 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:16:35.247 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:16:35.247 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:16:35.247 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.5813ms
+[2022-04-29 13:16:35.339 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 98.4279ms
+[2022-04-29 13:17:36.388 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:17:36.389 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.8447ms
+[2022-04-29 13:17:36.404 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - -
+[2022-04-29 13:17:36.415 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-04-29 13:17:36.416 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/swagger-ui.css - - - 200 143632 text/css 12.0891ms
+[2022-04-29 13:17:36.649 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:17:36.664 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 15.1174ms
+[2022-04-29 13:17:36.679 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:17:36.680 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:17:36.681 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 1.4372ms
+[2022-04-29 13:17:38.033 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:17:38.033 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.4737ms
+[2022-04-29 13:17:38.104 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:17:38.111 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:17:38.111 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:17:38.111 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.3871ms
+[2022-04-29 13:17:38.111 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 7.6782ms
+[2022-04-29 13:17:38.346 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:17:38.347 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 0.5714ms
+[2022-04-29 13:17:38.399 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:17:38.402 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2.9308ms
+[2022-04-29 13:17:38.410 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:17:38.410 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:17:38.411 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 0.7864ms
+[2022-04-29 13:18:00.651 +05:30 INF] Application is shutting down...
+[2022-04-29 13:18:11.688 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 13:18:11.712 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 13:18:11.715 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 13:18:11.715 +05:30 INF] Hosting environment: Development
+[2022-04-29 13:18:11.715 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 13:18:22.073 +05:30 INF] Application is shutting down...
+[2022-04-29 13:18:28.158 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 13:18:28.182 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 13:18:28.186 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 13:18:28.186 +05:30 INF] Hosting environment: Development
+[2022-04-29 13:18:28.186 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 13:18:39.363 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:18:39.458 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 96.8876ms
+[2022-04-29 13:18:39.572 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:18:39.572 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:18:39.586 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:18:39.587 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 14.1970ms
+[2022-04-29 13:18:39.661 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 88.4512ms
+[2022-04-29 13:21:24.339 +05:30 INF] Application is shutting down...
+[2022-04-29 13:21:30.977 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 13:21:31.012 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 13:21:31.015 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 13:21:31.015 +05:30 INF] Hosting environment: Development
+[2022-04-29 13:21:31.015 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 13:21:32.019 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 13:21:32.119 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 101.2881ms
+[2022-04-29 13:21:32.235 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 13:21:32.235 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 13:21:32.251 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 13:21:32.251 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 16.0216ms
+[2022-04-29 13:21:32.332 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 97.1586ms
+[2022-04-29 13:21:37.335 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getallusers - -
+[2022-04-29 13:21:37.349 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getallusers
+Accept: text/plain
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 13:21:37.352 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getallusers (PMS.API)'
+[2022-04-29 13:21:37.363 +05:30 INF] Route matched with {action = "Getallusers", controller = "User"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[PMS.API.User] Getallusers() on controller PMS.API.UserController (PMS.API).
+[2022-04-29 13:21:37.424 +05:30 INF] Getting all users
+[2022-04-29 13:21:38.414 +05:30 INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[PMS.API.User, PMS.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-04-29 13:21:38.420 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-04-29 13:21:38.426 +05:30 INF] Executed action PMS.API.UserController.Getallusers (PMS.API) in 1057.98ms
+[2022-04-29 13:21:38.427 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getallusers (PMS.API)'
+[2022-04-29 13:21:38.429 +05:30 INF] ResponseBody: [{"id":1,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"9874563214","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha","isActive":false,"createdBy":null,"createdOn":"0001-01-01T00:00:00","updatedBy":null,"updatedOn":"0001-01-01T00:00:00"},{"id":2,"name":"string","email":"string","userName":"string","password":"string","gender":"string","mobileNo":0,"organization":"string","designation":"string","reporting_Person":"string","isActive":false,"createdBy":null,"createdOn":"0001-01-01T00:00:00","updatedBy":null,"updatedOn":"0001-01-01T00:00:00"},{"id":3,"name":"Mahi","email":"mahi@gmail.com","userName":"mahi.ram","password":"965478123","gender":"Male","mobileNo":6303363863,"organization":"Development","designation":"SSE","reporting_Person":"Brindha","isActive":true,"createdBy":"Testing","createdOn":"2022-04-29T12:03:19.2295323","updatedBy":"string","updatedOn":"2022-04-29T06:31:53.599"}]
+[2022-04-29 13:21:38.429 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getallusers - - - 200 - application/json;+charset=utf-8 1094.2184ms
+[2022-04-29 16:28:30.076 +05:30 INF] Application is shutting down...
+[2022-04-29 16:56:10.303 +05:30 INF] Now listening on: https://localhost:7024
+[2022-04-29 16:56:10.326 +05:30 INF] Now listening on: http://localhost:5018
+[2022-04-29 16:56:10.329 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-04-29 16:56:10.329 +05:30 INF] Hosting environment: Development
+[2022-04-29 16:56:10.329 +05:30 INF] Content root path: D:\PMS.API\
+[2022-04-29 16:56:20.223 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/index.html - -
+[2022-04-29 16:56:20.320 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/index.html - - - 200 - text/html;charset=utf-8 98.8766ms
+[2022-04-29 16:56:20.553 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - -
+[2022-04-29 16:56:20.553 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - -
+[2022-04-29 16:56:20.568 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-04-29 16:56:20.569 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/favicon-32x32.png - - - 200 628 image/png 15.0925ms
+[2022-04-29 16:56:20.653 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 99.3210ms
+[2022-04-29 16:56:26.804 +05:30 INF] Request starting HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - -
+[2022-04-29 16:56:26.813 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /User/Getuser
+Accept: */*
+Host: localhost:7024
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-04-29 16:56:26.819 +05:30 INF] Executing endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 16:56:26.836 +05:30 INF] Route matched with {action = "Getuser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Getuser(Int32) on controller PMS.API.UserController (PMS.API).
+[2022-04-29 16:56:26.926 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+[2022-04-29 16:56:26.927 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: text/plain; charset=utf-8
+[2022-04-29 16:56:26.932 +05:30 INF] Executed action PMS.API.UserController.Getuser (PMS.API) in 91.4411ms
+[2022-04-29 16:56:26.934 +05:30 INF] Executed endpoint 'PMS.API.UserController.Getuser (PMS.API)'
+[2022-04-29 16:56:26.935 +05:30 INF] ResponseBody: ID is not an zero
+[2022-04-29 16:56:26.936 +05:30 INF] Request finished HTTP/2 GET https://localhost:7024/User/Getuser?id=4 - - - 400 - text/plain;+charset=utf-8 131.2559ms
