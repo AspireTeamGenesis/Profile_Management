@@ -4,16 +4,20 @@ namespace PMS.API{
 
     public class UserServices : IUserServices
     {
-        private UserData userData = DataFactory.GetUserObject();
+        private UserData userData;
 
         private ILogger<UserServices> _logger;
       
-        
+        public UserServices(ILogger<UserServices> logger){
+            _logger=logger;
+            userData=DataFactory.GetUserObject(logger);
+        }
         
         public IEnumerable<User> GetAll()
         {
             try{
                 IEnumerable<User> userDetails = new List<User>();
+             
                 return userDetails = from  user in userData.getAll() where user.IsActive==true select user;
                 
             
@@ -21,8 +25,8 @@ namespace PMS.API{
             }
             catch(Exception exception){
                 // Log Exception occured in DAL while fetching users
-                _logger.LogInformation($"UserServices:GetAll()-{exception.Message}\n{exception.StackTrace}");
-                throw new Exception();
+                _logger.LogError($"UserServices:GetAll()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
             }
         }
         public bool Add(User item)
@@ -34,17 +38,13 @@ namespace PMS.API{
             {
                 item.CreatedBy="HR";
                 item.CreatedOn=DateTime.Now;
-                if(userData.Add(item))
+                if(userData.Add(item))              //Ternary operator
                     return true;
                 else{
                     return false;
                 }
             }
-            catch(ArgumentNullException exception){
-                //item object not provided to DAL
-                _logger.LogInformation($"UserServices:Add()-{exception.Message}\n{exception.StackTrace}");
-                return false;
-            }
+            
             catch(Exception exception){
                 _logger.LogInformation($"UserServices:Add()-{exception.Message}\n{exception.StackTrace}");
                 return false;
@@ -66,15 +66,11 @@ namespace PMS.API{
                 }
                 else{
                     //log error in DAL
-                     _logger.LogError($"unable to disable the data{id}");
+                     _logger.LogError($"unable to disable the data{id}");      //Ternary operator
                     return false;
                 }
             }
-            catch(ArgumentNullException exception){
-                //Log error is not provided to DAL
-                _logger.LogInformation($"UserServices:Delete()-{exception.Message}\n{exception.StackTrace}");
-                return false; 
-            }
+            
             catch(Exception exception){
                 _logger.LogInformation($"UserServices:Delete()-{exception.Message}\n{exception.StackTrace}");
                 return false;
@@ -91,17 +87,13 @@ namespace PMS.API{
                item.UpdatedBy=item.Name;
                 item.UpdatedOn=DateTime.Now;
                 if(userData.Update(item)){
-                    return true;
+                    return true;                        //Ternary operator
                 }
                 else{
                     return false;
                 }
             }
-            catch(ArgumentNullException exception){
-                //item object not provided to DAL
-                 _logger.LogInformation($"UserServices:Update()-{exception.Message}\n{exception.StackTrace}");
-                return false;
-            }
+            
             catch(Exception exception){
                  _logger.LogInformation($"UserServices:Update()-{exception.Message}\n{exception.StackTrace}");
                 return false;

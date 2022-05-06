@@ -4,8 +4,8 @@ namespace PMS.API
         public static UserContext Getusercontext(){
             return new UserContext();
         }
-        public static UserData GetUserObject(){
-            return new UserData(Getusercontext());
+        public static UserData GetUserObject(ILogger<UserServices> logger){
+            return new UserData(Getusercontext(),logger);
         }
         public static User GetUserModelObject(){
             return new User();

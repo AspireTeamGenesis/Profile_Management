@@ -1,5 +1,7 @@
 using Serilog;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+
 namespace PMS.API
 {
     public interface IUserData
@@ -15,33 +17,27 @@ namespace PMS.API
     public class UserData : IUserData
     {
         private UserContext _context;
-        private ILogger<UserData> logger;
-        public UserData(UserContext context)
+        private ILogger<UserServices> _logger;
+        public UserData(UserContext context, ILogger<UserServices> logger)
         {
             _context = context;
+            _logger=logger;
         }
         //getting all users 
         public List<User> getAll()
         {
             
             try{
+
                 return _context.users.ToList();
                 
             }
-            catch(DbUpdateException exception){
-                //log "DB update exception occured"
-                logger.LogInformation($"UserData.cs-getAll()-{exception.Message}{exception.StackTrace}");
-                throw new DbUpdateException();
-            }
-            catch(OperationCanceledException exception){
-                //log "Operation Cancelled Exception"
-                logger.LogInformation($"UserData.cs-getAll()-{exception.Message}{exception.StackTrace}");
-                throw new OperationCanceledException();
-            }
+            
             catch(Exception exception){
-                //log "unknown exception occured"
-                logger.LogInformation($"UserData.cs-getAll()-{exception.Message}{exception.StackTrace}");
-                throw new Exception();
+                //log "if exception occures"
+                _logger.LogError($"UserData.cs-getAll()-{exception.Message}");
+                _logger.LogInformation($"UserData.cs-getALL()-{exception.StackTrace}");
+                throw exception;
             }
         }
         
@@ -59,19 +55,11 @@ namespace PMS.API
             _context.SaveChanges();
             return true;
             }
-             catch(DbUpdateException exception){
-                //log "DB update exception occured"
-                 logger.LogInformation($"UserData.cs-Add()-{exception.Message}{exception.StackTrace}");
-                 return false;
-            }
-            catch(OperationCanceledException exception){
-                //log "Operation Cancelled Exception"
-                 logger.LogInformation($"UserData.cs-Add()-{exception.Message}{exception.StackTrace}");
-                 return false;
-            }
+            
             catch(Exception exception){
                 //log "unknown exception occured"
-                 logger.LogInformation($"UserData.cs-Add()-{exception.Message}{exception.StackTrace}");
+                 _logger.LogError($"UserData.cs-Add()-{exception.Message}");
+                 _logger.LogInformation($"UserDate.cs-Add()-{exception.StackTrace}");
                  return false;
             }
             
@@ -82,32 +70,25 @@ namespace PMS.API
         {
             if(id<=0)
                
-                throw new ArgumentNullException("User Id is not provided to DAL");
+                throw new ValidationException("User Id is not provided to DAL");
             
             try{
                 var user = _context.users.Find(id);
                 
-            
+            //do null validation for user
+
                 user.IsActive=false;
                 _context.users.Update(user);
                 _context.SaveChanges();
                 return true;
             
             }
-           catch(DbUpdateException exception){
-                //log "DB update exception occured"
-                logger.LogInformation($"UserData.cs-Delete()-{exception.Message}{exception.StackTrace}");
-                 return false;
-            }
-            catch(OperationCanceledException exception){
-                //log "Operation Cancelled Exception"
-                logger.LogInformation($"UserData.cs-Delete()-{exception.Message}{exception.StackTrace}");
-                 return false;
-            }
+           
           
             catch(Exception exception){
-                //log "unknown exception occured"
-                logger.LogInformation($"UserData.cs-Delete()-{exception.Message}{exception.StackTrace}");
+                //log "if exception occures"
+                _logger.LogError($"UserData.cs-Delete()-{exception.Message}");
+                _logger.LogInformation($"UserDate.cs-Delete()-{exception.StackTrace}");
                  return false;
             }
             
@@ -118,8 +99,8 @@ namespace PMS.API
         //Updating user details based on id
         public bool Update(User item)
         {
-             if(item !=null)
-                 throw new ArgumentNullException("User values is not provided");
+             if(item ==null)
+                 throw new ValidationException("User values is not provided");
 
             
             try{
@@ -127,20 +108,11 @@ namespace PMS.API
             _context.users.Update(item);
             _context.SaveChanges();
             return true;
-            }
-             catch(DbUpdateException exception){
-                //log "DB update exception occured"
-                logger.LogInformation($"UserData.cs-Update()-{exception.Message}{exception.StackTrace}");
-                 return false;
-            }
-            catch(OperationCanceledException exception){
-                //log "Operation Cancelled Exception"
-                logger.LogInformation($"UserData.cs-Update()-{exception.Message}{exception.StackTrace}");
-                 return false;
-            }
+            } 
             catch(Exception exception){
-                //log "unknown exception occured"
-                logger.LogInformation($"UserData.cs-Update()-{exception.Message}{exception.StackTrace}");
+                //log " exception occures"
+                _logger.LogError($"UserData.cs-Update()-{exception.Message}");
+                _logger.LogInformation($"UserDate.cs-Update()-{exception.StackTrace}");
                  return false;
             }
             

@@ -19,6 +19,7 @@ namespace PMS.API
         [HttpGet(Name ="GetUsers")]
         public IActionResult Getallusers(){
             try{
+                
                 return Ok(_userServices.GetAll());
             }
            catch(Exception exception){
@@ -36,8 +37,8 @@ namespace PMS.API
                 return BadRequest("User values not be null");
             }
             
-            
-                
+            if(ModelState.IsValid)
+            {    
             try{
 
                 //Adding user via userservice
@@ -50,7 +51,11 @@ namespace PMS.API
                 
                  return BadRequest(exception.Message);
             }
-            
+            }
+            else{
+                return Problem("validation failed"); 
+            }
+
             
            
         }
@@ -62,18 +67,20 @@ namespace PMS.API
                 return BadRequest("User values not be null");
             }
             //updating user via userservices
+             if(ModelState.IsValid){
              try{
 
                 return _userServices.Update(user)? Ok("User Updated Successfully"):BadRequest("Sorry internal error occured");
 
             }
-             catch(ArgumentNullException argumentNullException){
-                 _logger.LogInformation($"UserController:UpdateUser()-{argumentNullException.Message}{argumentNullException.StackTrace}");
-                 return BadRequest(argumentNullException.Message);
-             }
+             
              catch(Exception exception){
                  _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
                  return BadRequest(exception.StackTrace);
+             }
+            }
+            else{
+                return Problem("validation fails");
              }
            
             
@@ -86,10 +93,7 @@ namespace PMS.API
                 
                 return _userServices.Delete(id)?Ok("User Disabled Successfully"):BadRequest("Sorry internal error occured");
             }
-             catch(ArgumentNullException argumentNullException){
-                 _logger.LogInformation($"UserController:UpdateUser()-{argumentNullException.Message}{argumentNullException.StackTrace}");
-                 return BadRequest(argumentNullException.Message);
-             }
+             
              catch(Exception exception){
                  _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
                  return BadRequest(exception.StackTrace);
