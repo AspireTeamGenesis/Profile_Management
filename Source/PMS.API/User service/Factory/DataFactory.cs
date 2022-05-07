@@ -10,6 +10,9 @@ namespace PMS.API
         public static User GetUserModelObject(){
             return new User();
         }
+        public static UserValidation GetValidationObject(){
+            return new UserValidation();
+        }
         
     }
 }

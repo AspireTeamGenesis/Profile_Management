@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 namespace PMS.API{
    
 
@@ -13,13 +12,13 @@ namespace PMS.API{
             _logger=logger;
             userData=DataFactory.GetUserObject(logger);
         }
-        
+        private UserValidation _validation=DataFactory.GetValidationObject();
         public IEnumerable<User> GetallUsers()
         {
             try{
-               
+                // IEnumerable<User> userDetails = new List<User>();
              
-                return  from  user in userData.getAll() where user.IsActive==true select user;
+                return from  user in userData.GetallUsers() where user.IsActive==true select user;
                 
             
             
@@ -31,17 +30,32 @@ namespace PMS.API{
             }
         }
        
+        public User GetUser(int id)
+        {
+            if(id<=0)
+                throw new ArgumentNullException($"ID is not provided{id}");
+            try
+            {
+                return userData.GetUser(id); 
+            }
+            catch(Exception exception){
+                _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+        }
         public bool AddUser(User item)
 
         {
             if(item==null)
-                throw new ArgumentNullException("UserServices:Add()-user value not be null");
+                throw new ArgumentNullException($"UserServices:Add()-user value not be null{item}");
+             _validation.userValidate(item);
             try
             {
+               
                 item.CreatedBy="HR";
                 item.CreatedOn=DateTime.Now;
-                return userData.Add(item)?true:false ;           //Ternary operator
-               
+                return userData.AddUser(item)?true:false;              //Ternary operator
+                
             }
             
             catch(Exception exception){
@@ -49,20 +63,20 @@ namespace PMS.API{
                 return false;
 
             }
+            
+            
              
         }
         public bool Disable(int id)
         {
             if(id<=0)
-                throw new ValidationException($"ID is not provided{id}");
+                throw new ArgumentNullException($"ID is not provided{id}");
 
             
             try
             {
 
-                return userData.Delete(id)?true:false;
-                    return true;
-               
+                return userData.Disable(id)?true:false;
                 
             }
             
@@ -77,16 +91,15 @@ namespace PMS.API{
         }
         public bool UpdateUser(User item)
         {
-            if(item==null){throw new ArgumentNullException(" UserServices:Update()-user values not be null");}
+            
+            if(item==null)throw new ArgumentNullException($" UserServices:Update()-user values not be null{item}");
+            _validation.userValidate(item);
             try{
+                
                item.UpdatedBy=item.Name;
                 item.UpdatedOn=DateTime.Now;
-                if(userData.Update(item)){
-                    return true;                        //Ternary operator
-                }
-                else{
-                    return false;
-                }
+                return userData.UpdateUser(item)?true:false;
+                
             }
             
             catch(Exception exception){

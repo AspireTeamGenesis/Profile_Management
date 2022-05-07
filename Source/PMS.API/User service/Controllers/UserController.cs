@@ -16,27 +16,28 @@ namespace PMS.API
            
         }
         //Calling all users 
-        [HttpGet(Name ="GetallUsers")]
+        [HttpGet]
         public IActionResult Getallusers(){
             try{
                 
                 return Ok(_userServices.GetallUsers());
             }
            catch(Exception exception){
-               _logger.LogInformation($"UserController :GetAllUsers()-exception occured while fetching records{exception.Message}{exception.StackTrace}");
+               _logger.LogInformation($"UserController :GetAllUsers()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
                return BadRequest(exception.Message);
            }
             
             
         }
         [HttpGet]
-        public IActionResult GetUserById(int id){
-            if(id<=0){_logger.LogError($"UserController:GetUserById()-user id supplies as {id}");return BadRequest($"user id supplies as {id}");}
+        public IActionResult GetUserById(int id)
+        {
             try{
+                
                 return Ok(_userServices.GetUser(id));
             }
             catch(Exception exception){
-                _logger.LogInformation($"UserController :GetUserById()-exception occured while fetching {id} record{exception.Message}{exception.StackTrace}");
+                _logger.LogInformation($"UserController :GetUserById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
                return BadRequest(exception.Message);
             }
         }
@@ -48,8 +49,7 @@ namespace PMS.API
                 return BadRequest("User values not be null");
             }
             
-            if(ModelState.IsValid)
-            {    
+               
             try{
 
                 //Adding user via userservice
@@ -62,10 +62,8 @@ namespace PMS.API
                 
                  return BadRequest(exception.Message);
             }
-            }
-            else{
-                return Problem("validation failed"); 
-            }
+            
+            
 
             
            
@@ -73,12 +71,14 @@ namespace PMS.API
          [HttpPut]
          
          public IActionResult UpdateUser(User user){
+             
              if(user==null){
-                _logger.LogInformation("UserController :AddUser()-user tries to enter null values");
+                _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
                 return BadRequest("User values not be null");
             }
+            
             //updating user via userservices
-             if(ModelState.IsValid){
+             
              try{
 
                 return _userServices.UpdateUser(user)? Ok("User Updated Successfully"):BadRequest("Sorry internal error occured");
@@ -87,12 +87,9 @@ namespace PMS.API
              
              catch(Exception exception){
                  _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
-                 return BadRequest(exception.StackTrace);
+                 return BadRequest(exception.Message);
              }
-            }
-            else{
-                return Problem("validation fails");
-             }
+            
            
             
             

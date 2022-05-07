@@ -7,7 +7,7 @@ namespace PMS.API
         bool AddUser(User item);
         bool Disable(int id);
         IEnumerable<User> GetallUsers();
-        bool GetUser(int id);
+        User GetUser(int id);
         bool Save();
         bool UpdateUser(User item);
     }
