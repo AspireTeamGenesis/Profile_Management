@@ -70,7 +70,7 @@ namespace PMS.API
         }
          [HttpPut]
          
-         public IActionResult UpdateUser(User user){
+         public IActionResult UpdateUser(User user,int id){
              
              if(user==null){
                 _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
@@ -80,7 +80,7 @@ namespace PMS.API
             //updating user via userservices
              
              try{
-
+                user=GetUserById(id);
                 return _userServices.UpdateUser(user)? Ok("User Updated Successfully"):BadRequest("Sorry internal error occured");
 
             }
