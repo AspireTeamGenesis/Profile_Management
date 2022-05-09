@@ -3,12 +3,19 @@ namespace PMS.API
     public interface IPersonalService
     {
         bool AddEducation(Education education);
+        bool RemoveEducation(int Education_Id);
         bool AddPersonalDetail(PersonalDetails personalDetails);
+         bool RemovePersonalDetail(int PersonalDetailsId);
         bool AddProjects(Projects project);
+         bool RemoveProject(int Project_Id);
         bool AddSkills(Skills skill);
+         bool RemoveSkills(int Skill_Id);
         bool AddBreakDuration(BreakDuration duration);
+         bool RemoveBreakDuration(int BreakDuration_Id);
         bool AddLanguage(Language language);
+         bool RemoveLanguage(int Language_Id);
         bool AddSocialMedia(SocialMedia media);
+         bool RemoveSocialMedia(int SocialMedia_Id);
     }
 
     public class PersonalService : IPersonalService
@@ -38,8 +45,25 @@ namespace PMS.API
                 return false;
             }
 
-
         }
+        public bool RemovePersonalDetail(int PersonalDetailsId)
+        {
+            if(PersonalDetailsId<=0)
+                throw new ArgumentNullException($"PersonalDetails ID is not provided{PersonalDetailsId}");
+
+            
+            try
+            {
+
+                return ProfileData.RemovePersonalDetail(PersonalDetailsId)?true:false;
+                
+            }
+            
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+        }    
         public bool AddEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($"Values cannot be null values are {education}");
@@ -57,6 +81,25 @@ namespace PMS.API
 
 
         }
+        public bool RemoveEducation(int Education_Id)
+        {
+            if(Education_Id<=0)
+                throw new ArgumentNullException($"Education ID is not provided{Education_Id}");
+
+            
+            try
+            {
+
+                return ProfileData.RemoveEducation(Education_Id)?true:false;
+                
+            }
+            
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+        }    
+
         public bool AddProjects(Projects project)
         {
             if (project == null) throw new ArgumentNullException($"Values cannot be null values are {project}");
@@ -74,6 +117,25 @@ namespace PMS.API
 
 
         }
+        public bool RemoveProjects(int Project_Id)
+        {
+            if(Project_Id<=0)
+                throw new ArgumentNullException($"Project ID is not provided{Project_Id}");
+
+            
+            try
+            {
+
+                return ProfileData.RemoveProjects(Project_Id)?true:false;
+                
+            }
+            
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+        }    
+
         public bool AddSkills(Skills skill)
         {
             if (skill == null) throw new ArgumentNullException($"Values cannot be null values are {skill}");
@@ -91,6 +153,24 @@ namespace PMS.API
 
 
         }
+         public bool RemoveSkills(int Skill_Id)
+        {
+            if(Skill_Id<=0)
+                throw new ArgumentNullException($"Skill ID is not provided{Skill_Id}");
+
+            
+            try
+            {
+
+                return ProfileData.RemoveSkills(Skill_Id)?true:false;
+                
+            }
+            
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+        }    
         public bool AddBreakDuration(BreakDuration duration)
         {
             if (duration == null) throw new ArgumentNullException($"Values cannot be null values are {duration}");
@@ -108,6 +188,24 @@ namespace PMS.API
 
 
         }
+         public bool RemoveBreakDuration(int BreakDuration_Id)
+        {
+            if(BreakDuration_Id<=0)
+                throw new ArgumentNullException($"BreakDuration ID is not provided{BreakDuration_Id}");
+
+            
+            try
+            {
+
+                return ProfileData.RemoveBreakDuration(BreakDuration_Id)?true:false;
+                
+            }
+            
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+        }    
         public bool AddLanguage(Language language)
         {
             if (language == null) throw new ArgumentNullException($"Values cannot be null values are {language}");
@@ -125,6 +223,24 @@ namespace PMS.API
 
 
         }
+         public bool RemoveLanguage(int Language_Id)
+        {
+            if(Language_Id<=0)
+                throw new ArgumentNullException($"Language ID is not provided{Language_Id}");
+
+            
+            try
+            {
+
+                return ProfileData.RemoveLanguage(Language_Id)?true:false;
+                
+            }
+            
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+        }    
         public bool AddSocialMedia(SocialMedia media)
         {
             if (media == null) throw new ArgumentNullException($"Values cannot be null values are {media}");
@@ -142,6 +258,24 @@ namespace PMS.API
 
 
         }
+         public bool RemoveSocialMedia(int SocialMedia_Id)
+        {
+            if(SocialMedia_Id<=0)
+                throw new ArgumentNullException($"SocialMedia ID is not provided{SocialMedia_Id}");
+
+            
+            try
+            {
+
+                return ProfileData.RemoveSocialMedia(SocialMedia_Id)?true:false;
+                
+            }
+            
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+        }    
 
     }
 }

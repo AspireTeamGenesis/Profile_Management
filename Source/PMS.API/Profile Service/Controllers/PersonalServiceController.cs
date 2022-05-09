@@ -32,7 +32,26 @@ namespace PMS.API
             
 
 
-        } 
+        }
+         [HttpPost]
+    public IActionResult RemovePersonalDetail(int PersonalDetails_Id)
+    {
+        if(PersonalDetails_Id == 0)
+            return BadRequest("PersonalDetails_ Id can't be null");
+
+      
+        try
+        {
+            return _personalService.RemovePersonalDetail(PersonalDetails_Id) ? Ok("PersonalDetails_ Removed Successfully") : Problem("Sorry internal error occured");
+        }
+        
+        catch (Exception exception)
+        {
+            _logger.LogInformation($"PersonalDetail_ Service : RemovePersonalDetail_ throwed an exception : {exception}");
+            return BadRequest("Sorry some internal error occured");
+        }
+      
+    } 
         [HttpPost]
         public IActionResult AddEducation(Education education)
         {
@@ -54,6 +73,26 @@ namespace PMS.API
 
 
         }
+        
+    [HttpPost]
+    public IActionResult RemoveEducation(int Education_Id)
+    {
+        if(Education_Id == 0)
+            return BadRequest("Education_ Id can't be null");
+
+      
+        try
+        {
+            return _personalService.RemoveEducation(Education_Id) ? Ok("Education_ Removed Successfully") : Problem("Sorry internal error occured");
+        }
+        
+        catch (Exception exception)
+        {
+            _logger.LogInformation($"Education_ Service : RemoveEducation_ throwed an exception : {exception}");
+            return BadRequest("Sorry some internal error occured");
+        }
+      
+    }
         [HttpPost]
         public IActionResult AddProjects(Projects projects)
         {
@@ -74,6 +113,25 @@ namespace PMS.API
             }
 
         }
+         [HttpPost]
+    public IActionResult RemoveProjects(int Projects_Id)
+    {
+        if(Projects_Id == 0)
+            return BadRequest("Projects_ Id can't be null");
+
+      
+        try
+        {
+            return _personalService.RemoveProjects(Projects_Id) ? Ok("Projects_ Removed Successfully") : Problem("Sorry internal error occured");
+        }
+        
+        catch (Exception exception)
+        {
+            _logger.LogInformation($"Projects_ Service : RemoveProjects_ throwed an exception : {exception}");
+            return BadRequest("Sorry some internal error occured");
+        }
+      
+    }
         [HttpPost]
         public IActionResult AddSkills(Skills skill)
         {
@@ -94,6 +152,25 @@ namespace PMS.API
             }
 
         }
+         [HttpPost]
+    public IActionResult RemoveSkills(int Skill_Id)
+    {
+        if(Skill_Id == 0)
+            return BadRequest("Skill_ Id can't be null");
+
+      
+        try
+        {
+            return _personalService.RemoveSkills(Skill_Id) ? Ok("Skills_ Removed Successfully") : Problem("Sorry internal error occured");
+        }
+        
+        catch (Exception exception)
+        {
+            _logger.LogInformation($"Skills_ Service : RemoveProjects_ throwed an exception : {exception}");
+            return BadRequest("Sorry some internal error occured");
+        }
+      
+    }
         [HttpPost]
         public IActionResult AddBreakDuration(BreakDuration duration)
         {
@@ -114,6 +191,25 @@ namespace PMS.API
             }
 
         }
+         [HttpPost]
+    public IActionResult RemoveBreakDuration(int BreakDuration_Id)
+    {
+        if(BreakDuration_Id == 0)
+            return BadRequest("BreakDuration_ Id can't be null");
+
+      
+        try
+        {
+            return _personalService.RemoveBreakDuration(BreakDuration_Id) ? Ok("BreakDuration_ Removed Successfully") : Problem("Sorry internal error occured");
+        }
+        
+        catch (Exception exception)
+        {
+            _logger.LogInformation($"BreakDuration_ Service : RemoveBreakDuration_ throwed an exception : {exception}");
+            return BadRequest("Sorry some internal error occured");
+        }
+      
+    }
         [HttpPost]
         public IActionResult AddLanguage(Language language)
         {
@@ -134,6 +230,23 @@ namespace PMS.API
             }
 
         }
+        public IActionResult RemoveLanguage(int Language_Id)
+    {
+        if(Language_Id == 0)
+            return BadRequest("Language_ Id can't be null");
+
+      
+        try
+        {
+            return _personalService.RemoveLanguage(Language_Id) ? Ok("Language_ Removed Successfully") : Problem("Sorry internal error occured");
+        }
+        
+        catch (Exception exception)
+        {
+            _logger.LogInformation($"SocialMedia_ Service : RemoveSocialMedia_ throwed an exception : {exception}");
+            return BadRequest("Sorry some internal error occured");
+        }
+      
         [HttpPost]
         public IActionResult AddSocialMedia(SocialMedia media)
         {
@@ -154,6 +267,25 @@ namespace PMS.API
             }
 
         }
+         [HttpPost]
+    public IActionResult RemoveSocialMedia(int SocialMedia_Id)
+    {
+        if(SocialMedia_Id == 0)
+            return BadRequest("SocialMedia_ Id can't be null");
+
+      
+        try
+        {
+            return _personalService.RemoveSocialMedia(SocialMedia_Id) ? Ok("SocialMedia_ Removed Successfully") : Problem("Sorry internal error occured");
+        }
+        
+        catch (Exception exception)
+        {
+            _logger.LogInformation($"SocialMedia_ Service : RemoveSocialMedia_ throwed an exception : {exception}");
+            return BadRequest("Sorry some internal error occured");
+        }
+      
+    }
         
       
     }

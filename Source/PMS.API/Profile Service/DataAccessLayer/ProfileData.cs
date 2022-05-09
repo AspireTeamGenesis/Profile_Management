@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+
+
 namespace PMS.API
 {
     public class ProfileData
@@ -35,6 +38,33 @@ namespace PMS.API
             
             
         }
+        public bool RemovePersonalDetail(int PersonalDetailsId)
+        {
+            if(PersonalDetailsId<=0)
+               
+                throw new ValidationException("PersonalDetails Id is not provided to DAL");
+            
+            try{
+                var personalDetails = _context.personalDetails.Find(PersonalDetailsId);
+                
+            //do null validation for personaldetails
+            if(personalDetails==null)throw new NullReferenceException($"PersonalDetails Id not found{PersonalDetailsId}");
+                personalDetails.IsActive=false;
+                _context.personalDetails.Update(personalDetails);
+                _context.SaveChanges();
+                return true;
+            
+            }
+           
+          
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                 return false;
+            }
+            
+        }
          public bool AddEducation(Education education)
         {
             
@@ -57,6 +87,33 @@ namespace PMS.API
                  return false;
             }
             
+            
+        }
+        public bool RemoveEducation(int Education_Id)
+        {
+            if(Education_Id<=0)
+               
+                throw new ValidationException("Education Id is not provided to DAL");
+            
+            try{
+                var educations = _context.educations.Find(Education_Id);
+                
+            //do null validation for education
+            if(educations==null)throw new NullReferenceException($"Education Id not found{Education_Id}");
+                educations.IsActive=false;
+                _context.educations.Update(educations);
+                _context.SaveChanges();
+                return true;
+            
+            }
+           
+          
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
+                _logger.LogInformation($"ProfileDate.cs-Disable()-{exception.StackTrace}");
+                 return false;
+            }
             
         }
          public bool AddProjects(Projects projects)
@@ -83,6 +140,33 @@ namespace PMS.API
             
             
         }
+        public bool RemoveProjects(int Project_Id)
+        {
+            if(Project_Id<=0)
+               
+                throw new ValidationException("Project Id is not provided to DAL");
+            
+            try{
+                var projects = _context.educations.Find(Project_Id);
+                
+            //do null validation for 
+            if(projects==null)throw new NullReferenceException($"Project Id not found{Project_Id}");
+                projects.IsActive=false;
+                _context.projects.Update(projects);
+                _context.SaveChanges();
+                return true;
+            
+            }
+           
+          
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                 return false;
+            }
+            
+        }
          public bool AddBreakDuration(BreakDuration duration)
         {
             
@@ -105,6 +189,33 @@ namespace PMS.API
                  return false;
             }
             
+            
+        }
+        public bool RemoveBreakDuration(int BreakDuration_Id)
+        {
+            if(BreakDuration_Id<=0)
+               
+                throw new ValidationException("BreakDuration Id is not provided to DAL");
+            
+            try{
+                var breakDurations = _context.breakDurations.Find(BreakDuration_Id);
+                
+            //do null validation for user
+            if(breakDurations==null)throw new NullReferenceException($"Project Id not found{BreakDuration_Id}");
+                breakDurations.IsActive=false;
+                _context.projects.Update(breakDurations);
+                _context.SaveChanges();
+                return true;
+            
+            }
+           
+          
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                 return false;
+            }
             
         }
          public bool AddSkills(Skills skill)
@@ -131,6 +242,33 @@ namespace PMS.API
             
             
         }
+        public bool RemoveSkills(int Skill_Id)
+        {
+            if(Skill_Id<=0)
+               
+                throw new ValidationException("Skill Id is not provided to DAL");
+            
+            try{
+                var skills = _context.skills.Find(Skill_Id);
+                
+            //do null validation for user
+            if(skills==null)throw new NullReferenceException($"Skill Id not found{Skill_Id}");
+                skills.IsActive=false;
+                _context.skills.Update(skills);
+                _context.SaveChanges();
+                return true;
+            
+            }
+           
+          
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                 return false;
+            }
+            
+        }
          public bool AddLanguage(Language language)
         {
             
@@ -155,6 +293,33 @@ namespace PMS.API
             
             
         }
+         public bool RemoveLanguage(int Language_Id)
+        {
+            if(Language_Id<=0)
+               
+                throw new ValidationException("Language Id is not provided to DAL");
+            
+            try{
+                var languages = _context.languages.Find(Language_Id);
+                
+            //do null validation for user
+            if(languages==null)throw new NullReferenceException($"Language Id not found{Language_Id}");
+                languages.IsActive=false;
+                _context.languages.Update(languages);
+                _context.SaveChanges();
+                return true;
+            
+            }
+           
+          
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                 return false;
+            }
+            
+        }
         public bool AddSocialMedia(SocialMedia media)
         {
             if(media ==null)
@@ -173,6 +338,33 @@ namespace PMS.API
                  
                  return false;
             }
+        }
+         public bool RemoveSocialMedia(int SocialMedia_Id)
+        {
+            if(SocialMedia_Id<=0)
+               
+                throw new ValidationException("SocialMedia Id is not provided to DAL");
+            
+            try{
+                var SocialMedias = _context.SocialMedias.Find(SocialMedia_Id);
+                
+            //do null validation for user
+            if(SocialMedias==null)throw new NullReferenceException($"SocialMedia Id not found{SocialMedia_Id}");
+                SocialMedias.IsActive=false;
+                _context.SocialMedias.Update(SocialMedias);
+                _context.SaveChanges();
+                return true;
+            
+            }
+           
+          
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                 return false;
+            }
+            
         }
 
 
