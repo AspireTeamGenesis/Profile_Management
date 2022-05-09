@@ -1,0 +1,1354 @@
+[2022-05-08 16:32:32.240 +05:30 INF] Now listening on: https://localhost:7100
+[2022-05-08 16:32:32.359 +05:30 INF] Now listening on: http://localhost:5090
+[2022-05-08 16:32:32.373 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-08 16:32:32.377 +05:30 INF] Hosting environment: Development
+[2022-05-08 16:32:32.381 +05:30 INF] Content root path: D:\PMS.API\
+[2022-05-08 16:32:32.827 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/ - -
+[2022-05-08 16:32:33.014 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 16:32:33.030 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-08 16:32:33.050 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/ - - - 404 0 - 257.5081ms
+[2022-05-08 16:32:38.803 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 16:32:38.806 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 3.2511ms
+[2022-05-08 16:32:38.810 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 16:32:38.930 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 119.5195ms
+[2022-05-08 16:32:38.980 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 16:32:38.981 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 16:32:38.981 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 16:32:39.018 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 16:32:39.018 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 16:32:39.019 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 37.9551ms
+[2022-05-08 16:32:39.019 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 39.1733ms
+[2022-05-08 16:32:39.021 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 16:32:39.022 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 41.0324ms
+[2022-05-08 16:32:39.341 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - -
+[2022-05-08 16:32:39.504 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 162.9857ms
+[2022-05-08 16:33:06.918 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddPersonalDetail application/json 385
+[2022-05-08 16:33:06.922 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddPersonalDetail
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 385
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 16:33:06.946 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddPersonalDetail (PMS.API)'
+[2022-05-08 16:33:06.991 +05:30 INF] Route matched with {action = "AddPersonalDetail", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddPersonalDetail(PMS.API.PersonalDetails) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 16:33:07.202 +05:30 INF] RequestBody: {
+  "personalDetailsId": 0,
+  "objective": "I would like to .....",
+  "name": "RamRam",
+  "dateOfBirth": "2022-05-08T11:02:47.444Z",
+  "nationality": "string",
+  "mailAdress": "string",
+  "mobileNo": 0,
+  "dateOfJoinig": "2022-05-08T11:02:47.445Z",
+  "createdOn": "2022-05-08T11:02:47.445Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T11:02:47.445Z",
+  "updatedBy": "string"
+}
+[2022-05-08 16:33:45.057 +05:30 INF] Executing OkObjectResult, writing value of type 'PMS.API.PersonalDetails'.
+[2022-05-08 16:33:45.143 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-05-08 16:33:45.180 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddPersonalDetail (PMS.API) in 38173.893ms
+[2022-05-08 16:33:45.182 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddPersonalDetail (PMS.API)'
+[2022-05-08 16:33:45.182 +05:30 INF] ResponseBody: {"personalDetailsId":1,"objective":"I would like to .....","name":"RamRam","dateOfBirth":"2022-05-08T11:02:47.444Z","nationality":"string","mailAdress":"string","mobileNo":0,"dateOfJoinig":"2022-05-08T11:02:47.445Z","createdOn":"2022-05-08T11:02:47.445Z","createdBy":"string","updatedOn":"2022-05-08T11:02:47.445Z","updatedBy":"string"}
+[2022-05-08 16:33:45.182 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddPersonalDetail application/json 385 - 200 - application/json;+charset=utf-8 38264.3574ms
+[2022-05-08 17:01:32.724 +05:30 INF] Now listening on: https://localhost:7100
+[2022-05-08 17:01:32.782 +05:30 INF] Now listening on: http://localhost:5090
+[2022-05-08 17:01:32.798 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-08 17:01:32.802 +05:30 INF] Hosting environment: Development
+[2022-05-08 17:01:32.806 +05:30 INF] Content root path: D:\PMS.API\
+[2022-05-08 17:01:33.320 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/ - -
+[2022-05-08 17:01:33.436 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 17:01:33.437 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-08 17:01:33.458 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/ - - - 404 0 - 144.3363ms
+[2022-05-08 17:02:37.211 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 17:02:37.213 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 2.3632ms
+[2022-05-08 17:02:37.230 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 17:02:37.358 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 128.3221ms
+[2022-05-08 17:02:37.380 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 17:02:37.388 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 17:02:37.390 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 17:02:37.414 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 17:02:37.414 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 17:02:37.426 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 46.3280ms
+[2022-05-08 17:02:37.427 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 36.2202ms
+[2022-05-08 17:02:37.428 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 17:02:37.429 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 40.9623ms
+[2022-05-08 17:02:37.489 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 17:02:37.490 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 0.4860ms
+[2022-05-08 17:02:37.494 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 17:02:37.495 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 1.0719ms
+[2022-05-08 17:02:37.553 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 17:02:37.554 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 17:02:37.554 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 17:02:37.591 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 17:02:37.591 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 17:02:37.600 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 17:02:37.602 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 49.3139ms
+[2022-05-08 17:02:37.602 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 47.6660ms
+[2022-05-08 17:02:37.602 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 47.9211ms
+[2022-05-08 17:02:37.935 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - -
+[2022-05-08 17:02:38.092 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 156.4513ms
+[2022-05-08 17:04:05.139 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddPersonalDetail application/json 370
+[2022-05-08 17:04:05.160 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddPersonalDetail
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 370
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 17:04:05.167 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddPersonalDetail (PMS.API)'
+[2022-05-08 17:04:05.211 +05:30 INF] Route matched with {action = "AddPersonalDetail", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddPersonalDetail(PMS.API.PersonalDetails) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 17:04:05.426 +05:30 INF] RequestBody: {
+  "personalDetailsId": 0,
+  "objective": "string",
+  "name": "A Can ",
+  "dateOfBirth": "2022-05-08T11:33:51.679Z",
+  "nationality": "string",
+  "mailAdress": "string",
+  "mobileNo": 0,
+  "dateOfJoinig": "2022-05-08T11:33:51.679Z",
+  "createdOn": "2022-05-08T11:33:51.679Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T11:33:51.679Z",
+  "updatedBy": "string"
+}
+[2022-05-08 17:04:40.051 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-05-08 17:04:40.053 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: text/plain; charset=utf-8
+[2022-05-08 17:04:40.068 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddPersonalDetail (PMS.API) in 34845.7968ms
+[2022-05-08 17:04:40.070 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddPersonalDetail (PMS.API)'
+[2022-05-08 17:04:40.071 +05:30 INF] ResponseBody: PersonalDetails added
+[2022-05-08 17:04:40.071 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddPersonalDetail application/json 370 - 200 - text/plain;+charset=utf-8 34931.9662ms
+[2022-05-08 17:06:43.766 +05:30 INF] Now listening on: https://localhost:7100
+[2022-05-08 17:06:43.825 +05:30 INF] Now listening on: http://localhost:5090
+[2022-05-08 17:06:43.843 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-08 17:06:43.847 +05:30 INF] Hosting environment: Development
+[2022-05-08 17:06:43.851 +05:30 INF] Content root path: D:\PMS.API\
+[2022-05-08 17:06:44.347 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/ - -
+[2022-05-08 17:06:44.473 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 17:06:44.475 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-08 17:06:44.495 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/ - - - 404 0 - 155.5593ms
+[2022-05-08 17:06:58.575 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 17:06:58.578 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 2.7718ms
+[2022-05-08 17:06:58.594 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 17:06:58.709 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 114.5643ms
+[2022-05-08 17:06:58.752 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 17:06:58.760 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 17:06:58.761 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 17:06:58.793 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 17:06:58.801 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 17:06:58.807 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 45.5555ms
+[2022-05-08 17:06:58.819 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 67.6649ms
+[2022-05-08 17:06:58.825 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 17:06:58.827 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 66.6606ms
+[2022-05-08 17:06:59.129 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - -
+[2022-05-08 17:06:59.281 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 152.2057ms
+[2022-05-08 17:08:12.475 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddPersonalDetail application/json 387
+[2022-05-08 17:08:12.489 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddPersonalDetail
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 387
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 17:08:12.496 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddPersonalDetail (PMS.API)'
+[2022-05-08 17:08:12.535 +05:30 INF] Route matched with {action = "AddPersonalDetail", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddPersonalDetail(PMS.API.PersonalDetails) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 17:08:12.733 +05:30 INF] RequestBody: {
+  "personalDetailsId": 0,
+  "objective": "if u can't then who can",
+  "name": "string",
+  "dateOfBirth": "2022-05-08T11:37:53.736Z",
+  "nationality": "string",
+  "mailAdress": "string",
+  "mobileNo": 0,
+  "dateOfJoinig": "2022-05-08T11:37:53.737Z",
+  "createdOn": "2022-05-08T11:37:53.737Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T11:37:53.737Z",
+  "updatedBy": "string"
+}
+[2022-05-08 17:08:52.889 +05:30 ERR] ProfileData.cs-AddUser()-An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+[2022-05-08 17:08:58.257 +05:30 INF] ProfileData.cs-Add()-   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at PMS.API.ProfileData.AddPersonalDetail(PersonalDetails personalDetails) in D:\PMS.API\DataAccessLayer\ProfileData.cs:line 24
+[2022-05-08 17:09:09.286 +05:30 INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2022-05-08 17:09:09.295 +05:30 INF] Response:
+StatusCode: 500
+Content-Type: application/problem+json; charset=utf-8
+[2022-05-08 17:09:09.316 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddPersonalDetail (PMS.API) in 56763.2742ms
+[2022-05-08 17:09:09.318 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddPersonalDetail (PMS.API)'
+[2022-05-08 17:09:09.318 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.6.1","title":"An error occurred while processing your request.","status":500,"detail":"Some internal Error occured","traceId":"00-0d70437d45f9824a95376174b030313c-4816661a57f517a1-00"}
+[2022-05-08 17:09:09.318 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddPersonalDetail application/json 387 - 500 - application/problem+json;+charset=utf-8 56843.8952ms
+[2022-05-08 18:25:27.178 +05:30 INF] Now listening on: https://localhost:7100
+[2022-05-08 18:25:27.210 +05:30 INF] Now listening on: http://localhost:5090
+[2022-05-08 18:25:27.218 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-08 18:25:27.221 +05:30 INF] Hosting environment: Development
+[2022-05-08 18:25:27.222 +05:30 INF] Content root path: D:\PMS.API\
+[2022-05-08 18:25:27.516 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/ - -
+[2022-05-08 18:25:27.572 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:25:27.573 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-08 18:25:27.584 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/ - - - 404 0 - 71.3572ms
+[2022-05-08 18:25:39.444 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 18:25:39.446 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 1.6716ms
+[2022-05-08 18:25:39.452 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 18:25:39.509 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 57.0630ms
+[2022-05-08 18:25:39.521 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 18:25:39.521 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 18:25:39.521 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 18:25:39.534 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 18:25:39.534 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 18:25:39.537 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 15.2791ms
+[2022-05-08 18:25:39.537 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 15.7966ms
+[2022-05-08 18:25:39.537 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 18:25:39.538 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 16.2870ms
+[2022-05-08 18:25:41.228 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 18:25:41.229 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 0.5295ms
+[2022-05-08 18:25:41.232 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 18:25:41.233 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 0.9916ms
+[2022-05-08 18:25:41.262 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 18:25:41.262 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 18:25:41.262 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 18:25:41.284 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 18:25:41.284 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 18:25:41.286 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 18:25:41.287 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 24.9800ms
+[2022-05-08 18:25:41.287 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 25.0251ms
+[2022-05-08 18:25:41.287 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 25.3598ms
+[2022-05-08 18:25:41.445 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - -
+[2022-05-08 18:25:41.551 +05:30 ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Ambiguous HTTP method for action - PMS.API.PersonalServiceController.AddEducation (PMS.API). Actions require an explicit HttpMethod binding for Swagger/OpenAPI 3.0
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+[2022-05-08 18:25:41.553 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - - - 500 - text/plain;+charset=utf-8 108.4709ms
+[2022-05-08 18:26:46.058 +05:30 INF] Now listening on: https://localhost:7100
+[2022-05-08 18:26:46.093 +05:30 INF] Now listening on: http://localhost:5090
+[2022-05-08 18:26:46.101 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-08 18:26:46.104 +05:30 INF] Hosting environment: Development
+[2022-05-08 18:26:46.106 +05:30 INF] Content root path: D:\PMS.API\
+[2022-05-08 18:26:46.351 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/ - -
+[2022-05-08 18:26:46.412 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:26:46.413 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-08 18:26:46.423 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/ - - - 404 0 - 74.6270ms
+[2022-05-08 18:26:56.400 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 18:26:56.402 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 1.5825ms
+[2022-05-08 18:26:56.408 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 18:26:56.471 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 62.7967ms
+[2022-05-08 18:26:56.494 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 18:26:56.498 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 18:26:56.498 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 18:26:56.525 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 18:26:56.525 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 18:26:56.527 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 29.0589ms
+[2022-05-08 18:26:56.541 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 46.8727ms
+[2022-05-08 18:26:56.542 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 18:26:56.543 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 45.7456ms
+[2022-05-08 18:26:56.681 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - -
+[2022-05-08 18:26:56.768 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 86.8984ms
+[2022-05-08 18:27:30.182 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddEducation application/json 754
+[2022-05-08 18:27:30.185 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddEducation
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 754
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:27:30.188 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddEducation (PMS.API)'
+[2022-05-08 18:27:30.210 +05:30 INF] Route matched with {action = "AddEducation", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddEducation(PMS.API.Education) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 18:27:30.315 +05:30 INF] RequestBody: {
+  "education_Id": 0,
+  "degree": "BE"
+  "course": "string",
+  "starting_Year": "2022-05-08T12:57:18.092Z",
+  "ending_Year": "2022-05-08T12:57:18.092Z",
+  "percentage": 0,
+  "personalDetailsId": 0,
+  "personalDetails": {
+    "personalDetailsId": 0,
+    "objective": "string",
+    "name": "string",
+    "dateOfBirth": "2022-05-08T12:57:18.092Z",
+    "nationality": "string",
+    "mailAdress": "string",
+    "mobileNo": 0,
+    "dateOfJoinig": "2022-05-08T12:57:18.092Z",
+    "createdOn": "2022-05-08T12:57:18.092Z",
+    "createdBy": "string",
+    "updatedOn": "2022-05-08T12:57:18.092Z",
+    "updatedBy": "string"
+  },
+  "createdOn": "2022-05-08T12:57:18.092Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T12:57:18.092Z",
+  "updatedBy": "string"
+}
+[2022-05-08 18:27:30.449 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+[2022-05-08 18:27:30.466 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: application/problem+json; charset=utf-8
+[2022-05-08 18:27:30.473 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddEducation (PMS.API) in 255.7612ms
+[2022-05-08 18:27:30.473 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddEducation (PMS.API)'
+[2022-05-08 18:27:30.474 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-e19f717d79d2977ba919a3a170472494-d43e082140d2ae6b-00","errors":{"$":["'\"' is invalid after a value. Expected either ',', '}', or ']'. Path: $ | LineNumber: 3 | BytePositionInLine: 2."],"education":["The education field is required."]}}
+[2022-05-08 18:27:30.474 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddEducation application/json 754 - 400 - application/problem+json;+charset=utf-8 292.3800ms
+[2022-05-08 18:28:58.210 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddEducation application/json 754
+[2022-05-08 18:28:58.224 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddEducation
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 754
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:28:58.224 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddEducation (PMS.API)'
+[2022-05-08 18:28:58.224 +05:30 INF] Route matched with {action = "AddEducation", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddEducation(PMS.API.Education) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 18:28:58.227 +05:30 INF] RequestBody: {
+  "education_Id": 0,
+  "degree": "BE"
+  "course": "string",
+  "starting_Year": "2022-05-08T12:57:18.092Z",
+  "ending_Year": "2022-05-08T12:57:18.092Z",
+  "percentage": 0,
+  "personalDetailsId": 1,
+  "personalDetails": {
+    "personalDetailsId": 0,
+    "objective": "string",
+    "name": "string",
+    "dateOfBirth": "2022-05-08T12:57:18.092Z",
+    "nationality": "string",
+    "mailAdress": "string",
+    "mobileNo": 0,
+    "dateOfJoinig": "2022-05-08T12:57:18.092Z",
+    "createdOn": "2022-05-08T12:57:18.092Z",
+    "createdBy": "string",
+    "updatedOn": "2022-05-08T12:57:18.092Z",
+    "updatedBy": "string"
+  },
+  "createdOn": "2022-05-08T12:57:18.092Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T12:57:18.092Z",
+  "updatedBy": "string"
+}
+[2022-05-08 18:28:58.228 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+[2022-05-08 18:28:58.228 +05:30 INF] Response:
+StatusCode: 400
+Content-Type: application/problem+json; charset=utf-8
+[2022-05-08 18:28:58.228 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddEducation (PMS.API) in 4.3708ms
+[2022-05-08 18:28:58.229 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddEducation (PMS.API)'
+[2022-05-08 18:28:58.229 +05:30 INF] ResponseBody: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-14087ea83c7f12b5afb5ceebe8b05b86-3d88c3fb6b9a0782-00","errors":{"$":["'\"' is invalid after a value. Expected either ',', '}', or ']'. Path: $ | LineNumber: 3 | BytePositionInLine: 2."],"education":["The education field is required."]}}
+[2022-05-08 18:28:58.229 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddEducation application/json 754 - 400 - application/problem+json;+charset=utf-8 18.8684ms
+[2022-05-08 18:29:14.258 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddEducation application/json 755
+[2022-05-08 18:29:14.259 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddEducation
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 755
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:29:14.259 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddEducation (PMS.API)'
+[2022-05-08 18:29:14.259 +05:30 INF] Route matched with {action = "AddEducation", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddEducation(PMS.API.Education) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 18:29:14.260 +05:30 INF] RequestBody: {
+  "education_Id": 0,
+  "degree": "BE",
+  "course": "string",
+  "starting_Year": "2022-05-08T12:57:18.092Z",
+  "ending_Year": "2022-05-08T12:57:18.092Z",
+  "percentage": 0,
+  "personalDetailsId": 1,
+  "personalDetails": {
+    "personalDetailsId": 0,
+    "objective": "string",
+    "name": "string",
+    "dateOfBirth": "2022-05-08T12:57:18.092Z",
+    "nationality": "string",
+    "mailAdress": "string",
+    "mobileNo": 0,
+    "dateOfJoinig": "2022-05-08T12:57:18.092Z",
+    "createdOn": "2022-05-08T12:57:18.092Z",
+    "createdBy": "string",
+    "updatedOn": "2022-05-08T12:57:18.092Z",
+    "updatedBy": "string"
+  },
+  "createdOn": "2022-05-08T12:57:18.092Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T12:57:18.092Z",
+  "updatedBy": "string"
+}
+[2022-05-08 18:29:54.341 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-05-08 18:29:54.341 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: text/plain; charset=utf-8
+[2022-05-08 18:29:54.342 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddEducation (PMS.API) in 40083.2512ms
+[2022-05-08 18:29:54.342 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddEducation (PMS.API)'
+[2022-05-08 18:29:54.342 +05:30 INF] ResponseBody: Education details added
+[2022-05-08 18:29:54.343 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddEducation application/json 755 - 200 - text/plain;+charset=utf-8 40084.0385ms
+[2022-05-08 18:30:21.899 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddProjects application/json 890
+[2022-05-08 18:30:21.900 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddProjects
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 890
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:30:21.903 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddProjects (PMS.API)'
+[2022-05-08 18:30:21.906 +05:30 INF] Route matched with {action = "AddProjects", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddProjects(PMS.API.Projects) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 18:30:21.907 +05:30 INF] RequestBody: {
+  "project_Id": "string",
+  "projectName": "profile",
+  "project_Description": "string",
+  "project_Starting_Month": "2022-05-08T13:00:07.766Z",
+  "project_Starting_Year": "2022-05-08T13:00:07.766Z",
+  "project_Ending_Month": "2022-05-08T13:00:07.766Z",
+  "project_Ending_Year": "2022-05-08T13:00:07.766Z",
+  "personalDetailsId": 0,
+  "personalDetails": {
+    "personalDetailsId": 0,
+    "objective": "string",
+    "name": "string",
+    "dateOfBirth": "2022-05-08T13:00:07.766Z",
+    "nationality": "string",
+    "mailAdress": "string",
+    "mobileNo": 0,
+    "dateOfJoinig": "2022-05-08T13:00:07.766Z",
+    "createdOn": "2022-05-08T13:00:07.766Z",
+    "createdBy": "string",
+    "updatedOn": "2022-05-08T13:00:07.766Z",
+    "updatedBy": "string"
+  },
+  "createdOn": "2022-05-08T13:00:07.766Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T13:00:07.766Z",
+  "updatedBy": "string"
+}
+[2022-05-08 18:30:35.307 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-05-08 18:30:35.307 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: text/plain; charset=utf-8
+[2022-05-08 18:30:35.308 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddProjects (PMS.API) in 13401.3235ms
+[2022-05-08 18:30:35.308 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddProjects (PMS.API)'
+[2022-05-08 18:30:35.308 +05:30 INF] ResponseBody: project details added
+[2022-05-08 18:30:35.308 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddProjects application/json 890 - 200 - text/plain;+charset=utf-8 13408.8285ms
+[2022-05-08 18:31:18.083 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddSkills application/json 644
+[2022-05-08 18:31:18.083 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddSkills
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 644
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:31:18.083 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddSkills (PMS.API)'
+[2022-05-08 18:31:18.084 +05:30 INF] Route matched with {action = "AddSkills", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddSkills(PMS.API.Skills) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 18:31:40.434 +05:30 INF] Now listening on: https://localhost:7100
+[2022-05-08 18:31:40.462 +05:30 INF] Now listening on: http://localhost:5090
+[2022-05-08 18:31:40.469 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-08 18:31:40.472 +05:30 INF] Hosting environment: Development
+[2022-05-08 18:31:40.474 +05:30 INF] Content root path: D:\PMS.API\
+[2022-05-08 18:31:40.698 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/ - -
+[2022-05-08 18:31:40.753 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:31:40.754 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-08 18:31:40.766 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/ - - - 404 0 - 71.3825ms
+[2022-05-08 18:31:46.100 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 18:31:46.101 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 0.9162ms
+[2022-05-08 18:31:46.104 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 18:31:46.163 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 59.2485ms
+[2022-05-08 18:31:46.175 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 18:31:46.176 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 18:31:46.176 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 18:31:46.188 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 18:31:46.188 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 18:31:46.190 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 13.8370ms
+[2022-05-08 18:31:46.190 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 14.4594ms
+[2022-05-08 18:31:46.193 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 18:31:46.193 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 17.0443ms
+[2022-05-08 18:31:47.951 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 18:31:47.952 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 0.5018ms
+[2022-05-08 18:31:47.955 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 18:31:47.956 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 0.7375ms
+[2022-05-08 18:31:47.979 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 18:31:47.980 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 18:31:47.980 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 1.2885ms
+[2022-05-08 18:31:47.982 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 18:31:47.984 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 18:31:48.003 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 18:31:48.006 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 18:31:48.007 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 24.7068ms
+[2022-05-08 18:31:48.007 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 23.0619ms
+[2022-05-08 18:31:48.168 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - -
+[2022-05-08 18:31:48.266 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 98.0807ms
+[2022-05-08 18:32:45.533 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddLanguage application/json 683
+[2022-05-08 18:32:45.540 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddLanguage
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 683
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:32:45.544 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddLanguage (PMS.API)'
+[2022-05-08 18:32:45.563 +05:30 INF] Route matched with {action = "AddLanguage", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddLanguage(PMS.API.Language) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 18:32:45.665 +05:30 INF] RequestBody: {
+  "language_Id": 0,
+  "language_Name": "English",
+  "read": true,
+  "write": true,
+  "speak": true,
+  "personalDetailsId": 1,
+  "personalDetails": {
+    "personalDetailsId": 0,
+    "objective": "string",
+    "name": "string",
+    "dateOfBirth": "2022-05-08T13:02:33.559Z",
+    "nationality": "string",
+    "mailAdress": "string",
+    "mobileNo": 0,
+    "dateOfJoinig": "2022-05-08T13:02:33.559Z",
+    "createdOn": "2022-05-08T13:02:33.559Z",
+    "createdBy": "string",
+    "updatedOn": "2022-05-08T13:02:33.559Z",
+    "updatedBy": "string"
+  },
+  "createdOn": "2022-05-08T13:02:33.559Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T13:02:33.559Z",
+  "updatedBy": "string"
+}
+[2022-05-08 18:32:47.074 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-05-08 18:32:47.074 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: text/plain; charset=utf-8
+[2022-05-08 18:32:47.081 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddLanguage (PMS.API) in 1511.9042ms
+[2022-05-08 18:32:47.081 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddLanguage (PMS.API)'
+[2022-05-08 18:32:47.081 +05:30 INF] ResponseBody: Language details added
+[2022-05-08 18:32:47.082 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddLanguage application/json 683 - 200 - text/plain;+charset=utf-8 1548.9320ms
+[2022-05-08 18:33:20.313 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddSocialMedia application/json 671
+[2022-05-08 18:33:20.316 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddSocialMedia
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 671
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:33:20.316 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddSocialMedia (PMS.API)'
+[2022-05-08 18:33:20.317 +05:30 INF] Route matched with {action = "AddSocialMedia", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddSocialMedia(PMS.API.SocialMedia) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 18:33:20.321 +05:30 INF] RequestBody: {
+  "socialMedia_Id": 0,
+  "socialMedia_Name": "twitter",
+  "socialMedia_Link": "string",
+  "personalDetailsId": 0,
+  "personalDetails": {
+    "personalDetailsId": 0,
+    "objective": "string",
+    "name": "string",
+    "dateOfBirth": "2022-05-08T13:03:09.026Z",
+    "nationality": "string",
+    "mailAdress": "string",
+    "mobileNo": 0,
+    "dateOfJoinig": "2022-05-08T13:03:09.026Z",
+    "createdOn": "2022-05-08T13:03:09.026Z",
+    "createdBy": "string",
+    "updatedOn": "2022-05-08T13:03:09.026Z",
+    "updatedBy": "string"
+  },
+  "createdOn": "2022-05-08T13:03:09.026Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T13:03:09.026Z",
+  "updatedBy": "string"
+}
+[2022-05-08 18:33:20.397 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-05-08 18:33:20.397 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: text/plain; charset=utf-8
+[2022-05-08 18:33:20.398 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddSocialMedia (PMS.API) in 80.3016ms
+[2022-05-08 18:33:20.398 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddSocialMedia (PMS.API)'
+[2022-05-08 18:33:20.398 +05:30 INF] ResponseBody: Social media details added
+[2022-05-08 18:33:20.398 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddSocialMedia application/json 671 - 200 - text/plain;+charset=utf-8 84.6598ms
+[2022-05-08 18:34:43.165 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddLanguage application/json 682
+[2022-05-08 18:34:43.167 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddLanguage
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 682
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:34:43.171 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddLanguage (PMS.API)'
+[2022-05-08 18:34:43.175 +05:30 INF] Route matched with {action = "AddLanguage", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddLanguage(PMS.API.Language) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 18:34:43.176 +05:30 INF] RequestBody: {
+  "language_Id": 0,
+  "language_Name": "Telugu",
+  "read": true,
+  "write": true,
+  "speak": true,
+  "personalDetailsId": 1,
+  "personalDetails": {
+    "personalDetailsId": 0,
+    "objective": "string",
+    "name": "string",
+    "dateOfBirth": "2022-05-08T13:02:33.559Z",
+    "nationality": "string",
+    "mailAdress": "string",
+    "mobileNo": 0,
+    "dateOfJoinig": "2022-05-08T13:02:33.559Z",
+    "createdOn": "2022-05-08T13:02:33.559Z",
+    "createdBy": "string",
+    "updatedOn": "2022-05-08T13:02:33.559Z",
+    "updatedBy": "string"
+  },
+  "createdOn": "2022-05-08T13:02:33.559Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T13:02:33.559Z",
+  "updatedBy": "string"
+}
+[2022-05-08 18:34:43.200 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-05-08 18:34:43.200 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: text/plain; charset=utf-8
+[2022-05-08 18:34:43.201 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddLanguage (PMS.API) in 25.8572ms
+[2022-05-08 18:34:43.201 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddLanguage (PMS.API)'
+[2022-05-08 18:34:43.201 +05:30 INF] ResponseBody: Language details added
+[2022-05-08 18:34:43.201 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddLanguage application/json 682 - 200 - text/plain;+charset=utf-8 36.6944ms
+[2022-05-08 18:37:53.951 +05:30 INF] Entity Framework Core 6.0.4 initialized 'ProfileContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 18:38:11.009 +05:30 INF] Entity Framework Core 6.0.4 initialized 'ProfileContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 18:38:11.314 +05:30 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-08 18:38:11.343 +05:30 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-05-08 18:38:11.347 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-08 18:38:11.347 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-05-08 18:38:11.392 +05:30 INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2022-05-08 18:38:11.419 +05:30 INF] Applying migration '20220508130754_virtual'.
+[2022-05-08 18:38:11.490 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220508130754_virtual', N'6.0.4');
+[2022-05-08 18:38:40.408 +05:30 INF] Now listening on: https://localhost:7100
+[2022-05-08 18:38:40.438 +05:30 INF] Now listening on: http://localhost:5090
+[2022-05-08 18:38:40.445 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-08 18:38:40.448 +05:30 INF] Hosting environment: Development
+[2022-05-08 18:38:40.449 +05:30 INF] Content root path: D:\PMS.API\
+[2022-05-08 18:38:40.707 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/ - -
+[2022-05-08 18:38:40.763 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:38:40.764 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-08 18:38:40.775 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/ - - - 404 0 - 70.0173ms
+[2022-05-08 18:38:43.730 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 18:38:43.731 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 1.3773ms
+[2022-05-08 18:38:43.734 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 18:38:43.790 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 56.0980ms
+[2022-05-08 18:38:43.806 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 18:38:43.807 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 18:38:43.807 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 18:38:43.820 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 18:38:43.820 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 18:38:43.822 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 15.6650ms
+[2022-05-08 18:38:43.822 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 15.2173ms
+[2022-05-08 18:38:43.823 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 18:38:43.823 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 15.9921ms
+[2022-05-08 18:38:46.045 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 18:38:46.046 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 0.4479ms
+[2022-05-08 18:38:46.049 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 18:38:46.050 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 0.8765ms
+[2022-05-08 18:38:46.068 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 18:38:46.074 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 18:38:46.075 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 18:38:46.096 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 18:38:46.096 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 18:38:46.100 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 18:38:46.100 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 27.2463ms
+[2022-05-08 18:38:46.100 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 25.9481ms
+[2022-05-08 18:38:46.100 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 31.9539ms
+[2022-05-08 18:38:46.257 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - -
+[2022-05-08 18:38:46.335 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 77.8320ms
+[2022-05-08 18:39:22.424 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddLanguage application/json 680
+[2022-05-08 18:39:22.427 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddLanguage
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 680
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:39:22.430 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddLanguage (PMS.API)'
+[2022-05-08 18:39:22.451 +05:30 INF] Route matched with {action = "AddLanguage", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddLanguage(PMS.API.Language) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 18:39:22.550 +05:30 INF] RequestBody: {
+  "language_Id": 0,
+  "language_Name": "Urdu",
+  "read": true,
+  "write": true,
+  "speak": true,
+  "personalDetailsId": 1,
+  "personalDetails": {
+    "personalDetailsId": 0,
+    "objective": "string",
+    "name": "string",
+    "dateOfBirth": "2022-05-08T13:09:01.693Z",
+    "nationality": "string",
+    "mailAdress": "string",
+    "mobileNo": 0,
+    "dateOfJoinig": "2022-05-08T13:09:01.693Z",
+    "createdOn": "2022-05-08T13:09:01.693Z",
+    "createdBy": "string",
+    "updatedOn": "2022-05-08T13:09:01.693Z",
+    "updatedBy": "string"
+  },
+  "createdOn": "2022-05-08T13:09:01.693Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T13:09:01.693Z",
+  "updatedBy": "string"
+}
+[2022-05-08 18:39:23.956 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-05-08 18:39:23.957 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: text/plain; charset=utf-8
+[2022-05-08 18:39:23.967 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddLanguage (PMS.API) in 1506.9702ms
+[2022-05-08 18:39:23.968 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddLanguage (PMS.API)'
+[2022-05-08 18:39:23.968 +05:30 INF] ResponseBody: Language details added
+[2022-05-08 18:39:23.968 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddLanguage application/json 680 - 200 - text/plain;+charset=utf-8 1544.4300ms
+[2022-05-08 18:47:26.960 +05:30 INF] Entity Framework Core 6.0.4 initialized 'ProfileContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 18:47:44.756 +05:30 INF] Entity Framework Core 6.0.4 initialized 'ProfileContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 18:47:45.066 +05:30 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-08 18:47:45.092 +05:30 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-05-08 18:47:45.095 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-08 18:47:45.096 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-05-08 18:47:45.116 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2022-05-08 18:47:45.135 +05:30 INF] Applying migration '20220508131727_foreign'.
+[2022-05-08 18:47:45.185 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220508131727_foreign', N'6.0.4');
+[2022-05-08 18:47:53.566 +05:30 INF] Now listening on: https://localhost:7100
+[2022-05-08 18:47:53.596 +05:30 INF] Now listening on: http://localhost:5090
+[2022-05-08 18:47:53.605 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-08 18:47:53.607 +05:30 INF] Hosting environment: Development
+[2022-05-08 18:47:53.609 +05:30 INF] Content root path: D:\PMS.API\
+[2022-05-08 18:47:53.895 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/ - -
+[2022-05-08 18:47:53.953 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:47:53.954 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-08 18:47:53.966 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/ - - - 404 0 - 73.7467ms
+[2022-05-08 18:48:04.378 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 18:48:04.379 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 1.0994ms
+[2022-05-08 18:48:04.384 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 18:48:04.444 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 59.4244ms
+[2022-05-08 18:48:04.456 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 18:48:04.456 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 18:48:04.457 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 18:48:04.469 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 18:48:04.473 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 16.7462ms
+[2022-05-08 18:48:04.483 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 18:48:04.487 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 18:48:04.489 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 32.8189ms
+[2022-05-08 18:48:04.489 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 32.6990ms
+[2022-05-08 18:48:05.756 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 18:48:05.756 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 0.4352ms
+[2022-05-08 18:48:05.760 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 18:48:05.761 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 0.8331ms
+[2022-05-08 18:48:05.789 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 18:48:05.789 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 18:48:05.789 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 18:48:05.798 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 18:48:05.801 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 12.1230ms
+[2022-05-08 18:48:05.801 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 18:48:05.806 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 18:48:05.806 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 16.7584ms
+[2022-05-08 18:48:05.806 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 16.7746ms
+[2022-05-08 18:48:05.959 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - -
+[2022-05-08 18:48:06.033 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 73.7220ms
+[2022-05-08 18:50:29.373 +05:30 INF] Entity Framework Core 6.0.4 initialized 'ProfileContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 18:50:53.066 +05:30 INF] Entity Framework Core 6.0.4 initialized 'ProfileContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 18:50:53.385 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-08 18:50:53.416 +05:30 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-05-08 18:50:53.420 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-08 18:50:53.421 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-05-08 18:50:53.445 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2022-05-08 18:50:53.466 +05:30 INF] Applying migration '20220508132029_disablevirtual'.
+[2022-05-08 18:50:53.681 +05:30 INF] Executed DbCommand (147ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [SocialMedias] DROP CONSTRAINT [FK_SocialMedias_personalDetails_PersonalDetailsId];
+[2022-05-08 18:50:53.725 +05:30 INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_SocialMedias_PersonalDetailsId] ON [SocialMedias];
+[2022-05-08 18:50:53.727 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220508132029_disablevirtual', N'6.0.4');
+[2022-05-08 18:51:01.898 +05:30 INF] Now listening on: https://localhost:7100
+[2022-05-08 18:51:01.930 +05:30 INF] Now listening on: http://localhost:5090
+[2022-05-08 18:51:01.937 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-08 18:51:01.939 +05:30 INF] Hosting environment: Development
+[2022-05-08 18:51:01.941 +05:30 INF] Content root path: D:\PMS.API\
+[2022-05-08 18:51:02.173 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/ - -
+[2022-05-08 18:51:02.230 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:51:02.230 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-08 18:51:02.241 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/ - - - 404 0 - 71.7914ms
+[2022-05-08 18:51:09.442 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 18:51:09.444 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 1.6047ms
+[2022-05-08 18:51:09.450 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 18:51:09.511 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 61.3602ms
+[2022-05-08 18:51:09.534 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 18:51:09.538 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 18:51:09.538 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 18:51:09.567 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 18:51:09.570 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 35.6742ms
+[2022-05-08 18:51:09.572 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 18:51:09.573 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 18:51:09.577 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 38.7066ms
+[2022-05-08 18:51:09.577 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 38.9259ms
+[2022-05-08 18:51:09.719 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - -
+[2022-05-08 18:51:09.799 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 79.5527ms
+[2022-05-08 18:52:22.981 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddSocialMedia application/json 253
+[2022-05-08 18:52:22.991 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddSocialMedia
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 253
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:52:22.994 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddSocialMedia (PMS.API)'
+[2022-05-08 18:52:23.013 +05:30 INF] Route matched with {action = "AddSocialMedia", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddSocialMedia(PMS.API.SocialMedia) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 18:52:23.115 +05:30 INF] RequestBody: {
+  "socialMedia_Id": 0,
+  "socialMedia_Name": "Linkedin",
+  "socialMedia_Link": "string",
+  "personalDetailsId": 0,
+  "createdOn": "2022-05-08T13:21:54.922Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T13:21:54.922Z",
+  "updatedBy": "string"
+}
+[2022-05-08 18:52:24.509 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-05-08 18:52:24.510 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: text/plain; charset=utf-8
+[2022-05-08 18:52:24.524 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddSocialMedia (PMS.API) in 1498.0726ms
+[2022-05-08 18:52:24.525 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddSocialMedia (PMS.API)'
+[2022-05-08 18:52:24.525 +05:30 INF] ResponseBody: Social media details added
+[2022-05-08 18:52:24.525 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddSocialMedia application/json 253 - 200 - text/plain;+charset=utf-8 1544.5486ms
+[2022-05-08 18:53:32.703 +05:30 INF] Request starting HTTP/2 POST https://localhost:7100/PersonalService/AddSocialMedia application/json 253
+[2022-05-08 18:53:32.715 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /PersonalService/AddSocialMedia
+Accept: */*
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 253
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 18:53:32.715 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.AddSocialMedia (PMS.API)'
+[2022-05-08 18:53:32.716 +05:30 INF] Route matched with {action = "AddSocialMedia", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddSocialMedia(PMS.API.SocialMedia) on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-08 18:53:32.719 +05:30 INF] RequestBody: {
+  "socialMedia_Id": 0,
+  "socialMedia_Name": "Linkedin",
+  "socialMedia_Link": "string",
+  "personalDetailsId": 1,
+  "createdOn": "2022-05-08T13:21:54.922Z",
+  "createdBy": "string",
+  "updatedOn": "2022-05-08T13:21:54.922Z",
+  "updatedBy": "string"
+}
+[2022-05-08 18:53:32.770 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-05-08 18:53:32.770 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: text/plain; charset=utf-8
+[2022-05-08 18:53:32.770 +05:30 INF] Executed action PMS.API.PersonalServiceController.AddSocialMedia (PMS.API) in 54.3933ms
+[2022-05-08 18:53:32.770 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.AddSocialMedia (PMS.API)'
+[2022-05-08 18:53:32.770 +05:30 INF] ResponseBody: Social media details added
+[2022-05-08 18:53:32.770 +05:30 INF] Request finished HTTP/2 POST https://localhost:7100/PersonalService/AddSocialMedia application/json 253 - 200 - text/plain;+charset=utf-8 67.9254ms
+[2022-05-08 18:59:49.962 +05:30 INF] Entity Framework Core 6.0.4 initialized 'ProfileContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 18:59:59.059 +05:30 INF] Entity Framework Core 6.0.4 initialized 'ProfileContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 18:59:59.358 +05:30 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-08 18:59:59.385 +05:30 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-05-08 18:59:59.388 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-08 18:59:59.388 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-05-08 18:59:59.409 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2022-05-08 18:59:59.429 +05:30 INF] Applying migration '20220508132950_disablevirtualall'.
+[2022-05-08 18:59:59.498 +05:30 INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [breakDurations] DROP CONSTRAINT [FK_breakDurations_personalDetails_PersonalDetailsId];
+[2022-05-08 18:59:59.522 +05:30 INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [educations] DROP CONSTRAINT [FK_educations_personalDetails_PersonalDetailsId];
+[2022-05-08 18:59:59.525 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [languages] DROP CONSTRAINT [FK_languages_personalDetails_PersonalDetailsId];
+[2022-05-08 18:59:59.549 +05:30 INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [projects] DROP CONSTRAINT [FK_projects_personalDetails_PersonalDetailsId];
+[2022-05-08 18:59:59.551 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [skills] DROP CONSTRAINT [FK_skills_personalDetails_PersonalDetailsId];
+[2022-05-08 18:59:59.565 +05:30 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_skills_PersonalDetailsId] ON [skills];
+[2022-05-08 18:59:59.611 +05:30 INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_projects_PersonalDetailsId] ON [projects];
+[2022-05-08 18:59:59.613 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_languages_PersonalDetailsId] ON [languages];
+[2022-05-08 18:59:59.616 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_educations_PersonalDetailsId] ON [educations];
+[2022-05-08 18:59:59.618 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_breakDurations_PersonalDetailsId] ON [breakDurations];
+[2022-05-08 18:59:59.620 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220508132950_disablevirtualall', N'6.0.4');
+[2022-05-08 19:00:14.649 +05:30 INF] Now listening on: https://localhost:7100
+[2022-05-08 19:00:14.679 +05:30 INF] Now listening on: http://localhost:5090
+[2022-05-08 19:00:14.686 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-08 19:00:14.689 +05:30 INF] Hosting environment: Development
+[2022-05-08 19:00:14.690 +05:30 INF] Content root path: D:\PMS.API\
+[2022-05-08 19:00:14.969 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/ - -
+[2022-05-08 19:00:15.031 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:7100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-08 19:00:15.032 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-08 19:00:15.045 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/ - - - 404 0 - 78.6151ms
+[2022-05-08 19:00:19.557 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 19:00:19.558 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 1.0361ms
+[2022-05-08 19:00:19.564 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 19:00:19.618 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 54.8220ms
+[2022-05-08 19:00:19.631 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 19:00:19.631 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 19:00:19.632 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 19:00:19.644 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 19:00:19.657 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 26.3777ms
+[2022-05-08 19:00:19.658 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 19:00:19.660 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 19:00:19.661 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 29.2402ms
+[2022-05-08 19:00:19.661 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 29.6515ms
+[2022-05-08 19:00:21.134 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger - -
+[2022-05-08 19:00:21.135 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger - - - 301 0 - 0.4262ms
+[2022-05-08 19:00:21.138 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/index.html - -
+[2022-05-08 19:00:21.138 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/index.html - - - 200 - text/html;charset=utf-8 0.6347ms
+[2022-05-08 19:00:22.186 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - -
+[2022-05-08 19:00:22.186 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-08 19:00:22.186 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - -
+[2022-05-08 19:00:22.191 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-08 19:00:22.193 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui.css - - - 200 143632 text/css 7.5178ms
+[2022-05-08 19:00:22.199 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-08 19:00:22.200 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 14.4840ms
+[2022-05-08 19:00:22.204 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-08 19:00:22.204 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 18.4855ms
+[2022-05-08 19:00:22.353 +05:30 INF] Request starting HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - -
+[2022-05-08 19:00:22.441 +05:30 INF] Request finished HTTP/2 GET https://localhost:7100/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 88.2263ms

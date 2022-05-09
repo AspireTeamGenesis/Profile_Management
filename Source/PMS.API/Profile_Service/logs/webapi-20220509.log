@@ -1,0 +1,849 @@
+[2022-05-09 20:29:10.005 +05:30 INF] Entity Framework Core 6.0.4 initialized 'ProfileContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-09 20:29:30.202 +05:30 INF] Entity Framework Core 6.0.4 initialized 'ProfileContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-09 20:29:30.870 +05:30 INF] Executed DbCommand (269ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [ProfileService];
+[2022-05-09 20:29:30.971 +05:30 INF] Executed DbCommand (98ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ProfileService] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+[2022-05-09 20:29:30.990 +05:30 INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-09 20:29:31.106 +05:30 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+[2022-05-09 20:29:31.108 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-09 20:29:31.128 +05:30 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-05-09 20:29:31.135 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2022-05-09 20:29:31.156 +05:30 INF] Applying migration '20220508090953_Initial'.
+[2022-05-09 20:29:31.317 +05:30 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [personalDetails] (
+    [PersonalDetailsId] int NOT NULL IDENTITY,
+    [Objective] nvarchar(max) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [DateOfBirth] datetime2 NOT NULL,
+    [Nationality] nvarchar(max) NOT NULL,
+    [MailAdress] nvarchar(max) NOT NULL,
+    [MobileNo] bigint NOT NULL,
+    [DateOfJoinig] datetime2 NOT NULL,
+    [CreatedOn] datetime2 NULL,
+    [CreatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    [UpdatedBy] int NULL,
+    CONSTRAINT [PK_personalDetails] PRIMARY KEY ([PersonalDetailsId])
+);
+[2022-05-09 20:29:31.325 +05:30 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [breakDurations] (
+    [BreakDuration_Id] int NOT NULL IDENTITY,
+    [Starting_Month] datetime2 NOT NULL,
+    [Starting_Year] datetime2 NOT NULL,
+    [Ending_Month] datetime2 NOT NULL,
+    [Ending_Year] datetime2 NOT NULL,
+    [PersonalDetailsId] int NOT NULL,
+    [CreatedOn] datetime2 NULL,
+    [CreatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    [UpdatedBy] int NULL,
+    CONSTRAINT [PK_breakDurations] PRIMARY KEY ([BreakDuration_Id]),
+    CONSTRAINT [FK_breakDurations_personalDetails_PersonalDetailsId] FOREIGN KEY ([PersonalDetailsId]) REFERENCES [personalDetails] ([PersonalDetailsId]) ON DELETE CASCADE
+);
+[2022-05-09 20:29:31.332 +05:30 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [educations] (
+    [Education_Id] int NOT NULL IDENTITY,
+    [Degree] nvarchar(max) NOT NULL,
+    [Course] nvarchar(max) NOT NULL,
+    [Starting_Year] datetime2 NOT NULL,
+    [Ending_Year] datetime2 NOT NULL,
+    [Percentage] real NOT NULL,
+    [PersonalDetailsId] int NOT NULL,
+    [CreatedOn] datetime2 NULL,
+    [CreatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    [UpdatedBy] int NULL,
+    CONSTRAINT [PK_educations] PRIMARY KEY ([Education_Id]),
+    CONSTRAINT [FK_educations_personalDetails_PersonalDetailsId] FOREIGN KEY ([PersonalDetailsId]) REFERENCES [personalDetails] ([PersonalDetailsId]) ON DELETE CASCADE
+);
+[2022-05-09 20:29:31.337 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [languages] (
+    [Language_Id] int NOT NULL IDENTITY,
+    [Language_Name] nvarchar(max) NOT NULL,
+    [Read] bit NOT NULL,
+    [Write] bit NOT NULL,
+    [Speak] bit NOT NULL,
+    [PersonalDetailsId] int NOT NULL,
+    [CreatedOn] datetime2 NULL,
+    [CreatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    [UpdatedBy] int NULL,
+    CONSTRAINT [PK_languages] PRIMARY KEY ([Language_Id]),
+    CONSTRAINT [FK_languages_personalDetails_PersonalDetailsId] FOREIGN KEY ([PersonalDetailsId]) REFERENCES [personalDetails] ([PersonalDetailsId]) ON DELETE CASCADE
+);
+[2022-05-09 20:29:31.347 +05:30 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [projects] (
+    [Project_Id] nvarchar(450) NOT NULL,
+    [ProjectName] nvarchar(max) NOT NULL,
+    [project_Description] nvarchar(max) NOT NULL,
+    [Project_Starting_Month] datetime2 NOT NULL,
+    [Project_Starting_Year] datetime2 NOT NULL,
+    [Project_Ending_Month] datetime2 NOT NULL,
+    [Project_Ending_Year] datetime2 NOT NULL,
+    [PersonalDetailsId] int NOT NULL,
+    [CreatedOn] datetime2 NULL,
+    [CreatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    [UpdatedBy] int NULL,
+    CONSTRAINT [PK_projects] PRIMARY KEY ([Project_Id]),
+    CONSTRAINT [FK_projects_personalDetails_PersonalDetailsId] FOREIGN KEY ([PersonalDetailsId]) REFERENCES [personalDetails] ([PersonalDetailsId]) ON DELETE CASCADE
+);
+[2022-05-09 20:29:31.352 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [skills] (
+    [Skill_Id] int NOT NULL IDENTITY,
+    [Domain] nvarchar(max) NOT NULL,
+    [Technology] nvarchar(max) NOT NULL,
+    [PersonalDetailsId] int NOT NULL,
+    [CreatedOn] datetime2 NULL,
+    [CreatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    [UpdatedBy] int NULL,
+    CONSTRAINT [PK_skills] PRIMARY KEY ([Skill_Id]),
+    CONSTRAINT [FK_skills_personalDetails_PersonalDetailsId] FOREIGN KEY ([PersonalDetailsId]) REFERENCES [personalDetails] ([PersonalDetailsId]) ON DELETE CASCADE
+);
+[2022-05-09 20:29:31.358 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [SocialMedias] (
+    [SocialMedia_Id] int NOT NULL IDENTITY,
+    [SocialMedia_Name] nvarchar(max) NOT NULL,
+    [SocialMedia_Link] nvarchar(max) NOT NULL,
+    [PersonalDetailsId] int NOT NULL,
+    [CreatedOn] datetime2 NULL,
+    [CreatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    [UpdatedBy] int NULL,
+    CONSTRAINT [PK_SocialMedias] PRIMARY KEY ([SocialMedia_Id]),
+    CONSTRAINT [FK_SocialMedias_personalDetails_PersonalDetailsId] FOREIGN KEY ([PersonalDetailsId]) REFERENCES [personalDetails] ([PersonalDetailsId]) ON DELETE CASCADE
+);
+[2022-05-09 20:29:31.365 +05:30 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_breakDurations_PersonalDetailsId] ON [breakDurations] ([PersonalDetailsId]);
+[2022-05-09 20:29:31.367 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_educations_PersonalDetailsId] ON [educations] ([PersonalDetailsId]);
+[2022-05-09 20:29:31.369 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_languages_PersonalDetailsId] ON [languages] ([PersonalDetailsId]);
+[2022-05-09 20:29:31.370 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_projects_PersonalDetailsId] ON [projects] ([PersonalDetailsId]);
+[2022-05-09 20:29:31.372 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_skills_PersonalDetailsId] ON [skills] ([PersonalDetailsId]);
+[2022-05-09 20:29:31.373 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_SocialMedias_PersonalDetailsId] ON [SocialMedias] ([PersonalDetailsId]);
+[2022-05-09 20:29:31.378 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220508090953_Initial', N'6.0.4');
+[2022-05-09 20:29:31.384 +05:30 INF] Applying migration '20220508102142_Datetime'.
+[2022-05-09 20:29:31.467 +05:30 INF] Executed DbCommand (56ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[SocialMedias]') AND [c].[name] = N'UpdatedOn');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [SocialMedias] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [SocialMedias] ALTER COLUMN [UpdatedOn] datetime2 NOT NULL;
+ALTER TABLE [SocialMedias] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [UpdatedOn];
+[2022-05-09 20:29:31.483 +05:30 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[SocialMedias]') AND [c].[name] = N'UpdatedBy');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [SocialMedias] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [SocialMedias] ALTER COLUMN [UpdatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [SocialMedias] ADD DEFAULT N'' FOR [UpdatedBy];
+[2022-05-09 20:29:31.501 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var2 sysname;
+SELECT @var2 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[SocialMedias]') AND [c].[name] = N'CreatedOn');
+IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [SocialMedias] DROP CONSTRAINT [' + @var2 + '];');
+ALTER TABLE [SocialMedias] ALTER COLUMN [CreatedOn] datetime2 NOT NULL;
+ALTER TABLE [SocialMedias] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [CreatedOn];
+[2022-05-09 20:29:31.519 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var3 sysname;
+SELECT @var3 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[SocialMedias]') AND [c].[name] = N'CreatedBy');
+IF @var3 IS NOT NULL EXEC(N'ALTER TABLE [SocialMedias] DROP CONSTRAINT [' + @var3 + '];');
+ALTER TABLE [SocialMedias] ALTER COLUMN [CreatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [SocialMedias] ADD DEFAULT N'' FOR [CreatedBy];
+[2022-05-09 20:29:31.539 +05:30 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var4 sysname;
+SELECT @var4 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[skills]') AND [c].[name] = N'UpdatedOn');
+IF @var4 IS NOT NULL EXEC(N'ALTER TABLE [skills] DROP CONSTRAINT [' + @var4 + '];');
+ALTER TABLE [skills] ALTER COLUMN [UpdatedOn] datetime2 NOT NULL;
+ALTER TABLE [skills] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [UpdatedOn];
+[2022-05-09 20:29:31.557 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var5 sysname;
+SELECT @var5 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[skills]') AND [c].[name] = N'UpdatedBy');
+IF @var5 IS NOT NULL EXEC(N'ALTER TABLE [skills] DROP CONSTRAINT [' + @var5 + '];');
+ALTER TABLE [skills] ALTER COLUMN [UpdatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [skills] ADD DEFAULT N'' FOR [UpdatedBy];
+[2022-05-09 20:29:31.575 +05:30 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var6 sysname;
+SELECT @var6 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[skills]') AND [c].[name] = N'CreatedOn');
+IF @var6 IS NOT NULL EXEC(N'ALTER TABLE [skills] DROP CONSTRAINT [' + @var6 + '];');
+ALTER TABLE [skills] ALTER COLUMN [CreatedOn] datetime2 NOT NULL;
+ALTER TABLE [skills] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [CreatedOn];
+[2022-05-09 20:29:31.593 +05:30 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var7 sysname;
+SELECT @var7 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[skills]') AND [c].[name] = N'CreatedBy');
+IF @var7 IS NOT NULL EXEC(N'ALTER TABLE [skills] DROP CONSTRAINT [' + @var7 + '];');
+ALTER TABLE [skills] ALTER COLUMN [CreatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [skills] ADD DEFAULT N'' FOR [CreatedBy];
+[2022-05-09 20:29:31.611 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var8 sysname;
+SELECT @var8 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[projects]') AND [c].[name] = N'UpdatedOn');
+IF @var8 IS NOT NULL EXEC(N'ALTER TABLE [projects] DROP CONSTRAINT [' + @var8 + '];');
+ALTER TABLE [projects] ALTER COLUMN [UpdatedOn] datetime2 NOT NULL;
+ALTER TABLE [projects] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [UpdatedOn];
+[2022-05-09 20:29:31.630 +05:30 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var9 sysname;
+SELECT @var9 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[projects]') AND [c].[name] = N'UpdatedBy');
+IF @var9 IS NOT NULL EXEC(N'ALTER TABLE [projects] DROP CONSTRAINT [' + @var9 + '];');
+ALTER TABLE [projects] ALTER COLUMN [UpdatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [projects] ADD DEFAULT N'' FOR [UpdatedBy];
+[2022-05-09 20:29:31.680 +05:30 INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var10 sysname;
+SELECT @var10 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[projects]') AND [c].[name] = N'CreatedOn');
+IF @var10 IS NOT NULL EXEC(N'ALTER TABLE [projects] DROP CONSTRAINT [' + @var10 + '];');
+ALTER TABLE [projects] ALTER COLUMN [CreatedOn] datetime2 NOT NULL;
+ALTER TABLE [projects] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [CreatedOn];
+[2022-05-09 20:29:31.712 +05:30 INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var11 sysname;
+SELECT @var11 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[projects]') AND [c].[name] = N'CreatedBy');
+IF @var11 IS NOT NULL EXEC(N'ALTER TABLE [projects] DROP CONSTRAINT [' + @var11 + '];');
+ALTER TABLE [projects] ALTER COLUMN [CreatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [projects] ADD DEFAULT N'' FOR [CreatedBy];
+[2022-05-09 20:29:31.731 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var12 sysname;
+SELECT @var12 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[personalDetails]') AND [c].[name] = N'UpdatedOn');
+IF @var12 IS NOT NULL EXEC(N'ALTER TABLE [personalDetails] DROP CONSTRAINT [' + @var12 + '];');
+ALTER TABLE [personalDetails] ALTER COLUMN [UpdatedOn] datetime2 NOT NULL;
+ALTER TABLE [personalDetails] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [UpdatedOn];
+[2022-05-09 20:29:31.752 +05:30 INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var13 sysname;
+SELECT @var13 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[personalDetails]') AND [c].[name] = N'UpdatedBy');
+IF @var13 IS NOT NULL EXEC(N'ALTER TABLE [personalDetails] DROP CONSTRAINT [' + @var13 + '];');
+ALTER TABLE [personalDetails] ALTER COLUMN [UpdatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [personalDetails] ADD DEFAULT N'' FOR [UpdatedBy];
+[2022-05-09 20:29:31.771 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var14 sysname;
+SELECT @var14 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[personalDetails]') AND [c].[name] = N'CreatedOn');
+IF @var14 IS NOT NULL EXEC(N'ALTER TABLE [personalDetails] DROP CONSTRAINT [' + @var14 + '];');
+ALTER TABLE [personalDetails] ALTER COLUMN [CreatedOn] datetime2 NOT NULL;
+ALTER TABLE [personalDetails] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [CreatedOn];
+[2022-05-09 20:29:31.790 +05:30 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var15 sysname;
+SELECT @var15 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[personalDetails]') AND [c].[name] = N'CreatedBy');
+IF @var15 IS NOT NULL EXEC(N'ALTER TABLE [personalDetails] DROP CONSTRAINT [' + @var15 + '];');
+ALTER TABLE [personalDetails] ALTER COLUMN [CreatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [personalDetails] ADD DEFAULT N'' FOR [CreatedBy];
+[2022-05-09 20:29:31.809 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var16 sysname;
+SELECT @var16 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[languages]') AND [c].[name] = N'UpdatedOn');
+IF @var16 IS NOT NULL EXEC(N'ALTER TABLE [languages] DROP CONSTRAINT [' + @var16 + '];');
+ALTER TABLE [languages] ALTER COLUMN [UpdatedOn] datetime2 NOT NULL;
+ALTER TABLE [languages] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [UpdatedOn];
+[2022-05-09 20:29:31.836 +05:30 INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var17 sysname;
+SELECT @var17 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[languages]') AND [c].[name] = N'UpdatedBy');
+IF @var17 IS NOT NULL EXEC(N'ALTER TABLE [languages] DROP CONSTRAINT [' + @var17 + '];');
+ALTER TABLE [languages] ALTER COLUMN [UpdatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [languages] ADD DEFAULT N'' FOR [UpdatedBy];
+[2022-05-09 20:29:31.854 +05:30 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var18 sysname;
+SELECT @var18 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[languages]') AND [c].[name] = N'CreatedOn');
+IF @var18 IS NOT NULL EXEC(N'ALTER TABLE [languages] DROP CONSTRAINT [' + @var18 + '];');
+ALTER TABLE [languages] ALTER COLUMN [CreatedOn] datetime2 NOT NULL;
+ALTER TABLE [languages] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [CreatedOn];
+[2022-05-09 20:29:31.873 +05:30 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var19 sysname;
+SELECT @var19 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[languages]') AND [c].[name] = N'CreatedBy');
+IF @var19 IS NOT NULL EXEC(N'ALTER TABLE [languages] DROP CONSTRAINT [' + @var19 + '];');
+ALTER TABLE [languages] ALTER COLUMN [CreatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [languages] ADD DEFAULT N'' FOR [CreatedBy];
+[2022-05-09 20:29:31.892 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var20 sysname;
+SELECT @var20 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[educations]') AND [c].[name] = N'UpdatedOn');
+IF @var20 IS NOT NULL EXEC(N'ALTER TABLE [educations] DROP CONSTRAINT [' + @var20 + '];');
+ALTER TABLE [educations] ALTER COLUMN [UpdatedOn] datetime2 NOT NULL;
+ALTER TABLE [educations] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [UpdatedOn];
+[2022-05-09 20:29:31.910 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var21 sysname;
+SELECT @var21 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[educations]') AND [c].[name] = N'UpdatedBy');
+IF @var21 IS NOT NULL EXEC(N'ALTER TABLE [educations] DROP CONSTRAINT [' + @var21 + '];');
+ALTER TABLE [educations] ALTER COLUMN [UpdatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [educations] ADD DEFAULT N'' FOR [UpdatedBy];
+[2022-05-09 20:29:31.929 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var22 sysname;
+SELECT @var22 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[educations]') AND [c].[name] = N'CreatedOn');
+IF @var22 IS NOT NULL EXEC(N'ALTER TABLE [educations] DROP CONSTRAINT [' + @var22 + '];');
+ALTER TABLE [educations] ALTER COLUMN [CreatedOn] datetime2 NOT NULL;
+ALTER TABLE [educations] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [CreatedOn];
+[2022-05-09 20:29:31.949 +05:30 INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var23 sysname;
+SELECT @var23 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[educations]') AND [c].[name] = N'CreatedBy');
+IF @var23 IS NOT NULL EXEC(N'ALTER TABLE [educations] DROP CONSTRAINT [' + @var23 + '];');
+ALTER TABLE [educations] ALTER COLUMN [CreatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [educations] ADD DEFAULT N'' FOR [CreatedBy];
+[2022-05-09 20:29:31.969 +05:30 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var24 sysname;
+SELECT @var24 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[breakDurations]') AND [c].[name] = N'UpdatedOn');
+IF @var24 IS NOT NULL EXEC(N'ALTER TABLE [breakDurations] DROP CONSTRAINT [' + @var24 + '];');
+ALTER TABLE [breakDurations] ALTER COLUMN [UpdatedOn] datetime2 NOT NULL;
+ALTER TABLE [breakDurations] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [UpdatedOn];
+[2022-05-09 20:29:31.988 +05:30 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var25 sysname;
+SELECT @var25 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[breakDurations]') AND [c].[name] = N'UpdatedBy');
+IF @var25 IS NOT NULL EXEC(N'ALTER TABLE [breakDurations] DROP CONSTRAINT [' + @var25 + '];');
+ALTER TABLE [breakDurations] ALTER COLUMN [UpdatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [breakDurations] ADD DEFAULT N'' FOR [UpdatedBy];
+[2022-05-09 20:29:32.008 +05:30 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var26 sysname;
+SELECT @var26 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[breakDurations]') AND [c].[name] = N'CreatedOn');
+IF @var26 IS NOT NULL EXEC(N'ALTER TABLE [breakDurations] DROP CONSTRAINT [' + @var26 + '];');
+ALTER TABLE [breakDurations] ALTER COLUMN [CreatedOn] datetime2 NOT NULL;
+ALTER TABLE [breakDurations] ADD DEFAULT '0001-01-01T00:00:00.0000000' FOR [CreatedOn];
+[2022-05-09 20:29:32.026 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var27 sysname;
+SELECT @var27 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[breakDurations]') AND [c].[name] = N'CreatedBy');
+IF @var27 IS NOT NULL EXEC(N'ALTER TABLE [breakDurations] DROP CONSTRAINT [' + @var27 + '];');
+ALTER TABLE [breakDurations] ALTER COLUMN [CreatedBy] nvarchar(max) NOT NULL;
+ALTER TABLE [breakDurations] ADD DEFAULT N'' FOR [CreatedBy];
+[2022-05-09 20:29:32.026 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220508102142_Datetime', N'6.0.4');
+[2022-05-09 20:29:32.035 +05:30 INF] Applying migration '20220508130754_virtual'.
+[2022-05-09 20:29:32.045 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220508130754_virtual', N'6.0.4');
+[2022-05-09 20:29:32.045 +05:30 INF] Applying migration '20220508131727_foreign'.
+[2022-05-09 20:29:32.065 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220508131727_foreign', N'6.0.4');
+[2022-05-09 20:29:32.068 +05:30 INF] Applying migration '20220508132029_disablevirtual'.
+[2022-05-09 20:29:32.081 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [SocialMedias] DROP CONSTRAINT [FK_SocialMedias_personalDetails_PersonalDetailsId];
+[2022-05-09 20:29:32.085 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_SocialMedias_PersonalDetailsId] ON [SocialMedias];
+[2022-05-09 20:29:32.086 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220508132029_disablevirtual', N'6.0.4');
+[2022-05-09 20:29:32.087 +05:30 INF] Applying migration '20220508132950_disablevirtualall'.
+[2022-05-09 20:29:32.095 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [breakDurations] DROP CONSTRAINT [FK_breakDurations_personalDetails_PersonalDetailsId];
+[2022-05-09 20:29:32.099 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [educations] DROP CONSTRAINT [FK_educations_personalDetails_PersonalDetailsId];
+[2022-05-09 20:29:32.102 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [languages] DROP CONSTRAINT [FK_languages_personalDetails_PersonalDetailsId];
+[2022-05-09 20:29:32.104 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [projects] DROP CONSTRAINT [FK_projects_personalDetails_PersonalDetailsId];
+[2022-05-09 20:29:32.106 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [skills] DROP CONSTRAINT [FK_skills_personalDetails_PersonalDetailsId];
+[2022-05-09 20:29:32.108 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_skills_PersonalDetailsId] ON [skills];
+[2022-05-09 20:29:32.109 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_projects_PersonalDetailsId] ON [projects];
+[2022-05-09 20:29:32.111 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_languages_PersonalDetailsId] ON [languages];
+[2022-05-09 20:29:32.112 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_educations_PersonalDetailsId] ON [educations];
+[2022-05-09 20:29:32.115 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_breakDurations_PersonalDetailsId] ON [breakDurations];
+[2022-05-09 20:29:32.117 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220508132950_disablevirtualall', N'6.0.4');
+[2022-05-09 20:29:32.119 +05:30 INF] Applying migration '20220509145910_db'.
+[2022-05-09 20:29:32.130 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [SocialMedias] ADD [IsActive] bit NOT NULL DEFAULT CAST(0 AS bit);
+[2022-05-09 20:29:32.134 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [skills] ADD [IsActive] bit NOT NULL DEFAULT CAST(0 AS bit);
+[2022-05-09 20:29:32.136 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [projects] ADD [IsActive] bit NOT NULL DEFAULT CAST(0 AS bit);
+[2022-05-09 20:29:32.138 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [personalDetails] ADD [IsActive] bit NOT NULL DEFAULT CAST(0 AS bit);
+[2022-05-09 20:29:32.141 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [personalDetails] ADD [breakDurationid] int NOT NULL DEFAULT 0;
+[2022-05-09 20:29:32.143 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [personalDetails] ADD [languageid] int NOT NULL DEFAULT 0;
+[2022-05-09 20:29:32.144 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [personalDetails] ADD [socialmediaid] int NOT NULL DEFAULT 0;
+[2022-05-09 20:29:32.146 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [languages] ADD [IsActive] bit NOT NULL DEFAULT CAST(0 AS bit);
+[2022-05-09 20:29:32.149 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [educations] ADD [IsActive] bit NOT NULL DEFAULT CAST(0 AS bit);
+[2022-05-09 20:29:32.152 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [breakDurations] ADD [IsActive] bit NOT NULL DEFAULT CAST(0 AS bit);
+[2022-05-09 20:29:32.153 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220509145910_db', N'6.0.4');
+[2022-05-09 20:29:40.043 +05:30 INF] Now listening on: http://localhost:5000
+[2022-05-09 20:29:40.077 +05:30 INF] Now listening on: https://localhost:5001
+[2022-05-09 20:29:40.085 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-09 20:29:40.085 +05:30 INF] Hosting environment: Production
+[2022-05-09 20:29:40.085 +05:30 INF] Content root path: C:\Users\gugan.balamurugan\Downloads\Profile_Management-master (2)\Profile_Management-master\Source\PMS.API\Profile_Service\
+[2022-05-09 20:30:16.369 +05:30 INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger - -
+[2022-05-09 20:30:16.407 +05:30 INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger - - - 307 0 - 47.1552ms
+[2022-05-09 20:30:23.229 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/swagger - -
+[2022-05-09 20:30:23.234 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /swagger
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-09 20:30:23.234 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:30:23.237 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/swagger - - - 404 0 - 7.8384ms
+[2022-05-09 20:34:27.772 +05:30 INF] Application is shutting down...
+[2022-05-09 20:34:40.329 +05:30 INF] Now listening on: http://localhost:5000
+[2022-05-09 20:34:40.361 +05:30 INF] Now listening on: https://localhost:5001
+[2022-05-09 20:34:40.365 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-09 20:34:40.365 +05:30 INF] Hosting environment: Production
+[2022-05-09 20:34:40.366 +05:30 INF] Content root path: C:\Users\gugan.balamurugan\Downloads\Profile_Management-master (2)\Profile_Management-master\Source\PMS.API\Profile_Service\
+[2022-05-09 20:34:42.983 +05:30 INF] Request starting HTTP/1.1 GET http://localhost:5000/ - -
+[2022-05-09 20:34:43.091 +05:30 INF] Request finished HTTP/1.1 GET http://localhost:5000/ - - - 307 0 - 112.2505ms
+[2022-05-09 20:34:43.206 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+[2022-05-09 20:34:43.211 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+[2022-05-09 20:34:43.212 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:34:43.216 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 404 0 - 9.8364ms
+[2022-05-09 20:34:53.424 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/Swagger - -
+[2022-05-09 20:34:53.426 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Swagger
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-09 20:34:53.426 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:34:53.427 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/Swagger - - - 404 0 - 2.1971ms
+[2022-05-09 20:35:07.007 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/swagger - -
+[2022-05-09 20:35:07.007 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /swagger
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-09 20:35:07.008 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:35:07.009 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/swagger - - - 404 0 - 0.3681ms
+[2022-05-09 20:36:12.733 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/PersonalService/GetallPersonalDetails - -
+[2022-05-09 20:36:12.741 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /PersonalService/GetallPersonalDetails
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-09 20:36:12.744 +05:30 INF] Executing endpoint 'PMS.API.PersonalServiceController.GetallPersonalDetails (PMS.API)'
+[2022-05-09 20:36:12.767 +05:30 INF] Route matched with {action = "GetallPersonalDetails", controller = "PersonalService"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetallPersonalDetails() on controller PMS.API.PersonalServiceController (PMS.API).
+[2022-05-09 20:36:13.935 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+WhereListIterator`1[[PMS.API.PersonalDetails, PMS.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-09 20:36:13.949 +05:30 INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+[2022-05-09 20:36:13.957 +05:30 INF] Executed action PMS.API.PersonalServiceController.GetallPersonalDetails (PMS.API) in 1183.6754ms
+[2022-05-09 20:36:13.958 +05:30 INF] Executed endpoint 'PMS.API.PersonalServiceController.GetallPersonalDetails (PMS.API)'
+[2022-05-09 20:36:13.959 +05:30 INF] ResponseBody: []
+[2022-05-09 20:36:13.961 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/PersonalService/GetallPersonalDetails - - - 200 - application/json;+charset=utf-8 1228.6235ms
+[2022-05-09 20:36:14.013 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/favicon.ico - -
+[2022-05-09 20:36:14.013 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /favicon.ico
+Accept: image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-09 20:36:14.013 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:36:14.013 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/favicon.ico - - - 404 0 - 0.3066ms
+[2022-05-09 20:36:22.947 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/swagger - -
+[2022-05-09 20:36:22.947 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /swagger
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-09 20:36:22.947 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:36:22.947 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/swagger - - - 404 0 - 0.3856ms
+[2022-05-09 20:36:44.179 +05:30 INF] Request starting HTTP/1.1 GET http://localhost:5000/ - -
+[2022-05-09 20:36:44.180 +05:30 INF] Request finished HTTP/1.1 GET http://localhost:5000/ - - - 307 0 - 1.9261ms
+[2022-05-09 20:36:44.188 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+[2022-05-09 20:36:44.188 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+[2022-05-09 20:36:44.188 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:36:44.188 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 404 0 - 0.2483ms
+[2022-05-09 20:36:45.693 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+[2022-05-09 20:36:45.694 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-09 20:36:45.694 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:36:45.696 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 404 0 - 2.2576ms
+[2022-05-09 20:36:55.601 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/Swagger - -
+[2022-05-09 20:36:55.601 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Swagger
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+[2022-05-09 20:36:55.601 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:36:55.601 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/Swagger - - - 404 0 - 0.6401ms
+[2022-05-09 20:37:06.597 +05:30 INF] Application is shutting down...
+[2022-05-09 20:37:11.368 +05:30 INF] Now listening on: http://localhost:5000
+[2022-05-09 20:37:11.400 +05:30 INF] Now listening on: https://localhost:5001
+[2022-05-09 20:37:11.407 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-09 20:37:11.407 +05:30 INF] Hosting environment: Production
+[2022-05-09 20:37:11.407 +05:30 INF] Content root path: C:\Users\gugan.balamurugan\Downloads\Profile_Management-master (2)\Profile_Management-master\Source\PMS.API\Profile_Service\
+[2022-05-09 20:37:19.072 +05:30 INF] Request starting HTTP/1.1 GET http://localhost:5000/ - -
+[2022-05-09 20:37:19.165 +05:30 INF] Request finished HTTP/1.1 GET http://localhost:5000/ - - - 307 0 - 105.3448ms
+[2022-05-09 20:37:19.270 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+[2022-05-09 20:37:19.275 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+[2022-05-09 20:37:19.276 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:37:19.280 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 404 0 - 9.9171ms
+[2022-05-09 20:37:29.710 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+[2022-05-09 20:37:29.711 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.5
+TE: trailers
+Upgrade-Insecure-Requests: [Redacted]
+sec-fetch-dest: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-user: [Redacted]
+[2022-05-09 20:37:29.711 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:37:29.711 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 404 0 - 0.7117ms
+[2022-05-09 20:37:29.738 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/favicon.ico - -
+[2022-05-09 20:37:29.738 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /favicon.ico
+Accept: image/avif,image/webp,*/*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.5
+Referer: [Redacted]
+TE: trailers
+sec-fetch-dest: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+[2022-05-09 20:37:29.738 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:37:29.738 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/favicon.ico - - - 404 0 - 0.6797ms
+[2022-05-09 20:37:33.900 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/Swagger - -
+[2022-05-09 20:37:33.900 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Swagger
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.5
+TE: trailers
+Upgrade-Insecure-Requests: [Redacted]
+sec-fetch-dest: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-user: [Redacted]
+[2022-05-09 20:37:33.900 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:37:33.901 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/Swagger - - - 404 0 - 0.4319ms
+[2022-05-09 20:37:38.795 +05:30 INF] Request starting HTTP/2 GET https://localhost:5001/Swagger - -
+[2022-05-09 20:37:38.796 +05:30 INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Swagger
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.5
+TE: trailers
+Upgrade-Insecure-Requests: [Redacted]
+sec-fetch-dest: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-user: [Redacted]
+[2022-05-09 20:37:38.796 +05:30 INF] Response:
+StatusCode: 404
+[2022-05-09 20:37:38.796 +05:30 INF] Request finished HTTP/2 GET https://localhost:5001/Swagger - - - 404 0 - 0.4142ms
