@@ -80,7 +80,7 @@ namespace PMS.API
             //updating user via userservices
              
              try{
-                 user=_userServices.GetUser(user.Id);
+                 
                 return _userServices.UpdateUser(user)? Ok("User Updated Successfully"):BadRequest("Sorry internal error occured");
 
             }
