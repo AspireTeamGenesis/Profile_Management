@@ -29,7 +29,7 @@ namespace PMS.API
             if(string.IsNullOrEmpty(user.Gender))
                 throw new ValidationException($"Gender not be null and user supplied Gender is{user.Gender}");
             if(user.MobileNo==0)
-                throw new ValidationException($"MobileNo not be null and user supplied Gender is {user.MobileNo}");
+                throw new ValidationException($"MobileNo not be null and user supplied MobileNo is {user.MobileNo}");
             if(string.IsNullOrEmpty(user.Organization))
                 throw new ValidationException($"Organization not be null and user supplied Organization is {user.Organization}");
             if(string.IsNullOrEmpty(user.Designation))
