@@ -70,7 +70,7 @@ namespace PMS.API
         }
          [HttpPut]
          
-         public IActionResult UpdateUser(User user,int id){
+         public IActionResult UpdateUser(User user){
              
              if(user==null){
                 _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
