@@ -1,4 +1,4 @@
-namespace PMS.API
+namespace PMS_API
 {
     public class ProfileDataFactory
     {

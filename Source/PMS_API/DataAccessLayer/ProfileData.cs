@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace PMS.API
+namespace PMS_API
 {
     public interface IPersonalDetails
     {
@@ -24,7 +24,7 @@ namespace PMS.API
             
             try{
 
-                return _context.personalDetails.ToList();
+                return _context.personalDetails.Include("language").Include("breakDuration").Include("socialmedia").Include("education").Include("projects").Include("skills").ToList();
                 
             }
             
@@ -32,6 +32,23 @@ namespace PMS.API
                 //log "if exception occures"
                 _logger.LogError($"ProfileData.cs-GetallPersonalDetails()-{exception.Message}");
                 _logger.LogInformation($"UserData.cs-GetallPersonalDetails()-{exception.StackTrace}");
+                throw exception;
+            }
+        }
+        public PersonalDetails GetPersonalDetailsById(int id)
+        {
+             if(id<=0)
+               
+                throw new ValidationException("Profile Id is not provided to DAL");
+            
+            try{
+                PersonalDetails personalDetails= GetallPersonalDetails().Where(x=>x.PersonalDetailsId==id).First();
+                if(personalDetails==null)throw new NullReferenceException($"Id not found-{id}");
+                return personalDetails;
+            }
+            catch(Exception exception){
+                _logger.LogError($"ProfileData.cs-GetPersonalDetailsById()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-GetPersonalDetailsById()-{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -60,6 +77,7 @@ namespace PMS.API
             
             
         }
+
         public bool RemovePersonalDetail(int PersonalDetailsId)
         {
             if(PersonalDetailsId<=0)
@@ -86,6 +104,39 @@ namespace PMS.API
             }
             
         }
+        public List<Education> GetallEducationDetails()
+        {
+            
+            try{
+
+                return _context.educations.Include("college").ToList();
+                
+            }
+            
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-GetallEducationDetails()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-GetallEducationDetails()-{exception.StackTrace}");
+                throw exception;
+            }
+        }
+        public Education GetEducationDetailsById(int Educationid)
+        {
+             if(Educationid<=0)
+               
+                throw new ValidationException("Education Id is not provided to DAL");
+            
+            try{
+                Education education= GetallEducationDetails().Where(x=>x.EducationId==Educationid).First();
+                if(education==null)throw new NullReferenceException($"Id not found-{Educationid}");
+                return education;
+            }
+            catch(Exception exception){
+                _logger.LogError($"ProfileData.cs-GetEducationDetailsById()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-GetEducationDetailsById()-{exception.StackTrace}");
+                throw exception;
+            }
+        }
          public bool AddEducation(Education education)
         {
             
@@ -110,6 +161,8 @@ namespace PMS.API
             
             
         }
+        
+        
         public bool RemoveEducation(int Education_Id)
         {
             if(Education_Id<=0)
@@ -160,6 +213,39 @@ namespace PMS.API
             }
             
             
+        }
+        public List<Projects> GetallProjectDetails()
+        {
+            
+            try{
+
+                return _context.projects.ToList();
+                
+            }
+            
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-GetallProjectDetails()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-GetallProjectDetails()-{exception.StackTrace}");
+                throw exception;
+            }
+        }
+        public Projects GetProjectDetailsById(int Projectid)
+        {
+             if(Projectid<=0)
+               
+                throw new ValidationException("Project Id is not provided to DAL");
+            
+            try{
+                Projects project= GetallProjectDetails().Where(x=>x.ProjectId==Projectid).First();
+                if(project==null)throw new NullReferenceException($"Id not found-{Projectid}");
+                return project;
+            }
+            catch(Exception exception){
+                _logger.LogError($"ProfileData.cs-GetProjectDetailsById()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-GetProjectDetailsById()-{exception.StackTrace}");
+                throw exception;
+            }
         }
         public bool RemoveProjects(int Project_Id)
         {
@@ -214,6 +300,8 @@ namespace PMS.API
             
             
         }
+        
+
         public bool RemoveBreakDuration(int BreakDuration_Id)
         {
             if(BreakDuration_Id<=0)
@@ -264,6 +352,39 @@ namespace PMS.API
             }
             
             
+        }
+        public List<Skills> GetallSkillDetails()
+        {
+            
+            try{
+
+                return _context.skills.Include("domain").ToList();
+                
+            }
+            
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-GetallSkillDetails()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-GetallSkillDetails()-{exception.StackTrace}");
+                throw exception;
+            }
+        }
+        public Skills GetSkillDetailsById(int skillid)
+        {
+             if(skillid<=0)
+               
+                throw new ValidationException("Skill Id is not provided to DAL");
+            
+            try{
+                Skills skills= GetallSkillDetails().Where(x=>x.SkillId==skillid).First();
+                if(skills==null)throw new NullReferenceException($"Id not found-{skillid}");
+                return skills;
+            }
+            catch(Exception exception){
+                _logger.LogError($"ProfileData.cs-GetSkillDetailsById()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-GetSkillDetailsById()-{exception.StackTrace}");
+                throw exception;
+            }
         }
         public bool RemoveSkills(int Skill_Id)
         {
@@ -389,7 +510,25 @@ namespace PMS.API
             }
             
         }
+         public List<Technology> GetallTechnologies()
+        {
+            
+            try{
+
+                return _context.Technologies.ToList();
+                
+            }
+            
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-GetallTechnologies()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-GetallTechnologies()-{exception.StackTrace}");
+                throw exception;
+            }
+        }
+
 
 
     }
+    
 }

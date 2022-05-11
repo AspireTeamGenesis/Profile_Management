@@ -1,13 +1,13 @@
-using PMS.API;
+using PMS_API;
 
-namespace PMS.API
+namespace PMS_API
 {
     public interface IUserServices
     {
         bool AddUser(User item);
         bool Disable(int id);
         IEnumerable<User> GetallUsers();
-        User GetUser(int id);
+        object GetUser(int id);
         bool Save();
         bool UpdateUser(User item);
     }

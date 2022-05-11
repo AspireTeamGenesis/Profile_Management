@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-namespace PMS.API
+namespace PMS_API
 {
     [ApiController]
     [Route("[controller]/[Action]")]
@@ -27,6 +27,18 @@ namespace PMS.API
             }
 
 
+        }
+        [HttpGet]
+        public IActionResult GetPersonalDetailsById(int id)
+        {
+            try{
+                
+                return Ok(_personalService.GetPersonalDetailsById(id));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServiceController :GetPersonalDetailsById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
         }
 
         [HttpPost]
@@ -91,17 +103,45 @@ namespace PMS.API
 
 
         }
+        [HttpGet]
+        public IActionResult GetallEducationDetails()
+        {
+            try
+            {
+
+                return Ok(_personalService.GetallEducationDetails());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServiceController :GetallEducationDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+
+
+        }
+        [HttpGet]
+        public IActionResult GetEducationDetailsById(int Educationid)
+        {
+            try{
+                
+                return Ok(_personalService.GetEducationDetailsById(Educationid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServiceController :GetEducationById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
+        }
 
         [HttpDelete]
-        public IActionResult RemoveEducation(int Education_Id)
+        public IActionResult RemoveEducation(int EducationId)
         {
-            if (Education_Id == 0)
+            if (EducationId == 0)
                 return BadRequest("Education_ Id can't be null");
 
 
             try
             {
-                return _personalService.RemoveEducation(Education_Id) ? Ok("Education_ Removed Successfully") : Problem("Sorry internal error occured");
+                return _personalService.RemoveEducation(EducationId) ? Ok("Education_ Removed Successfully") : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
@@ -110,6 +150,34 @@ namespace PMS.API
                 return BadRequest("Sorry some internal error occured");
             }
 
+        }
+        [HttpGet]
+        public IActionResult GetallProjectDetails()
+        {
+            try
+            {
+
+                return Ok(_personalService.GetallProjectDetails());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServiceController :GetallProjectDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+
+
+        }
+        [HttpGet]
+        public IActionResult GetProjectDetailsById(int Projectid)
+        {
+            try{
+                
+                return Ok(_personalService.GetProjectDetailsById(Projectid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServiceController :GetallProjectDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
         }
         [HttpPost]
         public IActionResult AddProjects(Projects projects)
@@ -149,6 +217,34 @@ namespace PMS.API
                 return BadRequest("Sorry some internal error occured");
             }
 
+        }
+        [HttpGet]
+        public IActionResult GetallSkillDetails()
+        {
+            try
+            {
+
+                return Ok(_personalService.GetallSkillDetails());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServiceController : GetallSkillDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+
+
+        }
+        [HttpGet]
+        public IActionResult GetSkillDetailsById(int Skillid)
+        {
+            try{
+                
+                return Ok(_personalService.GetSkillDetailsById(Skillid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServiceController : GetallSkillDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
         }
         [HttpPost]
         public IActionResult AddSkills(Skills skill)
@@ -190,7 +286,7 @@ namespace PMS.API
 
         }
         [HttpPost]
-        public IActionResult AddBreakDuration(BreakDuration duration)
+        public IActionResult AddBreakDuration(BreakDuration duration,int userID)
         {
             if (duration == null)
             {
@@ -199,7 +295,7 @@ namespace PMS.API
             }
             try
             {
-                return _personalService.AddBreakDuration(duration) ? Ok("BreakDuration details added") : Problem("Some internal Error occured");
+                return _personalService.AddBreakDuration(duration,userID) ? Ok("BreakDuration details added") : Problem("Some internal Error occured");
             }
             catch (Exception exception)
             {

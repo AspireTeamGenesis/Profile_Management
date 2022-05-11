@@ -2,7 +2,8 @@ using Serilog;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace PMS.API
+
+namespace PMS_API
 {
     public interface IUserData
     {
@@ -30,7 +31,7 @@ namespace PMS.API
             
             try{
 
-                return _context.users.ToList();
+                return _context.users.Include("gender").Include("designation").Include("organisation").ToList();
                 
             }
             
@@ -48,7 +49,7 @@ namespace PMS.API
                 throw new ValidationException("User Id is not provided to DAL");
             
             try{
-                User user= _context.users.FirstOrDefault(x=>x.Id==id);
+                User user= GetallUsers().Where(x=>x.UserId==id).First();
                 if(user==null)throw new NullReferenceException($"Id not found-{id}");
                 return user;
             }
@@ -123,18 +124,18 @@ namespace PMS.API
             _validation.userValidate(item);
             
             try{
-                var user = _context.users.Find(item.Id);
-                if(user==null)throw new NullReferenceException($"User Id not found{item.Id}");
-                user.Id=item.Id;
+                var user = _context.users.Find(item.UserId);
+                if(user==null)throw new NullReferenceException($"User Id not found{item.UserId}");
+                user.UserId=item.UserId;
                 user.Name=item.Name;
                 user.Email=item.Email;
                 user.UserName=item.UserName;
                 user.Password=item.Password;
-                user.Gender=item.Gender;
-                user.MobileNo=item.MobileNo;
-                user.Organization=item.Organization;
-                user.Designation=item.Designation;
-                user.Reporting_Person=item.Reporting_Person;
+                user.GenderId=item.GenderId;
+                user.MobileNumber=item.MobileNumber;
+                user.OrganisationId=item.OrganisationId;
+                user.DesignationId=item.DesignationId;
+                user.ReportingPerson=item.ReportingPerson;
                 user.IsActive=item.IsActive;
                 user.CreatedBy=item.CreatedBy;
             _context.users.Update(user);

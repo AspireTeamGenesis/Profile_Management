@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
-using PMS.API;
+using PMS_API;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,6 +14,11 @@ builder.Services.AddDbContext<Context>(options =>{
 });
 builder.Services.AddScoped<IUserServices,UserServices>();
 builder.Services.AddScoped<IPersonalService,PersonalService>();
+builder.Services.AddScoped<ICollegeServices,CollegeServices>();
+builder.Services.AddScoped<IDesignationServices,DesignationServices>();
+builder.Services.AddScoped<IDomainServices,DomainServices>();
+builder.Services.AddScoped<IProfileStatusServices,ProfileStatusServices>();
+builder.Services.AddScoped<ITechnologyServices,TechnologyServices>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace PMS.API
+namespace PMS_API
 {
     public class UserValidation
     {
@@ -26,16 +26,16 @@ namespace PMS.API
                 throw new ValidationException($"Password not be null and user supplied Password is {user.Password}");
             if(!Regex.IsMatch(user.Password, @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"))
                 throw new ValidationException($"Enter a valid Password. Password must contain Minimum eight characters, at least one letter, one number and one special character and user supplied Password is {user.Password}");
-            if(string.IsNullOrEmpty(user.Gender))
-                throw new ValidationException($"Gender not be null and user supplied Gender is{user.Gender}");
-            if(user.MobileNo==0)
-                throw new ValidationException($"MobileNo not be null and user supplied Gender is {user.MobileNo}");
-            if(string.IsNullOrEmpty(user.Organization))
-                throw new ValidationException($"Organization not be null and user supplied Organization is {user.Organization}");
-            if(string.IsNullOrEmpty(user.Designation))
-                throw new ValidationException($"Designation not be null and user supplied Designation is {user.Designation}");
-            if(string.IsNullOrEmpty(user.Reporting_Person))
-                throw new ValidationException($"Reporting_Person not be null and user supplied Reporting_Person is {user.Reporting_Person}");
+            // if(string.IsNullOrEmpty(user.Gender))
+            //     throw new ValidationException($"Gender not be null and user supplied Gender is{user.Gender}");
+            if(user.MobileNumber==0)
+                throw new ValidationException($"MobileNo not be null and user supplied Gender is {user.MobileNumber}");
+            // if(user.OrganisationName==0)
+            //     throw new ValidationException($"Organization not be null and user supplied Organization is {user.OrganisationId}");
+            // if(user.DesignationId==0)
+            //     throw new ValidationException($"Designation not be null and user supplied Designation is {user.DesignationId}");
+            if(string.IsNullOrEmpty(user.ReportingPerson))
+                throw new ValidationException($"Reporting_Person not be null and user supplied Reporting_Person is {user.ReportingPerson}");
             return true;
 
         }

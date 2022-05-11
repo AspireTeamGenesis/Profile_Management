@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Net;
-namespace PMS.API
+namespace PMS_API
 {
     [ApiController]
     [Route("[controller]/[action]")]

@@ -1,5 +1,5 @@
 using System;
-namespace PMS.API{
+namespace PMS_API{
    
 
     public class UserServices : IUserServices
@@ -30,13 +30,26 @@ namespace PMS.API{
             }
         }
        
-        public User GetUser(int id)
+        public object GetUser(int id)
         {
             if(id<=0)
                 throw new ArgumentNullException($"ID is not provided{id}");
             try
             {
-                return userData.GetUser(id); 
+                var getuser= userData.GetUser(id); 
+                return new {
+                    userid=getuser.UserId,
+                    name =getuser.Name,
+                    email=getuser.Email,
+                    username=getuser.UserName,
+                    password=getuser.Password,
+                    gender=getuser.gender.GenderName,
+                    mobilenumber=getuser.MobileNumber,
+                    designation=getuser.designation.DesignationName,
+                    reportingperson=getuser.ReportingPerson,
+                    organisation=getuser.organisation.OrganisationName
+
+                };
             }
             catch(Exception exception){
                 _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");
@@ -96,7 +109,7 @@ namespace PMS.API{
             _validation.userValidate(item);
             try{
                 
-               item.UpdatedBy=item.Name;
+               item.UpdatedBy=item.UserId;
                 item.UpdatedOn=DateTime.Now;
                 return userData.UpdateUser(item)?true:false;
                 
