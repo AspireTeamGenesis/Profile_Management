@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace PMS_API{
     
@@ -33,25 +34,30 @@ namespace PMS_API{
         //  )]
         public string Password { get; set; }
         //[Required]
-        public long MobileNumber { get; set; }
+        public string MobileNumber { get; set; }
         //[Required]
         public int DesignationId{ get; set; }
         //[Required]
         [ForeignKey("DesignationId")]
         [InverseProperty("users")]
+        //[JsonIgnore]
         public virtual Designation? designation { get; set;}
         public string ReportingPerson { get; set; }
 
         public int OrganisationId{get;set;}
         [ForeignKey("OrganisationId")]
         [InverseProperty("users")]
+        //[JsonIgnore]
         public virtual Organisation? organisation {get;set;}
 
         public int GenderId {get;set;}
         [ForeignKey("GenderId")]
         [InverseProperty("users")]
+       //[JsonIgnore]
         public virtual Gender? gender{get;set;}
+
         [InverseProperty("users")]
+        //[JsonIgnore]
         public virtual PersonalDetails? personalDetails { get; set; }
         
         public bool IsActive{get;set;}

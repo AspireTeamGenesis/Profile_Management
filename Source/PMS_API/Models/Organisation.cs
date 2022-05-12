@@ -7,7 +7,7 @@ namespace PMS_API{
         public int OrganisationId{get; set;}
         public string OrganisationName{get;set;}
         [InverseProperty("organisation")]
-        public virtual ICollection<User> users{get;set;}
+        public virtual ICollection<User>? users{get;set;}
         public bool IsActive { get; set; } = true;
         
 

@@ -9,7 +9,7 @@ namespace PMS_API{
         [StringLength(80)]
         public string ? DesignationName{get;set;}
         [InverseProperty("designation")]
-        public virtual ICollection<User>  users  {get;set;}
+        public virtual ICollection<User>?  users  {get;set;}
         public bool IsActive { get; set; } = true;
         
 

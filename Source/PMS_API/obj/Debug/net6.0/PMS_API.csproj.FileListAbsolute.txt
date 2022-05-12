@@ -70,3 +70,7 @@ C:\Users\harini.rajkumar\PMS_API\obj\Debug\net6.0\refint\PMS_API.dll
 C:\Users\harini.rajkumar\PMS_API\obj\Debug\net6.0\PMS_API.pdb
 C:\Users\harini.rajkumar\PMS_API\obj\Debug\net6.0\PMS_API.genruntimeconfig.cache
 C:\Users\harini.rajkumar\PMS_API\obj\Debug\net6.0\ref\PMS_API.dll
+C:\Users\harini.rajkumar\PMS_API\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\harini.rajkumar\PMS_API\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\harini.rajkumar\PMS_API\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\harini.rajkumar\PMS_API\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

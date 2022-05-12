@@ -9,7 +9,7 @@ namespace PMS_API{
         [StringLength(80)] 
         public string CollegeName{get;set;}
         [InverseProperty("college")]
-        public virtual ICollection<Education> education  {get;set;}
+        public virtual ICollection<Education>? education  {get;set;}
         public bool IsActive { get; set; } = true;
         
 

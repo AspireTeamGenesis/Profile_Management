@@ -5,7 +5,7 @@ using System.Net;
 namespace PMS_API;
 
 [ApiController]
-[Route("[College]/[action]")]
+    [Route("[controller]/[Action]")]
 public class CollegeController : ControllerBase
 {
     private readonly ILogger _logger;

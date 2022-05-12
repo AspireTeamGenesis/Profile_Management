@@ -4,7 +4,7 @@ using System.Net;
 namespace PMS_API;
 
 [ApiController]
-[Route("[Domain]/[action]")]
+    [Route("[controller]/[Action]")]
 public class DomainController : ControllerBase
 {
     private readonly ILogger _logger;

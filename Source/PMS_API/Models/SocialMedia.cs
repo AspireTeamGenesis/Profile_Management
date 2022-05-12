@@ -10,10 +10,10 @@ namespace PMS_API
         public string SocialMedia_Name{get;set;}
         public string SocialMedia_Link{get;set;}
         
-        public int PersonalDetailsId{get;set;}
+        // public int PersonalDetailsId{get;set;}
         
-        [InverseProperty("socialmedia")]
-        public virtual ICollection<PersonalDetails>  personalDetails {get;set;}
+        // [InverseProperty("socialmedia")]
+        // public virtual ICollection<PersonalDetails>?  personalDetails {get;set;}
         public DateTime? CreatedOn { get; set; }
 
         public int? CreatedBy { get; set; }

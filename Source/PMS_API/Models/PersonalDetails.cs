@@ -24,21 +24,21 @@ namespace PMS_API
         
 
         [ForeignKey("languageid")]
-        [InverseProperty("personalDetails")]
+        // [InverseProperty("personalDetails")]
         public virtual Language? language { get; set; }
         [ForeignKey("breakDurationid")]
-        [InverseProperty("personalDetails")]
+        // [InverseProperty("personalDetails")]
         public virtual BreakDuration? breakDuration { get; set; }
 
         [ForeignKey("socialmediaid")]  
-        [InverseProperty("personalDetails")]
+        // [InverseProperty("personalDetails")]
         public virtual SocialMedia? socialmedia { get; set; }
         [InverseProperty("personalDetails")]
-        public virtual ICollection<Education> education { get; set;}
+        public virtual ICollection<Education>? education { get; set;}
         [InverseProperty("personalDetails")]
-        public virtual ICollection<Projects> projects { get; set;}
+        public virtual ICollection<Projects>? projects { get; set;}
         [InverseProperty("personalDetails")]
-        public virtual ICollection<Skills> skills { get; set;}
+        public virtual ICollection<Skills>? skills { get; set;}
         [ForeignKey("UserId")]
         [InverseProperty("personalDetails")]
         public virtual User? users { get; set; }

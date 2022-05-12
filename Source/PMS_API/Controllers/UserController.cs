@@ -3,8 +3,8 @@ using System;
 using System.Net;
 namespace PMS_API
 {
-    [ApiController]
-    [Route("[controller]/[action]")]
+   [ApiController]
+    [Route("[controller]/[Action]")]
     public class UserController:Controller{
         
         private IUserServices _userServices;

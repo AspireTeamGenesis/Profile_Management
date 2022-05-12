@@ -9,7 +9,7 @@ namespace PMS_API
         public int EducationId{get;set;}
         public string Degree{get;set;}
         public string Course{get;set;}
-        public string College { get; set; }
+        // public string College { get; set; }
         [NotMapped]
         public DateTime Starting_Year{get;set;}
         [NotMapped]

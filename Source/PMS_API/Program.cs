@@ -19,6 +19,9 @@ builder.Services.AddScoped<IDesignationServices,DesignationServices>();
 builder.Services.AddScoped<IDomainServices,DomainServices>();
 builder.Services.AddScoped<IProfileStatusServices,ProfileStatusServices>();
 builder.Services.AddScoped<ITechnologyServices,TechnologyServices>();
+builder.Services.AddControllersWithViews().AddNewtonsoftJson(options =>
+options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

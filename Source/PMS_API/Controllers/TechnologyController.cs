@@ -4,7 +4,7 @@ using System.Net;
 namespace PMS_API;
 
 [ApiController]
-[Route("[Technology]/[action]")]
+    [Route("[controller]/[Action]")]
 public class TechnologyController : ControllerBase
 {
     private readonly ILogger _logger;

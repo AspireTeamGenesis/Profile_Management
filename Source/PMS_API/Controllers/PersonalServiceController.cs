@@ -235,11 +235,11 @@ namespace PMS_API
 
         }
         [HttpGet]
-        public IActionResult GetSkillDetailsById(int Skillid)
+        public IActionResult GetSkillDetailsById(int Skillid,int Technologyid)
         {
             try{
                 
-                return Ok(_personalService.GetSkillDetailsById(Skillid));
+                return Ok(_personalService.GetSkillDetailsById(Skillid,Technologyid));
             }
             catch(Exception exception){
                 _logger.LogInformation($"PersonalServiceController : GetallSkillDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");

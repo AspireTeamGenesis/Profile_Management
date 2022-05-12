@@ -137,6 +137,7 @@ namespace PMS_API
                 throw exception;
             }
         }
+        
          public bool AddEducation(Education education)
         {
             
@@ -510,7 +511,7 @@ namespace PMS_API
             }
             
         }
-         public List<Technology> GetallTechnologies()
+        public List<Technology> GetallTechnologies()
         {
             
             try{
@@ -523,6 +524,24 @@ namespace PMS_API
                 //log "if exception occures"
                 _logger.LogError($"ProfileData.cs-GetallTechnologies()-{exception.Message}");
                 _logger.LogInformation($"ProfileData.cs-GetallTechnologies()-{exception.StackTrace}");
+                throw exception;
+            }
+        }
+       
+        public Technology GetTechnologyById(int Technologyid)
+        {
+             if(Technologyid<=0)
+               
+                throw new ValidationException("Technology Id is not provided to DAL");
+            
+            try{
+                Technology technology= GetallTechnologies().Where(x=>x.TechnologyId==Technologyid).First();
+                if(technology==null)throw new NullReferenceException($"Id not found-{technology}");
+                return technology;
+            }
+            catch(Exception exception){
+                _logger.LogError($"ProfileData.cs-GetGetTechnologyById()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-GetGetTechnologyById()-{exception.StackTrace}");
                 throw exception;
             }
         }

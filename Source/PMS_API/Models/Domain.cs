@@ -9,7 +9,7 @@ namespace PMS_API{
         [StringLength(80)]
         public string ? DomainName{get;set;}
         [InverseProperty("domain")]
-        public virtual ICollection<Skills>  skills  {get;set;}
+        public virtual ICollection<Skills>?  skills  {get;set;}
         public int TechnologyId { get; set; }
         [ForeignKey("TechnologyId")]
         [InverseProperty("domains")]
