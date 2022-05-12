@@ -97,13 +97,14 @@ namespace PMS_API
          } 
          [HttpDelete(Name="Disable")]
          public IActionResult Disable(int id){
+             if (id == 0) return BadRequest("User is required");
             try{
                 
                 return _userServices.Disable(id)?Ok("User Disabled Successfully"):BadRequest("Sorry internal error occured");
             }
              
              catch(Exception exception){
-                 _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
+                 _logger.LogInformation($"UserController:DisableUser()-{exception.Message}{exception.StackTrace}");
                  return BadRequest(exception.StackTrace);
              }
         }

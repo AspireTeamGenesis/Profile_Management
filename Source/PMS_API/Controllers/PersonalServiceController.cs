@@ -63,21 +63,48 @@ namespace PMS_API
 
 
         }
-        [HttpDelete]
-        public IActionResult RemovePersonalDetail(int PersonalDetails_Id)
-        {
-            if (PersonalDetails_Id == 0)
-                return BadRequest("PersonalDetails_ Id can't be null");
+        [HttpPut]
+        public IActionResult UpdatePersonalDetail(PersonalDetails personalDetails)
 
+        {
+
+            if (personalDetails == null)
+            {
+                // _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
+                return BadRequest("User values not be null");
+            }
+
+            //updating user via userservices
 
             try
             {
-                return _personalService.RemovePersonalDetail(PersonalDetails_Id) ? Ok("PersonalDetails_ Removed Successfully") : Problem("Sorry internal error occured");
+
+                return _personalService.UpdatePersonalDetail(personalDetails) ? Ok("User Updated Successfully") : BadRequest("Sorry internal error occured");
+
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalDetail_ Service : RemovePersonalDetail_ throwed an exception : {exception}");
+                // _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+        }
+
+        [HttpDelete]
+        public IActionResult DisablePersonalDetails(int PersonalDetails_Id)
+        {
+            if (PersonalDetails_Id == 0)
+                return BadRequest("PersonalDetails_Id can't be null");
+
+
+            try
+            {
+                return _personalService.DisablePersonalDetails(PersonalDetails_Id) ? Ok("PersonalDetails_ Removed Successfully") : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalService : DisablePersonalDetails throwed an exception : {exception}");
                 return BadRequest("Sorry some internal error occured");
             }
 
@@ -96,7 +123,7 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalServiceControllerController :AddEducation()-{exception.Message}{exception.StackTrace}");
+                _logger.LogInformation($"PersonalServiceController :AddEducation()-{exception.Message}{exception.StackTrace}");
 
                 return BadRequest(exception.Message);
             }
@@ -131,22 +158,47 @@ namespace PMS_API
                return BadRequest(exception.Message);
             }
         }
+        [HttpPut]
+        public IActionResult UpdateEducation(Education education)
 
-        [HttpDelete]
-        public IActionResult RemoveEducation(int EducationId)
         {
-            if (EducationId == 0)
-                return BadRequest("Education_ Id can't be null");
 
+            if (education == null)
+            {
+                // _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
+                return BadRequest("User values not be null");
+            }
+
+            //updating user via userservices
 
             try
             {
-                return _personalService.RemoveEducation(EducationId) ? Ok("Education_ Removed Successfully") : Problem("Sorry internal error occured");
+
+                return _personalService.UpdateEducation(education) ? Ok("User Updated Successfully") : BadRequest("Sorry internal error occured");
+
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"Education_ Service : RemoveEducation_ throwed an exception : {exception}");
+                // _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+        }
+        [HttpDelete]
+        public IActionResult DisableEducationalDetails(int EducationId)
+        {
+            if (EducationId == 0)
+                return BadRequest("Education_Id can't be null");
+
+
+            try
+            {
+                return _personalService.DisableEducationalDetails(EducationId) ? Ok("Education_ Removed Successfully") : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalService : DisableEducationalDetails throwed an exception : {exception}");
                 return BadRequest("Sorry some internal error occured");
             }
 
@@ -199,21 +251,47 @@ namespace PMS_API
             }
 
         }
-        [HttpDelete]
-        public IActionResult RemoveProjects(int Projects_Id)
-        {
-            if (Projects_Id == 0)
-                return BadRequest("Projects_ Id can't be null");
+        [HttpPut]
+        public IActionResult UpdateProjects(Projects projects)
 
+        {
+
+            if (projects == null)
+            {
+                // _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
+                return BadRequest("User values not be null");
+            }
+
+            //updating user via userservices
 
             try
             {
-                return _personalService.RemoveProjects(Projects_Id) ? Ok("Projects_ Removed Successfully") : Problem("Sorry internal error occured");
+
+                return _personalService.UpdateProjects(projects) ? Ok("User Updated Successfully") : BadRequest("Sorry internal error occured");
+
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"Projects_ Service : RemoveProjects_ throwed an exception : {exception}");
+                // _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+        }
+        [HttpDelete]
+        public IActionResult DisableProjectDetails(int Projects_Id)
+        {
+            if (Projects_Id == 0)
+                return BadRequest("Projects_Id can't be null");
+
+
+            try
+            {
+                return _personalService.DisableProjectDetails(Projects_Id) ? Ok("Projects_ Removed Successfully") : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalService : DisableProjectDetails throwed an exception : {exception}");
                 return BadRequest("Sorry some internal error occured");
             }
 
@@ -266,21 +344,47 @@ namespace PMS_API
             }
 
         }
-        [HttpDelete]
-        public IActionResult RemoveSkills(int Skill_Id)
-        {
-            if (Skill_Id == 0)
-                return BadRequest("Skill_ Id can't be null");
+        [HttpPut]
+        public IActionResult UpdateSkills(Skills skill)
 
+        {
+
+            if (skill == null)
+            {
+                // _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
+                return BadRequest("User values not be null");
+            }
+
+            //updating user via userservices
 
             try
             {
-                return _personalService.RemoveSkills(Skill_Id) ? Ok("Skills_ Removed Successfully") : Problem("Sorry internal error occured");
+
+                return _personalService.UpdateSkills(skill) ? Ok("User Updated Successfully") : BadRequest("Sorry internal error occured");
+
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"Skills_ Service : RemoveProjects_ throwed an exception : {exception}");
+                // _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+        }
+        [HttpDelete]
+        public IActionResult DisableSkillDetails(int Skill_Id)
+        {
+            if (Skill_Id == 0)
+                return BadRequest("Skill_Id can't be null");
+
+
+            try
+            {
+                return _personalService.DisableSkillDetails(Skill_Id) ? Ok("Skills_ Removed Successfully") : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"Skills_ Service : DisableSkillDetails throwed an exception : {exception}");
                 return BadRequest("Sorry some internal error occured");
             }
 
@@ -305,21 +409,22 @@ namespace PMS_API
             }
 
         }
+        
         [HttpDelete]
-        public IActionResult RemoveBreakDuration(int BreakDuration_Id)
+        public IActionResult DisableBreakDuration(int BreakDuration_Id)
         {
             if (BreakDuration_Id == 0)
-                return BadRequest("BreakDuration_ Id can't be null");
+                return BadRequest("BreakDuration_Id can't be null");
 
 
             try
             {
-                return _personalService.RemoveBreakDuration(BreakDuration_Id) ? Ok("BreakDuration_ Removed Successfully") : Problem("Sorry internal error occured");
+                return _personalService.DisableBreakDuration(BreakDuration_Id) ? Ok("BreakDuration_ Removed Successfully") : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"BreakDuration_ Service : RemoveBreakDuration_ throwed an exception : {exception}");
+                _logger.LogInformation($"BreakDuration_ Service : DisableBreakDuration throwed an exception : {exception}");
                 return BadRequest("Sorry some internal error occured");
             }
 
@@ -345,20 +450,20 @@ namespace PMS_API
 
         }
         [HttpDelete]
-        public IActionResult RemoveLanguage(int Language_Id)
+        public IActionResult DisableLanguage(int Language_Id)
         {
             if (Language_Id == 0)
-                return BadRequest("Language_ Id can't be null");
+                return BadRequest("Language_Id can't be null");
 
 
             try
             {
-                return _personalService.RemoveLanguage(Language_Id) ? Ok("Language_ Removed Successfully") : Problem("Sorry internal error occured");
+                return _personalService.DisableLanguage(Language_Id) ? Ok("Language_ Removed Successfully") : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"SocialMedia_ Service : RemoveSocialMedia_ throwed an exception : {exception}");
+                _logger.LogInformation($"SocialMedia_ Service : DisableLanguage throwed an exception : {exception}");
                 return BadRequest("Sorry some internal error occured");
             }
         }
@@ -383,20 +488,20 @@ namespace PMS_API
 
         }
         [HttpDelete]
-        public IActionResult RemoveSocialMedia(int SocialMedia_Id)
+        public IActionResult DisableSocialMedia(int SocialMedia_Id)
         {
             if (SocialMedia_Id == 0)
-                return BadRequest("SocialMedia_ Id can't be null");
+                return BadRequest("SocialMedia_Id can't be null");
 
 
             try
             {
-                return _personalService.RemoveSocialMedia(SocialMedia_Id) ? Ok("SocialMedia_ Removed Successfully") : Problem("Sorry internal error occured");
+                return _personalService.DisableSocialMedia(SocialMedia_Id) ? Ok("SocialMedia_ Removed Successfully") : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"SocialMedia_ Service : RemoveSocialMedia_ throwed an exception : {exception}");
+                _logger.LogInformation($"SocialMedia_ Service : DisableSocialMedia throwed an exception : {exception}");
                 return BadRequest("Sorry some internal error occured");
             }
 

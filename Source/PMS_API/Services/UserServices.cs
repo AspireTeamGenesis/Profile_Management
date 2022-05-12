@@ -97,10 +97,6 @@ namespace PMS_API{
                 _logger.LogInformation($"UserServices:Delete()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
-            
-            
-            
- 
         }
         public bool UpdateUser(User item)
         {

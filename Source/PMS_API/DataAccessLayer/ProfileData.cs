@@ -77,8 +77,39 @@ namespace PMS_API
             
             
         }
+        public bool UpdatePersonalDetail(PersonalDetails personalDetails)
+        {
+            if (personalDetails == null)
+                throw new ValidationException("profile's personal details is not provided to DAL");
 
-        public bool RemovePersonalDetail(int PersonalDetailsId)
+
+            try
+            {
+                var Profile = _context.personalDetails.Find(personalDetails.PersonalDetailsId);//  personadetails = _ProfileContext.personalDetails.GetUser(id)
+                if (Profile == null) throw new NullReferenceException($"Profile Id not found{personalDetails.PersonalDetailsId}");
+                // Profile.PersonalDetailsId = personalDetails.PersonalDetailsId;
+                // Profile.Objective = personalDetails.Objective;
+                // Profile.DateOfBirth = personalDetails.DateOfBirth;
+                // // Profile.Experience = personalDetails.Experience;
+                // // Profile.DateOfJoin = personalDetails.DateOfJoin;
+                // Profile.Nationality = personalDetails.Nationality;
+                // Profile.IsActive = personalDetails.IsActive;
+                // Profile.UpdatedBy = personalDetails.UpdatedBy;
+                _context.Update(personalDetails);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception exception)
+            {
+                //log " exception occures"
+                _logger.LogError($"ProfileData.cs-UpdatePersonalDetail)-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-UpdatePersonalDetail()-{exception.StackTrace}");
+                return false;
+            }
+
+        }
+
+        public bool DisablePersonalDetails(int PersonalDetailsId)
         {
             if(PersonalDetailsId<=0)
                 throw new ValidationException("PersonalDetails Id is not provided to DAL");
@@ -98,8 +129,8 @@ namespace PMS_API
           
             catch(Exception exception){
                 //log "if exception occures"
-                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
-                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                _logger.LogError($"ProfileData.cs-DisablePersonalDetails()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-DisablePersonalDetails()-{exception.StackTrace}");
                  return false;
             }
             
@@ -162,9 +193,41 @@ namespace PMS_API
             
             
         }
+        public bool UpdateEducation(Education education)
+        {
+            if (education == null)
+                throw new ValidationException("User values is not provided to DAL");
+
+
+            try
+            {
+                var Profile = _context.educations.Find(education.EducationId);//  personadetails = _ProfileContext.personalDetails.GetUser(id)
+    
+                if (Profile == null) throw new NullReferenceException($"Profile Id not found{education.EducationId}");
+                // Profile.personaldetailsId = education.personaldetailsId;
+                // Profile.Degree = education.Degree;
+                // Profile.Course = education.Course;
+                // Profile.Starting_Year = education.Starting_Year;
+                // Profile.Ending_Year = education.Ending_Year;
+                // Profile.Percentage = education.Percentage;
+                // Profile.IsActive = education.IsActive;
+                // Profile.UpdatedBy = education.UpdatedBy;
+                _context.Update(education);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception exception)
+            {
+                //log " exception occures"
+                _logger.LogError($"ProfileData.cs-UpdatePersonalDetail)-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-UpdatePersonalDetail()-{exception.StackTrace}");
+                return false;
+            }
+
+        }
         
         
-        public bool RemoveEducation(int Education_Id)
+        public bool DisableEducationalDetails(int Education_Id)
         {
             if(Education_Id<=0)
                
@@ -185,8 +248,8 @@ namespace PMS_API
           
             catch(Exception exception){
                 //log "if exception occures"
-                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
-                _logger.LogInformation($"ProfileDate.cs-Disable()-{exception.StackTrace}");
+                _logger.LogError($"ProfileData.cs-DisableEducationDetails()-{exception.Message}");
+                _logger.LogInformation($"ProfileDate.cs-DisableEducationDetails()-{exception.StackTrace}");
                  return false;
             }
             
@@ -248,7 +311,40 @@ namespace PMS_API
                 throw exception;
             }
         }
-        public bool RemoveProjects(int Project_Id)
+        public bool UpdateProjects(Projects projects)
+        {
+            if (projects == null)
+                throw new ValidationException("User values is not provided to DAL");
+
+
+            try
+            {
+                var Profile = _context.projects.Find(projects.ProjectId);//  personadetails = _ProfileContext.personalDetails.GetUser(id)
+                if (Profile == null) throw new NullReferenceException($"Profile Id not found{projects.PersonalDetailsId}");
+                // Profile.PersonalDetailsId = projects.PersonalDetailsId;
+                // Profile.Project_Id = projects.Project_Id;
+                // Profile.ProjectName = projects.ProjectName;
+                // Profile.project_Description = projects.project_Description;
+                // Profile.Project_Starting_Month = projects.Project_Starting_Month;
+                // Profile.Project_Starting_Year = projects.Project_Starting_Year;
+                // Profile.Project_Ending_Month = projects.Project_Ending_Month;
+                // Profile.Project_Ending_Year = projects.Project_Ending_Year;
+                // Profile.IsActive = projects.IsActive;
+                // Profile.UpdatedBy = projects.UpdatedBy;
+                _context.Update(projects);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception exception)
+            {
+                //log " exception occures"
+                _logger.LogError($"ProfileData.cs-UpdatePersonalDetail)-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-UpdatePersonalDetail()-{exception.StackTrace}");
+                return false;
+            }
+            throw new NotImplementedException();
+        }
+        public bool DisableProjectDetails(int Project_Id)
         {
             if(Project_Id<=0)
                
@@ -271,8 +367,8 @@ namespace PMS_API
           
             catch(Exception exception){
                 //log "if exception occures"
-                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
-                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                _logger.LogError($"ProfileData.cs-DisableProjectDetails()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-DisableProjectDetails()-{exception.StackTrace}");
                  return false;
             }
             
@@ -303,7 +399,7 @@ namespace PMS_API
         }
         
 
-        public bool RemoveBreakDuration(int BreakDuration_Id)
+        public bool DisableBreakDuration(int BreakDuration_Id)
         {
             if(BreakDuration_Id<=0)
                
@@ -324,8 +420,8 @@ namespace PMS_API
           
             catch(Exception exception){
                 //log "if exception occures"
-                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
-                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                _logger.LogError($"ProfileData.cs-DisableBreakDuration()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-DisableBreakDuration()-{exception.StackTrace}");
                  return false;
             }
             
@@ -387,7 +483,36 @@ namespace PMS_API
                 throw exception;
             }
         }
-        public bool RemoveSkills(int Skill_Id)
+        public bool UpdateSkills(Skills skill)
+        {
+            if (skill == null)
+                throw new ValidationException("User values is not provided to DAL");
+
+
+            try
+            {
+                var Profile = _context.skills.Find(skill.PersonalDetailsId);//  personadetails = _ProfileContext.personalDetails.GetUser(id)
+                if (Profile == null) throw new NullReferenceException($"Profile Id not found{skill.PersonalDetailsId}");
+                // Profile.Skill_Id = skill.Skill_Id;
+                // Profile.Domain = skill.Domain;
+                // Profile.Technology = skill.Technology;
+                // Profile.PersonalDetailsId = skill.PersonalDetailsId;
+                // Profile.IsActive = skill.IsActive;
+                // Profile.UpdatedBy = skill.UpdatedBy;
+                _context.Update(skill);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception exception)
+            {
+                //log " exception occures"
+                _logger.LogError($"ProfileData.cs-UpdatePersonalDetail)-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-UpdatePersonalDetail()-{exception.StackTrace}");
+                return false;
+            }
+            throw new NotImplementedException();
+        }
+        public bool DisableSkillDetails(int Skill_Id)
         {
             if(Skill_Id<=0)
                
@@ -408,8 +533,8 @@ namespace PMS_API
           
             catch(Exception exception){
                 //log "if exception occures"
-                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
-                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                _logger.LogError($"ProfileData.cs-DisableSkillDetails()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-DisableSkillDetails()-{exception.StackTrace}");
                  return false;
             }
             
@@ -438,7 +563,7 @@ namespace PMS_API
             
             
         }
-         public bool RemoveLanguage(int Language_Id)
+         public bool DisableLanguage(int Language_Id)
         {
             if(Language_Id<=0)
                
@@ -459,8 +584,8 @@ namespace PMS_API
           
             catch(Exception exception){
                 //log "if exception occures"
-                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
-                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                _logger.LogError($"ProfileData.cs-DisableLanguage()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-DisableLanguage()-{exception.StackTrace}");
                  return false;
             }
             
@@ -484,7 +609,7 @@ namespace PMS_API
                  return false;
             }
         }
-         public bool RemoveSocialMedia(int SocialMedia_Id)
+         public bool DisableSocialMedia(int SocialMedia_Id)
         {
             if(SocialMedia_Id<=0)
                
@@ -505,8 +630,8 @@ namespace PMS_API
           
             catch(Exception exception){
                 //log "if exception occures"
-                _logger.LogError($"ProfileData.cs-Disable()-{exception.Message}");
-                _logger.LogInformation($"ProfileData.cs-Disable()-{exception.StackTrace}");
+                _logger.LogError($"ProfileData.cs-DisableSocialMedia()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-DisableSocialMedia()-{exception.StackTrace}");
                  return false;
             }
             

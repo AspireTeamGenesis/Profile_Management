@@ -16,23 +16,21 @@ namespace PMS_API
         public int? CreatedBy { get; set; }
 
         public DateTime? UpdatedOn { get; set; }
-        public int languageid {get;set;}
-        public int breakDurationid{get;set;}
-        public int socialmediaid{get;set;}
+        
         public int? UpdatedBy { get; set; }
         public int UserId { get; set; }
         
 
-        [ForeignKey("languageid")]
-        // [InverseProperty("personalDetails")]
-        public virtual Language? language { get; set; }
-        [ForeignKey("breakDurationid")]
-        // [InverseProperty("personalDetails")]
-        public virtual BreakDuration? breakDuration { get; set; }
+        
+        [InverseProperty("personalDetails")]
+        public virtual ICollection<Language>? language { get; set; }
+        
+        [InverseProperty("personalDetails")]
+        public virtual ICollection<BreakDuration>? breakDuration { get; set; }
+ 
+        [InverseProperty("personalDetails")]
+        public virtual ICollection<SocialMedia>? socialmedia { get; set; }
 
-        [ForeignKey("socialmediaid")]  
-        // [InverseProperty("personalDetails")]
-        public virtual SocialMedia? socialmedia { get; set; }
         [InverseProperty("personalDetails")]
         public virtual ICollection<Education>? education { get; set;}
         [InverseProperty("personalDetails")]
@@ -42,6 +40,7 @@ namespace PMS_API
         [ForeignKey("UserId")]
         [InverseProperty("personalDetails")]
         public virtual User? users { get; set; }
+        public string? ProfileStatus {get; set;}
         public bool IsActive{ get; set;}
        
 

@@ -19,9 +19,10 @@ namespace PMS_API
         public int? StartingBreakYear { get; set; }
         public string? EndingBreakMonth { get; set; }
         public int? EndingBreakYear { get; set; }
-        // public int PersonalDetailsId{get;set;}
-        // [InverseProperty("breakDuration")]
-        // public virtual ICollection<PersonalDetails>?  personalDetails {get;set;}
+        public int PersonalDetailsId{get;set;}
+        [ForeignKey("PersonalDetailsId")]
+        [InverseProperty("breakDuration")]
+        public virtual PersonalDetails?  personalDetails {get;set;}
         public DateTime? CreatedOn { get; set; }
 
         public int? CreatedBy { get; set; }

@@ -11,10 +11,12 @@ namespace PMS_API
         public bool Read{get;set;}
         public bool Write{get;set;}
         public bool Speak{get;set;}
-        // public int PersonalDetailsId{get;set;}
+        public int PersonalDetailsId{get;set;}
         
-        // [InverseProperty("language")]
-        // public virtual ICollection<PersonalDetails>?  personalDetails {get;set;}
+        [ForeignKey("PersonalDetailsId")]
+        [InverseProperty("language")]
+
+         public virtual PersonalDetails?  personalDetails {get;set;}
         public DateTime? CreatedOn { get; set; }
 
         public int? CreatedBy { get; set; }

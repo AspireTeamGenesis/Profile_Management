@@ -5,22 +5,23 @@ namespace PMS_API
     public interface IPersonalService
     {
         bool AddPersonalDetail(PersonalDetails personalDetails);
-         bool RemovePersonalDetail(int PersonalDetailsId);
+        bool DisablePersonalDetails(int PersonalDetailsid);
+        bool UpdatePersonalDetail(PersonalDetails personalDetails);
         bool AddEducation(Education education);
-       
-        bool RemoveEducation(int Education_Id);
+        bool UpdateEducation(Education education);
+        bool DisableEducationalDetails(int Educationid);
         bool AddProjects(Projects project);
-        //Projects GetProjects(int ProjectId);
-         bool RemoveProjects(int Project_Id);
+        bool UpdateProjects(Projects projects);
+         bool DisableProjectDetails(int Projectid);
         bool AddSkills(Skills skill);
-        //Skills GetSkills(int SkillId);
-         bool RemoveSkills(int Skill_Id);
+        bool UpdateSkills(Skills skill);
+        bool DisableSkillDetails(int Skillid);
         bool AddBreakDuration(BreakDuration duration,int userID);
-         bool RemoveBreakDuration(int BreakDuration_Id);
+        bool DisableBreakDuration(int BreakDurationid);
         bool AddLanguage(Language language);
-         bool RemoveLanguage(int Language_Id);
+        bool DisableLanguage(int Languageid);
         bool AddSocialMedia(SocialMedia media);
-         bool RemoveSocialMedia(int SocialMedia_Id);
+        bool DisableSocialMedia(int SocialMediaid);
         IEnumerable<PersonalDetails> GetallPersonalDetails();
         object GetPersonalDetailsById(int id);
         IEnumerable<Education> GetallEducationDetails();
@@ -95,11 +96,6 @@ namespace PMS_API
                     dateofbirth=getpersonaldetails.DateOfBirth,
                     nationality=getpersonaldetails.Nationality,
                     dateofjoining=getpersonaldetails.DateOfJoining,
-                    language=getpersonaldetails.language.LanguageName,
-                    startingbreakdurationmonth=getpersonaldetails.breakDuration.StartingBreakMonth.ToString(),
-                    startingbreakdurationyear=getpersonaldetails.breakDuration.StartingBreakYear.ToString(),
-                    endingbreakmonth=getpersonaldetails.breakDuration.EndingBreakMonth,
-                    endingbreakyear=getpersonaldetails.breakDuration.EndingBreakYear,
                     educationdetails=GetAllEducationDetailsByPersonalDetailsId(getpersonaldetails.PersonalDetailsId),
                     projectdetails=GetAllProjectDetailsByPersonalDetailsId(getpersonaldetails.PersonalDetailsId),
                     skilldetails=GetAllSkillDetailsByPersonalDetailsId(getpersonaldetails.PersonalDetailsId)
@@ -112,19 +108,35 @@ namespace PMS_API
                 throw exception;
             }
         }
-        
+        public bool UpdatePersonalDetail(PersonalDetails personalDetails)
+        {
+            if (personalDetails == null) throw new ArgumentNullException($" ProfileService:Update()-user values not be null{personalDetails}");
+
+            try
+            {
+                personalDetails.UpdatedBy = personalDetails.CreatedBy;
+                personalDetails.UpdatedOn = DateTime.Now;
+                return profileData.UpdatePersonalDetail(personalDetails);
+            }
+            catch( Exception exception) 
+            {
+                _logger.LogInformation($"ProfileService:Update()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+            
+        }
 
         
-        public bool RemovePersonalDetail(int PersonalDetailsId)
+        public bool DisablePersonalDetails(int PersonalDetailid)
         {
-            if(PersonalDetailsId<=0)
-                throw new ArgumentNullException($"PersonalDetails ID is not provided{PersonalDetailsId}");
+            if(PersonalDetailid<=0)
+                throw new ArgumentNullException($"ID is not provided{PersonalDetailid}");
 
             
             try
             {
 
-                return profileData.RemovePersonalDetail(PersonalDetailsId)?true:false;
+                return profileData.DisablePersonalDetails(PersonalDetailid)?true:false;
                 
             }
             
@@ -216,16 +228,35 @@ namespace PMS_API
                 throw exception;
             }
         }
-        public bool RemoveEducation(int Education_Id)
+        public bool UpdateEducation(Education education)
         {
-            if(Education_Id<=0)
-                throw new ArgumentNullException($"Education ID is not provided{Education_Id}");
+            if (education == null) throw new ArgumentNullException($" ProfileService:Update()-user values not be null{education}");
+
+            try
+            {
+                education.UpdatedBy = education.CreatedBy;
+                education.UpdatedOn = DateTime.Now;
+                return profileData.UpdateEducation(education);
+
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileService:Update()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+
+            }
+        }
+        public bool DisableEducationalDetails(int EducationalDetailid)
+        {
+            if(EducationalDetailid<=0)
+                throw new ArgumentNullException($"ID is not provided{EducationalDetailid}");
 
             
             try
             {
 
-                return profileData.RemoveEducation(Education_Id)?true:false;
+                return profileData.DisableEducationalDetails(EducationalDetailid)?true:false;
                 
             }
             
@@ -240,9 +271,9 @@ namespace PMS_API
             if (project == null) throw new ArgumentNullException($"Values cannot be null values are {project}");
             try
             {
-                project.StartingMonth=project.ProjectStartingMonth.Month.ToString();
+                project.StartingMonth=project.ProjectStartingMonth.Month.ToString("MMM");
                 project.StartingYear=project.ProjectStartingYear.Year;
-                project.EndingMonth=project.ProjectEndingMonth.Month.ToString();
+                project.EndingMonth=project.ProjectEndingMonth.Month.ToString("MMM");
                 project.EndingYear=project.ProjectEndingYear.Year;
                 project.CreatedBy = project.PersonalDetailsId;
                 project.CreatedOn = DateTime.Now;
@@ -325,16 +356,35 @@ namespace PMS_API
                 throw exception;
             }
         }
-        public bool RemoveProjects(int Project_Id)
+        public bool UpdateProjects(Projects projects)
         {
-            if(Project_Id<=0)
-                throw new ArgumentNullException($"Project ID is not provided{Project_Id}");
+            if (projects == null) throw new ArgumentNullException($" ProfileService:Update()-user values not be null{projects}");
+
+            try
+            {
+                projects.UpdatedBy = projects.CreatedBy;
+                projects.UpdatedOn = DateTime.Now;
+                return profileData.UpdateProjects(projects);
+
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileService:Update()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+
+            }
+        }
+        public bool DisableProjectDetails(int ProjectDetailid)
+        {
+            if(ProjectDetailid<=0)
+                throw new ArgumentNullException($"ID is not provided{ProjectDetailid}");
 
             
             try
             {
 
-                return profileData.RemoveProjects(Project_Id)?true:false;
+                return profileData.DisableProjectDetails(ProjectDetailid)?true:false;
                 
             }
             
@@ -342,7 +392,7 @@ namespace PMS_API
                 _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
-        }    
+        }   
 
         public bool AddSkills(Skills skill)
         {
@@ -419,16 +469,35 @@ namespace PMS_API
                 throw exception;
             }
         }
-         public bool RemoveSkills(int Skill_Id)
+        public bool UpdateSkills(Skills skill)
         {
-            if(Skill_Id<=0)
-                throw new ArgumentNullException($"Skill ID is not provided{Skill_Id}");
+            if (skill == null) throw new ArgumentNullException($" ProfileService:Update()-user values not be null{skill}");
+
+            try
+            {
+                skill.UpdatedBy = skill.CreatedBy;
+                skill.UpdatedOn = DateTime.Now;
+                return profileData.UpdateSkills(skill);
+
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileService:Update()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+
+            }
+        }
+         public bool DisableSkillDetails(int SkillDetailid)
+        {
+            if(SkillDetailid<=0)
+                throw new ArgumentNullException($"ID is not provided{SkillDetailid}");
 
             
             try
             {
 
-                return profileData.RemoveSkills(Skill_Id)?true:false;
+                return profileData.DisableSkillDetails(SkillDetailid)?true:false;
                 
             }
             
@@ -436,7 +505,7 @@ namespace PMS_API
                 _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
-        }    
+        }   
         public bool AddBreakDuration(BreakDuration duration,int userID)
         {
             if (duration == null) throw new ArgumentNullException($"Values cannot be null values are {duration}");
@@ -454,16 +523,16 @@ namespace PMS_API
 
 
         }
-         public bool RemoveBreakDuration(int BreakDuration_Id)
+         public bool DisableBreakDuration(int BreakDurationid)
         {
-            if(BreakDuration_Id<=0)
-                throw new ArgumentNullException($"BreakDuration ID is not provided{BreakDuration_Id}");
+            if(BreakDurationid<=0)
+                throw new ArgumentNullException($"ID is not provided{BreakDurationid}");
 
             
             try
             {
 
-                return profileData.RemoveBreakDuration(BreakDuration_Id)?true:false;
+                return profileData.DisableBreakDuration(BreakDurationid)?true:false;
                 
             }
             
@@ -489,16 +558,18 @@ namespace PMS_API
 
 
         }
-         public bool RemoveLanguage(int Language_Id)
+         
+        
+         public bool DisableLanguage(int Languageid)
         {
-            if(Language_Id<=0)
-                throw new ArgumentNullException($"Language ID is not provided{Language_Id}");
+            if(Languageid<=0)
+                throw new ArgumentNullException($"ID is not provided{Languageid}");
 
             
             try
             {
 
-                return profileData.RemoveLanguage(Language_Id)?true:false;
+                return profileData.DisableLanguage(Languageid)?true:false;
                 
             }
             
@@ -524,16 +595,16 @@ namespace PMS_API
 
 
         }
-         public bool RemoveSocialMedia(int SocialMedia_Id)
+          public bool DisableSocialMedia(int SocialMediaid)
         {
-            if(SocialMedia_Id<=0)
-                throw new ArgumentNullException($"SocialMedia ID is not provided{SocialMedia_Id}");
+            if(SocialMediaid<=0)
+                throw new ArgumentNullException($"ID is not provided{SocialMediaid}");
 
             
             try
             {
 
-                return profileData.RemoveSocialMedia(SocialMedia_Id)?true:false;
+                return profileData.DisableSocialMedia(SocialMediaid)?true:false;
                 
             }
             
@@ -543,10 +614,7 @@ namespace PMS_API
             }
         }
 
-        public bool RemoveProject(int Project_Id)
-        {
-            throw new NotImplementedException();
-        }
+        
         public object GetTechnologyById(int Technologyid)
         {
             if(Technologyid<=0)
