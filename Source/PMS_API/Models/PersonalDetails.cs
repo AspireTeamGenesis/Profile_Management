@@ -30,19 +30,9 @@ namespace PMS_API
  
         [InverseProperty("personalDetails")]
         public virtual ICollection<SocialMedia>? socialmedia { get; set; }
-
-        [InverseProperty("personalDetails")]
-        public virtual ICollection<Education>? education { get; set;}
-        [InverseProperty("personalDetails")]
-        public virtual ICollection<Projects>? projects { get; set;}
-        [InverseProperty("personalDetails")]
-        public virtual ICollection<Skills>? skills { get; set;}
         [ForeignKey("UserId")]
-        [InverseProperty("personalDetails")]
+         [InverseProperty("personalDetails")]
         public virtual User? users { get; set; }
-        public string? ProfileStatus {get; set;}
         public bool IsActive{ get; set;}
-       
-
     }
 }

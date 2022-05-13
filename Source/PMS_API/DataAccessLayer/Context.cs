@@ -12,6 +12,7 @@ namespace PMS_API{
         optionsBuilder.UseSqlServer("server=.;database=PMS_Service;trusted_connection=true;");
 }
         public DbSet<User> users {get;set;}
+        public DbSet<Profile>profile{get;set;}
         public DbSet<PersonalDetails> personalDetails{get;set;}
         public DbSet<Education> educations{get;set;}
         public DbSet<Language> languages{get;set;}
@@ -24,6 +25,7 @@ namespace PMS_API{
         public DbSet<Domain> Domains {get; set;} 
         public DbSet<Technology> Technologies {get; set;}
         public DbSet<ProfileStatus> ProfileStatuss {get; set;} 
+        public DbSet<Achievements> achievements{get;set;}
 
         
     }

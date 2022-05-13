@@ -5,37 +5,53 @@ namespace PMS_API
     public interface IPersonalService
     {
         bool AddPersonalDetail(PersonalDetails personalDetails);
-        bool DisablePersonalDetails(int PersonalDetailsid);
-        bool UpdatePersonalDetail(PersonalDetails personalDetails);
-        bool AddEducation(Education education);
-        bool UpdateEducation(Education education);
-        bool DisableEducationalDetails(int Educationid);
-        bool AddProjects(Projects project);
-        bool UpdateProjects(Projects projects);
-         bool DisableProjectDetails(int Projectid);
-        bool AddSkills(Skills skill);
-        bool UpdateSkills(Skills skill);
-        bool DisableSkillDetails(int Skillid);
-        bool AddBreakDuration(BreakDuration duration,int userID);
-        bool DisableBreakDuration(int BreakDurationid);
-        bool AddLanguage(Language language);
-        bool DisableLanguage(int Languageid);
-        bool AddSocialMedia(SocialMedia media);
-        bool DisableSocialMedia(int SocialMediaid);
-        IEnumerable<PersonalDetails> GetallPersonalDetails();
+        IEnumerable<PersonalDetails> GetPersonalDetails();
         object GetPersonalDetailsById(int id);
+        bool UpdatePersonalDetail(PersonalDetails personalDetails);
+        bool DisablePersonalDetails(int PersonalDetailsid);
+       
+        bool AddEducation(Education education);
         IEnumerable<Education> GetallEducationDetails();
         object GetEducationDetailsById(int Educationid);
+        bool UpdateEducation(Education education);
+        bool DisableEducationalDetails(int Educationid);
+
+        bool AddProjects(Projects project);
         IEnumerable<Projects> GetallProjectDetails();
         object GetProjectDetailsById(int Projectid);
+        bool UpdateProjects(Projects projects);
+         bool DisableProjectDetails(int Projectid);
+
+        bool AddSkills(Skills skill);
         IEnumerable<Skills> GetallSkillDetails();
         object GetSkillDetailsById(int Skillid,int Technologyid);
-        public IEnumerable<Object> GetAllEducationDetailsByPersonalDetailsId(int PersonalDetailid);
-         public IEnumerable<Object> GetAllProjectDetailsByPersonalDetailsId(int PersonalDetailid);
-         public IEnumerable<Object> GetAllSkillDetailsByPersonalDetailsId(int PersonalDetailid);
-         object GetTechnologyById(int Technologyid);
+        bool UpdateSkills(Skills skill);
+        bool DisableSkillDetails(int Skillid);
 
+        bool AddAchievements(Achievements achievements);
+        IEnumerable<Achievements> GetallAchievements();
+
+         bool DisableAchievement(int AchievementId);
+
+        bool AddBreakDuration(BreakDuration duration,int userID);
+        bool DisableBreakDuration(int BreakDurationid);
+
+        bool AddLanguage(Language language);
+        bool DisableLanguage(int Languageid);
+
+        bool AddSocialMedia(SocialMedia media);
+        bool DisableSocialMedia(int SocialMediaid);
+        public object GetPersonalDetailsByPersonalDetailId(int PersonalDetailid);
+        public IEnumerable<Object> GetAllEducationDetailsByPersonalDetailsId(int PersonalDetailid);
+        public IEnumerable<Object> GetAllProjectDetailsByPersonalDetailsId(int PersonalDetailid);
+        public IEnumerable<Object> GetAllSkillDetailsByPersonalDetailsId(int PersonalDetailid);
+        object GetTechnologyById(int Technologyid);
         IEnumerable<Technology> GetallTechnologies();
+
+        object ViewProfile(int Profileid);
+
+        // public IEnumerable<Object> ShareProfile(string mailaddress,int Personalid);
+         
     }
 
     public class PersonalService : IPersonalService
@@ -50,22 +66,7 @@ namespace PMS_API
             profileData = ProfileDataFactory.GetProfileData(logger);
 
         }
-        public IEnumerable<PersonalDetails> GetallPersonalDetails()
-        {
-            try{
-                // IEnumerable<User> userDetails = new List<User>();
-             
-                return from  personalDetails in profileData.GetallPersonalDetails() where personalDetails.IsActive==true select personalDetails;
-                
-            
-            
-            }
-            catch(Exception exception){
-                // Log Exception occured in DAL while fetching users
-                _logger.LogError($"PersonalServices:GetallPersonalDetails()-{exception.Message}\n{exception.StackTrace}");
-                throw exception;
-            }
-        }
+        
         public bool AddPersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null) throw new ArgumentNullException($"Values cannot be null values are {personalDetails}");
@@ -83,6 +84,22 @@ namespace PMS_API
             }
 
         }
+        public IEnumerable<PersonalDetails> GetPersonalDetails()
+        {
+            try{
+                // IEnumerable<User> userDetails = new List<User>();
+             
+                return from  personalDetails in profileData.GetPersonalDetails() where personalDetails.IsActive==true select personalDetails;
+                
+            
+            
+            }
+            catch(Exception exception){
+                // Log Exception occured in DAL while fetching users
+                _logger.LogError($"PersonalServices:GetallPersonalDetails()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+        }
         public object GetPersonalDetailsById(int id)
         {
             if(id<=0)
@@ -96,15 +113,34 @@ namespace PMS_API
                     dateofbirth=getpersonaldetails.DateOfBirth,
                     nationality=getpersonaldetails.Nationality,
                     dateofjoining=getpersonaldetails.DateOfJoining,
-                    educationdetails=GetAllEducationDetailsByPersonalDetailsId(getpersonaldetails.PersonalDetailsId),
-                    projectdetails=GetAllProjectDetailsByPersonalDetailsId(getpersonaldetails.PersonalDetailsId),
-                    skilldetails=GetAllSkillDetailsByPersonalDetailsId(getpersonaldetails.PersonalDetailsId)
-
-
+                    language=getpersonaldetails.language,
+                    socialmedia=getpersonaldetails.socialmedia,
+                    breakduration=getpersonaldetails.breakDuration
                 };
             }
             catch(Exception exception){
                 _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+        }
+        public object GetPersonalDetailsByPersonalDetailId(int PersonalDetailId)
+        {
+            if(PersonalDetailId<=0)
+                throw new ArgumentNullException($"ID is not provided{PersonalDetailId}");
+            try
+            {
+                var getpersonaldetailsbypersonalid= profileData.GetPersonalDetails().Where(item=> item.PersonalDetailsId==PersonalDetailId).Select(item =>
+                 new {
+                     personaldetailsid=item.PersonalDetailsId,
+                    objective=item.Objective,
+                    dateofbirth=item.DateOfBirth,
+                    nationality=item.Nationality,
+                    dateofjoining=item.DateOfJoining
+
+                });return getpersonaldetailsbypersonalid;
+            }
+            catch(Exception exception){
+                _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -458,10 +494,6 @@ namespace PMS_API
                  new {
                      skillid=item.SkillId,
                     domainname=item.domain.DomainName
-                     
-
-                    
-
                 });return  getallskilldetailsbypersonalid;
             }
             catch(Exception exception){
@@ -656,6 +688,102 @@ namespace PMS_API
         bool IPersonalService.AddSocialMedia(SocialMedia media)
         {
             throw new NotImplementedException();
+        }
+
+        public bool AddAchievements(Achievements achievement)
+        {
+            if (achievement == null) throw new ArgumentNullException($"Values cannot be null values are {achievement}");
+            try
+            {
+                string Imagedate="";
+                Imagedate = ImageService.Getbase64String(achievement.base64header);
+                achievement.base64header =ImageService.Getbase64Header(achievement.base64header);
+                achievement.Image = System.Convert.FromBase64String(Imagedate);
+
+                
+                achievement.CreatedOn = DateTime.Now;
+                return profileData.AddAchievements(achievement) ? true : false;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServices:AddAchievements()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+
+
+        }
+        public IEnumerable<Achievements> GetallAchievements()
+        {
+            try{
+                // IEnumerable<User> userDetails = new List<User>();
+             
+                return from achievements in profileData.GetallAchievements() where achievements.IsActive==true select achievements;
+                
+            
+            
+            }
+            catch(Exception exception){
+                // Log Exception occured in DAL while fetching users
+                _logger.LogError($"PersonalServices:GetallSkillDetails()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+        }
+         public IEnumerable<Object> GetAllAchievementsByPersonalDetailsId(int PersonalDetailid)
+        {
+            if(PersonalDetailid<=0)
+                throw new ArgumentNullException($"ID is not provided{PersonalDetailid}");
+            try
+            {
+                var getachievementsbypersonalid= profileData.GetallAchievements().Where(item=> item.PersonalDetailsId==PersonalDetailid).Select(item =>
+                 new {
+                    achievementid=item.AchievementId,
+                    achievementtype=item.achievementtype.AchievementTypeName,
+                    achievementimage=item.Image
+
+                });return getachievementsbypersonalid;
+            }
+            catch(Exception exception){
+                _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+        }
+         public bool DisableAchievement(int achievementId)
+        {
+            if(achievementId<=0)
+                throw new ArgumentNullException($"Achievement ID is not provided{achievementId}");
+
+            
+            try
+            {
+
+                return profileData.DisableAchievement(achievementId)?true:false;
+                
+            }
+            
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServices:RemoveAchievemen()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+        }
+        public object ViewProfile(int id)
+        {
+            if(id<=0)
+                throw new ArgumentNullException($"ID is not provided{id}");
+            try
+            {
+                var getviewdetails= profileData.GetPersonalDetailsById(id); 
+                return new {
+                    
+                    educationdetails=GetAllEducationDetailsByPersonalDetailsId(getviewdetails.PersonalDetailsId),
+                    projectdetails=GetAllProjectDetailsByPersonalDetailsId(getviewdetails.PersonalDetailsId),
+                    skilldetails=GetAllSkillDetailsByPersonalDetailsId(getviewdetails.PersonalDetailsId),
+                    achievementdetails=GetAllAchievementsByPersonalDetailsId(getviewdetails.PersonalDetailsId)
+                };
+            }
+            catch(Exception exception){
+                _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
         }
     }
 }

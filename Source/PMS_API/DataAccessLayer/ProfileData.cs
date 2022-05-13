@@ -19,7 +19,7 @@ namespace PMS_API
             _context=context;
             _logger=logger;
         }
-        public List<PersonalDetails> GetallPersonalDetails()
+        public List<PersonalDetails> GetPersonalDetails()
         {
             
             try{
@@ -42,7 +42,7 @@ namespace PMS_API
                 throw new ValidationException("Profile Id is not provided to DAL");
             
             try{
-                PersonalDetails personalDetails= GetallPersonalDetails().Where(x=>x.PersonalDetailsId==id).First();
+                PersonalDetails personalDetails= GetPersonalDetails().Where(x=>x.PersonalDetailsId==id).First();
                 if(personalDetails==null)throw new NullReferenceException($"Id not found-{id}");
                 return personalDetails;
             }
@@ -670,6 +670,73 @@ namespace PMS_API
                 throw exception;
             }
         }
+        public bool AddAchievements(Achievements achievement)
+        {
+            if(achievement ==null)
+                throw new ArgumentNullException("social media details object is not provided to DAL");
+            try{
+            
+                _context.achievements.Add(achievement);
+                _context.SaveChanges();
+                return true;
+            }
+            
+            catch(Exception exception){
+                
+                 _logger.LogError($"ProfileData.cs-AddAchievements()-{exception.Message}");
+                 _logger.LogInformation($"ProfileData.cs-AddAchievements()-{exception.StackTrace}");
+                 
+                 return false;
+            }
+        } 
+
+        public List<Achievements> GetallAchievements()
+        {
+            
+            try{
+
+                return _context.achievements.ToList();
+                
+            }
+            
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-GetallAchievemets()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-GetallAchievemets()-{exception.StackTrace}");
+                throw exception;
+            }
+        }
+         public bool DisableAchievement(int achievementId)
+        {
+            if(achievementId<=0)
+               
+                throw new ValidationException("achievement Id is not provided to DAL");
+            
+            try{
+                var achievement = _context.achievements.Find(achievementId);
+                
+            //do null validation for user
+            if(achievement==null)throw new NullReferenceException($"SocialMedia Id not found{achievementId}");
+                achievement.IsActive=false;
+                _context.achievements.Update(achievement);
+                _context.SaveChanges();
+                return true;
+            
+            }
+           
+          
+            catch(Exception exception){
+                //log "if exception occures"
+                _logger.LogError($"ProfileData.cs-RemoveAchievemen()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-RemoveAchievemen()-{exception.StackTrace}");
+                 return false;
+            }
+            
+        }
+        
+
+        
+        
 
 
 

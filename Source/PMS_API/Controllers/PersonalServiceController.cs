@@ -12,13 +12,33 @@ namespace PMS_API
             _personalService = personalService;
             _logger = logger;
         }
+        
+        [HttpPost]
+        public IActionResult AddPersonalDetail(PersonalDetails personalDetails)
+        {
+            if (User == null)
+            {
+                _logger.LogError("PersonalServiceController:AddPersonalDetail():User tries to enter null values");
+                return BadRequest("PersonalDetails not be null");
+            }
+            try
+            {
+                return _personalService.AddPersonalDetail(personalDetails) ? Ok("PersonalDetails added") : Problem("Some internal Error occured");
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServiceControllerController :AddPersonalDetail()-{exception.Message}{exception.StackTrace}");
+
+                return BadRequest(exception.Message);
+            }
+        }
         [HttpGet]
         public IActionResult GetallPersonalDetails()
         {
             try
             {
 
-                return Ok(_personalService.GetallPersonalDetails());
+                return Ok(_personalService.GetPersonalDetails());
             }
             catch (Exception exception)
             {
@@ -41,28 +61,7 @@ namespace PMS_API
             }
         }
 
-        [HttpPost]
-        public IActionResult AddPersonalDetail(PersonalDetails personalDetails)
-        {
-            if (User == null)
-            {
-                _logger.LogError("PersonalServiceController:AddPersonalDetail():User tries to enter null values");
-                return BadRequest("PersonalDetails not be null");
-            }
-            try
-            {
-                return _personalService.AddPersonalDetail(personalDetails) ? Ok("PersonalDetails added") : Problem("Some internal Error occured");
-            }
-            catch (Exception exception)
-            {
-                _logger.LogInformation($"PersonalServiceControllerController :AddPersonalDetail()-{exception.Message}{exception.StackTrace}");
-
-                return BadRequest(exception.Message);
-            }
-
-
-
-        }
+      
         [HttpPut]
         public IActionResult UpdatePersonalDetail(PersonalDetails personalDetails)
 
@@ -203,6 +202,28 @@ namespace PMS_API
             }
 
         }
+        [HttpPost]
+        public IActionResult AddProjects(Projects projects)
+        {
+            if (projects == null)
+            {
+                _logger.LogError("PersonalServiceController:AddProjects():user tries to enter null values");
+                return BadRequest("Education details not be null");
+            }
+            try
+            {
+                return _personalService.AddProjects(projects) ? Ok("project details added") : Problem("Some internal Error occured");
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServiceControllerController :AddProjects()-{exception.Message}{exception.StackTrace}");
+
+                return BadRequest(exception.Message);
+            }
+
+        }
+
+
         [HttpGet]
         public IActionResult GetallProjectDetails()
         {
@@ -231,26 +252,7 @@ namespace PMS_API
                return BadRequest(exception.Message);
             }
         }
-        [HttpPost]
-        public IActionResult AddProjects(Projects projects)
-        {
-            if (projects == null)
-            {
-                _logger.LogError("PersonalServiceController:AddProjects():user tries to enter null values");
-                return BadRequest("Education details not be null");
-            }
-            try
-            {
-                return _personalService.AddProjects(projects) ? Ok("project details added") : Problem("Some internal Error occured");
-            }
-            catch (Exception exception)
-            {
-                _logger.LogInformation($"PersonalServiceControllerController :AddProjects()-{exception.Message}{exception.StackTrace}");
-
-                return BadRequest(exception.Message);
-            }
-
-        }
+        
         [HttpPut]
         public IActionResult UpdateProjects(Projects projects)
 
@@ -296,6 +298,26 @@ namespace PMS_API
             }
 
         }
+         [HttpPost]
+        public IActionResult AddSkills(Skills skill)
+        {
+            if (skill == null)
+            {
+                _logger.LogError("PersonalServiceController:AddSkills():user tries to enter null values");
+                return BadRequest("Education details not be null");
+            }
+            try
+            {
+                return _personalService.AddSkills(skill) ? Ok("Skill details added") : Problem("Some internal Error occured");
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServiceControllerController :AddSkills()-{exception.Message}{exception.StackTrace}");
+
+                return BadRequest(exception.Message);
+            }
+
+        }
         [HttpGet]
         public IActionResult GetallSkillDetails()
         {
@@ -324,26 +346,7 @@ namespace PMS_API
                return BadRequest(exception.Message);
             }
         }
-        [HttpPost]
-        public IActionResult AddSkills(Skills skill)
-        {
-            if (skill == null)
-            {
-                _logger.LogError("PersonalServiceController:AddSkills():user tries to enter null values");
-                return BadRequest("Education details not be null");
-            }
-            try
-            {
-                return _personalService.AddSkills(skill) ? Ok("Skill details added") : Problem("Some internal Error occured");
-            }
-            catch (Exception exception)
-            {
-                _logger.LogInformation($"PersonalServiceControllerController :AddSkills()-{exception.Message}{exception.StackTrace}");
-
-                return BadRequest(exception.Message);
-            }
-
-        }
+       
         [HttpPut]
         public IActionResult UpdateSkills(Skills skill)
 
@@ -506,5 +509,63 @@ namespace PMS_API
             }
 
         }
+        [HttpPost]
+        public IActionResult AddAchievement(Achievements achievement)
+        {
+            if(achievement==null)
+            {
+                _logger.LogError("PersonalServiceController:AddAchievement():user tries to enter null values");
+                return BadRequest("achievement details not be null");
+            }
+            try
+            {
+                return _personalService.AddAchievements(achievement) ? Ok("Achievements details added") : Problem("Some internal Error occured");
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServiceControllerController :AddAchievement()-{exception.Message}{exception.StackTrace}");
+
+                return BadRequest(exception.Message);
+            }
+        }
+          [HttpGet]
+        public IActionResult GetallAchievements()
+        {
+            try
+            {
+
+                return Ok(_personalService.GetallAchievements());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServiceController :GetallAchievements()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+
+
+        }
+        [HttpDelete]
+        public IActionResult DisableAchievements(int achievementId)
+        {
+            if (achievementId <= 0)
+                return BadRequest($"Achievement id can't be zero or less than 0 achievementId is supplied as {achievementId}");
+
+
+            try
+            {
+                return _personalService.DisableAchievement(achievementId) ? Ok("Achievement Removed Successfully") : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($" PersonalServiceController: DisableAchievements() : {exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+        }
+        // [HttpGet]
+        // public Profile ViewProfile(int Profileid)
+        // {
+
+        // }
     }
 }
