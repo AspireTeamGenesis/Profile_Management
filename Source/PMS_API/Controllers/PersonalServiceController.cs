@@ -70,8 +70,8 @@ namespace PMS_API
 
             if (personalDetails == null)
             {
-                // _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
-                return BadRequest("User values not be null");
+                _logger.LogInformation("PersonalServiceController :UpdatePersonalDetails()-Profile's personaldetails should not be null values");
+                return BadRequest("Profile's personaldetails should not be null");
             }
 
             //updating user via userservices
@@ -79,13 +79,13 @@ namespace PMS_API
             try
             {
 
-                return _personalService.UpdatePersonalDetail(personalDetails) ? Ok("User Updated Successfully") : BadRequest("Sorry internal error occured");
+                return _personalService.UpdatePersonalDetail(personalDetails) ? Ok("PersonalDetails Updated Successfully") : BadRequest("Sorry internal error occured");
 
             }
 
             catch (Exception exception)
             {
-                // _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
+                _logger.LogInformation($"PersonalServiceController:UpdatePersonalDetail()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
         }
@@ -165,8 +165,8 @@ namespace PMS_API
 
             if (education == null)
             {
-                // _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
-                return BadRequest("User values not be null");
+                _logger.LogInformation("PersonalServiceController :UpdateEducation()-Profile's Eucationdetails should not enter null values");
+                return BadRequest("Educationdetails shhould not be null");
             }
 
             //updating user via userservices
@@ -174,13 +174,13 @@ namespace PMS_API
             try
             {
 
-                return _personalService.UpdateEducation(education) ? Ok("User Updated Successfully") : BadRequest("Sorry internal error occured");
+                return _personalService.UpdateEducation(education) ? Ok("Education Updated Successfully") : BadRequest("Sorry internal error occured");
 
             }
 
             catch (Exception exception)
             {
-                // _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
+                _logger.LogInformation($"PersonalServiceController:UpdateEducation()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
         }
@@ -258,8 +258,8 @@ namespace PMS_API
 
             if (projects == null)
             {
-                // _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
-                return BadRequest("User values not be null");
+                _logger.LogInformation("PersonalServiceController :UpdateProjects()-Profile's Projects should not be null");
+                return BadRequest("project values not be null");
             }
 
             //updating user via userservices
@@ -267,7 +267,7 @@ namespace PMS_API
             try
             {
 
-                return _personalService.UpdateProjects(projects) ? Ok("User Updated Successfully") : BadRequest("Sorry internal error occured");
+                return _personalService.UpdateProjects(projects) ? Ok("Projects Updated Successfully") : BadRequest("Sorry internal error occured");
 
             }
 
@@ -351,8 +351,8 @@ namespace PMS_API
 
             if (skill == null)
             {
-                // _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
-                return BadRequest("User values not be null");
+                _logger.LogInformation("PersonalServiceController :UpdateSkills()-Profiles Skill values not be null");
+                return BadRequest("Skills values not be null");
             }
 
             //updating user via userservices
@@ -360,13 +360,13 @@ namespace PMS_API
             try
             {
 
-                return _personalService.UpdateSkills(skill) ? Ok("User Updated Successfully") : BadRequest("Sorry internal error occured");
+                return _personalService.UpdateSkills(skill) ? Ok("Skills Updated Successfully") : BadRequest("Sorry internal error occured");
 
             }
 
             catch (Exception exception)
             {
-                // _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
+                _logger.LogInformation($"PersonalServicesController:UpdateSkills()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
         }

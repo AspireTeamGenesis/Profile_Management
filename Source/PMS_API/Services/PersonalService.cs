@@ -110,7 +110,7 @@ namespace PMS_API
         }
         public bool UpdatePersonalDetail(PersonalDetails personalDetails)
         {
-            if (personalDetails == null) throw new ArgumentNullException($" ProfileService:Update()-user values not be null{personalDetails}");
+            if (personalDetails == null) throw new ArgumentNullException($" PersonalService:Update()-Personal values not be null{personalDetails}");
 
             try
             {
@@ -120,7 +120,7 @@ namespace PMS_API
             }
             catch( Exception exception) 
             {
-                _logger.LogInformation($"ProfileService:Update()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"PersonalServices:Update()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
             
@@ -230,7 +230,7 @@ namespace PMS_API
         }
         public bool UpdateEducation(Education education)
         {
-            if (education == null) throw new ArgumentNullException($" ProfileService:Update()-user values not be null{education}");
+            if (education == null) throw new ArgumentNullException($" PersonalServices:UpdateEducation()-Education values not be null{education}");
 
             try
             {
@@ -242,7 +242,7 @@ namespace PMS_API
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"ProfileService:Update()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"PersonalServices:UpdateEduaction()-{exception.Message}\n{exception.StackTrace}");
                 return false;
 
             }
@@ -358,7 +358,7 @@ namespace PMS_API
         }
         public bool UpdateProjects(Projects projects)
         {
-            if (projects == null) throw new ArgumentNullException($" ProfileService:Update()-user values not be null{projects}");
+            if (projects == null) throw new ArgumentNullException($" PersonalServices:UpdateProjcts()-Project values not be null{projects}");
 
             try
             {
@@ -370,7 +370,7 @@ namespace PMS_API
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"ProfileService:Update()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"PersonalServices:UpdateProject()-{exception.Message}\n{exception.StackTrace}");
                 return false;
 
             }
@@ -471,7 +471,7 @@ namespace PMS_API
         }
         public bool UpdateSkills(Skills skill)
         {
-            if (skill == null) throw new ArgumentNullException($" ProfileService:Update()-user values not be null{skill}");
+            if (skill == null) throw new ArgumentNullException($" PersonalServices:Update()-skill values not be null{skill}");
 
             try
             {
@@ -483,7 +483,7 @@ namespace PMS_API
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"ProfileService:Update()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"PersonalServices:Update()-{exception.Message}\n{exception.StackTrace}");
                 return false;
 
             }
@@ -648,14 +648,6 @@ namespace PMS_API
             }
         }
 
-        bool IPersonalService.AddLanguage(Language language)
-        {
-            throw new NotImplementedException();
-        }
-
-        bool IPersonalService.AddSocialMedia(SocialMedia media)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

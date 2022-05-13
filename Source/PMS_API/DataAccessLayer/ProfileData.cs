@@ -80,21 +80,13 @@ namespace PMS_API
         public bool UpdatePersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null)
-                throw new ValidationException("profile's personal details is not provided to DAL");
+                throw new ValidationException("profile's personal detail is not provided to DAL");
 
 
             try
             {
-                var Profile = _context.personalDetails.Find(personalDetails.PersonalDetailsId);//  personadetails = _ProfileContext.personalDetails.GetUser(id)
+                var Profile = _context.personalDetails.Find(personalDetails.PersonalDetailsId);
                 if (Profile == null) throw new NullReferenceException($"Profile Id not found{personalDetails.PersonalDetailsId}");
-                // Profile.PersonalDetailsId = personalDetails.PersonalDetailsId;
-                // Profile.Objective = personalDetails.Objective;
-                // Profile.DateOfBirth = personalDetails.DateOfBirth;
-                // // Profile.Experience = personalDetails.Experience;
-                // // Profile.DateOfJoin = personalDetails.DateOfJoin;
-                // Profile.Nationality = personalDetails.Nationality;
-                // Profile.IsActive = personalDetails.IsActive;
-                // Profile.UpdatedBy = personalDetails.UpdatedBy;
                 _context.Update(personalDetails);
                 _context.SaveChanges();
                 return true;
@@ -196,22 +188,12 @@ namespace PMS_API
         public bool UpdateEducation(Education education)
         {
             if (education == null)
-                throw new ValidationException("User values is not provided to DAL");
-
-
+                throw new ValidationException("Profile's education details are not provided to DAL");
             try
             {
-                var Profile = _context.educations.Find(education.EducationId);//  personadetails = _ProfileContext.personalDetails.GetUser(id)
+                var Profile = _context.educations.Find(education.EducationId);
     
-                if (Profile == null) throw new NullReferenceException($"Profile Id not found{education.EducationId}");
-                // Profile.personaldetailsId = education.personaldetailsId;
-                // Profile.Degree = education.Degree;
-                // Profile.Course = education.Course;
-                // Profile.Starting_Year = education.Starting_Year;
-                // Profile.Ending_Year = education.Ending_Year;
-                // Profile.Percentage = education.Percentage;
-                // Profile.IsActive = education.IsActive;
-                // Profile.UpdatedBy = education.UpdatedBy;
+                if (Profile == null) throw new NullReferenceException($"Profile's EducationId not found{education.EducationId}");
                 _context.Update(education);
                 _context.SaveChanges();
                 return true;
@@ -219,8 +201,8 @@ namespace PMS_API
             catch (Exception exception)
             {
                 //log " exception occures"
-                _logger.LogError($"ProfileData.cs-UpdatePersonalDetail)-{exception.Message}");
-                _logger.LogInformation($"ProfileData.cs-UpdatePersonalDetail()-{exception.StackTrace}");
+                _logger.LogError($"ProfileData.cs-UpdateEducation)-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-UpdateEducaion()-{exception.StackTrace}");
                 return false;
             }
 
@@ -314,23 +296,13 @@ namespace PMS_API
         public bool UpdateProjects(Projects projects)
         {
             if (projects == null)
-                throw new ValidationException("User values is not provided to DAL");
+                throw new ValidationException("Profile's Project details are not provided to DAL");
 
 
             try
             {
-                var Profile = _context.projects.Find(projects.ProjectId);//  personadetails = _ProfileContext.personalDetails.GetUser(id)
-                if (Profile == null) throw new NullReferenceException($"Profile Id not found{projects.PersonalDetailsId}");
-                // Profile.PersonalDetailsId = projects.PersonalDetailsId;
-                // Profile.Project_Id = projects.Project_Id;
-                // Profile.ProjectName = projects.ProjectName;
-                // Profile.project_Description = projects.project_Description;
-                // Profile.Project_Starting_Month = projects.Project_Starting_Month;
-                // Profile.Project_Starting_Year = projects.Project_Starting_Year;
-                // Profile.Project_Ending_Month = projects.Project_Ending_Month;
-                // Profile.Project_Ending_Year = projects.Project_Ending_Year;
-                // Profile.IsActive = projects.IsActive;
-                // Profile.UpdatedBy = projects.UpdatedBy;
+                var Profile = _context.projects.Find(projects.ProjectId);
+                if (Profile == null) throw new NullReferenceException($"Profile's projectId not found{projects.ProjectId}");
                 _context.Update(projects);
                 _context.SaveChanges();
                 return true;
@@ -342,7 +314,7 @@ namespace PMS_API
                 _logger.LogInformation($"ProfileData.cs-UpdatePersonalDetail()-{exception.StackTrace}");
                 return false;
             }
-            throw new NotImplementedException();
+            
         }
         public bool DisableProjectDetails(int Project_Id)
         {
@@ -486,19 +458,13 @@ namespace PMS_API
         public bool UpdateSkills(Skills skill)
         {
             if (skill == null)
-                throw new ValidationException("User values is not provided to DAL");
+                throw new ValidationException("Profile's skilldetails are not provided to DAL");
 
 
             try
             {
-                var Profile = _context.skills.Find(skill.PersonalDetailsId);//  personadetails = _ProfileContext.personalDetails.GetUser(id)
-                if (Profile == null) throw new NullReferenceException($"Profile Id not found{skill.PersonalDetailsId}");
-                // Profile.Skill_Id = skill.Skill_Id;
-                // Profile.Domain = skill.Domain;
-                // Profile.Technology = skill.Technology;
-                // Profile.PersonalDetailsId = skill.PersonalDetailsId;
-                // Profile.IsActive = skill.IsActive;
-                // Profile.UpdatedBy = skill.UpdatedBy;
+                var Profile = _context.skills.Find(skill.SkillId);
+                if (Profile == null) throw new NullReferenceException($"Profile's SkillId not found{skill.SkillId}");
                 _context.Update(skill);
                 _context.SaveChanges();
                 return true;
@@ -510,7 +476,6 @@ namespace PMS_API
                 _logger.LogInformation($"ProfileData.cs-UpdatePersonalDetail()-{exception.StackTrace}");
                 return false;
             }
-            throw new NotImplementedException();
         }
         public bool DisableSkillDetails(int Skill_Id)
         {
