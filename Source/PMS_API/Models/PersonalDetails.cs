@@ -11,7 +11,11 @@ namespace PMS_API
         public DateTime DateOfBirth{get;set;}
         public string Nationality{get;set;}
         public DateTime DateOfJoining{get;set;}
+        public string base64header {get;set;}
+
+        public byte[]? Image{get;set;
         public DateTime? CreatedOn { get; set; }
+        
 
         public int? CreatedBy { get; set; }
 
