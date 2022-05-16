@@ -75,6 +75,11 @@ namespace PMS_API
                 
                 personalDetails.CreatedBy = personalDetails.UserId;
                 personalDetails.CreatedOn = DateTime.Now;
+                Imagedate = ImageService.Getbase64String(personalDetails.base64header);
+
+                personalDetails.base64header =ImageService.Getbase64Header(personalDetails.base64header);
+
+                personalDetails.Image = System.Convert.FromBase64String(Imagedate);
                 return profileData.AddPersonalDetail(personalDetails) ? true : false;
             }
             catch (Exception exception)
