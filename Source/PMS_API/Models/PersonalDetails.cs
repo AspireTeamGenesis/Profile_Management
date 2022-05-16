@@ -13,7 +13,7 @@ namespace PMS_API
         public DateTime DateOfJoining{get;set;}
         public string base64header {get;set;}
 
-        public byte[]? Image{get;set;
+        public byte[]? Image{get;set;}
         public DateTime? CreatedOn { get; set; }
         
 
