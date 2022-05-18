@@ -38,7 +38,7 @@ namespace PMS_API
             try
             {
 
-                return Ok(_personalService.GetPersonalDetails());
+                return Ok(_personalService.GetallPersonalDetails());
             }
             catch (Exception exception)
             {
@@ -562,10 +562,33 @@ namespace PMS_API
                 return BadRequest(exception.Message);
             }
         }
-        // [HttpGet]
-        // public Profile ViewProfile(int Profileid)
-        // {
+        [HttpGet]
+        public IActionResult GetallProfiles()
+        {
+            try
+            {
 
-        // }
+                return Ok(_personalService.GetallProfiles());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServiceController :GetallProfiles()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+        }
+
+
+       [HttpGet]
+        public IActionResult GetProfileById(int id)
+        {
+            try{
+                
+                return Ok(_personalService.GetProfileById(id));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"PersonalServiceController :GetProfileById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
+        }
     }
 }

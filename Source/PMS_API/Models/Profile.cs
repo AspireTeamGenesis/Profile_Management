@@ -7,15 +7,16 @@ namespace PMS_API
     {
         [Key]
         public int ProfileId{ get;set;}
-        public virtual PersonalDetails? PersonalDetails{get;set;}
+        [InverseProperty("profile")]
+        public virtual PersonalDetails? personalDetails{get;set;}
 
-        [InverseProperty("personalDetails")]
+        [InverseProperty("profile")]
         public virtual ICollection<Education>? education { get; set;}
-        [InverseProperty("personalDetails")]
+        [InverseProperty("profile")]
         public virtual ICollection<Projects>? projects { get; set;}
-        [InverseProperty("personalDetails")]
+        [InverseProperty("profile")]
         public virtual ICollection<Skills>? skills { get; set;}
-        [InverseProperty("personalDetails")]
+        [InverseProperty("profile")]
         public virtual ICollection<Achievements>? achievements { get; set;}
        
         
