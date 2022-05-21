@@ -19,6 +19,26 @@ namespace PMS_API
             _context=context;
             _logger=logger;
         }
+        public bool AddProfile(Profile Profile)
+        {
+            if (Profile == null)
+                throw new ArgumentNullException("profile object is not provided to DAL");
+            try
+            {
+
+                _context.profile.Add(Profile);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception exception)
+            {
+                //log "unknown exception occured"
+                _logger.LogError($"ProfileData.cs-AddProfile()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-AddProfile()-{exception.StackTrace}");
+
+                return false;
+            }
+        }
         public List<PersonalDetails> GetPersonalDetails()
         {
             
