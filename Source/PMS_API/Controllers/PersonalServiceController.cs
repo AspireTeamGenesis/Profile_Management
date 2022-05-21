@@ -12,6 +12,25 @@ namespace PMS_API
             _personalService = personalService;
             _logger = logger;
         }
+        [HttpPost]
+        public IActionResult AddProfile(Profile profile)
+        {
+            if (profile == null)
+            {
+                _logger.LogError("PersonalServiceController:AddProfile():User tries to enter null values");
+                return BadRequest("PersonalDetails not be null");
+            }
+            try
+            {
+                return _personalService.AddProfile(profile) ? Ok("Profile added") : Problem("Some internal Error occured");
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServiceControllerController :AddProfile()-{exception.Message}{exception.StackTrace}");
+
+                return BadRequest(exception.Message);
+            }
+        }
         
         [HttpPost]
         public IActionResult AddPersonalDetail(PersonalDetails personalDetails)
