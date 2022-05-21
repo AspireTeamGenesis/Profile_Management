@@ -4,6 +4,7 @@ namespace PMS_API
 {
     public interface IPersonalService
     {
+        bool AddProfile(Profile profile);
         bool AddPersonalDetail(PersonalDetails personalDetails);
         IEnumerable<PersonalDetails> GetallPersonalDetails();
         object GetPersonalDetailsById(int id);
@@ -69,6 +70,20 @@ namespace PMS_API
         {
             _logger = logger;
             profileData = ProfileDataFactory.GetProfileData(logger);
+
+        }
+         public bool AddProfile(Profile profile)
+        {
+            if (profile == null) throw new ArgumentNullException($"Values cannot be null values are {profile}");
+            try
+            {
+                return profileData.AddProfile(profile) ? true : false;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServices:AddProfile()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
 
         }
         
