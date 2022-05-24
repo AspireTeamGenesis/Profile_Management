@@ -609,5 +609,25 @@ namespace PMS_API
                return BadRequest(exception.Message);
             }
         }
+        [HttpPost]
+        public IActionResult AddProfileHistory(ProfileHistory profilehistory)
+        {
+            if (profilehistory == null)
+            {
+                _logger.LogError("PersonalServiceController:AddProfileHistory():User tries to enter null values");
+                return BadRequest("ProfileHistory not be null");
+            }
+            //if(profilehistory.profile.ProfileStatus!="Approved")throw new Exception("Status should be Approved by Reporting Person");
+            try
+            {
+                return _personalService.AddProfileHistory(profilehistory) ? Ok("ProfileHistory added") : Problem("Some internal Error occured");
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServiceController :AddProfileHistory()-{exception.Message}{exception.StackTrace}");
+
+                return BadRequest(exception.Message);
+            }
+        }
     }
 }
