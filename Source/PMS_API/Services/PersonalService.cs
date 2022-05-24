@@ -55,6 +55,7 @@ namespace PMS_API
 
         object GetProfileById(int Profileid);
         IEnumerable<Profile> GetallProfiles();
+        bool AddProfileHistory(ProfileHistory profilehistory);
 
         // public IEnumerable<Object> ShareProfile(string mailaddress,int Personalid);
          
@@ -824,6 +825,21 @@ namespace PMS_API
                 _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
+        }
+        public bool AddProfileHistory(ProfileHistory profilehistory)
+        {
+            if (profilehistory == null) throw new ArgumentNullException($"Values cannot be null values are {profilehistory}");
+            //if(profilehistory.profile.ProfileStatus!="Approved")throw new Exception("Status should be Approved by Reporting Person");
+            try
+            {
+                return profileData.AddProfileHistory(profilehistory) ? true : false;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServices:AddProfileHistory()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+
         }
 
     }
