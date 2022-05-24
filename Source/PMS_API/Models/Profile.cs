@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,9 +19,8 @@ namespace PMS_API
         public virtual ICollection<Skills>? skills { get; set;}
         [InverseProperty("profile")]
         public virtual ICollection<Achievements>? achievements { get; set;}
-       
-        
-        // public string? ProfileStatus {get; set;}
+        [DefaultValue("WaitingForApproval")]
+        public string ProfileStatus {get; set;}
         public bool IsActive{ get; set;}
        
 
