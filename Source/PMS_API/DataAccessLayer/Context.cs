@@ -26,6 +26,7 @@ namespace PMS_API{
         public DbSet<Technology> Technologies {get; set;}
         public DbSet<ProfileStatus> ProfileStatuss {get; set;} 
         public DbSet<Achievements> achievements{get;set;}
+        public DbSet<ProfileHistory> profilehistory{get;set;}
 
         
     }
