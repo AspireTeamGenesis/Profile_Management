@@ -718,6 +718,28 @@ namespace PMS_API
             }
             
         }
+        public bool AddProfileHistory(ProfileHistory profilehistory)
+        {
+            if (profilehistory == null)
+                throw new ArgumentNullException("profilehistory object is not provided to DAL");
+            //if(profilehistory.profile.ProfileStatus!="Approved")throw new Exception("Status should be Approved by Reporting Person");
+            try
+            {
+
+                _context.profilehistory.Add(profilehistory);
+                _context.SaveChanges();
+                return true;
+            }
+
+            catch (Exception exception)
+            {
+                //log "unknown exception occured"
+                _logger.LogError($"ProfileData.cs-AddProfileHistory()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-AddProfileHistory()-{exception.StackTrace}");
+
+                return false;
+            }
+
         
 
         
