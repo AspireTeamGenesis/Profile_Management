@@ -21,6 +21,7 @@ namespace PMS_API
         public virtual ICollection<Achievements>? achievements { get; set;}
         [DefaultValue("WaitingForApproval")]
         public string ProfileStatus {get; set;}
+        
         public bool IsActive{ get; set;}
        
 
