@@ -8,20 +8,20 @@ namespace PMS_API
     [Route("[controller]/[Action]")]
     public class LoginController :Controller{
         
-        private LoginService _loginServices;
-         private ILogger<LoginController> _logger;
-        public LoginController(LoginService loginServices, ILogger<LoginController> logger)
+        private ILoginService _loginServices;
+         private readonly ILogger<LoginController> _logger;
+        public LoginController(ILoginService loginServices, ILogger<LoginController> logger)
         {
 
             _loginServices = loginServices;
             _logger = logger;
         }
         [HttpPost("Login")]
-        public IActionResult AuthLogin(string UserName, string Password)
+        public IActionResult AuthLogin(string Username, string password)
         {
             try
             {
-                var Result = _loginServices.AuthLogin(UserName, Password);                
+                var Result = _loginServices.AuthLogin(Username, password);                
                 return Ok(Result);
             }
             catch (ValidationException validationException)
