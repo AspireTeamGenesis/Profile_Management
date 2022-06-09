@@ -8,32 +8,32 @@ using System.Text;
 
 namespace PMS_API
 {
-    public class LoginService 
+    public class LoginService:ILoginService
     {
-        private UserData _userData;
+        private IUserData _userData;
         private ILogger<LoginService> _logger;
         private IConfiguration _configuration;
 
-        public LoginService(ILogger<LoginService> logger, IConfiguration configuration, UserData userData)
+        public LoginService(ILogger<LoginService> logger, IConfiguration configuration, IUserData userData)
         {
             _logger = logger;
             _configuration = configuration;
             _userData = userData;
         }
 
-        public object AuthLogin(string UserName, string Password)
+        public object AuthLogin(string Username, string password)
         {
             try
             {
-                var user =_userData.LoginCrendentials(UserName,Password);
+                var user =_userData.LoginCrendentials(Username,password);
 
                 var claims = new[] {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("UserName",user.UserName),
-                        new Claim("UserId", user.UserId.ToString()),
-                        //new Claim(ClaimTypes.Role,user.RoleId.ToString()),
+                       new Claim("UserId",user.UserId.ToString()),
+                        new Claim("EmailId", user.Email.ToString()),
+                        new Claim("DesignationId",user.DesignationId.ToString()),
                     };
 
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -49,8 +49,8 @@ namespace PMS_API
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     ExpiryInMinutes = 360,
-                    //IsAdmin = user.RoleId == 10 ? true : false,
-                    //IsTAC = user.RoleId == 9 ? true : false
+                    IsHR = user.DesignationId == 10 ? true : false,
+                    IsAdmin = user.DesignationId == 9 ? true : false
                 };
 
                 return Result;
