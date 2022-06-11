@@ -15,7 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<Context>(options =>{
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-builder.Services.AddScoped<LoginService>();
+builder.Services.AddScoped<ILoginService,LoginService>();
+builder.Services.AddScoped<IUserData,UserData>();
 
 builder.Services.AddScoped<IUserServices,UserServices>();
 
@@ -55,6 +56,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseAuthentication();
 
 app.MapControllers();
 
