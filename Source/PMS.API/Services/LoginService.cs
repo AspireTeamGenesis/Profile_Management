@@ -31,8 +31,8 @@ namespace PMS_API
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                       new Claim("UserId",user.UserId.ToString()),
-                        new Claim("EmailId", user.Email.ToString()),
+                        new Claim("Username",user.UserName),
+                        new Claim("UserId",user.UserId.ToString()),                      
                         new Claim("DesignationId",user.DesignationId.ToString()),
                     };
 
