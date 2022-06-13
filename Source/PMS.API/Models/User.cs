@@ -64,7 +64,9 @@ namespace PMS_API{
         //audit fields
         //createdby  createdon updatedby updatedon\\
         
-        public int CreatedBy{get;set;}
+        public int CreatedByHRId{get;set;}
+        [ForeignKey("CreatedByHRId")]
+        public virtual HR? hr {get;set;}
         public DateTime? CreatedOn{get;set;}
         public int? UpdatedBy{get;set;}
         public DateTime? UpdatedOn{get;set;}
