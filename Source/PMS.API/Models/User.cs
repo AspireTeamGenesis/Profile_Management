@@ -42,7 +42,7 @@ namespace PMS_API{
         [InverseProperty("users")]
         //[JsonIgnore]
         public virtual Designation? designation { get; set;}
-        public string ReportingPerson { get; set; }
+        public int ReportingPersonId { get; set; }
 
         public int OrganisationId{get;set;}
         [ForeignKey("OrganisationId")]
@@ -64,7 +64,7 @@ namespace PMS_API{
         //audit fields
         //createdby  createdon updatedby updatedon\\
         
-        public string? CreatedBy{get;set;}
+        public int CreatedBy{get;set;}
         public DateTime? CreatedOn{get;set;}
         public int? UpdatedBy{get;set;}
         public DateTime? UpdatedOn{get;set;}
