@@ -19,8 +19,10 @@ namespace PMS_API
         public virtual ICollection<Skills>? skills { get; set;}
         [InverseProperty("profile")]
         public virtual ICollection<Achievements>? achievements { get; set;}
-        [DefaultValue("WaitingForApproval")]
-        public string ProfileStatus {get; set;}
+        [DefaultValue(2)]
+        public int ProfileStatusId {get; set;}
+        [ForeignKey("ProfileStatusId")]
+        public virtual ProfileStatus? profilestatus {get;set;}
         public bool IsActive{ get; set;}
        
 
