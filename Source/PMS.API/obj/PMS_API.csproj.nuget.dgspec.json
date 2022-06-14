@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Desktop\\PMS_API\\PMS_API.csproj": {}
+    "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Desktop\\PMS_API\\PMS_API.csproj": {
+    "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Desktop\\PMS_API\\PMS_API.csproj",
+        "projectUniqueName": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
         "projectName": "PMS_API",
-        "projectPath": "C:\\Users\\hp\\Desktop\\PMS_API\\PMS_API.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Desktop\\PMS_API\\obj\\",
+        "projectPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
+        "packagesPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\harini.rajkumar.ASPIRESYS\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -38,6 +38,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.AspNetCore.Authorization": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[6.0.5, )"

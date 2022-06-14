@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMS_API;
 
@@ -11,9 +12,10 @@ using PMS_API;
 namespace PMS_API.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220613101817_pmss")]
+    partial class pmss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -265,23 +267,6 @@ namespace PMS_API.Migrations
                     b.ToTable("Gender");
                 });
 
-            modelBuilder.Entity("PMS_API.HR", b =>
-                {
-                    b.Property<int>("HRId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HRId"), 1L, 1);
-
-                    b.Property<string>("HRName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("HRId");
-
-                    b.ToTable("HR");
-                });
-
             modelBuilder.Entity("PMS_API.Language", b =>
                 {
                     b.Property<int>("LanguageId")
@@ -413,12 +398,11 @@ namespace PMS_API.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ProfileStatusId")
-                        .HasColumnType("int");
+                    b.Property<string>("ProfileStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProfileId");
-
-                    b.HasIndex("ProfileStatusId");
 
                     b.ToTable("profile");
                 });
@@ -635,11 +619,8 @@ namespace PMS_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CreatedByHRId")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -672,8 +653,9 @@ namespace PMS_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ReportingPersonId")
-                        .HasColumnType("int");
+                    b.Property<string>("ReportingPerson")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
@@ -686,8 +668,6 @@ namespace PMS_API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
-
-                    b.HasIndex("CreatedByHRId");
 
                     b.HasIndex("DesignationId");
 
@@ -788,17 +768,6 @@ namespace PMS_API.Migrations
                     b.Navigation("users");
                 });
 
-            modelBuilder.Entity("PMS_API.Profile", b =>
-                {
-                    b.HasOne("PMS_API.ProfileStatus", "profilestatus")
-                        .WithMany()
-                        .HasForeignKey("ProfileStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("profilestatus");
-                });
-
             modelBuilder.Entity("PMS_API.ProfileHistory", b =>
                 {
                     b.HasOne("PMS_API.Profile", "profile")
@@ -853,12 +822,6 @@ namespace PMS_API.Migrations
 
             modelBuilder.Entity("PMS_API.User", b =>
                 {
-                    b.HasOne("PMS_API.HR", "hr")
-                        .WithMany()
-                        .HasForeignKey("CreatedByHRId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("PMS_API.Designation", "designation")
                         .WithMany("users")
                         .HasForeignKey("DesignationId")
@@ -880,8 +843,6 @@ namespace PMS_API.Migrations
                     b.Navigation("designation");
 
                     b.Navigation("gender");
-
-                    b.Navigation("hr");
 
                     b.Navigation("organisation");
                 });

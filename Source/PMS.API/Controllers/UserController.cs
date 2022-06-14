@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 namespace PMS_API
 {
+    [Authorize]
    [ApiController]
     [Route("[controller]/[Action]")]
     public class UserController:Controller{
@@ -43,17 +45,17 @@ namespace PMS_API
         }
         
         [HttpPost]
-        public IActionResult AddUser(User user){
-            if(user==null){
+        public IActionResult AddUser(User userValues){
+            if(userValues==null){
                 _logger.LogInformation("UserController :AddUser()-user tries to enter null values");
                 return BadRequest("User values not be null");
             }
             
                
             try{
-
+                int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
                 //Adding user via userservice
-                return _userServices.AddUser(user)?Ok("User Added"):Problem("Sorry internal error occured");
+                return _userServices.AddUser(userValues,currentUser)?Ok("User Added"):Problem("Sorry internal error occured");
                 
                 
             }

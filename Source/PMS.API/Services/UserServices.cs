@@ -46,7 +46,7 @@ namespace PMS_API{
                     gender=getuser.gender.GenderName,
                     mobilenumber=getuser.MobileNumber,
                     designation=getuser.designation.DesignationName,
-                    reportingperson=getuser.ReportingPerson,
+                    reportingpersonId=getuser.ReportingPersonId,
                     organisation=getuser.organisation.OrganisationName
 
                 };
@@ -56,7 +56,7 @@ namespace PMS_API{
                 throw exception;
             }
         }
-        public bool AddUser(User item)
+        public bool AddUser(User item,int userId)
 
         {
             if(item==null)
@@ -65,7 +65,7 @@ namespace PMS_API{
             try
             {
                
-                item.CreatedBy="HR";
+                item.CreatedBy=userId;
                 item.CreatedOn=DateTime.Now;
                 return userData.AddUser(item)?true:false;              //Ternary operator
                 

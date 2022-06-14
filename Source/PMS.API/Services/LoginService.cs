@@ -49,8 +49,8 @@ namespace PMS_API
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     ExpiryInMinutes = 360,
-                    IsHR = user.DesignationId == 10 ? true : false,
-                    IsAdmin = user.DesignationId == 9 ? true : false
+                    IsHR = user.DesignationId == 1 ? true : false,
+                    IsAdmin = user.DesignationId == 2 ? true : false
                 };
 
                 return Result;

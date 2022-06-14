@@ -133,7 +133,7 @@ namespace PMS_API
                 user.MobileNumber=item.MobileNumber;
                 user.OrganisationId=item.OrganisationId;
                 user.DesignationId=item.DesignationId;
-                user.ReportingPerson=item.ReportingPerson;
+                user.ReportingPersonId=item.ReportingPersonId;
                 user.IsActive=item.IsActive;
                 user.CreatedBy=item.CreatedBy;
             _context.users.Update(user);

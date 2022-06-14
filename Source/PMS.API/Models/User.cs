@@ -67,6 +67,7 @@ namespace PMS_API{
         public int CreatedByHRId{get;set;}
         [ForeignKey("CreatedByHRId")]
         public virtual HR? hr {get;set;}
+        public int? CreatedBy{get;set;}
         public DateTime? CreatedOn{get;set;}
         public int? UpdatedBy{get;set;}
         public DateTime? UpdatedOn{get;set;}
