@@ -2,13 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace PMS_API{
-    
-    public class User{
-       
+namespace PMS_API
+{
+
+    public class User
+    {
+
 
         [Key]
-        public int UserId{get;set;}
+        public int UserId { get; set; }
         // [Required]
         // [StringLength(30,MinimumLength =3)]
         // [RegularExpression(
@@ -34,45 +36,51 @@ namespace PMS_API{
         //  )]
         public string Password { get; set; }
         //[Required]
+        public int? CountryCodeId { get; set; }
+
+        [ForeignKey("CountryCodeId")]
+        [InverseProperty("users")]
+        //[JsonIgnore]
+        public virtual CountryCode? countrycode { get; set; }
         public string MobileNumber { get; set; }
         //[Required]
-        public int DesignationId{ get; set; }
+        public int DesignationId { get; set; }
         //[Required]
         [ForeignKey("DesignationId")]
         [InverseProperty("users")]
         //[JsonIgnore]
-        public virtual Designation? designation { get; set;}
-        public int ReportingPersonId { get; set; }
+        public virtual Designation? designation { get; set; }
+        public string? ReportingPersonUsername { get; set; }
 
-        public int OrganisationId{get;set;}
+        public int OrganisationId { get; set; }
         [ForeignKey("OrganisationId")]
         [InverseProperty("users")]
         //[JsonIgnore]
-        public virtual Organisation? organisation {get;set;}
+        public virtual Organisation? organisation { get; set; }
 
-        public int GenderId {get;set;}
+        public int GenderId { get; set; }
         [ForeignKey("GenderId")]
         [InverseProperty("users")]
-       //[JsonIgnore]
-        public virtual Gender? gender{get;set;}
+        //[JsonIgnore]
+        public virtual Gender? gender { get; set; }
 
         [InverseProperty("users")]
         //[JsonIgnore]
         public virtual PersonalDetails? personalDetails { get; set; }
-        
-        public bool IsActive{get;set;}
+
+        public bool IsActive { get; set; }
         //audit fields
         //createdby  createdon updatedby updatedon\\
-        
-        public int CreatedByHRId{get;set;}
-        [ForeignKey("CreatedByHRId")]
-        public virtual HR? hr {get;set;}
-        public int? CreatedBy{get;set;}
-        public DateTime? CreatedOn{get;set;}
-        public int? UpdatedBy{get;set;}
-        public DateTime? UpdatedOn{get;set;}
-        
-       
+
+        // public int CreatedBy{get;set;}
+        // [ForeignKey("CreatedByHRId")]
+        // public virtual HR? hr {get;set;}
+        public int? CreatedBy { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public int? UpdatedBy { get; set; }
+        public DateTime? UpdatedOn { get; set; }
+
+
 
 
     }

@@ -66,6 +66,8 @@ namespace PMS_API
             if (item == null)
                 throw new ArgumentNullException("user object is not provided to DAL");
             _validation.userValidate(item);
+            if(string.IsNullOrEmpty(item.UserName))
+                throw new ValidationException($"UserName not be null and user supplied UserName is {item.UserName}");
             try{
             
             _context.users.Add(item);
@@ -76,9 +78,10 @@ namespace PMS_API
             catch(Exception exception){
                 //log "unknown exception occured"
                  _logger.LogError($"UserData.cs-AddUser()-{exception.Message}");
-                 _logger.LogInformation($"UserDate.cs-AddUser()-{exception.StackTrace}");
+                 _logger.LogInformation($"UserData.cs-AddUser()-{exception.StackTrace}");
                  return false;
             }
+            
             
             
         }
@@ -105,7 +108,7 @@ namespace PMS_API
             catch(Exception exception){
                 //log "if exception occures"
                 _logger.LogError($"UserData.cs-Disable()-{exception.Message}");
-                _logger.LogInformation($"UserDate.cs-Disable()-{exception.StackTrace}");
+                _logger.LogInformation($"UserData.cs-Disable()-{exception.StackTrace}");
                  return false;
             }
             
@@ -130,20 +133,21 @@ namespace PMS_API
                 user.UserName=item.UserName;
                 user.Password=item.Password;
                 user.GenderId=item.GenderId;
+                user.CountryCodeId=user.CountryCodeId;
                 user.MobileNumber=item.MobileNumber;
                 user.OrganisationId=item.OrganisationId;
                 user.DesignationId=item.DesignationId;
-                user.ReportingPersonId=item.ReportingPersonId;
+                user.ReportingPersonUsername=item.ReportingPersonUsername;
                 user.IsActive=item.IsActive;
                 user.CreatedBy=item.CreatedBy;
             _context.users.Update(user);
             _context.SaveChanges();
             return true;
-            } 
+            }
             catch(Exception exception){
                 //log " exception occures"
                 _logger.LogError($"UserData.cs-UpdateUser)-{exception.Message}");
-                _logger.LogInformation($"UserDate.cs-UpdateUser()-{exception.StackTrace}");
+                _logger.LogInformation($"UserData.cs-UpdateUser()-{exception.StackTrace}");
                  return false;
             }
             

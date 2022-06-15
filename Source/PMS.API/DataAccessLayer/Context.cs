@@ -8,9 +8,9 @@ namespace PMS_API{
 
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-{
+        {
         optionsBuilder.UseSqlServer("server=.;database=PMS_Services;trusted_connection=true;");
-}
+        }
         public DbSet<User> users {get;set;}
         public DbSet<Profile> profile{get;set;}
         public DbSet<PersonalDetails> personalDetails{get;set;}
@@ -24,9 +24,11 @@ namespace PMS_API{
         public DbSet<Designation> Designations {get; set;} 
         public DbSet<Domain> Domains {get; set;} 
         public DbSet<Technology> Technologies {get; set;}
+        public DbSet<Organisation> Organisations {get; set;}
         public DbSet<ProfileStatus> ProfileStatuss {get; set;} 
         public DbSet<Achievements> achievements{get;set;}
         public DbSet<ProfileHistory> profilehistory{get;set;}
+        public DbSet<CountryCode> CountryCodes{get;set;}
         
 
         

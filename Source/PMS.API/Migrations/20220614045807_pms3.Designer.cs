@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMS_API;
 
@@ -11,9 +12,10 @@ using PMS_API;
 namespace PMS_API.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220614045807_pms3")]
+    partial class pms3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,26 +145,6 @@ namespace PMS_API.Migrations
                     b.ToTable("Colleges");
                 });
 
-            modelBuilder.Entity("PMS_API.CountryCode", b =>
-                {
-                    b.Property<int>("CountryCodeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CountryCodeId"), 1L, 1);
-
-                    b.Property<string>("Countrycode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.HasKey("CountryCodeId");
-
-                    b.ToTable("CountryCodes");
-                });
-
             modelBuilder.Entity("PMS_API.Designation", b =>
                 {
                     b.Property<int>("DesignationId")
@@ -285,6 +267,23 @@ namespace PMS_API.Migrations
                     b.ToTable("Gender");
                 });
 
+            modelBuilder.Entity("PMS_API.HR", b =>
+                {
+                    b.Property<int>("HRId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HRId"), 1L, 1);
+
+                    b.Property<string>("HRName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HRId");
+
+                    b.ToTable("HR");
+                });
+
             modelBuilder.Entity("PMS_API.Language", b =>
                 {
                     b.Property<int>("LanguageId")
@@ -348,7 +347,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("OrganisationId");
 
-                    b.ToTable("Organisations");
+                    b.ToTable("Organisation");
                 });
 
             modelBuilder.Entity("PMS_API.PersonalDetails", b =>
@@ -638,10 +637,10 @@ namespace PMS_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
-                    b.Property<int?>("CountryCodeId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int?>("CreatedByHRId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("CreatedOn")
@@ -675,8 +674,8 @@ namespace PMS_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ReportingPersonUsername")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ReportingPersonId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
@@ -690,7 +689,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("CountryCodeId");
+                    b.HasIndex("CreatedByHRId");
 
                     b.HasIndex("DesignationId");
 
@@ -856,9 +855,9 @@ namespace PMS_API.Migrations
 
             modelBuilder.Entity("PMS_API.User", b =>
                 {
-                    b.HasOne("PMS_API.CountryCode", "countrycode")
-                        .WithMany("users")
-                        .HasForeignKey("CountryCodeId");
+                    b.HasOne("PMS_API.HR", "hr")
+                        .WithMany()
+                        .HasForeignKey("CreatedByHRId");
 
                     b.HasOne("PMS_API.Designation", "designation")
                         .WithMany("users")
@@ -878,11 +877,11 @@ namespace PMS_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("countrycode");
-
                     b.Navigation("designation");
 
                     b.Navigation("gender");
+
+                    b.Navigation("hr");
 
                     b.Navigation("organisation");
                 });
@@ -895,11 +894,6 @@ namespace PMS_API.Migrations
             modelBuilder.Entity("PMS_API.College", b =>
                 {
                     b.Navigation("education");
-                });
-
-            modelBuilder.Entity("PMS_API.CountryCode", b =>
-                {
-                    b.Navigation("users");
                 });
 
             modelBuilder.Entity("PMS_API.Designation", b =>

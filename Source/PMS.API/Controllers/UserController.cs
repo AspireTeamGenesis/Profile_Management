@@ -2,10 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel.DataAnnotations;
 namespace PMS_API
 {
     [Authorize]
-   [ApiController]
+    [ApiController]
     [Route("[controller]/[Action]")]
     public class UserController:Controller{
         
@@ -26,7 +27,7 @@ namespace PMS_API
             }
            catch(Exception exception){
                _logger.LogInformation($"UserController :GetAllUsers()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+               return Problem(exception.Message);
            }
             
             
@@ -40,7 +41,7 @@ namespace PMS_API
             }
             catch(Exception exception){
                 _logger.LogInformation($"UserController :GetUserById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+               return Problem(exception.Message);
             }
         }
         
@@ -48,7 +49,7 @@ namespace PMS_API
         public IActionResult AddUser(User userValues){
             if(userValues==null){
                 _logger.LogInformation("UserController :AddUser()-user tries to enter null values");
-                return BadRequest("User values not be null");
+                return BadRequest("User values should not be null");
             }
             
                
@@ -59,16 +60,18 @@ namespace PMS_API
                 
                 
             }
-            catch(Exception exception){
-                 _logger.LogInformation($"UserController :AddUser()-{exception.Message}{exception.StackTrace}");
-                
-                 return BadRequest(exception.Message);
+            catch(ValidationException exception){
+                _logger.LogInformation($"UserController :AddUser()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
             }
-            
-            
-
-            
-           
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"UserController :AddUser()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"UserController :AddUser()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
         }
          [HttpPut]
          
@@ -89,7 +92,7 @@ namespace PMS_API
              
              catch(Exception exception){
                  _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
-                 return BadRequest(exception.Message);
+                 return Problem(exception.Message);
              }
             
            

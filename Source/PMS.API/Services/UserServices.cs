@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 namespace PMS_API{
    
 
@@ -44,9 +45,10 @@ namespace PMS_API{
                     username=getuser.UserName,
                     password=getuser.Password,
                     gender=getuser.gender.GenderName,
+                    countryCode=getuser.countrycode.CountryCodeName,
                     mobilenumber=getuser.MobileNumber,
                     designation=getuser.designation.DesignationName,
-                    reportingpersonId=getuser.ReportingPersonId,
+                    reportingpersonUsername=getuser.ReportingPersonUsername,
                     organisation=getuser.organisation.OrganisationName
 
                 };
@@ -60,7 +62,7 @@ namespace PMS_API{
 
         {
             if(item==null)
-                throw new ArgumentNullException($"UserServices:Add()-user value not be null{item}");
+                throw new ArgumentNullException($"UserServices:Add()-user values should not be null{item}");
              _validation.userValidate(item);
             try
             {
@@ -70,15 +72,19 @@ namespace PMS_API{
                 return userData.AddUser(item)?true:false;              //Ternary operator
                 
             }
-            
+            catch(ValidationException exception){
+                _logger.LogInformation($"UserServices:Add()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"UserServices:Add()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
             catch(Exception exception){
                 _logger.LogInformation($"UserServices:Add()-{exception.Message}\n{exception.StackTrace}");
                 return false;
 
             }
-            
-            
-             
         }
         public bool Disable(int id)
         {

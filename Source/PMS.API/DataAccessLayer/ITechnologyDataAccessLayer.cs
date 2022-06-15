@@ -1,4 +1,3 @@
-
 namespace PMS_API
 {
     public interface ITechnologyDataAccessLayer

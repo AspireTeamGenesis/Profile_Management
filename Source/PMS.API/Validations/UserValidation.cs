@@ -36,8 +36,8 @@ namespace PMS_API
             //     throw new ValidationException($"Organization not be null and user supplied Organization is {user.OrganisationId}");
             // if(user.DesignationId==0)
             //     throw new ValidationException($"Designation not be null and user supplied Designation is {user.DesignationId}");
-            if(user.ReportingPersonId==0)
-                throw new ValidationException($"Reporting_Person not be null and user supplied Reporting_Person is {user.ReportingPersonId}");
+            if(string.IsNullOrEmpty(user.ReportingPersonUsername))
+                throw new ValidationException($"Reporting_Person not be null and user supplied Reporting_Person is {user.ReportingPersonUsername}");
             return true;
 
         }
