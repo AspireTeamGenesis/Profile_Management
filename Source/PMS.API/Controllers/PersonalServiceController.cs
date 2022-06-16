@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 namespace PMS_API
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[Action]")]
     public class PersonalServiceController : Controller

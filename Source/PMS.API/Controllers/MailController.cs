@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 using System.Net;
 using PMS_API;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class MailController : ControllerBase

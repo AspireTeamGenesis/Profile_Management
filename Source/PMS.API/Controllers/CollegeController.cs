@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System.Net;
 
 
 namespace PMS_API;
-
+[Authorize]
 [ApiController]
-    [Route("[controller]/[Action]")]
+[Route("[controller]/[Action]")]
 public class CollegeController : ControllerBase
 {
     private readonly ILogger _logger;

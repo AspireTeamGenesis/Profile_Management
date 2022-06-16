@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System.Net;
 
 namespace PMS_API;
-
+[Authorize]
 [ApiController]
 [Route("[controller]/[Action]")]
 public class OrganisationController : ControllerBase

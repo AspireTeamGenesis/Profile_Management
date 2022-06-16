@@ -2303,11 +2303,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
+      "projectUniqueName": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Desktop\\PMS.API\\PMS_API.csproj",
       "projectName": "PMS_API",
-      "projectPath": "c:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
+      "projectPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Desktop\\PMS.API\\PMS_API.csproj",
       "packagesPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\obj\\",
+      "outputPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Desktop\\PMS.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\harini.rajkumar.ASPIRESYS\\AppData\\Roaming\\NuGet\\NuGet.Config"
