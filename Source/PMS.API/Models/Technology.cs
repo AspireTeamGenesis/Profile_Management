@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 namespace PMS_API{
      public class Technology
     {
@@ -9,7 +10,8 @@ namespace PMS_API{
         public string TechnologyName{get;set;}
         [InverseProperty("technology")]
         public virtual ICollection<Domain>?  domains{get;set;}
-        public bool IsActive { get; set; } = true;
+        [DefaultValue(true)]
+        public bool IsActive{get;set;}
         
 
         

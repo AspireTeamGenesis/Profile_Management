@@ -23,7 +23,8 @@ namespace PMS_API
         public int ProfileStatusId {get; set;}
         [ForeignKey("ProfileStatusId")]
         public virtual ProfileStatus? profilestatus {get;set;}
-        public bool IsActive{ get; set;}
+        [DefaultValue(true)]
+        public bool IsActive{get;set;}
        
 
     }

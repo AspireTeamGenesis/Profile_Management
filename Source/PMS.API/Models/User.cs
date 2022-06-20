@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using System.ComponentModel;
 
 namespace PMS_API
 {
@@ -67,11 +68,8 @@ namespace PMS_API
         [InverseProperty("users")]
         //[JsonIgnore]
         public virtual PersonalDetails? personalDetails { get; set; }
-
-        public bool IsActive { get; set; }
         //audit fields
         //createdby  createdon updatedby updatedon\\
-
         // public int CreatedBy{get;set;}
         // [ForeignKey("CreatedByHRId")]
         // public virtual HR? hr {get;set;}
@@ -79,6 +77,8 @@ namespace PMS_API
         public DateTime? CreatedOn { get; set; }
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedOn { get; set; }
+        [DefaultValue(true)]
+        public bool IsActive { get; set; }
 
 
 

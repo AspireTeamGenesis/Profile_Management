@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.ComponentModel;
 namespace PMS_API
 {
     public class Projects
@@ -37,6 +37,7 @@ namespace PMS_API
         [ForeignKey("ProfileId")]
         [InverseProperty("projects")]
         public virtual Profile? profile{get;set;}
+        [DefaultValue(true)]
         public bool IsActive { get; set; }
     }
 }

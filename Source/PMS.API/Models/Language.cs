@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.ComponentModel;
 namespace PMS_API
 {
     public class Language
@@ -24,7 +24,7 @@ namespace PMS_API
         public DateTime? UpdatedOn { get; set; }
 
         public int? UpdatedBy { get; set; }
-        public bool IsActive { get; set; }
-
+        [DefaultValue(true)]
+        public bool IsActive{get;set;}
     }
 }

@@ -419,8 +419,6 @@ namespace PMS_API
                 _logger.LogInformation($"PersonalServices:AddSkills()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
-
-
         }
        
          public object GetSkillDetailsById(int Skillid,int Technologyid)

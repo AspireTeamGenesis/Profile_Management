@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.ComponentModel;
 namespace PMS_API
 {
     public class Education
@@ -34,6 +34,7 @@ namespace PMS_API
         [ForeignKey("collegeid")]
         [InverseProperty("education")]
         public virtual College? college { get; set; }
+        [DefaultValue(true)]
          public bool IsActive { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace PMS_API
 {
@@ -11,7 +12,8 @@ namespace PMS_API
         public DateTime ApprovedDate{get;set;}
         [ForeignKey("ProfileId")]
         public virtual Profile? profile{get;set;}
-        public bool IsActive { get; set; } = true;
+        [DefaultValue(true)]
+        public bool IsActive{get;set;}
         
     }
 }

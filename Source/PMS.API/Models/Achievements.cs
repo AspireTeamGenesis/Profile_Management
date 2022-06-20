@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 namespace PMS_API
 {
     public class Achievements
@@ -20,13 +21,14 @@ namespace PMS_API
         [ForeignKey("AchievementTypeId")]
         [InverseProperty("achievements")]
         public virtual AchievementType? achievementtype{get;set;}
-        public bool IsActive{get;set;}
-         public DateTime? CreatedOn { get; set; }
+        public DateTime? CreatedOn { get; set; }
 
         public int? CreatedBy { get; set; }
 
         public DateTime? UpdatedOn { get; set; }
 
         public int? UpdatedBy { get; set; }
+        [DefaultValue(true)]
+        public bool IsActive{get;set;}
     }
 }

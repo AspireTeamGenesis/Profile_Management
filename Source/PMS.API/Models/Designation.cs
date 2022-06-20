@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 namespace PMS_API{
      public class Designation
     {
@@ -10,7 +11,8 @@ namespace PMS_API{
         public string ? DesignationName{get;set;}
         [InverseProperty("designation")]
         public virtual ICollection<User>?  users  {get;set;}
-        public bool IsActive { get; set; } = true;
+        [DefaultValue(true)]
+        public bool IsActive{get;set;}
         
 
         

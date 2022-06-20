@@ -545,7 +545,7 @@ namespace PMS_API
             if (media == null)
             {
                 _logger.LogError("PersonalServiceController:AddSocialMedia():user tries to enter null values");
-                return BadRequest("social media details not be null");
+                return BadRequest("social media details should not be null");
             }
             try
             {
