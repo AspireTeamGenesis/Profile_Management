@@ -31,7 +31,7 @@ namespace PMS_API
             
             try{
 
-                return _context.users.Include("gender").Include("designation").Include("organisation").ToList();
+                return _context.users.Include("gender").Include("designation").Include("organisation").Include("countrycode").ToList();
                 
             }
             

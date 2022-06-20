@@ -75,9 +75,9 @@ namespace PMS_API
         }
          [HttpPut]
          
-         public IActionResult UpdateUser(User user,int id){
-             
-             if(user==null){
+         public IActionResult UpdateUser(User user,int id)
+         {
+            if(user==null){
                 _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
                 return BadRequest("User values not be null");
             }
@@ -95,11 +95,7 @@ namespace PMS_API
                  return Problem(exception.Message);
              }
             
-           
-            
-            
-             
-         } 
+        } 
          [HttpDelete(Name="Disable")]
          public IActionResult Disable(int id){
              if (id == 0) return BadRequest("User is required");
