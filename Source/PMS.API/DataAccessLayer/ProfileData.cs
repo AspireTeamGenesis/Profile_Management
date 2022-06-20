@@ -737,7 +737,7 @@ namespace PMS_API
             try
             {
 
-                return _context.achievements.ToList();
+                return _context.achievements.Include("achievementtype").ToList();
 
             }
 
