@@ -10,8 +10,8 @@ namespace PMS_API
         public int ProfileId{get;set;}
         public int AchievementTypeId{get;set;}
         
-        // public string base64header {get;set;}
-        // public byte[]? Image{get;set;}
+        public string base64header {get;set;}
+        public byte[]? Image{get;set;}
         
 
         [ForeignKey("ProfileId")]
