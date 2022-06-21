@@ -784,8 +784,7 @@ namespace PMS_API
             try
             {
 
-                return _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").ToList();
-
+                return _context.profile.Include("personalDetails").Include("personalDetails.users").Include("personalDetails.users.designation").Include("education").Include("projects").Include("skills").Include("achievements").Include("profilestatus").ToList();
             }
 
             catch (Exception exception)
