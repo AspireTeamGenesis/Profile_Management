@@ -434,7 +434,7 @@ namespace PMS_API
                 var breakDurations = _context.breakDurations.Find(BreakDurationId);
 
                 //do null validation for user
-                if (breakDurations == null) throw new NullReferenceException($"Project Id not found{BreakDuration_Id}");
+                if (breakDurations == null) throw new NullReferenceException($"Project Id not found{BreakDurationId}");
                 breakDurations.IsActive = false;
                 _context.breakDurations.Update(breakDurations);
                 _context.SaveChanges();
