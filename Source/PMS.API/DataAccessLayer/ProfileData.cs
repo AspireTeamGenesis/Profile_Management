@@ -12,9 +12,9 @@ namespace PMS_API
     public class ProfileData
     {
         private Context _context;
-        private ILogger<PersonalService> _logger;
+        private ILogger<ProfileService> _logger;
 
-        public ProfileData(Context context, ILogger<PersonalService> logger)
+        public ProfileData(Context context, ILogger<ProfileService> logger)
         {
             _context = context;
             _logger = logger;
