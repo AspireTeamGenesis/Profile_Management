@@ -765,6 +765,28 @@ namespace PMS_API
                 throw exception;
             }
         }
+         public Object GetSpecificProfile()
+        {
+
+            try
+            {
+                var getprofile = profileData.GetallProfiles().Select(item =>
+                 new
+                 {
+                     Status = item.profilestatus.ProfileStatusName,
+                     Name = item.personalDetails.users.Name,
+                     Designation=item.personalDetails.users.designation.DesignationName,
+                     ReportingPerson = item.personalDetails.users.ReportingPersonUsername
+
+                 }); return getprofile;
+
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"ProfileService:GetSpecificProfile()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+        }
          
         
         public bool AddProfileHistory(ProfileHistory profilehistory)
