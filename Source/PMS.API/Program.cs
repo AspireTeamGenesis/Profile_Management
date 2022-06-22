@@ -45,7 +45,7 @@ builder.Services.AddScoped<IUserData,UserData>();
 
 builder.Services.AddScoped<IUserServices,UserServices>();
 
-builder.Services.AddScoped<IPersonalService,PersonalService>();
+builder.Services.AddScoped<IProfileService,ProfileService>();
 builder.Services.AddScoped<ICollegeServices,CollegeServices>();
 builder.Services.AddScoped<IDesignationServices,DesignationServices>();
 builder.Services.AddScoped<IDomainServices,DomainServices>();
