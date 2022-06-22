@@ -49,7 +49,7 @@ namespace PMS_API
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     ExpiryInMinutes = 360,
-                    IsHR = user.DesignationId == 1 ? true : false,
+                    IsHR = user.DesignationId == 3 ? true : false,
                     IsAdmin = user.DesignationId == 2 ? true : false
                 };
 

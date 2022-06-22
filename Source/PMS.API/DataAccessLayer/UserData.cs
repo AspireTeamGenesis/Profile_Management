@@ -69,7 +69,7 @@ namespace PMS_API
             if(string.IsNullOrEmpty(item.UserName))
                 throw new ValidationException($"UserName not be null and user supplied UserName is {item.UserName}");
             try{
-            
+            item.IsActive=true;
             _context.users.Add(item);
             _context.SaveChanges();
             return true;

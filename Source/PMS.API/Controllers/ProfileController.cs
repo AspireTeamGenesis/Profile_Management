@@ -733,22 +733,22 @@ namespace PMS_API
                return BadRequest(exception.Message);
             }
         }
-        [HttpGet]
-        public IActionResult GetSpecificProfile()
-        {
-            try
-            {
+        // [HttpGet]
+        // public IActionResult GetSpecificProfile()
+        // {
+        //     try
+        //     {
 
-                return Ok(_profileService.GetSpecificProfile());
-            }
-            catch (Exception exception)
-            {
-                _logger.LogInformation($"ProfileController :GetSpecificProfile()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
+        //         return Ok(_profileService.GetSpecificProfile());
+        //     }
+        //     catch (Exception exception)
+        //     {
+        //         _logger.LogInformation($"ProfileController :GetSpecificProfile()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+        //         return BadRequest(exception.Message);
+        //     }
 
 
-        }
+        // }
        [HttpPost]
         public IActionResult AddProfileHistory(ProfileHistory profilehistory)
         {

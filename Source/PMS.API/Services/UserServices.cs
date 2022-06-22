@@ -38,9 +38,7 @@ namespace PMS_API{
             try
             {
                 var getuser= userData.GetUser(id); 
-                 if(getuser.IsActive==true)
-                 {
-                    return new {
+                return new {
                     userid=getuser.UserId,
                     name =getuser.Name,
                     email=getuser.Email,
@@ -51,16 +49,9 @@ namespace PMS_API{
                     mobilenumber=getuser.MobileNumber,
                     designation=getuser.designation.DesignationName,
                     reportingpersonUsername=getuser.ReportingPersonUsername,
-                    organisation=getuser.organisation.OrganisationName};
-                 }
-                 else
-                 {
-                    throw new ValidationException("User not found");
-                 }
-            }
-            catch(ValidationException exception){
-                _logger.LogInformation($"UserServices:Add()-{exception.Message}\n{exception.StackTrace}");
-                throw exception;
+                    organisation=getuser.organisation.OrganisationName
+
+                };
             }
             catch(Exception exception){
                 _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");

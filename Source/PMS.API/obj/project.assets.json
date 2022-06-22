@@ -2298,19 +2298,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chitrarasu.venu\\.nuget\\packages\\": {}
+    "C:\\Users\\brindha.muruga\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chitrarasu.venu\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
+      "projectUniqueName": "C:\\Users\\brindha.muruga\\Desktop\\PMS.API\\PMS_API.csproj",
       "projectName": "PMS_API",
-      "projectPath": "C:\\Users\\chitrarasu.venu\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
-      "packagesPath": "C:\\Users\\chitrarasu.venu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chitrarasu.venu\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\obj\\",
+      "projectPath": "C:\\Users\\brindha.muruga\\Desktop\\PMS.API\\PMS_API.csproj",
+      "packagesPath": "C:\\Users\\brindha.muruga\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\brindha.muruga\\Desktop\\PMS.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\chitrarasu.venu\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\brindha.muruga\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -2389,7 +2389,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
