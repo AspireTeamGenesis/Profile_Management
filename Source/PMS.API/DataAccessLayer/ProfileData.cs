@@ -12,9 +12,9 @@ namespace PMS_API
     public class ProfileData
     {
         private Context _context;
-        private ILogger<ProfileService> _logger;
+        private ILogger<PersonalService> _logger;
 
-        public ProfileData(Context context, ILogger<ProfileService> logger)
+        public ProfileData(Context context, ILogger<PersonalService> logger)
         {
             _context = context;
             _logger = logger;
@@ -364,19 +364,19 @@ namespace PMS_API
             }
 
         }
-        public bool DisableProjectDetails(int ProjectId)
+        public bool DisableProjectDetails(int Project_Id)
         {
-            if (ProjectId <= 0)
+            if (Project_Id <= 0)
 
                 throw new ValidationException("Project Id is not provided to DAL");
 
             try
             {
-                var projects = _context.projects.Find(ProjectId);
+                var projects = _context.projects.Find(Project_Id);
 
                 //do null validation for 
                 if (projects == null)
-                    throw new NullReferenceException($"Project Id not found{ProjectId}");
+                    throw new NullReferenceException($"Project Id not found{Project_Id}");
 
                 projects.IsActive = false;
                 _context.projects.Update(projects);
@@ -423,18 +423,18 @@ namespace PMS_API
         }
 
 
-        public bool DisableBreakDuration(int BreakDurationId)
+        public bool DisableBreakDuration(int BreakDuration_Id)
         {
-            if (BreakDurationId <= 0)
+            if (BreakDuration_Id <= 0)
 
                 throw new ValidationException("BreakDuration Id is not provided to DAL");
 
             try
             {
-                var breakDurations = _context.breakDurations.Find(BreakDurationId);
+                var breakDurations = _context.breakDurations.Find(BreakDuration_Id);
 
                 //do null validation for user
-                if (breakDurations == null) throw new NullReferenceException($"Project Id not found{BreakDurationId}");
+                if (breakDurations == null) throw new NullReferenceException($"Project Id not found{BreakDuration_Id}");
                 breakDurations.IsActive = false;
                 _context.breakDurations.Update(breakDurations);
                 _context.SaveChanges();
@@ -537,18 +537,18 @@ namespace PMS_API
                 return false;
             }
         }
-        public bool DisableSkillDetails(int SkillId)
+        public bool DisableSkillDetails(int Skill_Id)
         {
-            if (SkillId <= 0)
+            if (Skill_Id <= 0)
 
                 throw new ValidationException("Skill Id is not provided to DAL");
 
             try
             {
-                var skills = _context.skills.Find(SkillId);
+                var skills = _context.skills.Find(Skill_Id);
 
                 //do null validation for user
-                if (skills == null) throw new NullReferenceException($"Skill Id not found{SkillId}");
+                if (skills == null) throw new NullReferenceException($"Skill Id not found{Skill_Id}");
                 skills.IsActive = false;
                 _context.skills.Update(skills);
                 _context.SaveChanges();
@@ -592,18 +592,18 @@ namespace PMS_API
 
 
         }
-        public bool DisableLanguage(int LanguageId)
+        public bool DisableLanguage(int Language_Id)
         {
-            if (LanguageId <= 0)
+            if (Language_Id <= 0)
 
                 throw new ValidationException("Language Id is not provided to DAL");
 
             try
             {
-                var languages = _context.languages.Find(LanguageId);
+                var languages = _context.languages.Find(Language_Id);
 
                 //do null validation for user
-                if (languages == null) throw new NullReferenceException($"Language Id not found{LanguageId}");
+                if (languages == null) throw new NullReferenceException($"Language Id not found{Language_Id}");
                 languages.IsActive = false;
                 _context.languages.Update(languages);
                 _context.SaveChanges();
@@ -737,7 +737,7 @@ namespace PMS_API
             try
             {
 
-                return _context.achievements.Include("achievementtype").ToList();
+                return _context.achievements.ToList();
 
             }
 
@@ -784,7 +784,8 @@ namespace PMS_API
             try
             {
 
-                return _context.profile.Include("personalDetails").Include("personalDetails.users").Include("personalDetails.users.designation").Include("education").Include("projects").Include("skills").Include("achievements").Include("profilestatus").ToList();
+                return _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").ToList();
+
             }
 
             catch (Exception exception)

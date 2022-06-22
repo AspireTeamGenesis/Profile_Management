@@ -6,7 +6,7 @@ namespace PMS_API
         {
             return new Context();
         }
-        public static ProfileData GetProfileData(ILogger<ProfileService> logger)
+        public static ProfileData GetProfileData(ILogger<PersonalService> logger)
         {
             return new ProfileData(GetProfileContext(),logger);
         }

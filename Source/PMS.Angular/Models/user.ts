@@ -7,7 +7,7 @@ export interface User{
     countryCodeId:number;
     // mobileNumberCode:string;
     mobileNumber: string;
-    organizationId: number;
+    organisationId: number;
     designationId: number;
     reportingPersonUsername:string;
     userId: number;

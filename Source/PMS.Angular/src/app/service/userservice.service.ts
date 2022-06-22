@@ -18,7 +18,7 @@ export class UserserviceService {
   //     'Access-Control-Allow-Headers':'*'
   //   })
 
-  baseURL = 'https://localhost:7071/'
+  baseURL = 'https://localhost:7021/'
   constructor(private http: HttpClient) { }
 
   private headers = new HttpHeaders({
@@ -26,9 +26,16 @@ export class UserserviceService {
     'Authorization': `Bearer ${AuthenticationService.GetData("token")}`
   })
 
-  private header = new HttpHeaders({
-    'Content-Type': 'application/json',
-  })
+  getUserDetails(userId:number)
+  {
+    return this.http.get<any>(`https://localhost:7021/User/GetUserById?id=${userId}`,{ headers: this.headers });
+  }
+  getUserProfile()
+  {
+    return this.http.get<any>(`https://localhost:7021/User/GetUserProfile`,{ headers: this.headers });
+  }
+
+ 
   // headers = new HttpHeaders({
   //   'Content-Type': 'application/json',
   // })
@@ -48,7 +55,7 @@ export class UserserviceService {
 
   Login(user:any)
   {
-       return this.http.post<any>(`https://localhost:7021/Login/AuthLogin/Login?Username=${user.UserName}&password=${user.Password}`, user, { headers: this.header })
+       return this.http.post<any>(`https://localhost:7021/Login/AuthLogin/Login?Username=${user.UserName}&password=${user.Password}`, user, { headers: this.headers })
   
   }
   // Login(user: any) {
@@ -60,6 +67,11 @@ export class UserserviceService {
   const url='https://localhost:7021/User/AddUser';
   console.warn(userValue);
   return this.http.post<User>(url,userValue,{headers : this.headers});
+  }
+
+  CancelDrive(userId:number){
+    console.log(userId);
+     return this.http.delete<any>(`https://localhost:7021/User/Disable?id=${userId}`, { headers: this.headers });
   }
 
 }

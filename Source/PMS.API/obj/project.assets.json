@@ -2298,19 +2298,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\harini.rajkumar.ASPIRESYS\\.nuget\\packages\\": {}
+    "C:\\Users\\chitrarasu.venu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Desktop\\PMS.API\\PMS_API.csproj",
+      "projectUniqueName": "c:\\Users\\chitrarasu.venu\\Desktop\\PMS.API\\PMS_API.csproj",
       "projectName": "PMS_API",
-      "projectPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Desktop\\PMS.API\\PMS_API.csproj",
-      "packagesPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Desktop\\PMS.API\\obj\\",
+      "projectPath": "c:\\Users\\chitrarasu.venu\\Desktop\\PMS.API\\PMS_API.csproj",
+      "packagesPath": "C:\\Users\\chitrarasu.venu\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\chitrarasu.venu\\Desktop\\PMS.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\harini.rajkumar.ASPIRESYS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\chitrarasu.venu\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"

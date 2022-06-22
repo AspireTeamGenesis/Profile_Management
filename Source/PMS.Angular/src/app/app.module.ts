@@ -15,6 +15,8 @@ import { Card11Component } from './card11/card11.component';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { HrprofileComponent } from './hrprofile/hrprofile.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     CardComponent,
     Card11Component,
+    ChangepasswordComponent,
+    HrprofileComponent,
   ],
   imports: [
     BrowserModule,

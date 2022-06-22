@@ -6,6 +6,8 @@ import { CreateusersComponent } from './hr/createusers/createusers.component';
 import { HrhomeComponent } from './hr/hrhome/hrhome.component';
 import { LoginComponent } from './hr/login/login.component';
 import { SearchComponent } from './hr/search/search.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { HrprofileComponent } from './hrprofile/hrprofile.component';
 
 const routes: Routes = [
   {path:"hrhome",component:HrhomeComponent},
@@ -13,6 +15,9 @@ const routes: Routes = [
   {path:"card",component:CardComponent},
   {path:"newcard",component:Card11Component},
   {path:"createuser",component:CreateusersComponent},
+  {path:"changepassword",component:ChangepasswordComponent},
+  {path:"hrprofile",component:HrprofileComponent},
+  {path:"hrprofile/:userId",component:HrprofileComponent},
   {path:"",component:LoginComponent}
 ];
 

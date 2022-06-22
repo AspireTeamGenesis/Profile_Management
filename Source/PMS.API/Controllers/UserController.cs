@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
 namespace PMS_API
 {
-    [Authorize]
+    // [Authorize]
     [ApiController]
     [Route("[controller]/[Action]")]
     public class UserController:Controller{
@@ -36,8 +36,20 @@ namespace PMS_API
         public IActionResult GetUserById(int id)
         {
             try{
-                
+
                 return Ok(_userServices.GetUser(id));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"UserController :GetUserById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return Problem(exception.Message);
+            }
+        }
+        [HttpGet]
+        public IActionResult GetUserProfile()
+        {
+            try{
+                int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
+                return Ok(_userServices.GetUser(currentUser));
             }
             catch(Exception exception){
                 _logger.LogInformation($"UserController :GetUserById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
@@ -75,9 +87,9 @@ namespace PMS_API
         }
          [HttpPut]
          
-         public IActionResult UpdateUser(User user,int id)
-         {
-            if(user==null){
+         public IActionResult UpdateUser(User user,int id){
+             
+             if(user==null){
                 _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
                 return BadRequest("User values not be null");
             }
@@ -95,13 +107,17 @@ namespace PMS_API
                  return Problem(exception.Message);
              }
             
-        } 
+           
+            
+            
+             
+         } 
          [HttpDelete(Name="Disable")]
          public IActionResult Disable(int id){
              if (id == 0) return BadRequest("User is required");
             try{
                 
-                return _userServices.Disable(id)?Ok("User Disabled Successfully"):BadRequest("Sorry internal error occured");
+                return _userServices.Disable(id)?Ok(new{message="User Disabled Successfully"}):BadRequest("Sorry internal error occured");
             }
              
              catch(Exception exception){

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Net;
 
 namespace PMS_API;
-[Authorize]
+//[Authorize]
 [ApiController]
 [Route("[controller]/[Action]")]
 public class OrganisationController : ControllerBase

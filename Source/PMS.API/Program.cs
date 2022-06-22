@@ -45,7 +45,7 @@ builder.Services.AddScoped<IUserData,UserData>();
 
 builder.Services.AddScoped<IUserServices,UserServices>();
 
-builder.Services.AddScoped<IProfileService,ProfileService>();
+builder.Services.AddScoped<IPersonalService,PersonalService>();
 builder.Services.AddScoped<ICollegeServices,CollegeServices>();
 builder.Services.AddScoped<IDesignationServices,DesignationServices>();
 builder.Services.AddScoped<IDomainServices,DomainServices>();
@@ -63,11 +63,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidIssuer=builder.Configuration["Jwt:Issuer"],
         IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
-}
-);
+});
+
+
 builder.Services.AddControllersWithViews().AddNewtonsoftJson(options =>
 options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
+builder.Services.AddCors((setup) =>
+{
+    setup.AddPolicy("default", (options) =>
+    {
+        options.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+    });
+});
 
 var app = builder.Build();
 
@@ -77,6 +85,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("default");
 
 app.UseHttpsRedirection();
 
