@@ -10,5 +10,7 @@ namespace PMS_API
         object GetUser(int id);
         bool Save();
         bool UpdateUser(User item);
+        object GetSpecificUserDetails();
+        bool ChangePassword(string OldPassword,string NewPassword,string ConfirmPassword,int currentUser);
     }
 }

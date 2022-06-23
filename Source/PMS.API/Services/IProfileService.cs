@@ -52,7 +52,6 @@ public interface IProfileService
 
         object GetProfileById(int Profileid);
         public IEnumerable<Profile> GetallProfiles();
-       // object GetSpecificProfile();
         
         public bool AddProfileHistory(ProfileHistory profilehistory); 
         public IEnumerable<object> GetProfileHistoryById(int ProfileId);

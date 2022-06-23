@@ -30,7 +30,26 @@ namespace PMS_API{
                 throw exception;
             }
         }
-       
+        public Object GetSpecificUserDetails()
+        {
+            try
+            {
+                return (from user in userData.GetallUsers() select user).ToList()
+                .Select(var => new
+                {
+                    Name = var.Name,
+                    UserId=var.UserId,
+                    Designation = var.designation.DesignationName,
+                    ReportingPerson = var.ReportingPersonUsername
+                }
+                );
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"User Service : GetSpecificUserDetails() : {exception.Message} : {exception.StackTrace}");
+                throw exception;
+            }
+        }
         public object GetUser(int id)
         {
             if(id<=0)
@@ -38,6 +57,7 @@ namespace PMS_API{
             try
             {
                 var getuser= userData.GetUser(id); 
+                if(getuser.IsActive==true){
                 return new {
                     userid=getuser.UserId,
                     name =getuser.Name,
@@ -51,7 +71,10 @@ namespace PMS_API{
                     reportingpersonUsername=getuser.ReportingPersonUsername,
                     organisation=getuser.organisation.OrganisationName
 
-                };
+                };}
+                else{
+                    throw new ValidationException("User not found");
+                }
             }
             catch(Exception exception){
                 _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");
@@ -122,8 +145,55 @@ namespace PMS_API{
                 return false;
 
             }
-            
- 
+        }
+        public bool ChangePassword(string OldPassword,string NewPassword,string ConfirmPassword,int currentUser)
+
+        {
+
+            PasswordValidation.IsValidPassword(OldPassword,NewPassword,ConfirmPassword);
+
+
+
+
+            try
+            {
+                if(NewPassword != ConfirmPassword)
+                    throw new ValidationException($"The confirm password should be the same as new password : {ConfirmPassword}");
+                else{
+                    return userData.EditPassword(OldPassword,NewPassword,ConfirmPassword,currentUser) ? true : false;
+                }
+
+            }
+
+            catch (ArgumentException exception)
+
+            {
+
+                _logger.LogInformation($"User service : EditPassword(string OldPassword,string NewPassword,string ConfirmPassword) : {exception.Message}");
+
+                return false;
+
+            }
+
+            catch (ValidationException passwordNotValid)
+
+            {
+
+                _logger.LogInformation($"User service :EditPassword(string OldPassword,string NewPassword,string ConfirmPassword): {passwordNotValid.Message}");
+
+                throw passwordNotValid;
+
+            }
+
+            catch (Exception exception)
+
+            {
+
+                _logger.LogInformation($"User service :EditPassword(string OldPassword,string NewPassword,string ConfirmPassword):{exception.Message}");
+
+                return false;
+
+            }
 
         }
         public bool Save()

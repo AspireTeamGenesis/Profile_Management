@@ -8,31 +8,31 @@
 //     [Route("[controller]/[Action]")]
 //     public class ChangePasswordController :Controller{
         
-//         private ILoginService _loginServices;
-//          private readonly ILogger<LoginController> _logger;
-//         public ChangePasswordController(ILoginService loginServices, ILogger<LoginController> logger)
+//         private IChangePasswordServices _changepasswordServices;
+//          private readonly ILogger<ChangePasswordController> _logger;
+//         public ChangePasswordController(IChangePasswordServices changepasswordServices, ILogger<ChangePasswordController> logger)
 //         {
 
-//             _loginServices = loginServices;
+//             _changepasswordServices = changepasswordServices;
 //             _logger = logger;
 //         }
-//         [HttpPost("Login")]
-//         public IActionResult AuthLogin(string Username, string password)
+//         [HttpPost("ChangePassword")]
+//         public IActionResult ChangePassword(string OldPassword, string NewPassword,string ConfirmPassword)
 //         {
 //             try
 //             {
                 
-//                 var Result = _loginServices.AuthLogin(Username, password);                
+//                 var Result = _changepasswordServices.ChangePassword(OldPassword,NewPassword,ConfirmPassword);                
 //                 return Ok(Result);
 //             }
 //             catch (ValidationException validationException)
 //             {
-//                 _logger.LogInformation($"Login Service : AuthLogin() : {validationException.Message}");
+//                 _logger.LogInformation($"ChangePassword Service : AuthLogin() : {validationException.Message}");
 //                 return BadRequest(validationException.Message);
 //             }
 //             catch (Exception exception)
 //             {
-//                 _logger.LogInformation($"Login Service : AuthLogin() : {exception.Message}");
+//                 _logger.LogInformation($"ChangePassword Service : AuthLogin() : {exception.Message}");
 //                 return Problem("Sorry some internal error occured");
 //             }
 //         }

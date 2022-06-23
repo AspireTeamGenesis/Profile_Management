@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\brindha.muruga\\Desktop\\PMS.API\\PMS_API.csproj": {}
+    "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\brindha.muruga\\Desktop\\PMS.API\\PMS_API.csproj": {
+    "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\brindha.muruga\\Desktop\\PMS.API\\PMS_API.csproj",
+        "projectUniqueName": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
         "projectName": "PMS_API",
-        "projectPath": "C:\\Users\\brindha.muruga\\Desktop\\PMS.API\\PMS_API.csproj",
-        "packagesPath": "C:\\Users\\brindha.muruga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\brindha.muruga\\Desktop\\PMS.API\\obj\\",
+        "projectPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
+        "packagesPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\brindha.muruga\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\harini.rajkumar.ASPIRESYS\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -38,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.5, )"
@@ -70,6 +74,10 @@
               "target": "Package",
               "version": "[6.0.5, )"
             },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -93,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -9,7 +9,7 @@ namespace PMS_API{
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-        optionsBuilder.UseSqlServer("server=ASPLAP2930;database=PMS_Services;trusted_connection=true;");
+        optionsBuilder.UseSqlServer("server=ASPLAP1916;database=PMS_Services;trusted_connection=true;");
         }
         public DbSet<User> users {get;set;}
         public DbSet<Profile> profile{get;set;}
@@ -29,6 +29,7 @@ namespace PMS_API{
         public DbSet<Achievements> achievements{get;set;}
         public DbSet<ProfileHistory> profilehistory{get;set;}
         public DbSet<CountryCode> CountryCodes{get;set;}
+        public DbSet<ChangePassword> ChangePasswords{get;set;}
         
 
         

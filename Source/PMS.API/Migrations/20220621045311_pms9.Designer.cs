@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMS_API;
 
@@ -11,9 +12,10 @@ using PMS_API;
 namespace PMS_API.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220621045311_pms9")]
+    partial class pms9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,30 +132,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("PersonalDetailsId");
 
                     b.ToTable("breakDurations");
-                });
-
-            modelBuilder.Entity("PMS_API.ChangePassword", b =>
-                {
-                    b.Property<int>("ChangePasswordId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ChangePasswordId"), 1L, 1);
-
-                    b.Property<string>("ConfirmPassword")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("NewPassword")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ChangePasswordId");
-
-                    b.ToTable("ChangePasswords");
                 });
 
             modelBuilder.Entity("PMS_API.College", b =>

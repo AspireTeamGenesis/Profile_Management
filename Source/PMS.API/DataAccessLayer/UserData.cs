@@ -13,6 +13,7 @@ namespace PMS_API
         bool save();
         bool UpdateUser(User item);
         User LoginCrendentials(string UserName,string Password);
+        bool EditPassword(string OldPassword,string NewPassword,string ConfirmPassword,int currentUser);
     }
 
     public class UserData : IUserData
@@ -69,7 +70,7 @@ namespace PMS_API
             if(string.IsNullOrEmpty(item.UserName))
                 throw new ValidationException($"UserName not be null and user supplied UserName is {item.UserName}");
             try{
-            item.IsActive=true;
+            
             _context.users.Add(item);
             _context.SaveChanges();
             return true;
@@ -158,7 +159,7 @@ namespace PMS_API
         {
             return _context.SaveChanges() >= 0;
         }
-          public User LoginCrendentials(string UserName, string Password)
+        public User LoginCrendentials(string UserName, string Password)
         {
             try
             {
@@ -176,6 +177,51 @@ namespace PMS_API
                 _logger.LogInformation($"Exception on User DAL : LoginCrendentials(string UserName, string password) : {exception.Message}");
                 throw exception;
             }
+        }
+        public bool EditPassword(string OldPassword,string NewPassword,string ConfirmPassword,int currentUser)
+        {
+            PasswordValidation.IsValidPassword(OldPassword,NewPassword,ConfirmPassword);
+            try
+            {
+
+                var edit = _context.users.Find(currentUser);
+                if (edit == null)
+                    throw new ValidationException("No User is found wiith the given user id");
+                else if (edit.IsActive == false)
+                    throw new ValidationException("The given user Id is inactive,so unable to change the password");
+                else if(edit.Password!=OldPassword)
+                    throw new ValidationException("The given Old Password is Incorrect");
+                else if(NewPassword==edit.Password)
+                    throw new ValidationException("The given New Password should not be the same as Old Password");
+                edit.Password = NewPassword;
+                _context.users.Update(edit);
+                _context.SaveChanges();
+                return true;
+
+            }
+            catch (DbUpdateException exception)
+            {
+                _logger.LogInformation($"User DAL : EditPassword(string OldPassword,string NewPassword,string ConfirmPassword,int currentUser) : {exception.Message}");
+                return false;
+            }
+            catch (OperationCanceledException exception)
+            {
+                _logger.LogInformation($"User DAL : EditPassword(string OldPassword,string NewPassword,string ConfirmPassword,int currentUser) : {exception.Message}");
+                return false;
+            }
+            catch (ValidationException userNotFound)
+            {
+                throw userNotFound;
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"User DAL : EditPassword(string OldPassword,string NewPassword,string ConfirmPassword,int currentUser) : {exception.Message}");
+
+                return false;
+            }
+
+
         }
     }
 }
