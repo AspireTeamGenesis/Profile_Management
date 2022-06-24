@@ -25,7 +25,7 @@ public interface IProfileService
 
         bool AddSkills(Skills skill);
         IEnumerable<Skills> GetallSkillDetails();
-        object GetSkillDetailsById(int Skillid,int Technologyid);
+        object GetSkillDetailsById(int Skillid);
         bool UpdateSkills(Skills skill);
         bool DisableSkillDetails(int Skillid);
 

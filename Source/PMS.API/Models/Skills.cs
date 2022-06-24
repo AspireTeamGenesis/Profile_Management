@@ -8,10 +8,14 @@ namespace PMS_API
         [Key]
         public int SkillId{get;set;}
         public int ProfileId{get;set;}
+        public int TechnologyId{get;set;}
+        [ForeignKey("TechnologyId")]
+        [InverseProperty("skills")]
+        public virtual Technology? technology{get;set;}
         public int DomainId{get;set;}
         [ForeignKey("DomainId")]
         [InverseProperty("skills")]
-        public virtual Domain? domain { get; set; }
+        public virtual Domain? domain{get;set;}
 
         // public string Technology{get;set;}
         

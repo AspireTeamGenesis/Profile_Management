@@ -434,11 +434,11 @@ namespace PMS_API
 
         }
         [HttpGet]
-        public IActionResult GetSkillDetailsById(int Skillid,int Technologyid)
+        public IActionResult GetSkillDetailsById(int Skillid)
         {
             try{
                 
-                return Ok(_profileService.GetSkillDetailsById(Skillid,Technologyid));
+                return Ok(_profileService.GetSkillDetailsById(Skillid));
             }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController : GetallSkillDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");

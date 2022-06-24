@@ -8,8 +8,10 @@ namespace PMS_API{
         public int TechnologyId{get; set;}
         [Required]
         public string TechnologyName{get;set;}
+      
         [InverseProperty("technology")]
-        public virtual ICollection<Domain>?  domains{get;set;}
+        public virtual ICollection<Skills>? skills {get;set;}
+        
         [DefaultValue(true)]
         public bool IsActive{get;set;}
         

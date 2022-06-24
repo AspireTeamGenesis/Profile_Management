@@ -484,7 +484,7 @@ namespace PMS_API
             try
             {
 
-                return _context.skills.Include("domain").ToList();
+                return _context.skills.Include("domain").Include("technology").ToList();
 
             }
 
