@@ -12,8 +12,8 @@ using PMS_API;
 namespace PMS_API.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220623034202_pms10")]
-    partial class pms10
+    [Migration("20220625133948_pms1")]
+    partial class pms1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,9 @@ namespace PMS_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AchievementId"), 1L, 1);
 
+                    b.Property<byte[]>("AchievementImage")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<int>("AchievementTypeId")
                         .HasColumnType("int");
 
@@ -40,9 +43,6 @@ namespace PMS_API.Migrations
 
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -236,12 +236,7 @@ namespace PMS_API.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("TechnologyId")
-                        .HasColumnType("int");
-
                     b.HasKey("DomainId");
-
-                    b.HasIndex("TechnologyId");
 
                     b.ToTable("Domains");
                 });
@@ -597,6 +592,9 @@ namespace PMS_API.Migrations
                     b.Property<int>("ProfileId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TechnologyId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
@@ -608,6 +606,8 @@ namespace PMS_API.Migrations
                     b.HasIndex("DomainId");
 
                     b.HasIndex("ProfileId");
+
+                    b.HasIndex("TechnologyId");
 
                     b.ToTable("skills");
                 });
@@ -774,17 +774,6 @@ namespace PMS_API.Migrations
                     b.Navigation("personalDetails");
                 });
 
-            modelBuilder.Entity("PMS_API.Domain", b =>
-                {
-                    b.HasOne("PMS_API.Technology", "technology")
-                        .WithMany("domains")
-                        .HasForeignKey("TechnologyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("technology");
-                });
-
             modelBuilder.Entity("PMS_API.Education", b =>
                 {
                     b.HasOne("PMS_API.Profile", "profile")
@@ -881,9 +870,17 @@ namespace PMS_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PMS_API.Technology", "technology")
+                        .WithMany("skills")
+                        .HasForeignKey("TechnologyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("domain");
 
                     b.Navigation("profile");
+
+                    b.Navigation("technology");
                 });
 
             modelBuilder.Entity("PMS_API.SocialMedia", b =>
@@ -989,7 +986,7 @@ namespace PMS_API.Migrations
 
             modelBuilder.Entity("PMS_API.Technology", b =>
                 {
-                    b.Navigation("domains");
+                    b.Navigation("skills");
                 });
 
             modelBuilder.Entity("PMS_API.User", b =>

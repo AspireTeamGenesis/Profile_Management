@@ -13,9 +13,9 @@ namespace PMS_API
         // public string College { get; set; }
         public int collegeid {get;set;}
         [NotMapped]
-        public DateTime Starting_Year{get;set;}
-        [NotMapped]
-        public DateTime Ending_Year{get;set;}
+        // public DateTime Starting_Year{get;set;}
+        // [NotMapped]
+        // public DateTime Ending_Year{get;set;}
         public int? Starting{get;set;}
         public int? Ending{get;set;}
         public float Percentage{get;set;}

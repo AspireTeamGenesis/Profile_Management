@@ -101,7 +101,7 @@ namespace PMS_API
                 var getpersonaldetailsbyprofileid= profileData.GetAllPersonalDetails().Where(item=> item.ProfileId==Profileid).Select(item =>
                  new {
                     personaldetailsid=item.PersonalDetailsId,
-                    //Image=getpersonaldetails.Image,
+                    Image=item.Image,
                     objective=item.Objective,
                     dateofbirth=item.DateOfBirth,
                     nationality=item.Nationality,
@@ -160,8 +160,8 @@ namespace PMS_API
             if (education == null) throw new ArgumentNullException($"Values cannot be null values are {education}");
             try
             {
-                education.Starting = education.Starting_Year.Year;
-                education.Ending = education.Ending_Year.Year;
+                // education.Starting = education.Starting;
+                // education.Ending = education.Ending;
                 education.CreatedBy = education.ProfileId;
                 education.CreatedOn = DateTime.Now;
                 return profileData.AddEducation(education) ? true : false;
@@ -664,7 +664,7 @@ namespace PMS_API
                 string Imagedate="";
                 Imagedate = ImageService.Getbase64String(achievement.base64header);
                 achievement.base64header =ImageService.Getbase64Header(achievement.base64header);
-                achievement.Image = System.Convert.FromBase64String(Imagedate);
+                achievement.AchievementImage = System.Convert.FromBase64String(Imagedate);
 
                 
                 achievement.CreatedOn = DateTime.Now;
@@ -704,7 +704,7 @@ namespace PMS_API
                  new {
                     achievementid=item.AchievementId,
                     achievementtype=item.achievementtype.AchievementTypeName,
-                    achievementimage=item.Image
+                    achievementimage=item.AchievementImage
 
                 });return getachievementsbypersonalid;
             }

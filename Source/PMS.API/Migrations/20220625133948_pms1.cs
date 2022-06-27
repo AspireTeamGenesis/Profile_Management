@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PMS_API.Migrations
 {
-    public partial class initial : Migration
+    public partial class pms1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,11 +15,27 @@ namespace PMS_API.Migrations
                 {
                     AchievementTypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AchievementTypeName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    AchievementTypeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AchievementType", x => x.AchievementTypeId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ChangePasswords",
+                columns: table => new
+                {
+                    ChangePasswordId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NewPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ConfirmPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChangePasswords", x => x.ChangePasswordId);
                 });
 
             migrationBuilder.CreateTable(
@@ -37,6 +53,20 @@ namespace PMS_API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CountryCodes",
+                columns: table => new
+                {
+                    CountryCodeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CountryCodeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CountryCodes", x => x.CountryCodeId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Designations",
                 columns: table => new
                 {
@@ -48,6 +78,20 @@ namespace PMS_API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Designations", x => x.DesignationId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Domains",
+                columns: table => new
+                {
+                    DomainId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DomainName = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Domains", x => x.DomainId);
                 });
 
             migrationBuilder.CreateTable(
@@ -65,7 +109,7 @@ namespace PMS_API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Organisation",
+                name: "Organisations",
                 columns: table => new
                 {
                     OrganisationId = table.Column<int>(type: "int", nullable: false)
@@ -75,21 +119,7 @@ namespace PMS_API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Organisation", x => x.OrganisationId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "profile",
-                columns: table => new
-                {
-                    ProfileId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProfileStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_profile", x => x.ProfileId);
+                    table.PrimaryKey("PK_Organisations", x => x.OrganisationId);
                 });
 
             migrationBuilder.CreateTable(
@@ -130,20 +160,26 @@ namespace PMS_API.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CountryCodeId = table.Column<int>(type: "int", nullable: true),
                     MobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DesignationId = table.Column<int>(type: "int", nullable: false),
-                    ReportingPerson = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReportingPersonUsername = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     OrganisationId = table.Column<int>(type: "int", nullable: false),
                     GenderId = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedBy = table.Column<int>(type: "int", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedBy = table.Column<int>(type: "int", nullable: true),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_users", x => x.UserId);
+                    table.ForeignKey(
+                        name: "FK_users_CountryCodes_CountryCodeId",
+                        column: x => x.CountryCodeId,
+                        principalTable: "CountryCodes",
+                        principalColumn: "CountryCodeId");
                     table.ForeignKey(
                         name: "FK_users_Designations_DesignationId",
                         column: x => x.DesignationId,
@@ -157,10 +193,30 @@ namespace PMS_API.Migrations
                         principalColumn: "GenderId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_users_Organisation_OrganisationId",
+                        name: "FK_users_Organisations_OrganisationId",
                         column: x => x.OrganisationId,
-                        principalTable: "Organisation",
+                        principalTable: "Organisations",
                         principalColumn: "OrganisationId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "profile",
+                columns: table => new
+                {
+                    ProfileId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProfileStatusId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_profile", x => x.ProfileId);
+                    table.ForeignKey(
+                        name: "FK_profile_ProfileStatuss_ProfileStatusId",
+                        column: x => x.ProfileStatusId,
+                        principalTable: "ProfileStatuss",
+                        principalColumn: "ProfileStatusId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -172,11 +228,13 @@ namespace PMS_API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProfileId = table.Column<int>(type: "int", nullable: false),
                     AchievementTypeId = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    base64header = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AchievementImage = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: true),
                     UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "int", nullable: true)
+                    UpdatedBy = table.Column<int>(type: "int", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -228,6 +286,43 @@ namespace PMS_API.Migrations
                         column: x => x.ProfileId,
                         principalTable: "profile",
                         principalColumn: "ProfileId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "personalDetails",
+                columns: table => new
+                {
+                    PersonalDetailsId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProfileId = table.Column<int>(type: "int", nullable: false),
+                    Objective = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Nationality = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateOfJoining = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    base64header = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<int>(type: "int", nullable: true),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_personalDetails", x => x.PersonalDetailsId);
+                    table.ForeignKey(
+                        name: "FK_personalDetails_profile_ProfileId",
+                        column: x => x.ProfileId,
+                        principalTable: "profile",
+                        principalColumn: "ProfileId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_personalDetails_users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "users",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -285,68 +380,13 @@ namespace PMS_API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Domains",
-                columns: table => new
-                {
-                    DomainId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DomainName = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
-                    TechnologyId = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Domains", x => x.DomainId);
-                    table.ForeignKey(
-                        name: "FK_Domains_Technologies_TechnologyId",
-                        column: x => x.TechnologyId,
-                        principalTable: "Technologies",
-                        principalColumn: "TechnologyId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "personalDetails",
-                columns: table => new
-                {
-                    PersonalDetailsId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProfileId = table.Column<int>(type: "int", nullable: false),
-                    Objective = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Nationality = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateOfJoining = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<int>(type: "int", nullable: true),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "int", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_personalDetails", x => x.PersonalDetailsId);
-                    table.ForeignKey(
-                        name: "FK_personalDetails_profile_ProfileId",
-                        column: x => x.ProfileId,
-                        principalTable: "profile",
-                        principalColumn: "ProfileId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_personalDetails_users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "skills",
                 columns: table => new
                 {
                     SkillId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProfileId = table.Column<int>(type: "int", nullable: false),
+                    TechnologyId = table.Column<int>(type: "int", nullable: false),
                     DomainId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: true),
@@ -368,6 +408,12 @@ namespace PMS_API.Migrations
                         column: x => x.ProfileId,
                         principalTable: "profile",
                         principalColumn: "ProfileId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_skills_Technologies_TechnologyId",
+                        column: x => x.TechnologyId,
+                        principalTable: "Technologies",
+                        principalColumn: "TechnologyId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -469,11 +515,6 @@ namespace PMS_API.Migrations
                 column: "PersonalDetailsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Domains_TechnologyId",
-                table: "Domains",
-                column: "TechnologyId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_educations_collegeid",
                 table: "educations",
                 column: "collegeid");
@@ -501,6 +542,11 @@ namespace PMS_API.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_profile_ProfileStatusId",
+                table: "profile",
+                column: "ProfileStatusId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_profilehistory_ProfileId",
                 table: "profilehistory",
                 column: "ProfileId");
@@ -521,9 +567,19 @@ namespace PMS_API.Migrations
                 column: "ProfileId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_skills_TechnologyId",
+                table: "skills",
+                column: "TechnologyId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SocialMedias_PersonalDetailsId",
                 table: "SocialMedias",
                 column: "PersonalDetailsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_users_CountryCodeId",
+                table: "users",
+                column: "CountryCodeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_users_DesignationId",
@@ -550,6 +606,9 @@ namespace PMS_API.Migrations
                 name: "breakDurations");
 
             migrationBuilder.DropTable(
+                name: "ChangePasswords");
+
+            migrationBuilder.DropTable(
                 name: "educations");
 
             migrationBuilder.DropTable(
@@ -557,9 +616,6 @@ namespace PMS_API.Migrations
 
             migrationBuilder.DropTable(
                 name: "profilehistory");
-
-            migrationBuilder.DropTable(
-                name: "ProfileStatuss");
 
             migrationBuilder.DropTable(
                 name: "projects");
@@ -580,10 +636,10 @@ namespace PMS_API.Migrations
                 name: "Domains");
 
             migrationBuilder.DropTable(
-                name: "personalDetails");
+                name: "Technologies");
 
             migrationBuilder.DropTable(
-                name: "Technologies");
+                name: "personalDetails");
 
             migrationBuilder.DropTable(
                 name: "profile");
@@ -592,13 +648,19 @@ namespace PMS_API.Migrations
                 name: "users");
 
             migrationBuilder.DropTable(
+                name: "ProfileStatuss");
+
+            migrationBuilder.DropTable(
+                name: "CountryCodes");
+
+            migrationBuilder.DropTable(
                 name: "Designations");
 
             migrationBuilder.DropTable(
                 name: "Gender");
 
             migrationBuilder.DropTable(
-                name: "Organisation");
+                name: "Organisations");
         }
     }
 }

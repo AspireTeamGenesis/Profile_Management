@@ -9,12 +9,12 @@ namespace PMS_API
         public int BreakDuration_Id{get;set;}
         [NotMapped]
         public DateTime Starting_Month{get;set;}
-        [NotMapped]
-        public DateTime Starting_Year{get;set;}
+        // [NotMapped]
+        // public DateTime Starting_Year{get;set;}
         [NotMapped]
         public DateTime Ending_Month{get;set;}
-        [NotMapped]
-        public DateTime Ending_Year{get;set;}
+        // [NotMapped]
+        // public DateTime Ending_Year{get;set;}
         public string? StartingBreakMonth { get; set; }
         public int? StartingBreakYear { get; set; }
         public string? EndingBreakMonth { get; set; }

@@ -11,7 +11,7 @@ namespace PMS_API
         public int AchievementTypeId{get;set;}
         
         public string base64header {get;set;}
-        public byte[]? Image{get;set;}
+        public byte[]? AchievementImage{get;set;}
         
 
         [ForeignKey("ProfileId")]
