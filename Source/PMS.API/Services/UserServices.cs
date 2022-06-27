@@ -157,7 +157,7 @@ namespace PMS_API{
 
             try
             {
-                if(NewPassword != ConfirmPassword)
+                if(NewPassword != ConfirmPassword) 
                     throw new ValidationException($"The confirm password should be the same as new password : {ConfirmPassword}");
                 else{
                     return userData.EditPassword(OldPassword,NewPassword,ConfirmPassword,currentUser) ? true : false;
