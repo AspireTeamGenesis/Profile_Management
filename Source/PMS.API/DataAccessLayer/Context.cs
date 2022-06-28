@@ -217,14 +217,6 @@ namespace PMS_API{
                        new Language { LanguageId = 9, LanguageName = "Urdu", Read = true, Write = true, Speak = true, PersonalDetailsId = 1, CreatedOn = System.DateTime.Now , IsActive = true},
                        new Language { LanguageId = 10,LanguageName = "French", Read = true, Write = true, Speak = true, PersonalDetailsId = 2, CreatedOn = System.DateTime.Now , IsActive = true}
                     );
-            modelBuilder.Entity<ChangePassword>()
-                        .HasData(
-                         new ChangePassword { ChangePasswordId = 1, NewPassword = "qwerty@123" , ConfirmPassword = "qwerty@123", IsActive = true},
-                         new ChangePassword { ChangePasswordId = 2, NewPassword = "zxcvbn@321" , ConfirmPassword = "zxcvbn@321", IsActive = true},
-                         new ChangePassword { ChangePasswordId = 3, NewPassword = "asdfgh@111" , ConfirmPassword = "asdfgh@111", IsActive = true},
-                         new ChangePassword { ChangePasswordId = 4, NewPassword = "lkjhgf@999" , ConfirmPassword = "lkjhgf@999", IsActive = true},
-                         new ChangePassword { ChangePasswordId = 5, NewPassword = "poiuyt@777" , ConfirmPassword = "poiuyt@777", IsActive = true}
-                        );
             modelBuilder.Entity<BreakDuration>()
                         .HasData(
                          new BreakDuration { BreakDuration_Id = 1 ,  StartingBreakMonth = "October" , StartingBreakYear = 2018 , EndingBreakMonth = "October" , EndingBreakYear = 2019 , PersonalDetailsId = 1 , IsActive = true},
@@ -233,21 +225,18 @@ namespace PMS_API{
                          new BreakDuration { BreakDuration_Id = 4 ,  StartingBreakMonth = "August" , StartingBreakYear = 2018 , EndingBreakMonth = "December" , EndingBreakYear = 2019 , PersonalDetailsId = 4 , IsActive = true  },
                          new BreakDuration { BreakDuration_Id = 5 ,  StartingBreakMonth = "May" , StartingBreakYear = 2020 , EndingBreakMonth = "October" , EndingBreakYear = 2020 , PersonalDetailsId = 5 , IsActive = true  }
                          );
-             modelBuilder.Entity<AchievementType>()
+            modelBuilder.Entity<AchievementType>()
                         .HasData(
-                         new AchievementType { AchievementTypeId = 1, AchievementTypeName = "Best Coder" , IsActive = true },
-                         new AchievementType { AchievementTypeId = 2, AchievementTypeName = "Best Worker" , IsActive = true },
-                         new AchievementType { AchievementTypeId = 3, AchievementTypeName = "Smart Learner" , IsActive = true },
-                         new AchievementType { AchievementTypeId = 4, AchievementTypeName = "Best Leader" , IsActive = true}, 
-                         new AchievementType { AchievementTypeId = 5, AchievementTypeName = "Lone Warrior" , IsActive = true} 
+                         new AchievementType { AchievementTypeId = 1, AchievementTypeName = "Awards" , IsActive = true },
+                         new AchievementType { AchievementTypeId = 2, AchievementTypeName = "Certificates" , IsActive = true }
                         );
-              modelBuilder.Entity<Achievements>()
+            modelBuilder.Entity<Achievements>()
                         .HasData(
                          new Achievements { AchievementId = 1 , ProfileId = 1 , AchievementTypeId = 1, base64header = "abc" , IsActive = true },
                          new Achievements { AchievementId = 2 , ProfileId = 2 , AchievementTypeId = 2, base64header = "abc" , IsActive = true },
-                         new Achievements { AchievementId = 3 , ProfileId = 3 , AchievementTypeId = 3, base64header = "abc" , IsActive = true},
-                         new Achievements { AchievementId = 4 , ProfileId = 4 , AchievementTypeId = 4, base64header = "abc" , IsActive = true },
-                         new Achievements { AchievementId = 5 , ProfileId = 5 , AchievementTypeId = 5, base64header = "abc" , IsActive = true }                                                                    
+                         new Achievements { AchievementId = 3 , ProfileId = 3 , AchievementTypeId = 1, base64header = "abc" , IsActive = true},
+                         new Achievements { AchievementId = 4 , ProfileId = 4 , AchievementTypeId = 2, base64header = "abc" , IsActive = true },
+                         new Achievements { AchievementId = 5 , ProfileId = 5 , AchievementTypeId = 1, base64header = "abc" , IsActive = true }                                                                    
                         );
 
     

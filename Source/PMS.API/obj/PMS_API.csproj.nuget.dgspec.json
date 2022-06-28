@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\harini.rajkumar.ASPIRESYS\\Desktop\\dummy\\PMS.API\\PMS_API.csproj": {}
+    "C:\\Users\\gugan.bala\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\harini.rajkumar.ASPIRESYS\\Desktop\\dummy\\PMS.API\\PMS_API.csproj": {
+    "C:\\Users\\gugan.bala\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Desktop\\dummy\\PMS.API\\PMS_API.csproj",
+        "projectUniqueName": "C:\\Users\\gugan.bala\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
         "projectName": "PMS_API",
-        "projectPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Desktop\\dummy\\PMS.API\\PMS_API.csproj",
-        "packagesPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Desktop\\dummy\\PMS.API\\obj\\",
+        "projectPath": "C:\\Users\\gugan.bala\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
+        "packagesPath": "C:\\Users\\gugan.bala\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gugan.bala\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\harini.rajkumar.ASPIRESYS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\gugan.bala\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
