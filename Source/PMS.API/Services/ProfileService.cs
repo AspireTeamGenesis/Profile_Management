@@ -28,19 +28,19 @@ namespace PMS_API
             }
 
         }
-        
+
         public bool AddPersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null) throw new ArgumentNullException($"Values cannot be null values are {personalDetails}");
             try
             {
-                
+
                 personalDetails.CreatedBy = personalDetails.UserId;
                 personalDetails.CreatedOn = DateTime.Now;
-                string Imagedate="";
+                string Imagedate = "";
                 Imagedate = ImageService.Getbase64String(personalDetails.base64header);
 
-                personalDetails.base64header =ImageService.Getbase64Header(personalDetails.base64header);
+                personalDetails.base64header = ImageService.Getbase64Header(personalDetails.base64header);
 
                 personalDetails.Image = System.Convert.FromBase64String(Imagedate);
                 return profileData.AddPersonalDetail(personalDetails) ? true : false;
@@ -54,15 +54,17 @@ namespace PMS_API
         }
         public IEnumerable<PersonalDetails> GetAllPersonalDetails()
         {
-            try{
+            try
+            {
                 // IEnumerable<User> userDetails = new List<User>();
-             
-                return from  personalDetails in profileData.GetAllPersonalDetails() where personalDetails.IsActive==true select personalDetails;
-                
-            
-            
+
+                return from personalDetails in profileData.GetAllPersonalDetails() where personalDetails.IsActive == true select personalDetails;
+
+
+
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 // Log Exception occured in DAL while fetching users
                 _logger.LogError($"PersonalServices:GetallPersonalDetails()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
@@ -70,50 +72,69 @@ namespace PMS_API
         }
         public object GetPersonalDetailsById(int Personalid)
         {
-            if(Personalid<=0)
+            if (Personalid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Personalid}");
             try
             {
-                var getpersonaldetails= profileData. GetPersonalDetailsById(Personalid); 
-                return new {
-                    personaldetailsid=getpersonaldetails.PersonalDetailsId,
-                    Image=getpersonaldetails.Image,
-                    objective=getpersonaldetails.Objective,
-                    dateofbirth=getpersonaldetails.DateOfBirth,
-                    nationality=getpersonaldetails.Nationality,
-                    dateofjoining=getpersonaldetails.DateOfJoining,
-                    language=getpersonaldetails.language,
-                    socialmedia=getpersonaldetails.socialmedia,
-                    breakduration=getpersonaldetails.breakDuration
+                var getpersonaldetails = profileData.GetPersonalDetailsById(Personalid);
+                return new
+                {
+                    personaldetailsid = getpersonaldetails.PersonalDetailsId,
+                    Image = getpersonaldetails.Image,
+                    objective = getpersonaldetails.Objective,
+                    dateofbirth = getpersonaldetails.DateOfBirth,
+                    nationality = getpersonaldetails.Nationality,
+                    dateofjoining = getpersonaldetails.DateOfJoining,
+                    language = getpersonaldetails.language,
+                    socialmedia = getpersonaldetails.socialmedia,
+                    breakduration = getpersonaldetails.breakDuration
                 };
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
         public object GetPersonalDetailsByProfileId(int Profileid)
         {
-            if(Profileid<=0)
+            if (Profileid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Profileid}");
             try
             {
-                var getpersonaldetailsbyprofileid= profileData.GetAllPersonalDetails().Where(item=> item.ProfileId==Profileid).Select(item =>
-                 new {
-                    personaldetailsid=item.PersonalDetailsId,
-                    Image=item.Image,
-                    objective=item.Objective,
-                    dateofbirth=item.DateOfBirth,
-                    nationality=item.Nationality,
-                    dateofjoining=item.DateOfJoining,
-                    language=item.language,
-                    socialmedia=item.socialmedia,
-                    breakduration=item.breakDuration
+                var getpersonaldetailsbyprofileid = profileData.GetAllPersonalDetails().Where(item => item.ProfileId == Profileid).Select(item =>
+                 new
+                 {
+                     personaldetailsid = item.PersonalDetailsId,
+                     Image = item.Image,
+                     objective = item.Objective,
+                     dateofbirth = item.DateOfBirth,
+                     nationality = item.Nationality,
+                     dateofjoining = item.DateOfJoining,
+                     language = item.language,
+                     socialmedia = item.socialmedia,
+                     breakduration = item.breakDuration
 
-                });return getpersonaldetailsbyprofileid;
+                 }); return getpersonaldetailsbyprofileid;
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+        }
+        public PersonalDetails GetPersonalById(int PersonalDetailsId)//fetch PersonalDetail based on PersonaldetailsId, used for update operation
+        {
+            try
+            {
+                if (PersonalDetailsId <= 0)
+                    throw new ArgumentNullException($"ID is not provided{PersonalDetailsId}");
+                PersonalDetails personalDetails = profileData.GetPersonalDetailsById(PersonalDetailsId);
+                return personalDetails;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"ProfileServices:GetPersonalById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -123,38 +144,52 @@ namespace PMS_API
 
             try
             {
-                personalDetails.UpdatedBy = personalDetails.CreatedBy;
-                personalDetails.UpdatedOn = DateTime.Now;
-                return profileData.UpdatePersonalDetail(personalDetails);
+                if (Profile.Objective != personalDetails.Objective)
+                    Profile.Objective = personalDetails.Objective;
+                if (Profile.DateOfBirth != personalDetails.DateOfBirth)
+                    Profile.DateOfBirth = personalDetails.DateOfBirth;
+                if (Profile.DateOfJoining != personalDetails.DateOfJoining)
+                    Profile.DateOfJoining = personalDetails.DateOfJoining;
+                if (Profile.Nationality != personalDetails.Nationality)
+                    Profile.Nationality = personalDetails.Nationality;
+                if (Profile.base64header != personalDetails.base64header)
+                    Profile.base64header = personalDetails.base64header;
+                if (Profile.Image != personalDetails.Image)
+                    Profile.Image = personalDetails.Image;
+
+                Profile.UpdatedBy = personalDetails.CreatedBy;
+                Profile.UpdatedOn = DateTime.Now;
+                return ProfileData.UpdatePersonalDetail(Profile);
             }
-            catch( Exception exception) 
+            catch (Exception exception)
             {
                 _logger.LogInformation($"PersonalServices:Update()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
-            
+
         }
 
-        
+
         public bool DisablePersonalDetails(int PersonalDetailid)
         {
-            if(PersonalDetailid<=0)
+            if (PersonalDetailid <= 0)
                 throw new ArgumentNullException($"ID is not provided{PersonalDetailid}");
 
-            
+
             try
             {
 
-                return profileData.DisablePersonalDetails(PersonalDetailid)?true:false;
-                
+                return profileData.DisablePersonalDetails(PersonalDetailid) ? true : false;
+
             }
-            
-            catch(Exception exception){
+
+            catch (Exception exception)
+            {
                 _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
         }
-          
+
         public bool AddEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($"Values cannot be null values are {education}");
@@ -174,69 +209,91 @@ namespace PMS_API
 
 
         }
-       
-         public Object GetEducationDetailsById(int Educationid)
+
+        public Object GetEducationDetailsById(int Educationid)
         {
-            if(Educationid<=0)
+            if (Educationid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Educationid}");
             try
             {
-                var geteducationdetails= profileData.GetEducationDetailsById(Educationid); 
-                return new {
-                    educationid=geteducationdetails.EducationId,
-                    degree =geteducationdetails.Degree,
-                    course=geteducationdetails.Course,
-                    college=geteducationdetails.college.CollegeName,
-                    collegeid=geteducationdetails.CollegeId,
-                    starting=geteducationdetails.Starting,
-                    ending=geteducationdetails.Ending,
-                    percentage=geteducationdetails.Percentage
+                var geteducationdetails = profileData.GetEducationDetailsById(Educationid);
+                return new
+                {
+                    educationid = geteducationdetails.EducationId,
+                    degree = geteducationdetails.Degree,
+                    course = geteducationdetails.Course,
+                    college = geteducationdetails.college.CollegeName,
+                    collegeid = geteducationdetails.CollegeId,
+                    starting = geteducationdetails.Starting,
+                    ending = geteducationdetails.Ending,
+                    percentage = geteducationdetails.Percentage
 
                 };
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
-         public IEnumerable<Education> GetallEducationDetails()
+        public IEnumerable<Education> GetallEducationDetails()
         {
-            try{
+            try
+            {
                 // IEnumerable<User> userDetails = new List<User>();
-             
-                return from educations in profileData.GetallEducationDetails() where educations.IsActive==true select educations;
-                
-            
-            
+
+                return from educations in profileData.GetallEducationDetails() where educations.IsActive == true select educations;
+
+
+
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 // Log Exception occured in DAL while fetching users
                 _logger.LogError($"PersonalServices:GetallPersonalDetails()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
-        public IEnumerable<Object> GetAllEducationDetailsByProfileId(int Profileid)   
+        public IEnumerable<Object> GetAllEducationDetailsByProfileId(int Profileid)
         {
-            if(Profileid<=0)
+            if (Profileid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Profileid}");
             try
             {
-                var geteducationdetailsbyprofileid= profileData.GetallEducationDetails().Where(item=> item.ProfileId==Profileid && item.IsActive==true).Select(item =>
-                 new {
-                    educationid=item.EducationId,
-                    degree =item.Degree,
-                    course=item.Course,
-                    college=item.college?.CollegeName,
-                    startingyear=item.Starting,
-                    endingyear=item.Ending,
-                    percentage=item.Percentage
+                var geteducationdetailsbyprofileid = profileData.GetallEducationDetails().Where(item => item.ProfileId == Profileid && item.IsActive == true).Select(item =>
+                 new
+                 {
+                     educationid = item.EducationId,
+                     degree = item.Degree,
+                     course = item.Course,
+                     college = item.college?.CollegeName,
+                     startingyear = item.Starting,
+                     endingyear = item.Ending,
+                     percentage = item.Percentage
 
-                });return geteducationdetailsbyprofileid;
+                 }); return geteducationdetailsbyprofileid;
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
+        }
+        public Education GetEducationById(int EducationId)//Return EducationDetails based on EducationId
+        {
+            try
+            {
+                if (EducationId <= 0)
+                    throw new ArgumentNullException($"ID is not provided{EducationId}");
+                Education education = profileData.GetEducationDetailsById(EducationId);
+                return education;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+
         }
         public bool UpdateEducation(Education education)
         {
@@ -244,47 +301,61 @@ namespace PMS_API
 
             try
             {
-                education.UpdatedBy = education.CreatedBy;
-                education.UpdatedOn = DateTime.Now;
-                return profileData.UpdateEducation(education);
+                Education Profile = GetEducationById(education.EducationId);
+
+                if (Profile.Degree != education.Degree)
+                    Profile.Degree = education.Degree;
+                if (Profile.Course != education.Course)
+                    Profile.Course = education.Course;
+                if (Profile.collegeid != education.collegeid)
+                    Profile.collegeid = education.collegeid;
+                if (Profile.Starting != education.Starting)
+                    Profile.Starting = education.Starting;
+                if (Profile.Ending != education.Ending)
+                    Profile.Ending = education.Ending;
+                if (Profile.Percentage != education.Percentage)
+                    Profile.Percentage = education.Percentage;
+                Profile.UpdatedBy = education.CreatedBy;
+                Profile.UpdatedOn = DateTime.Now;
+
+                return ProfileData.UpdateEducation(Profile);
+
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"PersonalServices:UpdateEduaction()-{exception.Message}\n{exception.StackTrace}");
+                return false;
+            }
+        }
+        public bool DisableEducationalDetails(int EducationalDetailid)
+        {
+            if (EducationalDetailid <= 0)
+                throw new ArgumentNullException($"ID is not provided{EducationalDetailid}");
+
+
+            try
+            {
+
+                return profileData.DisableEducationalDetails(EducationalDetailid) ? true : false;
 
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalServices:UpdateEduaction()-{exception.Message}\n{exception.StackTrace}");
-                return false;
-
-            }
-        }
-        public bool DisableEducationalDetails(int EducationalDetailid)
-        {
-            if(EducationalDetailid<=0)
-                throw new ArgumentNullException($"ID is not provided{EducationalDetailid}");
-
-            
-            try
-            {
-
-                return profileData.DisableEducationalDetails(EducationalDetailid)?true:false;
-                
-            }
-            
-            catch(Exception exception){
                 _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
-        }    
+        }
 
         public bool AddProjects(Projects project)
         {
             if (project == null) throw new ArgumentNullException($"Values cannot be null values are {project}");
             try
             {
-                project.StartingMonth=project.ProjectStartingMonth.Month.ToString("MMM");
-                project.StartingYear=project.ProjectStartingYear.Year;
-                project.EndingMonth=project.ProjectEndingMonth.Month.ToString("MMM");
-                project.EndingYear=project.ProjectEndingYear.Year;
+                project.StartingMonth = project.ProjectStartingMonth.Month.ToString("MMM");
+                project.StartingYear = project.ProjectStartingYear.Year;
+                project.EndingMonth = project.ProjectEndingMonth.Month.ToString("MMM");
+                project.EndingYear = project.ProjectEndingYear.Year;
                 project.CreatedBy = project.ProfileId;
                 project.CreatedOn = DateTime.Now;
                 return profileData.AddProjects(project) ? true : false;
@@ -297,43 +368,47 @@ namespace PMS_API
 
 
         }
-         
-         public object GetProjectDetailsById(int Projectid)
+
+        public object GetProjectDetailsById(int Projectid)
         {
-            if(Projectid<=0)
+            if (Projectid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Projectid}");
             try
             {
-                var getprojectdetails= profileData.GetProjectDetailsById(Projectid); 
-                return new {
-                    projectid=getprojectdetails.ProjectId,
-                    projectname=getprojectdetails.ProjectName,
-                    projectdescription=getprojectdetails.ProjectDescription,
-                    startingMonth=getprojectdetails.StartingMonth,
-                    startingYear=getprojectdetails.StartingYear,
-                    endingMonth=getprojectdetails.EndingMonth,
-                    endingYear=getprojectdetails.EndingYear,
-                    role=getprojectdetails.Designation,
-                    toolsused=getprojectdetails.ToolsUsed,
+                var getprojectdetails = profileData.GetProjectDetailsById(Projectid);
+                return new
+                {
+                    projectid = getprojectdetails.ProjectId,
+                    projectname = getprojectdetails.ProjectName,
+                    projectdescription = getprojectdetails.ProjectDescription,
+                    startingMonth = getprojectdetails.StartingMonth,
+                    startingYear = getprojectdetails.StartingYear,
+                    endingMonth = getprojectdetails.EndingMonth,
+                    endingYear = getprojectdetails.EndingYear,
+                    role = getprojectdetails.Designation,
+                    toolsused = getprojectdetails.ToolsUsed,
 
                 };
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
         public IEnumerable<Projects> GetallProjectDetails()
         {
-            try{
+            try
+            {
                 // IEnumerable<User> userDetails = new List<User>();
-             
-                return from projects in profileData.GetallProjectDetails() where projects.IsActive==true select projects;
-                
-            
-            
+
+                return from projects in profileData.GetallProjectDetails() where projects.IsActive == true select projects;
+
+
+
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 // Log Exception occured in DAL while fetching users
                 _logger.LogError($"PersonalServices:GetallProjectDetails()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
@@ -341,35 +416,44 @@ namespace PMS_API
         }
         public IEnumerable<Object> GetAllProjectDetailsByProfileId(int Profileid)
         {
-            if(Profileid<=0)
+            if (Profileid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Profileid}");
             try
             {
-                
-                var getallprojectdetailsbyprofileid= profileData.GetallProjectDetails().Where(item=> item.ProfileId==Profileid && item.IsActive==true).Select(item =>
-                 new {
-                    
-                     projectid=item.ProjectId,
-                     projectname=item.ProjectName,
-                     projectdescription=item.ProjectDescription,
-                    startingMonth=item.StartingMonth,
-                    startingYear=item.StartingYear,
-                    endingMonth=item.EndingMonth,
-                    endingYear=item.EndingYear,
-                    role=item.Designation,
-                    toolsused=item.ToolsUsed
-                     
 
-                    
+                var getallprojectdetailsbyprofileid = profileData.GetallProjectDetails().Where(item => item.ProfileId == Profileid && item.IsActive == true).Select(item =>
+                 new
+                 {
 
-                });return  getallprojectdetailsbyprofileid;
-            
-                
+                     projectid = item.ProjectId,
+                     projectname = item.ProjectName,
+                     projectdescription = item.ProjectDescription,
+                     startingMonth = item.StartingMonth,
+                     startingYear = item.StartingYear,
+                     endingMonth = item.EndingMonth,
+                     endingYear = item.EndingYear,
+                     role = item.Designation,
+                     toolsused = item.ToolsUsed
+
+
+
+
+                 }); return getallprojectdetailsbyprofileid;
+
+
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
+        }
+        public Projects GetProjectById(int ProjectId)//fetch Projects based on ProjectId,used for Update Operation
+        {
+            if (ProjectId <= 0)
+                throw new ArgumentNullException($"ProjectID is invalid{ProjectId}");
+            Projects project = profileData.GetProjectDetailsById(ProjectId);
+            return project;
         }
         public bool UpdateProjects(Projects projects)
         {
@@ -377,9 +461,29 @@ namespace PMS_API
 
             try
             {
-                projects.UpdatedBy = projects.CreatedBy;
-                projects.UpdatedOn = DateTime.Now;
-                return profileData.UpdateProjects(projects);
+                var Profile = GetProjectById(projects.ProjectId);
+
+                if (Profile.ProjectName != projects.ProjectName)
+                    Profile.ProjectName = projects.ProjectName;
+                if (Profile.ProjectDescription != projects.ProjectDescription)
+                    Profile.ProjectDescription = projects.ProjectDescription;
+                if (Profile.StartingMonth != projects.StartingMonth)
+                    Profile.StartingMonth = projects.StartingMonth;
+                if (Profile.StartingYear != projects.StartingYear)
+                    Profile.StartingYear = projects.StartingYear;
+                if (Profile.EndingMonth != projects.EndingMonth)
+                    Profile.EndingMonth = projects.EndingMonth;
+                if (Profile.EndingYear != projects.EndingYear)
+                    Profile.EndingYear = projects.EndingYear;
+                if (Profile.Designation != projects.Designation)
+                    Profile.Designation = projects.Designation;
+                if (Profile.ToolsUsed != projects.ToolsUsed)
+                    Profile.ToolsUsed = projects.ToolsUsed;
+
+                Profile.IsActive = projects.IsActive;
+                Profile.UpdatedBy = projects.CreatedBy;
+                Profile.UpdatedOn = DateTime.Now;
+                return ProfileData.UpdateProjects(Profile);
 
             }
 
@@ -392,22 +496,23 @@ namespace PMS_API
         }
         public bool DisableProjectDetails(int ProjectDetailid)
         {
-            if(ProjectDetailid<=0)
+            if (ProjectDetailid <= 0)
                 throw new ArgumentNullException($"ID is not provided{ProjectDetailid}");
 
-            
+
             try
             {
 
-                return profileData.DisableProjectDetails(ProjectDetailid)?true:false;
-                
+                return profileData.DisableProjectDetails(ProjectDetailid) ? true : false;
+
             }
-            
-            catch(Exception exception){
+
+            catch (Exception exception)
+            {
                 _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
-        }   
+        }
 
         public bool AddSkills(Skills skill)
         {
@@ -426,69 +531,97 @@ namespace PMS_API
 
 
         }
-       
-         public object GetSkillDetailsById(int Skillid)
+
+        public object GetSkillDetailsById(int Skillid)
         {
-            if(Skillid<=0)
+            if (Skillid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Skillid}");
             try
             {
-                var getskilldetails= profileData.GetSkillDetailsById(Skillid); 
-                return new {
-                    skillid=getskilldetails.SkillId,
-                    domainname=getskilldetails.domain.DomainName,
+                var getskilldetails = profileData.GetSkillDetailsById(Skillid);
+                return new
+                {
+                    skillid = getskilldetails.SkillId,
+                    domainname = getskilldetails.domain.DomainName,
                     technologyname = getskilldetails.technology.TechnologyName
                 };
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
-         public IEnumerable<Skills> GetallSkillDetails()
+        public IEnumerable<Skills> GetallSkillDetails()
         {
-            try{
+            try
+            {
                 // IEnumerable<User> userDetails = new List<User>();
-             
-                return from skills in profileData.GetallSkillDetails() where skills.IsActive==true select skills;
-                
-            
-            
+
+                return from skills in profileData.GetallSkillDetails() where skills.IsActive == true select skills;
+
+
+
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 // Log Exception occured in DAL while fetching users
                 _logger.LogError($"PersonalServices:GetallSkillDetails()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
-         public IEnumerable<Object> GetAllSkillDetailsByProfileId(int Profileid)
-         {
-             if(Profileid<=0)
-                 throw new ArgumentNullException($"ID is not provided{Profileid}");
-             try
-             {
-                 var getallskilldetailsbyprofileid= profileData.GetallSkillDetails().Where(item=> item.ProfileId==Profileid && item.IsActive==true).Select(item =>
-                 new {
-                  skillid=item.SkillId,
-                  domainname=item.domain.DomainName,
-                  technologyname = item.technology.TechnologyName
-                });return  getallskilldetailsbyprofileid;
+        public IEnumerable<Object> GetAllSkillDetailsByProfileId(int Profileid)
+        {
+            if (Profileid <= 0)
+                throw new ArgumentNullException($"ID is not provided{Profileid}");
+            try
+            {
+                var getallskilldetailsbyprofileid = profileData.GetallSkillDetails().Where(item => item.ProfileId == Profileid && item.IsActive == true).Select(item =>
+                new
+                {
+                    skillid = item.SkillId,
+                    domainname = item.domain.DomainName,
+                    technologyname = item.technology.TechnologyName
+                }); return getallskilldetailsbyprofileid;
             }
-             catch(Exception exception){
-                 _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
-                 throw exception;
-             }
-         }
+            catch (Exception exception)
+            {
+                _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+        }
+        public Skills GetSkillById(int SkillId)//fetch Skills based on SkillId,used for Update Operation
+        {
+            try
+            {
+                if (SkillId <= 0)
+                throw new ArgumentNullException($"SkillID is not provided{SkillId}");
+            var skills = profileData.GetSkillDetailsById(SkillId);
+            return skills;                
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"UserServices:GetSkillById()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+            
+        }
         public bool UpdateSkills(Skills skill)
         {
             if (skill == null) throw new ArgumentNullException($" PersonalServices:Update()-skill values not be null{skill}");
 
             try
             {
-                skill.UpdatedBy = skill.CreatedBy;
-                skill.UpdatedOn = DateTime.Now;
-                return profileData.UpdateSkills(skill);
+                var skills = GetSkillById(skill.SkillId);
 
+                if (skills.DomainId != skill.DomainId)
+                    skills.DomainId = skill.DomainId;
+                if (skills.TechnologyId != skill.TechnologyId)
+                    skills.TechnologyId = skill.TechnologyId;
+                skills.UpdatedBy = skill.CreatedBy;
+                skills.UpdatedOn = DateTime.Now;
+
+                return ProfileData.UpdateSkills(skills);
             }
 
             catch (Exception exception)
@@ -498,24 +631,26 @@ namespace PMS_API
 
             }
         }
-         public bool DisableSkillDetails(int SkillDetailid)
+
+        public bool DisableSkillDetails(int SkillDetailid)
         {
-            if(SkillDetailid<=0)
+            if (SkillDetailid <= 0)
                 throw new ArgumentNullException($"ID is not provided{SkillDetailid}");
 
-            
+
             try
             {
 
-                return profileData.DisableSkillDetails(SkillDetailid)?true:false;
-                
+                return profileData.DisableSkillDetails(SkillDetailid) ? true : false;
+
             }
-            
-            catch(Exception exception){
+
+            catch (Exception exception)
+            {
                 _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
-        }   
+        }
         public bool AddBreakDuration(BreakDuration duration)
         {
             if (duration == null) throw new ArgumentNullException($"Values cannot be null values are {duration}");
@@ -533,30 +668,31 @@ namespace PMS_API
 
 
         }
-         public bool DisableBreakDuration(int BreakDurationid)
+        public bool DisableBreakDuration(int BreakDurationid)
         {
-            if(BreakDurationid<=0)
+            if (BreakDurationid <= 0)
                 throw new ArgumentNullException($"ID is not provided{BreakDurationid}");
 
-            
+
             try
             {
 
-                return profileData.DisableBreakDuration(BreakDurationid)?true:false;
-                
+                return profileData.DisableBreakDuration(BreakDurationid) ? true : false;
+
             }
-            
-            catch(Exception exception){
+
+            catch (Exception exception)
+            {
                 _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
-        }    
+        }
         public bool AddLanguage(Language language)
         {
             if (language == null) throw new ArgumentNullException($"Values cannot be null values are {language}");
             try
             {
-                language.CreatedBy = language.PersonalDetailsId; 
+                language.CreatedBy = language.PersonalDetailsId;
                 language.CreatedOn = DateTime.Now;
                 return profileData.AddLanguage(language) ? true : false;
             }
@@ -568,26 +704,27 @@ namespace PMS_API
 
 
         }
-         
-        
-         public bool DisableLanguage(int Languageid)
+
+
+        public bool DisableLanguage(int Languageid)
         {
-            if(Languageid<=0)
+            if (Languageid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Languageid}");
 
-            
+
             try
             {
 
-                return profileData.DisableLanguage(Languageid)?true:false;
-                
+                return profileData.DisableLanguage(Languageid) ? true : false;
+
             }
-            
-            catch(Exception exception){
+
+            catch (Exception exception)
+            {
                 _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
-        }    
+        }
         public bool AddSocialMedia(SocialMedia media)
         {
             if (media == null) throw new ArgumentNullException($"Values cannot be null values are {media}");
@@ -605,53 +742,58 @@ namespace PMS_API
 
 
         }
-          public bool DisableSocialMedia(int SocialMediaid)
+        public bool DisableSocialMedia(int SocialMediaid)
         {
-            if(SocialMediaid<=0)
+            if (SocialMediaid <= 0)
                 throw new ArgumentNullException($"ID is not provided{SocialMediaid}");
 
-            
+
             try
             {
 
-                return profileData.DisableSocialMedia(SocialMediaid)?true:false;
-                
+                return profileData.DisableSocialMedia(SocialMediaid) ? true : false;
+
             }
-            
-            catch(Exception exception){
+
+            catch (Exception exception)
+            {
                 _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
         }
 
-        
+
         public object GetTechnologyById(int Technologyid)
         {
-            if(Technologyid<=0)
+            if (Technologyid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Technologyid}");
             try
             {
-                var gettechnologydetails= profileData.GetTechnologyById(Technologyid); 
-                return new {
-                   technologyname=gettechnologydetails.TechnologyName
+                var gettechnologydetails = profileData.GetTechnologyById(Technologyid);
+                return new
+                {
+                    technologyname = gettechnologydetails.TechnologyName
                 };
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
         public IEnumerable<Technology> GetallTechnologies()
         {
-            try{
+            try
+            {
                 // IEnumerable<User> userDetails = new List<User>();
-             
-                return from Technologies in profileData.GetallTechnologies() where Technologies.IsActive==true select Technologies;
-                
-            
-            
+
+                return from Technologies in profileData.GetallTechnologies() where Technologies.IsActive == true select Technologies;
+
+
+
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 // Log Exception occured in DAL while fetching users
                 _logger.LogError($"PersonalServices:GetallPersonalDetails()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
@@ -662,12 +804,12 @@ namespace PMS_API
             if (achievement == null) throw new ArgumentNullException($"Values cannot be null values are {achievement}");
             try
             {
-                string Imagedate="";
+                string Imagedate = "";
                 Imagedate = ImageService.Getbase64String(achievement.base64header);
-                achievement.base64header =ImageService.Getbase64Header(achievement.base64header);
+                achievement.base64header = ImageService.Getbase64Header(achievement.base64header);
                 achievement.AchievementImage = System.Convert.FromBase64String(Imagedate);
 
-                
+
                 achievement.CreatedOn = DateTime.Now;
                 return profileData.AddAchievements(achievement) ? true : false;
             }
@@ -681,115 +823,126 @@ namespace PMS_API
         }
         public IEnumerable<Achievements> GetallAchievements()
         {
-            try{
+            try
+            {
                 // IEnumerable<User> userDetails = new List<User>();
-             
-                return from achievements in profileData.GetallAchievements() where achievements.IsActive==true select achievements;
-                
-            
-            
+
+                return from achievements in profileData.GetallAchievements() where achievements.IsActive == true select achievements;
+
+
+
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 // Log Exception occured in DAL while fetching users
                 _logger.LogError($"PersonalServices:GetallSkillDetails()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
-         public IEnumerable<Object> GetAllAchievementsByProfileId(int Profileid)
+        public IEnumerable<Object> GetAllAchievementsByProfileId(int Profileid)
         {
-            if(Profileid<=0)
+            if (Profileid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Profileid}");
             try
             {
-                var getachievementsbypersonalid= profileData.GetallAchievements().Where(item=> item.ProfileId==Profileid && item.IsActive==true).Select(item =>
-                 new {
-                    achievementid=item.AchievementId,
-                    achievementtype=item.achievementtype.AchievementTypeName,
-                    achievementimage=item.AchievementImage
+                var getachievementsbypersonalid = profileData.GetallAchievements().Where(item => item.ProfileId == Profileid && item.IsActive == true).Select(item =>
+                 new
+                 {
+                     achievementid = item.AchievementId,
+                     achievementtype = item.achievementtype.AchievementTypeName,
+                     achievementimage = item.AchievementImage
 
-                });return getachievementsbypersonalid;
+                 }); return getachievementsbypersonalid;
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
-         public bool DisableAchievement(int achievementId)
+        public bool DisableAchievement(int achievementId)
         {
-            if(achievementId<=0)
+            if (achievementId <= 0)
                 throw new ArgumentNullException($"Achievement ID is not provided{achievementId}");
 
-            
+
             try
             {
 
-                return profileData.DisableAchievement(achievementId)?true:false;
-                
+                return profileData.DisableAchievement(achievementId) ? true : false;
+
             }
-            
-            catch(Exception exception){
+
+            catch (Exception exception)
+            {
                 _logger.LogInformation($"PersonalServices:RemoveAchievemen()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
         }
         public IEnumerable<Profile> GetallProfiles()
         {
-            try{
-               
-             
-                return from profile in profileData.GetallProfiles() where profile.IsActive==true select profile;
-                
-            
-            
+            try
+            {
+
+
+                return from profile in profileData.GetallProfiles() where profile.IsActive == true select profile;
+
+
+
             }
-            catch(Exception exception){
-               
+            catch (Exception exception)
+            {
+
                 _logger.LogError($"PersonalServices:GetallProfiles()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
         public object GetProfileById(int Profileid)
         {
-            if(Profileid<=0)
+            if (Profileid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Profileid}");
             try
             {
-                var getviewdetails= profileData.GetProfileById(Profileid); 
-                return new {
-                    personaldetails=GetPersonalDetailsByProfileId(getviewdetails.ProfileId),
-                    educationdetails=GetAllEducationDetailsByProfileId(getviewdetails.ProfileId),
-                    projectdetails=GetAllProjectDetailsByProfileId(getviewdetails.ProfileId),
-                    skilldetails=GetAllSkillDetailsByProfileId(getviewdetails.ProfileId),
-                    achievementdetails=GetAllAchievementsByProfileId(getviewdetails.ProfileId)
+                var getviewdetails = profileData.GetProfileById(Profileid);
+                return new
+                {
+                    personaldetails = GetPersonalDetailsByProfileId(getviewdetails.ProfileId),
+                    educationdetails = GetAllEducationDetailsByProfileId(getviewdetails.ProfileId),
+                    projectdetails = GetAllProjectDetailsByProfileId(getviewdetails.ProfileId),
+                    skilldetails = GetAllSkillDetailsByProfileId(getviewdetails.ProfileId),
+                    achievementdetails = GetAllAchievementsByProfileId(getviewdetails.ProfileId)
                 };
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
-         public object GetSpecificProfile()
+        public object GetSpecificProfile()
         {
-          
+
             try
             {
-                var getprofile=profileData.GetallProfiles().Select(item=>
-                new{
-                    Status=item.profilestatus.ProfileStatusName,
-                    Name=item.personalDetails.users.Name,
-                    Designation=item.personalDetails.users.designation.DesignationName,
-                    ReportingPerson=item.personalDetails.users.ReportingPersonUsername
+                var getprofile = profileData.GetallProfiles().Select(item =>
+                new
+                {
+                    Status = item.profilestatus.ProfileStatusName,
+                    Name = item.personalDetails.users.Name,
+                    Designation = item.personalDetails.users.designation.DesignationName,
+                    ReportingPerson = item.personalDetails.users.ReportingPersonUsername
 
-                });return getprofile;
-             
+                }); return getprofile;
+
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
-         
-        
+
+
         public bool AddProfileHistory(ProfileHistory profilehistory)
         {
             if (profilehistory == null) throw new ArgumentNullException($"Values cannot be null values are {profilehistory}");
@@ -807,15 +960,17 @@ namespace PMS_API
         }
         public IEnumerable<ProfileHistory> GetallProfileHistories()
         {
-            try{
+            try
+            {
                 // IEnumerable<User> userDetails = new List<User>();
-             
-                return from profilehistory in profileData.GetallProfileHistories() where profilehistory.IsActive==true select profilehistory;
-                
-            
-            
+
+                return from profilehistory in profileData.GetallProfileHistories() where profilehistory.IsActive == true select profilehistory;
+
+
+
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 // Log Exception occured in DAL while fetching users
                 _logger.LogError($"PersonalServices:GetallProfiles()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
@@ -823,19 +978,21 @@ namespace PMS_API
         }
         public IEnumerable<Object> GetProfileHistoryById(int Profileid)
         {
-            if(Profileid<=0)
+            if (Profileid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Profileid}");
             try
             {
-                var getprofilehistory= profileData.GetallProfileHistories().Where(item=> item.ProfileId==Profileid && item.IsActive==true).Select(item =>
-                 new {
-                profilehistorydate=item.ApprovedDate,
-                profile=GetProfileById(item.ProfileId)
-                
-            });return getprofilehistory;
+                var getprofilehistory = profileData.GetallProfileHistories().Where(item => item.ProfileId == Profileid && item.IsActive == true).Select(item =>
+                 new
+                 {
+                     profilehistorydate = item.ApprovedDate,
+                     profile = GetProfileById(item.ProfileId)
+
+                 }); return getprofilehistory;
 
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"UserServices:GetProfileHistoryById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
