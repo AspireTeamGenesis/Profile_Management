@@ -1,0 +1,749 @@
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Net;
+using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel.DataAnnotations;
+namespace PMS_API
+{
+    [Authorize]
+    [ApiController]
+    [Route("[controller]/[Action]")]
+    public class ProfileController : Controller
+    {
+        private IProfileService _profileService;
+        private ILogger _logger;
+        public ProfileController(IProfileService profileService, ILogger<ProfileController> logger)
+        {
+            _profileService = profileService;
+            _logger = logger;
+        }
+        [HttpPost]
+        public IActionResult AddProfile(Profile profile)
+        {
+            if (profile == null)
+            {
+                _logger.LogError("ProfileController:AddProfile():User tries to enter null values");
+                return BadRequest(new{message="Profile not be null"});
+            }
+            try
+            {
+                return _profileService.AddProfile(profile) ? Ok(new{message="Profile added"}) : Problem("Some internal Error occured");
+            }
+           catch(ValidationException exception){
+                _logger.LogInformation($"ProfileController :AddProfile()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :AddProfile()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+        }
+        
+        [HttpPost]
+        public IActionResult AddPersonalDetail(PersonalDetails personalDetails)
+        {
+            if (personalDetails == null)
+            {
+                _logger.LogError("ProfileController:AddPersonalDetail():User tries to enter null values");
+                return BadRequest(new{message="PersonalDetail not be null"});
+            }
+            try
+            {
+                return _profileService.AddPersonalDetail(personalDetails) ? Ok(new{message="PersonalDetails added"}) : Problem("Some internal Error occured");
+            }
+            catch(ValidationException exception){
+                _logger.LogInformation($"ProfileController :AddPersonalDetail()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :AddPersonalDetail()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+        }
+        [HttpGet]
+        public IActionResult GetallPersonalDetails()
+        {
+            try
+            {
+
+                return Ok(_profileService.GetAllPersonalDetails());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController :GetAllPersonalDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return Problem(exception.Message);
+            }
+
+
+        }
+        [HttpGet]
+        public IActionResult GetPersonalDetailsById(int Personalid)
+        {
+            if(Personalid<=0){
+                _logger.LogError("ProfileController:GetPersonalDetailsById():User tries to enter invalid id");
+                return BadRequest(new{message="PersonalDetail Id should not be null or negative"});
+            }
+            try{
+                
+                return Ok(_profileService.GetPersonalDetailsById(Personalid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :GetPersonalDetailsById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return Problem(exception.Message);
+            }
+        }
+        [HttpGet]
+        public IActionResult GetPersonalDetailsByProfileId(int Profileid)
+        {
+            if(Profileid<=0){
+                _logger.LogError("ProfileController:GetPersonalDetailsByProfileId():User tries to enter invalid id");
+                return BadRequest(new{message="Profile Id should not be null or negative"});
+            }
+            try{
+                
+                return Ok(_profileService.GetPersonalDetailsByProfileId(Profileid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :GetPersonalDetailsByProfileId()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return Problem(exception.Message);
+            }
+        }
+
+      
+        [HttpPut]
+        public IActionResult UpdatePersonalDetail(PersonalDetails personalDetails)
+
+        {
+
+            if (personalDetails == null)
+            {
+                _logger.LogInformation("ProfileController :UpdatePersonalDetails()-Profile's personaldetails should not be null values");
+                return BadRequest(new{message="Profile's personaldetails should not be null"});
+            }
+            try
+            {
+
+                return _profileService.UpdatePersonalDetail(personalDetails) ? Ok(new{message="PersonalDetails Updated Successfully"}) : Problem("Sorry internal error occured");
+
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController:UpdatePersonalDetail()-{exception.Message}{exception.StackTrace}");
+                return Problem(exception.Message);
+            }
+        }
+
+        [HttpDelete]
+        public IActionResult DisablePersonalDetails(int PersonalDetailsId)
+        {
+            if (PersonalDetailsId <= 0)
+                return BadRequest(new{message="PersonalDetailsId can't be null or negative"});
+
+
+            try
+            {
+                return _profileService.DisablePersonalDetails(PersonalDetailsId) ? Ok(new{message="PersonalDetails Removed Successfully"}) : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController : DisablePersonalDetails() throwed an exception : {exception}");
+                return Problem("Sorry some internal error occured");
+            }
+
+        }
+        [HttpPost]
+        public IActionResult AddEducation(Education education)
+        {
+            if (education == null)
+            {
+                _logger.LogError("ProfileController:AddEducation():User tries to enter null values");
+                return BadRequest(new{message="Education details should not be null"});
+            }
+            try
+            {
+                return _profileService.AddEducation(education) ? Ok(new{message="Education details added"}) : Problem("Some internal Error occured");
+            }
+           catch(ValidationException exception){
+                _logger.LogInformation($"ProfileController :AddEducation()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :AddEducation()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+
+
+        }
+        [HttpGet]
+        public IActionResult GetallEducationDetails()
+        {
+            try
+            {
+                return Ok(_profileService.GetallEducationDetails());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController :GetallEducationDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return Problem(exception.Message);
+            }
+
+
+        }
+        [HttpGet]
+        public IActionResult GetEducationDetailsById(int Educationid)
+        {
+            if (Educationid <= 0)
+                return BadRequest(new{message="Education Id can't be null or negative"});
+            try{
+                
+                return Ok(_profileService.GetEducationDetailsById(Educationid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :GetEducationById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return Problem(exception.Message);
+            }
+        }
+        [HttpGet]
+        public IActionResult GetAllEducationDetailsByProfileId(int Profileid)
+        {
+            if (Profileid <= 0)
+                return BadRequest(new{message="Profile Id can't be null or negative"});
+            try{
+                
+                return Ok(_profileService.GetAllEducationDetailsByProfileId(Profileid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :GetAllEducationDetailsByProfileId()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return Problem(exception.Message);
+            }
+        }
+        [HttpPut]
+        public IActionResult UpdateEducation(Education education)
+
+        {
+
+            if (education == null)
+            {
+                _logger.LogInformation("ProfileController :UpdateEducation()-Profile's Eucationdetails should not enter null values");
+                return BadRequest(new{message="Education details should not be null"});
+            }
+            try
+            {
+
+                return _profileService.UpdateEducation(education) ? Ok(new{message="Education Updated Successfully"}) : Problem("Sorry internal error occured");
+
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController:UpdateEducation()-{exception.Message}{exception.StackTrace}");
+                return Problem(exception.Message);
+            }
+        }
+        [HttpDelete]
+        public IActionResult DisableEducationalDetails(int EducationId)
+        {
+            if (EducationId <= 0)
+                return BadRequest("Education Id can't be null or negative");
+
+
+            try
+            {
+                return _profileService.DisableEducationalDetails(EducationId) ? Ok(new{message="Education Removed Successfully"}) : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController : DisableEducationalDetails() throwed an exception : {exception}");
+                return Problem("Sorry some internal error occured");
+            }
+
+        }
+        [HttpPost]
+        public IActionResult AddProjects(Projects projects)
+        {
+            if (projects == null)
+            {
+                _logger.LogError("ProfileController:AddProjects():user tries to enter null values");
+                return BadRequest(new{message="Project details should not be null"});
+            }
+            try
+            {
+                return _profileService.AddProjects(projects) ? Ok(new{message="Project details added"}) : Problem("Some internal Error occured");
+            }
+            catch(ValidationException exception){
+                _logger.LogInformation($"ProfileController :AddProjects()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :AddProjects()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+
+        }
+
+
+        [HttpGet]
+        public IActionResult GetallProjectDetails()
+        {
+            try
+            {
+
+                return Ok(_profileService.GetallProjectDetails());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController :GetallProjectDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+
+
+        }
+        [HttpGet]
+        public IActionResult GetProjectDetailsById(int Projectid)
+        {
+            if (Projectid <= 0)
+                return BadRequest(new{message="Project Id can't be null or negative"});
+            try{
+                
+                return Ok(_profileService.GetProjectDetailsById(Projectid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :GetallProjectDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
+        }
+        [HttpGet]
+        public IActionResult GetAllProjectDetailsByProfileId(int Profileid)
+        {
+            if (Profileid <= 0)
+                return BadRequest(new{message="Profile Id can't be null or negative"});
+            try{
+                
+                return Ok(_profileService.GetAllProjectDetailsByProfileId(Profileid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :GetAllProjectDetailsByProfileId()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
+        }
+        
+        [HttpPut]
+        public IActionResult UpdateProjects(Projects projects)
+
+        {
+
+            if (projects == null)
+            {
+                _logger.LogInformation("ProfileController :UpdateProjects()-Profile's Projects should not be null");
+                return BadRequest(new{message="Project values should not be null"});
+            }
+            try
+            {
+
+                return _profileService.UpdateProjects(projects) ? Ok(new{message="Projects Updated Successfully"}) : BadRequest(new{message="Sorry internal error occured"});
+
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController:UpdateProjects()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+        }
+        [HttpDelete]
+        public IActionResult DisableProjectDetails(int ProjectsId)
+        {
+            if (ProjectsId <= 0)
+                return BadRequest("Project Id can't be null or negative");
+
+
+            try
+            {
+                return _profileService.DisableProjectDetails(ProjectsId) ? Ok(new{message="Project Removed Successfully"}) : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController : DisableProjectDetails() throwed an exception : {exception}");
+                return BadRequest(new{message="Sorry some internal error occured"});
+            }
+
+        }
+         [HttpPost]
+        public IActionResult AddSkills(Skills skill)
+        {
+            if (skill == null)
+            {
+                _logger.LogError("ProfileController:AddSkills():user tries to enter null values");
+                return BadRequest(new{message="Skill details should not be null"});
+            }
+            try
+            {
+                return _profileService.AddSkills(skill) ? Ok(new{message="Skill details added"}) : Problem("Some internal Error occured");
+            }
+            catch(ValidationException exception){
+                _logger.LogInformation($"ProfileController:AddSkills()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController:AddSkills()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+
+        }
+        [HttpGet]
+        public IActionResult GetallSkillDetails()
+        {
+            try
+            {
+
+                return Ok(_profileService.GetallSkillDetails());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController : GetallSkillDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+
+
+        }
+        [HttpGet]
+        public IActionResult GetSkillDetailsById(int Skillid)
+        {
+            if (Skillid <= 0)
+                return BadRequest(new{message="Skill Id can't be null or negative"});
+            try{
+                
+                return Ok(_profileService.GetSkillDetailsById(Skillid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController : GetallSkillDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
+        }
+        [HttpGet]
+        public IActionResult GetAllSkillDetailsByProfileId(int Profileid)
+        {
+            if (Profileid <= 0)
+                return BadRequest(new{message="Profile Id can't be null or negative"});
+            try{
+                
+                return Ok(_profileService.GetAllSkillDetailsByProfileId(Profileid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :GetAllSkillDetailsByProfileId()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
+        }
+       
+        [HttpPut]
+        public IActionResult UpdateSkills(Skills skill)
+
+        {
+
+            if (skill == null)
+            {
+                _logger.LogInformation("PersonalServiceController :UpdateSkills()-Profiles Skill values not be null");
+                return BadRequest(new{message="Skills values should not be null"});
+            }
+            try
+            {
+
+                return _profileService.UpdateSkills(skill) ? Ok(new{message="Skills Updated Successfully"}) : BadRequest(new{message="Sorry internal error occured"});
+
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController:UpdateSkills()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+        }
+        [HttpDelete]
+        public IActionResult DisableSkillDetails(int SkillId)
+        {
+            if (SkillId <= 0)
+                return BadRequest(new{message="SkillId can't be null or negative"});
+
+
+            try
+            {
+                return _profileService.DisableSkillDetails(SkillId) ? Ok(new{message="Skill Removed Successfully"}) : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController : DisableSkillDetails() throwed an exception : {exception}");
+                return BadRequest("Sorry some internal error occured");
+            }
+
+        }
+        [HttpPost]
+        public IActionResult AddBreakDuration(BreakDuration duration)
+        {
+            if (duration == null)
+            {
+                _logger.LogError("ProfileController:AddBreakDuration():user tries to enter null values");
+                return BadRequest("BreakDuration details not be null");
+            }
+            try
+            {
+                return _profileService.AddBreakDuration(duration) ? Ok(new{message="BreakDuration details added"}) : Problem("Some internal Error occured");
+            }
+            catch(ValidationException exception){
+                _logger.LogInformation($"ProfileController:AddBreakDuration()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController:AddBreakDuration()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+
+        }
+        
+        [HttpDelete]
+        public IActionResult DisableBreakDuration(int BreakDurationId)
+        {
+            if (BreakDurationId <= 0)
+                return BadRequest(new{message="BreakDurationId can't be null or negative"});
+
+
+            try
+            {
+                return _profileService.DisableBreakDuration(BreakDurationId) ? Ok(new{message="BreakDuration Removed Successfully"}) : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController : DisableBreakDuration() throwed an exception : {exception}");
+                return BadRequest(new{message="Sorry some internal error occured"});
+            }
+
+        }
+        [HttpPost]
+        public IActionResult AddLanguage(Language language)
+        {
+            if (language == null)
+            {
+                _logger.LogError("ProfileController:AddLanguage():user tries to enter null values");
+                return BadRequest(new{message="Language details not be null"});
+            }
+            try
+            {
+                return _profileService.AddLanguage(language) ? Ok(new{message="Language details added"}) : Problem("Some internal Error occured");
+            }
+            catch(ValidationException exception){
+                _logger.LogInformation($"ProfileController:AddLanguage()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController:AddLanguage()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+
+        }
+        [HttpDelete]
+        public IActionResult DisableLanguage(int Language_Id)
+        {
+            if (Language_Id <= 0)
+                return BadRequest(new{message="Language Id can't be null or negative"});
+
+
+            try
+            {
+                return _profileService.DisableLanguage(Language_Id) ? Ok(new{message="Language Removed Successfully"}) : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController : DisableLanguage() throwed an exception : {exception}");
+                return BadRequest(new{message="Sorry some internal error occured"});
+            }
+        }
+        [HttpPost]
+        public IActionResult AddSocialMedia(SocialMedia media)
+        {
+            if (media == null)
+            {
+                _logger.LogError("ProfileController:AddSocialMedia():user tries to enter null values");
+                return BadRequest(new{message="Social media details should not be null"});
+            }
+            try
+            {
+                return _profileService.AddSocialMedia(media) ? Ok(new{message="Social media details added"}) : Problem("Some internal Error occured");
+            }
+            catch(ValidationException exception){
+                _logger.LogInformation($"ProfileController:AddSocialMedia()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController:AddSocialMedia()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+
+        }
+        [HttpDelete]
+        public IActionResult DisableSocialMedia(int SocialMedia_Id)
+        {
+            if (SocialMedia_Id <= 0)
+                return BadRequest(new{message="SocialMedia Id can't be null or negative"});
+
+
+            try
+            {
+                return _profileService.DisableSocialMedia(SocialMedia_Id) ? Ok(new{message="SocialMedia_ Removed Successfully"}) : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController : DisableSocialMedia() throwed an exception : {exception}");
+                return BadRequest(new{message="Sorry some internal error occured"});
+            }
+
+        }
+        [HttpPost]
+        public IActionResult AddAchievement(Achievements achievement)
+        {
+            if(achievement==null)
+            {
+                _logger.LogError("ProfileController:AddAchievement():user tries to enter null values");
+                return BadRequest(new{message="achievement details not be null"});
+            }
+            try
+            {
+                return _profileService.AddAchievements(achievement) ? Ok(new{message="Achievements details added"}) : Problem("Some internal Error occured");
+            }
+           catch(ValidationException exception){
+                _logger.LogInformation($"ProfileController:AddAchievement()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController:AddAchievement()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+        }
+          [HttpGet]
+        public IActionResult GetallAchievements()
+        {
+            try
+            {
+
+                return Ok(_profileService.GetallAchievements());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController :GetallAchievements()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+
+
+        }
+        [HttpDelete]
+        public IActionResult DisableAchievements(int achievementId)
+        {
+            if (achievementId <= 0)
+                return BadRequest($"Achievement id can't be null or negative");
+
+
+            try
+            {
+                return _profileService.DisableAchievement(achievementId) ? Ok(new{message="Achievement Removed Successfully"}) : Problem("Sorry internal error occured");
+            }
+
+            catch (Exception exception)
+            {
+                _logger.LogInformation($" ProfileController: DisableAchievements() : {exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+        }
+        [HttpGet]
+        public IActionResult GetallProfiles()
+        {
+            try
+            {
+
+                return Ok(_profileService.GetallProfiles());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController :GetallProfiles()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+        }
+
+
+       [HttpGet]
+        public IActionResult GetProfileById(int id)
+        {
+            if(id<=0){
+                _logger.LogError("ProfileController:GetProfileById():User tries to enter invalid id");
+                return BadRequest(new{message="Profile Id should not be null or negative"});
+            }
+            try{
+                
+                return Ok(_profileService.GetProfileById(id));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :GetProfileById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
+        }
+       [HttpPost]
+        public IActionResult AddProfileHistory(ProfileHistory profilehistory)
+        {
+            if (profilehistory == null)
+            {
+                _logger.LogError("ProfileController:AddProfileHistory():User tries to enter null values");
+                return BadRequest(new{message="ProfileHistory not be null"});
+            }
+            //if(profilehistory.profile.ProfileStatus!="Approved")throw new Exception("Status should be Approved by Reporting Person");
+            try
+            {
+                return _profileService.AddProfileHistory(profilehistory) ? Ok(new{message="ProfileHistory added"}) : Problem("Some internal error occured");
+            }
+           catch(ValidationException exception){
+                _logger.LogInformation($"ProfileController:AddProfileHistory()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController:AddProfileHistory()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+        }
+        [HttpGet]
+        public IActionResult GetallProfileHistories()
+        {
+            try
+            {
+
+                return Ok(_profileService.GetallProfileHistories());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController :GetallProfileHistories()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+        }
+        [HttpGet]
+        public IActionResult GetProfileHistoryById(int Profileid)
+        {
+            if(Profileid<=0){
+                _logger.LogError("ProfileController:GetProfileHistoryById():User tries to enter invalid Profile id");
+                return BadRequest(new{message="Profile Id should not be null or negative"});
+            }
+            try{
+                
+                return Ok(_profileService.GetProfileById(Profileid));
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :GetProfileHistoryById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return BadRequest(exception.Message);
+            }
+        }
+
+    }
+}
