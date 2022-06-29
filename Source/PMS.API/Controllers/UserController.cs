@@ -144,7 +144,7 @@ namespace PMS_API
              
              catch(Exception exception){
                  _logger.LogInformation($"UserController:DisableUser()-{exception.Message}{exception.StackTrace}");
-                 return BadRequest(exception.StackTrace);
+                 return Problem(exception.StackTrace);
              }
         }
        

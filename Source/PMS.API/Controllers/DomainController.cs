@@ -26,7 +26,7 @@ public class DomainController : ControllerBase
         catch (Exception exception) // Handling Exception
         {
              _logger.LogError($"DomainController:ViewDomains()-{exception.Message}{exception.StackTrace}");
-            return BadRequest(exception.Message);
+            return Problem(exception.Message);
            
         }
     }

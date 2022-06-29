@@ -28,7 +28,7 @@ namespace PMS_API
             catch (ValidationException validationException)
             {
                 _logger.LogInformation($"Login Service : AuthLogin() : {validationException.Message}");
-                return BadRequest(validationException.Message);
+                return BadRequest(new{message=validationException.Message});
             }
             catch (Exception exception)
             {

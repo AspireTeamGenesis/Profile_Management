@@ -11,10 +11,10 @@ namespace PMS_API
         public string Degree{get;set;}
         public string Course{get;set;}
         // public string College { get; set; }
-        public int collegeid {get;set;}
-        // [NotMapped]
+        public int CollegeId {get;set;}
+        // // [NotMapped]
         // public DateTime Starting_Year{get;set;}
-        // [NotMapped]
+        // // [NotMapped]
         // public DateTime Ending_Year{get;set;}
         public int? Starting{get;set;}
         public int? Ending{get;set;}
@@ -31,7 +31,7 @@ namespace PMS_API
         public DateTime? UpdatedOn { get; set; }
 
         public int? UpdatedBy { get; set; }
-        [ForeignKey("collegeid")]
+        [ForeignKey("CollegeId")]
         [InverseProperty("education")]
         public virtual College? college { get; set; }
         [DefaultValue(true)]

@@ -26,7 +26,7 @@ public class OrganisationController : ControllerBase
         catch (Exception exception) // Handling Exception
         {
             _logger.LogError($"OrganisationController:ViewOrganisations()-{exception.Message}{exception.StackTrace}");
-            return BadRequest(exception.Message);
+            return Problem(exception.Message);
            
         }
     }

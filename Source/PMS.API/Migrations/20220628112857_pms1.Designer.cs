@@ -12,7 +12,7 @@ using PMS_API;
 namespace PMS_API.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220625133948_pms1")]
+    [Migration("20220628112857_pms1")]
     partial class pms1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -249,6 +249,9 @@ namespace PMS_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EducationId"), 1L, 1);
 
+                    b.Property<int>("CollegeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Course")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -284,14 +287,11 @@ namespace PMS_API.Migrations
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("collegeid")
-                        .HasColumnType("int");
-
                     b.HasKey("EducationId");
 
-                    b.HasIndex("ProfileId");
+                    b.HasIndex("CollegeId");
 
-                    b.HasIndex("collegeid");
+                    b.HasIndex("ProfileId");
 
                     b.ToTable("educations");
                 });
@@ -776,15 +776,15 @@ namespace PMS_API.Migrations
 
             modelBuilder.Entity("PMS_API.Education", b =>
                 {
-                    b.HasOne("PMS_API.Profile", "profile")
+                    b.HasOne("PMS_API.College", "college")
                         .WithMany("education")
-                        .HasForeignKey("ProfileId")
+                        .HasForeignKey("CollegeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PMS_API.College", "college")
+                    b.HasOne("PMS_API.Profile", "profile")
                         .WithMany("education")
-                        .HasForeignKey("collegeid")
+                        .HasForeignKey("ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

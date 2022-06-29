@@ -27,7 +27,7 @@ public class CollegeController : ControllerBase
         catch (Exception exception) // Handling Exception
         {
              _logger.LogError($"CollegeController:ViewColleges()-{exception.Message}{exception.StackTrace}");
-            return BadRequest(exception.Message);
+            return Problem(exception.Message);
            
         }
     }

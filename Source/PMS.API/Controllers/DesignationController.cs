@@ -26,7 +26,7 @@ public class DesignationController : ControllerBase
          catch (Exception exception) // Handling Exception
         {
              _logger.LogError($"DesignationController:ViewDesignations()-{exception.Message}{exception.StackTrace}");
-            return BadRequest(exception.Message);
+            return Problem(exception.Message);
            
         }
     }

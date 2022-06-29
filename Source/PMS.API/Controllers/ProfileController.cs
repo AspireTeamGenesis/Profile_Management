@@ -23,22 +23,16 @@ namespace PMS_API
             if (profile == null)
             {
                 _logger.LogError("ProfileController:AddProfile():User tries to enter null values");
-                return BadRequest("Profile not be null");
+                return BadRequest(new{message="Profile not be null"});
             }
             try
             {
-                return _profileService.AddProfile(profile) ? Ok("Profile added") : Problem("Some internal Error occured");
+                return _profileService.AddProfile(profile) ? Ok(new{message="Profile added"}) : Problem("Some internal Error occured");
             }
            catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController :AddProfile()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
-
-            catch(ArgumentNullException exception){
-                _logger.LogInformation($"ProfileController :AddProfile()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :AddProfile()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -48,21 +42,16 @@ namespace PMS_API
         [HttpPost]
         public IActionResult AddPersonalDetail(PersonalDetails personalDetails)
         {
-            if (User == null)
+            if (personalDetails == null)
             {
                 _logger.LogError("ProfileController:AddPersonalDetail():User tries to enter null values");
-                return BadRequest("PersonalDetail not be null");
+                return BadRequest(new{message="PersonalDetail not be null"});
             }
             try
             {
-                return _profileService.AddPersonalDetail(personalDetails) ? Ok("PersonalDetails added") : Problem("Some internal Error occured");
+                return _profileService.AddPersonalDetail(personalDetails) ? Ok(new{message="PersonalDetails added"}) : Problem("Some internal Error occured");
             }
             catch(ValidationException exception){
-                _logger.LogInformation($"ProfileController :AddPersonalDetail()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-
-            catch(ArgumentNullException exception){
                 _logger.LogInformation($"ProfileController :AddPersonalDetail()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
@@ -83,7 +72,7 @@ namespace PMS_API
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController :GetAllPersonalDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
 
 
@@ -91,25 +80,33 @@ namespace PMS_API
         [HttpGet]
         public IActionResult GetPersonalDetailsById(int Personalid)
         {
+            if(Personalid<=0){
+                _logger.LogError("ProfileController:GetPersonalDetailsById():User tries to enter invalid id");
+                return BadRequest(new{message="PersonalDetail Id should not be null or negative"});
+            }
             try{
                 
                 return Ok(_profileService.GetPersonalDetailsById(Personalid));
             }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :GetPersonalDetailsById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+               return Problem(exception.Message);
             }
         }
         [HttpGet]
         public IActionResult GetPersonalDetailsByProfileId(int Profileid)
         {
+            if(Profileid<=0){
+                _logger.LogError("ProfileController:GetPersonalDetailsByProfileId():User tries to enter invalid id");
+                return BadRequest(new{message="Profile Id should not be null or negative"});
+            }
             try{
                 
                 return Ok(_profileService.GetPersonalDetailsByProfileId(Profileid));
             }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :GetPersonalDetailsByProfileId()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+               return Problem(exception.Message);
             }
         }
 
@@ -122,41 +119,38 @@ namespace PMS_API
             if (personalDetails == null)
             {
                 _logger.LogInformation("ProfileController :UpdatePersonalDetails()-Profile's personaldetails should not be null values");
-                return BadRequest("Profile's personaldetails should not be null");
+                return BadRequest(new{message="Profile's personaldetails should not be null"});
             }
-
-            //updating user via userservices
-
             try
             {
 
-                return _profileService.UpdatePersonalDetail(personalDetails) ? Ok("PersonalDetails Updated Successfully") : BadRequest("Sorry internal error occured");
+                return _profileService.UpdatePersonalDetail(personalDetails) ? Ok(new{message="PersonalDetails Updated Successfully"}) : Problem("Sorry internal error occured");
 
             }
 
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController:UpdatePersonalDetail()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
 
         [HttpDelete]
         public IActionResult DisablePersonalDetails(int PersonalDetailsId)
         {
-            if (PersonalDetailsId == 0)
-                return BadRequest("PersonalDetailsId can't be null");
+            if (PersonalDetailsId <= 0)
+                return BadRequest(new{message="PersonalDetailsId can't be null or negative"});
 
 
             try
             {
-                return _profileService.DisablePersonalDetails(PersonalDetailsId) ? Ok("PersonalDetails Removed Successfully") : Problem("Sorry internal error occured");
+                return _profileService.DisablePersonalDetails(PersonalDetailsId) ? Ok(new{message="PersonalDetails Removed Successfully"}) : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"ProfileController : DisablePersonalDetails throwed an exception : {exception}");
-                return BadRequest("Sorry some internal error occured");
+                _logger.LogInformation($"ProfileController : DisablePersonalDetails() throwed an exception : {exception}");
+                return Problem("Sorry some internal error occured");
             }
 
         }
@@ -166,22 +160,16 @@ namespace PMS_API
             if (education == null)
             {
                 _logger.LogError("ProfileController:AddEducation():User tries to enter null values");
-                return BadRequest("Education details should not be null");
+                return BadRequest(new{message="Education details should not be null"});
             }
             try
             {
-                return _profileService.AddEducation(education) ? Ok("Education details added") : Problem("Some internal Error occured");
+                return _profileService.AddEducation(education) ? Ok(new{message="Education details added"}) : Problem("Some internal Error occured");
             }
            catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController :AddEducation()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
-
-            catch(ArgumentNullException exception){
-                _logger.LogInformation($"ProfileController :AddEducation()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :AddEducation()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -199,7 +187,7 @@ namespace PMS_API
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController :GetallEducationDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
 
 
@@ -207,25 +195,29 @@ namespace PMS_API
         [HttpGet]
         public IActionResult GetEducationDetailsById(int Educationid)
         {
+            if (Educationid <= 0)
+                return BadRequest(new{message="Education Id can't be null or negative"});
             try{
                 
                 return Ok(_profileService.GetEducationDetailsById(Educationid));
             }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :GetEducationById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+               return Problem(exception.Message);
             }
         }
         [HttpGet]
         public IActionResult GetAllEducationDetailsByProfileId(int Profileid)
         {
+            if (Profileid <= 0)
+                return BadRequest(new{message="Profile Id can't be null or negative"});
             try{
                 
                 return Ok(_profileService.GetAllEducationDetailsByProfileId(Profileid));
             }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :GetAllEducationDetailsByProfileId()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+               return Problem(exception.Message);
             }
         }
         [HttpPut]
@@ -236,40 +228,37 @@ namespace PMS_API
             if (education == null)
             {
                 _logger.LogInformation("ProfileController :UpdateEducation()-Profile's Eucationdetails should not enter null values");
-                return BadRequest("Educationdetails should not be null");
+                return BadRequest(new{message="Education details should not be null"});
             }
-
-            //updating user via userservices
-
             try
             {
 
-                return _profileService.UpdateEducation(education) ? Ok("Education Updated Successfully") : BadRequest("Sorry internal error occured");
+                return _profileService.UpdateEducation(education) ? Ok(new{message="Education Updated Successfully"}) : Problem("Sorry internal error occured");
 
             }
 
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController:UpdateEducation()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
         [HttpDelete]
         public IActionResult DisableEducationalDetails(int EducationId)
         {
-            if (EducationId == 0)
-                return BadRequest("EducationId can't be null");
+            if (EducationId <= 0)
+                return BadRequest("Education Id can't be null or negative");
 
 
             try
             {
-                return _profileService.DisableEducationalDetails(EducationId) ? Ok("Education Removed Successfully") : Problem("Sorry internal error occured");
+                return _profileService.DisableEducationalDetails(EducationId) ? Ok(new{message="Education Removed Successfully"}) : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalService : DisableEducationalDetails throwed an exception : {exception}");
-                return BadRequest("Sorry some internal error occured");
+                _logger.LogInformation($"ProfileController : DisableEducationalDetails() throwed an exception : {exception}");
+                return Problem("Sorry some internal error occured");
             }
 
         }
@@ -279,22 +268,16 @@ namespace PMS_API
             if (projects == null)
             {
                 _logger.LogError("ProfileController:AddProjects():user tries to enter null values");
-                return BadRequest("Project details should not be null");
+                return BadRequest(new{message="Project details should not be null"});
             }
             try
             {
-                return _profileService.AddProjects(projects) ? Ok("Project details added") : Problem("Some internal Error occured");
+                return _profileService.AddProjects(projects) ? Ok(new{message="Project details added"}) : Problem("Some internal Error occured");
             }
             catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController :AddProjects()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
-
-            catch(ArgumentNullException exception){
-                _logger.LogInformation($"ProfileController :AddProjects()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :AddProjects()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -322,6 +305,8 @@ namespace PMS_API
         [HttpGet]
         public IActionResult GetProjectDetailsById(int Projectid)
         {
+            if (Projectid <= 0)
+                return BadRequest(new{message="Project Id can't be null or negative"});
             try{
                 
                 return Ok(_profileService.GetProjectDetailsById(Projectid));
@@ -334,6 +319,8 @@ namespace PMS_API
         [HttpGet]
         public IActionResult GetAllProjectDetailsByProfileId(int Profileid)
         {
+            if (Profileid <= 0)
+                return BadRequest(new{message="Profile Id can't be null or negative"});
             try{
                 
                 return Ok(_profileService.GetAllProjectDetailsByProfileId(Profileid));
@@ -352,40 +339,37 @@ namespace PMS_API
             if (projects == null)
             {
                 _logger.LogInformation("ProfileController :UpdateProjects()-Profile's Projects should not be null");
-                return BadRequest("Project values should not be null");
+                return BadRequest(new{message="Project values should not be null"});
             }
-
-            //updating user via userservices
-
             try
             {
 
-                return _profileService.UpdateProjects(projects) ? Ok("Projects Updated Successfully") : BadRequest("Sorry internal error occured");
+                return _profileService.UpdateProjects(projects) ? Ok(new{message="Projects Updated Successfully"}) : BadRequest(new{message="Sorry internal error occured"});
 
             }
 
             catch (Exception exception)
             {
-                // _logger.LogInformation($"UserController:UpdateUser()-{exception.Message}{exception.StackTrace}");
+                _logger.LogInformation($"ProfileController:UpdateProjects()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
         }
         [HttpDelete]
         public IActionResult DisableProjectDetails(int ProjectsId)
         {
-            if (ProjectsId == 0)
-                return BadRequest("ProjectsId can't be null");
+            if (ProjectsId <= 0)
+                return BadRequest("Project Id can't be null or negative");
 
 
             try
             {
-                return _profileService.DisableProjectDetails(ProjectsId) ? Ok("Project Removed Successfully") : Problem("Sorry internal error occured");
+                return _profileService.DisableProjectDetails(ProjectsId) ? Ok(new{message="Project Removed Successfully"}) : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"ProfileController : DisableProjectDetails throwed an exception : {exception}");
-                return BadRequest("Sorry some internal error occured");
+                _logger.LogInformation($"ProfileController : DisableProjectDetails() throwed an exception : {exception}");
+                return BadRequest(new{message="Sorry some internal error occured"});
             }
 
         }
@@ -395,22 +379,16 @@ namespace PMS_API
             if (skill == null)
             {
                 _logger.LogError("ProfileController:AddSkills():user tries to enter null values");
-                return BadRequest("Skill details should not be null");
+                return BadRequest(new{message="Skill details should not be null"});
             }
             try
             {
-                return _profileService.AddSkills(skill) ? Ok("Skill details added") : Problem("Some internal Error occured");
+                return _profileService.AddSkills(skill) ? Ok(new{message="Skill details added"}) : Problem("Some internal Error occured");
             }
             catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController:AddSkills()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
-
-            catch(ArgumentNullException exception){
-                _logger.LogInformation($"ProfileController:AddSkills()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController:AddSkills()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -436,6 +414,8 @@ namespace PMS_API
         [HttpGet]
         public IActionResult GetSkillDetailsById(int Skillid)
         {
+            if (Skillid <= 0)
+                return BadRequest(new{message="Skill Id can't be null or negative"});
             try{
                 
                 return Ok(_profileService.GetSkillDetailsById(Skillid));
@@ -448,6 +428,8 @@ namespace PMS_API
         [HttpGet]
         public IActionResult GetAllSkillDetailsByProfileId(int Profileid)
         {
+            if (Profileid <= 0)
+                return BadRequest(new{message="Profile Id can't be null or negative"});
             try{
                 
                 return Ok(_profileService.GetAllSkillDetailsByProfileId(Profileid));
@@ -466,15 +448,12 @@ namespace PMS_API
             if (skill == null)
             {
                 _logger.LogInformation("PersonalServiceController :UpdateSkills()-Profiles Skill values not be null");
-                return BadRequest("Skills values should not be null");
+                return BadRequest(new{message="Skills values should not be null"});
             }
-
-            //updating user via userservices
-
             try
             {
 
-                return _profileService.UpdateSkills(skill) ? Ok("Skills Updated Successfully") : BadRequest("Sorry internal error occured");
+                return _profileService.UpdateSkills(skill) ? Ok(new{message="Skills Updated Successfully"}) : BadRequest(new{message="Sorry internal error occured"});
 
             }
 
@@ -487,18 +466,18 @@ namespace PMS_API
         [HttpDelete]
         public IActionResult DisableSkillDetails(int SkillId)
         {
-            if (SkillId == 0)
-                return BadRequest("SkillId can't be null");
+            if (SkillId <= 0)
+                return BadRequest(new{message="SkillId can't be null or negative"});
 
 
             try
             {
-                return _profileService.DisableSkillDetails(SkillId) ? Ok("Skill Removed Successfully") : Problem("Sorry internal error occured");
+                return _profileService.DisableSkillDetails(SkillId) ? Ok(new{message="Skill Removed Successfully"}) : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"ProfileController : DisableSkillDetails throwed an exception : {exception}");
+                _logger.LogInformation($"ProfileController : DisableSkillDetails() throwed an exception : {exception}");
                 return BadRequest("Sorry some internal error occured");
             }
 
@@ -513,18 +492,12 @@ namespace PMS_API
             }
             try
             {
-                return _profileService.AddBreakDuration(duration) ? Ok("BreakDuration details added") : Problem("Some internal Error occured");
+                return _profileService.AddBreakDuration(duration) ? Ok(new{message="BreakDuration details added"}) : Problem("Some internal Error occured");
             }
             catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController:AddBreakDuration()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
-
-            catch(ArgumentNullException exception){
-                _logger.LogInformation($"ProfileController:AddBreakDuration()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController:AddBreakDuration()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -535,19 +508,19 @@ namespace PMS_API
         [HttpDelete]
         public IActionResult DisableBreakDuration(int BreakDurationId)
         {
-            if (BreakDurationId == 0)
-                return BadRequest("BreakDurationId can't be null");
+            if (BreakDurationId <= 0)
+                return BadRequest(new{message="BreakDurationId can't be null or negative"});
 
 
             try
             {
-                return _profileService.DisableBreakDuration(BreakDurationId) ? Ok("BreakDuration Removed Successfully") : Problem("Sorry internal error occured");
+                return _profileService.DisableBreakDuration(BreakDurationId) ? Ok(new{message="BreakDuration Removed Successfully"}) : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"ProfileController : DisableBreakDuration throwed an exception : {exception}");
-                return BadRequest("Sorry some internal error occured");
+                _logger.LogInformation($"ProfileController : DisableBreakDuration() throwed an exception : {exception}");
+                return BadRequest(new{message="Sorry some internal error occured"});
             }
 
         }
@@ -557,22 +530,16 @@ namespace PMS_API
             if (language == null)
             {
                 _logger.LogError("ProfileController:AddLanguage():user tries to enter null values");
-                return BadRequest("Language details not be null");
+                return BadRequest(new{message="Language details not be null"});
             }
             try
             {
-                return _profileService.AddLanguage(language) ? Ok("Language details added") : Problem("Some internal Error occured");
+                return _profileService.AddLanguage(language) ? Ok(new{message="Language details added"}) : Problem("Some internal Error occured");
             }
             catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController:AddLanguage()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
-
-            catch(ArgumentNullException exception){
-                _logger.LogInformation($"ProfileController:AddLanguage()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController:AddLanguage()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -582,19 +549,19 @@ namespace PMS_API
         [HttpDelete]
         public IActionResult DisableLanguage(int Language_Id)
         {
-            if (Language_Id == 0)
-                return BadRequest("Language_Id can't be null");
+            if (Language_Id <= 0)
+                return BadRequest(new{message="Language Id can't be null or negative"});
 
 
             try
             {
-                return _profileService.DisableLanguage(Language_Id) ? Ok("Language_ Removed Successfully") : Problem("Sorry internal error occured");
+                return _profileService.DisableLanguage(Language_Id) ? Ok(new{message="Language Removed Successfully"}) : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"SocialMedia_ Service : DisableLanguage throwed an exception : {exception}");
-                return BadRequest("Sorry some internal error occured");
+                _logger.LogInformation($"ProfileController : DisableLanguage() throwed an exception : {exception}");
+                return BadRequest(new{message="Sorry some internal error occured"});
             }
         }
         [HttpPost]
@@ -603,22 +570,16 @@ namespace PMS_API
             if (media == null)
             {
                 _logger.LogError("ProfileController:AddSocialMedia():user tries to enter null values");
-                return BadRequest("social media details not be null");
+                return BadRequest(new{message="Social media details should not be null"});
             }
             try
             {
-                return _profileService.AddSocialMedia(media) ? Ok("Social media details added") : Problem("Some internal Error occured");
+                return _profileService.AddSocialMedia(media) ? Ok(new{message="Social media details added"}) : Problem("Some internal Error occured");
             }
             catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController:AddSocialMedia()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
-
-            catch(ArgumentNullException exception){
-                _logger.LogInformation($"ProfileController:AddSocialMedia()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController:AddSocialMedia()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -628,19 +589,19 @@ namespace PMS_API
         [HttpDelete]
         public IActionResult DisableSocialMedia(int SocialMedia_Id)
         {
-            if (SocialMedia_Id == 0)
-                return BadRequest("SocialMedia_Id can't be null");
+            if (SocialMedia_Id <= 0)
+                return BadRequest(new{message="SocialMedia Id can't be null or negative"});
 
 
             try
             {
-                return _profileService.DisableSocialMedia(SocialMedia_Id) ? Ok("SocialMedia_ Removed Successfully") : Problem("Sorry internal error occured");
+                return _profileService.DisableSocialMedia(SocialMedia_Id) ? Ok(new{message="SocialMedia_ Removed Successfully"}) : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"SocialMedia_ Service : DisableSocialMedia throwed an exception : {exception}");
-                return BadRequest("Sorry some internal error occured");
+                _logger.LogInformation($"ProfileController : DisableSocialMedia() throwed an exception : {exception}");
+                return BadRequest(new{message="Sorry some internal error occured"});
             }
 
         }
@@ -650,22 +611,16 @@ namespace PMS_API
             if(achievement==null)
             {
                 _logger.LogError("ProfileController:AddAchievement():user tries to enter null values");
-                return BadRequest("achievement details not be null");
+                return BadRequest(new{message="achievement details not be null"});
             }
             try
             {
-                return _profileService.AddAchievements(achievement) ? Ok("Achievements details added") : Problem("Some internal Error occured");
+                return _profileService.AddAchievements(achievement) ? Ok(new{message="Achievements details added"}) : Problem("Some internal Error occured");
             }
            catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController:AddAchievement()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
-
-            catch(ArgumentNullException exception){
-                _logger.LogInformation($"ProfileController:AddAchievement()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController:AddAchievement()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -691,12 +646,12 @@ namespace PMS_API
         public IActionResult DisableAchievements(int achievementId)
         {
             if (achievementId <= 0)
-                return BadRequest($"Achievement id can't be zero or less than 0 achievementId is supplied as {achievementId}");
+                return BadRequest($"Achievement id can't be null or negative");
 
 
             try
             {
-                return _profileService.DisableAchievement(achievementId) ? Ok("Achievement Removed Successfully") : Problem("Sorry internal error occured");
+                return _profileService.DisableAchievement(achievementId) ? Ok(new{message="Achievement Removed Successfully"}) : Problem("Sorry internal error occured");
             }
 
             catch (Exception exception)
@@ -724,6 +679,10 @@ namespace PMS_API
        [HttpGet]
         public IActionResult GetProfileById(int id)
         {
+            if(id<=0){
+                _logger.LogError("ProfileController:GetProfileById():User tries to enter invalid id");
+                return BadRequest(new{message="Profile Id should not be null or negative"});
+            }
             try{
                 
                 return Ok(_profileService.GetProfileById(id));
@@ -739,23 +698,17 @@ namespace PMS_API
             if (profilehistory == null)
             {
                 _logger.LogError("ProfileController:AddProfileHistory():User tries to enter null values");
-                return BadRequest("ProfileHistory not be null");
+                return BadRequest(new{message="ProfileHistory not be null"});
             }
             //if(profilehistory.profile.ProfileStatus!="Approved")throw new Exception("Status should be Approved by Reporting Person");
             try
             {
-                return _profileService.AddProfileHistory(profilehistory) ? Ok("ProfileHistory added") : Problem("Some internal Error occured");
+                return _profileService.AddProfileHistory(profilehistory) ? Ok(new{message="ProfileHistory added"}) : Problem("Some internal error occured");
             }
            catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController:AddProfileHistory()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
-
-            catch(ArgumentNullException exception){
-                _logger.LogInformation($"ProfileController:AddProfileHistory()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController:AddProfileHistory()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -778,6 +731,10 @@ namespace PMS_API
         [HttpGet]
         public IActionResult GetProfileHistoryById(int Profileid)
         {
+            if(Profileid<=0){
+                _logger.LogError("ProfileController:GetProfileHistoryById():User tries to enter invalid Profile id");
+                return BadRequest(new{message="Profile Id should not be null or negative"});
+            }
             try{
                 
                 return Ok(_profileService.GetProfileById(Profileid));

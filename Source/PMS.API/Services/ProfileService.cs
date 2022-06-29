@@ -187,8 +187,9 @@ namespace PMS_API
                     degree =geteducationdetails.Degree,
                     course=geteducationdetails.Course,
                     college=geteducationdetails.college.CollegeName,
-                    startingyear=geteducationdetails.Starting,
-                    endingyear=geteducationdetails.Ending,
+                    collegeid=geteducationdetails.CollegeId,
+                    starting=geteducationdetails.Starting,
+                    ending=geteducationdetails.Ending,
                     percentage=geteducationdetails.Percentage
 
                 };

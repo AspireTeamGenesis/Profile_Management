@@ -9,7 +9,7 @@ namespace PMS_API{
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-        optionsBuilder.UseSqlServer("server=ASPLAP1929;database=PMS_Service;trusted_connection=true;");
+        optionsBuilder.UseSqlServer("server=ASPLAP1916;database=PMS_ServiceTest1;trusted_connection=true;");
         }
         public DbSet<User> users {get;set;}
         public DbSet<Profile> profile{get;set;}
@@ -141,16 +141,16 @@ namespace PMS_API{
                          ); 
              modelBuilder.Entity<Education>()
                         .HasData(
-                         new Education { EducationId = 1, ProfileId = 1 , Degree = "BE" , Course = "ECE" , collegeid = 2 , Starting = 2018 , Ending = 2022 , Percentage = 85.6f , IsActive = true},
-                         new Education { EducationId = 2, ProfileId = 2 , Degree = "BTech" , Course = "IT" ,  collegeid = 1 , Starting = 2018 , Ending = 2022 , Percentage = 96.8f , IsActive = true },
-                         new Education { EducationId = 3, ProfileId = 3 , Degree = "Bsc" , Course = "CSE" ,  collegeid = 4 , Starting = 2018 , Ending = 2022 , Percentage = 91.0f , IsActive = true},
-                         new Education { EducationId = 4, ProfileId = 4 , Degree = "ME" , Course = "CSE" ,  collegeid = 10 , Starting = 2020 , Ending = 2022 , Percentage = 89.5f , IsActive = true},
-                         new Education { EducationId = 5, ProfileId = 5 , Degree = "MTech" , Course = "IT" ,  collegeid = 6 , Starting = 2020 , Ending = 2022 , Percentage = 83.6f , IsActive = true},
-                         new Education { EducationId = 6, ProfileId = 6 , Degree = "BE" , Course = "MCT" ,  collegeid = 5 , Starting = 2018 , Ending = 2022 , Percentage = 81.6f , IsActive = true},
-                         new Education { EducationId = 7, ProfileId = 7 , Degree = "ME" , Course = "CSE" ,  collegeid = 8 , Starting = 2020 , Ending = 2022 , Percentage = 94.5f , IsActive = true},
-                         new Education { EducationId = 8, ProfileId = 8 , Degree = "BE" , Course = "EEE" ,  collegeid = 9 , Starting = 2018 , Ending = 2022 , Percentage = 81.8f , IsActive = true},
-                         new Education { EducationId = 9, ProfileId = 9 , Degree = "MTech" , Course = "IT" ,  collegeid = 3 , Starting = 2020 , Ending = 2022 , Percentage = 90.3f , IsActive = true},
-                         new Education { EducationId = 10, ProfileId = 10 , Degree = "BTech" , Course = "IT" ,  collegeid = 7 , Starting = 2018 , Ending = 2022 , Percentage = 85.0f , IsActive = true}
+                         new Education { EducationId = 1, ProfileId = 1 , Degree = "BE" , Course = "ECE" , CollegeId = 2 , Starting = 2018 , Ending = 2022 , Percentage = 85.6f , IsActive = true},
+                         new Education { EducationId = 2, ProfileId = 2 , Degree = "BTech" , Course = "IT" ,  CollegeId = 1 , Starting = 2018 , Ending = 2022 , Percentage = 96.8f , IsActive = true },
+                         new Education { EducationId = 3, ProfileId = 3 , Degree = "Bsc" , Course = "CSE" ,  CollegeId = 4 , Starting = 2018 , Ending = 2022 , Percentage = 91.0f , IsActive = true},
+                         new Education { EducationId = 4, ProfileId = 4 , Degree = "ME" , Course = "CSE" ,  CollegeId = 10 , Starting = 2020 , Ending = 2022 , Percentage = 89.5f , IsActive = true},
+                         new Education { EducationId = 5, ProfileId = 5 , Degree = "MTech" , Course = "IT" ,  CollegeId = 6 , Starting = 2020 , Ending = 2022 , Percentage = 83.6f , IsActive = true},
+                         new Education { EducationId = 6, ProfileId = 6 , Degree = "BE" , Course = "MCT" ,  CollegeId = 5 , Starting = 2018 , Ending = 2022 , Percentage = 81.6f , IsActive = true},
+                         new Education { EducationId = 7, ProfileId = 7 , Degree = "ME" , Course = "CSE" ,  CollegeId = 8 , Starting = 2020 , Ending = 2022 , Percentage = 94.5f , IsActive = true},
+                         new Education { EducationId = 8, ProfileId = 8 , Degree = "BE" , Course = "EEE" ,  CollegeId = 9 , Starting = 2018 , Ending = 2022 , Percentage = 81.8f , IsActive = true},
+                         new Education { EducationId = 9, ProfileId = 9 , Degree = "MTech" , Course = "IT" , CollegeId = 3 , Starting = 2020 , Ending = 2022 , Percentage = 90.3f , IsActive = true},
+                         new Education { EducationId = 10, ProfileId = 10 , Degree = "BTech" , Course = "IT" ,  CollegeId = 7 , Starting = 2018 , Ending = 2022 , Percentage = 85.0f , IsActive = true}
                          );
              modelBuilder.Entity<ProfileHistory>()
                         .HasData(

@@ -26,7 +26,7 @@ public class ProfileStatusController : ControllerBase
         catch (Exception exception) // Handling Exception
         {
               _logger.LogError($"ProfileStatusController:ViewProfileStatuss()-{exception.Message}{exception.StackTrace}");
-            return BadRequest(exception.Message);
+            return Problem(exception.Message);
            
         }
     }

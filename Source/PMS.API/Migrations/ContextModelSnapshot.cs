@@ -65,48 +65,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("ProfileId");
 
                     b.ToTable("achievements");
-
-                    b.HasData(
-                        new
-                        {
-                            AchievementId = 1,
-                            AchievementTypeId = 1,
-                            IsActive = true,
-                            ProfileId = 1,
-                            base64header = "abc"
-                        },
-                        new
-                        {
-                            AchievementId = 2,
-                            AchievementTypeId = 2,
-                            IsActive = true,
-                            ProfileId = 2,
-                            base64header = "abc"
-                        },
-                        new
-                        {
-                            AchievementId = 3,
-                            AchievementTypeId = 1,
-                            IsActive = true,
-                            ProfileId = 3,
-                            base64header = "abc"
-                        },
-                        new
-                        {
-                            AchievementId = 4,
-                            AchievementTypeId = 2,
-                            IsActive = true,
-                            ProfileId = 4,
-                            base64header = "abc"
-                        },
-                        new
-                        {
-                            AchievementId = 5,
-                            AchievementTypeId = 1,
-                            IsActive = true,
-                            ProfileId = 5,
-                            base64header = "abc"
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.AchievementType", b =>
@@ -127,20 +85,6 @@ namespace PMS_API.Migrations
                     b.HasKey("AchievementTypeId");
 
                     b.ToTable("AchievementType");
-
-                    b.HasData(
-                        new
-                        {
-                            AchievementTypeId = 1,
-                            AchievementTypeName = "Awards",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            AchievementTypeId = 2,
-                            AchievementTypeName = "Certificates",
-                            IsActive = true
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.BreakDuration", b =>
@@ -186,58 +130,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("PersonalDetailsId");
 
                     b.ToTable("breakDurations");
-
-                    b.HasData(
-                        new
-                        {
-                            BreakDuration_Id = 1,
-                            EndingBreakMonth = "October",
-                            EndingBreakYear = 2019,
-                            IsActive = true,
-                            PersonalDetailsId = 1,
-                            StartingBreakMonth = "October",
-                            StartingBreakYear = 2018
-                        },
-                        new
-                        {
-                            BreakDuration_Id = 2,
-                            EndingBreakMonth = "November",
-                            EndingBreakYear = 2018,
-                            IsActive = true,
-                            PersonalDetailsId = 2,
-                            StartingBreakMonth = "May",
-                            StartingBreakYear = 2017
-                        },
-                        new
-                        {
-                            BreakDuration_Id = 3,
-                            EndingBreakMonth = "October",
-                            EndingBreakYear = 2020,
-                            IsActive = true,
-                            PersonalDetailsId = 3,
-                            StartingBreakMonth = "Jan",
-                            StartingBreakYear = 2019
-                        },
-                        new
-                        {
-                            BreakDuration_Id = 4,
-                            EndingBreakMonth = "December",
-                            EndingBreakYear = 2019,
-                            IsActive = true,
-                            PersonalDetailsId = 4,
-                            StartingBreakMonth = "August",
-                            StartingBreakYear = 2018
-                        },
-                        new
-                        {
-                            BreakDuration_Id = 5,
-                            EndingBreakMonth = "October",
-                            EndingBreakYear = 2020,
-                            IsActive = true,
-                            PersonalDetailsId = 5,
-                            StartingBreakMonth = "May",
-                            StartingBreakYear = 2020
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.ChangePassword", b =>
@@ -283,68 +175,6 @@ namespace PMS_API.Migrations
                     b.HasKey("CollegeId");
 
                     b.ToTable("Colleges");
-
-                    b.HasData(
-                        new
-                        {
-                            CollegeId = 1,
-                            CollegeName = "SKCET",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CollegeId = 2,
-                            CollegeName = "SKCT",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CollegeId = 3,
-                            CollegeName = "BIT",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CollegeId = 4,
-                            CollegeName = "SA",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CollegeId = 5,
-                            CollegeName = "PSNA",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CollegeId = 6,
-                            CollegeName = "CIT",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CollegeId = 7,
-                            CollegeName = "PSG",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CollegeId = 8,
-                            CollegeName = "Kumaraguru",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CollegeId = 9,
-                            CollegeName = "MIT",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CollegeId = 10,
-                            CollegeName = "GCT",
-                            IsActive = true
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.CountryCode", b =>
@@ -365,68 +195,6 @@ namespace PMS_API.Migrations
                     b.HasKey("CountryCodeId");
 
                     b.ToTable("CountryCodes");
-
-                    b.HasData(
-                        new
-                        {
-                            CountryCodeId = 1,
-                            CountryCodeName = "+91",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CountryCodeId = 2,
-                            CountryCodeName = "+1",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CountryCodeId = 3,
-                            CountryCodeName = "+44",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CountryCodeId = 4,
-                            CountryCodeName = "+61",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CountryCodeId = 5,
-                            CountryCodeName = "+62",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CountryCodeId = 6,
-                            CountryCodeName = "+86",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CountryCodeId = 7,
-                            CountryCodeName = "+213",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CountryCodeId = 8,
-                            CountryCodeName = "+355",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CountryCodeId = 9,
-                            CountryCodeName = "+93",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            CountryCodeId = 10,
-                            CountryCodeName = "+54",
-                            IsActive = true
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Designation", b =>
@@ -448,80 +216,6 @@ namespace PMS_API.Migrations
                     b.HasKey("DesignationId");
 
                     b.ToTable("Designations");
-
-                    b.HasData(
-                        new
-                        {
-                            DesignationId = 1,
-                            DesignationName = "HR",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DesignationId = 2,
-                            DesignationName = "Admin",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DesignationId = 3,
-                            DesignationName = "CEO",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DesignationId = 4,
-                            DesignationName = "VP",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DesignationId = 5,
-                            DesignationName = "SLO",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DesignationId = 6,
-                            DesignationName = "DM",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DesignationId = 7,
-                            DesignationName = "PM",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DesignationId = 8,
-                            DesignationName = "PL",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DesignationId = 9,
-                            DesignationName = "ML",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DesignationId = 10,
-                            DesignationName = "TL",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DesignationId = 11,
-                            DesignationName = "SSE",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DesignationId = 12,
-                            DesignationName = "SE",
-                            IsActive = true
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Domain", b =>
@@ -543,68 +237,6 @@ namespace PMS_API.Migrations
                     b.HasKey("DomainId");
 
                     b.ToTable("Domains");
-
-                    b.HasData(
-                        new
-                        {
-                            DomainId = 1,
-                            DomainName = "IT",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DomainId = 2,
-                            DomainName = "Marketing",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DomainId = 3,
-                            DomainName = "R&D",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DomainId = 4,
-                            DomainName = "Gaming",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DomainId = 5,
-                            DomainName = "AI",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DomainId = 6,
-                            DomainName = "Logistics",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DomainId = 7,
-                            DomainName = "Hospitality",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DomainId = 8,
-                            DomainName = "Finance",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DomainId = 9,
-                            DomainName = "Food",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            DomainId = 10,
-                            DomainName = "Travel",
-                            IsActive = true
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Education", b =>
@@ -614,6 +246,9 @@ namespace PMS_API.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EducationId"), 1L, 1);
+
+                    b.Property<int>("CollegeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Course")
                         .IsRequired()
@@ -650,138 +285,13 @@ namespace PMS_API.Migrations
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("collegeid")
-                        .HasColumnType("int");
-
                     b.HasKey("EducationId");
+
+                    b.HasIndex("CollegeId");
 
                     b.HasIndex("ProfileId");
 
-                    b.HasIndex("collegeid");
-
                     b.ToTable("educations");
-
-                    b.HasData(
-                        new
-                        {
-                            EducationId = 1,
-                            Course = "ECE",
-                            Degree = "BE",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 85.6f,
-                            ProfileId = 1,
-                            Starting = 2018,
-                            collegeid = 2
-                        },
-                        new
-                        {
-                            EducationId = 2,
-                            Course = "IT",
-                            Degree = "BTech",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 96.8f,
-                            ProfileId = 2,
-                            Starting = 2018,
-                            collegeid = 1
-                        },
-                        new
-                        {
-                            EducationId = 3,
-                            Course = "CSE",
-                            Degree = "Bsc",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 91f,
-                            ProfileId = 3,
-                            Starting = 2018,
-                            collegeid = 4
-                        },
-                        new
-                        {
-                            EducationId = 4,
-                            Course = "CSE",
-                            Degree = "ME",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 89.5f,
-                            ProfileId = 4,
-                            Starting = 2020,
-                            collegeid = 10
-                        },
-                        new
-                        {
-                            EducationId = 5,
-                            Course = "IT",
-                            Degree = "MTech",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 83.6f,
-                            ProfileId = 5,
-                            Starting = 2020,
-                            collegeid = 6
-                        },
-                        new
-                        {
-                            EducationId = 6,
-                            Course = "MCT",
-                            Degree = "BE",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 81.6f,
-                            ProfileId = 6,
-                            Starting = 2018,
-                            collegeid = 5
-                        },
-                        new
-                        {
-                            EducationId = 7,
-                            Course = "CSE",
-                            Degree = "ME",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 94.5f,
-                            ProfileId = 7,
-                            Starting = 2020,
-                            collegeid = 8
-                        },
-                        new
-                        {
-                            EducationId = 8,
-                            Course = "EEE",
-                            Degree = "BE",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 81.8f,
-                            ProfileId = 8,
-                            Starting = 2018,
-                            collegeid = 9
-                        },
-                        new
-                        {
-                            EducationId = 9,
-                            Course = "IT",
-                            Degree = "MTech",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 90.3f,
-                            ProfileId = 9,
-                            Starting = 2020,
-                            collegeid = 3
-                        },
-                        new
-                        {
-                            EducationId = 10,
-                            Course = "IT",
-                            Degree = "BTech",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 85f,
-                            ProfileId = 10,
-                            Starting = 2018,
-                            collegeid = 7
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Gender", b =>
@@ -802,26 +312,6 @@ namespace PMS_API.Migrations
                     b.HasKey("GenderId");
 
                     b.ToTable("Gender");
-
-                    b.HasData(
-                        new
-                        {
-                            GenderId = 1,
-                            GenderName = "Male",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            GenderId = 2,
-                            GenderName = "Female",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            GenderId = 3,
-                            GenderName = "Others",
-                            IsActive = true
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Language", b =>
@@ -868,118 +358,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("PersonalDetailsId");
 
                     b.ToTable("languages");
-
-                    b.HasData(
-                        new
-                        {
-                            LanguageId = 1,
-                            CreatedOn = new DateTime(2022, 6, 28, 9, 47, 37, 673, DateTimeKind.Local).AddTicks(6395),
-                            IsActive = true,
-                            LanguageName = "English",
-                            PersonalDetailsId = 1,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 2,
-                            CreatedOn = new DateTime(2022, 6, 28, 9, 47, 37, 673, DateTimeKind.Local).AddTicks(6408),
-                            IsActive = true,
-                            LanguageName = "Tamil",
-                            PersonalDetailsId = 2,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 3,
-                            CreatedOn = new DateTime(2022, 6, 28, 9, 47, 37, 673, DateTimeKind.Local).AddTicks(6409),
-                            IsActive = true,
-                            LanguageName = "Hindi",
-                            PersonalDetailsId = 3,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 4,
-                            CreatedOn = new DateTime(2022, 6, 28, 9, 47, 37, 673, DateTimeKind.Local).AddTicks(6410),
-                            IsActive = true,
-                            LanguageName = "Telugu",
-                            PersonalDetailsId = 4,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 5,
-                            CreatedOn = new DateTime(2022, 6, 28, 9, 47, 37, 673, DateTimeKind.Local).AddTicks(6411),
-                            IsActive = true,
-                            LanguageName = "Malayalam",
-                            PersonalDetailsId = 5,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 6,
-                            CreatedOn = new DateTime(2022, 6, 28, 9, 47, 37, 673, DateTimeKind.Local).AddTicks(6412),
-                            IsActive = true,
-                            LanguageName = "Kannada",
-                            PersonalDetailsId = 3,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 7,
-                            CreatedOn = new DateTime(2022, 6, 28, 9, 47, 37, 673, DateTimeKind.Local).AddTicks(6413),
-                            IsActive = true,
-                            LanguageName = "Bengali",
-                            PersonalDetailsId = 4,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 8,
-                            CreatedOn = new DateTime(2022, 6, 28, 9, 47, 37, 673, DateTimeKind.Local).AddTicks(6414),
-                            IsActive = true,
-                            LanguageName = "Marathi",
-                            PersonalDetailsId = 3,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 9,
-                            CreatedOn = new DateTime(2022, 6, 28, 9, 47, 37, 673, DateTimeKind.Local).AddTicks(6414),
-                            IsActive = true,
-                            LanguageName = "Urdu",
-                            PersonalDetailsId = 1,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 10,
-                            CreatedOn = new DateTime(2022, 6, 28, 9, 47, 37, 673, DateTimeKind.Local).AddTicks(6415),
-                            IsActive = true,
-                            LanguageName = "French",
-                            PersonalDetailsId = 2,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Organisation", b =>
@@ -1000,68 +378,6 @@ namespace PMS_API.Migrations
                     b.HasKey("OrganisationId");
 
                     b.ToTable("Organisations");
-
-                    b.HasData(
-                        new
-                        {
-                            OrganisationId = 1,
-                            IsActive = true,
-                            OrganisationName = "Development"
-                        },
-                        new
-                        {
-                            OrganisationId = 2,
-                            IsActive = true,
-                            OrganisationName = "Testing"
-                        },
-                        new
-                        {
-                            OrganisationId = 3,
-                            IsActive = true,
-                            OrganisationName = "Support"
-                        },
-                        new
-                        {
-                            OrganisationId = 4,
-                            IsActive = true,
-                            OrganisationName = "Cloud"
-                        },
-                        new
-                        {
-                            OrganisationId = 5,
-                            IsActive = true,
-                            OrganisationName = "Server"
-                        },
-                        new
-                        {
-                            OrganisationId = 6,
-                            IsActive = true,
-                            OrganisationName = "AI"
-                        },
-                        new
-                        {
-                            OrganisationId = 7,
-                            IsActive = true,
-                            OrganisationName = "UI/UX"
-                        },
-                        new
-                        {
-                            OrganisationId = 8,
-                            IsActive = true,
-                            OrganisationName = "R&D"
-                        },
-                        new
-                        {
-                            OrganisationId = 9,
-                            IsActive = true,
-                            OrganisationName = "HR"
-                        },
-                        new
-                        {
-                            OrganisationId = 10,
-                            IsActive = true,
-                            OrganisationName = "Food"
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.PersonalDetails", b =>
@@ -1123,68 +439,6 @@ namespace PMS_API.Migrations
                         .IsUnique();
 
                     b.ToTable("personalDetails");
-
-                    b.HasData(
-                        new
-                        {
-                            PersonalDetailsId = 1,
-                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(11),
-                            DateOfJoining = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(24),
-                            IsActive = true,
-                            Nationality = "Indian",
-                            Objective = "My description",
-                            ProfileId = 1,
-                            UserId = 1,
-                            base64header = "abc"
-                        },
-                        new
-                        {
-                            PersonalDetailsId = 2,
-                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(86),
-                            DateOfJoining = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(24),
-                            IsActive = true,
-                            Nationality = "Indian",
-                            Objective = "My description",
-                            ProfileId = 2,
-                            UserId = 2,
-                            base64header = "qwe"
-                        },
-                        new
-                        {
-                            PersonalDetailsId = 3,
-                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(10),
-                            DateOfJoining = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(24),
-                            IsActive = true,
-                            Nationality = "Indian",
-                            Objective = "My description",
-                            ProfileId = 3,
-                            UserId = 3,
-                            base64header = "abc"
-                        },
-                        new
-                        {
-                            PersonalDetailsId = 4,
-                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(9),
-                            DateOfJoining = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(24),
-                            IsActive = true,
-                            Nationality = "Indian",
-                            Objective = "My description",
-                            ProfileId = 4,
-                            UserId = 4,
-                            base64header = "abc"
-                        },
-                        new
-                        {
-                            PersonalDetailsId = 5,
-                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(11),
-                            DateOfJoining = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(24),
-                            IsActive = true,
-                            Nationality = "Indian",
-                            Objective = "My description",
-                            ProfileId = 5,
-                            UserId = 5,
-                            base64header = "abc"
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Profile", b =>
@@ -1206,68 +460,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("ProfileStatusId");
 
                     b.ToTable("profile");
-
-                    b.HasData(
-                        new
-                        {
-                            ProfileId = 1,
-                            IsActive = true,
-                            ProfileStatusId = 1
-                        },
-                        new
-                        {
-                            ProfileId = 2,
-                            IsActive = true,
-                            ProfileStatusId = 3
-                        },
-                        new
-                        {
-                            ProfileId = 3,
-                            IsActive = true,
-                            ProfileStatusId = 1
-                        },
-                        new
-                        {
-                            ProfileId = 4,
-                            IsActive = true,
-                            ProfileStatusId = 2
-                        },
-                        new
-                        {
-                            ProfileId = 5,
-                            IsActive = true,
-                            ProfileStatusId = 2
-                        },
-                        new
-                        {
-                            ProfileId = 6,
-                            IsActive = true,
-                            ProfileStatusId = 1
-                        },
-                        new
-                        {
-                            ProfileId = 7,
-                            IsActive = true,
-                            ProfileStatusId = 3
-                        },
-                        new
-                        {
-                            ProfileId = 8,
-                            IsActive = true,
-                            ProfileStatusId = 2
-                        },
-                        new
-                        {
-                            ProfileId = 9,
-                            IsActive = true,
-                            ProfileStatusId = 3
-                        },
-                        new
-                        {
-                            ProfileId = 10,
-                            IsActive = true,
-                            ProfileStatusId = 1
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.ProfileHistory", b =>
@@ -1292,36 +484,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("ProfileId");
 
                     b.ToTable("profilehistory");
-
-                    b.HasData(
-                        new
-                        {
-                            ProfileHistoryId = 1,
-                            ApprovedDate = new DateTime(2022, 10, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            ProfileId = 1
-                        },
-                        new
-                        {
-                            ProfileHistoryId = 2,
-                            ApprovedDate = new DateTime(2021, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            ProfileId = 3
-                        },
-                        new
-                        {
-                            ProfileHistoryId = 3,
-                            ApprovedDate = new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            ProfileId = 6
-                        },
-                        new
-                        {
-                            ProfileHistoryId = 4,
-                            ApprovedDate = new DateTime(2022, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            ProfileId = 10
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.ProfileStatus", b =>
@@ -1342,26 +504,6 @@ namespace PMS_API.Migrations
                     b.HasKey("ProfileStatusId");
 
                     b.ToTable("ProfileStatuss");
-
-                    b.HasData(
-                        new
-                        {
-                            ProfileStatusId = 1,
-                            IsActive = true,
-                            ProfileStatusName = "Approved"
-                        },
-                        new
-                        {
-                            ProfileStatusId = 2,
-                            IsActive = true,
-                            ProfileStatusName = "Waiting"
-                        },
-                        new
-                        {
-                            ProfileStatusId = 3,
-                            IsActive = true,
-                            ProfileStatusName = "Declined"
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Projects", b =>
@@ -1423,78 +565,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("ProfileId");
 
                     b.ToTable("projects");
-
-                    b.HasData(
-                        new
-                        {
-                            ProjectId = 1,
-                            Designation = "SE",
-                            EndingMonth = "October",
-                            EndingYear = 2019,
-                            IsActive = true,
-                            ProfileId = 1,
-                            ProjectDescription = "Create a Profile",
-                            ProjectName = "PMS",
-                            StartingMonth = "October",
-                            StartingYear = 2018,
-                            ToolsUsed = "Figma"
-                        },
-                        new
-                        {
-                            ProjectId = 2,
-                            Designation = "SSE",
-                            EndingMonth = "July",
-                            EndingYear = 2021,
-                            IsActive = true,
-                            ProfileId = 2,
-                            ProjectDescription = "Monitor the Trainee",
-                            ProjectName = "TMS",
-                            StartingMonth = "April",
-                            StartingYear = 2018,
-                            ToolsUsed = "Balsamic"
-                        },
-                        new
-                        {
-                            ProjectId = 3,
-                            Designation = "SE",
-                            EndingMonth = "June",
-                            EndingYear = 2020,
-                            IsActive = true,
-                            ProfileId = 3,
-                            ProjectDescription = "Interview process",
-                            ProjectName = "IMS",
-                            StartingMonth = "January",
-                            StartingYear = 2019,
-                            ToolsUsed = "JIRA"
-                        },
-                        new
-                        {
-                            ProjectId = 4,
-                            Designation = "ML",
-                            EndingMonth = "February",
-                            EndingYear = 2021,
-                            IsActive = true,
-                            ProfileId = 4,
-                            ProjectDescription = "Award Distribution",
-                            ProjectName = "AMS",
-                            StartingMonth = "November",
-                            StartingYear = 2020,
-                            ToolsUsed = "Figma"
-                        },
-                        new
-                        {
-                            ProjectId = 5,
-                            Designation = "PM",
-                            EndingMonth = "September",
-                            EndingYear = 2020,
-                            IsActive = true,
-                            ProfileId = 5,
-                            ProjectDescription = "Query Management",
-                            ProjectName = "QMS",
-                            StartingMonth = "December",
-                            StartingYear = 2019,
-                            ToolsUsed = "JIRA"
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Skills", b =>
@@ -1538,88 +608,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("TechnologyId");
 
                     b.ToTable("skills");
-
-                    b.HasData(
-                        new
-                        {
-                            SkillId = 1,
-                            DomainId = 6,
-                            IsActive = true,
-                            ProfileId = 1,
-                            TechnologyId = 7
-                        },
-                        new
-                        {
-                            SkillId = 2,
-                            DomainId = 2,
-                            IsActive = true,
-                            ProfileId = 3,
-                            TechnologyId = 2
-                        },
-                        new
-                        {
-                            SkillId = 3,
-                            DomainId = 7,
-                            IsActive = true,
-                            ProfileId = 4,
-                            TechnologyId = 5
-                        },
-                        new
-                        {
-                            SkillId = 4,
-                            DomainId = 3,
-                            IsActive = true,
-                            ProfileId = 2,
-                            TechnologyId = 1
-                        },
-                        new
-                        {
-                            SkillId = 5,
-                            DomainId = 1,
-                            IsActive = true,
-                            ProfileId = 5,
-                            TechnologyId = 10
-                        },
-                        new
-                        {
-                            SkillId = 6,
-                            DomainId = 10,
-                            IsActive = true,
-                            ProfileId = 1,
-                            TechnologyId = 8
-                        },
-                        new
-                        {
-                            SkillId = 7,
-                            DomainId = 8,
-                            IsActive = true,
-                            ProfileId = 9,
-                            TechnologyId = 6
-                        },
-                        new
-                        {
-                            SkillId = 8,
-                            DomainId = 5,
-                            IsActive = true,
-                            ProfileId = 10,
-                            TechnologyId = 4
-                        },
-                        new
-                        {
-                            SkillId = 9,
-                            DomainId = 9,
-                            IsActive = true,
-                            ProfileId = 8,
-                            TechnologyId = 3
-                        },
-                        new
-                        {
-                            SkillId = 10,
-                            DomainId = 4,
-                            IsActive = true,
-                            ProfileId = 6,
-                            TechnologyId = 9
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.SocialMedia", b =>
@@ -1661,48 +649,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("PersonalDetailsId");
 
                     b.ToTable("SocialMedias");
-
-                    b.HasData(
-                        new
-                        {
-                            SocialMedia_Id = 1,
-                            IsActive = true,
-                            PersonalDetailsId = 5,
-                            SocialMedia_Link = "www.linkedin.com",
-                            SocialMedia_Name = "LinkedIn"
-                        },
-                        new
-                        {
-                            SocialMedia_Id = 2,
-                            IsActive = true,
-                            PersonalDetailsId = 4,
-                            SocialMedia_Link = "www.telegram.com",
-                            SocialMedia_Name = "Telegram"
-                        },
-                        new
-                        {
-                            SocialMedia_Id = 3,
-                            IsActive = true,
-                            PersonalDetailsId = 3,
-                            SocialMedia_Link = "www.facebook.com",
-                            SocialMedia_Name = "Facebook"
-                        },
-                        new
-                        {
-                            SocialMedia_Id = 4,
-                            IsActive = true,
-                            PersonalDetailsId = 2,
-                            SocialMedia_Link = "www.twitter.com",
-                            SocialMedia_Name = "Twitter"
-                        },
-                        new
-                        {
-                            SocialMedia_Id = 5,
-                            IsActive = true,
-                            PersonalDetailsId = 1,
-                            SocialMedia_Link = "www.instagram.com",
-                            SocialMedia_Name = "Instagram"
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Technology", b =>
@@ -1723,68 +669,6 @@ namespace PMS_API.Migrations
                     b.HasKey("TechnologyId");
 
                     b.ToTable("Technologies");
-
-                    b.HasData(
-                        new
-                        {
-                            TechnologyId = 1,
-                            IsActive = true,
-                            TechnologyName = "Java"
-                        },
-                        new
-                        {
-                            TechnologyId = 2,
-                            IsActive = true,
-                            TechnologyName = "DotNet"
-                        },
-                        new
-                        {
-                            TechnologyId = 3,
-                            IsActive = true,
-                            TechnologyName = "Lamp"
-                        },
-                        new
-                        {
-                            TechnologyId = 4,
-                            IsActive = true,
-                            TechnologyName = "BFS"
-                        },
-                        new
-                        {
-                            TechnologyId = 5,
-                            IsActive = true,
-                            TechnologyName = "Sql"
-                        },
-                        new
-                        {
-                            TechnologyId = 6,
-                            IsActive = true,
-                            TechnologyName = "Python"
-                        },
-                        new
-                        {
-                            TechnologyId = 7,
-                            IsActive = true,
-                            TechnologyName = "EBA"
-                        },
-                        new
-                        {
-                            TechnologyId = 8,
-                            IsActive = true,
-                            TechnologyName = "Angular"
-                        },
-                        new
-                        {
-                            TechnologyId = 9,
-                            IsActive = true,
-                            TechnologyName = "C"
-                        },
-                        new
-                        {
-                            TechnologyId = 10,
-                            IsActive = true,
-                            TechnologyName = "Pearl"
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.User", b =>
@@ -1856,83 +740,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("OrganisationId");
 
                     b.ToTable("users");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 1,
-                            CountryCodeId = 1,
-                            DesignationId = 2,
-                            Email = "chittu123@gmail.com",
-                            GenderId = 1,
-                            IsActive = true,
-                            MobileNumber = "8610805521",
-                            Name = "Chitrarasu",
-                            OrganisationId = 3,
-                            Password = "Chitra@2321",
-                            ReportingPersonUsername = "Jaya19",
-                            UserName = "Chittu@25"
-                        },
-                        new
-                        {
-                            UserId = 2,
-                            CountryCodeId = 1,
-                            DesignationId = 2,
-                            Email = "guganrb@gmail.com",
-                            GenderId = 1,
-                            IsActive = true,
-                            MobileNumber = "9994660926",
-                            Name = "Gugan",
-                            OrganisationId = 1,
-                            Password = "Gugan45@1924",
-                            ReportingPersonUsername = "Savitha25",
-                            UserName = "gugan@45"
-                        },
-                        new
-                        {
-                            UserId = 3,
-                            CountryCodeId = 1,
-                            DesignationId = 3,
-                            Email = "harinir@gmail.com",
-                            GenderId = 2,
-                            IsActive = true,
-                            MobileNumber = "8610806522",
-                            Name = "Harini",
-                            OrganisationId = 2,
-                            Password = "harini@2626",
-                            ReportingPersonUsername = "snigdha30",
-                            UserName = "harini@22"
-                        },
-                        new
-                        {
-                            UserId = 4,
-                            CountryCodeId = 2,
-                            DesignationId = 3,
-                            Email = "kishore45@gmail.com",
-                            GenderId = 1,
-                            IsActive = true,
-                            MobileNumber = "8610805513",
-                            Name = "Kishore",
-                            OrganisationId = 1,
-                            Password = "kishore@6754",
-                            ReportingPersonUsername = "Jaya19",
-                            UserName = "kishore@65"
-                        },
-                        new
-                        {
-                            UserId = 5,
-                            CountryCodeId = 1,
-                            DesignationId = 2,
-                            Email = "brindham@gmail.com",
-                            GenderId = 2,
-                            IsActive = true,
-                            MobileNumber = "9610805522",
-                            Name = "Brindha",
-                            OrganisationId = 4,
-                            Password = "brindha@1234",
-                            ReportingPersonUsername = "Savitha25",
-                            UserName = "Brindha@77"
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Achievements", b =>
@@ -1967,15 +774,15 @@ namespace PMS_API.Migrations
 
             modelBuilder.Entity("PMS_API.Education", b =>
                 {
-                    b.HasOne("PMS_API.Profile", "profile")
+                    b.HasOne("PMS_API.College", "college")
                         .WithMany("education")
-                        .HasForeignKey("ProfileId")
+                        .HasForeignKey("CollegeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PMS_API.College", "college")
+                    b.HasOne("PMS_API.Profile", "profile")
                         .WithMany("education")
-                        .HasForeignKey("collegeid")
+                        .HasForeignKey("ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

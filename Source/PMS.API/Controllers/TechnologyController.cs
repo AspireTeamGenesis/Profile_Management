@@ -26,7 +26,7 @@ public class TechnologyController : ControllerBase
         catch (Exception exception) // Handling Exception
         {
              _logger.LogError($"TechnologyController:ViewTechnologies()-{exception.Message}{exception.StackTrace}");
-            return BadRequest(exception.Message);
+            return Problem(exception.Message);
            
         }
     }

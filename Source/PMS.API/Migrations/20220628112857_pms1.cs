@@ -262,7 +262,7 @@ namespace PMS_API.Migrations
                     ProfileId = table.Column<int>(type: "int", nullable: false),
                     Degree = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Course = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    collegeid = table.Column<int>(type: "int", nullable: false),
+                    CollegeId = table.Column<int>(type: "int", nullable: false),
                     Starting = table.Column<int>(type: "int", nullable: true),
                     Ending = table.Column<int>(type: "int", nullable: true),
                     Percentage = table.Column<float>(type: "real", nullable: false),
@@ -276,8 +276,8 @@ namespace PMS_API.Migrations
                 {
                     table.PrimaryKey("PK_educations", x => x.EducationId);
                     table.ForeignKey(
-                        name: "FK_educations_Colleges_collegeid",
-                        column: x => x.collegeid,
+                        name: "FK_educations_Colleges_CollegeId",
+                        column: x => x.CollegeId,
                         principalTable: "Colleges",
                         principalColumn: "CollegeId",
                         onDelete: ReferentialAction.Cascade);
@@ -515,9 +515,9 @@ namespace PMS_API.Migrations
                 column: "PersonalDetailsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_educations_collegeid",
+                name: "IX_educations_CollegeId",
                 table: "educations",
-                column: "collegeid");
+                column: "CollegeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_educations_ProfileId",
