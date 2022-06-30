@@ -109,17 +109,15 @@ namespace PMS_API
 
 
         }
-        public bool UpdatePersonalDetail(PersonalDetails personalDetails)
+        public bool UpdatePersonalDetail(PersonalDetails personalDetail)
         {
-            if (personalDetails == null)
+            if (personalDetail == null)
                 throw new ValidationException("profile's personal detail is not provided to DAL");
 
 
             try
             {
-                var Profile = _context.personalDetails.Find(personalDetails.PersonalDetailsId);
-                if (Profile == null) throw new NullReferenceException($"Profile Id not found{personalDetails.PersonalDetailsId}");
-                _context.Update(personalDetails);
+                _context.personalDetails.Update(personalDetail);
                 _context.SaveChanges();
                 return true;
             }
@@ -187,7 +185,7 @@ namespace PMS_API
 
             try
             {
-                Education education = GetallEducationDetails().Where(x => x.EducationId == Educationid && x.IsActive==true).First();
+                Education education = GetallEducationDetails().Where(x => x.EducationId == Educationid && x.IsActive == true).First();
                 if (education == null) throw new NullReferenceException($"Id not found-{Educationid}");
                 return education;
             }
@@ -231,10 +229,7 @@ namespace PMS_API
                 throw new ValidationException("Profile's education details are not provided to DAL");
             try
             {
-                var Profile = _context.educations.Find(education.EducationId);
-
-                if (Profile == null) throw new NullReferenceException($"Profile's EducationId not found{education.EducationId}");
-                _context.Update(education);
+                _context.educations.Update(education);
                 _context.SaveChanges();
                 return true;
             }
@@ -330,7 +325,7 @@ namespace PMS_API
 
             try
             {
-                Projects project = GetallProjectDetails().Where(x => x.ProjectId == Projectid && x.IsActive==true).First();
+                Projects project = GetallProjectDetails().Where(x => x.ProjectId == Projectid && x.IsActive == true).First();
                 if (project == null) throw new NullReferenceException($"Id not found-{Projectid}");
                 return project;
             }
@@ -349,9 +344,7 @@ namespace PMS_API
 
             try
             {
-                var Profile = _context.projects.Find(projects.ProjectId);
-                if (Profile == null) throw new NullReferenceException($"Profile's projectId not found{projects.ProjectId}");
-                _context.Update(projects);
+                _context.projects.Update(projects);
                 _context.SaveChanges();
                 return true;
             }
@@ -504,7 +497,7 @@ namespace PMS_API
 
             try
             {
-                Skills skills = GetallSkillDetails().Where(x => x.SkillId == skillid && x.IsActive==true).First();
+                Skills skills = GetallSkillDetails().Where(x => x.SkillId == skillid && x.IsActive == true).First();
                 if (skills == null) throw new NullReferenceException($"Id not found-{skillid}");
                 return skills;
             }
@@ -519,13 +512,9 @@ namespace PMS_API
         {
             if (skill == null)
                 throw new ValidationException("Profile's skilldetails are not provided to DAL");
-
-
             try
             {
-                var Profile = _context.skills.Find(skill.SkillId);
-                if (Profile == null) throw new NullReferenceException($"Profile's SkillId not found{skill.SkillId}");
-                _context.Update(skill);
+                _context.skills.Update(skill);
                 _context.SaveChanges();
                 return true;
             }
@@ -698,7 +687,7 @@ namespace PMS_API
 
             try
             {
-                Technology technology = GetallTechnologies().Where(x => x.TechnologyId == Technologyid && x.IsActive==true).First();
+                Technology technology = GetallTechnologies().Where(x => x.TechnologyId == Technologyid && x.IsActive == true).First();
                 if (technology == null) throw new NullReferenceException($"Id not found-{technology}");
                 return technology;
             }
@@ -804,7 +793,7 @@ namespace PMS_API
 
             try
             {
-                Profile profile = GetallProfiles().Where(x => x.ProfileId == Profileid && x.IsActive==true).First();
+                Profile profile = GetallProfiles().Where(x => x.ProfileId == Profileid && x.IsActive == true).First();
                 if (profile == null) throw new NullReferenceException($"Id not found-{Profileid}");
                 return profile;
             }
@@ -815,7 +804,7 @@ namespace PMS_API
                 throw exception;
             }
         }
-         public bool AddProfileHistory(ProfileHistory profilehistory)
+        public bool AddProfileHistory(ProfileHistory profilehistory)
         {
             if (profilehistory == null)
                 throw new ArgumentNullException("profilehistory object is not provided to DAL");

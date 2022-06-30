@@ -8,6 +8,7 @@ public interface IProfileService
         bool AddPersonalDetail(PersonalDetails personalDetails);
         IEnumerable<PersonalDetails> GetAllPersonalDetails();
         object GetPersonalDetailsById(int Personalid);
+        PersonalDetails GetPersonalById(int Personalid);
         bool UpdatePersonalDetail(PersonalDetails personalDetails);
         bool DisablePersonalDetails(int PersonalDetailsid);
        

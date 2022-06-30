@@ -1,0 +1,36 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Net;
+
+namespace PMS_API;
+[Authorize]
+[ApiController]
+[Route("[controller]/[Action]")]
+public class ProfileStatusController : ControllerBase
+{
+    private readonly ILogger _logger;
+    private IProfileStatusServices _ProfileStatusServices;
+   public ProfileStatusController(ILogger<ProfileStatusController> logger,IProfileStatusServices ProfileStatusServices)
+    {
+        _logger = logger;
+        _ProfileStatusServices = ProfileStatusServices;
+    }
+     //IProfileStatusServices ProfileStatusService = ProfileStatusDataFactory.GetProfileStatusServiceObject();
+    [HttpGet]
+    public IActionResult ViewProfileStatuss() //Getting the list of ProfileStatuss
+    {
+        try
+        {
+             _logger.LogInformation("List of ProfileStatuss......"); //Passing Information to log
+            return Ok(_ProfileStatusServices.ViewProfileStatuss());
+           
+        }
+        catch (Exception exception) // Handling Exception
+        {
+              _logger.LogError($"ProfileStatusController:ViewProfileStatuss()-{exception.Message}{exception.StackTrace}");
+            return Problem(exception.Message);
+           
+        }
+    }
+
+}
