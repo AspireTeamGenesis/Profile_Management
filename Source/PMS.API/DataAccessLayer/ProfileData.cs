@@ -109,15 +109,15 @@ namespace PMS_API
 
 
         }
-        public bool UpdatePersonalDetail(PersonalDetails personalDetails)
+        public bool UpdatePersonalDetail(PersonalDetails personalDetail)
         {
-            if (personalDetails == null)
+            if (personalDetail == null)
                 throw new ValidationException("profile's personal detail is not provided to DAL");
 
 
             try
             {
-                _context.personaldetails.Update(personalDetails);
+                _context.personalDetails.Update(personalDetail);
                 _context.SaveChanges();
                 return true;
             }
@@ -512,8 +512,6 @@ namespace PMS_API
         {
             if (skill == null)
                 throw new ValidationException("Profile's skilldetails are not provided to DAL");
-
-
             try
             {
                 _context.skills.Update(skill);

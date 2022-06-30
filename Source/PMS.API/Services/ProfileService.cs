@@ -144,6 +144,7 @@ namespace PMS_API
 
             try
             {
+                var Profile = GetPersonalById(personalDetails.PersonalDetailsId);
                 if (Profile.Objective != personalDetails.Objective)
                     Profile.Objective = personalDetails.Objective;
                 if (Profile.DateOfBirth != personalDetails.DateOfBirth)
@@ -159,7 +160,7 @@ namespace PMS_API
 
                 Profile.UpdatedBy = personalDetails.CreatedBy;
                 Profile.UpdatedOn = DateTime.Now;
-                return ProfileData.UpdatePersonalDetail(Profile);
+                return profileData.UpdatePersonalDetail(Profile);
             }
             catch (Exception exception)
             {
@@ -307,8 +308,8 @@ namespace PMS_API
                     Profile.Degree = education.Degree;
                 if (Profile.Course != education.Course)
                     Profile.Course = education.Course;
-                if (Profile.collegeid != education.collegeid)
-                    Profile.collegeid = education.collegeid;
+                if (Profile.CollegeId != education.CollegeId)
+                    Profile.CollegeId = education.CollegeId;
                 if (Profile.Starting != education.Starting)
                     Profile.Starting = education.Starting;
                 if (Profile.Ending != education.Ending)
@@ -318,7 +319,7 @@ namespace PMS_API
                 Profile.UpdatedBy = education.CreatedBy;
                 Profile.UpdatedOn = DateTime.Now;
 
-                return ProfileData.UpdateEducation(Profile);
+                return profileData.UpdateEducation(Profile);
 
             }
             catch (Exception exception)
@@ -450,10 +451,19 @@ namespace PMS_API
         }
         public Projects GetProjectById(int ProjectId)//fetch Projects based on ProjectId,used for Update Operation
         {
-            if (ProjectId <= 0)
-                throw new ArgumentNullException($"ProjectID is invalid{ProjectId}");
-            Projects project = profileData.GetProjectDetailsById(ProjectId);
-            return project;
+            try
+            {
+                if (ProjectId <= 0)
+                    throw new ArgumentNullException($"ProjectID is invalid{ProjectId}");
+                Projects project = profileData.GetProjectDetailsById(ProjectId);
+                return project;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+
         }
         public bool UpdateProjects(Projects projects)
         {
@@ -483,7 +493,7 @@ namespace PMS_API
                 Profile.IsActive = projects.IsActive;
                 Profile.UpdatedBy = projects.CreatedBy;
                 Profile.UpdatedOn = DateTime.Now;
-                return ProfileData.UpdateProjects(Profile);
+                return profileData.UpdateProjects(Profile);
 
             }
 
@@ -595,16 +605,16 @@ namespace PMS_API
             try
             {
                 if (SkillId <= 0)
-                throw new ArgumentNullException($"SkillID is not provided{SkillId}");
-            var skills = profileData.GetSkillDetailsById(SkillId);
-            return skills;                
+                    throw new ArgumentNullException($"SkillID is not provided{SkillId}");
+                var skills = profileData.GetSkillDetailsById(SkillId);
+                return skills;
             }
             catch (Exception exception)
             {
                 _logger.LogError($"UserServices:GetSkillById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
-            
+
         }
         public bool UpdateSkills(Skills skill)
         {
@@ -621,7 +631,7 @@ namespace PMS_API
                 skills.UpdatedBy = skill.CreatedBy;
                 skills.UpdatedOn = DateTime.Now;
 
-                return ProfileData.UpdateSkills(skills);
+                return profileData.UpdateSkills(skills);
             }
 
             catch (Exception exception)
