@@ -55,7 +55,10 @@ namespace PMS_API
                 _logger.LogInformation($"ProfileController :AddPersonalDetail()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :AddPersonalDetail()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :AddPersonalDetail()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -88,6 +91,10 @@ namespace PMS_API
                 
                 return Ok(_profileService.GetPersonalDetailsById(Personalid));
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :GetPersonalDetailsById()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :GetPersonalDetailsById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
                return Problem(exception.Message);
@@ -103,6 +110,10 @@ namespace PMS_API
             try{
                 
                 return Ok(_profileService.GetPersonalDetailsByProfileId(Profileid));
+            }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :PersonalDetailsByProfileId()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
             }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :GetPersonalDetailsByProfileId()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
@@ -127,7 +138,10 @@ namespace PMS_API
                 return _profileService.UpdatePersonalDetail(personalDetails) ? Ok(new{message="PersonalDetails Updated Successfully"}) : Problem("Sorry internal error occured");
 
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :UpdatePersonalDetail()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController:UpdatePersonalDetail()-{exception.Message}{exception.StackTrace}");
@@ -146,7 +160,10 @@ namespace PMS_API
             {
                 return _profileService.DisablePersonalDetails(PersonalDetailsId) ? Ok(new{message="PersonalDetails Removed Successfully"}) : Problem("Sorry internal error occured");
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :DisablePersonalDetails()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController : DisablePersonalDetails() throwed an exception : {exception}");
@@ -167,6 +184,10 @@ namespace PMS_API
                 return _profileService.AddEducation(education) ? Ok(new{message="Education details added"}) : Problem("Some internal Error occured");
             }
            catch(ValidationException exception){
+                _logger.LogInformation($"ProfileController :AddEducation()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(ArgumentNullException exception){
                 _logger.LogInformation($"ProfileController :AddEducation()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
@@ -201,8 +222,12 @@ namespace PMS_API
                 
                 return Ok(_profileService.GetEducationDetailsById(Educationid));
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :GetEducationDetailsById()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
-                _logger.LogInformation($"ProfileController :GetEducationById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                _logger.LogInformation($"ProfileController :GetEducationDetailsById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
                return Problem(exception.Message);
             }
         }
@@ -214,6 +239,10 @@ namespace PMS_API
             try{
                 
                 return Ok(_profileService.GetAllEducationDetailsByProfileId(Profileid));
+            }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :GetAllEducationDetailsByProfileId()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
             }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :GetAllEducationDetailsByProfileId()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
@@ -236,7 +265,10 @@ namespace PMS_API
                 return _profileService.UpdateEducation(education) ? Ok(new{message="Education Updated Successfully"}) : Problem("Sorry internal error occured");
 
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :UpdateEducation()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController:UpdateEducation()-{exception.Message}{exception.StackTrace}");
@@ -247,14 +279,17 @@ namespace PMS_API
         public IActionResult DisableEducationalDetails(int EducationId)
         {
             if (EducationId <= 0)
-                return BadRequest("Education Id can't be null or negative");
+                return BadRequest(new{message="Education Id can't be null or negative"});
 
 
             try
             {
                 return _profileService.DisableEducationalDetails(EducationId) ? Ok(new{message="Education Removed Successfully"}) : Problem("Sorry internal error occured");
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :DisableEducationalDetails()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController : DisableEducationalDetails() throwed an exception : {exception}");
@@ -278,6 +313,10 @@ namespace PMS_API
                 _logger.LogInformation($"ProfileController :AddProjects()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :AddProjects()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :AddProjects()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -297,7 +336,7 @@ namespace PMS_API
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController :GetallProjectDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
 
 
@@ -311,9 +350,13 @@ namespace PMS_API
                 
                 return Ok(_profileService.GetProjectDetailsById(Projectid));
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :GetProjectDetailsById()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
-                _logger.LogInformation($"ProfileController :GetallProjectDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+                _logger.LogInformation($"ProfileController :GetProjectDetailsById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return Problem(exception.Message);
             }
         }
         [HttpGet]
@@ -325,9 +368,13 @@ namespace PMS_API
                 
                 return Ok(_profileService.GetAllProjectDetailsByProfileId(Profileid));
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :GetAllProjectDetailsByProfileId()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :GetAllProjectDetailsByProfileId()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+               return Problem(exception.Message);
             }
         }
         
@@ -344,32 +391,38 @@ namespace PMS_API
             try
             {
 
-                return _profileService.UpdateProjects(projects) ? Ok(new{message="Projects Updated Successfully"}) : BadRequest(new{message="Sorry internal error occured"});
+                return _profileService.UpdateProjects(projects) ? Ok(new{message="Projects Updated Successfully"}) : Problem("Sorry internal error occured");
 
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :UpdateProjects()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController:UpdateProjects()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
         [HttpDelete]
         public IActionResult DisableProjectDetails(int ProjectsId)
         {
             if (ProjectsId <= 0)
-                return BadRequest("Project Id can't be null or negative");
+                return BadRequest(new{message="Project Id can't be null or negative"});
 
 
             try
             {
                 return _profileService.DisableProjectDetails(ProjectsId) ? Ok(new{message="Project Removed Successfully"}) : Problem("Sorry internal error occured");
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :DisableProjectDetails()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController : DisableProjectDetails() throwed an exception : {exception}");
-                return BadRequest(new{message="Sorry some internal error occured"});
+                return Problem("Sorry some internal error occured");
             }
 
         }
@@ -389,6 +442,10 @@ namespace PMS_API
                 _logger.LogInformation($"ProfileController:AddSkills()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :AddSkills()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController:AddSkills()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -406,7 +463,7 @@ namespace PMS_API
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController : GetallSkillDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
 
 
@@ -420,9 +477,13 @@ namespace PMS_API
                 
                 return Ok(_profileService.GetSkillDetailsById(Skillid));
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :GetSkillDetailsById()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
-                _logger.LogInformation($"ProfileController : GetallSkillDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+               _logger.LogInformation($"ProfileController : GetSkillDetailsById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return Problem(exception.Message);
             }
         }
         [HttpGet]
@@ -434,9 +495,13 @@ namespace PMS_API
                 
                 return Ok(_profileService.GetAllSkillDetailsByProfileId(Profileid));
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :GetAllSkillDetailsByProfileId()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :GetAllSkillDetailsByProfileId()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+               return Problem(exception.Message);
             }
         }
        
@@ -453,14 +518,17 @@ namespace PMS_API
             try
             {
 
-                return _profileService.UpdateSkills(skill) ? Ok(new{message="Skills Updated Successfully"}) : BadRequest(new{message="Sorry internal error occured"});
+                return _profileService.UpdateSkills(skill) ? Ok(new{message="Skills Updated Successfully"}) : Problem("Sorry internal error occured");
 
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :UpdateSkills()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController:UpdateSkills()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
         [HttpDelete]
@@ -474,11 +542,14 @@ namespace PMS_API
             {
                 return _profileService.DisableSkillDetails(SkillId) ? Ok(new{message="Skill Removed Successfully"}) : Problem("Sorry internal error occured");
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :DisableSkillDetails()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController : DisableSkillDetails() throwed an exception : {exception}");
-                return BadRequest("Sorry some internal error occured");
+                return Problem("Sorry some internal error occured");
             }
 
         }
@@ -488,7 +559,7 @@ namespace PMS_API
             if (duration == null)
             {
                 _logger.LogError("ProfileController:AddBreakDuration():user tries to enter null values");
-                return BadRequest("BreakDuration details not be null");
+                return BadRequest(new{message="BreakDuration details not be null"});
             }
             try
             {
@@ -496,6 +567,10 @@ namespace PMS_API
             }
             catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController:AddBreakDuration()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :AddBreakDuration()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
             catch(Exception exception){
@@ -516,11 +591,14 @@ namespace PMS_API
             {
                 return _profileService.DisableBreakDuration(BreakDurationId) ? Ok(new{message="BreakDuration Removed Successfully"}) : Problem("Sorry internal error occured");
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :DisableBreakDuration()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController : DisableBreakDuration() throwed an exception : {exception}");
-                return BadRequest(new{message="Sorry some internal error occured"});
+                return Problem("Sorry some internal error occured");
             }
 
         }
@@ -540,6 +618,10 @@ namespace PMS_API
                 _logger.LogInformation($"ProfileController:AddLanguage()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :AddLanguage()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController:AddLanguage()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -557,11 +639,14 @@ namespace PMS_API
             {
                 return _profileService.DisableLanguage(Language_Id) ? Ok(new{message="Language Removed Successfully"}) : Problem("Sorry internal error occured");
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :DisableLanguage()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController : DisableLanguage() throwed an exception : {exception}");
-                return BadRequest(new{message="Sorry some internal error occured"});
+                return Problem("Sorry some internal error occured");
             }
         }
         [HttpPost]
@@ -578,6 +663,10 @@ namespace PMS_API
             }
             catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController:AddSocialMedia()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :AddSocialMedia()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
             catch(Exception exception){
@@ -597,11 +686,14 @@ namespace PMS_API
             {
                 return _profileService.DisableSocialMedia(SocialMedia_Id) ? Ok(new{message="SocialMedia_ Removed Successfully"}) : Problem("Sorry internal error occured");
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :DisableSocialMedia()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController : DisableSocialMedia() throwed an exception : {exception}");
-                return BadRequest(new{message="Sorry some internal error occured"});
+                return Problem("Sorry some internal error occured");
             }
 
         }
@@ -621,6 +713,10 @@ namespace PMS_API
                 _logger.LogInformation($"ProfileController:AddAchievement()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :AddAchievement()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController:AddAchievement()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
@@ -637,27 +733,48 @@ namespace PMS_API
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController :GetallAchievements()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
 
 
+        }
+        [HttpGet]
+        public IActionResult GetAllAchievementDetailsByProfileId(int Profileid)
+        {
+            if (Profileid <= 0)
+                return BadRequest(new{message="Profile Id can't be null or negative"});
+            try{
+                
+                return Ok(_profileService.GetAllAchievementDetailsByProfileId(Profileid));
+            }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :GetAllAchievementDetailsByProfileId()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :GetAllAchievementDetailsByProfileId()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return Problem(exception.Message);
+            }
         }
         [HttpDelete]
         public IActionResult DisableAchievements(int achievementId)
         {
             if (achievementId <= 0)
-                return BadRequest($"Achievement id can't be null or negative");
+                return BadRequest(new{message="Achievement id can't be null or negative"});
 
 
             try
             {
                 return _profileService.DisableAchievement(achievementId) ? Ok(new{message="Achievement Removed Successfully"}) : Problem("Sorry internal error occured");
             }
-
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :DisableAchievements()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($" ProfileController: DisableAchievements() : {exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
         [HttpGet]
@@ -671,7 +788,7 @@ namespace PMS_API
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileController :GetallProfiles()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
 
@@ -687,9 +804,13 @@ namespace PMS_API
                 
                 return Ok(_profileService.GetProfileById(id));
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :GetProfileById()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :GetProfileById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+               return Problem(exception.Message);
             }
         }
        [HttpPost]
@@ -707,6 +828,10 @@ namespace PMS_API
             }
            catch(ValidationException exception){
                 _logger.LogInformation($"ProfileController:AddProfileHistory()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :AddProfileHistory()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
             catch(Exception exception){
@@ -739,9 +864,13 @@ namespace PMS_API
                 
                 return Ok(_profileService.GetProfileById(Profileid));
             }
+            catch(ArgumentNullException exception){
+                _logger.LogInformation($"ProfileController :GetProfileHistoryById()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
             catch(Exception exception){
                 _logger.LogInformation($"ProfileController :GetProfileHistoryById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-               return BadRequest(exception.Message);
+               return Problem(exception.Message);
             }
         }
 

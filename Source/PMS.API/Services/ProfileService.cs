@@ -527,7 +527,7 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalServices:AddSkills()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"PersonalServices:AddBreakDuration()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
 
@@ -584,7 +584,7 @@ namespace PMS_API
             }
             
             catch(Exception exception){
-                _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"ProfileServices:DisableLanguage()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
         }    
@@ -637,7 +637,7 @@ namespace PMS_API
                 };
             }
             catch(Exception exception){
-                _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileServices:GetTechnologyById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -673,7 +673,7 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalServices:AddAchievements()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"ProfileServices:AddAchievements()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
 
@@ -695,7 +695,7 @@ namespace PMS_API
                 throw exception;
             }
         }
-         public IEnumerable<Object> GetAllAchievementsByProfileId(int Profileid)
+         public IEnumerable<Object> GetAllAchievementDetailsByProfileId(int Profileid)
         {
             if(Profileid<=0)
                 throw new ArgumentNullException($"ID is not provided{Profileid}");
@@ -760,7 +760,7 @@ namespace PMS_API
                     educationdetails=GetAllEducationDetailsByProfileId(getviewdetails.ProfileId),
                     projectdetails=GetAllProjectDetailsByProfileId(getviewdetails.ProfileId),
                     skilldetails=GetAllSkillDetailsByProfileId(getviewdetails.ProfileId),
-                    achievementdetails=GetAllAchievementsByProfileId(getviewdetails.ProfileId)
+                    achievementdetails=GetAllAchievementDetailsByProfileId(getviewdetails.ProfileId)
                 };
             }
             catch(Exception exception){
@@ -784,7 +784,7 @@ namespace PMS_API
              
             }
             catch(Exception exception){
-                _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileServices:GetSpecificProfile()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -817,7 +817,7 @@ namespace PMS_API
             }
             catch(Exception exception){
                 // Log Exception occured in DAL while fetching users
-                _logger.LogError($"PersonalServices:GetallProfiles()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileServices:GetallProfiles()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }

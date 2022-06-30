@@ -46,7 +46,8 @@ public interface IProfileService
         public object GetPersonalDetailsByProfileId(int Profileid);
         public IEnumerable<Object> GetAllEducationDetailsByProfileId(int Profileid);
         public IEnumerable<Object> GetAllProjectDetailsByProfileId(int Profileid);
-        public IEnumerable<Object> GetAllSkillDetailsByProfileId(int PersonalDetailid);
+        public IEnumerable<Object> GetAllSkillDetailsByProfileId(int Profileid);
+        public IEnumerable<Object> GetAllAchievementDetailsByProfileId(int Profileid);
         object GetTechnologyById(int Technologyid);
         IEnumerable<Technology> GetallTechnologies();
 
