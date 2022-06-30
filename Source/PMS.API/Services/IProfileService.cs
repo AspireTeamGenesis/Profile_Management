@@ -30,7 +30,7 @@ public interface IProfileService
         bool UpdateSkills(Skills skill);
         bool DisableSkillDetails(int Skillid);
 
-        bool AddAchievements(Achievements achievements);
+        // bool AddAchievements(Achievements achievements);
         IEnumerable<Achievements> GetallAchievements();
 
         bool DisableAchievement(int AchievementId);
