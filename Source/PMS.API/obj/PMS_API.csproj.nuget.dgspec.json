@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nagaraj.kanagaraj\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj": {}
+    "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nagaraj.kanagaraj\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj": {
+    "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nagaraj.kanagaraj\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
+        "projectUniqueName": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
         "projectName": "PMS_API",
-        "projectPath": "C:\\Users\\nagaraj.kanagaraj\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
-        "packagesPath": "C:\\Users\\nagaraj.kanagaraj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nagaraj.kanagaraj\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\obj\\",
+        "projectPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\PMS_API.csproj",
+        "packagesPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\harini.rajkumar.ASPIRESYS\\Documents\\GitHub\\Profile_Management\\Source\\PMS.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nagaraj.kanagaraj\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\harini.rajkumar.ASPIRESYS\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -101,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
