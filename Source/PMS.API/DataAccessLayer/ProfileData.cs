@@ -5,11 +5,64 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PMS_API
 {
-    public interface IPersonalDetails
+    public interface IProfileData
     {
+        bool AddProfile(Profile profile);
+        bool AddPersonalDetail(PersonalDetails personalDetails);
+        List<PersonalDetails> GetAllPersonalDetails();
+        PersonalDetails GetPersonalDetailsById(int Personalid);
+        //PersonalDetails GetPersonalById(int Personalid);
+        bool UpdatePersonalDetail(PersonalDetails personalDetails);
+        bool DisablePersonalDetails(int PersonalDetailsid);
+       
+        bool AddEducation(Education education);
+        List<Education> GetallEducationDetails();
+        Education GetEducationDetailsById(int Educationid);
+        bool UpdateEducation(Education education);
+        bool DisableEducationalDetails(int Educationid);
+
+        bool AddProjects(Projects project);
+        List<Projects> GetallProjectDetails();
+        Projects GetProjectDetailsById(int Projectid);
+        bool UpdateProjects(Projects projects);
+         bool DisableProjectDetails(int Projectid);
+
+        bool AddSkills(Skills skill);
+        List<Skills> GetallSkillDetails();
+        Skills GetSkillDetailsById(int Skillid);
+        bool UpdateSkills(Skills skill);
+        bool DisableSkillDetails(int Skillid);
+
+        bool AddAchievements(Achievements achievements);
+        List<Achievements> GetallAchievements();
+
+        bool DisableAchievement(int AchievementId);
+
+        bool AddBreakDuration(BreakDuration duration);
+        bool DisableBreakDuration(int BreakDurationid);
+
+        bool AddLanguage(Language language);
+        bool DisableLanguage(int Languageid);
+
+        bool AddSocialMedia(SocialMedia media);
+        bool DisableSocialMedia(int SocialMediaid);
+
+        
+        Technology GetTechnologyById(int Technologyid);
+        List<Technology> GetallTechnologies();
+
+        
+        public List<Profile> GetallProfiles();
+        Profile GetProfileById(int ProfileId);
+        
+        public bool AddProfileHistory(ProfileHistory profilehistory); 
+       
+        public List<ProfileHistory> GetallProfileHistories();
+
 
     }
-    public class ProfileData
+
+    public class ProfileData : IProfileData
     {
         private Context _context;
         private ILogger<ProfileService> _logger;
@@ -66,8 +119,8 @@ namespace PMS_API
 
             try
             {
-
-                return _context.personalDetails.Include("language").Include("breakDuration").Include("socialmedia").ToList();
+                return _context.personalDetails.Include(s=>s.language).Include(s=>s.breakDuration).Include(s=>s.socialmedia).ToList();
+                // return _context.personalDetails.Include("language").Include("breakDuration").Include("socialmedia").ToList();
 
             }
 
@@ -824,7 +877,7 @@ namespace PMS_API
         {
             if (profilehistory == null)
                 throw new ArgumentNullException("profilehistory object is not provided to DAL");
-            //if(profilehistory.profile.ProfileStatus!="Approved")throw new Exception("Status should be Approved by Reporting Person");
+            // if(profilehistory.profile.ProfileStatusId!=1)throw new Exception("Status should be Approved by Reporting Person");
             try
             {
                 _context.profilehistory.Add(profilehistory);
@@ -849,7 +902,7 @@ namespace PMS_API
             try
             {
 
-                return _context.profilehistory.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").ToList();
+                return _context.profilehistory.ToList();
 
             }
 

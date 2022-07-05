@@ -42,6 +42,7 @@ builder.Services.AddDbContext<Context>(options =>{
 });
 builder.Services.AddScoped<ILoginService,LoginService>();
 builder.Services.AddScoped<IUserData,UserData>();
+builder.Services.AddScoped<IProfileData,ProfileData>();
 
 builder.Services.AddScoped<IUserServices,UserServices>();
 

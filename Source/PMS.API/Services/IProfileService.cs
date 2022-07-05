@@ -58,8 +58,8 @@ namespace PMS_API
 
         public bool AddProfileHistory(ProfileHistory profilehistory);
         public IEnumerable<object> GetProfileHistoryById(int ProfileId);
-        public IEnumerable<ProfileHistory> GetallProfileHistories();
-
+        public IEnumerable<object> GetallProfileHistories();
+        
         // public bool RequestToUpdate()
         // public bool Download(int ProfileId)
 

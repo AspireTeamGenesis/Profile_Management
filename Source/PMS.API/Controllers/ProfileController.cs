@@ -841,7 +841,7 @@ namespace PMS_API
                 _logger.LogError("ProfileController:AddProfileHistory():User tries to enter null values");
                 return BadRequest(new{message="ProfileHistory not be null"});
             }
-            //if(profilehistory.profile.ProfileStatus!="Approved")throw new Exception("Status should be Approved by Reporting Person");
+           
             try
             {
                 return _profileService.AddProfileHistory(profilehistory) ? Ok(new{message="ProfileHistory added"}) : Problem("Some internal error occured");
@@ -862,6 +862,8 @@ namespace PMS_API
         [HttpGet]
         public IActionResult GetallProfileHistories()
         {
+            // if(profilehistory.profile.ProfileStatusId!=1)
+            //     return BadRequest(new{message="Status should be Approved by Reporting Person"});
             try
             {
 
@@ -882,7 +884,7 @@ namespace PMS_API
             }
             try{
                 
-                return Ok(_profileService.GetProfileById(Profileid));
+                return Ok(_profileService.GetProfileHistoryById(Profileid));
             }
             catch(ArgumentNullException exception){
                 _logger.LogInformation($"ProfileController :GetProfileHistoryById()-{exception.Message}{exception.StackTrace}");

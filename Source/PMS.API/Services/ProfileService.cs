@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using PMS_API;
 
 namespace PMS_API
@@ -49,7 +50,7 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalServices:AddProfile()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"ProfileService:AddProfile()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
 
@@ -73,7 +74,7 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalServices:AddPersonalDetail()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"ProfileService:AddPersonalDetail()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
 
@@ -92,7 +93,7 @@ namespace PMS_API
             catch (Exception exception)
             {
                 // Log Exception occured in DAL while fetching users
-                _logger.LogError($"PersonalServices:GetallPersonalDetails()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileService:GetallPersonalDetails()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -118,7 +119,7 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileService:GetPersonalDetailsById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -137,7 +138,7 @@ namespace PMS_API
                      dateofbirth = item.DateOfBirth,
                      nationality = item.Nationality,
                      dateofjoining = item.DateOfJoining,
-                     language = item.language,
+                     language = removeDetails(item.language),
                      socialmedia = item.socialmedia,
                      breakduration = item.breakDuration
 
@@ -145,9 +146,17 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileService:GetPersonalDetailsByProfileId()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
+        }
+        private  ICollection<Language> removeDetails(ICollection<Language> languages)
+        {
+            foreach (var item in languages)
+            {
+                item.personalDetails = null;
+            }
+            return languages;
         }
         public PersonalDetails GetPersonalById(int PersonalDetailsId)//fetch PersonalDetail based on PersonaldetailsId, used for update operation
         {
@@ -160,13 +169,13 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogError($"ProfileServices:GetPersonalById()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileService:GetPersonalById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
         public bool UpdatePersonalDetail(PersonalDetails personalDetails)
         {
-            if (personalDetails == null) throw new ArgumentNullException($" PersonalService:Update()-Personal values not be null{personalDetails}");
+            if (personalDetails == null) throw new ArgumentNullException($" ProfileService:UpdatePersonalDetail()-Personal values not be null{personalDetails}");
 
             try
             {
@@ -190,7 +199,7 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalServices:Update()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"ProfileService:UpdatePersonalDetail()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
 
@@ -212,7 +221,7 @@ namespace PMS_API
 
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalServices:Delete()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"ProfileService:DisablePersonalDetails()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
         }
@@ -230,7 +239,7 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalServices:AddEducation()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"ProfileService:AddEducation()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
 
@@ -259,7 +268,7 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileService:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -277,7 +286,7 @@ namespace PMS_API
             catch (Exception exception)
             {
                 // Log Exception occured in DAL while fetching users
-                _logger.LogError($"PersonalServices:GetallPersonalDetails()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileService:GetallEducationDetails()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -302,7 +311,7 @@ namespace PMS_API
             }
             catch (Exception exception)
             {
-                _logger.LogError($"UserServices:GetEducationDetailsById()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileService:GetAllEducationDetailsByProfileId()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -927,7 +936,7 @@ namespace PMS_API
             catch (Exception exception)
             {
 
-                _logger.LogError($"PersonalServices:GetallProfiles()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileService:GetallProfiles()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -937,18 +946,21 @@ namespace PMS_API
                 throw new ArgumentNullException($"ID is not provided{Profileid}");
             try
             {
-                var getviewdetails= profileData.GetProfileById(Profileid); 
-                return new {
-                    personaldetails=GetPersonalDetailsByProfileId(getviewdetails.ProfileId),
-                    educationdetails=GetAllEducationDetailsByProfileId(getviewdetails.ProfileId),
-                    projectdetails=GetAllProjectDetailsByProfileId(getviewdetails.ProfileId),
-                    skilldetails=GetAllSkillDetailsByProfileId(getviewdetails.ProfileId),
-                    achievementdetails=GetAllAchievementDetailsByProfileId(getviewdetails.ProfileId)
+                // var getviewdetails= profileData.GetallProfiles().Where(item => item.ProfileId==Profileid && item.IsActive==true).Select(item =>
+                var getviewdetails= 
+                new {
+                    personaldetails=GetPersonalDetailsByProfileId(Profileid),
+                    educationdetails=GetAllEducationDetailsByProfileId(Profileid),
+                    projectdetails=GetAllProjectDetailsByProfileId(Profileid),
+                    skilldetails=GetAllSkillDetailsByProfileId(Profileid),
+                    achievementdetails=GetAllAchievementDetailsByProfileId(Profileid)
                 };
+                //); 
+                return getviewdetails;
             }
             catch (Exception exception)
             {
-                _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogError($"ProfileService:GetProfileById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
@@ -977,26 +989,38 @@ namespace PMS_API
 
         public bool AddProfileHistory(ProfileHistory profilehistory)
         {
-            if (profilehistory == null) throw new ArgumentNullException($"Values cannot be null values are {profilehistory}");
-            //if(profilehistory.profile.ProfileStatus!="Approved")throw new Exception("Status should be Approved by Reporting Person");
+            if (profilehistory == null) 
+                throw new ArgumentNullException($"Values cannot be null values are {profilehistory}");
+            
+            profilehistory.profile=profileData.GetProfileById(profilehistory.ProfileId);
+            if(profilehistory.profile.ProfileStatusId!=1)
+                throw new ValidationException("Status should be Approved by Reporting Person");
             try
             {
                 return profileData.AddProfileHistory(profilehistory) ? true : false;
             }
             catch (Exception exception)
             {
-                _logger.LogInformation($"PersonalServices:AddProfileHistory()-{exception.Message}\n{exception.StackTrace}");
+                _logger.LogInformation($"ProfileService:AddProfileHistory()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
 
         }
-        public IEnumerable<ProfileHistory> GetallProfileHistories()
+        public IEnumerable<object> GetallProfileHistories()
         {
             try
             {
                 // IEnumerable<User> userDetails = new List<User>();
+                // var lastFiveProducts = (from p in products 
+                //         orderby p.ProductDate descending
+                //         select p).Take(5);
+            
 
-                return from profilehistory in profileData.GetallProfileHistories() where profilehistory.IsActive == true select profilehistory;
+                return profileData.GetallProfileHistories().Where(item =>item.IsActive).OrderByDescending(item =>item.ApprovedDate).Select(item => new {
+                    profileHistory=item,
+                    Profile=GetProfileById(item.ProfileId)
+
+                }) ;
 
 
 
@@ -1008,26 +1032,42 @@ namespace PMS_API
                 throw exception;
             }
         }
-        public IEnumerable<Object> GetProfileHistoryById(int Profileid)
+        public IEnumerable<object> GetProfileHistoryById(int Profileid)
+
         {
+
             if (Profileid <= 0)
+
                 throw new ArgumentNullException($"ID is not provided{Profileid}");
+
             try
-            {
-                var getprofilehistory = profileData.GetallProfileHistories().Where(item => item.ProfileId == Profileid && item.IsActive == true).Select(item =>
-                 new
-                 {
-                     profilehistorydate = item.ApprovedDate,
-                     profile = GetProfileById(item.ProfileId)
 
-                 }); return getprofilehistory;
+            {
+
+                return profileData.GetallProfileHistories().Where(item=>item.ProfileId==Profileid).OrderByDescending(item=>item.ApprovedDate).Take(3).Select(item =>
+
+                new{
+
+                    profileHistory=item,
+
+                    Profile=GetProfileById(item.ProfileId)
+
+                });
+
+
 
             }
+
             catch (Exception exception)
+
             {
-                _logger.LogError($"UserServices:GetProfileHistoryById()-{exception.Message}\n{exception.StackTrace}");
+
+                _logger.LogError($"ProfileService:GetProfileHistoryById()-{exception.Message}\n{exception.StackTrace}");
+
                 throw exception;
+
             }
+
         }
 
     }
