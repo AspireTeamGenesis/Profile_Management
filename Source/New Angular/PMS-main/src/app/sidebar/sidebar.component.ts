@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.service';
+import { UserserviceService } from '../service/userservice.service';
 
 
 @Component({
@@ -9,12 +11,24 @@ import { AuthenticationService } from '../service/authentication.service';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private service:AuthenticationService) { }
+  userId:number;
+  profileDetails:any;
+  constructor(private service:UserserviceService,private route: ActivatedRoute,private servicer:AuthenticationService) { }
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.userId = params['userId'];
+      console.log('User id : '+this.userId);
+    })
+    // this.getUserProfile(this.userId);
+  }
+  getUserProfile(userId:number){
+    this.service.getUserDetails(userId).subscribe( {
+      next:(data)=>this.profileDetails=data
+    })
   }
   logout()
   {
-    this.service.ClearToken();
+    this.servicer.ClearToken();
   }
 
 }

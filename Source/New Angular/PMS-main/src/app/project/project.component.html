@@ -1,0 +1,85 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div class="container d-flex justify-content-center table-box">
+  <form action="#" class="form" style="margin-top:110px; width: 60%;border-radius: 2px; border-color: black;">
+
+    <div class="progressbar">
+      <div class="progress" id="progress"></div>
+
+      <div class="progress-step progress-step-active" data-title="Personal"></div>
+      <div class="progress-step progress-step-active" data-title="Education"></div>
+      <div class="progress-step progress-step-active" data-title="Project"></div>
+      <div class="progress-step " data-title="Skills"></div>
+      <div class="progress-step " data-title="Achievements"></div>
+    </div>
+
+    <div class="form-step form-step-active">
+      <h3>Project Details</h3>
+      <label for="Proname">Project Name</label>
+      <input type="text" [(ngModel)]="projectfield.projectName" name="projectname" id="Proname"
+        placeholder="Enter Project name"  />
+      <br>
+      <label for="Prodes">Project Description</label>
+      <textarea [(ngModel)]="projectfield.projectDescription" name="Description" id="Prodes" rows="4" cols="80"
+        placeholder="Enter Project description" style="width:100%;"></textarea>
+
+      <label for="personaldetails">Duration</label>
+
+      <div>
+        <label for="personaldetails">StartingMonth</label>
+        <input type="text" [(ngModel)]="projectfield.startingMonth" name="Startmonth" id="personaldetails"
+           />
+      </div>
+      <br>
+      <label for="personaldetails">StaringYear</label>
+      <select name="starting" [(ngModel)]="projectfield.startingYear" required="">
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+
+      <!-- <select [(ngModel)]="projectfield.startingYear" name="Startyear" required="" style="border-color: black;">
+
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+
+      </select> -->
+      <br>
+      <div>
+        <label for="personaldetails">EndingMonth</label>
+        <input type="text" [(ngModel)]="projectfield.endingMonth" name="Endmonth" id="personaldetails"
+           />
+      </div>
+      <br>
+
+      <label for="personaldetails">EndingYear</label>
+      <select name="starting" [(ngModel)]="projectfield.endingYear" required="">
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+
+      <!-- <select [(ngModel)]="projectfield.endingYear" name="Endyear" required="" style="border-color: black;">
+
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+
+      </select> -->
+      <br>
+      <label for="Role">Role Played</label>
+      <input type="text" name="Role" id="Role" [(ngModel)]="projectfield.designation" placeholder="Enter Role played"
+         />
+      <br>
+      <label for="Tools">Tools Used</label>
+      <input type="text" name="Tools" id="Tools" [(ngModel)]="projectfield.toolsUsed" placeholder="Enter Tools used"
+         />     
+      <div class="button">
+        <a class="btn btn-next width-50 ml-auto" (click)="OnSubmit()">Add</a>
+      </div>
+      <br>
+      <app-projectcard></app-projectcard>
+      <div class="row">
+        <a [routerLink]="['/education']" class="btn btn-next width-50 ml-auto">Previous</a>
+
+        <a href="#" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+
+        <a [routerLink]="['/skill']" class="btn btn-next width-50 ml-auto">Next</a>
+
+      </div>
+    </div>
+  </form>
+</div>

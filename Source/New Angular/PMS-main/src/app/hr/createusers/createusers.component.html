@@ -95,9 +95,6 @@
           <select id="personaldetails" name="OrganisationValue" [(ngModel)]="OrganisationValue">
             <option value="">Select organisation</option>
             <option *ngFor="let item of organisationValue" value={{item.organisationId}}>{{item.organisationName}}</option>
-            <!-- <option value="volvo">Development</option>
-                  <option value="saab">Testing</option>
-                  <option value="fiat">UI/UX</option> -->
           </select>
         </div>
         <div class="input-group">

@@ -24,7 +24,7 @@ export class EducationComponent implements OnInit {
     }
 
 
-  collegeValue:College[]=[];
+  collegeValue:any;
   college:number=0;
   educationDetails:any;
 
@@ -34,7 +34,7 @@ export class EducationComponent implements OnInit {
   
   user = {
     educationId: 0,
-    profileId: 11,
+    profileId: 7,
     degree: '',
     course: '',
     collegeId:0,
@@ -53,7 +53,9 @@ export class EducationComponent implements OnInit {
     this.service.getCollege().subscribe((data:any)=>
     {
       this.collegeValue=data;
+      console.warn(this.collegeValue);
     });
+
   }
   educationSubmit()
   {

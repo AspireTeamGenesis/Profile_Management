@@ -3,6 +3,8 @@ import { UserserviceService } from '../service/userservice.service';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { College } from 'Models/college';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
 
 @Component({
   selector: 'app-editeducation',
@@ -12,31 +14,28 @@ import { College } from 'Models/college';
 export class EditeducationComponent implements OnInit {
   selectedYear: number=0;
   years: number[] = [];
-  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient) {
+  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute) {
     this.selectedYear = new Date().getFullYear();
   for (let year = this.selectedYear; year >= 2000; year--) {
     this.years.push(year);
   }
     }
-    educationId=7;
-    collegeValue:College[]=[];
+    // educationId=0;
+    collegeValue:any;
   college:number=0;
   educationDetails:any;
+  educationid:number=0;
 
-  user:any = {
-    educationId: this.educationId,
-    profileId: 7,
-    degree: '',
-    course: '',
-    collegeId:0,
-    starting: 0,
-    ending: 0,
-    percentage: 0,
-  }
-
+  user:any;
+  
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.educationid = params['educationid'];
+      console.log('Education id : ' + this.educationid);
+    })
     this.getCollege();
-    this.getEducationDetails(this.user.educationId);
+    console.log('Hello : '+this.educationid);
+    this.getEducationDetails(this.educationid);
   }
   getCollege()
   {
@@ -51,15 +50,16 @@ export class EditeducationComponent implements OnInit {
     this.service.getEducationDetails(educationId).subscribe( (data)=>{
       this.user=data;
       console.log(this.user)});
+      this.collegeValue=this.user.collegeid;
     }
     updateEducation()
     {
       const education = {
-        educationId: this.educationId,
+        educationId: this.educationid,
         profileId: 7,
         degree: this.user.degree,
         course: this.user.course,
-        collegeId:this.user.collegeId,
+        collegeId:this.user.collegeid,
         starting: this.user.starting,
         ending: this.user.ending,
         percentage: this.user.percentage,

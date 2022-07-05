@@ -15,25 +15,31 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class EdituserComponent implements OnInit {
 
-  createusers: any;
-  Mobilenumber: any;
-  Gender: any;
-  Organisation: any;
-  Designation: any;
-  userValue: User[] = [];
   organisationValue: Organisation[] = [];
   designationValue: Designation[] = [];
-  UserId: number = 0;
-  Name: string = '';
-  Email: string = '';
-  UserName: string = '';
-  Password: string = '';
-  GenderValue: number = 0;
-  CountryCodeValue: string = '';
-  MobileNumber: string = '';
-  OrganisationValue: number = 0;
-  DesignationValue: number = 0;
-  ReportingPersonUsername: string = '';
+
+
+
+
+  // createusers: any;
+  // Mobilenumber: any;
+  // Gender: any;
+  // Organisation: any;
+  // Designation: any;
+  // userValue: User[] = [];
+  // organisationValue: Organisation[] = [];
+  // designationValue: Designation[] = [];
+  // UserId: number = 0;
+  // Name: string = '';
+  // Email: string = '';
+  // UserName: string = '';
+  // Password: string = '';
+  // GenderValue: number = 0;
+  // CountryCodeValue: string = '';
+  // MobileNumber: string = '';
+  // OrganisationValue: number = 0;
+  // DesignationValue: number = 0;
+  // ReportingPersonUsername: string = '';
   //TO get the input from the user
 
 
@@ -65,9 +71,7 @@ export class EdituserComponent implements OnInit {
     username: '',
     password: '',
     genderId: 0,
-    gender: '',
     countryCodeId: 0,
-    countryCode:'',
     mobilenumber: '',
     designationId: 0,
     reportingpersonUsername: '',
@@ -111,9 +115,23 @@ export class EdituserComponent implements OnInit {
   //     console.log(this.userDetails)});
   //   }
   updateUser() {
+
+    const userDetailsProfile = {
+      userid: this.userEmployeeId,
+      name:this.userDetails.name,
+      email:this.userDetails.email,
+      username:this.userDetails.username,
+      password: this.userDetails.password,
+      genderId: this.userDetails.genderId,
+      countryCodeId: this.userDetails.countryCodeId,
+      mobilenumber: this.userDetails.mobilenumber,
+      designationId: this.userDetails.designationId,
+      reportingpersonUsername: this.userDetails.reportingpersonUsername,
+      organisationId: this.userDetails.organisationId,
+    }
     console.log("update");
-    console.log(this.userDetails);
-    this.service.updateUser(this.userDetails).subscribe();
+    console.log(userDetailsProfile);
+    this.service.updateUser(userDetailsProfile).subscribe();
 
   }
 

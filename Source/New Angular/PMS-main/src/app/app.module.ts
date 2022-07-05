@@ -21,6 +21,15 @@ import { EducationComponent } from './education/education.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { EditeducationComponent } from './editeducation/editeducation.component';
 import { EducationcardComponent } from './educationcard/educationcard.component';
+import { AchievementComponent } from './achievement/achievement.component';
+import { SkillsComponent } from './skills/skills.component';
+import { ProjectComponent } from './project/project.component';
+import { EducationtwoComponent } from './educationtwo/educationtwo.component';
+import { SkillcardComponent } from './skillcard/skillcard.component';
+import { ProjectcardComponent } from './projectcard/projectcard.component';
+import { EditskillComponent } from './editskill/editskill.component';
+import { AchievementcardComponent } from './achievementcard/achievementcard.component';
+import { ProfilehomeComponent } from './profilehome/profilehome.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +49,15 @@ import { EducationcardComponent } from './educationcard/educationcard.component'
     EdituserComponent,
     EditeducationComponent,
     EducationcardComponent,
+    AchievementComponent,
+    SkillsComponent,
+    ProjectComponent,
+    EducationtwoComponent,
+    SkillcardComponent,
+    ProjectcardComponent,
+    EditskillComponent,
+    AchievementcardComponent,
+    ProfilehomeComponent,
   ],
   imports: [
     BrowserModule,
