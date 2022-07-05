@@ -45,6 +45,22 @@ namespace PMS_API
 
 
         }
+
+        public IEnumerable<BreakDuration> GetBreakDurationByPersonalDetailsId(int id)
+        {
+            try
+            {
+                return _context.Set<BreakDuration>().Where(nameof => nameof.PersonalDetailsId == id).ToList();
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"ProfileData.cs-DisableBreakDuration()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-DisableBreakDuration()-{exception.StackTrace}");
+                throw exception;
+            }
+
+        }
+
         public List<PersonalDetails> GetAllPersonalDetails()
         {
 

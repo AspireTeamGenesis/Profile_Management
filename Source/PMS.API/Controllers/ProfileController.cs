@@ -17,6 +17,26 @@ namespace PMS_API
             _profileService = profileService;
             _logger = logger;
         }
+        [HttpGet]
+         public IActionResult CalculateExperience(int personaldetailsid)
+        {
+
+            if (personaldetailsid == null)
+            {
+                _logger.LogError("ProfileController:CalculateExperience():personaldetailsId is invalid");
+                return BadRequest(new { message = "PersonaldetailId is Invalid" });
+            }
+            try
+            {
+                var year = _profileService.calculateExperience(personaldetailsid);
+                return Ok(new { year });
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"UserController :GetAllUsers()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+                return Problem(exception.Message);
+            }
+        }
         [HttpPost]
         public IActionResult AddProfile(Profile profile)
         {

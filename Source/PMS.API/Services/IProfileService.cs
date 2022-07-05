@@ -2,8 +2,9 @@ using PMS_API;
 
 namespace PMS_API
 {
-public interface IProfileService
+    public interface IProfileService
     {
+        public double calculateExperience(int id);
         bool AddProfile(Profile profile);
         bool AddPersonalDetail(PersonalDetails personalDetails);
         IEnumerable<PersonalDetails> GetAllPersonalDetails();
@@ -11,7 +12,7 @@ public interface IProfileService
         PersonalDetails GetPersonalById(int Personalid);
         bool UpdatePersonalDetail(PersonalDetails personalDetails);
         bool DisablePersonalDetails(int PersonalDetailsid);
-       
+
         bool AddEducation(Education education);
         IEnumerable<Education> GetallEducationDetails();
         object GetEducationDetailsById(int Educationid);
@@ -22,7 +23,7 @@ public interface IProfileService
         IEnumerable<Projects> GetallProjectDetails();
         object GetProjectDetailsById(int Projectid);
         bool UpdateProjects(Projects projects);
-         bool DisableProjectDetails(int Projectid);
+        bool DisableProjectDetails(int Projectid);
 
         bool AddSkills(Skills skill);
         IEnumerable<Skills> GetallSkillDetails();
@@ -54,15 +55,15 @@ public interface IProfileService
 
         object GetProfileById(int Profileid);
         public IEnumerable<Profile> GetallProfiles();
-        
-        public bool AddProfileHistory(ProfileHistory profilehistory); 
+
+        public bool AddProfileHistory(ProfileHistory profilehistory);
         public IEnumerable<object> GetProfileHistoryById(int ProfileId);
         public IEnumerable<ProfileHistory> GetallProfileHistories();
-        
+
         // public bool RequestToUpdate()
         // public bool Download(int ProfileId)
 
         //public bool Share(List<string> Tomail,string message);
-          
+
     }
 }

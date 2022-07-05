@@ -14,6 +14,32 @@ namespace PMS_API
             profileData = ProfileDataFactory.GetProfileData(logger);
 
         }
+        public double calculateExperience(int personalId)
+        {
+            if (personalId <= 0)
+            {
+                throw new ArgumentNullException($"ID is not provided : {personalId}");
+            }
+            try
+            {
+                var breakDuration = profileData.GetBreakDurationByPersonalDetailsId(personalId);
+                var personalDetail = profileData.GetPersonalDetailsById(personalId);
+                var exp = (DateTime.Now - personalDetail.DateOfJoining).TotalDays;
+                double diff = 0;
+                foreach (var item in breakDuration)
+                {
+                    diff += (item.EndingDuration - item.StartingDuration).TotalDays;
+                }
+
+                return Math.Round((exp - diff) / 365, 1);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"ProfileServices:calculateExperience()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+
+            }
+        }
         public bool AddProfile(Profile profile)
         {
             if (profile == null) throw new ArgumentNullException($"Values cannot be null values are {profile}");
