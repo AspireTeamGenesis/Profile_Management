@@ -1,0 +1,48 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div class="container d-flex justify-content-center table-box">
+  <form action="#" class="form" style="margin-top:110px; width: 60%;border-radius: 2px; border-color: black;">
+
+    <div class="progressbar">
+      <div class="progress" id="progress"></div>
+
+      <div class="progress-step progress-step-active" data-title="Personal"></div>
+      <div class="progress-step progress-step-active" data-title="Education"></div>
+      <div class="progress-step progress-step-active" data-title="Project"></div>
+      <div class="progress-step progress-step-active" data-title="Skills"></div>
+      <div class="progress-step progress-step-active" data-title="Achievements"></div>
+    </div>
+
+    <div class="form-step form-step-active">
+      <h3>Skills</h3>
+      <div class="input-group">
+        <label for="personaldetails">Domain</label>
+        <select id="personaldetails" name="domainValue" [(ngModel)]="skill.domainid">
+          <option value="">Select Domain</option>
+          <option *ngFor="let item of domainValue" [selected]="item.domainId==domainValue" value={{item.domainId}}>{{item.domainName}}</option>
+        </select>
+      </div>
+      <br>
+      <div class="input-group">
+        <label for="personaldetails">Technology</label>
+        <select id="personaldetails" name="technologyValue" [(ngModel)]="skill.technologyid">
+          <option value="">Select Technology</option>
+          <option *ngFor="let item of technologyValue" [selected]="item.technologyId==technologyValue" value={{item.technologyId}}>{{item.technologyName}}</option>
+        </select>
+      </div>     
+      <div class="button">
+        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/skill']" (click)="submitSkills()">Update</a>
+      </div>
+      <br>
+      <app-skillcard></app-skillcard>
+      <div class="row">
+        <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Previous</a>
+
+        <a href="#" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+
+        <a [routerLink]="['/achievement']" class="btn btn-next width-50 ml-auto">Next</a>
+
+      </div>
+    </div>
+  </form>
+</div>

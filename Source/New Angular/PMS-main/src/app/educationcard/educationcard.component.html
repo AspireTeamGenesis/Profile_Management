@@ -1,9 +1,7 @@
 <script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-
 <div class="container d-flex justify-content-center">
-    <div class="kcard" *ngFor="let item of educationDetails | paginate: {itemsPerPage : 2, currentPage: page,totalItems:totalLength}
-        ">
+    <div class="kcard" *ngFor="let item of educationDetails | paginate: {itemsPerPage : 2, currentPage: page,totalItems:totalLength}       ">
         <div class="card-body">
             <p class="card-text">
                 <br>Course : {{item.course}}
@@ -14,8 +12,8 @@
             </p>
             <br>
             <h2>
-                <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i>
-                <i class="fa fa-trash"></i>
+                <i [routerLink]="['../editeducation',item.educationid]" class="fa fa-pencil fa-sm"></i>
+                <i (click)="cancelEducation(item.educationid)" class="fa fa-trash"></i>
                 <!-- <i (click)="DeleteEducation(item.educationId)" class="fa fa-trash"></i> -->
             </h2>
         </div>

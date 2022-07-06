@@ -11,6 +11,14 @@ import { HrprofileComponent } from './hrprofile/hrprofile.component';
 import { EducationComponent } from './education/education.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { EditeducationComponent } from './editeducation/editeducation.component';
+import { AchievementComponent } from './achievement/achievement.component';
+import { EducationtwoComponent } from './educationtwo/educationtwo.component';
+import { SkillsComponent } from './skills/skills.component';
+import { SkillcardComponent } from './skillcard/skillcard.component';
+import { ProjectComponent } from './project/project.component';
+import { ProjectcardComponent } from './projectcard/projectcard.component';
+import { EditskillComponent } from './editskill/editskill.component';
+import { ProfilehomeComponent } from './profilehome/profilehome.component';
 
 
 const routes: Routes = [
@@ -24,7 +32,16 @@ const routes: Routes = [
   {path:"hrprofile/:userId",component:HrprofileComponent},
   {path:"education",component:EducationComponent},
   {path:"editUser/:userId",component:EdituserComponent},
-  {path:"editeducation",component:EditeducationComponent},
+  {path:"editeducation/:educationid",component:EditeducationComponent},
+  {path:"achievement",component:AchievementComponent},
+  {path:"educationtwo",component:EducationtwoComponent},
+  {path:"skill",component:SkillsComponent},
+  {path:"skillcard",component:SkillcardComponent},
+  {path:"achievement",component:AchievementComponent},
+  {path:"project",component:ProjectComponent},
+  {path:"projectcard",component:ProjectcardComponent},
+  {path:"editskill/:skillid",component:EditskillComponent},
+  {path:"profilehome",component:ProfilehomeComponent},
   {path:"",component:LoginComponent}
 ];
 

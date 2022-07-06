@@ -19,7 +19,7 @@ export class UserserviceService {
   //     'Access-Control-Allow-Headers':'*'
   //   })
 
-  baseURL = 'https://localhost:7021/'
+  baseurl = 'https://localhost:7021/'
   constructor(private http: HttpClient) { }
 
   private headers = new HttpHeaders({
@@ -47,9 +47,19 @@ export class UserserviceService {
     return this.http.get<Designation[]>('https://localhost:7021/Designation/ViewDesignations');
   }
 
-  getCollege():Observable<College[]>
+  getCollege()
   {
-    return this.http.get<College[]>('https://localhost:7021/College/ViewColleges');
+    return this.http.get<any>('https://localhost:7021/College/ViewColleges');
+  }
+
+  getDomain()
+  {
+    return this.http.get<any>('https://localhost:7021/Domain/ViewDomains');
+  }
+
+  getTechnology()
+  {
+    return this.http.get<any>('https://localhost:7021/Technology/ViewTechnologies');
   }
 
   
@@ -109,6 +119,84 @@ export class UserserviceService {
   getEducationByProfileId(profileId:number)
   {
     return this.http.get<any>( `https://localhost:7021/Profile/GetAllEducationDetailsByProfileId?Profileid=${profileId}`,{ headers: this.headers });
+  }
+
+  addAchievement(achievement:any)
+  {
+    return this.http.post<any>(`https://localhost:7021/Profile/AddAchievement`,achievement,{headers : this.headers});   
+
+  }
+
+  submitSkills(skill:any)
+  {
+    return this.http.post<any>(`https://localhost:7021/Profile/AddSkills`,skill,{headers : this.headers});   
+  }
+
+  getSkillByProfileId(profileId:number)
+  {
+    return this.http.get<any>( `https://localhost:7021/Profile/GetAllSkillDetailsByProfileId?Profileid=${profileId}`,{ headers: this.headers });
+  }
+
+  cancelEducation(educationId:number)
+  {
+    return this.http.delete<any>(`https://localhost:7021/Profile/DisableEducationalDetails?EducationId=${educationId}`, { headers: this.headers });
+  }
+
+  cancelSkill(skillid:number)
+  {
+    return this.http.delete<any>(`https://localhost:7021/Profile/DisableSkillDetails?SkillId=${skillid}`, { headers: this.headers });
+  }
+
+
+  // getProjectDetail(id : number) : Observable<any>{
+  //   return this.http.get<any>(this.baseurl + `GetProjectDetailsById?Projectid=${id}`);
+  // }
+  
+  getProjectDetailByProfileID(id : number) : Observable<any>{
+    return this.http.get<any>(`https://localhost:7021/Profile/GetAllProjectDetailsByProfileId?Profileid=${id}`,{headers:this.headers});
+  }
+  
+  getallProjectDetailByProfile( ) : Observable<any>{
+    return this.http.get<any>(this.baseurl + `GetallProjectDetails`);
+  }
+  UpdateProjects(data:any){
+    return this.http.put<any>(this.baseurl + `UpdateProjects`,data);
+  }
+  CreateProjects(data:any)
+  {
+    return this.http.post<any>(`https://localhost:7021/Profile/AddProjects`,data,{headers:this.headers});
+  }
+
+
+  getProjectByProfileId(profileId:number)
+  {
+    return this.http.get<any>(`https://localhost:7021/Profile/GetProjectDetailsById?Projectid=${profileId}`,{ headers: this.headers })
+  }
+
+  cancelProject(projectid:number)
+  {
+    return this.http.delete<any>(`https://localhost:7021/Profile/DisableSkillDetails?SkillId=${projectid}`, { headers: this.headers });
+  }
+
+  updateSkills(skill:any)
+  {
+    return this.http.put<any>(`https://localhost:7021/Profile/UpdateSkills`,skill,{headers : this.headers});   
+  }
+
+  getSkillDetailsBySkillId(skillId:number)
+  {
+    console.log(skillId);
+    return this.http.get<any>(`https://localhost:7021/Profile/GetSkillDetailsById?Skillid=${skillId}`,{headers : this.headers});
+  }
+
+  getAchievementByProfileId(profileId:number)
+  {
+     return this.http.get<any>(`https://localhost:7021/Profile/GetAllAchievementDetailsByProfileId?Profileid=${profileId}`,{headers : this.headers})
+  }
+
+  cancelAchievement(achievementid:number)
+  {
+    return this.http.delete<any>(`https://localhost:7021/Profile/DisableAchievements?achievementId=${achievementid}`,{headers : this.headers})
   }
 
 

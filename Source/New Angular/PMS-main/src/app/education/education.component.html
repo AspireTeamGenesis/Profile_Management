@@ -1,32 +1,32 @@
 <app-topbar></app-topbar>
 <app-sidebar></app-sidebar>
-
 <div class="container d-flex justify-content-center table-box">
-  <form action="#" class="form">
-    <!-- <h1 class="text-center">Registration Form</h1> -->
-    <!-- Progress bar -->
+  <form action="#" class="form" style="margin-top:110px; width: 60%;border-radius: 2px; border-color: black;">
+
     <div class="progressbar">
       <div class="progress" id="progress"></div>
 
       <div class="progress-step progress-step-active" data-title="Personal"></div>
       <div class="progress-step progress-step-active" data-title="Education"></div>
-      <div class="progress-step" data-title="Project"></div>
-      <div class="progress-step" data-title="Skills"></div>
-      <div class="progress-step" data-title="Achievements"></div>
+      <div class="progress-step " data-title="Project"></div>
+      <div class="progress-step " data-title="Skills"></div>
+      <div class="progress-step " data-title="Achievements"></div>
     </div>
 
     <div class="form-step form-step-active">
-      <h3>Educational Details</h3>
+      <h3>Education Details</h3>
       <div class="input-group">
         <label for="degree">Degree</label>
         <input type="text" name="degree" id="degree" placeholder="Enter your degree" [(ngModel)]="user.degree"
           required />
       </div>
+      <br>
       <div class="input-group">
         <label for="course">Course</label>
         <input type="text" name="course" id="course" placeholder="Enter your course" [(ngModel)]="user.course"
           required />
       </div>
+      <br>
       <div class="input-group">
         <label for="College">College</label>
         <select id="college" name="college" [(ngModel)]="user.collegeId" required>
@@ -34,6 +34,7 @@
           <option *ngFor="let item of collegeValue" value={{item.collegeId}}>{{item.collegeName}}</option>
         </select>
       </div>
+      <br>
       <table>
         <tr>
           <!-- <div class="input-group"> -->
@@ -49,6 +50,8 @@
         <option *ngFor="let year of years" [value]="year">{{ year }}</option>
       </select>
 
+      <br>
+
       <!-- <input type="date" name="from" id="personaldetails"  [(ngModel)]="user.starting_Year" required /> -->
       <!-- </div> -->
       <div class="input-group">
@@ -58,75 +61,25 @@
           <option *ngFor="let year of years" [value]="year">{{ year }}</option>
         </select>
       </div>
+      <br>
       <div class="input-group">
         <label for="percentage">Percentage</label>
         <input type="number" name="percentage" id="percentage" placeholder="Enter percentage of marks"
           [(ngModel)]="user.percentage" required />
       </div>
-
-
       <div class="button">
-        <a (click)="educationSubmit()" routerLink="/education" class="btn btn-add ">Add</a>
+        <a class="btn btn-next width-50 ml-auto" (click)="educationSubmit()">Add</a>
       </div>
-      <br>
       <br>
       <app-educationcard></app-educationcard>
       <div class="row">
+        <a [routerLink]="['/']" class="btn btn-next width-50 ml-auto">Previous</a>
 
-        <a [routerLink]="['/createprofile']" class="btn btn-next width-50 ml-auto">Back</a>
+        <a href="#" class="btn btn-next width-50 ml-auto">Save as Draft</a>
 
-        <a  routerLink="/personaldetails" class="btn btn-next width-50 ml-auto">Save as
-
-          Draft</a>
-
-        <a [routerLink]="['/projectdetails']" class="btn btn-next width-50 ml-auto">Next</a>
+        <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Next</a>
 
       </div>
-
-            <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-
-      <!-- <div class="btns-group">
-        <button type="button" class="btn btn-primary">Primary</button>
-        <a href="#" class="btn btn-prev">Previous</a>
-        <a href="#" class="btn">Save as Draft</a>
-        <a href="#" class="btn btn-next">Next</a>
-      </div> -->
     </div>
-    <!-- <table>
-            <tr>
-              <div class="row btns-group"></div>
-            </tr>
-            <td>
-              <a routerLink="/personaldetails" class="btn btn-prev btns-group ">Previous</a>
-            </td>
-            <td>
-              <a href="#" class="btn btn-save btns-group ">Save as Draft</a>
-            </td>
-            <td>
-              <a routerLink="/projectdetails" class="btn btn-next btns-group ">Next</a>
-            </td>
-          </table> -->
-          <!-- <div class="row rone mt-4">
-
-            <div class="col-md-4">
-
-                <a > <button class="btn btn-prev">Previous</button></a>
-
-            </div>
-
-            <div class="col-md-4">
-
-              <a > <button class="btn btn-save">Save as Draft</button></a>
-
-          </div>
-
-          <div class="col-md-4">
-
-            <a > <button class="btn btn-next">Next</button></a>
-
-        </div> -->
-
-        <!-- </div> -->
-
-</form>
+  </form>
 </div>

@@ -12,9 +12,10 @@ export class EducationcardComponent implements OnInit {
   totalLength:any;
   page:number=1;
   educationDetails:any;
-  profileId=11;
+  profileId=7;
+  hello:100;
   constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient) { }
-
+  
   ngOnInit(): void {
     this.getEducationByProfileId();
   }
@@ -26,6 +27,12 @@ export class EducationcardComponent implements OnInit {
        this.totalLength=this.educationDetails.length;
        console.warn(this.educationDetails);
      })
+  }
+
+  cancelEducation(educationid:number)
+  {
+    this.service.cancelEducation(educationid).subscribe(()=>this.getEducationByProfileId());
+
   }
 
 }
