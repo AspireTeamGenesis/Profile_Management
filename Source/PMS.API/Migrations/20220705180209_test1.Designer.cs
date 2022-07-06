@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMS_API;
 
@@ -11,9 +12,10 @@ using PMS_API;
 namespace PMS_API.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220705180209_test1")]
+    partial class test1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -865,7 +867,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 1,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4052),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 32, 8, 347, DateTimeKind.Local).AddTicks(8789),
                             IsActive = true,
                             LanguageName = "English",
                             PersonalDetailsId = 1,
@@ -876,7 +878,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 2,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4065),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 32, 8, 347, DateTimeKind.Local).AddTicks(8804),
                             IsActive = true,
                             LanguageName = "Tamil",
                             PersonalDetailsId = 2,
@@ -887,7 +889,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 3,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4066),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 32, 8, 347, DateTimeKind.Local).AddTicks(8805),
                             IsActive = true,
                             LanguageName = "Hindi",
                             PersonalDetailsId = 3,
@@ -898,7 +900,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 4,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4067),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 32, 8, 347, DateTimeKind.Local).AddTicks(8806),
                             IsActive = true,
                             LanguageName = "Telugu",
                             PersonalDetailsId = 4,
@@ -909,7 +911,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 5,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4068),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 32, 8, 347, DateTimeKind.Local).AddTicks(8807),
                             IsActive = true,
                             LanguageName = "Malayalam",
                             PersonalDetailsId = 5,
@@ -920,7 +922,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 6,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4092),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 32, 8, 347, DateTimeKind.Local).AddTicks(8808),
                             IsActive = true,
                             LanguageName = "Kannada",
                             PersonalDetailsId = 3,
@@ -931,7 +933,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 7,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4093),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 32, 8, 347, DateTimeKind.Local).AddTicks(8809),
                             IsActive = true,
                             LanguageName = "Bengali",
                             PersonalDetailsId = 4,
@@ -942,7 +944,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 8,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4094),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 32, 8, 347, DateTimeKind.Local).AddTicks(8810),
                             IsActive = true,
                             LanguageName = "Marathi",
                             PersonalDetailsId = 3,
@@ -953,7 +955,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 9,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4095),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 32, 8, 347, DateTimeKind.Local).AddTicks(8810),
                             IsActive = true,
                             LanguageName = "Urdu",
                             PersonalDetailsId = 1,
@@ -964,7 +966,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 10,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4096),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 32, 8, 347, DateTimeKind.Local).AddTicks(8811),
                             IsActive = true,
                             LanguageName = "French",
                             PersonalDetailsId = 2,
@@ -1653,48 +1655,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("PersonalDetailsId");
 
                     b.ToTable("SocialMedias");
-
-                    b.HasData(
-                        new
-                        {
-                            SocialMedia_Id = 1,
-                            IsActive = true,
-                            PersonalDetailsId = 5,
-                            SocialMedia_Link = "www.linkedin.com",
-                            SocialMedia_Name = "LinkedIn"
-                        },
-                        new
-                        {
-                            SocialMedia_Id = 2,
-                            IsActive = true,
-                            PersonalDetailsId = 4,
-                            SocialMedia_Link = "www.telegram.com",
-                            SocialMedia_Name = "Telegram"
-                        },
-                        new
-                        {
-                            SocialMedia_Id = 3,
-                            IsActive = true,
-                            PersonalDetailsId = 3,
-                            SocialMedia_Link = "www.facebook.com",
-                            SocialMedia_Name = "Facebook"
-                        },
-                        new
-                        {
-                            SocialMedia_Id = 4,
-                            IsActive = true,
-                            PersonalDetailsId = 2,
-                            SocialMedia_Link = "www.twitter.com",
-                            SocialMedia_Name = "Twitter"
-                        },
-                        new
-                        {
-                            SocialMedia_Id = 5,
-                            IsActive = true,
-                            PersonalDetailsId = 1,
-                            SocialMedia_Link = "www.instagram.com",
-                            SocialMedia_Name = "Instagram"
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Technology", b =>

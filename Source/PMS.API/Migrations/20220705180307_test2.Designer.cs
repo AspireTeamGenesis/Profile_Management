@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMS_API;
 
@@ -11,9 +12,10 @@ using PMS_API;
 namespace PMS_API.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220705180307_test2")]
+    partial class test2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -865,7 +867,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 1,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4052),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 33, 6, 535, DateTimeKind.Local).AddTicks(7864),
                             IsActive = true,
                             LanguageName = "English",
                             PersonalDetailsId = 1,
@@ -876,7 +878,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 2,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4065),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 33, 6, 535, DateTimeKind.Local).AddTicks(7877),
                             IsActive = true,
                             LanguageName = "Tamil",
                             PersonalDetailsId = 2,
@@ -887,7 +889,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 3,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4066),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 33, 6, 535, DateTimeKind.Local).AddTicks(7878),
                             IsActive = true,
                             LanguageName = "Hindi",
                             PersonalDetailsId = 3,
@@ -898,7 +900,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 4,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4067),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 33, 6, 535, DateTimeKind.Local).AddTicks(7879),
                             IsActive = true,
                             LanguageName = "Telugu",
                             PersonalDetailsId = 4,
@@ -909,7 +911,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 5,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4068),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 33, 6, 535, DateTimeKind.Local).AddTicks(7880),
                             IsActive = true,
                             LanguageName = "Malayalam",
                             PersonalDetailsId = 5,
@@ -920,7 +922,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 6,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4092),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 33, 6, 535, DateTimeKind.Local).AddTicks(7881),
                             IsActive = true,
                             LanguageName = "Kannada",
                             PersonalDetailsId = 3,
@@ -931,7 +933,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 7,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4093),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 33, 6, 535, DateTimeKind.Local).AddTicks(7882),
                             IsActive = true,
                             LanguageName = "Bengali",
                             PersonalDetailsId = 4,
@@ -942,7 +944,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 8,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4094),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 33, 6, 535, DateTimeKind.Local).AddTicks(7883),
                             IsActive = true,
                             LanguageName = "Marathi",
                             PersonalDetailsId = 3,
@@ -953,7 +955,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 9,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4095),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 33, 6, 535, DateTimeKind.Local).AddTicks(7883),
                             IsActive = true,
                             LanguageName = "Urdu",
                             PersonalDetailsId = 1,
@@ -964,7 +966,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 10,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4096),
+                            CreatedOn = new DateTime(2022, 7, 5, 23, 33, 6, 535, DateTimeKind.Local).AddTicks(7885),
                             IsActive = true,
                             LanguageName = "French",
                             PersonalDetailsId = 2,

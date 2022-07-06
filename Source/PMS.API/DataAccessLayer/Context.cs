@@ -196,14 +196,15 @@ namespace PMS_API{
                          new PersonalDetails { PersonalDetailsId = 4, ProfileId = 4 , Objective = "My description" , DateOfBirth = new System.DateTime(2000,11,02) , Nationality = "Indian" , DateOfJoining = new System.DateTime(2018,06,11) , base64header = "abc" , UserId = 4 , IsActive = true},
                          new PersonalDetails { PersonalDetailsId = 5, ProfileId = 5 , Objective = "My description" , DateOfBirth = new System.DateTime(2000,06,29) , Nationality = "Indian" , DateOfJoining = new System.DateTime(2021,08,21) , base64header = "abc" , UserId = 5 , IsActive = true}
                         );
-            modelBuilder.Entity<SocialMedia>()
-                    .HasData(
-                          new SocialMedia { SocialMedia_Id = 1, SocialMedia_Name = "LinkedIn" , SocialMedia_Link = "www.linkedin.com" , PersonalDetailsId = 5 , IsActive = true},
-                          new SocialMedia { SocialMedia_Id = 2, SocialMedia_Name = "Telegram" , SocialMedia_Link = "www.telegram.com" , PersonalDetailsId = 4 , IsActive = true},
-                          new SocialMedia { SocialMedia_Id = 3, SocialMedia_Name = "Facebook" , SocialMedia_Link = "www.facebook.com" , PersonalDetailsId = 3 , IsActive = true},
-                          new SocialMedia { SocialMedia_Id = 4, SocialMedia_Name = "Twitter" , SocialMedia_Link = "www.twitter.com" , PersonalDetailsId = 2 , IsActive = true},
-                          new SocialMedia { SocialMedia_Id = 5, SocialMedia_Name = "Instagram" , SocialMedia_Link = "www.instagram.com" , PersonalDetailsId = 1 , IsActive = true}
-                         ); 
+            modelBuilder.Entity<BreakDuration>()
+                        .HasData(
+                         new BreakDuration { BreakDuration_Id = 1 ,  StartingDuration = new DateTime(2020,01,02) , EndingDuration = new DateTime(2019,06,15) , PersonalDetailsId = 1 , IsActive = true},
+                         new BreakDuration { BreakDuration_Id = 2 ,  StartingDuration = new DateTime(2020,02,15) , EndingDuration = new DateTime(2021,07,15) , PersonalDetailsId = 2 , IsActive = true },
+                         new BreakDuration { BreakDuration_Id = 3 ,  StartingDuration = new DateTime(2020,04,15) , EndingDuration = new DateTime(2020,12,15) , PersonalDetailsId = 3 , IsActive = true  },
+                         new BreakDuration { BreakDuration_Id = 4 ,  StartingDuration = new DateTime(2019,01,15) , EndingDuration = new DateTime(2019,06,15) , PersonalDetailsId = 4 , IsActive = true  },
+                         new BreakDuration { BreakDuration_Id = 5 ,  StartingDuration = new DateTime(2021,12,15) , EndingDuration = new DateTime(2022,02,15) , PersonalDetailsId = 5 , IsActive = true  },
+                         new BreakDuration { BreakDuration_Id = 6 ,  StartingDuration = new DateTime(2021,11,15) , EndingDuration = new DateTime(2022,02,15) , PersonalDetailsId = 5 , IsActive = true  }
+                         );
             modelBuilder.Entity<Language>()
                       .HasData(
                        new Language { LanguageId = 1, LanguageName = "English", Read = true, Write = true, Speak = true, PersonalDetailsId = 1, CreatedOn = System.DateTime.Now , IsActive = true},
@@ -217,6 +218,17 @@ namespace PMS_API{
                        new Language { LanguageId = 9, LanguageName = "Urdu", Read = true, Write = true, Speak = true, PersonalDetailsId = 1, CreatedOn = System.DateTime.Now , IsActive = true},
                        new Language { LanguageId = 10,LanguageName = "French", Read = true, Write = true, Speak = true, PersonalDetailsId = 2, CreatedOn = System.DateTime.Now , IsActive = true}
                     );
+
+
+            
+            modelBuilder.Entity<SocialMedia>()
+                    .HasData(
+                          new SocialMedia { SocialMedia_Id = 1, SocialMedia_Name = "LinkedIn" , SocialMedia_Link = "www.linkedin.com" , PersonalDetailsId = 5 , IsActive = true},
+                          new SocialMedia { SocialMedia_Id = 2, SocialMedia_Name = "Telegram" , SocialMedia_Link = "www.telegram.com" , PersonalDetailsId = 4 , IsActive = true},
+                          new SocialMedia { SocialMedia_Id = 3, SocialMedia_Name = "Facebook" , SocialMedia_Link = "www.facebook.com" , PersonalDetailsId = 3 , IsActive = true},
+                          new SocialMedia { SocialMedia_Id = 4, SocialMedia_Name = "Twitter" , SocialMedia_Link = "www.twitter.com" , PersonalDetailsId = 2 , IsActive = true},
+                          new SocialMedia { SocialMedia_Id = 5, SocialMedia_Name = "Instagram" , SocialMedia_Link = "www.instagram.com" , PersonalDetailsId = 1 , IsActive = true}
+                         ); 
             modelBuilder.Entity<AchievementType>()
                         .HasData(
                          new AchievementType { AchievementTypeId = 1, AchievementTypeName = "Awards" , IsActive = true },
@@ -231,15 +243,7 @@ namespace PMS_API{
                          new Achievements { AchievementId = 5 , ProfileId = 5 , AchievementTypeId = 1, base64header = "abc" , IsActive = true }                                                                    
                         );
 
-            modelBuilder.Entity<BreakDuration>()
-                        .HasData(
-                         new BreakDuration { BreakDuration_Id = 1 ,  StartingDuration = new DateTime(2020,01,02) , EndingDuration = new DateTime(2019,06,15) , PersonalDetailsId = 1 , IsActive = true},
-                         new BreakDuration { BreakDuration_Id = 2 ,  StartingDuration = new DateTime(2020,02,15) , EndingDuration = new DateTime(2021,07,15) , PersonalDetailsId = 2 , IsActive = true },
-                         new BreakDuration { BreakDuration_Id = 3 ,  StartingDuration = new DateTime(2020,04,15) , EndingDuration = new DateTime(2020,12,15) , PersonalDetailsId = 3 , IsActive = true  },
-                         new BreakDuration { BreakDuration_Id = 4 ,  StartingDuration = new DateTime(2019,01,15) , EndingDuration = new DateTime(2019,06,15) , PersonalDetailsId = 4 , IsActive = true  },
-                         new BreakDuration { BreakDuration_Id = 5 ,  StartingDuration = new DateTime(2021,12,15) , EndingDuration = new DateTime(2022,02,15) , PersonalDetailsId = 5 , IsActive = true  },
-                         new BreakDuration { BreakDuration_Id = 6 ,  StartingDuration = new DateTime(2021,11,15) , EndingDuration = new DateTime(2022,02,15) , PersonalDetailsId = 5 , IsActive = true  }
-                         );
+            
     
     }
 

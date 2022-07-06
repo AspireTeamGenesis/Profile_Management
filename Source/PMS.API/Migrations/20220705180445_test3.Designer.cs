@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMS_API;
 
@@ -11,9 +12,10 @@ using PMS_API;
 namespace PMS_API.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220705180445_test3")]
+    partial class test3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,56 +182,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("PersonalDetailsId");
 
                     b.ToTable("breakDurations");
-
-                    b.HasData(
-                        new
-                        {
-                            BreakDuration_Id = 1,
-                            EndingDuration = new DateTime(2019, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            PersonalDetailsId = 1,
-                            StartingDuration = new DateTime(2020, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            BreakDuration_Id = 2,
-                            EndingDuration = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            PersonalDetailsId = 2,
-                            StartingDuration = new DateTime(2020, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            BreakDuration_Id = 3,
-                            EndingDuration = new DateTime(2020, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            PersonalDetailsId = 3,
-                            StartingDuration = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            BreakDuration_Id = 4,
-                            EndingDuration = new DateTime(2019, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            PersonalDetailsId = 4,
-                            StartingDuration = new DateTime(2019, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            BreakDuration_Id = 5,
-                            EndingDuration = new DateTime(2022, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            PersonalDetailsId = 5,
-                            StartingDuration = new DateTime(2021, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            BreakDuration_Id = 6,
-                            EndingDuration = new DateTime(2022, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            PersonalDetailsId = 5,
-                            StartingDuration = new DateTime(2021, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.ChangePassword", b =>
@@ -860,118 +812,6 @@ namespace PMS_API.Migrations
                     b.HasIndex("PersonalDetailsId");
 
                     b.ToTable("languages");
-
-                    b.HasData(
-                        new
-                        {
-                            LanguageId = 1,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4052),
-                            IsActive = true,
-                            LanguageName = "English",
-                            PersonalDetailsId = 1,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 2,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4065),
-                            IsActive = true,
-                            LanguageName = "Tamil",
-                            PersonalDetailsId = 2,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 3,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4066),
-                            IsActive = true,
-                            LanguageName = "Hindi",
-                            PersonalDetailsId = 3,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 4,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4067),
-                            IsActive = true,
-                            LanguageName = "Telugu",
-                            PersonalDetailsId = 4,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 5,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4068),
-                            IsActive = true,
-                            LanguageName = "Malayalam",
-                            PersonalDetailsId = 5,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 6,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4092),
-                            IsActive = true,
-                            LanguageName = "Kannada",
-                            PersonalDetailsId = 3,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 7,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4093),
-                            IsActive = true,
-                            LanguageName = "Bengali",
-                            PersonalDetailsId = 4,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 8,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4094),
-                            IsActive = true,
-                            LanguageName = "Marathi",
-                            PersonalDetailsId = 3,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 9,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4095),
-                            IsActive = true,
-                            LanguageName = "Urdu",
-                            PersonalDetailsId = 1,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        },
-                        new
-                        {
-                            LanguageId = 10,
-                            CreatedOn = new DateTime(2022, 7, 5, 23, 36, 19, 352, DateTimeKind.Local).AddTicks(4096),
-                            IsActive = true,
-                            LanguageName = "French",
-                            PersonalDetailsId = 2,
-                            Read = true,
-                            Speak = true,
-                            Write = true
-                        });
                 });
 
             modelBuilder.Entity("PMS_API.Organisation", b =>
