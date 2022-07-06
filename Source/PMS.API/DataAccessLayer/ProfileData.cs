@@ -161,7 +161,7 @@ namespace PMS_API
 
             try
             {
-
+                personalDetails.IsActive=true;
                 _context.personalDetails.Add(personalDetails);
                 _context.SaveChanges();
                 return true;
@@ -275,7 +275,7 @@ namespace PMS_API
 
             try
             {
-
+                education.IsActive=true;
                 _context.educations.Add(education);
                 _context.SaveChanges();
                 return true;
@@ -351,7 +351,7 @@ namespace PMS_API
 
             try
             {
-
+                projects.IsActive=true;
                 _context.projects.Add(projects);
                 _context.SaveChanges();
                 return true;
@@ -519,11 +519,11 @@ namespace PMS_API
 
 
             if (skill == null)
-                throw new ArgumentNullException("Education detail object is not provided to DAL");
+                throw new ArgumentNullException("Skill detail object is not provided to DAL");
 
             try
             {
-
+                skill.IsActive=true;
                 _context.skills.Add(skill);
                 _context.SaveChanges();
                 return true;
@@ -773,7 +773,7 @@ namespace PMS_API
                 throw new ArgumentNullException("social media details object is not provided to DAL");
             try
             {
-
+                achievement.IsActive=true;
                 _context.achievements.Add(achievement);
                 _context.SaveChanges();
                 return true;

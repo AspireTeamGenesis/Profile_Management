@@ -138,9 +138,9 @@ namespace PMS_API
                      dateofbirth = item.DateOfBirth,
                      nationality = item.Nationality,
                      dateofjoining = item.DateOfJoining,
-                     language = removeDetails(item.language),
-                     socialmedia = item.socialmedia,
-                     breakduration = item.breakDuration
+                     language = removeAdditionalDetailsExceptLanguage(item.language),
+                     socialmedia = removeAdditionalDetailsExceptSocialMedia(item.socialmedia),
+                     breakduration = removeAdditionalDetailsExceptBreakDuration(item.breakDuration)
 
                  }); return getpersonaldetailsbyprofileid;
             }
@@ -150,13 +150,29 @@ namespace PMS_API
                 throw exception;
             }
         }
-        private  ICollection<Language> removeDetails(ICollection<Language> languages)
+        private  ICollection<Language> removeAdditionalDetailsExceptLanguage(ICollection<Language> languages)
         {
             foreach (var item in languages)
             {
                 item.personalDetails = null;
             }
             return languages;
+        }
+        private  ICollection<BreakDuration> removeAdditionalDetailsExceptBreakDuration(ICollection<BreakDuration> breakDurations)
+        {
+            foreach (var item in breakDurations)
+            {
+                item.personalDetails = null;
+            }
+            return breakDurations;
+        }
+        private  ICollection<SocialMedia> removeAdditionalDetailsExceptSocialMedia(ICollection<SocialMedia> socialMedias)
+        {
+            foreach (var item in socialMedias)
+            {
+                item.personalDetails = null;
+            }
+            return socialMedias;
         }
         public PersonalDetails GetPersonalById(int PersonalDetailsId)//fetch PersonalDetail based on PersonaldetailsId, used for update operation
         {
@@ -388,10 +404,7 @@ namespace PMS_API
             if (project == null) throw new ArgumentNullException($"Values cannot be null values are {project}");
             try
             {
-                project.StartingMonth = project.ProjectStartingMonth.Month.ToString("MMM");
-                project.StartingYear = project.ProjectStartingYear.Year;
-                project.EndingMonth = project.ProjectEndingMonth.Month.ToString("MMM");
-                project.EndingYear = project.ProjectEndingYear.Year;
+                project.IsActive=true;
                 project.CreatedBy = project.ProfileId;
                 project.CreatedOn = DateTime.Now;
                 return profileData.AddProjects(project) ? true : false;

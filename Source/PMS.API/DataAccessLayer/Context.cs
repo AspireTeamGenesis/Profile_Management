@@ -128,16 +128,16 @@ namespace PMS_API{
                          );
              modelBuilder.Entity<Profile>()
                         .HasData(
-                         new Profile { ProfileId = 1, ProfileStatusId = 1 , IsActive = true },
-                         new Profile { ProfileId = 2, ProfileStatusId = 3 , IsActive = true},
-                         new Profile { ProfileId = 3, ProfileStatusId = 1 , IsActive = true},
-                         new Profile { ProfileId = 4, ProfileStatusId = 2 , IsActive = true},
-                         new Profile { ProfileId = 5, ProfileStatusId = 2 , IsActive = true },
-                         new Profile { ProfileId = 6, ProfileStatusId = 1 , IsActive = true},
-                         new Profile { ProfileId = 7, ProfileStatusId = 3 , IsActive = true},
-                         new Profile { ProfileId = 8, ProfileStatusId = 2 , IsActive = true },
-                         new Profile { ProfileId = 9, ProfileStatusId = 3 , IsActive = true},
-                         new Profile { ProfileId = 10, ProfileStatusId = 1 , IsActive = true}
+                         new Profile { ProfileId = 1, ProfileStatusId = 1 ,UserId=1, IsActive = true },
+                         new Profile { ProfileId = 2, ProfileStatusId = 3 ,UserId=2, IsActive = true},
+                         new Profile { ProfileId = 3, ProfileStatusId = 1 ,UserId=3, IsActive = true},
+                         new Profile { ProfileId = 4, ProfileStatusId = 2 ,UserId=4, IsActive = true},
+                         new Profile { ProfileId = 5, ProfileStatusId = 2 ,UserId=5, IsActive = true },
+                         new Profile { ProfileId = 6, ProfileStatusId = 1 ,UserId=6, IsActive = true},
+                         new Profile { ProfileId = 7, ProfileStatusId = 3 ,UserId=7, IsActive = true},
+                         new Profile { ProfileId = 8, ProfileStatusId = 2 ,UserId=8, IsActive = true },
+                         new Profile { ProfileId = 9, ProfileStatusId = 3 ,UserId=9, IsActive = true},
+                         new Profile { ProfileId = 10,ProfileStatusId = 1 , UserId=10, IsActive = true}
                          ); 
              modelBuilder.Entity<Education>()
                         .HasData(

@@ -43,6 +43,18 @@ namespace PMS_API
                 throw getUserNameException;
             }
         }
+        public int GetProfileId(int Userid)
+        {
+            try
+            {
+                return _context.profile.Find(Userid).ProfileId;
+            }
+            catch (Exception getUserNameException)
+            {
+                _logger.LogInformation($"Exception on Mail DAL :GetUserName(int Userid) : {getUserNameException.Message} : {getUserNameException.StackTrace}");
+                throw getUserNameException;
+            }
+        }
     }
     
     }
