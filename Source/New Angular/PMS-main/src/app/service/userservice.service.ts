@@ -200,6 +200,22 @@ export class UserserviceService {
   }
 
 
+  getProfileByProfileId(profileId:number)
+  {
+    return this.http.get<any>(``,{headers:this.headers});
+  }
+
+  getProjectDetailsByProjectId(projectId:number)
+  {
+    return this.http.get<any>(`https://localhost:7021/Profile/GetProjectDetailsById?Projectid=${projectId}`,{headers:this.headers});
+
+  }
+  updateproject(project:any)
+  {
+    return this.http.put<any>(`https://localhost:7021/Profile/UpdateProjects`,project,{headers : this.headers}); 
+  }
+
+
  
 
 }

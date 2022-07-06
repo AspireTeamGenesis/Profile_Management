@@ -19,6 +19,8 @@ import { ProjectComponent } from './project/project.component';
 import { ProjectcardComponent } from './projectcard/projectcard.component';
 import { EditskillComponent } from './editskill/editskill.component';
 import { ProfilehomeComponent } from './profilehome/profilehome.component';
+import { ViewprofileComponent } from './viewprofile/viewprofile.component';
+import { EditprojectComponent } from './editproject/editproject.component';
 
 
 const routes: Routes = [
@@ -40,8 +42,10 @@ const routes: Routes = [
   {path:"achievement",component:AchievementComponent},
   {path:"project",component:ProjectComponent},
   {path:"projectcard",component:ProjectcardComponent},
+  {path:"editproject/:projectid",component:EditprojectComponent},
   {path:"editskill/:skillid",component:EditskillComponent},
   {path:"profilehome",component:ProfilehomeComponent},
+  {path:"viewprofile",component:ViewprofileComponent},
   {path:"",component:LoginComponent}
 ];
 

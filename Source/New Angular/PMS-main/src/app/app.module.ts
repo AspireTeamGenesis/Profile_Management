@@ -30,6 +30,8 @@ import { ProjectcardComponent } from './projectcard/projectcard.component';
 import { EditskillComponent } from './editskill/editskill.component';
 import { AchievementcardComponent } from './achievementcard/achievementcard.component';
 import { ProfilehomeComponent } from './profilehome/profilehome.component';
+import { ViewprofileComponent } from './viewprofile/viewprofile.component';
+import { EditprojectComponent } from './editproject/editproject.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { ProfilehomeComponent } from './profilehome/profilehome.component';
     EditskillComponent,
     AchievementcardComponent,
     ProfilehomeComponent,
+    ViewprofileComponent,
+    EditprojectComponent,
   ],
   imports: [
     BrowserModule,
