@@ -895,6 +895,21 @@ namespace PMS_API
                return Problem(exception.Message);
             }
         }
+        [AllowAnonymous]
+        [HttpGet]
+         public IActionResult GetProfileCount(){
+            try{
+                return Ok(_profileService.GetProfileCount());
+
+            }
+            catch(Exception exception){
+                _logger.LogInformation($"ProfileController :GetProfileCount()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return Problem(exception.Message);
+            }
+            
+            
+    }
+
 
     }
 }

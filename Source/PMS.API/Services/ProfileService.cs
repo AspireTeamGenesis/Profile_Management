@@ -1080,6 +1080,30 @@ namespace PMS_API
                 throw exception;
 
             }
+        }
+
+        public object GetProfileCount()
+        {
+            try
+            {
+                var profile = GetallProfiles();
+                var Approved = profile.Where(p => p.ProfileStatusId == 1).Count();
+                var Rejected = profile.Where(p => p.ProfileStatusId == 2).Count();
+                var Waiting = profile.Where(p => p.ProfileStatusId == 3).Count();
+                var total = profile.Count();
+                var result = new Dictionary<string, int>();
+                result.Add("Approved Profiles", Approved);
+                result.Add("Rejected Profiles", Rejected);
+                result.Add("Waiting Profiles", Waiting);
+                result.Add("Total Profiles", total);
+                return result;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"ProfileService:GetProfileCount()-{exception.Message}\n{exception.StackTrace}");
+
+                throw exception;
+            }
 
         }
 
