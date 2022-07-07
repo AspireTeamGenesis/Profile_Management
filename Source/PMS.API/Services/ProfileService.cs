@@ -114,7 +114,8 @@ namespace PMS_API
                     dateofjoining = getpersonaldetails.DateOfJoining,
                     language = getpersonaldetails.language,
                     socialmedia = getpersonaldetails.socialmedia,
-                    breakduration = getpersonaldetails.breakDuration
+                    breakduration = getpersonaldetails.breakDuration,
+                    
                 };
             }
             catch (Exception exception)
@@ -140,7 +141,9 @@ namespace PMS_API
                      dateofjoining = item.DateOfJoining,
                      language = removeAdditionalDetailsExceptLanguage(item.language),
                      socialmedia = removeAdditionalDetailsExceptSocialMedia(item.socialmedia),
-                     breakduration = removeAdditionalDetailsExceptBreakDuration(item.breakDuration)
+                     breakduration = removeAdditionalDetailsExceptBreakDuration(item.breakDuration),
+                     updateddate=item.UpdatedOn
+                     
 
                  }); return getpersonaldetailsbyprofileid;
             }
@@ -953,6 +956,20 @@ namespace PMS_API
                 throw exception;
             }
         }
+        public object GetProfileStatusByProfileId(int Profileid)
+        {
+            if (Profileid <= 0)
+                throw new ArgumentNullException($"ID is not provided{Profileid}");
+            try{
+                return profileData.GetProfileStatusByProfileId(Profileid);
+            }
+            catch (Exception exception)
+            {
+
+                _logger.LogError($"ProfileService:GetProfileStatusByProfileId()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
+        }
         public object GetProfileById(int Profileid)
         {
             if (Profileid <= 0)
@@ -966,7 +983,9 @@ namespace PMS_API
                     educationdetails=GetAllEducationDetailsByProfileId(Profileid),
                     projectdetails=GetAllProjectDetailsByProfileId(Profileid),
                     skilldetails=GetAllSkillDetailsByProfileId(Profileid),
-                    achievementdetails=GetAllAchievementDetailsByProfileId(Profileid)
+                    achievementdetails=GetAllAchievementDetailsByProfileId(Profileid),
+                    profilestatus=GetProfileStatusByProfileId(Profileid),
+                   
                 };
                 //); 
                 return getviewdetails;
@@ -988,7 +1007,8 @@ namespace PMS_API
                     Status = item.profilestatus.ProfileStatusName,
                     Name = item.personalDetails.users.Name,
                     Designation = item.personalDetails.users.designation.DesignationName,
-                    ReportingPerson = item.personalDetails.users.ReportingPersonUsername
+                    ReportingPerson = item.personalDetails.users.ReportingPersonUsername,
+                    
 
                 }); return getprofile;
 

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace PMS_API;
-[Authorize]
+// [Authorize]
 [ApiController]
     [Route("[controller]/[Action]")]
 public class DesignationController : ControllerBase

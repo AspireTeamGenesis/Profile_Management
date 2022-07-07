@@ -64,7 +64,23 @@ namespace PMS_API
                 MailRequest mailRequest = MailDataFactory.GetMailRequestObject();
                 mailRequest.ToEmail = _mailDataAccessLayer.GetUserEmail(Userid);
                 mailRequest.Subject = "Request To Update";
-                mailRequest.Body = $"Hi, {_mailDataAccessLayer.GetUserName(Userid)}.\n\n You have to update your profile \n\nThank you";
+                mailRequest.Body = $"Hi, {_mailDataAccessLayer.GetUserName(Userid)},\n\n Greetings.\n\n You have to update your profile \n\nThank you";
+                return mailRequest;
+            }
+            catch (Exception RequestToUpdateException)
+            {
+                _logger.LogInformation($"Exception at Mail Service : RequestToUpdate(int Userid) : {RequestToUpdateException.Message}");
+                throw new MailException("Error Occured While Sending Mail");
+            }
+        }
+        public MailRequest ShareProfile(int Userid)
+        {
+            try
+            {
+                MailRequest mailRequest = MailDataFactory.GetMailRequestObject();
+                mailRequest.ToEmail = _mailDataAccessLayer.GetUserEmail(Userid);
+                mailRequest.Subject = "Sharing Profile";
+                mailRequest.Body = $"Hi, {_mailDataAccessLayer.GetUserName(Userid)},\n\n Greetings.\n\n Herewith I have shared the link of the profile \n\nThank you";
                 return mailRequest;
             }
             catch (Exception RequestToUpdateException)

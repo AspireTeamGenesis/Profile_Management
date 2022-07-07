@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
 namespace PMS_API
 {
-    [Authorize]
+    // [Authorize]
     [ApiController]
     [Route("[controller]/[Action]")]
     public class UserController:Controller{

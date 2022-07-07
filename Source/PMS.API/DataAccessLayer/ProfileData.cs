@@ -58,6 +58,7 @@ namespace PMS_API
         public bool AddProfileHistory(ProfileHistory profilehistory); 
        
         public List<ProfileHistory> GetallProfileHistories();
+        public ProfileStatus GetProfileStatusByProfileId(int Profileid);
 
 
     }
@@ -854,6 +855,22 @@ namespace PMS_API
                 throw exception;
             }
         }
+        public ProfileStatus GetProfileStatusByProfileId(int Profileid)
+        {
+            if (Profileid <= 0)
+
+                throw new ValidationException("Profile id is not provided to DAL");
+            try
+            {
+
+                return _context.profile.Where(x=>x.ProfileId == Profileid).Include(p=>p.profilestatus).Select(p=>p.profilestatus).First();
+            }
+            catch{
+                System.Console.WriteLine("error");
+                throw;
+            }
+            
+        }
         public Profile GetProfileById(int Profileid)
         {
             if (Profileid <= 0)
@@ -862,6 +879,7 @@ namespace PMS_API
 
             try
             {
+
                 Profile profile = GetallProfiles().Where(x => x.ProfileId == Profileid && x.IsActive == true).First();
                 if (profile == null) throw new NullReferenceException($"Id not found-{Profileid}");
                 return profile;
