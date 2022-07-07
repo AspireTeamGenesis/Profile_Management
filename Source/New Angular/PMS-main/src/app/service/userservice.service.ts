@@ -202,7 +202,7 @@ export class UserserviceService {
 
   getProfileByProfileId(profileId:number)
   {
-    return this.http.get<any>(``,{headers:this.headers});
+    return this.http.get<any>(`https://localhost:7021/Profile/GetProfileById?id=${profileId}`,{headers:this.headers});
   }
 
   getProjectDetailsByProjectId(projectId:number)
@@ -214,7 +214,7 @@ export class UserserviceService {
   {
     return this.http.put<any>(`https://localhost:7021/Profile/UpdateProjects`,project,{headers : this.headers}); 
   }
-
+  
 
  
 
