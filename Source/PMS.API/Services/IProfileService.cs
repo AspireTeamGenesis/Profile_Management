@@ -65,5 +65,6 @@ namespace PMS_API
 
         //public bool Share(List<string> Tomail,string message);
 
+      public object GetProfileCount();
     }
 }

@@ -186,8 +186,8 @@ namespace PMS_API
 
                 var edit = _context.users.Find(currentUser);
                 if (edit == null)
-                    throw new ValidationException("No User is found wiith the given user id");
-                else if (edit.IsActive == false)
+                    throw new ValidationException("No User is found with the given user id");
+                else if (!edit.IsActive)
                     throw new ValidationException("The given user Id is inactive,so unable to change the password");
                 else if(edit.Password!=OldPassword)
                     throw new ValidationException("The given Old Password is Incorrect");

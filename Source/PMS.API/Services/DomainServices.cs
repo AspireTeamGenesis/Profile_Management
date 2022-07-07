@@ -8,6 +8,13 @@ namespace PMS_API
         private IDomainDataAccessLayer _domainDataAccessLayer = DomainDataFactory.GetDomainDataAccessLayerObject();
         private Domain _domain = DomainDataFactory.GetDomainObject();
         private ILogger<DomainServices>?_logger;
+        public DomainServices(){
+
+        }
+        public DomainServices( ILogger<DomainServices> logger)
+       {
+        _logger=logger;
+       }
        
         
 
@@ -17,7 +24,7 @@ namespace PMS_API
             try
             {
                 IEnumerable<Domain> domains = new List<Domain>();
-                return domains = from domain in _domainDataAccessLayer.GetDomains() where domain.IsActive == true select domain;
+                return domains = from domain in _domainDataAccessLayer.GetDomains() where domain.IsActive select domain;
             }
             catch (Exception ex)
             {

@@ -7,6 +7,13 @@ namespace PMS_API
         private IDesignationDataAccessLayer _designationDataAccessLayer = DesignationDataFactory.GetDesignationDataAccessLayerObject();
         private Designation _designation = DesignationDataFactory.GetDesignationObject();
         private ILogger<DesignationServices>?_logger;
+        public DesignationServices(){
+            
+        }
+         public DesignationServices( ILogger<DesignationServices> logger)
+       {
+        _logger=logger;
+       }
        
         
 
@@ -16,7 +23,7 @@ namespace PMS_API
             try
             {
                 IEnumerable<Designation>designations = new List<Designation>();
-                return designations = from designation in _designationDataAccessLayer.GetDesignations() where designation.IsActive == true select designation;
+                return designations = from designation in _designationDataAccessLayer.GetDesignations() where designation.IsActive select designation;
             }
             catch (Exception ex)
             {

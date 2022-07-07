@@ -19,7 +19,7 @@ namespace PMS_API{
             try{
                 // IEnumerable<User> userDetails = new List<User>();
              
-                return from  user in userData.GetallUsers() where user.IsActive==true select user;
+                return from  user in userData.GetallUsers() where user.IsActive select user;
                 
             
             
@@ -57,7 +57,7 @@ namespace PMS_API{
             try
             {
                 var getuser= userData.GetUser(id); 
-                if(getuser.IsActive==true){
+                if(getuser.IsActive){
                 return new {
                     userid=getuser.UserId,
                     name =getuser.Name,
@@ -92,7 +92,7 @@ namespace PMS_API{
                
                 item.CreatedBy=userId;
                 item.CreatedOn=DateTime.Now;
-                return userData.AddUser(item)?true:false;              //Ternary operator
+                return userData.AddUser(item);              //Ternary operator
                 
             }
             catch(ValidationException exception){
@@ -118,7 +118,7 @@ namespace PMS_API{
             try
             {
 
-                return userData.Disable(id)?true:false;
+                return userData.Disable(id);
                 
             }
             
@@ -136,7 +136,7 @@ namespace PMS_API{
                 
                item.UpdatedBy=item.UserId;
                 item.UpdatedOn=DateTime.Now;
-                return userData.UpdateUser(item)?true:false;
+                return userData.UpdateUser(item);
                 
             }
             
@@ -160,7 +160,7 @@ namespace PMS_API{
                 if(NewPassword != ConfirmPassword)
                     throw new ValidationException($"The confirm password should be the same as new password : {ConfirmPassword}");
                 else{
-                    return userData.EditPassword(OldPassword,NewPassword,ConfirmPassword,currentUser) ? true : false;
+                    return userData.EditPassword(OldPassword,NewPassword,ConfirmPassword,currentUser);
                 }
 
             }

@@ -5,6 +5,13 @@ namespace PMS_API
         private ITechnologyDataAccessLayer _TechnologyDataAccessLayer = TechnologyDataFactory.GetTechnologyDataAccessLayerObject();
         private Technology _Technology = TechnologyDataFactory.GetTechnologyObject();
         private ILogger<TechnologyServices>?_logger;
+        public TechnologyServices(){
+            
+        }
+         public TechnologyServices( ILogger<TechnologyServices> logger)
+       {
+        _logger=logger;
+       }
        
         
 
@@ -14,7 +21,7 @@ namespace PMS_API
             try
             {
                 IEnumerable<Technology> technologys = new List<Technology>();
-                return technologys = from technology in _TechnologyDataAccessLayer.GetTechnologies() where technology.IsActive == true select technology;
+                return technologys = from technology in _TechnologyDataAccessLayer.GetTechnologies() where technology.IsActive select technology;
             }
             catch (Exception ex)
             {

@@ -73,17 +73,17 @@ namespace PMS_API
             _context = context;
             _logger = logger;
         }
-        public bool AddProfile(Profile Profile)
+        public bool AddProfile(Profile profile)
         {
 
 
-            if (Profile == null)
+            if (profile == null)
                 throw new ArgumentNullException("personalDetails object is not provided to DAL");
 
             try
             {
 
-                _context.profile.Add(Profile);
+                _context.profile.Add(profile);
                 _context.SaveChanges();
                 return true;
             }
@@ -100,11 +100,11 @@ namespace PMS_API
 
         }
 
-        public IEnumerable<BreakDuration> GetBreakDurationByPersonalDetailsId(int id)
+        public IEnumerable<BreakDuration> GetBreakDurationByPersonalDetailsId(int Personalid)
         {
             try
             {
-                return _context.Set<BreakDuration>().Where(nameof => nameof.PersonalDetailsId == id).ToList();
+                return _context.Set<BreakDuration>().Where(nameof => nameof.PersonalDetailsId == Personalid).ToList();
             }
             catch (Exception exception)
             {
@@ -133,16 +133,16 @@ namespace PMS_API
                 throw exception;
             }
         }
-        public PersonalDetails GetPersonalDetailsById(int id)
+        public PersonalDetails GetPersonalDetailsById(int Personalid)
         {
-            if (id <= 0)
+            if (Personalid <= 0)
 
                 throw new ValidationException("Profile Id is not provided to DAL");
 
             try
             {
-                PersonalDetails personalDetails = GetAllPersonalDetails().Where(x => x.PersonalDetailsId == id).First();
-                if (personalDetails == null) throw new NullReferenceException($"Id not found-{id}");
+                PersonalDetails personalDetails = GetAllPersonalDetails().Where(x => x.PersonalDetailsId == Personalid).First();
+                if (personalDetails == null) throw new NullReferenceException($"Id not found-{Personalid}");
                 return personalDetails;
             }
             catch (Exception exception)
@@ -179,15 +179,15 @@ namespace PMS_API
 
 
         }
-        public bool UpdatePersonalDetail(PersonalDetails personalDetail)
+        public bool UpdatePersonalDetail(PersonalDetails personalDetails)
         {
-            if (personalDetail == null)
+            if (personalDetails == null)
                 throw new ValidationException("profile's personal detail is not provided to DAL");
 
 
             try
             {
-                _context.personalDetails.Update(personalDetail);
+                _context.personalDetails.Update(personalDetails);
                 _context.SaveChanges();
                 return true;
             }
@@ -201,17 +201,17 @@ namespace PMS_API
 
         }
 
-        public bool DisablePersonalDetails(int PersonalDetailsId)
+        public bool DisablePersonalDetails(int PersonalDetailsid)
         {
-            if (PersonalDetailsId <= 0)
+            if (PersonalDetailsid <= 0)
                 throw new ValidationException("PersonalDetails Id is not provided to DAL");
 
             try
             {
-                var personalDetails = _context.personalDetails.Find(PersonalDetailsId);
+                var personalDetails = _context.personalDetails.Find(PersonalDetailsid);
 
                 //do null validation for personaldetails
-                if (personalDetails == null) throw new NullReferenceException($"PersonalDetails Id not found{PersonalDetailsId}");
+                if (personalDetails == null) throw new NullReferenceException($"PersonalDetails Id not found{PersonalDetailsid}");
                 personalDetails.IsActive = false;
                 _context.personalDetails.Update(personalDetails);
                 _context.SaveChanges();
@@ -255,7 +255,7 @@ namespace PMS_API
 
             try
             {
-                Education education = GetallEducationDetails().Where(x => x.EducationId == Educationid && x.IsActive == true).First();
+                Education education = GetallEducationDetails().Where(x => x.EducationId == Educationid && x.IsActive).First();
                 if (education == null) throw new NullReferenceException($"Id not found-{Educationid}");
                 return education;
             }
@@ -314,18 +314,18 @@ namespace PMS_API
         }
 
 
-        public bool DisableEducationalDetails(int EducationId)
+        public bool DisableEducationalDetails(int Educationid)
         {
-            if (EducationId <= 0)
+            if (Educationid <= 0)
 
                 throw new ValidationException("Education Id is not provided to DAL");
 
             try
             {
-                var education = _context.educations.Find(EducationId);
+                var education = _context.educations.Find(Educationid);
 
                 //do null validation for education
-                if (education == null) throw new NullReferenceException($"Education Id not found{EducationId}");
+                if (education == null) throw new NullReferenceException($"Education Id not found{Educationid}");
                 education.IsActive = false;
                 _context.educations.Update(education);
                 _context.SaveChanges();
@@ -343,17 +343,17 @@ namespace PMS_API
             }
 
         }
-        public bool AddProjects(Projects projects)
+        public bool AddProjects(Projects project)
         {
 
 
-            if (projects == null)
+            if (project == null)
                 throw new ArgumentNullException("project detail object is not provided to DAL");
 
             try
             {
-                projects.IsActive=true;
-                _context.projects.Add(projects);
+                project.IsActive=true;
+                _context.projects.Add(project);
                 _context.SaveChanges();
                 return true;
             }
@@ -395,7 +395,7 @@ namespace PMS_API
 
             try
             {
-                Projects project = GetallProjectDetails().Where(x => x.ProjectId == Projectid && x.IsActive == true).First();
+                Projects project = GetallProjectDetails().Where(x => x.ProjectId == Projectid && x.IsActive).First();
                 if (project == null) throw new NullReferenceException($"Id not found-{Projectid}");
                 return project;
             }
@@ -427,19 +427,19 @@ namespace PMS_API
             }
 
         }
-        public bool DisableProjectDetails(int ProjectId)
+        public bool DisableProjectDetails(int Projectid)
         {
-            if (ProjectId <= 0)
+            if (Projectid <= 0)
 
                 throw new ValidationException("Project Id is not provided to DAL");
 
             try
             {
-                var projects = _context.projects.Find(ProjectId);
+                var projects = _context.projects.Find(Projectid);
 
                 //do null validation for 
                 if (projects == null)
-                    throw new NullReferenceException($"Project Id not found{ProjectId}");
+                    throw new NullReferenceException($"Project Id not found{Projectid}");
 
                 projects.IsActive = false;
                 _context.projects.Update(projects);
@@ -486,18 +486,18 @@ namespace PMS_API
         }
 
 
-        public bool DisableBreakDuration(int BreakDurationId)
+        public bool DisableBreakDuration(int BreakDurationid)
         {
-            if (BreakDurationId <= 0)
+            if (BreakDurationid <= 0)
 
                 throw new ValidationException("BreakDuration Id is not provided to DAL");
 
             try
             {
-                var breakDurations = _context.breakDurations.Find(BreakDurationId);
+                var breakDurations = _context.breakDurations.Find(BreakDurationid);
 
                 //do null validation for user
-                if (breakDurations == null) throw new NullReferenceException($"Project Id not found{BreakDurationId}");
+                if (breakDurations == null) throw new NullReferenceException($"Project Id not found{BreakDurationid}");
                 breakDurations.IsActive = false;
                 _context.breakDurations.Update(breakDurations);
                 _context.SaveChanges();
@@ -559,16 +559,16 @@ namespace PMS_API
                 throw exception;
             }
         }
-        public Skills GetSkillDetailsById(int skillid)
+        public Skills GetSkillDetailsById(int Skillid)
         {
-            if (skillid <= 0)
+            if (Skillid <= 0)
 
                 throw new ValidationException("Skill Id is not provided to DAL");
 
             try
             {
-                Skills skills = GetallSkillDetails().Where(x => x.SkillId == skillid && x.IsActive == true).First();
-                if (skills == null) throw new NullReferenceException($"Id not found-{skillid}");
+                Skills skills = GetallSkillDetails().Where(x => x.SkillId == Skillid && x.IsActive).First();
+                if (skills == null) throw new NullReferenceException($"Id not found-{Skillid}");
                 return skills;
             }
             catch (Exception exception)
@@ -596,18 +596,18 @@ namespace PMS_API
                 return false;
             }
         }
-        public bool DisableSkillDetails(int SkillId)
+        public bool DisableSkillDetails(int Skillid)
         {
-            if (SkillId <= 0)
+            if (Skillid <= 0)
 
                 throw new ValidationException("Skill Id is not provided to DAL");
 
             try
             {
-                var skills = _context.skills.Find(SkillId);
+                var skills = _context.skills.Find(Skillid);
 
                 //do null validation for user
-                if (skills == null) throw new NullReferenceException($"Skill Id not found{SkillId}");
+                if (skills == null) throw new NullReferenceException($"Skill Id not found{Skillid}");
                 skills.IsActive = false;
                 _context.skills.Update(skills);
                 _context.SaveChanges();
@@ -651,18 +651,18 @@ namespace PMS_API
 
 
         }
-        public bool DisableLanguage(int LanguageId)
+        public bool DisableLanguage(int Languageid)
         {
-            if (LanguageId <= 0)
+            if (Languageid <= 0)
 
                 throw new ValidationException("Language Id is not provided to DAL");
 
             try
             {
-                var languages = _context.languages.Find(LanguageId);
+                var languages = _context.languages.Find(Languageid);
 
                 //do null validation for user
-                if (languages == null) throw new NullReferenceException($"Language Id not found{LanguageId}");
+                if (languages == null) throw new NullReferenceException($"Language Id not found{Languageid}");
                 languages.IsActive = false;
                 _context.languages.Update(languages);
                 _context.SaveChanges();
@@ -701,18 +701,18 @@ namespace PMS_API
                 return false;
             }
         }
-        public bool DisableSocialMedia(int SocialMediaId)
+        public bool DisableSocialMedia(int SocialMediaid)
         {
-            if (SocialMediaId <= 0)
+            if (SocialMediaid <= 0)
 
                 throw new ValidationException("SocialMedia Id is not provided to DAL");
 
             try
             {
-                var SocialMedias = _context.SocialMedias.Find(SocialMediaId);
+                var SocialMedias = _context.SocialMedias.Find(SocialMediaid);
 
                 //do null validation for user
-                if (SocialMedias == null) throw new NullReferenceException($"SocialMedia Id not found{SocialMediaId}");
+                if (SocialMedias == null) throw new NullReferenceException($"SocialMedia Id not found{SocialMediaid}");
                 SocialMedias.IsActive = false;
                 _context.SocialMedias.Update(SocialMedias);
                 _context.SaveChanges();
@@ -757,7 +757,7 @@ namespace PMS_API
 
             try
             {
-                Technology technology = GetallTechnologies().Where(x => x.TechnologyId == Technologyid && x.IsActive == true).First();
+                Technology technology = GetallTechnologies().Where(x => x.TechnologyId == Technologyid && x.IsActive).First();
                 if (technology == null) throw new NullReferenceException($"Id not found-{technology}");
                 return technology;
             }
@@ -768,14 +768,14 @@ namespace PMS_API
                 throw exception;
             }
         }
-        public bool AddAchievements(Achievements achievement)
+        public bool AddAchievements(Achievements achievements)
         {
-            if (achievement == null)
+            if (achievements == null)
                 throw new ArgumentNullException("social media details object is not provided to DAL");
             try
             {
-                achievement.IsActive=true;
-                _context.achievements.Add(achievement);
+                achievements.IsActive=true;
+                _context.achievements.Add(achievements);
                 _context.SaveChanges();
                 return true;
             }
@@ -808,18 +808,18 @@ namespace PMS_API
                 throw exception;
             }
         }
-        public bool DisableAchievement(int achievementId)
+        public bool DisableAchievement(int AchievementId)
         {
-            if (achievementId <= 0)
+            if (AchievementId <= 0)
 
                 throw new ValidationException("achievement Id is not provided to DAL");
 
             try
             {
-                var achievement = _context.achievements.Find(achievementId);
+                var achievement = _context.achievements.Find(AchievementId);
 
                 //do null validation for user
-                if (achievement == null) throw new NullReferenceException($"SocialMedia Id not found{achievementId}");
+                if (achievement == null) throw new NullReferenceException($"SocialMedia Id not found{AchievementId}");
                 achievement.IsActive = false;
                 _context.achievements.Update(achievement);
                 _context.SaveChanges();
@@ -873,7 +873,7 @@ namespace PMS_API
         }
         public Profile GetProfileById(int Profileid)
         {
-            if (Profileid <= 0)
+            if (ProfileId <= 0)
 
                 throw new ValidationException("Profile id is not provided to DAL");
 
