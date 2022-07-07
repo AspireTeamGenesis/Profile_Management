@@ -7,7 +7,13 @@ namespace PMS_API
     {
        private Context _db = DbContextDataFactory.GetDbContextObject();  
        private ILogger<DesignationDataAccessLayer> _logger;
+       public DesignationDataAccessLayer(){
         
+       }
+        public DesignationDataAccessLayer( ILogger<DesignationDataAccessLayer> logger)
+       {
+        _logger=logger;
+       }
          public List<Designation> GetDesignations() //List of Designtion
         {
             try

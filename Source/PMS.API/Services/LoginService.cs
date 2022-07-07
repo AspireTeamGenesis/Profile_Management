@@ -21,11 +21,11 @@ namespace PMS_API
             _userData = userData;
         }
 
-        public object AuthLogin(string Username, string password)
+        public object AuthLogin(string UserName, string Password)
         {
             try
             {
-                var user =_userData.LoginCrendentials(Username,password);
+                var user =_userData.LoginCrendentials(UserName,Password);
 
                 var claims = new[] {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
@@ -49,8 +49,8 @@ namespace PMS_API
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     ExpiryInMinutes = 360,
-                    IsHR = user.DesignationId == 1 ? true : false,
-                    IsAdmin = user.DesignationId == 2 ? true : false
+                    IsHR = user.DesignationId == 1 ,
+                    IsAdmin = user.DesignationId == 2 
                 };
 
                 return Result;

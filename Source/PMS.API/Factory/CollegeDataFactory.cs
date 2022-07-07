@@ -1,7 +1,7 @@
 using PMS_API.DataAccessLayer;
 
 namespace PMS_API{
-    public static class CollegeDataFactory
+    public class CollegeDataFactory
     {
         public static ICollegeDataAccessLayer GetCollegeDataAccessLayerObject()
         {
@@ -12,9 +12,10 @@ namespace PMS_API{
         {
             return new College();
         }
-       public static ICollegeServices GetCollegeServiceObject()
+       public static CollegeServices GetCollegeServiceObject()
         {
         return new CollegeServices();
         }
+        
     }
 }

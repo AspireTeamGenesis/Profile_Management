@@ -5,6 +5,13 @@ namespace PMS_API
     {
        private Context _db = DbContextDataFactory.GetDbContextObject();  
        private ILogger<TechnologyDataAccessLayer> _logger;
+       public TechnologyDataAccessLayer(){
+        
+       }
+        public TechnologyDataAccessLayer( ILogger<TechnologyDataAccessLayer> logger)
+       {
+        _logger=logger;
+       }
         
          public List<Technology> GetTechnologies() // List of Technologies
         {

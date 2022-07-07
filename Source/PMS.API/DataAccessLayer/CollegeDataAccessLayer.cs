@@ -5,6 +5,14 @@ namespace PMS_API.DataAccessLayer
     {
        private Context _db = DbContextDataFactory.GetDbContextObject();  
        private ILogger<CollegeDataAccessLayer> _logger;
+
+       public CollegeDataAccessLayer(){
+        
+       }
+       public CollegeDataAccessLayer( ILogger<CollegeDataAccessLayer> logger)
+       {
+        _logger=logger;
+       }
         
          public List<College> GetColleges() //List Of Colleges
         {
