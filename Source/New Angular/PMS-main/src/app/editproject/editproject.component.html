@@ -68,10 +68,10 @@
       <input type="text" name="Tools" id="Tools" [(ngModel)]="projectDetails.toolsused" placeholder="Enter Tools used"
          />     
       <div class="button">
-        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/project']" (click)="updateproject()">Update</a>
+        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/project',profileId]" (click)="updateproject()">Update</a>
       </div>
       <br>
-      <app-projectcard></app-projectcard>
+      <app-projectcard [profileId]="profileId"></app-projectcard>
       <div class="row">
         <a [routerLink]="['/education']" class="btn btn-next width-50 ml-auto">Previous</a>
 

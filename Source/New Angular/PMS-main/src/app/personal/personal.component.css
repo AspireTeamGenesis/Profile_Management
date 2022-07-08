@@ -11665,8 +11665,8 @@ div .center{
 .status{
     float:right;
 }
-.plus{
-
+.plus 
+{
     font: size h 3px;
 
     font-size: 18px;
@@ -11674,5 +11674,4 @@ div .center{
      text-transform: uppercase;
 
    
-
-  }
+}

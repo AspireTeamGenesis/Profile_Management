@@ -22,10 +22,12 @@ export class EditprojectComponent implements OnInit {
    }
    projectDetails:any;
    projectid:number=0;
+   profileId:number=0;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.projectid = params['projectid'];
+      this.profileId=params['profileId'];
       console.log('Project id : ' + this.projectid);
     })
     this.getProjectDetailsByProjectId(this.projectid);

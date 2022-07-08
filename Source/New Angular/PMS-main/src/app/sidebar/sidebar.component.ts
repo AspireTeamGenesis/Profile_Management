@@ -15,15 +15,13 @@ export class SidebarComponent implements OnInit {
   profileDetails:any;
   constructor(private service:UserserviceService,private route: ActivatedRoute,private servicer:AuthenticationService) { }
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.userId = params['userId'];
-      console.log('User id : '+this.userId);
-    })
-    // this.getUserProfile(this.userId);
+    this.getUserProfile();
   }
-  getUserProfile(userId:number){
-    this.service.getUserDetails(userId).subscribe( {
-      next:(data)=>this.profileDetails=data
+  getUserProfile(){
+    this.service.getUserProfile().subscribe( {
+      next:(data)=>{this.profileDetails=data,
+      console.log(this.profileDetails)}
+      
     })
   }
   logout()

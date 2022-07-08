@@ -175,7 +175,7 @@ export class UserserviceService {
 
   cancelProject(projectid:number)
   {
-    return this.http.delete<any>(`https://localhost:7021/Profile/DisableSkillDetails?SkillId=${projectid}`, { headers: this.headers });
+    return this.http.delete<any>(`https://localhost:7021/Profile/DisableProjectDetails?ProjectsId=${projectid}`, { headers: this.headers });
   }
 
   updateSkills(skill:any)
@@ -214,7 +214,39 @@ export class UserserviceService {
   {
     return this.http.put<any>(`https://localhost:7021/Profile/UpdateProjects`,project,{headers : this.headers}); 
   }
+
+
+
+
+  addPersonalDetail(user:any)
+  {
+    return this.http.post<any>(`https://localhost:7021/Profile/AddPersonalDetail`,user,{headers : this.headers}); 
+  }
+
+  getPersonalDetails(personalId:number)
+  {    
+    return this.http.get<any>(`https://localhost:7021/Profile/GetPersonalDetailsById?Personalid=${personalId}`,{headers:this.headers});
+  }
+
+  updatePersonalDetail(personalDetails:any)
+  {
+    console.log("updateEducation");
+    console.log(personalDetails);
+    return this.http.put<any>(`https://localhost:7021/Profile/UpdatePersonalDetail`,personalDetails,{headers:this.headers});
+  }
+
+  getPersonalDetailByProfileId(profileId:number)
+  {
+    return this.http.get<any>( `https://localhost:7021/Profile/GetAllPersonalDetailsByProfileId?Profileid=${profileId}`,{ headers: this.headers });
+  }
+
+
   
+  createProfile(profile:any)
+  {
+    return this.http.post<any>(`https://localhost:7021/Profile/AddProfile`,profile,{headers : this.headers}); 
+  }
+
 
  
 

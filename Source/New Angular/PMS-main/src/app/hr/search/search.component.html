@@ -6,7 +6,7 @@
     <div class="main">
         <!-- code type here -->
         <div class="search">
-                <input type="text" name="search" placeholder="search by name, project">
+                <input type="text" name="search" [(ngModel)]="searchtext" (input)="onsearch()" placeholder="search by name, project">
                 <label for="search"><i class="fas fa-search"></i></label>
             </div>
             <div class="filters">
@@ -124,7 +124,7 @@
                     <button id="button7" type="button" class="btn btn-primary">Apply</button>
                 </div>
         <div  class="home">
-            <app-hrhome></app-hrhome>
+            <app-profilehome></app-profilehome>
             <!-- <app-card></app-card>  -->
         </div>
     </div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../service/userservice.service';
 import { Project } from 'Models/project';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
 
 @Component({
   selector: 'app-project',
@@ -10,13 +12,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProjectComponent implements OnInit {
 
-  profileId = 4;
-  constructor( private service: UserserviceService, private http: HttpClient) { }
+  profileId:number=0;
+  constructor( private service: UserserviceService, private http: HttpClient,private route: ActivatedRoute) { }
   //  year:any;
   selectedYear: number = 0;
   years: number[] = [];
-  projectId: number = 3;
-  // profileId : number = 4;
+  // projectId: number = 0;
+  // profileId : number = 0;
   Project: any;
   project: Project[] = [];
   data: any;
@@ -33,7 +35,17 @@ export class ProjectComponent implements OnInit {
     toolsUsed: '',
 
   }
+
+
+
+  showMe: boolean = false;
+
+  foot:boolean = true;
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.profileId = params['profileId'];
+      console.log('Project profile id : '+this.profileId);
+    })
 
     // this.getProjectbyId();
     this.selectedYear = new Date().getFullYear();
@@ -66,6 +78,8 @@ export class ProjectComponent implements OnInit {
 
   OnSubmit() {
 
+    console.log("Project Field ");
+    this.projectfield.profileId=this.profileId;
     console.log(this.projectfield);
     this.service.CreateProjects(this.projectfield).subscribe(data => this.projectfield.push(data));
   }
@@ -79,5 +93,23 @@ export class ProjectComponent implements OnInit {
     this.data = this.projectfield;
     // this.projectService.DeleteProjects(this.data).subscribe(data=>this.data.push(data));
   }
+  toogletag()
 
+  {
+
+    this.showMe=!this.showMe;
+
+  }
+
+
+
+  footer()
+
+  {
+
+    this.foot=!this.foot;
+
+    if(this.foot==false){this.foot=true};
+
+}
 }

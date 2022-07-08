@@ -4,6 +4,8 @@ import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { College } from 'Models/college';
 import { EducationcardComponent } from '../educationcard/educationcard.component';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
 
 @Component({
   selector: 'app-education',
@@ -16,17 +18,20 @@ export class EducationComponent implements OnInit {
   selectedYear: number=0;
   years: number[] = [];
 
-  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient) {
+  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private route: ActivatedRoute) {
     this.selectedYear = new Date().getFullYear();
   for (let year = this.selectedYear; year >= 2000; year--) {
     this.years.push(year);
   }
     }
+    showMe: boolean = false;
 
+    foot:boolean = true;
 
   collegeValue:any;
   college:number=0;
   educationDetails:any;
+  profileId:number=0;
 
   // _college='';
   // college:any[]=[];
@@ -34,7 +39,7 @@ export class EducationComponent implements OnInit {
   
   user = {
     educationId: 0,
-    profileId: 7,
+    profileId:0,
     degree: '',
     course: '',
     collegeId:0,
@@ -43,6 +48,10 @@ export class EducationComponent implements OnInit {
     percentage: 0,
   }
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.profileId = params['profileId'];
+      console.log('Education profile id : '+this.profileId);
+    })
     this.getCollege();
     // this.getEducationDetails(this.user.educationId);
 
@@ -59,9 +68,31 @@ export class EducationComponent implements OnInit {
   }
   educationSubmit()
   {
+    this.user.profileId=this.profileId;
     console.log("hi how");
     console.warn(this.user);
     this.service.addEducation(this.user).subscribe(()=>  {this.child.getEducationByProfileId();console.log('posted')});//data=>this.user.push(data)    
+  }
+  toogletag()
+
+  {
+
+    this.showMe=!this.showMe;
+
+  }
+
+
+
+  footer()
+
+  {
+
+    this.foot=!this.foot;
+
+    if(this.foot==false){this.foot=true};
+
+   
+
   }
 
 }

@@ -21,6 +21,8 @@ import { EditskillComponent } from './editskill/editskill.component';
 import { ProfilehomeComponent } from './profilehome/profilehome.component';
 import { ViewprofileComponent } from './viewprofile/viewprofile.component';
 import { EditprojectComponent } from './editproject/editproject.component';
+import { CreateprofileComponent } from './createprofile/createprofile.component';
+import { PersonalComponent } from './personal/personal.component';
 
 
 const routes: Routes = [
@@ -32,20 +34,22 @@ const routes: Routes = [
   {path:"changepassword",component:ChangepasswordComponent},
   {path:"hrprofile",component:HrprofileComponent},
   {path:"hrprofile/:userId",component:HrprofileComponent},
-  {path:"education",component:EducationComponent},
+  {path:"education/:profileId",component:EducationComponent},
   {path:"editUser/:userId",component:EdituserComponent},
-  {path:"editeducation/:educationid",component:EditeducationComponent},
+  {path:"editeducation/:educationid/:profileId",component:EditeducationComponent},
   {path:"achievement",component:AchievementComponent},
   {path:"educationtwo",component:EducationtwoComponent},
-  {path:"skill",component:SkillsComponent},
+  {path:"skill/:profileId",component:SkillsComponent},
   {path:"skillcard",component:SkillcardComponent},
-  {path:"achievement",component:AchievementComponent},
-  {path:"project",component:ProjectComponent},
+  {path:"achievement/:profileId",component:AchievementComponent},
+  {path:"project/:profileId",component:ProjectComponent},
   {path:"projectcard",component:ProjectcardComponent},
-  {path:"editproject/:projectid",component:EditprojectComponent},
-  {path:"editskill/:skillid",component:EditskillComponent},
+  {path:"editproject/:projectid/:profileId",component:EditprojectComponent},
+  {path:"editskill/:skillid/:profileId",component:EditskillComponent},
   {path:"profilehome",component:ProfilehomeComponent},
   {path:"viewprofile",component:ViewprofileComponent},
+  {path:"createprofile/:userid",component:CreateprofileComponent},
+  {path:"personal/:profileId",component:PersonalComponent},
   {path:"",component:LoginComponent}
 ];
 

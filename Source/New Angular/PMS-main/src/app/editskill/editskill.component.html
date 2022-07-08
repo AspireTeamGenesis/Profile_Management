@@ -31,16 +31,16 @@
         </select>
       </div>     
       <div class="button">
-        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/skill']" (click)="submitSkills()">Update</a>
+        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/skill',profileId]" (click)="submitSkills()">Update</a>
       </div>
       <br>
       <app-skillcard></app-skillcard>
       <div class="row">
-        <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Previous</a>
+        <a [routerLink]="['/project',profileId]" class="btn btn-next width-50 ml-auto">Previous</a>
 
         <a href="#" class="btn btn-next width-50 ml-auto">Save as Draft</a>
 
-        <a [routerLink]="['/achievement']" class="btn btn-next width-50 ml-auto">Next</a>
+        <a [routerLink]="['/achievement',profileId]" class="btn btn-next width-50 ml-auto">Next</a>
 
       </div>
     </div>

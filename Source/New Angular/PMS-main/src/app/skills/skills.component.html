@@ -14,7 +14,9 @@
     </div>
 
     <div class="form-step form-step-active">
-      <h3>Skills</h3>
+      <h3>Skills<button class="plus" (click)="toogletag()" (click)="footer()" > + </button></h3>
+      <!-- <h3>Skills</h3> -->
+<div *ngIf="showMe" >
       <div class="input-group">
         <label for="personaldetails">Domain</label>
         <select id="personaldetails" name="domainValue" [(ngModel)]="skill.domainId">
@@ -33,14 +35,15 @@
       <div class="button">
         <a class="btn btn-next width-50 ml-auto" (click)="submitSkills()">Add</a>
       </div>
+</div>
       <br>
-      <app-skillcard></app-skillcard>
+      <app-skillcard [profileId]="profileId"></app-skillcard>
       <div class="row">
-        <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Previous</a>
+        <a [routerLink]="['/project',profileId]" class="btn btn-next width-50 ml-auto">Previous</a>
 
         <a href="#" class="btn btn-next width-50 ml-auto">Save as Draft</a>
 
-        <a [routerLink]="['/achievement']" class="btn btn-next width-50 ml-auto">Next</a>
+        <a [routerLink]="['/achievement',profileId]" class="btn btn-next width-50 ml-auto">Next</a>
 
       </div>
     </div>
