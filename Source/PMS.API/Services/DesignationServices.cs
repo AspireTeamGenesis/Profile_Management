@@ -4,9 +4,9 @@ namespace PMS_API
 {
     public class DesignationServices : IDesignationServices
     {
-        private IDesignationDataAccessLayer _designationDataAccessLayer = DesignationDataFactory.GetDesignationDataAccessLayerObject();
-        private Designation _designation = DesignationDataFactory.GetDesignationObject();
-        private ILogger<DesignationServices>?_logger;
+        private readonly IDesignationDataAccessLayer _designationDataAccessLayer = DesignationDataFactory.GetDesignationDataAccessLayerObject();
+        private readonly Designation _designation = DesignationDataFactory.GetDesignationObject();
+        private readonly ILogger<DesignationServices>?_logger;
         public DesignationServices(){
             
         }

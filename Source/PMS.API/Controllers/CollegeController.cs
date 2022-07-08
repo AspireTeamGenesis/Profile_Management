@@ -10,11 +10,12 @@ namespace PMS_API;
 public class CollegeController : ControllerBase
 {
     private readonly ILogger _logger;
+     
     public CollegeController(ILogger<CollegeController> logger)
     {
         _logger = logger;
     }
-    ICollegeServices collegeService = CollegeDataFactory.GetCollegeServiceObject(); //Calling Object
+    private readonly ICollegeServices collegeService = CollegeDataFactory.GetCollegeServiceObject(); //Calling Object
     [HttpGet]
     public IActionResult ViewColleges() //Getting The List of Colleges
     {

@@ -13,7 +13,7 @@ public class ProfileStatusController : ControllerBase
     {
         _logger = logger;
     }
-     IProfileStatusServices ProfileStatusService = ProfileStatusDataFactory.GetProfileStatusServiceObject();
+    private readonly IProfileStatusServices ProfileStatusService = ProfileStatusDataFactory.GetProfileStatusServiceObject();
     [HttpGet]
     public IActionResult ViewProfileStatuss() //Getting the list of ProfileStatuss
     {

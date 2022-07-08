@@ -70,7 +70,6 @@ namespace PMS_API
         public virtual PersonalDetails? personalDetails { get; set; }
         //audit fields
         //createdby  createdon updatedby updatedon\\
-        // public int CreatedBy{get;set;}
         // [ForeignKey("CreatedByHRId")]
         // public virtual HR? hr {get;set;}
         public int? CreatedBy { get; set; }

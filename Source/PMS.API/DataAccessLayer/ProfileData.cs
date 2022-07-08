@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -11,7 +10,7 @@ namespace PMS_API
         bool AddPersonalDetail(PersonalDetails personalDetails);
         List<PersonalDetails> GetAllPersonalDetails();
         PersonalDetails GetPersonalDetailsById(int Personalid);
-        //PersonalDetails GetPersonalById(int Personalid);
+        
         bool UpdatePersonalDetail(PersonalDetails personalDetails);
         bool DisablePersonalDetails(int PersonalDetailsid);
        
@@ -65,8 +64,8 @@ namespace PMS_API
 
     public class ProfileData : IProfileData
     {
-        private Context _context;
-        private ILogger<ProfileService> _logger;
+        private readonly Context _context;
+        private readonly ILogger<ProfileService> _logger;
 
         public ProfileData(Context context, ILogger<ProfileService> logger)
         {
@@ -121,7 +120,7 @@ namespace PMS_API
             try
             {
                 return _context.personalDetails.Include(s=>s.language).Include(s=>s.breakDuration).Include(s=>s.socialmedia).ToList();
-                // return _context.personalDetails.Include("language").Include("breakDuration").Include("socialmedia").ToList();
+                
 
             }
 
@@ -135,14 +134,15 @@ namespace PMS_API
         }
         public PersonalDetails GetPersonalDetailsById(int Personalid)
         {
+
             if (Personalid <= 0)
 
                 throw new ValidationException("Profile Id is not provided to DAL");
 
             try
             {
-                PersonalDetails personalDetails = GetAllPersonalDetails().Where(x => x.PersonalDetailsId == Personalid).First();
-                if (personalDetails == null) throw new NullReferenceException($"Id not found-{Personalid}");
+                var personalDetails = GetAllPersonalDetails().Where(x => x.PersonalDetailsId == Personalid).FirstOrDefault();
+                if (personalDetails == null) throw new Exception($"Id not found-{Personalid}");
                 return personalDetails;
             }
             catch (Exception exception)
@@ -255,7 +255,7 @@ namespace PMS_API
 
             try
             {
-                Education education = GetallEducationDetails().Where(x => x.EducationId == Educationid && x.IsActive).First();
+                var education = GetallEducationDetails().Where(x => x.EducationId == Educationid && x.IsActive).First();
                 if (education == null) throw new NullReferenceException($"Id not found-{Educationid}");
                 return education;
             }
@@ -395,7 +395,7 @@ namespace PMS_API
 
             try
             {
-                Projects project = GetallProjectDetails().Where(x => x.ProjectId == Projectid && x.IsActive).First();
+                var project = GetallProjectDetails().Where(x => x.ProjectId == Projectid && x.IsActive).First();
                 if (project == null) throw new NullReferenceException($"Id not found-{Projectid}");
                 return project;
             }
@@ -567,7 +567,7 @@ namespace PMS_API
 
             try
             {
-                Skills skills = GetallSkillDetails().Where(x => x.SkillId == Skillid && x.IsActive).First();
+                var skills = GetallSkillDetails().Where(x => x.SkillId == Skillid && x.IsActive).First();
                 if (skills == null) throw new NullReferenceException($"Id not found-{Skillid}");
                 return skills;
             }
@@ -871,7 +871,7 @@ namespace PMS_API
             }
             
         }
-        public Profile GetProfileById(int Profileid)
+        public Profile GetProfileById(int ProfileId)
         {
             if (ProfileId <= 0)
 
@@ -880,8 +880,8 @@ namespace PMS_API
             try
             {
 
-                Profile profile = GetallProfiles().Where(x => x.ProfileId == Profileid && x.IsActive == true).First();
-                if (profile == null) throw new NullReferenceException($"Id not found-{Profileid}");
+                Profile profile = GetallProfiles().Where(x => x.ProfileId == ProfileId && x.IsActive).First();
+                if (profile == null) throw new NullReferenceException($"Id not found-{ProfileId}");
                 return profile;
             }
             catch (Exception exception)
@@ -895,7 +895,7 @@ namespace PMS_API
         {
             if (profilehistory == null)
                 throw new ArgumentNullException("profilehistory object is not provided to DAL");
-            // if(profilehistory.profile.ProfileStatusId!=1)throw new Exception("Status should be Approved by Reporting Person");
+           
             try
             {
                 _context.profilehistory.Add(profilehistory);

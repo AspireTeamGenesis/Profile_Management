@@ -2,9 +2,9 @@ namespace PMS_API
 {
     public class ProfileStatusServices : IProfileStatusServices
     {
-        private IProfileStatusDataAccessLayer _ProfileStatusDataAccessLayer = ProfileStatusDataFactory.GetProfileStatusDataAccessLayerObject();
-        private ProfileStatus _ProfileStatus = ProfileStatusDataFactory.GetProfileStatusObject();
-        private ILogger<ProfileStatusServices>?_logger;
+        private readonly IProfileStatusDataAccessLayer _ProfileStatusDataAccessLayer = ProfileStatusDataFactory.GetProfileStatusDataAccessLayerObject();
+        private readonly ProfileStatus _ProfileStatus = ProfileStatusDataFactory.GetProfileStatusObject();
+        private readonly ILogger<ProfileStatusServices>?_logger;
         public ProfileStatusServices(){
             
         }
