@@ -54,6 +54,7 @@ namespace PMS_API
         IEnumerable<Technology> GetallTechnologies();
 
         object GetProfileById(int Profileid);
+        object GetProfileIdByUserId(int Userid);
         public IEnumerable<Profile> GetallProfiles();
 
         public bool AddProfileHistory(ProfileHistory profilehistory);

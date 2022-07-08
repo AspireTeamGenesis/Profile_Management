@@ -142,7 +142,7 @@ namespace PMS_API
                      language = removeAdditionalDetailsExceptLanguage(item.language),
                      socialmedia = removeAdditionalDetailsExceptSocialMedia(item.socialmedia),
                      breakduration = removeAdditionalDetailsExceptBreakDuration(item.breakDuration),
-                     updateddate=item.UpdatedOn
+                
                      
 
                  }); return getpersonaldetailsbyprofileid;
@@ -985,6 +985,7 @@ namespace PMS_API
                     skilldetails=GetAllSkillDetailsByProfileId(Profileid),
                     achievementdetails=GetAllAchievementDetailsByProfileId(Profileid),
                     profilestatus=GetProfileStatusByProfileId(Profileid),
+                    updateddate=profileData.GetProfileById(Profileid).UpdatedOn
                    
                 };
                 //); 
@@ -1018,8 +1019,25 @@ namespace PMS_API
                 throw exception;
             }
         }
+        public object GetProfileIdByUserId(int Userid){
+            if (Userid <= 0)
+                throw new ArgumentNullException($"ID is not provided{Userid}");
+            try{
+                var getprofile= profileData.GetProfileIdByUserId(Userid); 
+                if(getprofile.IsActive){
+                return new {
+                    profilstatus=getprofile.profilestatus.ProfileStatusName,
+                    profileid=getprofile.ProfileId
+                };
+                }
+                return getprofile;
+            }
+            catch(Exception exception){
+                _logger.LogError($"ProfileServices:GetProfileIdByUserId()-{exception.Message}\n{exception.StackTrace}");
+                throw exception;
+            }
 
-
+        }
         public bool AddProfileHistory(ProfileHistory profilehistory)
         {
             if (profilehistory == null) 

@@ -26,6 +26,14 @@ namespace PMS_API
         [DefaultValue(true)]
         [ForeignKey("UserId")]
         public int UserId {get; set;}
+        public DateTime? CreatedOn { get; set; }
+
+        public int? CreatedBy { get; set; }
+
+        public DateTime? UpdatedOn { get; set; }
+
+        public int? UpdatedBy { get; set; }
+        [DefaultValue(true)]
         public bool IsActive{get;set;}
        
 

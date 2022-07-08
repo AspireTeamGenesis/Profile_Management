@@ -843,7 +843,7 @@ namespace PMS_API
             try
             {
 
-                return _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").ToList();
+                return _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").Include(e=>e.profilestatus).ToList();
 
             }
 
@@ -873,7 +873,7 @@ namespace PMS_API
         }
         public Profile GetProfileById(int Profileid)
         {
-            if (ProfileId <= 0)
+            if (Profileid <= 0)
 
                 throw new ValidationException("Profile id is not provided to DAL");
 
@@ -889,6 +889,20 @@ namespace PMS_API
                 _logger.LogError($"ProfileData.cs-GetprofileById()-{exception.Message}");
                 _logger.LogInformation($"ProfileData.cs-GetprofileId()-{exception.StackTrace}");
                 throw exception;
+            }
+        }
+        public Profile GetProfileIdByUserId(int Userid){
+            if (Userid <= 0)
+                throw new ValidationException("User id is not provided to DAL");   
+            try
+            {
+                Profile profile= GetallProfiles().Where(x=>x.UserId==Userid).First();
+                if(profile==null)throw new NullReferenceException($"Id not found-{Userid}");
+                return profile;
+            }
+            catch{
+                System.Console.WriteLine("error");
+                throw;
             }
         }
         public bool AddProfileHistory(ProfileHistory profilehistory)
