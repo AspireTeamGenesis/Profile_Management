@@ -22,9 +22,11 @@ export class SidebarComponent implements OnInit {
     })
     // this.getUserProfile(this.userId);
   }
-  getUserProfile(userId:number){
-    this.service.getUserDetails(userId).subscribe( {
-      next:(data)=>this.profileDetails=data
+  getUserProfile(){
+    this.service.getUserProfile().subscribe( {
+      next:(data)=>{this.profileDetails=data,
+      console.log(this.profileDetails)}
+      
     })
   }
   getProfileByProfileId()

@@ -8,7 +8,7 @@ namespace PMS_API
     [Route("[controller]/[Action]")]
     public class LoginController :Controller{
         
-        private ILoginService _loginServices;
+        private readonly ILoginService _loginServices;
          private readonly ILogger<LoginController> _logger;
         public LoginController(ILoginService loginServices, ILogger<LoginController> logger)
         {

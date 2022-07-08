@@ -5,19 +5,19 @@ namespace PMS_API{
 
     public class UserServices : IUserServices
     {
-        private UserData userData;
+        private readonly UserData userData;
 
-        private ILogger<UserServices> _logger;
+        private readonly ILogger<UserServices> _logger;
       
         public UserServices(ILogger<UserServices> logger){
             _logger=logger;
             userData=UserDataFactory.GetUserObject(logger);
         }
-        private UserValidation _validation=UserDataFactory.GetValidationObject();
+        private readonly UserValidation _validation=UserDataFactory.GetValidationObject();
         public IEnumerable<User> GetallUsers()
         {
             try{
-                // IEnumerable<User> userDetails = new List<User>();
+                
              
                 return from  user in userData.GetallUsers() where user.IsActive select user;
                 
@@ -39,7 +39,7 @@ namespace PMS_API{
                 {
                     Name = var.Name,
                     UserId=var.UserId,
-                    Designation = var.designation.DesignationName,
+                    Designation = var.designation?.DesignationName,
                     ReportingPerson = var.ReportingPersonUsername
                 }
                 );
@@ -64,12 +64,12 @@ namespace PMS_API{
                     email=getuser.Email,
                     username=getuser.UserName,
                     password=getuser.Password,
-                    gender=getuser.gender.GenderName,
-                    countryCode=getuser.countrycode.CountryCodeName,
+                    gender=getuser.gender?.GenderName,
+                    countryCode=getuser.countrycode?.CountryCodeName,
                     mobilenumber=getuser.MobileNumber,
-                    designation=getuser.designation.DesignationName,
+                    designation=getuser.designation?.DesignationName,
                     reportingpersonUsername=getuser.ReportingPersonUsername,
-                    organisation=getuser.organisation.OrganisationName
+                    organisation=getuser.organisation?.OrganisationName
 
                 };}
                 else{

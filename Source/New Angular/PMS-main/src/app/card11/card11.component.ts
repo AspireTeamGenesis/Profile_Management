@@ -15,7 +15,14 @@ export class Card11Component implements OnInit {
   //userId: number = 0;
 
 
+
   constructor(private http: HttpClient,private service: UserserviceService) { }
+
+  search : string;
+
+  searchActive(text : any){
+    this.search = text;
+  }
 
   ngOnInit(): void {
     this.getUsers();

@@ -3,8 +3,8 @@ namespace PMS_API
 {
     public class TechnologyDataAccessLayer:ITechnologyDataAccessLayer
     {
-       private Context _db = DbContextDataFactory.GetDbContextObject();  
-       private ILogger<TechnologyDataAccessLayer> _logger;
+       private readonly Context _db = DbContextDataFactory.GetDbContextObject();  
+       private readonly ILogger<TechnologyDataAccessLayer> _logger;
        public TechnologyDataAccessLayer(){
         
        }

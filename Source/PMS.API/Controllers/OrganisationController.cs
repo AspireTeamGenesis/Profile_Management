@@ -13,7 +13,7 @@ public class OrganisationController : ControllerBase
     {
         _logger = logger;
     }
-    IOrganisationServices organisationService = OrganisationDataFactory.GetOrganisationServiceObject();
+    private readonly IOrganisationServices organisationService = OrganisationDataFactory.GetOrganisationServiceObject();
     [HttpGet]
     public IActionResult ViewOrganisations() //Getting the list of Organisations
     {

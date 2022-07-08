@@ -3,8 +3,8 @@ namespace PMS_API.DataAccessLayer
 {
     public class CollegeDataAccessLayer:ICollegeDataAccessLayer
     {
-       private Context _db = DbContextDataFactory.GetDbContextObject();  
-       private ILogger<CollegeDataAccessLayer> _logger;
+       private readonly Context _db = DbContextDataFactory.GetDbContextObject();  
+       private readonly ILogger<CollegeDataAccessLayer> _logger;
 
        public CollegeDataAccessLayer(){
         
@@ -35,7 +35,7 @@ namespace PMS_API.DataAccessLayer
             catch (Exception ex)                      //unknown exception occured
             {
                 _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
-                throw ex;
+                throw new ArgumentNullException();
             }
         }
 

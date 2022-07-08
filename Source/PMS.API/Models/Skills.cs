@@ -17,7 +17,7 @@ namespace PMS_API
         [InverseProperty("skills")]
         public virtual Domain? domain{get;set;}
 
-        // public string Technology{get;set;}
+        
         
         
         [ForeignKey("ProfileId")]

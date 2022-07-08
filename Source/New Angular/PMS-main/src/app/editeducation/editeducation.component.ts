@@ -20,6 +20,7 @@ export class EditeducationComponent implements OnInit {
     this.years.push(year);
   }
     }
+    profileId:number=0;
     // educationId=0;
     collegeValue:any;
   college:number=0;
@@ -31,7 +32,9 @@ export class EditeducationComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.educationid = params['educationid'];
+      this.profileId=params['profileId']
       console.log('Education id : ' + this.educationid);
+      console.log('Profile id : ' + this.profileId);
     })
     this.getCollege();
     console.log('Hello : '+this.educationid);

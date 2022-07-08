@@ -15,13 +15,16 @@ export class EditskillComponent implements OnInit {
   domainValue:any;
   technologyValue:any;
   skillid:number=0;
+  profileId:number=0;
 
   skill:any;
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {     
       this.skillid = params['skillid'];
+      this.profileId= params['profileId'];
       console.log('Skill Id : ' + this.skillid);
+      console.log ('id'+this.profileId);
     })
     this.getDomain();
     this.getTechnology();

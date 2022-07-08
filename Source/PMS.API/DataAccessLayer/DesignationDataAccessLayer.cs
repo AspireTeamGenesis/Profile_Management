@@ -5,8 +5,8 @@ namespace PMS_API
 {
     public class DesignationDataAccessLayer:IDesignationDataAccessLayer
     {
-       private Context _db = DbContextDataFactory.GetDbContextObject();  
-       private ILogger<DesignationDataAccessLayer> _logger;
+       private readonly Context _db = DbContextDataFactory.GetDbContextObject();  
+       private readonly ILogger<DesignationDataAccessLayer> _logger;
        public DesignationDataAccessLayer(){
         
        }

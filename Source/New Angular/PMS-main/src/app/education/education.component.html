@@ -14,7 +14,9 @@
     </div>
 
     <div class="form-step form-step-active">
-      <h3>Education Details</h3>
+      <h3>Education Details <button class="plus" (click)="toogletag()" (click)="footer()" > + </button></h3>
+      <!-- <button (click)="toogletag()" (click)="footer()" > + </button> -->
+      <div *ngIf="showMe" >
       <div class="input-group">
         <label for="degree">Degree</label>
         <input type="text" name="degree" id="degree" placeholder="Enter your degree" [(ngModel)]="user.degree"
@@ -68,16 +70,19 @@
           [(ngModel)]="user.percentage" required />
       </div>
       <div class="button">
-        <a class="btn btn-next width-50 ml-auto" (click)="educationSubmit()">Add</a>
+        <a class="btn btn-next width-50 ml-auto" (click)="educationSubmit()" (click)="toogletag()">Add</a>
       </div>
+    </div>
       <br>
-      <app-educationcard></app-educationcard>
-      <div class="row">
-        <a [routerLink]="['/']" class="btn btn-next width-50 ml-auto">Previous</a>
+      <!-- <app-educationcard [profileId]="profileId"></app-educationcard> -->
+      <div class="row" *ngIf="foot">
+        <app-educationcard [profileId]="profileId"></app-educationcard>
+
+        <a [routerLink]="['/personal',profileId]" class="btn btn-next width-50 ml-auto">Previous</a>
 
         <a href="#" class="btn btn-next width-50 ml-auto">Save as Draft</a>
 
-        <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Next</a>
+        <a [routerLink]="['/project',profileId]" class="btn btn-next width-50 ml-auto">Next</a>
 
       </div>
     </div>

@@ -15,13 +15,13 @@
                 <a routerLink="/search" data-toggle="collapse" aria-expanded="false"> <i class="fa-solid fa-house ml-4 mr-4"></i>Home</a>
             </li>
             <li>
-                <a  [routerLink]="['../hrprofile']"><i style="margin-right:2rem;" class="fa-solid fa-person ml-4 "></i>Profile History</a>
+                <a  [routerLink]="['../']"><i style="margin-right:2rem;" class="fa-solid fa-person ml-4 "></i>Profile History</a>
             </li>
             <!-- <li>
                 <a [routerLink]="['../profile-history']" ><i class="fa-solid fa-trophy ml-4 mr-4"></i>Profile History</a>
             </li> -->
             <li>
-                <a routerLink="/education"><i class="fa-solid fa-circle-plus ml-4 mr-4"></i>MyProfile</a>
+                <a [routerLink]="['../createprofile',profileDetails.userid]"><i class="fa-solid fa-circle-plus ml-4 mr-4"></i>MyProfile</a>
             </li>
             <li>
                 <a  routerLink="/changepassword"><i style="margin-right:1.8rem;" class="fa-solid fa-building ml-4 "></i>Change Password</a>

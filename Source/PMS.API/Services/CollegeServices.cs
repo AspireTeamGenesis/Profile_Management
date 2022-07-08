@@ -4,9 +4,9 @@ namespace PMS_API
 {
     public class CollegeServices : ICollegeServices
     {
-        private ICollegeDataAccessLayer _collegeDataAccessLayer = CollegeDataFactory.GetCollegeDataAccessLayerObject();
-        private College _college = CollegeDataFactory.GetCollegeObject();
-        private ILogger<CollegeServices>?_logger;
+        private readonly ICollegeDataAccessLayer _collegeDataAccessLayer = CollegeDataFactory.GetCollegeDataAccessLayerObject();
+        private readonly College _college = CollegeDataFactory.GetCollegeObject();
+        private readonly ILogger<CollegeServices>?_logger;
 
         public CollegeServices(){
             

@@ -68,16 +68,16 @@
           [(ngModel)]="user.percentage" required />
       </div>
       <div class="button">
-        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/education']" (click)="updateEducation()">Update</a>
+        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/education',profileId]" (click)="updateEducation()">Update</a>
       </div>
       <br>
-      <app-educationcard></app-educationcard>
+      <app-educationcard [profileId]="profileId"></app-educationcard>
       <div class="row">
-        <a [routerLink]="['/']" class="btn btn-next width-50 ml-auto">Previous</a>
+        <a [routerLink]="['/personal',profileId]" class="btn btn-next width-50 ml-auto">Previous</a>
 
         <a href="#" class="btn btn-next width-50 ml-auto">Save as Draft</a>
 
-        <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Next</a>
+        <a [routerLink]="['/project',profileId]" class="btn btn-next width-50 ml-auto">Next</a>
 
       </div>
     </div>

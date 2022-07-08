@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <div class="container d-flex justify-content-center">
-    <div class="kcard" *ngFor="let item of achievementDetails | paginate: {itemsPerPage : 2, currentPage: page,totalItems:totalLength}       ">
+    <div class="kcard" *ngFor="let item of achievementDetails | paginate: {itemsPerPage : 3, currentPage: page,totalItems:totalLength}       ">
         <div class="card-body">   
                 <p>
                     Type : {{item.achievementtype}}
@@ -17,9 +17,9 @@
             </h2>
         </div>
     </div>
-    <div class="mt-3 pagination" *ngIf="totalLength!=0">
+    <!-- <div class="mt-3 pagination" *ngIf="totalLength!=0">
         <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
-    </div>
+    </div> -->
     <div *ngIf="totalLength==0">
         <p>No Results Found</p>
 

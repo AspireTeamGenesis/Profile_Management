@@ -32,6 +32,9 @@ import { AchievementcardComponent } from './achievementcard/achievementcard.comp
 import { ProfilehomeComponent } from './profilehome/profilehome.component';
 import { ViewprofileComponent } from './viewprofile/viewprofile.component';
 import { EditprojectComponent } from './editproject/editproject.component';
+import { CreateprofileComponent } from './createprofile/createprofile.component';
+import { PersonalComponent } from './personal/personal.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -62,12 +65,15 @@ import { EditprojectComponent } from './editproject/editproject.component';
     ProfilehomeComponent,
     ViewprofileComponent,
     EditprojectComponent,
+    CreateprofileComponent,
+    PersonalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    Ng2SearchPipeModule,
     FormsModule,
     ReactiveFormsModule
   ],

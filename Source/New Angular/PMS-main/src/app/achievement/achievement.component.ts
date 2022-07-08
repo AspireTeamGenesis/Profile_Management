@@ -12,27 +12,38 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class AchievementComponent implements OnInit {
 
+  showMe: boolean = false;
+
+  foot:boolean = true;
+
   imageError: string = "";
   isImageSaved: boolean = false;
   cardImageBase64: string = "";
   achievementTypeValue:number=0;
   constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute) { }
-
+  profileId:number=0;
   achievement:any={
     achievementId:0,
-    profileId:2,
+    profileId:0,
     achievementTypeId:0,
     base64header:'',
-    achievementImage:this.cardImageBase64,
+    achievementImage:'',
+
+    // achievementImage:this.cardImageBase64,
   }
   
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.profileId = params['profileId'];
+      console.log('Achievement profile id : '+this.profileId);
+    })
     
 
   }
   submitAchievement()
   {
     this.achievement.achievementTypeId=this.achievementTypeValue;
+    this.achievement.profileId=this.profileId;
     console.log(this.achievementTypeValue);
     console.log(this.achievement);
     this.service.addAchievement(this.achievement).subscribe();
@@ -63,12 +74,33 @@ export class AchievementComponent implements OnInit {
           this.cardImageBase64 = this.cardImageBase64.replace("data:image/png;base64,", "");
           this.cardImageBase64 = this.cardImageBase64.replace("data:image/jpg;base64,", "");
           this.cardImageBase64 = this.cardImageBase64.replace("data:image/jpeg;base64,", "");
-          this.achievement.achievementImage = this.cardImageBase64;
+          this.achievement.base64header = this.cardImageBase64;
           this.isImageSaved = true;
         }
       };
       reader.readAsDataURL(fileInput.target.files[0]);
     } return false
+  }
+  toogletag()
+
+  {
+
+    this.showMe=!this.showMe;
+
+  }
+
+
+
+  footer()
+
+  {
+
+    this.foot=!this.foot;
+
+    if(this.foot==false){this.foot=true};
+
+   
+
   }
 
 }

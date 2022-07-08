@@ -2,9 +2,9 @@ namespace PMS_API
 {
     public class OrganisationServices : IOrganisationServices
     {
-        private IOrganisationDataAccessLayer _OrganisationDataAccessLayer = OrganisationDataFactory.GetOrganisationDataAccessLayerObject();
-        private Organisation _Organisation = OrganisationDataFactory.GetOrganisationObject();
-        private ILogger<OrganisationServices>?_logger;
+        private readonly IOrganisationDataAccessLayer _OrganisationDataAccessLayer = OrganisationDataFactory.GetOrganisationDataAccessLayerObject();
+        private readonly Organisation _Organisation = OrganisationDataFactory.GetOrganisationObject();
+        private readonly ILogger<OrganisationServices>?_logger;
         public OrganisationServices(){
             
         }
