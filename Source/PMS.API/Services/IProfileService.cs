@@ -63,7 +63,7 @@ namespace PMS_API
         // public bool RequestToUpdate()
         // public bool Download(int ProfileId)
 
-        //public bool Share(List<string> Tomail,string message);
+        
 
       public object GetProfileCount();
     }

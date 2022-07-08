@@ -10,9 +10,9 @@ namespace PMS_API
 {
     public class LoginService:ILoginService
     {
-        private IUserData _userData;
-        private ILogger<LoginService> _logger;
-        private IConfiguration _configuration;
+        private readonly IUserData _userData;
+        private readonly ILogger<LoginService> _logger;
+        private readonly IConfiguration _configuration;
 
         public LoginService(ILogger<LoginService> logger, IConfiguration configuration, IUserData userData)
         {

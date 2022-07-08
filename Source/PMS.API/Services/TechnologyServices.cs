@@ -2,9 +2,9 @@ namespace PMS_API
 {
     public class TechnologyServices : ITechnologyServices
     {
-        private ITechnologyDataAccessLayer _TechnologyDataAccessLayer = TechnologyDataFactory.GetTechnologyDataAccessLayerObject();
-        private Technology _Technology = TechnologyDataFactory.GetTechnologyObject();
-        private ILogger<TechnologyServices>?_logger;
+        private readonly ITechnologyDataAccessLayer _TechnologyDataAccessLayer = TechnologyDataFactory.GetTechnologyDataAccessLayerObject();
+        private readonly Technology _Technology = TechnologyDataFactory.GetTechnologyObject();
+        private readonly ILogger<TechnologyServices>?_logger;
         public TechnologyServices(){
             
         }

@@ -10,8 +10,8 @@ namespace PMS_API
     [Route("[controller]/[Action]")]
     public class ProfileController : Controller
     {
-        private IProfileService _profileService;
-        private ILogger _logger;
+        private readonly IProfileService _profileService;
+        private readonly ILogger _logger;
         public ProfileController(IProfileService profileService, ILogger<ProfileController> logger)
         {
             _profileService = profileService;
@@ -21,7 +21,7 @@ namespace PMS_API
          public IActionResult CalculateExperience(int personaldetailsid)
         {
 
-            if (personaldetailsid == null)
+            if (personaldetailsid == 0)
             {
                 _logger.LogError("ProfileController:CalculateExperience():personaldetailsId is invalid");
                 return BadRequest(new { message = "PersonaldetailId is Invalid" });
@@ -862,8 +862,6 @@ namespace PMS_API
         [HttpGet]
         public IActionResult GetallProfileHistories()
         {
-            // if(profilehistory.profile.ProfileStatusId!=1)
-            //     return BadRequest(new{message="Status should be Approved by Reporting Person"});
             try
             {
 

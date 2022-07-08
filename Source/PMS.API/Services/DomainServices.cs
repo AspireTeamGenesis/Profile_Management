@@ -5,9 +5,9 @@ namespace PMS_API
 {
     public class DomainServices : IDomainServices
     {
-        private IDomainDataAccessLayer _domainDataAccessLayer = DomainDataFactory.GetDomainDataAccessLayerObject();
-        private Domain _domain = DomainDataFactory.GetDomainObject();
-        private ILogger<DomainServices>?_logger;
+        private readonly IDomainDataAccessLayer _domainDataAccessLayer = DomainDataFactory.GetDomainDataAccessLayerObject();
+        private readonly Domain _domain = DomainDataFactory.GetDomainObject();
+        private readonly ILogger<DomainServices>?_logger;
         public DomainServices(){
 
         }

@@ -3,8 +3,8 @@ namespace PMS_API
 {
     public class OrganisationDataAccessLayer:IOrganisationDataAccessLayer
     {
-       private Context _db = DbContextDataFactory.GetDbContextObject();  
-       private ILogger<OrganisationDataAccessLayer> _logger;
+       private readonly Context _db = DbContextDataFactory.GetDbContextObject();  
+       private readonly ILogger<OrganisationDataAccessLayer> _logger;
        public OrganisationDataAccessLayer(){
         
        }

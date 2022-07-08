@@ -18,14 +18,14 @@ namespace PMS_API
 
     public class UserData : IUserData
     {
-        private Context _context;
-        private ILogger<UserServices> _logger;
+        private readonly Context _context;
+        private readonly ILogger<UserServices> _logger;
         public UserData(Context context, ILogger<UserServices> logger)
         {
             _context = context;
             _logger=logger;
         }
-         private UserValidation _validation=UserDataFactory.GetValidationObject();
+         private readonly UserValidation _validation=UserDataFactory.GetValidationObject();
         //getting all users 
         public List<User> GetallUsers()
         {
@@ -134,7 +134,7 @@ namespace PMS_API
                 user.UserName=item.UserName;
                 user.Password=item.Password;
                 user.GenderId=item.GenderId;
-                user.CountryCodeId=user.CountryCodeId;
+                user.CountryCodeId=item.CountryCodeId;
                 user.MobileNumber=item.MobileNumber;
                 user.OrganisationId=item.OrganisationId;
                 user.DesignationId=item.DesignationId;
