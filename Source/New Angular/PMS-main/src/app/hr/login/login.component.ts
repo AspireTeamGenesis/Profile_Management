@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
           this.route.navigateByUrl("/");  //navigation
         }
         else if (this.IsHR) {
-          this.route.navigateByUrl("/search");
+          this.route.navigateByUrl("/profilehome");
         }
         else {
           this.route.navigateByUrl("/");

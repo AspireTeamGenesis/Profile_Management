@@ -1,4 +1,6 @@
 import { Component,EventEmitter, OnInit ,Output} from '@angular/core';
+// import { UserserviceService } from 'src/app/service/userservice.service';
+
 
 @Component({
   selector: 'app-search',
@@ -9,6 +11,7 @@ export class SearchComponent implements OnInit {
 
   searchtext : string;
   name:any;
+  dashboardCount:any;
   constructor() { }
   
   ngOnInit(): void {
@@ -16,6 +19,8 @@ export class SearchComponent implements OnInit {
 
   @Output()
   SearchtextChanged : EventEmitter<string>  = new EventEmitter<string>();
+
+  
 
 
   onsearch(){

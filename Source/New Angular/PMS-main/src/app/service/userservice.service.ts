@@ -248,6 +248,12 @@ export class UserserviceService {
   }
 
 
+  dashboardcount()
+  {
+    return this.http.get<any>(`https://localhost:7021/Profile/GetProfileCount`,{headers : this.headers});
+  }
+
+
  
 
 }

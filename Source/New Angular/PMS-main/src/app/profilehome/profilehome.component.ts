@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserserviceService } from '../service/userservice.service';
+
 
 @Component({
   selector: 'app-profilehome',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profilehome.component.css']
 })
 export class ProfilehomeComponent implements OnInit {
+  dashboard:any;
 
-  constructor() { }
+  constructor(private service: UserserviceService) { }
 
   ngOnInit(): void {
+    this.dashboardcount();
   }
-
+  dashboardcount()
+  {
+    this.service.dashboardcount().subscribe((data) => {
+      this.dashboard = data;
+      console.log(this.dashboard);
+    })
+  }
 }

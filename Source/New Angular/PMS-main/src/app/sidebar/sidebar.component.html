@@ -1,21 +1,19 @@
 <nav id="sidebar">
     <div class="custom-menu">
-        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+        <button (click)="toggleSidebar()" type="button" id="sidebarCollapse" class="btn btn-primary">
               <i class="fa fa-bars" aria-hidden="true"></i>
               <span class="sr-only">Toggle Menu</span>
             </button>
     </div>
-    <div class="p-4 pt-5">
-        <div class="img text-center">
-        <img class="n-rounded" [src]="'data:image/jpg;base64,'+profileDetails['personaldetails'][0].image" width="80%" />
-        </div>
-        <h4 style="margin-left: 1.5rem;" class="text-light admin-text mt-5">Yoga</h4>
+    <div *ngIf="!isShowDivIf" class="p-4 pt-5">
+        <a href="#" class="img logo rounded-circle mb-6"><img src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png" alt="Admin Logo" style="margin-left:0.8rem;width:11rem;height:10rem;border-radius:100px"></a>
+        <h4 style="margin-left: 1.5rem;" class="text-light admin-text mt-5">{{profileDetails.username}}</h4>
         <ul class="list-unstyled components mb-5 sidebar-items">
             <li>
-                <a routerLink="/search" data-toggle="collapse" aria-expanded="false"> <i class="fa-solid fa-house ml-4 mr-4"></i>Home</a>
+                <a routerLink="/profilehome" data-toggle="collapse" aria-expanded="false"> <i class="fa-solid fa-house ml-4 mr-4"></i>Home</a>
             </li>
             <li>
-                <a  [routerLink]="['../']"><i style="margin-right:2rem;" class="fa-solid fa-person ml-4 "></i>Profile History</a>
+                <a  ><i style="margin-right:2rem;" class="fa-solid fa-person ml-4 "></i>Profile History</a>
             </li>
             <!-- <li>
                 <a [routerLink]="['../profile-history']" ><i class="fa-solid fa-trophy ml-4 mr-4"></i>Profile History</a>

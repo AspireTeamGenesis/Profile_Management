@@ -9,7 +9,7 @@ import { UserserviceService } from '../service/userservice.service';
 export class ViewprofileComponent implements OnInit {
 
   constructor(private service:UserserviceService) { }
-  profileId:number=1;
+   profileId=1;
   profileDetails:any;
   userDetails:any;
   showMe:boolean = false;

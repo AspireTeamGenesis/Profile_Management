@@ -187,7 +187,7 @@ img {
     width: calc(100% - 260px);
     min-height: calc(100vh - 60px);
     left: 260px;
-    background: #ffffff;
+    background-color: #f6f3f3;
 }
 .filters
 {

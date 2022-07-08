@@ -11004,14 +11004,13 @@ h5,
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    /* width: 15%; */
     background: #866ec7;
     color: #fff;
-    -webkit-transition: all 0.3s;
+    /* -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
-    transition: all 0.3s;
-    position: relative;
+    transition: all 0.3s; */
+    position: fixed;
     z-index: 3;
 }
 
@@ -11279,11 +11278,46 @@ button {
         top: 80px;
         z-index: 100;
     }
-}
+} 
 @media (min-width: 1900px) {
    
     #sidebar {
         top: 110px;
         z-index: 100;
     }
+}
+@media (max-width: 991.98px) {
+
+    #sidebar {
+
+        margin-left: 0px;
+
+    }
+
+    #sidebar .custom-menu {
+
+        margin-right: -20px !important;
+
+        top: 10px !important;
+
+    }
+
+}
+#sidebar .custom-menu {
+
+    display: inline-block;
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 0;
+
+    margin-right: -35px;
+    -webkit-transition: 0.8s;
+
+    -o-transition: 0.8s;
+
+    transition: 1.0s;
+
 }
