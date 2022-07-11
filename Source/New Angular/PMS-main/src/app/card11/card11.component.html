@@ -4,8 +4,10 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
 <div class="container d-flex justify-content-center table-box">
+  
   <div class="main">
-    <app-search (SearchtextChanged)="searchActive($event)"></app-search>
+    <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
+
     <div class="kcard"
       *ngFor="let item of data| filter : this.search | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
       <a [routerLink]="['../hrprofile',item.userId]"><img class="card-img-top" src="./assets/img/profile.jpg"

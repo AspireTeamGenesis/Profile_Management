@@ -67,6 +67,10 @@ export class UserserviceService {
   {
     return this.http.get<Organisation[]>('https://localhost:7021/Organisation/ViewOrganisations');
   }
+  getProfileStatus()
+  {
+    return this.http.get<any>('https://localhost:7021/ProfileStatus/ViewProfileStatuss');
+  }
 
   onSubmit(userPassword:any)
   {

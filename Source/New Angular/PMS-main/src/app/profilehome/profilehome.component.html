@@ -5,8 +5,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
 <div class="container d-flex justify-content-center table-box">
-    
-    <div class="main"> 
+
+    <div class="main">
         <div class="home">
             <div class="search">
                 <input type="text" name="search" placeholder="search by name, project">
@@ -14,7 +14,7 @@
             </div>
             <div class="filters">
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
-                     Designation:<select class="h-100 py-2" name="Designation">
+                    Designation:<select class="h-100 py-2" name="Designation">
                         <!-- <div class="select"> -->
                         <option value="select Designation">Select Designation</option>
                         <option value="CEO">CEO</option>
@@ -25,7 +25,7 @@
                         <!-- </div> -->
                     </select>
                 </div>
-                
+
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
                     Domain:<select class="h-100 py-2" name="Domain">
                         <option value="select Domain">Select Domain</option>
@@ -34,7 +34,7 @@
                         <option value="large">Cloud Computing</option>
                         <option value="large">Cyber Security</option>
                     </select>
-                
+
                 </div>
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
                     Technology:<select class="h-100 py-2" name="Technology">
@@ -44,11 +44,11 @@
                         <option value="Lamp">Lamp</option>
                         <option value="Lamp">RPA</option>
                     </select>
-                
+
                 </div>
-                
+
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
-                     College:<select class="h-100 py-2" name="College">
+                    College:<select class="h-100 py-2" name="College">
                         <br>
                         <option value="select college">Select College</option>
                         <option value="Krishna">Krishna</option>
@@ -56,13 +56,13 @@
                         <option value="Kumaraguru">Kumaraguru</option>
                         <option value="Kumaraguru">PSNA</option>
                     </select>
-                
+
                 </div>
-                
+
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
                     Experience:
                     <div class="">
-                         <select class="h-50 py-2 " name="Min">
+                        <select class="h-50 py-2 " name="Min">
                             <option value="Min">Min</option>
                             <option value="small">1</option>
                             <option value="medium">2</option>
@@ -109,48 +109,72 @@
                             <option value="large">19</option>
                             <option value="large">20</option>
                         </select>
-                    
+
                     </div>
                 </div>
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
-                     Profile Status:<select class="h-100 py-2" name="Profile Status">
+                    Profile Status:<select class="h-100 py-2" name="Profile Status">
                         <option value="select Profile Status">Select Status</option>
                         <option value="Approved">Approved</option>
                         <option value="Rejected">Rejected</option>
                         <option value="Waiting for Approval">Waiting</option>
                     </select>
                     <!-- <button type="button" class="btn btn-info">Info</button> -->
-                
+
                 </div>
             </div>
-                <div>
-                    <button id="button7" type="button" style="background-color:#967bb6;color: white;">Apply</button>
-                </div>
-             <!-- <app-search></app-search>  -->
-        </div> 
+            <div>
+                <button id="button7" type="button" style="background-color:#967bb6;color: white;">Apply</button>
+            </div>
+            
+        </div>
         <div class="middle">
             <div class="people">
                 <div class="peoples">
-                    <a [routerLink]="['/newcard']"><img src="https://th.bing.com/th/id/R.e7192be3d598c0d78b886416b5f283fd?rik=%2bjRbuY%2bm8lRGOQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_76872.png&ehk=OBe8%2bAnFfNTHx6fd1pn7wUDY%2f4hT%2bHVoWh2tHJpajUo%3d&risl=&pid=ImgRaw&r=0" alt=""></a>
-                    <a [routerLink]="['/newcard']"><h6 >{{dashboard["Total Profiles"]}}</h6></a>
-                    <a [routerLink]="['/newcard']"><h6>Total Profiles</h6></a>
+                    <a [routerLink]="['/newcard']"><img
+                            src="https://th.bing.com/th/id/R.e7192be3d598c0d78b886416b5f283fd?rik=%2bjRbuY%2bm8lRGOQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_76872.png&ehk=OBe8%2bAnFfNTHx6fd1pn7wUDY%2f4hT%2bHVoWh2tHJpajUo%3d&risl=&pid=ImgRaw&r=0"
+                            alt=""></a>
+                    <a [routerLink]="['/newcard']">
+                        <h6>{{dashboard["Total Profiles"]}}</h6>
+                    </a>
+                    <a [routerLink]="['/newcard']">
+                        <h6>Total Profiles</h6>
+                    </a>
                 </div>
                 <div class="peoples people-net">
-                    <a [routerLink]="['/newcard']"><img src="https://th.bing.com/th/id/R.e7192be3d598c0d78b886416b5f283fd?rik=%2bjRbuY%2bm8lRGOQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_76872.png&ehk=OBe8%2bAnFfNTHx6fd1pn7wUDY%2f4hT%2bHVoWh2tHJpajUo%3d&risl=&pid=ImgRaw&r=0" alt=""></a>
-                    <a [routerLink]="['/newcard']"><h6>{{dashboard["Approved Profiles"]}}</h6></a>
-                    <a [routerLink]="['/newcard']"><h6>Approved Profiles</h6></a>
+                    <a [routerLink]="['/newcard']"><img
+                            src="https://th.bing.com/th/id/R.e7192be3d598c0d78b886416b5f283fd?rik=%2bjRbuY%2bm8lRGOQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_76872.png&ehk=OBe8%2bAnFfNTHx6fd1pn7wUDY%2f4hT%2bHVoWh2tHJpajUo%3d&risl=&pid=ImgRaw&r=0"
+                            alt=""></a>
+                    <a [routerLink]="['/newcard']">
+                        <h6>{{dashboard["Approved Profiles"]}}</h6>
+                    </a>
+                    <a [routerLink]="['/newcard']">
+                        <h6>Approved Profiles</h6>
+                    </a>
                 </div>
                 <div class="peoples">
-                    <a [routerLink]="['/newcard']"><img src="https://th.bing.com/th/id/R.e7192be3d598c0d78b886416b5f283fd?rik=%2bjRbuY%2bm8lRGOQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_76872.png&ehk=OBe8%2bAnFfNTHx6fd1pn7wUDY%2f4hT%2bHVoWh2tHJpajUo%3d&risl=&pid=ImgRaw&r=0" alt=""></a>
-                    <a [routerLink]="['/newcard']"><h6>{{dashboard["Rejected Profiles"]}}</h6></a>
-                    <a [routerLink]="['/newcard']"><h6>Rejected Profiles</h6></a>
+                    <a [routerLink]="['/newcard']"><img
+                            src="https://th.bing.com/th/id/R.e7192be3d598c0d78b886416b5f283fd?rik=%2bjRbuY%2bm8lRGOQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_76872.png&ehk=OBe8%2bAnFfNTHx6fd1pn7wUDY%2f4hT%2bHVoWh2tHJpajUo%3d&risl=&pid=ImgRaw&r=0"
+                            alt=""></a>
+                    <a [routerLink]="['/newcard']">
+                        <h6>{{dashboard["Rejected Profiles"]}}</h6>
+                    </a>
+                    <a [routerLink]="['/newcard']">
+                        <h6>Rejected Profiles</h6>
+                    </a>
                 </div>
                 <div class="peoples people-net">
-                    <a [routerLink]="['/newcard']"><img src="https://th.bing.com/th/id/R.e7192be3d598c0d78b886416b5f283fd?rik=%2bjRbuY%2bm8lRGOQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_76872.png&ehk=OBe8%2bAnFfNTHx6fd1pn7wUDY%2f4hT%2bHVoWh2tHJpajUo%3d&risl=&pid=ImgRaw&r=0" alt=""></a>
-                    <a [routerLink]="['/newcard']"><h6>{{dashboard["Waiting Profiles"]}}</h6></a>
-                    <a [routerLink]="['/newcard']"><h6>Waiting Profiles</h6></a>
+                    <a [routerLink]="['/newcard']"><img
+                            src="https://th.bing.com/th/id/R.e7192be3d598c0d78b886416b5f283fd?rik=%2bjRbuY%2bm8lRGOQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_76872.png&ehk=OBe8%2bAnFfNTHx6fd1pn7wUDY%2f4hT%2bHVoWh2tHJpajUo%3d&risl=&pid=ImgRaw&r=0"
+                            alt=""></a>
+                    <a [routerLink]="['/newcard']">
+                        <h6>{{dashboard["Waiting Profiles"]}}</h6>
+                    </a>
+                    <a [routerLink]="['/newcard']">
+                        <h6>Waiting Profiles</h6>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-</div> 
+</div>
