@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PMS_API.API.UtilityFunctions;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -70,7 +71,8 @@ namespace PMS_API
             if(string.IsNullOrEmpty(item.UserName))
                 throw new ValidationException($"UserName not be null and user supplied UserName is {item.UserName}");
             try{
-            
+               
+                item.Password=HashPassword.Sha256("AijayRajkumar@1");
             _context.users.Add(item);
             _context.SaveChanges();
             return true;
@@ -166,7 +168,7 @@ namespace PMS_API
                 if(!_context.users.Any(x => x.UserName == UserName))
                     throw new ValidationException($"No User Found : {UserName}");
 
-                if(!_context.users.Any(x => x.UserName== UserName && x.Password == Password))
+                if(!_context.users.Any(x => x.UserName== UserName && x.Password == HashPassword.Sha256(Password)))
                     throw new ValidationException($"Wrong Password!");
 
                 var user = GetallUsers().Where(user => user.UserName == UserName).First();
@@ -180,20 +182,21 @@ namespace PMS_API
         }
         public bool EditPassword(string OldPassword,string NewPassword,string ConfirmPassword,int currentUser)
         {
-            PasswordValidation.IsValidPassword(OldPassword,NewPassword,ConfirmPassword);
+            PasswordValidation.IsValidPassword(NewPassword,ConfirmPassword);
             try
             {
 
                 var edit = _context.users.Find(currentUser);
+                var pass = HashPassword.Sha256(OldPassword);
                 if (edit == null)
                     throw new ValidationException("No User is found with the given user id");
                 else if (!edit.IsActive)
                     throw new ValidationException("The given user Id is inactive,so unable to change the password");
-                else if(edit.Password!=OldPassword)
+                else if(edit.Password!= pass)
                     throw new ValidationException("The given Old Password is Incorrect");
                 else if(NewPassword==edit.Password)
                     throw new ValidationException("The given New Password should not be the same as Old Password");
-                edit.Password = NewPassword;
+                edit.Password = HashPassword.Sha256(NewPassword);
                 _context.users.Update(edit);
                 _context.SaveChanges();
                 return true;

@@ -126,7 +126,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("AchievementTypeId");
 
-                    b.ToTable("AchievementType");
+                    b.ToTable("achievementtype");
 
                     b.HasData(
                         new
@@ -713,66 +713,6 @@ namespace PMS_API.Migrations
                             Percentage = 83.6f,
                             ProfileId = 5,
                             Starting = 2020
-                        },
-                        new
-                        {
-                            EducationId = 6,
-                            CollegeId = 5,
-                            Course = "MCT",
-                            Degree = "BE",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 81.6f,
-                            ProfileId = 6,
-                            Starting = 2018
-                        },
-                        new
-                        {
-                            EducationId = 7,
-                            CollegeId = 8,
-                            Course = "CSE",
-                            Degree = "ME",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 94.5f,
-                            ProfileId = 7,
-                            Starting = 2020
-                        },
-                        new
-                        {
-                            EducationId = 8,
-                            CollegeId = 9,
-                            Course = "EEE",
-                            Degree = "BE",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 81.8f,
-                            ProfileId = 8,
-                            Starting = 2018
-                        },
-                        new
-                        {
-                            EducationId = 9,
-                            CollegeId = 3,
-                            Course = "IT",
-                            Degree = "MTech",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 90.3f,
-                            ProfileId = 9,
-                            Starting = 2020
-                        },
-                        new
-                        {
-                            EducationId = 10,
-                            CollegeId = 7,
-                            Course = "IT",
-                            Degree = "BTech",
-                            Ending = 2022,
-                            IsActive = true,
-                            Percentage = 85f,
-                            ProfileId = 10,
-                            Starting = 2018
                         });
                 });
 
@@ -865,7 +805,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 1,
-                            CreatedOn = new DateTime(2022, 7, 8, 11, 53, 49, 572, DateTimeKind.Local).AddTicks(5122),
+                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6086),
                             IsActive = true,
                             LanguageName = "English",
                             PersonalDetailsId = 1,
@@ -876,7 +816,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 2,
-                            CreatedOn = new DateTime(2022, 7, 8, 11, 53, 49, 572, DateTimeKind.Local).AddTicks(5161),
+                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6103),
                             IsActive = true,
                             LanguageName = "Tamil",
                             PersonalDetailsId = 2,
@@ -887,7 +827,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 3,
-                            CreatedOn = new DateTime(2022, 7, 8, 11, 53, 49, 572, DateTimeKind.Local).AddTicks(5163),
+                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6105),
                             IsActive = true,
                             LanguageName = "Hindi",
                             PersonalDetailsId = 3,
@@ -898,7 +838,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 4,
-                            CreatedOn = new DateTime(2022, 7, 8, 11, 53, 49, 572, DateTimeKind.Local).AddTicks(5164),
+                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6106),
                             IsActive = true,
                             LanguageName = "Telugu",
                             PersonalDetailsId = 4,
@@ -909,7 +849,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 5,
-                            CreatedOn = new DateTime(2022, 7, 8, 11, 53, 49, 572, DateTimeKind.Local).AddTicks(5165),
+                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6107),
                             IsActive = true,
                             LanguageName = "Malayalam",
                             PersonalDetailsId = 5,
@@ -920,7 +860,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 6,
-                            CreatedOn = new DateTime(2022, 7, 8, 11, 53, 49, 572, DateTimeKind.Local).AddTicks(5165),
+                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6108),
                             IsActive = true,
                             LanguageName = "Kannada",
                             PersonalDetailsId = 3,
@@ -931,7 +871,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 7,
-                            CreatedOn = new DateTime(2022, 7, 8, 11, 53, 49, 572, DateTimeKind.Local).AddTicks(5166),
+                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6110),
                             IsActive = true,
                             LanguageName = "Bengali",
                             PersonalDetailsId = 4,
@@ -942,7 +882,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 8,
-                            CreatedOn = new DateTime(2022, 7, 8, 11, 53, 49, 572, DateTimeKind.Local).AddTicks(5167),
+                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6111),
                             IsActive = true,
                             LanguageName = "Marathi",
                             PersonalDetailsId = 3,
@@ -953,7 +893,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 9,
-                            CreatedOn = new DateTime(2022, 7, 8, 11, 53, 49, 572, DateTimeKind.Local).AddTicks(5168),
+                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6112),
                             IsActive = true,
                             LanguageName = "Urdu",
                             PersonalDetailsId = 1,
@@ -964,7 +904,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 10,
-                            CreatedOn = new DateTime(2022, 7, 8, 11, 53, 49, 572, DateTimeKind.Local).AddTicks(5169),
+                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6113),
                             IsActive = true,
                             LanguageName = "French",
                             PersonalDetailsId = 2,
@@ -1249,41 +1189,6 @@ namespace PMS_API.Migrations
                             IsActive = true,
                             ProfileStatusId = 2,
                             UserId = 5
-                        },
-                        new
-                        {
-                            ProfileId = 6,
-                            IsActive = true,
-                            ProfileStatusId = 1,
-                            UserId = 6
-                        },
-                        new
-                        {
-                            ProfileId = 7,
-                            IsActive = true,
-                            ProfileStatusId = 3,
-                            UserId = 7
-                        },
-                        new
-                        {
-                            ProfileId = 8,
-                            IsActive = true,
-                            ProfileStatusId = 2,
-                            UserId = 8
-                        },
-                        new
-                        {
-                            ProfileId = 9,
-                            IsActive = true,
-                            ProfileStatusId = 3,
-                            UserId = 9
-                        },
-                        new
-                        {
-                            ProfileId = 10,
-                            IsActive = true,
-                            ProfileStatusId = 1,
-                            UserId = 10
                         });
                 });
 
@@ -1330,14 +1235,14 @@ namespace PMS_API.Migrations
                             ProfileHistoryId = 3,
                             ApprovedDate = new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            ProfileId = 6
+                            ProfileId = 2
                         },
                         new
                         {
                             ProfileHistoryId = 4,
                             ApprovedDate = new DateTime(2022, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            ProfileId = 10
+                            ProfileId = 4
                         });
                 });
 
@@ -1592,50 +1497,10 @@ namespace PMS_API.Migrations
                         new
                         {
                             SkillId = 5,
-                            DomainId = 1,
+                            DomainId = 3,
                             IsActive = true,
                             ProfileId = 5,
-                            TechnologyId = 10
-                        },
-                        new
-                        {
-                            SkillId = 6,
-                            DomainId = 10,
-                            IsActive = true,
-                            ProfileId = 1,
-                            TechnologyId = 8
-                        },
-                        new
-                        {
-                            SkillId = 7,
-                            DomainId = 8,
-                            IsActive = true,
-                            ProfileId = 9,
-                            TechnologyId = 6
-                        },
-                        new
-                        {
-                            SkillId = 8,
-                            DomainId = 5,
-                            IsActive = true,
-                            ProfileId = 10,
-                            TechnologyId = 4
-                        },
-                        new
-                        {
-                            SkillId = 9,
-                            DomainId = 9,
-                            IsActive = true,
-                            ProfileId = 8,
-                            TechnologyId = 3
-                        },
-                        new
-                        {
-                            SkillId = 10,
-                            DomainId = 4,
-                            IsActive = true,
-                            ProfileId = 6,
-                            TechnologyId = 9
+                            TechnologyId = 1
                         });
                 });
 
@@ -1952,6 +1817,21 @@ namespace PMS_API.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ProfileUser", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId1")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "UserId1");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("ProfileUser");
+                });
+
             modelBuilder.Entity("PMS_API.Achievements", b =>
                 {
                     b.HasOne("PMS_API.AchievementType", "achievementtype")
@@ -2133,6 +2013,21 @@ namespace PMS_API.Migrations
                     b.Navigation("gender");
 
                     b.Navigation("organisation");
+                });
+
+            modelBuilder.Entity("ProfileUser", b =>
+                {
+                    b.HasOne("PMS_API.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PMS_API.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PMS_API.AchievementType", b =>

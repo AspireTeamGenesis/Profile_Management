@@ -22,10 +22,11 @@ namespace PMS_API
         [DefaultValue(2)]
         public int ProfileStatusId {get; set;}
         [ForeignKey("ProfileStatusId")]
+        
         public virtual ProfileStatus? profilestatus {get;set;}
-        [DefaultValue(true)]
-        [ForeignKey("UserId")]
+       
         public int UserId {get; set;}
+      
         public DateTime? CreatedOn { get; set; }
 
         public int? CreatedBy { get; set; }
@@ -35,7 +36,10 @@ namespace PMS_API
         public int? UpdatedBy { get; set; }
         [DefaultValue(true)]
         public bool IsActive{get;set;}
-       
+        [ForeignKey("UserId")] [InverseProperty("profile")] 
+        public virtual ICollection<User>? user { get; set;}
+        [NotMapped]
+        public virtual double year { get; set; }
 
     }
 }

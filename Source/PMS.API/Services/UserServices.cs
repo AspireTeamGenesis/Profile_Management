@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using PMS_API.API.UtilityFunctions;
+
 namespace PMS_API{
    
 
@@ -40,7 +42,7 @@ namespace PMS_API{
                     Name = var.Name,
                     UserId=var.UserId,
                     Designation = var.designation?.DesignationName,
-                    ReportingPerson = var.ReportingPersonUsername
+                    ReportingPerson = var.ReportingPersonUsername,
                 }
                 );
             }
@@ -89,7 +91,6 @@ namespace PMS_API{
              _validation.userValidate(item);
             try
             {
-               
                 item.CreatedBy=userId;
                 item.CreatedOn=DateTime.Now;
                 return userData.AddUser(item);              //Ternary operator
@@ -150,7 +151,7 @@ namespace PMS_API{
 
         {
 
-            PasswordValidation.IsValidPassword(OldPassword,NewPassword,ConfirmPassword);
+            PasswordValidation.IsValidPassword(NewPassword,ConfirmPassword);
 
 
 

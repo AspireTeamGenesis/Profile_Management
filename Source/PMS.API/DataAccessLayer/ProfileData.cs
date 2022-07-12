@@ -414,6 +414,7 @@ namespace PMS_API
 
             try
             {
+                projects.IsActive=true;
                 _context.projects.Update(projects);
                 _context.SaveChanges();
                 return true;
@@ -584,6 +585,7 @@ namespace PMS_API
                 throw new ValidationException("Profile's skilldetails are not provided to DAL");
             try
             {
+                skill.IsActive=true;
                 _context.skills.Update(skill);
                 _context.SaveChanges();
                 return true;
@@ -812,7 +814,7 @@ namespace PMS_API
         {
             if (AchievementId <= 0)
 
-                throw new ValidationException("achievement Id is not provided to DAL");
+                throw new ArgumentNullException("achievement Id is not provided to DAL");
 
             try
             {
@@ -843,8 +845,12 @@ namespace PMS_API
             try
             {
 
-                return _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").Include(e=>e.profilestatus).ToList();
-
+                var result = _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").Include(e=>e.profilestatus).ToList();
+                foreach (var item in result)
+                {
+                    item.user = item.user;
+                }
+                return result;
             }
 
             catch (Exception exception)
@@ -873,9 +879,9 @@ namespace PMS_API
         }
         public Profile GetProfileById(int ProfileId)
         {
-            if (Profileid <= 0)
+            if (ProfileId <= 0)
 
-                throw new ValidationException("Profile id is not provided to DAL");
+                throw new ArgumentNullException("Profile id is not provided to DAL");
 
             try
             {
@@ -891,9 +897,10 @@ namespace PMS_API
                 throw exception;
             }
         }
+        
         public Profile GetProfileIdByUserId(int Userid){
             if (Userid <= 0)
-                throw new ValidationException("User id is not provided to DAL");   
+                throw new ArgumentNullException("User id is not provided to DAL");   
             try
             {
                 Profile profile= GetallProfiles().Where(x=>x.UserId==Userid).First();

@@ -32,7 +32,8 @@ namespace PMS_API
                     diff += (item.EndingDuration - item.StartingDuration).TotalDays;
                 }
 
-                return Math.Round((exp - diff) / 365, 1);
+                double var = Math.Round((exp - diff) / 365, 1);
+                return var;
             }
             catch (Exception exception)
             {
@@ -944,8 +945,13 @@ namespace PMS_API
             {
 
 
-                return from profile in profileData.GetallProfiles() where profile.IsActive == true select profile;
-
+                var result = from profile in profileData.GetallProfiles() where profile.IsActive == true select profile;
+                foreach (var item in result)
+                {
+                    item.year = calculateExperience(item.personalDetails.PersonalDetailsId);
+                    
+                }
+                return result;
 
 
             }
@@ -1009,6 +1015,7 @@ namespace PMS_API
                     Name = item.personalDetails.users.Name,
                     Designation = item.personalDetails.users.designation.DesignationName,
                     ReportingPerson = item.personalDetails.users.ReportingPersonUsername,
+                   
                     
 
                 }); return getprofile;
@@ -1144,6 +1151,18 @@ namespace PMS_API
             }
 
         }
+    //     public object GetProfilesByDesignationId(int Designationid)
+    //     {
+    //         if (Designationid <= 0)
+    //             throw new ArgumentNullException($"ID is not provided{Designationid}");
+    //         try
+    //         {
+    //             var getviewdetails= 
+    //             new {
+    //                 designation=profileData.GetProfileById(Profileid).UpdatedOn
+    //             };
+    //     }
 
-    }
+    // }
+}
 }
