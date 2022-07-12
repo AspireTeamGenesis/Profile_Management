@@ -72,8 +72,9 @@ namespace PMS_API
         //createdby  createdon updatedby updatedon\\
         // [ForeignKey("CreatedByHRId")]
         // public virtual HR? hr {get;set;}
-           [InverseProperty("user")]
-        public virtual ICollection<Profile>? profile{get;set;}
+        
+        [InverseProperty("user")]
+        public virtual Profile? profile{get;set;}
         public int? CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
         public int? UpdatedBy { get; set; }

@@ -72,7 +72,7 @@ namespace PMS_API
                 throw new ValidationException($"UserName not be null and user supplied UserName is {item.UserName}");
             try{
                
-                item.Password=HashPassword.Sha256("AijayRajkumar@1");
+                item.Password=HashPassword.Sha256(item.Password);
             _context.users.Add(item);
             _context.SaveChanges();
             return true;

@@ -67,5 +67,7 @@ namespace PMS_API
         
 
       public object GetProfileCount();
+      public object GetFilterdProfile(string userName,int designationId,int domainID,int technologyId,int collegeId,int profileStatusId,int maxExperience,int minExperience);
+
     }
 }

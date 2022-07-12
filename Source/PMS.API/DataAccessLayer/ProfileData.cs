@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -58,6 +59,7 @@ namespace PMS_API
        
         public List<ProfileHistory> GetallProfileHistories();
         public ProfileStatus GetProfileStatusByProfileId(int Profileid);
+        public List<User> GetFilterdProfile(string userName,int designationId,int domainID,int technologyId,int collegeId,int profileStatusId,int maxExperience,int minExperience);
 
 
     }
@@ -846,10 +848,10 @@ namespace PMS_API
             {
 
                 var result = _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").Include(e=>e.profilestatus).ToList();
-                foreach (var item in result)
-                {
-                    item.user = item.user;
-                }
+                // foreach (var item in result)
+                // {
+                //     item.user = item.user;
+                // }
                 return result;
             }
 
@@ -954,12 +956,23 @@ namespace PMS_API
             }
         }
 
-
-
-
-
-
-
+        public List<User> GetFilterdProfile(string userName,int designationId,int domainID,int technologyId,int collegeId,int profileStatusId,int maxExperience,int minExperience)
+        {
+            //return (from user in _context.users.Include(e=>e.designation).Include(e=>e.profile).Include(e=>e.profile.personalDetails).Include(e=>e.profile.profilestatus) where user.profile!=null && user.personalDetails!=null select user).ToList();
+            return  _context.users
+                    .Include(e=>e.designation)
+                    .Include(e=>e.profile)
+                    .Include(e=>e.profile.personalDetails)
+                    .Include(e=>e.profile.profilestatus)
+                    .Where(user=>user.profile!=null && user.personalDetails!=null)
+                    .WhereIf(String.IsNullOrEmpty(userName)==false,users=>users.UserName.StartsWith(userName)==true)
+                    .WhereIf(designationId!=0,users=>users.DesignationId==designationId)
+                    .WhereIf(domainID!=0,users=>users.profile.skills.Any(s=>s.DomainId==domainID)==true)
+                    .WhereIf(technologyId!=0,users=>users.profile.skills.Any(s=>s.TechnologyId==technologyId)==true)
+                    .WhereIf(collegeId!=0,users=>users.profile.education.Any(s=>s.CollegeId==collegeId)==true)
+                    .WhereIf(profileStatusId!=0,users=>users.profile.ProfileStatusId==profileStatusId)
+                    .ToList();
+                    
+        }
     }
-
 }

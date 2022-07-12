@@ -36,8 +36,10 @@ namespace PMS_API
         public int? UpdatedBy { get; set; }
         [DefaultValue(true)]
         public bool IsActive{get;set;}
-        [ForeignKey("UserId")] [InverseProperty("profile")] 
-        public virtual ICollection<User>? user { get; set;}
+
+        [ForeignKey("UserId")]
+        [InverseProperty("profile")] 
+        public virtual User? user { get; set;}
         [NotMapped]
         public virtual double year { get; set; }
 

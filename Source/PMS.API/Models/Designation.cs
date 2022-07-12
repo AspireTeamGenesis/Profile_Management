@@ -2,8 +2,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 namespace PMS_API{
-     public class Designation
+    public class Designation
     {
+        public Designation()
+        {
+            users = new HashSet<User>();
+        }
         [Key]
         public int DesignationId{get; set;}
         [Required]
