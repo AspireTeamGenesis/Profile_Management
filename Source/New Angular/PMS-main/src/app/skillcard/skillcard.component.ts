@@ -11,14 +11,28 @@ import { HttpClient } from '@angular/common/http';
 export class SkillcardComponent implements OnInit {
   @Input() profileId:number
   totalLength:any;
+  profileIdDetails:any;
   page:number=1;
   skillDetails:any;
   // profileId=2;
   constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.getSkillByProfileId();
+    this.getProfileIdByUserId();
   }
+
+  getProfileIdByUserId()
+  {
+    this.service.getProfileIdByUserId().subscribe({
+        next:(data:any)=>{this.profileIdDetails=data,
+        this.profileId=this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails),
+        this.getSkillByProfileId();
+          }
+    })
+  }
+
   getSkillByProfileId()
   {
     console.log('child called')

@@ -1,5 +1,5 @@
 <app-topbar></app-topbar>
-<app-sidebar></app-sidebar>
+<app-hrsidebar></app-hrsidebar>
 <div class="container d-flex justify-content-center table-box">
   <form  class="form" style="margin-top:110px;">
     <div class="progressbar">
@@ -94,20 +94,28 @@
           <label for="personaldetails">Organisation</label>
           <select id="personaldetails" name="OrganisationValue" [(ngModel)]="userDetails.organisationId">
             <option value="">Select organisation</option>
-            <option *ngFor="let item of organisationValue" [value]="userDetails.organisationId">{{item.organisationName}}</option>
-            <!-- <option value="volvo">Development</option>
-                  <option value="saab">Testing</option>
-                  <option value="fiat">UI/UX</option> -->
+            <option *ngFor="let item of organisationValue" [selected]="item.organisationId==organisationValue" value={{item.organisationId}}>{{item.organisationName}}</option>
           </select>
         </div>
+
+        <!-- <div class="input-group">
+          <label for="College">College</label>
+          <select  id="college" name="college" [(ngModel)]="user.collegeid" required>
+            <option value="">Select college/University</option>
+            <option *ngFor="let item of collegeValue" [selected]="item.collegeId==collegeValue" value={{item.collegeId}}>{{item.collegeName}}</option>
+          </select>
+        </div> -->
+        
         <div class="input-group">
           <label for="personaldetails">Designation</label>
           <select id="personaldetails" name="DesignationValue" [(ngModel)]="userDetails.designationId">
             <option value="">Select Designation</option>
+            <option *ngFor="let item of designationValue" [selected]="item.designationId==designationValue" value={{item.designationId}}>{{item.designationName}}</option>
+
             
-            <option *ngFor="let item of designationValue" [value]="userDetails.designationId">
-              {{item.designationName}}
-            </option>
+            <!-- <option *ngFor="let item of designationValue" [value]="userDetails.designationId">
+              {{item.designationName}} -->
+            <!-- </option> -->
             <!-- <option value="volvo">PM</option>
                   <option value="saab">TL</option>
                   <option value="fiat">SSE</option> -->
@@ -131,7 +139,7 @@
           <input type="text" name="ReportingPersonUsername" [(ngModel)]="userDetails.reportingpersonUsername" id="personaldetails" placeholder="Enter Reporting Person User's name" />
         </div>
         <div class="row btns-group1">         
-          <a (click) = "updateUser()" routerLink="/search" class="btn">Update</a>
+          <a (click) = "updateUser()" routerLink="/newcard" class="btn">Update</a>
         </div>
       </div>
     </div>

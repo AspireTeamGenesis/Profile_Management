@@ -9,17 +9,30 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./achievementcard.component.css']
 })
 export class AchievementcardComponent implements OnInit {
-  @Input() profileId:number
+  // @Input() profileId:number
+  profileIdDetails:any;
 
   totalLength:any;
   page:number=1;
   achievementDetails:any;
-  // profileId=2;
+  profileId:number;
   constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient) { }
   
   ngOnInit(): void {
-    this.getAchievementByProfileId();
+    this.getProfileIdByUserId();
   }
+  getProfileIdByUserId()
+  {
+    this.service.getProfileIdByUserId().subscribe({
+        next:(data:any)=>{this.profileIdDetails=data,
+        this.profileId=this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails),
+        this.getAchievementByProfileId();
+          }
+    })
+  }
+
   getAchievementByProfileId()
   {
     console.log('child called')

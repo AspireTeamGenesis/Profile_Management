@@ -27,12 +27,12 @@ namespace PMS_API
             if(!Regex.IsMatch(user.Password, @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"))
                 throw new ValidationException($"Enter a valid Password. Password must contain Minimum eight characters, at least one letter, one number and one special character and user supplied Password is {user.Password}");
             // if(string.IsNullOrEmpty(user.Gender))
-            
+            //     throw new ValidationException($"Gender not be null and user supplied Gender is{user.Gender}");
             if(string.IsNullOrEmpty(user.MobileNumber))
                 throw new ValidationException($"Mobile Number not be null and user supplied Mobile number is {user.MobileNumber}");
             if(!Regex.IsMatch(user.MobileNumber,@"^(\+\d{1,3}[- ]?)?\d{10}$"))
                 throw new ValidationException($"Enter a valid Mobile number and user supplied Mobile number is  {user.MobileNumber}");
-
+            // if(user.OrganisationName==0)
             //     throw new ValidationException($"Organization not be null and user supplied Organization is {user.OrganisationId}");
             // if(user.DesignationId==0)
             //     throw new ValidationException($"Designation not be null and user supplied Designation is {user.DesignationId}");

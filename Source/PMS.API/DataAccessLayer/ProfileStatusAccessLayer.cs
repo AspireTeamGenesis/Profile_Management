@@ -4,15 +4,8 @@ namespace PMS_API
 {
     public class ProfileStatusDataAccessLayer:IProfileStatusDataAccessLayer
     {
-       private readonly Context _db = DbContextDataFactory.GetDbContextObject();  
-       private readonly ILogger<ProfileStatusDataAccessLayer> _logger;
-       public ProfileStatusDataAccessLayer(){
-        
-       }
-        public ProfileStatusDataAccessLayer( ILogger<ProfileStatusDataAccessLayer> logger)
-       {
-        _logger=logger;
-       }
+       private Context _db = DbContextDataFactory.GetDbContextObject();  
+       private ILogger<ProfileStatusDataAccessLayer> _logger;
         
          public List<ProfileStatus> GetProfileStatuss() // List of ProfileStatuss
         {

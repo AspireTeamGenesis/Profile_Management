@@ -19,14 +19,14 @@ namespace PMS_API
 
     public class UserData : IUserData
     {
-        private readonly Context _context;
-        private readonly ILogger<UserServices> _logger;
+        private Context _context;
+        private ILogger<UserServices> _logger;
         public UserData(Context context, ILogger<UserServices> logger)
         {
             _context = context;
             _logger=logger;
         }
-         private readonly UserValidation _validation=UserDataFactory.GetValidationObject();
+         private UserValidation _validation=UserDataFactory.GetValidationObject();
         //getting all users 
         public List<User> GetallUsers()
         {
@@ -136,12 +136,13 @@ namespace PMS_API
                 user.UserName=item.UserName;
                 user.Password=item.Password;
                 user.GenderId=item.GenderId;
-                user.CountryCodeId=item.CountryCodeId;
+                user.CountryCodeId=user.CountryCodeId;
                 user.MobileNumber=item.MobileNumber;
                 user.OrganisationId=item.OrganisationId;
                 user.DesignationId=item.DesignationId;
                 user.ReportingPersonUsername=item.ReportingPersonUsername;
-                user.IsActive=item.IsActive;
+                // user.IsActive=item.IsActive;
+                user.IsActive=true;
                 user.CreatedBy=item.CreatedBy;
             _context.users.Update(user);
             _context.SaveChanges();
@@ -189,8 +190,8 @@ namespace PMS_API
                 var edit = _context.users.Find(currentUser);
                 var pass = HashPassword.Sha256(OldPassword);
                 if (edit == null)
-                    throw new ValidationException("No User is found with the given user id");
-                else if (!edit.IsActive)
+                    throw new ValidationException("No User is found wiith the given user id");
+                else if (edit.IsActive == false)
                     throw new ValidationException("The given user Id is inactive,so unable to change the password");
                 else if(edit.Password!= pass)
                     throw new ValidationException("The given Old Password is Incorrect");

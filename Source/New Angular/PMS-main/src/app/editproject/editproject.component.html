@@ -14,7 +14,7 @@
     </div>
 
     <div class="form-step form-step-active">
-      <h3>Project Details</h3>
+      <h3>Project Details <button class="plus" (click)="toogletag()" (click)="footer()" > + </button></h3>
       <label for="Proname">Project Name</label>
       <input type="text" [(ngModel)]="projectDetails.projectname" name="projectname" id="Proname"
         placeholder="Enter Project name"  />
@@ -68,7 +68,7 @@
       <input type="text" name="Tools" id="Tools" [(ngModel)]="projectDetails.toolsused" placeholder="Enter Tools used"
          />     
       <div class="button">
-        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/project',profileId]" (click)="updateproject()">Update</a>
+        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/project']" (click)="updateproject()" (click)="toogletag()">Update</a>
       </div>
       <br>
       <app-projectcard [profileId]="profileId"></app-projectcard>

@@ -9,11 +9,39 @@ import { UserserviceService } from '../service/userservice.service';
 })
 export class ProfilehomeComponent implements OnInit {
   dashboard:any;
+  designationValue:any;
+  domainValue:any;
+  technologyValue:any;
+  collegeValue:any;
+  profileValue:any;
+  experience: number[] = [];
+  // username:any;
 
-  constructor(private service: UserserviceService) { }
+
+  constructor(private service: UserserviceService) {
+    for (let exp = 1 ; exp < 20; exp++) {
+      this.experience.push(exp);
+    }
+   }
+
+  filter:any={
+    designationId:0,
+    domainId:0,
+    technologyId:0,
+    collegeId:0,
+    maxExp:0,
+    minExp:0,
+    profileStatusId:0,
+    username:''
+  }
 
   ngOnInit(): void {
     this.dashboardcount();
+    this.getDesignation();
+    this.getDomain();
+    this.getTechnology();
+    this.getCollege();
+    this.getProfileStatus();
   }
   dashboardcount()
   {
@@ -22,4 +50,69 @@ export class ProfilehomeComponent implements OnInit {
       console.log(this.dashboard);
     })
   }
+
+  getDesignation()
+  {
+    this.service.getDesignation().subscribe((data:any)=>
+    {
+      this.designationValue=data;
+      console.warn(this.designationValue);
+    });
+
+  }
+
+  getDomain()
+  {
+    this.service.getDomain().subscribe((data:any)=>
+    {
+      this.domainValue=data;
+      console.warn(this.domainValue);
+    });
+
+  }
+
+  getTechnology()
+  {
+    this.service.getTechnology().subscribe((data:any)=>
+    {
+      this.technologyValue=data;
+      console.warn(this.technologyValue);
+    });
+
+  }
+
+  getCollege()
+  {
+    this.service.getCollege().subscribe((data:any)=>
+    {
+      this.collegeValue=data;
+      console.warn(this.collegeValue);
+    });
+
+  }
+
+  getProfileStatus()
+  {
+    this.service.getProfileStatus().subscribe((data:any)=>
+    {
+      this.profileValue=data;
+      console.warn(this.profileValue);
+    });
+
+  }
+
+  getProfileByFilters()
+  {
+    console.warn(this.filter);
+    this.service.getProfileByFilters(this.filter).subscribe();
+  }
+
+  // getProfileBySearch()
+  // {
+  //   console.warn(this.username);
+  //   this.service.getProfileBySearch(this.username).subscribe();
+  // }
+
+
+
 }

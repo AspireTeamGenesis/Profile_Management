@@ -14,7 +14,7 @@
     </div>
 
     <div class="form-step form-step-active">
-      <h3>Education Details</h3>
+      <h3>Education Details <button class="plus" (click)="toogletag()" (click)="footer()" > + </button> </h3>
       <div class="input-group">
         <label for="degree">Degree</label>
         <input type="text" name="degree" id="degree" placeholder="Enter your degree" [(ngModel)]="user.degree"
@@ -68,16 +68,16 @@
           [(ngModel)]="user.percentage" required />
       </div>
       <div class="button">
-        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/education',profileId]" (click)="updateEducation()">Update</a>
+        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/education']" (click)="updateEducation()" (click)="toogletag()">Update</a>
       </div>
       <br>
       <app-educationcard [profileId]="profileId"></app-educationcard>
       <div class="row">
-        <a [routerLink]="['/personal',profileId]" class="btn btn-next width-50 ml-auto">Previous</a>
+        <a [routerLink]="['/personal']" class="btn btn-next width-50 ml-auto">Previous</a>
 
-        <a href="#" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+        <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
 
-        <a [routerLink]="['/project',profileId]" class="btn btn-next width-50 ml-auto">Next</a>
+        <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Next</a>
 
       </div>
     </div>

@@ -22,9 +22,10 @@ export class ProjectComponent implements OnInit {
   Project: any;
   project: Project[] = [];
   data: any;
+  profileIdDetails:any;
   projectfield: any = {
     projectId: 0,
-    profileId: this.profileId,
+    profileId: 0,
     projectName: '',
     projectDescription: '',
     startingMonth: '',
@@ -42,36 +43,27 @@ export class ProjectComponent implements OnInit {
 
   foot:boolean = true;
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.profileId = params['profileId'];
-      console.log('Project profile id : '+this.profileId);
-    })
-
-    // this.getProjectbyId();
+    this.getProfileIdByUserId()
     this.selectedYear = new Date().getFullYear();
     for (let year = this.selectedYear; year >= 2000; year--) {
       this.years.push(year);
     }
   }
-  // getProjectbyId() {
-  //   this.service.getProjectDetail(this.projectId).subscribe((res) => {
+  // GetAllProjectDetailsByProfileId() {
+  //   this.service.getProjectDetailByProfileID(this.profileId).subscribe((res) => {
   //     this.projectfield = res;
-  //     this.projectfield.designation = res.role;
-  //     console.log(this.projectfield);
+  //     console.log(this.data);
   //   })
   // }
 
-  //   getallProjectdetails(){
-  //     this.projectService.getallProjectDetailByProfile().subscribe((res)=>{
-  //       this.data = res;
-  //       console.log(this.data);
-  //   })
-  //  }
-
-  GetAllProjectDetailsByProfileId() {
-    this.service.getProjectDetailByProfileID(this.profileId).subscribe((res) => {
-      this.projectfield = res;
-      console.log(this.data);
+  getProfileIdByUserId()
+  {
+    this.service.getProfileIdByUserId().subscribe({
+        next:(data:any)=>{this.profileIdDetails=data,
+        this.profileId=this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails)
+  }
     })
   }
   
@@ -80,19 +72,19 @@ export class ProjectComponent implements OnInit {
 
     console.log("Project Field ");
     this.projectfield.profileId=this.profileId;
+    console.log(this.projectfield.profileId);
     console.log(this.projectfield);
     this.service.CreateProjects(this.projectfield).subscribe(data => this.projectfield.push(data));
   }
 
-  Update() {
-    this.data = this.projectfield;
-    this.service.UpdateProjects(this.data).subscribe(data => this.data.push(data));
-  }
+  // Update() {
+  //   this.data = this.projectfield;
+  //   this.service.UpdateProjects(this.data).subscribe(data => this.data.push(data));
+  // }
 
-  Delete() {
-    this.data = this.projectfield;
-    // this.projectService.DeleteProjects(this.data).subscribe(data=>this.data.push(data));
-  }
+  // Delete() {
+  //   this.data = this.projectfield;
+  // }
   toogletag()
 
   {

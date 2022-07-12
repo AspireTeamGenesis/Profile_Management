@@ -17,6 +17,7 @@ export class AchievementComponent implements OnInit {
   foot:boolean = true;
 
   imageError: string = "";
+  profileIdDetails:any;
   isImageSaved: boolean = false;
   cardImageBase64: string = "";
   achievementTypeValue:number=0;
@@ -33,13 +34,22 @@ export class AchievementComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.profileId = params['profileId'];
-      console.log('Achievement profile id : '+this.profileId);
-    })
-    
+    this.getProfileIdByUserId();
 
   }
+
+  getProfileIdByUserId()
+  {
+    this.service.getProfileIdByUserId().subscribe({
+        next:(data:any)=>{this.profileIdDetails=data,
+        this.profileId=this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails)
+  }
+    })
+  }
+
+
   submitAchievement()
   {
     this.achievement.achievementTypeId=this.achievementTypeValue;

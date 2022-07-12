@@ -3,16 +3,8 @@ namespace PMS_API.DataAccessLayer
 {
     public class CollegeDataAccessLayer:ICollegeDataAccessLayer
     {
-       private readonly Context _db = DbContextDataFactory.GetDbContextObject();  
-       private readonly ILogger<CollegeDataAccessLayer> _logger;
-
-       public CollegeDataAccessLayer(){
-        
-       }
-       public CollegeDataAccessLayer( ILogger<CollegeDataAccessLayer> logger)
-       {
-        _logger=logger;
-       }
+       private Context _db = DbContextDataFactory.GetDbContextObject();  
+       private ILogger<CollegeDataAccessLayer> _logger;
         
          public List<College> GetColleges() //List Of Colleges
         {
@@ -35,7 +27,7 @@ namespace PMS_API.DataAccessLayer
             catch (Exception ex)                      //unknown exception occured
             {
                 _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
-                throw new ArgumentNullException();
+                throw ex;
             }
         }
 

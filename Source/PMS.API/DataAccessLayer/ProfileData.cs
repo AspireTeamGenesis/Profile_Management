@@ -905,11 +905,12 @@ namespace PMS_API
                 throw new ArgumentNullException("User id is not provided to DAL");   
             try
             {
-                Profile profile= GetallProfiles().Where(x=>x.UserId==Userid).First();
-                if(profile==null)throw new NullReferenceException($"Id not found-{Userid}");
+                Profile profile= GetallProfiles().Where(x=>x.UserId==Userid).FirstOrDefault();
+                if(profile==null)
+                    return new Profile();
                 return profile;
             }
-            catch{
+            catch(Exception exception){
                 System.Console.WriteLine("error");
                 throw;
             }
@@ -975,4 +976,5 @@ namespace PMS_API
                     
         }
     }
+
 }

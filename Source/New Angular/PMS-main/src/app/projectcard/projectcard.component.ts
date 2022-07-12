@@ -13,12 +13,26 @@ export class ProjectcardComponent implements OnInit {
   totalLength:any;
   page:number=1;
   projectDetails:any;
+  profileIdDetails:any;
   // profileId=2;
   constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient) { }
   
   ngOnInit(): void {
-    this.getProjectDetailByProfileID();
+    this.getProfileIdByUserId();
   }
+
+  getProfileIdByUserId()
+  {
+    this.service.getProfileIdByUserId().subscribe({
+        next:(data:any)=>{this.profileIdDetails=data,
+        this.profileId=this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails),
+        this.getProjectDetailByProfileID();
+          }
+    })
+  }
+
   getProjectDetailByProfileID()
   {
     console.log('child called')

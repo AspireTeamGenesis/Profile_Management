@@ -991,7 +991,7 @@ namespace PMS_API
                     skilldetails=GetAllSkillDetailsByProfileId(Profileid),
                     achievementdetails=GetAllAchievementDetailsByProfileId(Profileid),
                     profilestatus=GetProfileStatusByProfileId(Profileid),
-                    updateddate=profileData.GetProfileById(Profileid).UpdatedOn
+                    // updateddate=profileData.GetProfileById(Profileid).UpdatedOn
                    
                 };
                 //); 
@@ -1031,10 +1031,11 @@ namespace PMS_API
                 throw new ArgumentNullException($"ID is not provided{Userid}");
             try{
                 var getprofile= profileData.GetProfileIdByUserId(Userid); 
+
                 if(getprofile.IsActive){
                 return new {
-                    profilstatus=getprofile.profilestatus.ProfileStatusName,
-                    profileid=getprofile.ProfileId
+                    profilestatus=getprofile.profilestatus.ProfileStatusName,
+                    profileId=getprofile.ProfileId
                 };
                 }
                 return getprofile;

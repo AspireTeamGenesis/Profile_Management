@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PMS_API.Migrations
 {
-    public partial class test1 : Migration
+    public partial class chitrarasu_July13 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AchievementType",
+                name: "achievementtype",
                 columns: table => new
                 {
                     AchievementTypeId = table.Column<int>(type: "int", nullable: false)
@@ -20,7 +20,7 @@ namespace PMS_API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AchievementType", x => x.AchievementTypeId);
+                    table.PrimaryKey("PK_achievementtype", x => x.AchievementTypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -207,11 +207,10 @@ namespace PMS_API.Migrations
                     ProfileId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProfileStatusId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: true),
                     UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -251,9 +250,9 @@ namespace PMS_API.Migrations
                 {
                     table.PrimaryKey("PK_achievements", x => x.AchievementId);
                     table.ForeignKey(
-                        name: "FK_achievements_AchievementType_AchievementTypeId",
+                        name: "FK_achievements_achievementtype_AchievementTypeId",
                         column: x => x.AchievementTypeId,
-                        principalTable: "AchievementType",
+                        principalTable: "achievementtype",
                         principalColumn: "AchievementTypeId",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
@@ -509,15 +508,6 @@ namespace PMS_API.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "AchievementType",
-                columns: new[] { "AchievementTypeId", "AchievementTypeName", "IsActive" },
-                values: new object[,]
-                {
-                    { 1, "Awards", true },
-                    { 2, "Certificates", true }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Colleges",
                 columns: new[] { "CollegeId", "CollegeName", "IsActive" },
                 values: new object[,]
@@ -582,14 +572,7 @@ namespace PMS_API.Migrations
                     { 5, "AI", true },
                     { 6, "Logistics", true },
                     { 7, "Hospitality", true },
-                    { 8, "Finance", true }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Domains",
-                columns: new[] { "DomainId", "DomainName", "IsActive" },
-                values: new object[,]
-                {
+                    { 8, "Finance", true },
                     { 9, "Food", true },
                     { 10, "Travel", true }
                 });
@@ -649,6 +632,15 @@ namespace PMS_API.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "achievementtype",
+                columns: new[] { "AchievementTypeId", "AchievementTypeName", "IsActive" },
+                values: new object[,]
+                {
+                    { 1, "Awards", true },
+                    { 2, "Certificates", true }
+                });
+
+            migrationBuilder.InsertData(
                 table: "users",
                 columns: new[] { "UserId", "CountryCodeId", "CreatedBy", "CreatedOn", "DesignationId", "Email", "GenderId", "IsActive", "MobileNumber", "Name", "OrganisationId", "Password", "ReportingPersonUsername", "UpdatedBy", "UpdatedOn", "UserName" },
                 values: new object[,]
@@ -662,14 +654,14 @@ namespace PMS_API.Migrations
 
             migrationBuilder.InsertData(
                 table: "profile",
-                columns: new[] { "ProfileId", "CreatedBy", "CreatedOn", "IsActive", "ProfileStatusId", "UpdatedBy", "UpdatedOn", "UserId" },
+                columns: new[] { "ProfileId", "CreatedBy", "CreatedOn", "IsActive", "ProfileStatusId", "UpdatedOn", "UserId" },
                 values: new object[,]
                 {
-                    { 1, null, null, true, 1, null, null, 1 },
-                    { 2, null, null, true, 3, null, null, 2 },
-                    { 3, null, null, true, 1, null, null, 3 },
-                    { 4, null, null, true, 2, null, null, 4 },
-                    { 5, null, null, true, 2, null, null, 5 }
+                    { 1, null, null, true, 1, null, 1 },
+                    { 2, null, null, true, 3, null, 2 },
+                    { 3, null, null, true, 1, null, 3 },
+                    { 4, null, null, true, 2, null, 4 },
+                    { 5, null, null, true, 2, null, 5 }
                 });
 
             migrationBuilder.InsertData(
@@ -773,16 +765,16 @@ namespace PMS_API.Migrations
                 columns: new[] { "LanguageId", "CreatedBy", "CreatedOn", "IsActive", "LanguageName", "PersonalDetailsId", "Read", "Speak", "UpdatedBy", "UpdatedOn", "Write" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2022, 7, 11, 10, 57, 0, 813, DateTimeKind.Local).AddTicks(2875), true, "English", 1, true, true, null, null, true },
-                    { 2, null, new DateTime(2022, 7, 11, 10, 57, 0, 813, DateTimeKind.Local).AddTicks(2887), true, "Tamil", 2, true, true, null, null, true },
-                    { 3, null, new DateTime(2022, 7, 11, 10, 57, 0, 813, DateTimeKind.Local).AddTicks(2888), true, "Hindi", 3, true, true, null, null, true },
-                    { 4, null, new DateTime(2022, 7, 11, 10, 57, 0, 813, DateTimeKind.Local).AddTicks(2889), true, "Telugu", 4, true, true, null, null, true },
-                    { 5, null, new DateTime(2022, 7, 11, 10, 57, 0, 813, DateTimeKind.Local).AddTicks(2890), true, "Malayalam", 5, true, true, null, null, true },
-                    { 6, null, new DateTime(2022, 7, 11, 10, 57, 0, 813, DateTimeKind.Local).AddTicks(2891), true, "Kannada", 3, true, true, null, null, true },
-                    { 7, null, new DateTime(2022, 7, 11, 10, 57, 0, 813, DateTimeKind.Local).AddTicks(2892), true, "Bengali", 4, true, true, null, null, true },
-                    { 8, null, new DateTime(2022, 7, 11, 10, 57, 0, 813, DateTimeKind.Local).AddTicks(2893), true, "Marathi", 3, true, true, null, null, true },
-                    { 9, null, new DateTime(2022, 7, 11, 10, 57, 0, 813, DateTimeKind.Local).AddTicks(2894), true, "Urdu", 1, true, true, null, null, true },
-                    { 10, null, new DateTime(2022, 7, 11, 10, 57, 0, 813, DateTimeKind.Local).AddTicks(2895), true, "French", 2, true, true, null, null, true }
+                    { 1, null, new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3553), true, "English", 1, true, true, null, null, true },
+                    { 2, null, new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3567), true, "Tamil", 2, true, true, null, null, true },
+                    { 3, null, new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3568), true, "Hindi", 3, true, true, null, null, true },
+                    { 4, null, new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3569), true, "Telugu", 4, true, true, null, null, true },
+                    { 5, null, new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3574), true, "Malayalam", 5, true, true, null, null, true },
+                    { 6, null, new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3575), true, "Kannada", 3, true, true, null, null, true },
+                    { 7, null, new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3576), true, "Bengali", 4, true, true, null, null, true },
+                    { 8, null, new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3576), true, "Marathi", 3, true, true, null, null, true },
+                    { 9, null, new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3577), true, "Urdu", 1, true, true, null, null, true },
+                    { 10, null, new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3578), true, "French", 2, true, true, null, null, true }
                 });
 
             migrationBuilder.CreateIndex(
@@ -835,7 +827,8 @@ namespace PMS_API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_profile_UserId",
                 table: "profile",
-                column: "UserId");
+                column: "UserId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_profilehistory_ProfileId",
@@ -918,7 +911,7 @@ namespace PMS_API.Migrations
                 name: "SocialMedias");
 
             migrationBuilder.DropTable(
-                name: "AchievementType");
+                name: "achievementtype");
 
             migrationBuilder.DropTable(
                 name: "Colleges");

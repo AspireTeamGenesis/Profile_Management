@@ -12,8 +12,8 @@ using PMS_API;
 namespace PMS_API.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220712040330_test5")]
-    partial class test5
+    [Migration("20220712184044_chitrarasu_July13")]
+    partial class chitrarasu_July13
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -807,7 +807,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 1,
-                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6086),
+                            CreatedOn = new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3553),
                             IsActive = true,
                             LanguageName = "English",
                             PersonalDetailsId = 1,
@@ -818,7 +818,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 2,
-                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6103),
+                            CreatedOn = new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3567),
                             IsActive = true,
                             LanguageName = "Tamil",
                             PersonalDetailsId = 2,
@@ -829,7 +829,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 3,
-                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6105),
+                            CreatedOn = new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3568),
                             IsActive = true,
                             LanguageName = "Hindi",
                             PersonalDetailsId = 3,
@@ -840,7 +840,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 4,
-                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6106),
+                            CreatedOn = new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3569),
                             IsActive = true,
                             LanguageName = "Telugu",
                             PersonalDetailsId = 4,
@@ -851,7 +851,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 5,
-                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6107),
+                            CreatedOn = new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3574),
                             IsActive = true,
                             LanguageName = "Malayalam",
                             PersonalDetailsId = 5,
@@ -862,7 +862,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 6,
-                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6108),
+                            CreatedOn = new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3575),
                             IsActive = true,
                             LanguageName = "Kannada",
                             PersonalDetailsId = 3,
@@ -873,7 +873,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 7,
-                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6110),
+                            CreatedOn = new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3576),
                             IsActive = true,
                             LanguageName = "Bengali",
                             PersonalDetailsId = 4,
@@ -884,7 +884,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 8,
-                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6111),
+                            CreatedOn = new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3576),
                             IsActive = true,
                             LanguageName = "Marathi",
                             PersonalDetailsId = 3,
@@ -895,7 +895,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 9,
-                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6112),
+                            CreatedOn = new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3577),
                             IsActive = true,
                             LanguageName = "Urdu",
                             PersonalDetailsId = 1,
@@ -906,7 +906,7 @@ namespace PMS_API.Migrations
                         new
                         {
                             LanguageId = 10,
-                            CreatedOn = new DateTime(2022, 7, 12, 9, 33, 29, 317, DateTimeKind.Local).AddTicks(6113),
+                            CreatedOn = new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3578),
                             IsActive = true,
                             LanguageName = "French",
                             PersonalDetailsId = 2,
@@ -1141,9 +1141,6 @@ namespace PMS_API.Migrations
                     b.Property<int>("ProfileStatusId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UpdatedBy")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
@@ -1153,6 +1150,9 @@ namespace PMS_API.Migrations
                     b.HasKey("ProfileId");
 
                     b.HasIndex("ProfileStatusId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("profile");
 
@@ -1819,21 +1819,6 @@ namespace PMS_API.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ProfileUser", b =>
-                {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId1")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId", "UserId1");
-
-                    b.HasIndex("UserId1");
-
-                    b.ToTable("ProfileUser");
-                });
-
             modelBuilder.Entity("PMS_API.Achievements", b =>
                 {
                     b.HasOne("PMS_API.AchievementType", "achievementtype")
@@ -1921,7 +1906,15 @@ namespace PMS_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PMS_API.User", "user")
+                        .WithOne("profile")
+                        .HasForeignKey("PMS_API.Profile", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("profilestatus");
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("PMS_API.ProfileHistory", b =>
@@ -2017,21 +2010,6 @@ namespace PMS_API.Migrations
                     b.Navigation("organisation");
                 });
 
-            modelBuilder.Entity("ProfileUser", b =>
-                {
-                    b.HasOne("PMS_API.Profile", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PMS_API.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("PMS_API.AchievementType", b =>
                 {
                     b.Navigation("achievements");
@@ -2097,6 +2075,8 @@ namespace PMS_API.Migrations
             modelBuilder.Entity("PMS_API.User", b =>
                 {
                     b.Navigation("personalDetails");
+
+                    b.Navigation("profile");
                 });
 #pragma warning restore 612, 618
         }

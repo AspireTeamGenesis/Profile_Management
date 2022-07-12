@@ -9,17 +9,22 @@ import { UserserviceService } from '../service/userservice.service';
 export class ViewprofileComponent implements OnInit {
 
   constructor(private service:UserserviceService) { }
-   profileId=1;
+  profileId:number=0;
+   profileIdDetails:any;
   profileDetails:any;
   userDetails:any;
+
   showMe:boolean = false;
   showMe1:boolean = false;
   showMe2:boolean = false;
   showMe3:boolean = false;
   showMe4:boolean = false;
   ngOnInit(): void {
-    this.getProfileByProfileId();
     this.getUserDetails();
+    this.getProfileIdByUserId();
+    // console.log("happy");
+    // console.log(this.profileId);
+    
    
   }
   toggletag(){
@@ -37,9 +42,22 @@ export class ViewprofileComponent implements OnInit {
   toggletag4(){
     this.showMe4=!this.showMe4;
   }
+
+  getProfileIdByUserId()
+  {
+    this.service.getProfileIdByUserId().subscribe({
+        next:(data:any)=>{this.profileIdDetails=data,
+        this.profileId=this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails),
+    this.getProfileByProfileId();
+  }
+    })
+  }
   getProfileByProfileId()
   {
-    console.log("View :"+this.profileId);
+    // this.profileId=this.profileIdDetails.profileid;
+    console.error("View :"+this.profileId);
     this.service.getProfileByProfileId(this.profileId).subscribe( {
       next:(data:any)=>{this.profileDetails=data,console.warn(this.profileDetails)}
     })

@@ -10,9 +10,9 @@ namespace PMS_API
 {
     public class LoginService:ILoginService
     {
-        private readonly IUserData _userData;
-        private readonly ILogger<LoginService> _logger;
-        private readonly IConfiguration _configuration;
+        private IUserData _userData;
+        private ILogger<LoginService> _logger;
+        private IConfiguration _configuration;
 
         public LoginService(ILogger<LoginService> logger, IConfiguration configuration, IUserData userData)
         {
@@ -21,11 +21,11 @@ namespace PMS_API
             _userData = userData;
         }
 
-        public object AuthLogin(string UserName, string Password)
+        public object AuthLogin(string Username, string password)
         {
             try
             {
-                var user =_userData.LoginCrendentials(UserName,Password);
+                var user =_userData.LoginCrendentials(Username,password);
 
                 var claims = new[] {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
@@ -49,8 +49,8 @@ namespace PMS_API
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     ExpiryInMinutes = 360,
-                    IsHR = user.DesignationId == 1 ,
-                    IsAdmin = user.DesignationId == 2 
+                    IsHR = user.DesignationId == 1 ? true : false,
+                    IsAdmin = user.DesignationId == 2 ? true : false
                 };
 
                 return Result;

@@ -71,17 +71,17 @@
       <input type="text" name="Tools" id="Tools" [(ngModel)]="projectfield.toolsUsed" placeholder="Enter Tools used"
          />     
       <div class="button">
-        <a class="btn btn-next width-50 ml-auto" (click)="OnSubmit()" >Add</a>
+        <a class="btn btn-next width-50 ml-auto" (click)="OnSubmit()" (click)="toogletag()">Add</a>
       </div>
     </div>
       <br>
-      <app-projectcard [profileId]="profileId"></app-projectcard>
+      <app-projectcard></app-projectcard>
       <div class="row">
-        <a [routerLink]="['/education',profileId]" class="btn btn-next width-50 ml-auto">Previous</a>
+        <a [routerLink]="['/education']" class="btn btn-next width-50 ml-auto">Previous</a>
 
-        <a href="#" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+        <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
 
-        <a [routerLink]="['/skill',profileId]" class="btn btn-next width-50 ml-auto">Next</a>
+        <a [routerLink]="['/skill']" class="btn btn-next width-50 ml-auto">Next</a>
 
       </div>
     </div>

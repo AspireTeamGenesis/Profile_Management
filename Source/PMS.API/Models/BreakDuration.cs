@@ -10,9 +10,15 @@ namespace PMS_API
         // [NotMapped]
         public DateTime StartingDuration{get;set;}
         // [NotMapped]
+        // public DateTime Starting_Year{get;set;}
         // [NotMapped]
         public DateTime EndingDuration{get;set;}
         // [NotMapped]
+        // public DateTime Ending_Year{get;set;}
+        // public string? StartingBreakMonth { get; set; }
+        // public int? StartingBreakYear { get; set; }
+        // public string? EndingBreakMonth { get; set; }
+        // public int? EndingBreakYear { get; set; }
         public int PersonalDetailsId{get;set;}
         [ForeignKey("PersonalDetailsId")]
         [InverseProperty("breakDuration")]

@@ -4,17 +4,10 @@ namespace PMS_API
 {
     public class CollegeServices : ICollegeServices
     {
-        private readonly ICollegeDataAccessLayer _collegeDataAccessLayer = CollegeDataFactory.GetCollegeDataAccessLayerObject();
-        private readonly College _college = CollegeDataFactory.GetCollegeObject();
-        private readonly ILogger<CollegeServices>?_logger;
-
-        public CollegeServices(){
-            
-        }
-        public CollegeServices( ILogger<CollegeServices> logger)
-       {
-        _logger=logger;
-       }
+        private ICollegeDataAccessLayer _collegeDataAccessLayer = CollegeDataFactory.GetCollegeDataAccessLayerObject();
+        private College _college = CollegeDataFactory.GetCollegeObject();
+        private ILogger<CollegeServices>?_logger;
+       
         
 
        
@@ -23,7 +16,7 @@ namespace PMS_API
             try
             {
                 IEnumerable<College> colleges = new List<College>();
-                return colleges = from college in _collegeDataAccessLayer.GetColleges() where college.IsActive select college; 
+                return colleges = from college in _collegeDataAccessLayer.GetColleges() where college.IsActive == true select college; 
             }
             catch (Exception ex)
             {

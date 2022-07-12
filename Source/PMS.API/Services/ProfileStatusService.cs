@@ -2,16 +2,9 @@ namespace PMS_API
 {
     public class ProfileStatusServices : IProfileStatusServices
     {
-        private readonly IProfileStatusDataAccessLayer _ProfileStatusDataAccessLayer = ProfileStatusDataFactory.GetProfileStatusDataAccessLayerObject();
-        private readonly ProfileStatus _ProfileStatus = ProfileStatusDataFactory.GetProfileStatusObject();
-        private readonly ILogger<ProfileStatusServices>?_logger;
-        public ProfileStatusServices(){
-            
-        }
-         public ProfileStatusServices( ILogger<ProfileStatusServices> logger)
-       {
-        _logger=logger;
-       }
+        private IProfileStatusDataAccessLayer _ProfileStatusDataAccessLayer = ProfileStatusDataFactory.GetProfileStatusDataAccessLayerObject();
+        private ProfileStatus _ProfileStatus = ProfileStatusDataFactory.GetProfileStatusObject();
+        private ILogger<ProfileStatusServices>?_logger;
        
         
 
@@ -21,7 +14,7 @@ namespace PMS_API
             try
             {
                 IEnumerable<ProfileStatus> profileStatuss = new List<ProfileStatus>();
-                return profileStatuss = from profileStatus in _ProfileStatusDataAccessLayer.GetProfileStatuss() where profileStatus.IsActive select profileStatus;
+                return profileStatuss = from profileStatus in _ProfileStatusDataAccessLayer.GetProfileStatuss() where profileStatus.IsActive == true select profileStatus;
             }
             catch (Exception ex)
             {

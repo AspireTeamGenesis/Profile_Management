@@ -3,15 +3,8 @@ namespace PMS_API.DataAccessLayer
 {
     public class DomainDataAccessLayer:IDomainDataAccessLayer
     {
-       private readonly Context _db =DbContextDataFactory.GetDbContextObject();  
-       private readonly ILogger<DomainDataAccessLayer> _logger;
-       public DomainDataAccessLayer(){
-        
-       }
-        public DomainDataAccessLayer( ILogger<DomainDataAccessLayer> logger)
-       {
-        _logger=logger;
-       }
+       private Context _db =DbContextDataFactory.GetDbContextObject();  
+       private ILogger<DomainDataAccessLayer> _logger;
         
          public List<Domain> GetDomains() // List of Domains
         {

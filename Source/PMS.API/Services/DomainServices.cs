@@ -5,16 +5,9 @@ namespace PMS_API
 {
     public class DomainServices : IDomainServices
     {
-        private readonly IDomainDataAccessLayer _domainDataAccessLayer = DomainDataFactory.GetDomainDataAccessLayerObject();
-        private readonly Domain _domain = DomainDataFactory.GetDomainObject();
-        private readonly ILogger<DomainServices>?_logger;
-        public DomainServices(){
-
-        }
-        public DomainServices( ILogger<DomainServices> logger)
-       {
-        _logger=logger;
-       }
+        private IDomainDataAccessLayer _domainDataAccessLayer = DomainDataFactory.GetDomainDataAccessLayerObject();
+        private Domain _domain = DomainDataFactory.GetDomainObject();
+        private ILogger<DomainServices>?_logger;
        
         
 
@@ -24,7 +17,7 @@ namespace PMS_API
             try
             {
                 IEnumerable<Domain> domains = new List<Domain>();
-                return domains = from domain in _domainDataAccessLayer.GetDomains() where domain.IsActive select domain;
+                return domains = from domain in _domainDataAccessLayer.GetDomains() where domain.IsActive == true select domain;
             }
             catch (Exception ex)
             {

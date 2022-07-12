@@ -15,8 +15,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class EdituserComponent implements OnInit {
 
-  organisationValue: Organisation[] = [];
-  designationValue: Designation[] = [];
+  organisationValue: any;
+  designationValue: any;
 
 
 
@@ -64,19 +64,20 @@ export class EdituserComponent implements OnInit {
   constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute) { }
 
 
-  userDetails: any = {
-    userid: this.userEmployeeId,
-    name: '',
-    email: '',
-    username: '',
-    password: '',
-    genderId: 0,
-    countryCodeId: 0,
-    mobilenumber: '',
-    designationId: 0,
-    reportingpersonUsername: '',
-    organisationId: 0,
-  }
+   userDetails: any;
+  //  = {
+  //   userid: this.userEmployeeId,
+  //   name: '',
+  //   email: '',
+  //   username: '',
+  //   password: '',
+  //   genderId: 0,
+  //   countryCodeId: 0,
+  //   mobilenumber: '',
+  //   designationId: 0,
+  //   reportingpersonUsername: '',
+  //   organisationId: 0,
+  // }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -87,7 +88,7 @@ export class EdituserComponent implements OnInit {
     this.getDesignation();
     this.getUserDetails(this.userEmployeeId);
     // this.getUser();
-    this.updateUser();
+    // this.updateUser();
   }
 
   getDesignation()
@@ -117,16 +118,16 @@ export class EdituserComponent implements OnInit {
   updateUser() {
 
     const userDetailsProfile = {
-      userid: this.userEmployeeId,
+      userId: this.userEmployeeId,
       name:this.userDetails.name,
       email:this.userDetails.email,
-      username:this.userDetails.username,
+      userName:this.userDetails.username,
       password: this.userDetails.password,
       genderId: this.userDetails.genderId,
       countryCodeId: this.userDetails.countryCodeId,
-      mobilenumber: this.userDetails.mobilenumber,
+      mobileNumber: this.userDetails.mobilenumber,
       designationId: this.userDetails.designationId,
-      reportingpersonUsername: this.userDetails.reportingpersonUsername,
+      reportingPersonUsername: this.userDetails.reportingpersonUsername,
       organisationId: this.userDetails.organisationId,
     }
     console.log("update");

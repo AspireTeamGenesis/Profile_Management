@@ -29,11 +29,11 @@
         <input type="file" (change)="fileChangeEvent($event)" name="Role" id="Role" style="border-color: black;"/>
       
       <div class="button">
-        <a class="btn btn-next width-50 ml-auto"  (click)="submitAchievement()">Add</a>
+        <a class="btn btn-next width-50 ml-auto"  (click)="submitAchievement()" (click)="toogletag()">Add</a>
       </div>
     </div>
       <br>
-      <app-achievementcard [profileId]="profileId"></app-achievementcard>
+      <app-achievementcard ></app-achievementcard>
       <!-- <div class="row">
         <div class="col">
           <div class="card card-body">
@@ -53,9 +53,9 @@
 
 
       <div class="row">
-        <a [routerLink]="['/skill',profileId]" class="btn btn-next width-50 ml-auto">Previous</a>
+        <a [routerLink]="['/skill']" class="btn btn-next width-50 ml-auto">Previous</a>
 
-        <a href="#" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+        <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
 
         <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Submit</a>
 

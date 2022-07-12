@@ -4,11 +4,11 @@ using System.Net;
 using System.ComponentModel.DataAnnotations;
 namespace PMS_API
 {
-   [ApiController]
+//    [ApiController]
     [Route("[controller]/[Action]")]
     public class LoginController :Controller{
         
-        private readonly ILoginService _loginServices;
+        private ILoginService _loginServices;
          private readonly ILogger<LoginController> _logger;
         public LoginController(ILoginService loginServices, ILogger<LoginController> logger)
         {

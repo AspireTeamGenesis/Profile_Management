@@ -25,7 +25,7 @@ namespace PMS_API
         
         public virtual ProfileStatus? profilestatus {get;set;}
        
-        public int UserId {get; set;}
+        // public int UserId {get; set;}
       
         public DateTime? CreatedOn { get; set; }
 
@@ -33,7 +33,8 @@ namespace PMS_API
 
         public DateTime? UpdatedOn { get; set; }
 
-        public int? UpdatedBy { get; set; }
+        [ForeignKey("UserId")]
+        public int UserId{get;set;}
         [DefaultValue(true)]
         public bool IsActive{get;set;}
 

@@ -32,7 +32,7 @@
       <div class="input-group">
         <label for="College">College</label>
         <select id="college" name="college" [(ngModel)]="user.collegeId" required>
-          <option value="">Select college/University</option>
+          <option value="0">Select college/University</option>
           <option *ngFor="let item of collegeValue" value={{item.collegeId}}>{{item.collegeName}}</option>
         </select>
       </div>
@@ -76,13 +76,13 @@
       <br>
       <!-- <app-educationcard [profileId]="profileId"></app-educationcard> -->
       <div class="row" *ngIf="foot">
-        <app-educationcard [profileId]="profileId"></app-educationcard>
+        <app-educationcard></app-educationcard>
 
-        <a [routerLink]="['/personal',profileId]" class="btn btn-next width-50 ml-auto">Previous</a>
+        <a [routerLink]="['/personal']" class="btn btn-next width-50 ml-auto">Previous</a>
 
-        <a href="#" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+        <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
 
-        <a [routerLink]="['/project',profileId]" class="btn btn-next width-50 ml-auto">Next</a>
+        <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Next</a>
 
       </div>
     </div>

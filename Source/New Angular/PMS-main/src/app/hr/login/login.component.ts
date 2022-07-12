@@ -1,26 +1,11 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-//   styleUrls: ['./login.component.css']
-// })
-// export class LoginComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 //import { AuthenticationService } from 'src/services/authentication.service';
 
-import { User} from 'Models/user'; 
+import { User } from 'Models/user';
 // import { ConnectionService } from 'src/services/connection.service';
 import { UserserviceService } from 'src/app/service/userservice.service';
 
@@ -33,12 +18,25 @@ export class LoginComponent implements OnInit {
 
   IsAdmin: boolean = false;
   IsHR: boolean = false;
-  userValue:User[]=[];
+  userValue: User[] = [];
+  submitted: boolean;
+  loading: boolean;
+  error: string = '';
+  isCommanError: boolean = false;
 
- // employeeDetails: any;
+  loginForm = this.formBuilder.group({
+    UserName: ['', [Validators.required, Validators.pattern("^[A-z][a-z|\.|\s]+$")]],
+    Password: ['', [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$")]]
+  });
+
+  // employeeDetails: any;
   //employeeID='';
- // employeeACENumber: any;
-  constructor(private http: HttpClient, private route: Router, private service:UserserviceService) { }
+  // employeeACENumber: any;
+  constructor(private formBuilder: FormBuilder,
+    private http: HttpClient, private route: Router,
+    private service: UserserviceService) { 
+      this.onChanges();
+    }
   user: any = {
 
     UserName: '',
@@ -49,54 +47,88 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    const headers = { 'content-type': 'application/json' }
+    this.submitted = true;
+    console.log(this.loginForm.valid)
+    if(!this.loginForm.valid){
+      console.warn("1");
+      this.loading = true
+      const user = {
+        UserName: this.loginForm.value['UserName'],
+        Password: this.loginForm.value['Password']
+      }
+      console.warn(user);
 
-  console.log(this.user)
-      this.service.Login(this.user).subscribe((data) => {
+      this.service.Login(user).subscribe({
+        next: (data) => {
+          this.IsAdmin = data.isAdmin
+          this.IsHR = data.isHR
 
-        this.IsAdmin = data.isAdmin
-        this.IsHR = data.isHR
-        
-        AuthenticationService.SetDateWithExpiry("token", data.token, data.expiryInMinutes)
-        AuthenticationService.SetDateWithExpiry("Admin", data.isAdmin, data.expiryInMinutes)
-        AuthenticationService.SetDateWithExpiry("HR", data.isHR, data.expiryInMinutes)
+          AuthenticationService.SetDateWithExpiry("token", data.token, data.expiryInMinutes)
+          AuthenticationService.SetDateWithExpiry("Admin", data.isAdmin, data.expiryInMinutes)
+          AuthenticationService.SetDateWithExpiry("HR", data.isHR, data.expiryInMinutes)
 
-        console.log(AuthenticationService.GetData("token"))
-        console.log(AuthenticationService.GetData("Admin"))
-        console.log(AuthenticationService.GetData("HR"))
+          console.log(AuthenticationService.GetData("token"))
+          console.log(AuthenticationService.GetData("Admin"))
+          console.log(AuthenticationService.GetData("HR"))
 
-        if (this.IsAdmin) {
-          this.route.navigateByUrl("/");  //navigation
+          if (this.IsAdmin) {
+            this.route.navigateByUrl("/");  //navigation
+          }
+          else if (this.IsHR) {
+            this.route.navigateByUrl("/search");
+          }
+          else {
+            this.route.navigateByUrl("/profilehome");
+          }
+          console.log(data)
+
+        },
+        error: (error: any) => {
+          console.warn("3")
+          if (error.status == 404) {
+            this.route.navigateByUrl("errorPage");
+          }
+          if (!(error.error.toString().includes('UserName') || error.error.toString().includes('Password'))) {
+            this.isCommanError = true;
+          }
+          this.error = error.error;
+          this.loading = false;
+        },
+        complete: () => {
+          console.warn("4")
+          return this.loading = false;
         }
-        else if (this.IsHR) {
-          this.route.navigateByUrl("/profilehome");
-        }
-        else {
-          this.route.navigateByUrl("/");
-        }
-        console.log(data)
-
       });
     }
-      
-// export class LoginComponent implements OnInit {
-//   @Input() artsrc: string = " ";
-//   //data: any;
-//   totalLength: any;
-
-//   constructor(private http: HttpClient) { }
-
-//   ngOnInit(): void {
-//     this.http
-//       .get<any>(this.artsrc)
-//       .subscribe((data) => {
-//         this.data = data;
-//         this.totalLength = data.length;
-//         console.log(data);
-//       });
-//   }
-
-//   public data: LoginComponent[] = [
-
-//   ];
   }
+  onChanges() : void {
+    this.loginForm.valueChanges.subscribe(val => {
+      if (this.loginForm.valid) {
+        console.warn("Valid");
+      } else {
+        console.warn("Valid");
+      }
+      });
+  }
+
+  // export class LoginComponent implements OnInit {
+  //   @Input() artsrc: string = " ";
+  //   //data: any;
+  //   totalLength: any;
+
+  //   constructor(private http: HttpClient) { }
+
+  //   ngOnInit(): void {
+  //     this.http
+  //       .get<any>(this.artsrc)
+  //       .subscribe((data) => {
+  //         this.data = data;
+  //         this.totalLength = data.length;
+  //         console.log(data);
+  //       });
+  //   }
+
+  //   public data: LoginComponent[] = [
+
+  //   ];
+}

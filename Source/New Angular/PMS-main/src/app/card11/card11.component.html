@@ -1,5 +1,5 @@
 <app-topbar></app-topbar>
-<app-sidebar></app-sidebar>
+<app-hrsidebar></app-hrsidebar>
 <script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
@@ -7,7 +7,6 @@
   
   <div class="main">
     <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
-
     <div class="kcard"
       *ngFor="let item of data| filter : this.search | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
       <a [routerLink]="['../hrprofile',item.userId]"><img class="card-img-top" src="./assets/img/profile.jpg"

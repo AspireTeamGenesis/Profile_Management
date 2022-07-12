@@ -23,6 +23,9 @@ export class EditprojectComponent implements OnInit {
    projectDetails:any;
    projectid:number=0;
    profileId:number=0;
+   showMe: boolean = false;
+
+    foot:boolean = true;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -57,6 +60,28 @@ export class EditprojectComponent implements OnInit {
       console.log("updateProject");
       console.log(project);
       this.service.updateproject(project).subscribe();
+
+  }
+
+  toogletag()
+
+  {
+
+    this.showMe=!this.showMe;
+
+  }
+
+
+
+  footer()
+
+  {
+
+    this.foot=!this.foot;
+
+    if(this.foot==false){this.foot=true};
+
+   
 
   }
 

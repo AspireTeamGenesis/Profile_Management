@@ -1,6 +1,6 @@
 namespace PMS_API
 {
-    public static class ProfileDataFactory
+    public class ProfileDataFactory
     {
         public static Context GetProfileContext()
         {

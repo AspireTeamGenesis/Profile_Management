@@ -35,6 +35,11 @@ import { EditprojectComponent } from './editproject/editproject.component';
 import { CreateprofileComponent } from './createprofile/createprofile.component';
 import { PersonalComponent } from './personal/personal.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { EditpersonalComponent } from './editpersonal/editpersonal.component';
+import { DatePipe } from '@angular/common';
+import { HrsearchComponent } from './hrsearch/hrsearch.component';
+import { HrsidebarComponent } from './hrsidebar/hrsidebar.component';
+import { HrchangepasswordComponent } from './hrchangepassword/hrchangepassword.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +72,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     EditprojectComponent,
     CreateprofileComponent,
     PersonalComponent,
+    EditpersonalComponent,
+    HrsearchComponent,
+    HrsidebarComponent,
+    HrchangepasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +86,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

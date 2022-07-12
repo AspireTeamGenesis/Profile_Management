@@ -20,25 +20,28 @@ export class EditeducationComponent implements OnInit {
     this.years.push(year);
   }
     }
-    profileId:number=0;
+    profileId:number;
     // educationId=0;
     collegeValue:any;
   college:number=0;
   educationDetails:any;
+  profileIdDetails:any;
   educationid:number=0;
+  showMe: boolean = false;
+  foot:boolean = true;
 
   user:any;
   
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.educationid = params['educationid'];
-      this.profileId=params['profileId']
       console.log('Education id : ' + this.educationid);
-      console.log('Profile id : ' + this.profileId);
     })
     this.getCollege();
     console.log('Hello : '+this.educationid);
     this.getEducationDetails(this.educationid);
+    this.getProfileIdByUserId();
+
   }
   getCollege()
   {
@@ -47,6 +50,19 @@ export class EditeducationComponent implements OnInit {
       this.collegeValue=data;
     });
   }
+
+  getProfileIdByUserId()
+  {
+    this.service.getProfileIdByUserId().subscribe({
+        next:(data:any)=>{this.profileIdDetails=data,
+        this.profileId=this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails)
+        }
+  
+    })
+  }
+
    getEducationDetails(educationId:number)
   {
     console.log(educationId);
@@ -59,7 +75,7 @@ export class EditeducationComponent implements OnInit {
     {
       const education = {
         educationId: this.educationid,
-        profileId: 7,
+        profileId: this.profileId,
         degree: this.user.degree,
         course: this.user.course,
         collegeId:this.user.collegeid,
@@ -72,5 +88,23 @@ export class EditeducationComponent implements OnInit {
         this.service.updateEducation(education).subscribe();
     
       }
+      toogletag()
+
+  {
+
+    this.showMe=!this.showMe;
+
+  }
+  footer()
+
+  {
+
+    this.foot=!this.foot;
+
+    if(this.foot==false){this.foot=true};
+
+   
+
+  }
 
     }

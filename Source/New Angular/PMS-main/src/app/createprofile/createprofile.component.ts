@@ -12,17 +12,23 @@ export class CreateprofileComponent implements OnInit {
 
   constructor(private service:UserserviceService,private route: ActivatedRoute) { }
   userId:number=0;
-  profileId:number=6;
+  profileDetails:any;
+  profileId:number=0;
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.userId = params['userid'];
-      console.log('User id : '+this.userId);
+    this.getUserProfile();
+  }
+
+  getUserProfile(){
+    this.service.getUserProfile().subscribe( {
+      next:(data)=>{this.profileDetails=data,
+      console.log(this.profileDetails)}      
     })
+    console.log(this.profileDetails.userId);
   }
   createProfile()
   {
     const profile={
-      userId:this.userId,
+      userId:this.profileDetails.userid,
       profileId:0,
       profileStatusId:2
 

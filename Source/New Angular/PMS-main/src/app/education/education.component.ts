@@ -32,6 +32,8 @@ export class EducationComponent implements OnInit {
   college:number=0;
   educationDetails:any;
   profileId:number=0;
+  profileDetails:any;
+  profileIdDetails:any;
 
   // _college='';
   // college:any[]=[];
@@ -48,13 +50,31 @@ export class EducationComponent implements OnInit {
     percentage: 0,
   }
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.profileId = params['profileId'];
-      console.log('Education profile id : '+this.profileId);
-    })
+    this.getUserProfile;
     this.getCollege();
+    this.getProfileIdByUserId();
     // this.getEducationDetails(this.user.educationId);
 
+  }
+
+  getUserProfile(){
+    this.service.getUserProfile().subscribe( {
+      next:(data)=>{this.profileDetails=data,
+      console.log(this.profileDetails)}      
+    })
+    console.log(this.profileDetails.userid);
+  }
+
+  getProfileIdByUserId()
+  {
+    this.service.getProfileIdByUserId().subscribe({
+        next:(data:any)=>{this.profileIdDetails=data,
+        this.profileId=this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails)
+        }
+  
+    })
   }
   
   getCollege()

@@ -12,10 +12,9 @@ namespace PMS_API{
         {
             return new College();
         }
-       public static CollegeServices GetCollegeServiceObject()
+       public static ICollegeServices GetCollegeServiceObject()
         {
         return new CollegeServices();
         }
-        
     }
 }

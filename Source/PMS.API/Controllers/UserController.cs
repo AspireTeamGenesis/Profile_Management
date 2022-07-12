@@ -10,8 +10,8 @@ namespace PMS_API
     [Route("[controller]/[Action]")]
     public class UserController:Controller{
         
-        private readonly IUserServices _userServices;
-        private readonly ILogger _logger;
+        private IUserServices _userServices;
+        private ILogger _logger;
         public UserController(IUserServices userServices,ILogger<UserController> logger)
         {
             _userServices=userServices;
@@ -38,7 +38,7 @@ namespace PMS_API
 
             try{
 
-                int currentUser = Convert.ToInt32(User.FindFirst("UserId")?.Value);
+                int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
 
                 return Ok(_userServices.GetUser(currentUser));
 
@@ -92,7 +92,7 @@ namespace PMS_API
             
                
             try{
-                int currentUser = Convert.ToInt32(User.FindFirst("UserId")?.Value);
+                int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
                 //Adding user via userservice
                 return _userServices.AddUser(userValues,currentUser)?Ok(new{message="User Added Successfully"}):Problem("Sorry internal error occured");
                 
@@ -163,7 +163,7 @@ namespace PMS_API
         try
 
         {
-            int currentUser = Convert.ToInt32(User.FindFirst("UserId")?.Value);
+            int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
             return _userServices.ChangePassword(OldPassword,NewPassword,ConfirmPassword,currentUser) ? Ok("Password Changed Successfully") : BadRequest("Sorry internal error occured");
 
 

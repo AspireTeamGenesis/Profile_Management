@@ -1,16 +1,13 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { UserserviceService } from 'src/app/service/userservice.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute, ParamMap } from '@angular/router';
 
 
 import { Language } from 'Models/language';
 import { BreakDuration } from 'Models/breakduration';
 import { SocialMedia } from 'Models/socialMedia';
-//import { User } from 'Models/user';
 import { PersonalDetails } from 'Models/personalDetails';
 import { FormBuilder } from '@angular/forms';
-//import { PersonalServiceService } from 'src/app/service/personal-service.service';
 @Component({
   selector: 'app-personal',
   templateUrl: './personal.component.html',
@@ -23,33 +20,42 @@ export class PersonalComponent implements OnInit {
   cardImageBase64: string = "";
   isImageSaved: boolean = false;
   child: any;
+  profileDetails:any;
+  profileIdDetails:any;
 
 
   showMe: boolean = false;
 
   foot:boolean = true;
   
- // @Input() artsrc: string = " ";
-  //data: any;
-  // personalDetails: any;
-  // imageError!: string;
-  // Name: any;
-  // Objective: any;
-  // Dateofbirth:any;
-  // Nationality: any;
-  // Dateofjoining:any;
-  // Email:any;
-  // LanguageValue: string='';
-  // BreakdurationValue: string='';
-  // SocialmediaValue:string='';
 
-  constructor(private userService: UserserviceService, private http: HttpClient,private route: ActivatedRoute) { }
+
+  constructor(private service: UserserviceService, private http: HttpClient) { }
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.profileId = params['profileId'];
-      console.log('Personal profile id : '+this.profileId);
+    this.getUserProfile();
+    this.getProfileIdByUserId();
+  }
+
+  getUserProfile(){
+    this.service.getUserProfile().subscribe( {
+      next:(data)=>{this.profileDetails=data,
+      console.log(this.profileDetails),
+      console.log(this.profileDetails.userid);
+    }
+      
+      
     })
     
+  }
+  getProfileIdByUserId()
+  {
+    this.service.getProfileIdByUserId().subscribe({
+        next:(data:any)=>{this.profileIdDetails=data,
+        this.profileId=this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails)
+  }
+    })
   }
 
   languageValue:Language[]=[];
@@ -65,14 +71,18 @@ export class PersonalComponent implements OnInit {
   data : any;
   user:any = {
     personalDetailsId:0,
-    profileId: this.profileId,
+    profileId:0,
     base64header:'',
     image:null,
     objective: '',
     dateOfBirth: '',
     nationality: '',
     dateOfJoining:'',
-    userId:1006
+    userId:0
+  }
+  languageDetails:any=
+  {
+
   }
 
     // language:any{
@@ -98,7 +108,7 @@ export class PersonalComponent implements OnInit {
   
 
   GetAllPersonalDetailsByProfileId(){
-    this.userService.getPersonalDetailByProfileId(this.profileId).subscribe((res)=>{
+    this.service.getPersonalDetailByProfileId(this.profileId).subscribe((res)=>{
       this.user = res;
       console.log(this.data);
   })
@@ -182,16 +192,18 @@ export class PersonalComponent implements OnInit {
 
 personalSubmit()
 {
-  this.user.profileId=this.profileId;
+  this.user.profileId=this.profileIdDetails.profileId;
+  this.user.userId=this.profileDetails.userid;
   console.log("User ProfileId");
   console.log(this.user.profileId);
+  console.log(this.user.userId); 
   console.log(this.user);
-  this.userService.addPersonalDetail(this.user).subscribe(data=>this.user.push(data));
+  this.service.addPersonalDetail(this.user).subscribe(data=>this.user.push(data));
 }
 
 Update(){
   this.data = this.user;
-  this.userService.updatePersonalDetail(this.data).subscribe(data=>this.data.push(data));
+  this.service.updatePersonalDetail(this.data).subscribe(data=>this.data.push(data));
 }
 
   fileChangeEvent(fileInput:any){

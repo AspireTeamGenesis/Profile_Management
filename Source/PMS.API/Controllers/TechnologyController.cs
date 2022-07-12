@@ -13,7 +13,7 @@ public class TechnologyController : ControllerBase
     {
         _logger = logger;
     }
-    private readonly ITechnologyServices technologyService = TechnologyDataFactory.GetTechnologyServiceObject();
+    ITechnologyServices technologyService = TechnologyDataFactory.GetTechnologyServiceObject();
     [HttpGet]
     public IActionResult ViewTechnologies() //Getting the list of Technologies
     {

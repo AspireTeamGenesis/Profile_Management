@@ -10,6 +10,8 @@ import { UserserviceService } from '../service/userservice.service';
 })
 export class Card11Component implements OnInit {
   @Input() artsrc: string="https://localhost:7021/User/Getallusers";
+  // @Input() artsrc: string="https://localhost:7021/User/GetSpecificUserDetails";
+
   totalLength:any;
   page:number=1;
   //userId: number = 0;
@@ -42,7 +44,7 @@ export class Card11Component implements OnInit {
       .subscribe((data)=>{
        this.data=data;
         this.totalLength=data.length;
-        console.warn(data[0]);
+        console.warn(this.data);
       });
   }
 

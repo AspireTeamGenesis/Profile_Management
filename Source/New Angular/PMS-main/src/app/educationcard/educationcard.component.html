@@ -12,7 +12,7 @@
             </p>
             <br>
             <h2>
-                <i routerLink="/editeducation/{{item.educationid}}/{{profileId}}" class="fa fa-pencil fa-sm"></i>
+                <i [routerLink]="['../editeducation',item.educationid]" class="fa fa-pencil fa-sm"></i>
                 <i (click)="cancelEducation(item.educationid)" class="fa fa-trash"></i>
                 <!-- <i (click)="DeleteEducation(item.educationId)" class="fa fa-trash"></i> -->
             </h2>

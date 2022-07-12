@@ -62,6 +62,11 @@ export class UserserviceService {
     return this.http.get<any>('https://localhost:7021/Technology/ViewTechnologies');
   }
 
+  // getProfileStatus()
+  // {
+  //   return this.http.get<any>('https://localhost:7021/ProfileStatus/ViewProfileStatuss');   
+  // }
+
   
   getOrganisation():Observable<Organisation[]>
   {
@@ -241,7 +246,7 @@ export class UserserviceService {
 
   getPersonalDetailByProfileId(profileId:number)
   {
-    return this.http.get<any>( `https://localhost:7021/Profile/GetAllPersonalDetailsByProfileId?Profileid=${profileId}`,{ headers: this.headers });
+    return this.http.get<any>( `https://localhost:7021/Profile/GetPersonalDetailsByProfileId?Profileid=${profileId}`,{ headers: this.headers });
   }
 
 
@@ -257,6 +262,20 @@ export class UserserviceService {
     return this.http.get<any>(`https://localhost:7021/Profile/GetProfileCount`,{headers : this.headers});
   }
 
+  getProfileIdByUserId()
+  {
+    return this.http.get<any>(`https://localhost:7021/Profile/GetProfileIdByUserId`,{headers:this.headers});
+  }
+
+  getProfileByFilters(filter:any)
+  {
+    return this.http.get<any>(``,{headers:this.headers});
+  }
+
+  getProfileBySearch(username:any)
+  {
+    return this.http.get<any>(``,{headers:this.headers});
+  }
 
  
 

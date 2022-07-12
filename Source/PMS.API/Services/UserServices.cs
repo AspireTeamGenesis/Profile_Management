@@ -7,21 +7,21 @@ namespace PMS_API{
 
     public class UserServices : IUserServices
     {
-        private readonly UserData userData;
+        private UserData userData;
 
-        private readonly ILogger<UserServices> _logger;
+        private ILogger<UserServices> _logger;
       
         public UserServices(ILogger<UserServices> logger){
             _logger=logger;
             userData=UserDataFactory.GetUserObject(logger);
         }
-        private readonly UserValidation _validation=UserDataFactory.GetValidationObject();
+        private UserValidation _validation=UserDataFactory.GetValidationObject();
         public IEnumerable<User> GetallUsers()
         {
             try{
-                
+                // IEnumerable<User> userDetails = new List<User>();
              
-                return from  user in userData.GetallUsers() where user.IsActive select user;
+                return from  user in userData.GetallUsers() where user.IsActive==true select user;
                 
             
             
@@ -41,8 +41,8 @@ namespace PMS_API{
                 {
                     Name = var.Name,
                     UserId=var.UserId,
-                    Designation = var.designation?.DesignationName,
-                    ReportingPerson = var.ReportingPersonUsername,
+                    Designation = var.designation.DesignationName,
+                    ReportingPerson = var.ReportingPersonUsername
                 }
                 );
             }
@@ -59,19 +59,23 @@ namespace PMS_API{
             try
             {
                 var getuser= userData.GetUser(id); 
-                if(getuser.IsActive){
+                if(getuser.IsActive==true){
                 return new {
                     userid=getuser.UserId,
                     name =getuser.Name,
                     email=getuser.Email,
                     username=getuser.UserName,
                     password=getuser.Password,
-                    gender=getuser.gender?.GenderName,
-                    countryCode=getuser.countrycode?.CountryCodeName,
+                    genderId=getuser.GenderId,
+                    gender=getuser.gender.GenderName,
+                    CountryCodeId=getuser.CountryCodeId,
+                    countryCode=getuser.countrycode.CountryCodeName,
                     mobilenumber=getuser.MobileNumber,
-                    designation=getuser.designation?.DesignationName,
+                    designationId=getuser.DesignationId,
+                    designation=getuser.designation.DesignationName,
                     reportingpersonUsername=getuser.ReportingPersonUsername,
-                    organisation=getuser.organisation?.OrganisationName
+                    organisationId=getuser.OrganisationId,
+                    organisation=getuser.organisation.OrganisationName
 
                 };}
                 else{
@@ -93,7 +97,7 @@ namespace PMS_API{
             {
                 item.CreatedBy=userId;
                 item.CreatedOn=DateTime.Now;
-                return userData.AddUser(item);              //Ternary operator
+                return userData.AddUser(item)?true:false;              //Ternary operator
                 
             }
             catch(ValidationException exception){
@@ -119,7 +123,7 @@ namespace PMS_API{
             try
             {
 
-                return userData.Disable(id);
+                return userData.Disable(id)?true:false;
                 
             }
             
@@ -137,7 +141,7 @@ namespace PMS_API{
                 
                item.UpdatedBy=item.UserId;
                 item.UpdatedOn=DateTime.Now;
-                return userData.UpdateUser(item);
+                return userData.UpdateUser(item)?true:false;
                 
             }
             
@@ -161,7 +165,7 @@ namespace PMS_API{
                 if(NewPassword != ConfirmPassword)
                     throw new ValidationException($"The confirm password should be the same as new password : {ConfirmPassword}");
                 else{
-                    return userData.EditPassword(OldPassword,NewPassword,ConfirmPassword,currentUser);
+                    return userData.EditPassword(OldPassword,NewPassword,ConfirmPassword,currentUser) ? true : false;
                 }
 
             }

@@ -13,7 +13,7 @@ public class DomainController : ControllerBase
     {
         _logger = logger;
     }
-    private readonly IDomainServices DomainService = DomainDataFactory.GetDomainServiceObject();
+    IDomainServices DomainService = DomainDataFactory.GetDomainServiceObject();
     [HttpGet]
     public IActionResult ViewDomains() //Getting the list of Domains
     {

@@ -16,6 +16,7 @@ export class SkillsComponent implements OnInit {
   domainValue:any;
   technologyValue:any;
   profileId:number=0;
+  profileIdDetails:any;
 
 
   showMe: boolean = false;
@@ -30,12 +31,9 @@ export class SkillsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.profileId = params['profileId'];
-      console.log('Skill profile id : '+this.profileId);
-    })
     this.getDomain();
     this.getTechnology();
+    this.getProfileIdByUserId();
     
   }
   getDomain()
@@ -51,6 +49,17 @@ export class SkillsComponent implements OnInit {
     {
       this.technologyValue=data;
     });
+  }
+
+  getProfileIdByUserId()
+  {
+    this.service.getProfileIdByUserId().subscribe({
+        next:(data:any)=>{this.profileIdDetails=data,
+        this.profileId=this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails)
+  }
+    })
   }
 
   submitSkills()
