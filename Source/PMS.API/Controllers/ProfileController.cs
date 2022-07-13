@@ -1019,7 +1019,29 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
-        
+        [HttpPost]
+        public IActionResult AcceptOrRejectProfile(int profileId, int response)
+        {
+            if ( profileId <= 0)
+            {
+                _logger.LogError("ProfileController:():AcceptOrRejectProfile() ProfileId is not valid");
+                return BadRequest(new { message = "Profile not be null" });
+            }
+            try
+            {
+                return _profileService.AcceptOrRejectProfile(profileId,response) ? Ok(new { message = "Profile Status Changed" }) : Problem("Some Internal error Occured");
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogInformation($"ProfileController :AcceptOrRejectProfile()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController :AcceptOrRejectProfile()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+        }
 
     }
 }

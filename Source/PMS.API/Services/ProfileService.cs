@@ -8,6 +8,7 @@ namespace PMS_API
 
         ProfileData profileData;
         private ILogger<ProfileService> _logger;
+        private static ProfileValidation _profileValidate = ProfileDataFactory.GetProfileVaidationObject();
 
         public ProfileService(ILogger<ProfileService> logger)
         {
@@ -60,6 +61,7 @@ namespace PMS_API
         public bool AddPersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null) throw new ArgumentNullException($"Values cannot be null values are {personalDetails}");
+            _profileValidate.PersonalDetailsvalidate(personalDetails);
             try
             {
 
@@ -116,7 +118,7 @@ namespace PMS_API
                     language = getpersonaldetails.language,
                     socialmedia = getpersonaldetails.socialmedia,
                     breakduration = getpersonaldetails.breakDuration,
-                    
+
                 };
             }
             catch (Exception exception)
@@ -143,8 +145,8 @@ namespace PMS_API
                      language = removeAdditionalDetailsExceptLanguage(item.language),
                      socialmedia = removeAdditionalDetailsExceptSocialMedia(item.socialmedia),
                      breakduration = removeAdditionalDetailsExceptBreakDuration(item.breakDuration),
-                
-                     
+
+
 
                  }); return getpersonaldetailsbyprofileid;
             }
@@ -154,7 +156,7 @@ namespace PMS_API
                 throw exception;
             }
         }
-        private  ICollection<Language> removeAdditionalDetailsExceptLanguage(ICollection<Language> languages)
+        private ICollection<Language> removeAdditionalDetailsExceptLanguage(ICollection<Language> languages)
         {
             foreach (var item in languages)
             {
@@ -162,7 +164,7 @@ namespace PMS_API
             }
             return languages;
         }
-        private  ICollection<BreakDuration> removeAdditionalDetailsExceptBreakDuration(ICollection<BreakDuration> breakDurations)
+        private ICollection<BreakDuration> removeAdditionalDetailsExceptBreakDuration(ICollection<BreakDuration> breakDurations)
         {
             foreach (var item in breakDurations)
             {
@@ -170,7 +172,7 @@ namespace PMS_API
             }
             return breakDurations;
         }
-        private  ICollection<SocialMedia> removeAdditionalDetailsExceptSocialMedia(ICollection<SocialMedia> socialMedias)
+        private ICollection<SocialMedia> removeAdditionalDetailsExceptSocialMedia(ICollection<SocialMedia> socialMedias)
         {
             foreach (var item in socialMedias)
             {
@@ -196,7 +198,7 @@ namespace PMS_API
         public bool UpdatePersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null) throw new ArgumentNullException($" ProfileService:UpdatePersonalDetail()-Personal values not be null{personalDetails}");
-
+            _profileValidate.PersonalDetailsvalidate(personalDetails);
             try
             {
                 var Profile = GetPersonalById(personalDetails.PersonalDetailsId);
@@ -249,6 +251,7 @@ namespace PMS_API
         public bool AddEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($"Values cannot be null values are {education}");
+            _profileValidate.Educationdetailvalidation(education);
             try
             {
                 // education.Starting = education.Starting;
@@ -354,7 +357,7 @@ namespace PMS_API
         public bool UpdateEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($" PersonalServices:UpdateEducation()-Education values not be null{education}");
-
+            _profileValidate.Educationdetailvalidation(education);
             try
             {
                 Education Profile = GetEducationById(education.EducationId);
@@ -406,9 +409,10 @@ namespace PMS_API
         public bool AddProjects(Projects project)
         {
             if (project == null) throw new ArgumentNullException($"Values cannot be null values are {project}");
+            _profileValidate.ProjectDetailvalidation(project);
             try
             {
-                project.IsActive=true;
+                project.IsActive = true;
                 project.CreatedBy = project.ProfileId;
                 project.CreatedOn = DateTime.Now;
                 return profileData.AddProjects(project) ? true : false;
@@ -520,7 +524,7 @@ namespace PMS_API
         public bool UpdateProjects(Projects projects)
         {
             if (projects == null) throw new ArgumentNullException($" PersonalServices:UpdateProjcts()-Project values not be null{projects}");
-
+            _profileValidate.ProjectDetailvalidation(projects);
             try
             {
                 var Profile = GetProjectById(projects.ProjectId);
@@ -579,6 +583,7 @@ namespace PMS_API
         public bool AddSkills(Skills skill)
         {
             if (skill == null) throw new ArgumentNullException($"Values cannot be null values are {skill}");
+             _profileValidate.SkillDetailValidation(skill);
             try
             {
                 skill.CreatedBy = skill.ProfileId;
@@ -671,7 +676,7 @@ namespace PMS_API
         public bool UpdateSkills(Skills skill)
         {
             if (skill == null) throw new ArgumentNullException($" PersonalServices:Update()-skill values not be null{skill}");
-
+             _profileValidate.SkillDetailValidation(skill);
             try
             {
                 var skills = GetSkillById(skill.SkillId);
@@ -780,8 +785,9 @@ namespace PMS_API
                 return profileData.DisableLanguage(Languageid) ? true : false;
 
             }
-            
-            catch(Exception exception){
+
+            catch (Exception exception)
+            {
                 _logger.LogInformation($"ProfileServices:DisableLanguage()-{exception.Message}\n{exception.StackTrace}");
                 return false;
             }
@@ -836,7 +842,8 @@ namespace PMS_API
                     technologyname = gettechnologydetails.TechnologyName
                 };
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"ProfileServices:GetTechnologyById()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
@@ -899,7 +906,7 @@ namespace PMS_API
                 throw exception;
             }
         }
-         public IEnumerable<Object> GetAllAchievementDetailsByProfileId(int Profileid)
+        public IEnumerable<Object> GetAllAchievementDetailsByProfileId(int Profileid)
         {
             if (Profileid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Profileid}");
@@ -949,7 +956,7 @@ namespace PMS_API
                 foreach (var item in result)
                 {
                     item.year = calculateExperience(item.personalDetails.PersonalDetailsId);
-                    
+
                 }
                 return result;
 
@@ -966,7 +973,8 @@ namespace PMS_API
         {
             if (Profileid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Profileid}");
-            try{
+            try
+            {
                 return profileData.GetProfileStatusByProfileId(Profileid);
             }
             catch (Exception exception)
@@ -983,16 +991,17 @@ namespace PMS_API
             try
             {
                 // var getviewdetails= profileData.GetallProfiles().Where(item => item.ProfileId==Profileid && item.IsActive==true).Select(item =>
-                var getviewdetails= 
-                new {
-                    personaldetails=GetPersonalDetailsByProfileId(Profileid),
-                    educationdetails=GetAllEducationDetailsByProfileId(Profileid),
-                    projectdetails=GetAllProjectDetailsByProfileId(Profileid),
-                    skilldetails=GetAllSkillDetailsByProfileId(Profileid),
-                    achievementdetails=GetAllAchievementDetailsByProfileId(Profileid),
-                    profilestatus=GetProfileStatusByProfileId(Profileid),
+                var getviewdetails =
+                new
+                {
+                    personaldetails = GetPersonalDetailsByProfileId(Profileid),
+                    educationdetails = GetAllEducationDetailsByProfileId(Profileid),
+                    projectdetails = GetAllProjectDetailsByProfileId(Profileid),
+                    skilldetails = GetAllSkillDetailsByProfileId(Profileid),
+                    achievementdetails = GetAllAchievementDetailsByProfileId(Profileid),
+                    profilestatus = GetProfileStatusByProfileId(Profileid),
                     // updateddate=profileData.GetProfileById(Profileid).UpdatedOn
-                   
+
                 };
                 //); 
                 return getviewdetails;
@@ -1015,32 +1024,38 @@ namespace PMS_API
                     Name = item.personalDetails.users.Name,
                     Designation = item.personalDetails.users.designation.DesignationName,
                     ReportingPerson = item.personalDetails.users.ReportingPersonUsername,
-                   
-                    
+
+
 
                 }); return getprofile;
 
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"ProfileServices:GetSpecificProfile()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
         }
-        public object GetProfileIdByUserId(int Userid){
+        public object GetProfileIdByUserId(int Userid)
+        {
             if (Userid <= 0)
                 throw new ArgumentNullException($"ID is not provided{Userid}");
-            try{
-                var getprofile= profileData.GetProfileIdByUserId(Userid); 
+            try
+            {
+                var getprofile = profileData.GetProfileIdByUserId(Userid);
 
-                if(getprofile.IsActive){
-                return new {
-                    profilestatus=getprofile.profilestatus.ProfileStatusName,
-                    profileId=getprofile.ProfileId
-                };
+                if (getprofile.IsActive)
+                {
+                    return new
+                    {
+                        profilestatus = getprofile.profilestatus.ProfileStatusName,
+                        profileId = getprofile.ProfileId
+                    };
                 }
                 return getprofile;
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 _logger.LogError($"ProfileServices:GetProfileIdByUserId()-{exception.Message}\n{exception.StackTrace}");
                 throw exception;
             }
@@ -1048,11 +1063,11 @@ namespace PMS_API
         }
         public bool AddProfileHistory(ProfileHistory profilehistory)
         {
-            if (profilehistory == null) 
+            if (profilehistory == null)
                 throw new ArgumentNullException($"Values cannot be null values are {profilehistory}");
-            
-            profilehistory.profile=profileData.GetProfileById(profilehistory.ProfileId);
-            if(profilehistory.profile.ProfileStatusId!=1)
+
+            profilehistory.profile = profileData.GetProfileById(profilehistory.ProfileId);
+            if (profilehistory.profile.ProfileStatusId != 1)
                 throw new ValidationException("Status should be Approved by Reporting Person");
             try
             {
@@ -1073,13 +1088,14 @@ namespace PMS_API
                 // var lastFiveProducts = (from p in products 
                 //         orderby p.ProductDate descending
                 //         select p).Take(5);
-            
 
-                return profileData.GetallProfileHistories().Where(item =>item.IsActive).OrderByDescending(item =>item.ApprovedDate).Select(item => new {
-                    profileHistory=item,
-                    Profile=GetProfileById(item.ProfileId)
 
-                }) ;
+                return profileData.GetallProfileHistories().Where(item => item.IsActive).OrderByDescending(item => item.ApprovedDate).Select(item => new
+                {
+                    profileHistory = item,
+                    Profile = GetProfileById(item.ProfileId)
+
+                });
 
 
 
@@ -1103,13 +1119,14 @@ namespace PMS_API
 
             {
 
-                return profileData.GetallProfileHistories().Where(item=>item.ProfileId==Profileid).OrderByDescending(item=>item.ApprovedDate).Take(3).Select(item =>
+                return profileData.GetallProfileHistories().Where(item => item.ProfileId == Profileid).OrderByDescending(item => item.ApprovedDate).Take(3).Select(item =>
 
-                new{
+                new
+                {
 
-                    profileHistory=item,
+                    profileHistory = item,
 
-                    Profile=GetProfileById(item.ProfileId)
+                    Profile = GetProfileById(item.ProfileId)
 
                 });
 
@@ -1152,12 +1169,12 @@ namespace PMS_API
             }
 
         }
- 
-        public object GetFilterdProfile(string userName,int designationId,int domainID,int technologyId,int collegeId,int profileStatusId,int maxExperience,int minExperience)
+
+        public object GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience)
         {
             try
             {
-                return profileData.GetFilterdProfile(userName,designationId, domainID, technologyId, collegeId, profileStatusId,maxExperience, minExperience)
+                return profileData.GetFilterdProfile(userName, designationId, domainID, technologyId, collegeId, profileStatusId, maxExperience, minExperience)
                 // .Where((user=>user.personalDetails!=null &&  maxExperience!=0 && minExperience!=0 )
                 //         ||(
                 //             minExperience<=calculateExperience(user.personalDetails.PersonalDetailsId) 
@@ -1165,18 +1182,38 @@ namespace PMS_API
                 //         )
                 //     )
                 .Select(user => new
-                    {
-                        profileId=user.profile.ProfileId,
-                        profileStatus=user.profile.profilestatus.ProfileStatusName,
-                        name=user.Name,
-                        designation=user.designation.DesignationName,
-                        repotingPerson=user.ReportingPersonUsername,
-                        image=user.personalDetails.Image
-                    });   
+                {
+                    profileId = user.profile.ProfileId,
+                    profileStatus = user.profile.profilestatus.ProfileStatusName,
+                    name = user.Name,
+                    designation = user.designation.DesignationName,
+                    repotingPerson = user.ReportingPersonUsername,
+                    image = user.personalDetails.Image
+                });
             }
             catch (Exception exception)
             {
                 _logger.LogError($"ProfileService : GetFilterdProfile()-{exception.Message}\n{exception.StackTrace}");
+                throw;
+            }
+        }
+        public bool AcceptOrRejectProfile(int profileId, int response)
+        {
+            if (profileId <= 0)
+                throw new ValidationException($"ProfileId cannot be negative:");
+
+            try
+            {
+                return profileData.AcceptOrRejectProfile(profileId, response) ? true : false;
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError($"ProfileService:AcceptOrRejectProfile()-{exception.Message}\n{exception.StackTrace}");
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"ProfileService:AcceptOrRejectProfile()-{exception.Message}\n{exception.StackTrace}");
                 throw;
             }
         }

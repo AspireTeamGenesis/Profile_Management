@@ -982,6 +982,30 @@ namespace PMS_API
                 throw;
             }         
         }
+        public bool AcceptOrRejectProfile(int profileId, int response)
+        {
+            if (profileId <= 0)
+                throw new ValidationException("ProfileId cannot be negative in DAL");
+
+            try
+            {
+                Profile status = _context.profile.Find(profileId);
+                if(response == 2)
+                    throw new ValidationException("cannot change to waiting for approval");
+                else if (status.ProfileStatusId.Equals(1)||status.ProfileStatusId.Equals(3))
+                    throw new ValidationException("Profile Status already Updated");
+                status.ProfileStatusId = response;
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"ProfileData.cs-AcceptOrRejectProfile()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-AcceptOrRejectProfile()-{exception.StackTrace}");
+                throw exception;
+            }
+
+        }
     }
 
 }

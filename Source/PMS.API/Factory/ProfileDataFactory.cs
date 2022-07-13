@@ -10,5 +10,9 @@ namespace PMS_API
         {
             return new ProfileData(GetProfileContext(),logger);
         }
+        public static ProfileValidation GetProfileVaidationObject()
+        {
+            return new ProfileValidation();
+        }
     }
 }
