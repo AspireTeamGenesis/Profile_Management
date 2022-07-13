@@ -14,7 +14,7 @@ namespace PMS_API{
         [StringLength(80)]
         public string ? DesignationName{get;set;}
         [InverseProperty("designation")]
-        public virtual ICollection<User>?  users  {get;set;}
+        public ICollection<User>?  users  {get;set;}
         [DefaultValue(true)]
         public bool IsActive{get;set;}
         

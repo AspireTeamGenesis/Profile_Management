@@ -959,8 +959,9 @@ namespace PMS_API
 
         public List<User> GetFilterdProfile(string userName,int designationId,int domainID,int technologyId,int collegeId,int profileStatusId,int maxExperience,int minExperience)
         {
-            //return (from user in _context.users.Include(e=>e.designation).Include(e=>e.profile).Include(e=>e.profile.personalDetails).Include(e=>e.profile.profilestatus) where user.profile!=null && user.personalDetails!=null select user).ToList();
-            return  _context.users
+            try
+            {
+                 return _context.users
                     .Include(e=>e.designation)
                     .Include(e=>e.profile)
                     .Include(e=>e.profile.personalDetails)
@@ -973,7 +974,13 @@ namespace PMS_API
                     .WhereIf(collegeId!=0,users=>users.profile.education.Any(s=>s.CollegeId==collegeId)==true)
                     .WhereIf(profileStatusId!=0,users=>users.profile.ProfileStatusId==profileStatusId)
                     .ToList();
-                    
+            }
+
+            catch (Exception exception)
+            {                
+                _logger.LogError($"ProfileData.cs-GetFilterdProfile()-{exception.Message}");
+                throw;
+            }         
         }
     }
 

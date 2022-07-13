@@ -64,7 +64,7 @@ namespace PMS_API.Migrations
 
                     b.HasIndex("ProfileId");
 
-                    b.ToTable("achievements");
+                    b.ToTable("achievements", (string)null);
 
                     b.HasData(
                         new
@@ -126,7 +126,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("AchievementTypeId");
 
-                    b.ToTable("achievementtype");
+                    b.ToTable("achievementtype", (string)null);
 
                     b.HasData(
                         new
@@ -179,7 +179,7 @@ namespace PMS_API.Migrations
 
                     b.HasIndex("PersonalDetailsId");
 
-                    b.ToTable("breakDurations");
+                    b.ToTable("breakDurations", (string)null);
 
                     b.HasData(
                         new
@@ -253,7 +253,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("ChangePasswordId");
 
-                    b.ToTable("ChangePasswords");
+                    b.ToTable("ChangePasswords", (string)null);
                 });
 
             modelBuilder.Entity("PMS_API.College", b =>
@@ -274,7 +274,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("CollegeId");
 
-                    b.ToTable("Colleges");
+                    b.ToTable("Colleges", (string)null);
 
                     b.HasData(
                         new
@@ -356,7 +356,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("CountryCodeId");
 
-                    b.ToTable("CountryCodes");
+                    b.ToTable("CountryCodes", (string)null);
 
                     b.HasData(
                         new
@@ -439,7 +439,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("DesignationId");
 
-                    b.ToTable("Designations");
+                    b.ToTable("Designations", (string)null);
 
                     b.HasData(
                         new
@@ -534,7 +534,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("DomainId");
 
-                    b.ToTable("Domains");
+                    b.ToTable("Domains", (string)null);
 
                     b.HasData(
                         new
@@ -651,7 +651,7 @@ namespace PMS_API.Migrations
 
                     b.HasIndex("ProfileId");
 
-                    b.ToTable("educations");
+                    b.ToTable("educations", (string)null);
 
                     b.HasData(
                         new
@@ -733,7 +733,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("GenderId");
 
-                    b.ToTable("Gender");
+                    b.ToTable("Gender", (string)null);
 
                     b.HasData(
                         new
@@ -799,7 +799,7 @@ namespace PMS_API.Migrations
 
                     b.HasIndex("PersonalDetailsId");
 
-                    b.ToTable("languages");
+                    b.ToTable("languages", (string)null);
 
                     b.HasData(
                         new
@@ -931,7 +931,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("OrganisationId");
 
-                    b.ToTable("Organisations");
+                    b.ToTable("Organisations", (string)null);
 
                     b.HasData(
                         new
@@ -1054,7 +1054,7 @@ namespace PMS_API.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("personalDetails");
+                    b.ToTable("personalDetails", (string)null);
 
                     b.HasData(
                         new
@@ -1152,7 +1152,7 @@ namespace PMS_API.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("profile");
+                    b.ToTable("profile", (string)null);
 
                     b.HasData(
                         new
@@ -1213,7 +1213,7 @@ namespace PMS_API.Migrations
 
                     b.HasIndex("ProfileId");
 
-                    b.ToTable("profilehistory");
+                    b.ToTable("profilehistory", (string)null);
 
                     b.HasData(
                         new
@@ -1263,7 +1263,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("ProfileStatusId");
 
-                    b.ToTable("ProfileStatuss");
+                    b.ToTable("ProfileStatuss", (string)null);
 
                     b.HasData(
                         new
@@ -1344,7 +1344,7 @@ namespace PMS_API.Migrations
 
                     b.HasIndex("ProfileId");
 
-                    b.ToTable("projects");
+                    b.ToTable("projects", (string)null);
 
                     b.HasData(
                         new
@@ -1459,7 +1459,7 @@ namespace PMS_API.Migrations
 
                     b.HasIndex("TechnologyId");
 
-                    b.ToTable("skills");
+                    b.ToTable("skills", (string)null);
 
                     b.HasData(
                         new
@@ -1542,7 +1542,7 @@ namespace PMS_API.Migrations
 
                     b.HasIndex("PersonalDetailsId");
 
-                    b.ToTable("SocialMedias");
+                    b.ToTable("SocialMedias", (string)null);
 
                     b.HasData(
                         new
@@ -1604,7 +1604,7 @@ namespace PMS_API.Migrations
 
                     b.HasKey("TechnologyId");
 
-                    b.ToTable("Technologies");
+                    b.ToTable("Technologies", (string)null);
 
                     b.HasData(
                         new
@@ -1737,7 +1737,7 @@ namespace PMS_API.Migrations
 
                     b.HasIndex("OrganisationId");
 
-                    b.ToTable("users");
+                    b.ToTable("users", (string)null);
 
                     b.HasData(
                         new

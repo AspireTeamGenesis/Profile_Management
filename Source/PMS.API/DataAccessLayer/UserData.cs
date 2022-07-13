@@ -30,15 +30,12 @@ namespace PMS_API
         //getting all users 
         public List<User> GetallUsers()
         {
-            
-            try{
-
-                return _context.users.Include("gender").Include("designation").Include("organisation").Include("countrycode").ToList();
-                
+            try
+            {
+                return _context.users.Include(user=>user.gender).Include(user=>user.designation).Include(user=>user.organisation).Include(user=>user.countrycode).ToList();
             }
             
             catch(Exception exception){
-                //log "if exception occures"
                 _logger.LogError($"UserData.cs-GetallUsers()-{exception.Message}");
                 _logger.LogInformation($"UserData.cs-GetallUsersL()-{exception.StackTrace}");
                 throw exception;

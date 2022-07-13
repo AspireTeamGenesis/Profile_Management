@@ -60,6 +60,7 @@ namespace PMS_API
         public virtual Organisation? organisation { get; set; }
 
         public int GenderId { get; set; }
+        
         [ForeignKey("GenderId")]
         [InverseProperty("users")]
         //[JsonIgnore]

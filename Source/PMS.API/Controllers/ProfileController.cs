@@ -1007,21 +1007,19 @@ namespace PMS_API
 
         }
         [HttpGet]
-        public IActionResult GetFilterdProfile(string? userName,int designationId,int domainID,int technologyId,int collegeId,int profileStatusId,int maxExperience,int minExperience)
+        public IActionResult GetFilterdProfile(CascadeFilter filterValues)
         {
             try
             {
-                return Ok(_profileService.GetFilterdProfile(userName,designationId, domainID, technologyId, collegeId, profileStatusId,maxExperience, minExperience));
+                return Ok(_profileService.GetFilterdProfile(filterValues.UserName,filterValues.DesignationId, filterValues.DomainID, filterValues.TechnologyId, filterValues.CollegeId, filterValues.ProfileStatusId,filterValues.MaxExperience, filterValues.MinExperience));
             }
             catch (Exception exception)
             {
-                _logger.LogInformation($"ProfileController :GetFilterdProfile()- exception occured while filtring record{exception.Message}{exception.StackTrace}");
+                _logger.LogError($"ProfileController :GetFilterdProfile()- {exception.Message}{exception.StackTrace}");
                 return Problem(exception.Message);
             }
-
-
         }
-
+        
 
     }
 }

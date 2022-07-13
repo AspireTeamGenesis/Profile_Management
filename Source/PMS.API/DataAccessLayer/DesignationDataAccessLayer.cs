@@ -12,7 +12,7 @@ namespace PMS_API
         {
             try
             {
-                return _db.Designations.ToList();
+                return _db.Designations.Include(d=>d.users).ToList();
             }
             catch (DbUpdateException ex)              //DB Update Exception Occured
             {

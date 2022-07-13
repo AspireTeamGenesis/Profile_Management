@@ -1152,52 +1152,33 @@ namespace PMS_API
             }
 
         }
-
-       
-       
-       
-       
+ 
         public object GetFilterdProfile(string userName,int designationId,int domainID,int technologyId,int collegeId,int profileStatusId,int maxExperience,int minExperience)
         {
-            return profileData.GetFilterdProfile(userName,designationId, domainID, technologyId, collegeId, profileStatusId,maxExperience, minExperience)
-            // .Where((user=>user.personalDetails!=null &&  maxExperience!=0 && minExperience!=0 )
-            //         ||(
-            //             minExperience<=calculateExperience(user.personalDetails.PersonalDetailsId) 
-            //             && maxExperience>=calculateExperience(user.personalDetails.PersonalDetailsId)
-            //         )
-            //     )
-            .Select(
-                user => new
-                {
-                    profileId=user.profile.ProfileId,
-                    profileStatus=user.profile.profilestatus.ProfileStatusName,
-                    name=user.Name,
-                    designation=user.designation.DesignationName,
-                    repotingPerson=user.ReportingPersonUsername,
-                    image=user.personalDetails.Image
+            try
+            {
+                return profileData.GetFilterdProfile(userName,designationId, domainID, technologyId, collegeId, profileStatusId,maxExperience, minExperience)
+                // .Where((user=>user.personalDetails!=null &&  maxExperience!=0 && minExperience!=0 )
+                //         ||(
+                //             minExperience<=calculateExperience(user.personalDetails.PersonalDetailsId) 
+                //             && maxExperience>=calculateExperience(user.personalDetails.PersonalDetailsId)
+                //         )
+                //     )
+                .Select(user => new
+                    {
+                        profileId=user.profile.ProfileId,
+                        profileStatus=user.profile.profilestatus.ProfileStatusName,
+                        name=user.Name,
+                        designation=user.designation.DesignationName,
+                        repotingPerson=user.ReportingPersonUsername,
+                        image=user.personalDetails.Image
+                    });   
             }
-            );
+            catch (Exception exception)
+            {
+                _logger.LogError($"ProfileService : GetFilterdProfile()-{exception.Message}\n{exception.StackTrace}");
+                throw;
+            }
         }
-       
-       
-       
-       
-       
-       
-       
-       
-        //     public object GetProfilesByDesignationId(int Designationid)
-        //     {
-        //         if (Designationid <= 0)
-        //             throw new ArgumentNullException($"ID is not provided{Designationid}");
-        //         try
-        //         {
-        //             var getviewdetails= 
-        //             new {
-        //                 designation=profileData.GetProfileById(Profileid).UpdatedOn
-        //             };
-        //     }
-
-        // }
     }
 }
