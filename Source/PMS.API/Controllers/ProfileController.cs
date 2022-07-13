@@ -1006,7 +1006,7 @@ namespace PMS_API
 
 
         }
-        [HttpGet]
+        [HttpPost]
         public IActionResult GetFilterdProfile(CascadeFilter filterValues)
         {
             try

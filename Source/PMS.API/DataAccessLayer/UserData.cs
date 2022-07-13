@@ -28,6 +28,19 @@ namespace PMS_API
         }
          private UserValidation _validation=UserDataFactory.GetValidationObject();
         //getting all users 
+        public List<User> GetallForCard()
+        {
+            try
+            {
+                return _context.users.Include(user=>user.designation).Include(user=>user.profile).Include(user=>user.profile.profilestatus).Include(user=>user.personalDetails).Where(user=>user.profile!=null).ToList();
+            }
+            
+            catch(Exception exception){
+                _logger.LogError($"UserData.cs-GetallUsers()-{exception.Message}");
+                _logger.LogInformation($"UserData.cs-GetallUsersL()-{exception.StackTrace}");
+                throw exception;
+            }
+        }
         public List<User> GetallUsers()
         {
             try
