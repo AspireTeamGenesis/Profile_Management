@@ -1174,12 +1174,10 @@ namespace PMS_API
         {
             try
             {
-                return profileData.GetFilterdProfile(userName, designationId, domainID, technologyId, collegeId, profileStatusId, maxExperience, minExperience)
-                // .Where((user=>user.personalDetails!=null &&  maxExperience!=0 && minExperience!=0 )
-                //         ||(
-                //             minExperience<=calculateExperience(user.personalDetails.PersonalDetailsId) 
-                //             && maxExperience>=calculateExperience(user.personalDetails.PersonalDetailsId)
-                //         )
+                return profileData.GetFilterdProfile(userName,designationId, domainID, technologyId, collegeId, profileStatusId,maxExperience, minExperience)
+                // .WhereIf(
+                //     (user=>user.personalDetails!=null &&  maxExperience!=0 && minExperience!=0 ),
+                //     ( minExperience<=calculateExperience(user=>user.personalDetails.PersonalDetailsId) && maxExperience>=calculateExperience(user.personalDetails.PersonalDetailsId))
                 //     )
                 .Select(user => new
                 {

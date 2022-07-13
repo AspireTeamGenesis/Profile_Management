@@ -19,8 +19,6 @@ namespace PMS_API{
         public object GetallUsers(int profilestatusId)
         {
             try{
-                // IEnumerable<User> userDetails = new List<User>();
-             
                 return (from  user in userData.GetallForCard(profilestatusId) where user.IsActive==true select user).Select(
                     user => new{
                         UserId=user.UserId,
@@ -28,18 +26,14 @@ namespace PMS_API{
                         UserDesignation=user.designation.DesignationName,
                         ReportingPerson=user.ReportingPersonUsername,
                         UserProfileStatus=user.profile.profilestatus.ProfileStatusName,
-                        UserProfileImage=user.personalDetails.Image,
+                        UserProfileImage=user.personalDetails!=null?user.personalDetails.Image:null,
                         UserProfileId=user.profile.ProfileId
                     }
                 );
-                
-            
-            
             }
             catch(Exception exception){
-                // Log Exception occured in DAL while fetching users
                 _logger.LogError($"UserServices:GetAll()-{exception.Message}\n{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
         public Object GetSpecificUserDetails()
