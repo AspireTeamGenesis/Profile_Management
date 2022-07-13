@@ -16,12 +16,12 @@ namespace PMS_API{
             userData=UserDataFactory.GetUserObject(logger);
         }
         private UserValidation _validation=UserDataFactory.GetValidationObject();
-        public object GetallUsers()
+        public object GetallUsers(int profilestatusId)
         {
             try{
                 // IEnumerable<User> userDetails = new List<User>();
              
-                return (from  user in userData.GetallForCard() where user.IsActive==true select user).Select(
+                return (from  user in userData.GetallForCard(profilestatusId) where user.IsActive==true select user).Select(
                     user => new{
                         UserId=user.UserId,
                         Name=user.Name,

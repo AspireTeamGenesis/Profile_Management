@@ -20,10 +20,10 @@ namespace PMS_API
         }
         //Calling all users 
         [HttpGet]
-        public IActionResult Getallusers(){
+        public IActionResult Getallusers(int profilestatusId){
             try{
                 
-                return Ok(_userServices.GetallUsers());
+                return Ok(_userServices.GetallUsers(profilestatusId));
             }
            catch(Exception exception){
                _logger.LogInformation($"UserController :GetAllUsers()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
