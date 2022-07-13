@@ -1151,8 +1151,8 @@ namespace PMS_API
             {
                 var profile = GetallProfiles();
                 var Approved = profile.Where(p => p.ProfileStatusId == 1).Count();
-                var Rejected = profile.Where(p => p.ProfileStatusId == 2).Count();
-                var Waiting = profile.Where(p => p.ProfileStatusId == 3).Count();
+                var Rejected = profile.Where(p => p.ProfileStatusId == 3).Count();
+                var Waiting = profile.Where(p => p.ProfileStatusId == 2).Count();
                 var total = profile.Count();
                 var result = new Dictionary<string, int>();
                 result.Add("Approved Profiles", Approved);
@@ -1174,6 +1174,7 @@ namespace PMS_API
         {
             try
             {
+                
                 return profileData.GetFilterdProfile(userName,designationId, domainID, technologyId, collegeId, profileStatusId,maxExperience, minExperience)
                 // .WhereIf(
                 //     (user=>user.personalDetails!=null &&  maxExperience!=0 && minExperience!=0 ),
