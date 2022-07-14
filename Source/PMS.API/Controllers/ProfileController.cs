@@ -904,6 +904,24 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+          [HttpGet]
+        public IActionResult GetProfileIdByGivenUserId(int userId)
+        {
+            try
+            {
+                // int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
+                return Ok(_profileService.GetProfileIdByUserId(userId)) ;
+            }
+            catch (ValidationException exception)
+            {
+
+                _logger.LogInformation($"User Service :ChangePassword(string OldPassword,string NewPassword,string ConfirmPassword): {exception.Message}");
+
+                return BadRequest(exception.Message);
+
+            }
+
+        }
         [HttpGet]
         public IActionResult GetProfileIdByUserId()
         {

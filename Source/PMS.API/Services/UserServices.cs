@@ -26,7 +26,7 @@ namespace PMS_API{
                         UserDesignation=user.designation.DesignationName,
                         ReportingPerson=user.ReportingPersonUsername,
                         UserProfileStatus=user.profile.profilestatus.ProfileStatusName,
-                        UserProfileImage=user.personalDetails!=null?user.personalDetails.Image:null,
+                        UserProfileImage=user.personalDetails!=null?user.personalDetails!.Image:null,
                         UserProfileId=user.profile.ProfileId
                     }
                 );
@@ -101,6 +101,7 @@ namespace PMS_API{
             {
                 item.CreatedBy=userId;
                 item.CreatedOn=DateTime.Now;
+                item.IsActive= true;
                 return userData.AddUser(item)?true:false;              //Ternary operator
                 
             }

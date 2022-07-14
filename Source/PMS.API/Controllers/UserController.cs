@@ -92,7 +92,9 @@ namespace PMS_API
             
                
             try{
-                int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
+                int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value) ;
+                                // int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
+
                 //Adding user via userservice
                 return _userServices.AddUser(userValues,currentUser)?Ok(new{message="User Added Successfully"}):Problem("Sorry internal error occured");
                 

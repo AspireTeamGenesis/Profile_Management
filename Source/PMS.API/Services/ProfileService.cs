@@ -950,11 +950,10 @@ namespace PMS_API
         {
             try
             {
-
-
                 var result = from profile in profileData.GetallProfiles() where profile.IsActive == true select profile;
                 foreach (var item in result)
                 {
+                    if(item.personalDetails!=null)
                     item.year = calculateExperience(item.personalDetails.PersonalDetailsId);
 
                 }

@@ -59,10 +59,13 @@ export class CreateusersComponent implements OnInit {
   getDesignation()
   {
     this.service.getDesignation().subscribe(data => this.designationValue=data);
+    console.log(this.designationValue);
+    // console.log(data);
   }
   getOrganisation()
   {
     this.service.getOrganisation().subscribe(data => this.organisationValue=data);
+    console.log(this.organisationValue);
   }
 
   userdata(){
