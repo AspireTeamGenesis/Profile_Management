@@ -14,13 +14,13 @@
                         id="UserName" type="text" placeholder="User Name" formControlName="UserName"
                         class="myInput">
                         </div>
-                        <div
+                        <!-- <div
                         *ngIf="(submitted)||loginForm.controls['UserName'].invalid && loginForm.controls['UserName'].touched">
                         <span class="text-danger" *ngIf="loginForm.controls['UserName'].errors?.['required']">UserName is
                             required</span>
                         <span class="text-danger" *ngIf="loginForm.controls['UserName'].errors?.['pattern']">Please enter a Valid UserName</span>
                         <span *ngIf="error.toString().includes('')" class="text-danger">{{error}}</span>
-                    </div>
+                    </div> -->
                         
 
                         <!-- <div class="form-group">
@@ -35,13 +35,13 @@
                             id="Password" type="password" placeholder="Password" formControlName="Password"
                             class="myInput">
                         </div>
-                        <div
+                        <!-- <div
                         *ngIf="(submitted)||loginForm.controls['Password'].invalid && loginForm.controls['Password'].touched">
                         <span class="text-danger" *ngIf="loginForm.controls['Password'].errors?.['required']">Password is
                             required</span>
                             <span class="text-danger" *ngIf="loginForm.controls['Password'].errors?.['pattern']">Please enter a Valid Password</span>
                         <span *ngIf="error.toString().includes('Password')" class="text-danger">{{error}}</span>
-                    </div>
+                    </div> -->
                     <div *ngIf="loading" diameter="40" class="spinner">
                     </div>
                     <div *ngIf="isCommanError" class="span12 text-center">
