@@ -279,9 +279,9 @@ namespace PMS_API
 
             try
             {
-                var DOB = _context.personalDetails.Find(education.ProfileId).DateOfBirth;
-                if (education.Starting < DOB.Year)
-                    throw new ValidationException("StartingYear should be after DateOfBirth");
+                // var DOB = _context.personalDetails.Find(education.ProfileId).DateOfBirth;
+                // if (education.Starting < DOB.Year)
+                //     throw new ValidationException("StartingYear should be after DateOfBirth");
 
                 education.IsActive = true;
                 _context.educations.Add(education);
@@ -357,9 +357,9 @@ namespace PMS_API
 
             try
             {
-                var DateOfJoin = _context.personalDetails.Find(project.ProfileId).DateOfJoining;
-                if (project.StartingYear < DateOfJoin.Year)
-                    throw new ValidationException($"Project starting Year should be after Date of joining");
+                // var DateOfJoin = _context.personalDetails.Find(project.ProfileId).DateOfJoining;
+                // if (project.StartingYear < DateOfJoin.Year)
+                //     throw new ValidationException($"Project starting Year should be after Date of joining");
                 project.IsActive = true;
                 _context.projects.Add(project);
                 _context.SaveChanges();

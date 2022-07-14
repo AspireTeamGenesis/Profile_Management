@@ -48,6 +48,9 @@ namespace PMS_API
             if (profile == null) throw new ArgumentNullException($"Values cannot be null values are {profile}");
             try
             {
+                profile.CreatedBy=profile.UserId;
+                profile.CreatedOn=DateTime.Now;
+                profile.IsActive=true;
                 return profileData.AddProfile(profile) ? true : false;
             }
             catch (Exception exception)
@@ -65,7 +68,7 @@ namespace PMS_API
             try
             {
 
-                personalDetails.CreatedBy = personalDetails.UserId;
+                personalDetails.CreatedBy = personalDetails.ProfileId;
                 personalDetails.CreatedOn = DateTime.Now;
                 string Imagedate = "";
                 Imagedate = ImageService.Getbase64String(personalDetails.base64header);
@@ -616,7 +619,9 @@ namespace PMS_API
                 {
                     skillid = getskilldetails.SkillId,
                     domainname = getskilldetails.domain.DomainName,
-                    technologyname = getskilldetails.technology.TechnologyName
+                    technologyname = getskilldetails.technology.TechnologyName,
+                    domainId=getskilldetails.DomainId,
+                    technologyId=getskilldetails.TechnologyId
                 };
             }
             catch (Exception exception)
@@ -1196,7 +1201,7 @@ namespace PMS_API
                     name = user.Name,
                     designation = user.designation.DesignationName,
                     repotingPerson = user.ReportingPersonUsername,
-                    image = user.personalDetails.Image
+                    image = user.personalDetails != null?user.personalDetails.Image:null
                 });
             }
             catch (Exception exception)
