@@ -25,6 +25,10 @@
 
           <!-- <i class="fa fa-trash"></i> -->
         </h2>
+        <div class="container">
+          <div style="height:50%;"><a  [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,1)"><button  class="rounded1" ><h2 class ="button1" ><i  class="fa fa-check"></i></h2></button></a></div>
+          <div style="height:50%;"><a [routerLink]="['/waitingprofile']"  (click)="acceptorrejectprofile(item.userProfileId,3)"><button class="rounded"><h2 class ="button1" ><i class="fa fa-xmark"></i></h2></button></a></div>
+        </div>
 
       </div>
     </div>
