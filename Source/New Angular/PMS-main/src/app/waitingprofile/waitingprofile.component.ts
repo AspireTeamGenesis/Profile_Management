@@ -16,6 +16,8 @@ export class WaitingprofileComponent implements OnInit {
   achievementDetails:any;
   profileId:number;
   waitingProfiles:any;
+  acceptedProfile:any
+
   constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient) { }
   
   ngOnInit(): void {
@@ -29,5 +31,13 @@ export class WaitingprofileComponent implements OnInit {
         }
   })
   }
+  acceptorrejectprofile(profileid : number,response : number){
+    this.service.acceptorrejectprofile(profileid,response).subscribe({
+      next:(data:any)=>{this.acceptedProfile=data,
+      console.log(this.acceptedProfile)
+        }
+      })
 
+
+}
 }
