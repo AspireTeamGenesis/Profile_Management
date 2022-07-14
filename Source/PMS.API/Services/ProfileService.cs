@@ -61,7 +61,7 @@ namespace PMS_API
         public bool AddPersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null) throw new ArgumentNullException($"Values cannot be null values are {personalDetails}");
-            _profileValidate.PersonalDetailsvalidate(personalDetails);
+            // _profileValidate.PersonalDetailsvalidate(personalDetails);
             try
             {
 
@@ -198,7 +198,7 @@ namespace PMS_API
         public bool UpdatePersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null) throw new ArgumentNullException($" ProfileService:UpdatePersonalDetail()-Personal values not be null{personalDetails}");
-            _profileValidate.PersonalDetailsvalidate(personalDetails);
+            // _profileValidate.PersonalDetailsvalidate(personalDetails);
             try
             {
                 var Profile = GetPersonalById(personalDetails.PersonalDetailsId);
@@ -251,7 +251,7 @@ namespace PMS_API
         public bool AddEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($"Values cannot be null values are {education}");
-            _profileValidate.Educationdetailvalidation(education);
+            // _profileValidate.Educationdetailvalidation(education);
             try
             {
                 // education.Starting = education.Starting;
@@ -363,7 +363,7 @@ namespace PMS_API
         public bool UpdateEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($" PersonalServices:UpdateEducation()-Education values not be null{education}");
-            _profileValidate.Educationdetailvalidation(education);
+            // _profileValidate.Educationdetailvalidation(education);
             try
             {
                 Education Profile = GetEducationById(education.EducationId);
@@ -415,7 +415,7 @@ namespace PMS_API
         public bool AddProjects(Projects project)
         {
             if (project == null) throw new ArgumentNullException($"Values cannot be null values are {project}");
-            _profileValidate.ProjectDetailvalidation(project);
+            // _profileValidate.ProjectDetailvalidation(project);
             try
             {
                 project.IsActive = true;
@@ -530,7 +530,7 @@ namespace PMS_API
         public bool UpdateProjects(Projects projects)
         {
             if (projects == null) throw new ArgumentNullException($" PersonalServices:UpdateProjcts()-Project values not be null{projects}");
-            _profileValidate.ProjectDetailvalidation(projects);
+            // _profileValidate.ProjectDetailvalidation(projects);
             try
             {
                 var Profile = GetProjectById(projects.ProjectId);
@@ -589,7 +589,7 @@ namespace PMS_API
         public bool AddSkills(Skills skill)
         {
             if (skill == null) throw new ArgumentNullException($"Values cannot be null values are {skill}");
-            _profileValidate.SkillDetailValidation(skill);
+            // _profileValidate.SkillDetailValidation(skill);
             try
             {
                 skill.CreatedBy = skill.ProfileId;
@@ -682,7 +682,7 @@ namespace PMS_API
         public bool UpdateSkills(Skills skill)
         {
             if (skill == null) throw new ArgumentNullException($" PersonalServices:Update()-skill values not be null{skill}");
-            _profileValidate.SkillDetailValidation(skill);
+            // _profileValidate.SkillDetailValidation(skill);
             try
             {
                 var skills = GetSkillById(skill.SkillId);
@@ -727,7 +727,7 @@ namespace PMS_API
         public bool AddBreakDuration(BreakDuration duration)
         {
             if (duration == null) throw new ArgumentNullException($"Values cannot be null values are {duration}");
-            _profileValidate.BreakDurationValidation(duration);
+            // _profileValidate.BreakDurationValidation(duration);
             try
             {
                 duration.CreatedBy = duration.PersonalDetailsId;
@@ -764,7 +764,7 @@ namespace PMS_API
         public bool AddLanguage(Language language)
         {
             if (language == null) throw new ArgumentNullException($"Values cannot be null values are {language}");
-            _profileValidate.languageValidation(language);
+            // _profileValidate.languageValidation(language);
             try
             {
                 language.CreatedBy = language.PersonalDetailsId;
@@ -803,7 +803,7 @@ namespace PMS_API
         public bool AddSocialMedia(SocialMedia media)
         {
             if (media == null) throw new ArgumentNullException($"Values cannot be null values are {media}");
-            _profileValidate.SocialMediaDetailValidation(media);
+            // _profileValidate.SocialMediaDetailValidation(media);
             try
             {
                 media.CreatedBy = media.PersonalDetailsId;
@@ -878,7 +878,7 @@ namespace PMS_API
         public bool AddAchievements(Achievements achievement)
         {
             if (achievement == null) throw new ArgumentNullException($"Values cannot be null values are {achievement}");
-            _profileValidate.AchievementValidation(achievement);
+            // _profileValidate.AchievementValidation(achievement);
             try
             {
                 string Imagedate = "";

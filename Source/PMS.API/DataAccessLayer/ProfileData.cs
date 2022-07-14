@@ -76,6 +76,7 @@ namespace PMS_API
         }
         public bool AddProfile(Profile profile)
         {
+            profile.IsActive=true;
 
 
             if (profile == null)
@@ -83,7 +84,7 @@ namespace PMS_API
 
             try
             {
-
+                profile.IsActive=true;
                 _context.profile.Add(profile);
                 _context.SaveChanges();
                 return true;
