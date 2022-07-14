@@ -5,7 +5,7 @@ namespace PMS_API
 {
     public class ProfileValidation
     {
-        
+
         public bool PersonalDetailsvalidate(PersonalDetails personalDetails)
         {
             if (string.IsNullOrEmpty(personalDetails.Objective))
@@ -46,7 +46,7 @@ namespace PMS_API
                 throw new ValidationException($"Degree not be null and user supplied Degree as \"{education.Degree}\"");
             // to check degree has letter only
             else if ((!Regex.IsMatch(education.Degree, "^[A-Z]{2}[a-z]*$")))//Regex.IsMatch(education.Degree, "^(?=.*\\d)(?=.*[-+_!@#$%^&*., ?]).+$") 
-                throw new ValidationException($"Degree should not contain specialcharacters,numbers and user supplied Degree as \"{education.Degree}\"");
+                throw new ValidationException($"Degree is invalid and user supplied Degree as \"{education.Degree}\"");
 
             //coursee validations
             if (string.IsNullOrEmpty(education.Course))//to check course is null or empty 
@@ -60,6 +60,8 @@ namespace PMS_API
             //starting year validation
             if (string.IsNullOrEmpty((education.Starting).ToString()) || (education.Starting).Equals(0))//check starting year is null or empty
                 throw new ValidationException($"StartingYear not be empty and user supplied StartingYear as \"{education.Starting}\"");
+            if (!Regex.IsMatch(education.Starting.ToString(), "^[0-9]{4}"))
+                throw new ValidationException($"Starting year is Invalid\"{education.Starting}\"");
             if (education.Starting.Equals(DateTime.Today.Year) || (education.Starting > (DateTime.Today.Year)))//check starting year is not this year and future year
                 throw new ValidationException($"StartingYear should not be this year,future Year and user supplied StartingYear as \"{education.Starting}\"");
 
@@ -74,8 +76,10 @@ namespace PMS_API
             //percentage validation
             if (education.Percentage.Equals("") || education.Percentage.Equals(0))//check if percentage is null or empty
                 throw new ValidationException($"Percentage not be empty  and user supplied Percentage as \"{education.Percentage}\"");
-            else if (1 > education.Percentage && education.Percentage >= 100.0)//check if percentage lies in the range of(1, 100) 
+            else if (1 >= education.Percentage || education.Percentage > 100)//check if percentage lies in the range of(1, 100) 
                 throw new ValidationException($"Percentage should be between 1 to 100  and user supplied Percentage as \"{education.Percentage}\"");
+            else if (Regex.IsMatch(education.Percentage.ToString(), "[A-za-z]+[\\W]"))
+                throw new ValidationException("Percentage sholud be in decimals");
             return true;
 
         }
@@ -156,12 +160,13 @@ namespace PMS_API
                 throw new ValidationException($"StartingDuration should not be null and user supplied value as \"{breakDuration.StartingDuration}\"");
             else if (breakDuration.StartingDuration.Equals(DateTime.Today) && breakDuration.StartingDuration > DateTime.Today)//check starting breakduration is not today, future date
                 throw new ValidationException($"StartingDuration shoudld not be today,future date and user supplied value as \"{breakDuration.StartingDuration}\"");
+
             //ending breakduration validations
             if (string.IsNullOrEmpty(breakDuration.EndingDuration.ToString()))//check ending breakduration is null or empty
                 throw new ValidationException($"EndingDuration shoul not be null and user supplied value as \"{breakDuration.EndingDuration}\"");
             else if (Regex.IsMatch(breakDuration.EndingDuration.ToString(), "^[1-9]+$") || Regex.IsMatch(breakDuration.EndingDuration.ToString(), "^[^\\w]+$"))//check starting breakduration is empty or null
                 throw new ValidationException($"StartingDuration should not be null and user supplied value as \"{breakDuration.StartingDuration}\"");
-            else if (breakDuration.StartingDuration > DateTime.Today)//check ending breakduration is null or empty
+            else if (breakDuration.StartingDuration > DateTime.Today || breakDuration.StartingDuration.Equals(DateTime.Today))//check ending breakduration is null or empty
                 throw new ValidationException($"EndingDuration shoul not be future date and user supplied value as \"{breakDuration.EndingDuration}\"");
             return true;
         }
@@ -169,7 +174,7 @@ namespace PMS_API
         {
             if (string.IsNullOrEmpty(language.LanguageName))
                 throw new ValidationException($"LanguageName Should not be null and user supplied language as \"{language.LanguageName}\"");
-            else if (!Regex.IsMatch(language.LanguageName, "^[A-Z]+[a-z]{0,10}"))// to check language contains String alone untill 11 characters
+            else if (!Regex.IsMatch(language.LanguageName, "^[A-Za-z]{4,10}"))// to check language contains String alone untill 11 characters
                 throw new ValidationException($"LanguageName Should not contain special characters,numbers and user spplied language as \"{language.LanguageName}\"");
 
             if (string.IsNullOrEmpty(language.Read.ToString()))
@@ -178,6 +183,12 @@ namespace PMS_API
                 throw new ValidationException($"write Should not be null and user supplied Write as \"{language.Write}\"");
             if (string.IsNullOrEmpty(language.Speak.ToString()))
                 throw new ValidationException($"Speak Should not be null and user supplied Speak as \"{language.Speak}\"");
+            return true;
+        }
+        public bool AchievementValidation(Achievements achievement)
+        {
+            if (string.IsNullOrEmpty(achievement.AchievementTypeId.ToString()) || achievement.AchievementTypeId.Equals(0) || achievement.AchievementTypeId.Equals(""))
+                throw new ValidationException($"AchievementTypeId Should not be null and user supplied achievementType as \"{achievement.AchievementId}\"");
             return true;
         }
         private bool DateOfBirthAgeValidate(DateTime DateOfBirth)// to check (age<18) 

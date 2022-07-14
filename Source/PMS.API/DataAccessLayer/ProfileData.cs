@@ -11,10 +11,10 @@ namespace PMS_API
         bool AddPersonalDetail(PersonalDetails personalDetails);
         List<PersonalDetails> GetAllPersonalDetails();
         PersonalDetails GetPersonalDetailsById(int Personalid);
-        
+
         bool UpdatePersonalDetail(PersonalDetails personalDetails);
         bool DisablePersonalDetails(int PersonalDetailsid);
-       
+
         bool AddEducation(Education education);
         List<Education> GetallEducationDetails();
         Education GetEducationDetailsById(int Educationid);
@@ -25,7 +25,7 @@ namespace PMS_API
         List<Projects> GetallProjectDetails();
         Projects GetProjectDetailsById(int Projectid);
         bool UpdateProjects(Projects projects);
-         bool DisableProjectDetails(int Projectid);
+        bool DisableProjectDetails(int Projectid);
 
         bool AddSkills(Skills skill);
         List<Skills> GetallSkillDetails();
@@ -47,19 +47,19 @@ namespace PMS_API
         bool AddSocialMedia(SocialMedia media);
         bool DisableSocialMedia(int SocialMediaid);
 
-        
+
         Technology GetTechnologyById(int Technologyid);
         List<Technology> GetallTechnologies();
 
-        
+
         public List<Profile> GetallProfiles();
         Profile GetProfileById(int ProfileId);
-        
-        public bool AddProfileHistory(ProfileHistory profilehistory); 
-       
+
+        public bool AddProfileHistory(ProfileHistory profilehistory);
+
         public List<ProfileHistory> GetallProfileHistories();
         public ProfileStatus GetProfileStatusByProfileId(int Profileid);
-        public List<User> GetFilterdProfile(string userName,int designationId,int domainID,int technologyId,int collegeId,int profileStatusId,int maxExperience,int minExperience);
+        public List<User> GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience);
 
 
     }
@@ -121,8 +121,8 @@ namespace PMS_API
 
             try
             {
-                return _context.personalDetails.Include(s=>s.language).Include(s=>s.breakDuration).Include(s=>s.socialmedia).ToList();
-                
+                return _context.personalDetails.Include(s => s.language).Include(s => s.breakDuration).Include(s => s.socialmedia).ToList();
+
 
             }
 
@@ -164,7 +164,7 @@ namespace PMS_API
 
             try
             {
-                personalDetails.IsActive=true;
+                personalDetails.IsActive = true;
                 _context.personalDetails.Add(personalDetails);
                 _context.SaveChanges();
                 return true;
@@ -276,21 +276,24 @@ namespace PMS_API
             if (education == null)
                 throw new ArgumentNullException("Education detail object is not provided to DAL");
 
+
             try
             {
-                education.IsActive=true;
+                var DOB = _context.personalDetails.Find(education.ProfileId).DateOfBirth;
+                if (education.Starting < DOB.Year)
+                    throw new ValidationException("StartingYear should be after DateOfBirth");
+
+                education.IsActive = true;
                 _context.educations.Add(education);
                 _context.SaveChanges();
                 return true;
             }
-
             catch (Exception exception)
             {
                 //log "unknown exception occured"
                 _logger.LogError($"ProfileData.cs-AddEducation()-{exception.Message}");
                 _logger.LogInformation($"ProfileData.cs-AddEducation()-{exception.StackTrace}");
-
-                return false;
+                throw;
             }
 
 
@@ -354,7 +357,10 @@ namespace PMS_API
 
             try
             {
-                project.IsActive=true;
+                var DateOfJoin = _context.personalDetails.Find(project.ProfileId).DateOfJoining;
+                if (project.StartingYear < DateOfJoin.Year)
+                    throw new ValidationException($"Project starting Year should be after Date of joining");
+                project.IsActive = true;
                 _context.projects.Add(project);
                 _context.SaveChanges();
                 return true;
@@ -416,7 +422,7 @@ namespace PMS_API
 
             try
             {
-                projects.IsActive=true;
+                projects.IsActive = true;
                 _context.projects.Update(projects);
                 _context.SaveChanges();
                 return true;
@@ -527,7 +533,7 @@ namespace PMS_API
 
             try
             {
-                skill.IsActive=true;
+                skill.IsActive = true;
                 _context.skills.Add(skill);
                 _context.SaveChanges();
                 return true;
@@ -587,7 +593,7 @@ namespace PMS_API
                 throw new ValidationException("Profile's skilldetails are not provided to DAL");
             try
             {
-                skill.IsActive=true;
+                skill.IsActive = true;
                 _context.skills.Update(skill);
                 _context.SaveChanges();
                 return true;
@@ -778,7 +784,7 @@ namespace PMS_API
                 throw new ArgumentNullException("social media details object is not provided to DAL");
             try
             {
-                achievements.IsActive=true;
+                achievements.IsActive = true;
                 _context.achievements.Add(achievements);
                 _context.SaveChanges();
                 return true;
@@ -847,7 +853,7 @@ namespace PMS_API
             try
             {
 
-                var result = _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").Include(e=>e.profilestatus).ToList();
+                var result = _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").Include(e => e.profilestatus).ToList();
                 // foreach (var item in result)
                 // {
                 //     item.user = item.user;
@@ -871,13 +877,14 @@ namespace PMS_API
             try
             {
 
-                return _context.profile.Where(x=>x.ProfileId == Profileid).Include(p=>p.profilestatus).Select(p=>p.profilestatus).First();
+                return _context.profile.Where(x => x.ProfileId == Profileid).Include(p => p.profilestatus).Select(p => p.profilestatus).First();
             }
-            catch{
+            catch
+            {
                 System.Console.WriteLine("error");
                 throw;
             }
-            
+
         }
         public Profile GetProfileById(int ProfileId)
         {
@@ -899,18 +906,20 @@ namespace PMS_API
                 throw exception;
             }
         }
-        
-        public Profile GetProfileIdByUserId(int Userid){
+
+        public Profile GetProfileIdByUserId(int Userid)
+        {
             if (Userid <= 0)
-                throw new ArgumentNullException("User id is not provided to DAL");   
+                throw new ArgumentNullException("User id is not provided to DAL");
             try
             {
-                Profile profile= GetallProfiles().Where(x=>x.UserId==Userid).FirstOrDefault();
-                if(profile==null)
+                Profile profile = GetallProfiles().Where(x => x.UserId == Userid).FirstOrDefault();
+                if (profile == null)
                     return new Profile();
                 return profile;
             }
-            catch(Exception exception){
+            catch (Exception exception)
+            {
                 System.Console.WriteLine("error");
                 throw;
             }
@@ -919,7 +928,7 @@ namespace PMS_API
         {
             if (profilehistory == null)
                 throw new ArgumentNullException("profilehistory object is not provided to DAL");
-           
+
             try
             {
                 _context.profilehistory.Add(profilehistory);
@@ -957,30 +966,30 @@ namespace PMS_API
             }
         }
 
-        public List<User> GetFilterdProfile(string userName,int designationId,int domainID,int technologyId,int collegeId,int profileStatusId,int maxExperience,int minExperience)
+        public List<User> GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience)
         {
             try
             {
-                 return _context.users
-                    .Include(e=>e.designation)
-                    .Include(e=>e.profile)
-                    .Include(e=>e.profile.personalDetails)
-                    .Include(e=>e.profile.profilestatus)
-                    .Where(user=>user.profile!=null && user.personalDetails!=null)
-                    .WhereIf(String.IsNullOrEmpty(userName)==false,users=>users.UserName.StartsWith(userName)==true)
-                    .WhereIf(designationId!=0,users=>users.DesignationId==designationId)
-                    .WhereIf(domainID!=0,users=>users.profile.skills.Any(s=>s.DomainId==domainID)==true)
-                    .WhereIf(technologyId!=0,users=>users.profile.skills.Any(s=>s.TechnologyId==technologyId)==true)
-                    .WhereIf(collegeId!=0,users=>users.profile.education.Any(s=>s.CollegeId==collegeId)==true)
-                    .WhereIf(profileStatusId!=0,users=>users.profile.ProfileStatusId==profileStatusId)
-                    .ToList();
+                return _context.users
+                   .Include(e => e.designation)
+                   .Include(e => e.profile)
+                   .Include(e => e.profile.personalDetails)
+                   .Include(e => e.profile.profilestatus)
+                   .Where(user => user.profile != null && user.personalDetails != null)
+                   .WhereIf(String.IsNullOrEmpty(userName) == false, users => users.UserName.StartsWith(userName) == true)
+                   .WhereIf(designationId != 0, users => users.DesignationId == designationId)
+                   .WhereIf(domainID != 0, users => users.profile.skills.Any(s => s.DomainId == domainID) == true)
+                   .WhereIf(technologyId != 0, users => users.profile.skills.Any(s => s.TechnologyId == technologyId) == true)
+                   .WhereIf(collegeId != 0, users => users.profile.education.Any(s => s.CollegeId == collegeId) == true)
+                   .WhereIf(profileStatusId != 0, users => users.profile.ProfileStatusId == profileStatusId)
+                   .ToList();
             }
 
             catch (Exception exception)
-            {                
+            {
                 _logger.LogError($"ProfileData.cs-GetFilterdProfile()-{exception.Message}");
                 throw;
-            }         
+            }
         }
         public bool AcceptOrRejectProfile(int profileId, int response)
         {
@@ -990,9 +999,9 @@ namespace PMS_API
             try
             {
                 Profile status = _context.profile.Find(profileId);
-                if(response == 2)
+                if (response == 2)
                     throw new ValidationException("cannot change to waiting for approval");
-                else if (status.ProfileStatusId.Equals(1)||status.ProfileStatusId.Equals(3))
+                else if (status.ProfileStatusId.Equals(1) || status.ProfileStatusId.Equals(3))
                     throw new ValidationException("Profile Status already Updated");
                 status.ProfileStatusId = response;
                 _context.SaveChanges();
