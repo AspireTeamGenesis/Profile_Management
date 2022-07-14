@@ -138,7 +138,7 @@
                 </div>
             </div>
                 <div>
-                    <button id="button7" type="button" (click)="getProfileByFilters()" style="background-color:#967bb6;color: white;">Apply</button>
+                    <button id="button7" type="button" (click)="getProfileByFilters()"  (click)="toogletag()" style="background-color:#967bb6;color: white;">Apply</button>
                 </div>
              <!-- <app-search></app-search>  -->
         </div> 
@@ -170,6 +170,6 @@
                 </div>
             </div> 
         </div>-->
-        <div class="filtertext"><h5>please select the filter</h5></div>
+        <div *ngIf="showMe" class="filtertext"><h5>Please select the filter</h5></div>
     </div>
 </div> 
