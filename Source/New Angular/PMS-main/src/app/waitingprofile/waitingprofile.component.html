@@ -19,15 +19,15 @@
           Person-{{item.reportingPerson}}</p>
         <br>
         <h2>
-            <i class="fa fa-pencil fa-sm"></i><i  class="fa fa-share-nodes"></i><i class="fa fa-download"></i>
+          <i class="fa fa-pen-to-square fa-xs"></i><i  class="fa fa-share-nodes"></i><i class="fa fa-download"></i>
           <!-- <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
           <i class="fa fa-trash"></i> -->
 
           <!-- <i class="fa fa-trash"></i> -->
         </h2>
         <div class="container">
-          <div style="height:50%;"><a  [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,1)"><button  class="rounded1" ><h2 class ="button1" ><i  class="fa fa-check"></i></h2></button></a></div>
-          <div style="height:50%;"><a [routerLink]="['/waitingprofile']"  (click)="acceptorrejectprofile(item.userProfileId,3)"><button class="rounded"><h2 class ="button1" ><i class="fa fa-xmark"></i></h2></button></a></div>
+          <div style="margin-left:0.5rem;display:inline-block;height:50%;width: 45%;"><a  [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,1)"><button  class="rounded1" ><h2 class ="button1" ><i  class="fa fa-check"></i></h2></button></a></div>
+          <div style="margin-left:0.5rem;display: inline-block;height:50%;width: 45%;"><a [routerLink]="['/waitingprofile']"  (click)="acceptorrejectprofile(item.userProfileId,3)"><button class="rounded"><h2 class ="button1" ><i class="fa fa-xmark"></i></h2></button></a></div>
         </div>
 
       </div>

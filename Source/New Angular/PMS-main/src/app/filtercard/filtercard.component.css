@@ -442,7 +442,7 @@
     text-indent: 5rem;
 }
 
-.fa-pencil {
+.fa-pen-to-square {
     text-indent: 1rem;
 }
 .fa-download
@@ -459,7 +459,7 @@
 
  .pagination {
     position: absolute;
-    top: 45%;
+    top: 80%;
     /* bottom: %; */
     place-items: center;
     /* margin-left: 40%; */

@@ -8,6 +8,8 @@ import { UserserviceService } from '../service/userservice.service';
   styleUrls: ['./profilehome.component.css']
 })
 export class ProfilehomeComponent implements OnInit {
+  showMe: boolean = true;
+
   dashboard:any;
   designationValue:any;
   domainValue:any;
@@ -118,6 +120,13 @@ export class ProfilehomeComponent implements OnInit {
   //   this.service.getProfileBySearch(this.username).subscribe();
   // }
 
+  toogletag()
 
+  {
+
+    !this.showMe==this.showMe;
+    if(this.showMe==true){this.showMe=false};
+
+  }
 
 }
