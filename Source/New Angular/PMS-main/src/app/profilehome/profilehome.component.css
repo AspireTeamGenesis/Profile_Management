@@ -451,4 +451,6 @@ img {
 }
 .filtertext{
     text-align: center;
+    color:grey;
+    padding-top: 6%;
 }

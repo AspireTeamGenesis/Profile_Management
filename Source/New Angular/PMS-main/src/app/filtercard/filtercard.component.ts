@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 export class FiltercardComponent implements OnInit {
 
   @Input() 
-  public filterDetails:any
+  public filterDetails:any[]=[]
+  length:any;
   totalLength:any;
   profileId:number;
   page:number=1;
@@ -23,12 +24,18 @@ export class FiltercardComponent implements OnInit {
   constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient, private route : Router) { }
   
   ngOnInit(): void {
-    this.getProfileIdByUserId(); 
-    console.log(this.filterDetails);  
-    console.error(this.filterDetails.length());  
-    this.totalLength=this.filterDetails.length;
-    console.log(this.totalLength);
-    console.warn(this.profileId);
+    
+    // this.totalLength=this.filterDetails.length;
+    // console.log(this.totalLength);
+    // console.log("Welcome"+this.filterDetails.length);
+
+    // console.log();
+    // this.getProfileIdByUserId(); 
+    // console.log(this.filterDetails);  
+    // console.error(this.filterDetails.length);  
+    // this.totalLength=this.filterDetails.length;
+    // console.log(this.totalLength);
+    // console.warn(this.profileId);
   }
 
   getProfileIdByUserId()

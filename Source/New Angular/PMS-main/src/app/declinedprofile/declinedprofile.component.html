@@ -8,7 +8,7 @@
     <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
     <div class="kcard"
       *ngFor="let item of declinedProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
-      <a [routerLink]="['../hrprofile',item.userId]"><img class="card-img-top" src="./assets/img/profile.jpg"
+      <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top" src="./assets/img/profile.jpg"
           alt="Card image cap"></a>
       <div class="status">
         <p>Status: </p>
