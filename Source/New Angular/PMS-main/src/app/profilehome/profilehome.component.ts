@@ -14,6 +14,7 @@ export class ProfilehomeComponent implements OnInit {
   technologyValue:any;
   collegeValue:any;
   profileValue:any;
+  filterValue:any;
   experience: number[] = [];
   // username:any;
 
@@ -104,7 +105,11 @@ export class ProfilehomeComponent implements OnInit {
   getProfileByFilters()
   {
     console.warn(this.filter);
-    this.service.getProfileByFilters(this.filter).subscribe();
+    this.service.getProfileByFilters(this.filter).subscribe((data:any)=>
+    {
+      this.filterValue=data;
+      console.warn(this.filterValue);
+    });
   }
 
   // getProfileBySearch()

@@ -15,7 +15,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class PersonalComponent implements OnInit {
 
-  profileId :number=0;
+  profileId :number;
   imageError: string="";
   cardImageBase64: string = "";
   isImageSaved: boolean = false;

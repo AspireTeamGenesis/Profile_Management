@@ -16,6 +16,7 @@ export class EditskillComponent implements OnInit {
   technologyValue:any;
   skillid:number=0;
   profileId:number=0;
+  profileIdDetails:any;
 
   skill:any;
 
@@ -30,6 +31,17 @@ export class EditskillComponent implements OnInit {
     this.getTechnology();
     this.getSkillDetailsBySkillId(this.skillid);
     
+  }
+  getProfileIdByUserId()
+  {
+    this.service.getProfileIdByUserId().subscribe({
+        next:(data:any)=>{this.profileIdDetails=data,
+        this.profileId=this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails)
+        }
+  
+    })
   }
   getDomain()
   {
@@ -57,8 +69,15 @@ export class EditskillComponent implements OnInit {
 
   submitSkills()
   {
-    console.log(this.skill);
-    this.service.updateSkills(this.skill).subscribe();
+    const skills = {
+      skillId:this.skillid,
+      domainId:this.skill.domainid,
+      technologyId:this.skill.technologyid,
+      profileId:this.profileIdDetails.profileId
+
+    }
+    console.log(skills);
+    this.service.updateSkills(skills).subscribe();
   }
 
 }

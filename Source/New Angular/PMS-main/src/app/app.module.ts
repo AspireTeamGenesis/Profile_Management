@@ -40,6 +40,13 @@ import { DatePipe } from '@angular/common';
 import { HrsearchComponent } from './hrsearch/hrsearch.component';
 import { HrsidebarComponent } from './hrsidebar/hrsidebar.component';
 import { HrchangepasswordComponent } from './hrchangepassword/hrchangepassword.component';
+import { FiltercardComponent } from './filtercard/filtercard.component';
+import { ApprovedprofileComponent } from './approvedprofile/approvedprofile.component';
+import { DeclinedprofileComponent } from './declinedprofile/declinedprofile.component';
+import { DocumentCreator } from './profile-generator';
+import { ViewprofileByIdComponent } from './viewprofile-by-id/viewprofile-by-id.component';
+import { WaitingprofileComponent } from './waitingprofile/waitingprofile.component';
+import { TotalprofileComponent } from './totalprofile/totalprofile.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +83,12 @@ import { HrchangepasswordComponent } from './hrchangepassword/hrchangepassword.c
     HrsearchComponent,
     HrsidebarComponent,
     HrchangepasswordComponent,
+    FiltercardComponent,
+    ApprovedprofileComponent,
+    DeclinedprofileComponent,
+    ViewprofileByIdComponent,
+    WaitingprofileComponent,
+    TotalprofileComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +99,8 @@ import { HrchangepasswordComponent } from './hrchangepassword/hrchangepassword.c
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [DatePipe],
+  providers: [DocumentCreator],
+  // providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

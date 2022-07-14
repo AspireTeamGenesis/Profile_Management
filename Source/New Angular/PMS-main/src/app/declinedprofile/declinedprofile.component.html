@@ -1,5 +1,5 @@
 <app-topbar></app-topbar>
-<app-hrsidebar></app-hrsidebar>
+<app-sidebar></app-sidebar>
 <script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
@@ -7,20 +7,21 @@
   <div class="main">
     <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
     <div class="kcard"
-      *ngFor="let item of data| filter : this.search | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
+      *ngFor="let item of declinedProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
       <a [routerLink]="['../hrprofile',item.userId]"><img class="card-img-top" src="./assets/img/profile.jpg"
           alt="Card image cap"></a>
       <div class="status">
         <p>Status: </p>
-        <p class="card-text">Approved</p>
+        <p class="card-text">{{item.userProfileStatus}}</p>
       </div>
       <div class="card-body">
-        <p class="card-text"><br>{{item.name}} - {{item.designation.designationName}}<br>Reporting
-          Person-{{item.reportingPersonUsername}}</p>
+        <p class="card-text"><br>{{item.name}} - {{item.designation}}<br>Reporting
+          Person-{{item.reportingPerson}}</p>
         <br>
         <h2>
-          <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
-          <i (click)="CancelDrive(item.userId)" class="fa fa-trash"></i>
+          <i class="fa fa-pencil fa-sm"></i><i  class="fa fa-share-nodes"></i><i class="fa fa-download"></i>
+          <!-- <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
+          <i class="fa fa-trash"></i> -->
 
           <!-- <i class="fa fa-trash"></i> -->
         </h2>

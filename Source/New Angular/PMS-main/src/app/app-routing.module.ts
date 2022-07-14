@@ -25,6 +25,11 @@ import { CreateprofileComponent } from './createprofile/createprofile.component'
 import { PersonalComponent } from './personal/personal.component';
 import { EditpersonalComponent } from './editpersonal/editpersonal.component';
 import { HrchangepasswordComponent } from './hrchangepassword/hrchangepassword.component';
+import { ApprovedprofileComponent } from './approvedprofile/approvedprofile.component';
+import { DeclinedprofileComponent } from './declinedprofile/declinedprofile.component';
+import { ViewprofileByIdComponent } from './viewprofile-by-id/viewprofile-by-id.component';
+import { WaitingprofileComponent } from './waitingprofile/waitingprofile.component';
+import { TotalprofileComponent } from './totalprofile/totalprofile.component';
 
 
 const routes: Routes = [
@@ -54,6 +59,11 @@ const routes: Routes = [
   {path:"editpersonal",component:EditpersonalComponent},
   {path:"personal",component:PersonalComponent},
   {path:"hrchangepassword",component:HrchangepasswordComponent},
+  {path:"approvedprofile",component:ApprovedprofileComponent},
+  {path:"declinedprofile",component:DeclinedprofileComponent},
+  {path:"viewprofilebycard/:userId",component:ViewprofileByIdComponent},
+  {path:"waitingprofile",component:WaitingprofileComponent},
+  {path:"totalprofile",component:TotalprofileComponent},
   {path:"",component:LoginComponent}
 ];
 

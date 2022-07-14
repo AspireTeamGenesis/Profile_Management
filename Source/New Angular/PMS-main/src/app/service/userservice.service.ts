@@ -62,19 +62,15 @@ export class UserserviceService {
     return this.http.get<any>('https://localhost:7021/Technology/ViewTechnologies');
   }
 
-  // getProfileStatus()
-  // {
-  //   return this.http.get<any>('https://localhost:7021/ProfileStatus/ViewProfileStatuss');   
-  // }
+  getProfileStatus()
+  {
+    return this.http.get<any>('https://localhost:7021/ProfileStatus/ViewProfileStatuss');   
+  }
 
   
   getOrganisation():Observable<Organisation[]>
   {
     return this.http.get<Organisation[]>('https://localhost:7021/Organisation/ViewOrganisations');
-  }
-  getProfileStatus()
-  {
-    return this.http.get<any>('https://localhost:7021/ProfileStatus/ViewProfileStatuss');
   }
 
   onSubmit(userPassword:any)
@@ -269,13 +265,75 @@ export class UserserviceService {
 
   getProfileByFilters(filter:any)
   {
-    return this.http.get<any>(``,{headers:this.headers});
+    return this.http.post<any>(`https://localhost:7021/Profile/GetFilterdProfile`,filter,{headers:this.headers});
   }
 
-  getProfileBySearch(username:any)
+  getProfileByApprovedStaus()
   {
-    return this.http.get<any>(``,{headers:this.headers});
+    return this.http.get<any>(`https://localhost:7021/User/Getallusers?profilestatusId=1`,{headers:this.headers});   
   }
+  getProfileByDeclinedStatus()
+  {
+    return this.http.get<any>(`https://localhost:7021/User/Getallusers?profilestatusId=3`,{headers:this.headers});      
+  }
+  getProfileByWaitingStatus()
+  {
+    return this.http.get<any>(`https://localhost:7021/User/Getallusers?profilestatusId=2`,{headers:this.headers});      
+  }
+
+  getProfileBytotalStatus()
+  {
+    return this.http.get<any>(`https://localhost:7021/User/Getallusers?profilestatusId=0`,{headers:this.headers});         
+  }
+
+  getEducationDetailsByProfileId(profileId:number)
+
+  {
+
+    return this.http.get<any>(`https://localhost:7021/Profile/GetAllEducationDetailsByProfileId?Profileid=${profileId}`,{headers:this.headers});
+
+
+
+  }
+
+  getProjectDetailsByProfileId(profileId:number)
+
+  {
+
+    return this.http.get<any>(`https://localhost:7021/Profile/GetAllProjectDetailsByProfileId?Profileid=${profileId}`,{headers:this.headers});
+
+  }
+
+  getSkillDetailsByProfileId(profileId:number)
+
+  {
+
+    return this.http.get<any>(`https://localhost:7021/Profile/GetAllSkillDetailsByProfileId?Profileid=${profileId}`,{headers:this.headers});
+
+  }
+
+  getProfileIdByGivenUserId(userId:number)
+  {
+    return this.http.get<any>(`https://localhost:7021/Profile/GetProfileIdByGivenUserId?userId=${userId}`,{headers:this.headers});
+
+  }
+  getUserDetailsByUserId(userId:number)
+  {
+return this.http.get<any>(`https://localhost:7021/User/GetUserById?id=${userId}`,{headers:this.headers});
+
+  }
+
+  getProfileIdDetailsByUserId(userId:number)
+  {
+    return this.http.get<any>(`https://localhost:7021/Profile/GetProfileIdByGivenUserId?userId=${userId}`,{headers:this.headers});
+  }
+
+
+
+  // getProfileBySearch(username:any)
+  // {
+  //   return this.http.get<any>(``,{headers:this.headers});
+  // }
 
  
 
