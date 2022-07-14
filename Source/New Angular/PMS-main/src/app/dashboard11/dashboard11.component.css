@@ -383,7 +383,7 @@ img {
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
     width: 70%;
-    padding: 50px;
+    padding: 40px;
     /* padding-left: 50px;
     width: 100%;
     padding: 10px 150px;
@@ -419,9 +419,9 @@ img {
 
 .people .peoples h6{
     font-size:20px;
-    margin-left: 40%;
+    margin-left: 46%;
     text-align: center;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     /* padding-left: 0px;
     padding-right: 50px; */
 }
@@ -444,11 +444,4 @@ img {
 } */
 .middle{
     background: #ffffff;
-}
-.middler
-{
-    padding-top: 5%;
-}
-.filtertext{
-    text-align: center;
 }

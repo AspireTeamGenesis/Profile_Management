@@ -30,6 +30,7 @@ import { DeclinedprofileComponent } from './declinedprofile/declinedprofile.comp
 import { ViewprofileByIdComponent } from './viewprofile-by-id/viewprofile-by-id.component';
 import { WaitingprofileComponent } from './waitingprofile/waitingprofile.component';
 import { TotalprofileComponent } from './totalprofile/totalprofile.component';
+import { Dashboard11Component } from './dashboard11/dashboard11.component';
 
 
 const routes: Routes = [
@@ -64,6 +65,7 @@ const routes: Routes = [
   {path:"viewprofilebycard/:userId",component:ViewprofileByIdComponent},
   {path:"waitingprofile",component:WaitingprofileComponent},
   {path:"totalprofile",component:TotalprofileComponent},
+  {path:"dashboard",component:Dashboard11Component},
   {path:"",component:LoginComponent}
 ];
 

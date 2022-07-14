@@ -47,9 +47,10 @@ import { DocumentCreator } from './profile-generator';
 import { ViewprofileByIdComponent } from './viewprofile-by-id/viewprofile-by-id.component';
 import { WaitingprofileComponent } from './waitingprofile/waitingprofile.component';
 import { TotalprofileComponent } from './totalprofile/totalprofile.component';
+import { Dashboard11Component } from './dashboard11/dashboard11.component';
 
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent,
     CreateusersComponent,
     SidebarComponent,
@@ -89,7 +90,8 @@ import { TotalprofileComponent } from './totalprofile/totalprofile.component';
     ViewprofileByIdComponent,
     WaitingprofileComponent,
     TotalprofileComponent,
-  ],
+      Dashboard11Component
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
