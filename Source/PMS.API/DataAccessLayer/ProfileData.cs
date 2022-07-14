@@ -186,7 +186,6 @@ namespace PMS_API
             if (personalDetails == null)
                 throw new ValidationException("profile's personal detail is not provided to DAL");
 
-
             try
             {
                 _context.personalDetails.Update(personalDetails);

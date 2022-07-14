@@ -8,6 +8,7 @@ namespace PMS_API
     {
         public string GetUserEmail(int Userid);
         public string GetUserName(int Userid);
+        public string GetUserNameWithProfileId(int profileId);
     }
     public class MailDataAccessLayer:IMailDataAccessLayer
     {
@@ -36,6 +37,20 @@ namespace PMS_API
             try
             {
                 return _context.users.Find(Userid).UserName;
+            }
+            catch (Exception getUserNameException)
+            {
+                _logger.LogInformation($"Exception on Mail DAL :GetUserName(int Userid) : {getUserNameException.Message} : {getUserNameException.StackTrace}");
+                throw getUserNameException;
+            }
+        }
+
+        public string GetUserNameWithProfileId(int profileId)
+        {
+            try
+            {
+                int userId= (from profile in _context.profile where profile.ProfileId==profileId select profile.ProfileId).First();
+                return _context.users.Find(userId).UserName;
             }
             catch (Exception getUserNameException)
             {

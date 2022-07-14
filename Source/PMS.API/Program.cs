@@ -40,6 +40,8 @@ builder.Services.AddSwaggerGen(c => {
 builder.Services.AddDbContext<Context>(options =>{
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddScoped<IMailService,MailService>();
+builder.Services.AddScoped<IMailDataAccessLayer,MailDataAccessLayer>();
 builder.Services.AddScoped<ILoginService,LoginService>();
 builder.Services.AddScoped<IUserData,UserData>();
 builder.Services.AddScoped<IProfileData,ProfileData>();

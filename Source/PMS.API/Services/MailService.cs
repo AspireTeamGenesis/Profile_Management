@@ -15,11 +15,11 @@ namespace PMS_API
         private readonly MailSettings _mailSettings;
         private ILogger<MailService> _logger;
         private IMailDataAccessLayer _mailDataAccessLayer;
-        public MailService(ILogger<MailService> logger, IOptions<MailSettings> mailSettings,IMailDataAccessLayer mailDataAccessLayer)
+        public MailService(ILogger<MailService> logger, IOptions<MailSettings> mailSettings, IMailDataAccessLayer mailDataAccessLayer)
         {
             _logger = logger;
             _mailSettings = mailSettings.Value;
-            _mailDataAccessLayer = mailDataAccessLayer; 
+            _mailDataAccessLayer = mailDataAccessLayer;
         }
 
         public async Task SendEmailAsync(MailRequest mailRequest, bool isSingleMail)
@@ -72,6 +72,24 @@ namespace PMS_API
                 _logger.LogInformation($"Exception at Mail Service : RequestToUpdate(int Userid) : {RequestToUpdateException.Message}");
                 throw new MailException("Error Occured While Sending Mail");
             }
+        }
+        public async Task RequestToUpdateFile(int profileId)
+        {            
+            string userName = _mailDataAccessLayer.GetUserNameWithProfileId(profileId);
+            string path = @"C:\Users\prithvi.palani\Documents\Workspace-Prithvi";
+            string fileName = "User"+userName+System.DateTime.Now.Ticks+".txt";
+            string emailContent = $"Hi, {userName}.\n\n You have't updated your profile for the past 6 months.\n Kindly update your profile \n\nThank you - Team Genesis \n\nFor any queries contact : teamgenesis@gmail.com";
+            using StreamWriter file = File.CreateText(Path.Combine(path, fileName));
+            await file.WriteLineAsync(emailContent);
+        }
+        public async Task ShareProfile(string profileUrl,int profileId,string toEmailName)
+        {            
+            string userName = _mailDataAccessLayer.GetUserNameWithProfileId(profileId);
+            string path = @"C:\Users\prithvi.palani\Documents\Workspace-Prithvi";
+            string fileName = "Profile"+userName+System.DateTime.Now.Ticks+".txt";
+            string emailContent = $"Hi, {toEmailName}.\n\n I have attached {userName}'s profile\n\n Click here for profile : {profileUrl}\n\n Thank you - Team Genesis\n\nFor any queries contact : teamgenesis@gmail.com";
+            using StreamWriter file = File.CreateText(Path.Combine(path, fileName));
+            await file.WriteLineAsync(emailContent);
         }
     }
 }

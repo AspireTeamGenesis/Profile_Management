@@ -11,11 +11,13 @@ namespace PMS_API
     public class ProfileController : Controller
     {
         private readonly IProfileService _profileService;
+        private readonly IMailService _mailService;
         private readonly ILogger _logger;
-        public ProfileController(IProfileService profileService, ILogger<ProfileController> logger)
+        public ProfileController(IProfileService profileService, ILogger<ProfileController> logger,IMailService mailService)
         {
             _profileService = profileService;
             _logger = logger;
+            _mailService = mailService;
         }
         [HttpGet]
         public IActionResult CalculateExperience(int personaldetailsid)
@@ -1048,6 +1050,54 @@ namespace PMS_API
             try
             {
                 return _profileService.AcceptOrRejectProfile(profileId,response) ? Ok(new { message = "Profile Status Changed" }) : Problem("Some Internal error Occured");
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogInformation($"ProfileController :AcceptOrRejectProfile()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController :AcceptOrRejectProfile()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+        }
+        [HttpPost]
+        public IActionResult RequestToUpdate(int profileId)
+        {
+            if ( profileId <= 0)
+            {
+                _logger.LogError("ProfileController:():AcceptOrRejectProfile() ProfileId is not valid");
+                return BadRequest(new { message = "Profile not be null" });
+            }
+            try
+            {
+                _mailService.RequestToUpdateFile(profileId);
+                return Ok("Requst to update has been sent sucessfully via mail");
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogInformation($"ProfileController :AcceptOrRejectProfile()-{exception.Message}{exception.StackTrace}");
+                return BadRequest(exception.Message);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogInformation($"ProfileController :AcceptOrRejectProfile()-{exception.Message}{exception.StackTrace}");
+                return Problem("Sorry Internal error occured");
+            }
+        }
+        [HttpPost]
+        public IActionResult ShareProfile(string profileUrl,int profileId,string toEmailName)
+        {
+            if(String.IsNullOrEmpty(profileUrl))
+            {
+                _logger.LogError("ProfileController:():AcceptOrRejectProfile() ProfileId is not valid");
+                return BadRequest(new { message = "Profile not be null" });
+            }
+            try
+            {
+                _mailService.ShareProfile(profileUrl,profileId,toEmailName);
+                return Ok("Profile shared sucessfully via mail");
             }
             catch (ValidationException exception)
             {
