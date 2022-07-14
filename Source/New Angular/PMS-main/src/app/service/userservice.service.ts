@@ -328,13 +328,17 @@ return this.http.get<any>(`https://localhost:7021/User/GetUserById?id=${userId}`
   {
     return this.http.get<any>(`https://localhost:7021/Profile/GetProfileIdByGivenUserId?userId=${userId}`,{headers:this.headers});
   }
-
+ 
 
 
   // getProfileBySearch(username:any)
   // {
   //   return this.http.get<any>(``,{headers:this.headers});
   // }
+acceptorrejectprofile(profileid : number,response : number)
+{
+  return this.http.post<any>(`https://localhost:7021/Profile/AcceptOrRejectProfile?profileId=${profileid}&response=${response}`,{headers:this.headers});
+}
 
  
 
