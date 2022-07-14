@@ -8,7 +8,7 @@
     <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
     <div class="kcard"
       *ngFor="let item of totalProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
-      <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top" src="./assets/img/profile.jpg"
+      <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top" src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png"
           alt="Card image cap"></a>
       <div class="status">
         <p>Status: </p>
@@ -19,7 +19,7 @@
           Person-{{item.reportingPerson}}</p>
         <br>
         <h2>
-          <i class="fa fa-pen-to-square fa-xs"></i><i  class="fa fa-share-nodes"></i><i class="fa fa-download"></i>
+            <i class="fa fa-pencil fa-sm"></i><i  class="fa fa-share-nodes"></i>
           <!-- <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
           <i class="fa fa-trash"></i> -->
 

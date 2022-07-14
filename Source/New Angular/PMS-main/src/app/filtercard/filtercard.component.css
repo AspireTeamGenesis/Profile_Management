@@ -434,7 +434,7 @@
 }
 
 .fa-share-nodes {
-    text-indent: 3rem;
+    text-indent: 6rem;
     height: 5%;
 }
 
@@ -442,8 +442,8 @@
     text-indent: 5rem;
 }
 
-.fa-pen-to-square {
-    text-indent: 1rem;
+.fa-pencil {
+    text-indent: 2rem;
 }
 .fa-download
 {
