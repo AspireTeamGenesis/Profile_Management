@@ -429,3 +429,13 @@
     margin-left: 40%;
     margin-top: 100%;
 }
+
+.rounded1{
+    background-color: green;width:100%;height:100%
+}
+.rounded{
+    background-color: red;width:100%;height:100%;
+}
+.button1{
+    color:white ;text-align:center;
+}
