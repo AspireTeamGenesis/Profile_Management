@@ -17,21 +17,36 @@ export class EditskillComponent implements OnInit {
   skillid:number=0;
   profileId:number=0;
   profileIdDetails:any;
+  showMe: boolean = false;
+  foot:boolean = true;
 
   skill:any;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {     
       this.skillid = params['skillid'];
-      this.profileId= params['profileId'];
+      // this.profileId= params['profileId'];
       console.log('Skill Id : ' + this.skillid);
-      console.log ('id'+this.profileId);
+      // console.log ('id'+this.profileId);
     })
     this.getDomain();
     this.getTechnology();
     this.getSkillDetailsBySkillId(this.skillid);
+    this.getProfileIdByUserId();
     
   }
+  // getProfileIdByUserId()
+  // {
+  //   this.service.getProfileIdByUserId().subscribe({
+  //       next:(data:any)=>{this.profileIdDetails=data,
+  //       this.profileId=this.profileIdDetails.profileId,
+  //       console.warn(this.profileId),
+  //       console.log(this.profileIdDetails)
+  //       }
+  
+  //   })
+  // }
+
   getProfileIdByUserId()
   {
     this.service.getProfileIdByUserId().subscribe({
@@ -67,17 +82,36 @@ export class EditskillComponent implements OnInit {
       this.technologyValue=this.skill.technologyid;
   }
 
-  submitSkills()
+  updateSkills()
   {
     const skills = {
       skillId:this.skillid,
-      domainId:this.skill.domainid,
-      technologyId:this.skill.technologyid,
-      profileId:this.profileIdDetails.profileId
+      domainId:this.skill.domainId,
+      technologyId:this.skill.technologyId,
+      // profileId:this.profileIdDetails.profileId
 
     }
     console.log(skills);
     this.service.updateSkills(skills).subscribe();
+  }
+
+  toogletag()
+
+  {
+
+    this.showMe=!this.showMe;
+
+  }
+  footer()
+
+  {
+
+    this.foot=!this.foot;
+
+    if(this.foot==false){this.foot=true};
+
+   
+
   }
 
 }

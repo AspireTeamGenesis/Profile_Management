@@ -185,6 +185,7 @@ export class UserserviceService {
 
   updateSkills(skill:any)
   {
+    console.log(skill);
     return this.http.put<any>(`https://localhost:7021/Profile/UpdateSkills`,skill,{headers : this.headers});   
   }
 

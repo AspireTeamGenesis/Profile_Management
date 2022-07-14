@@ -20,7 +20,7 @@
       <div class="input-group">
         <label for="personaldetails">Domain</label>
         <select id="personaldetails" name="domainValue" [(ngModel)]="skill.domainId">
-          <option value="">Select Domain</option>
+          <option value="0">Select Domain</option>
           <option *ngFor="let item of domainValue"  value={{item.domainId}}>{{item.domainName}}</option>
         </select>
       </div>
@@ -28,7 +28,7 @@
       <div class="input-group">
         <label for="personaldetails">Technology</label>
         <select id="personaldetails" name="technologyValue" [(ngModel)]="skill.technologyId">
-          <option value="">Select Technology</option>
+          <option value="0">Select Technology</option>
           <option *ngFor="let item of technologyValue" value={{item.technologyId}}>{{item.technologyName}}</option>
         </select>
       </div>     

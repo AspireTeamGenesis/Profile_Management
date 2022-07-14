@@ -14,10 +14,10 @@
     </div>
 
     <div class="form-step form-step-active">
-      <h3>Skills</h3>
+      <h3>Skills <button class="plus" (click)="toogletag()" (click)="footer()" > + </button></h3>
       <div class="input-group">
         <label for="personaldetails">Domain</label>
-        <select id="personaldetails" name="domainValue" [(ngModel)]="skill.domainname">
+        <select id="personaldetails" name="domainValue" [(ngModel)]="skill.domainId">
           <option value="">Select Domain</option>
           <option *ngFor="let item of domainValue" [selected]="item.domainId==domainValue" value={{item.domainId}}>{{item.domainName}}</option>
         </select>
@@ -25,13 +25,14 @@
       <br>
       <div class="input-group">
         <label for="personaldetails">Technology</label>
-        <select id="personaldetails" name="technologyValue" [(ngModel)]="skill.technologyid">
+        <select id="personaldetails" name="technologyValue" [(ngModel)]="skill.technologyId">
           <option value="">Select Technology</option>
           <option *ngFor="let item of technologyValue" [selected]="item.technologyId==technologyValue" value={{item.technologyId}}>{{item.technologyName}}</option>
         </select>
       </div>     
       <div class="button">
-        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/skill']" (click)="submitSkills()">Update</a>
+        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/skill']" (click)="updateSkills()" (click)="toogletag()">Update</a>
+        <!-- <a class="btn btn-next width-50 ml-auto" [routerLink]="['/skill']" (click)="updateSkills()">Update</a> -->
       </div>
       <br>
       <app-skillcard></app-skillcard>

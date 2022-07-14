@@ -11,7 +11,8 @@
             </p>
             <br>
             <h2>
-                <i routerLink="/editskill/{{item.skillid}}" class="fa fa-pencil fa-sm"></i>
+                <i [routerLink]="['../editskill',item.skillid]" class="fa fa-pencil fa-sm"></i>
+                <!-- <i routerLink="/editskill/{{item.skillid}}" class="fa fa-pencil fa-sm"></i> -->
                 <i (click)="cancelSkill(item.skillid)" class="fa fa-trash"></i>
                 <!-- <i (click)="DeleteEducation(item.educationId)" class="fa fa-trash"></i> -->
             </h2>
