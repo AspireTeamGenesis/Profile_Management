@@ -30,10 +30,9 @@ namespace PMS_API
             //date of joining validations
             if (string.IsNullOrEmpty((personalDetails.DateOfJoining).ToString()))//check Date of joinig is null
                 throw new ValidationException($"DateOfJoin not be null and user supplied DateOfJoin as \"{personalDetails.DateOfJoining}\"");
-            if (personalDetails.DateOfJoining > DateTime.Today || personalDetails.DateOfJoining.Equals(DateTime.Today)) //check DateOfJoining is a future date
+            if (personalDetails.DateOfJoining > DateTime.Today) //check DateOfJoining is a future date
                 throw new ValidationException($"DateOfJoin not be futureDate and user supplied DateOfJoin as \"{personalDetails.DateOfJoining}\"");
-            if (DateOfJoiningValidate(personalDetails.DateOfJoining))//check dateOfJoining duration exceeds 70
-                throw new ValidationException($"DateOfJoining is invalid and user supplied DateOfJoin as \"{personalDetails.DateOfJoining}\"");
+                
             //base64 validations
             if (String.IsNullOrEmpty(personalDetails.base64header))
                 throw new ValidationException($"base64header not be empty and user supplied base64header as \"{personalDetails.base64header}\"");
@@ -108,11 +107,11 @@ namespace PMS_API
             //     throw new ValidationException($"Designation should not be numbers alone and user supplied Designation as \"{project.Designation}\"");
             // if (Regex.IsMatch(project.Designation, "^[^\\w]+$"))//check Designation only contains specialcharacters
             //     throw new ValidationException($"Designation should not be specialcharacters and user supplied Designation as \"{project.Designation}\"");
-            
-            if (!Regex.IsMatch(project.Designation, "^[A-za-z]+$"))//check Designation only contains specialcharacters
+            if (!Regex.IsMatch(project.Designation, "^[A-za-z ]+$"))//check Designation only contains specialcharacters
                 throw new ValidationException($"Designation should not contain specialcharacters, numbers and user supplied Designation as \"{project.Designation}\"");
 
-            //tools used
+
+            //tool used
             if (string.IsNullOrEmpty(project.ToolsUsed))
                 throw new ValidationException($"ToolsUsed not be null and user supplied ToolsUsed as \"{project.ToolsUsed}\"");
             if (!Regex.IsMatch(project.ToolsUsed, "^[a-zA-z]+$"))//check Toolsused only contains string only
@@ -132,6 +131,7 @@ namespace PMS_API
                 throw new ValidationException($"StartingYear not be empty and user supplied StartingYear as \"{project.StartingYear}\"");
             if (project.StartingYear.Equals(DateTime.Today.Year) || project.StartingYear > DateTime.Today.Year)
                 throw new ValidationException($"StartingYear should not be this year,future year and user supplied StartingYear as \"{project.StartingYear}\"");
+
             //project Ending year validation
             if ((project.EndingYear > DateTime.Today.Year) || (project.EndingYear < project.StartingYear))
                 throw new ValidationException($"EndingYear not be empty and user supplied EndingYear as \"{project.EndingYear}\"");
@@ -159,9 +159,8 @@ namespace PMS_API
             //ending breakduration validations
             if (string.IsNullOrEmpty(breakDuration.EndingDuration.ToString()))//check ending breakduration is null or empty
                 throw new ValidationException($"EndingDuration shoul not be null and user supplied value as \"{breakDuration.EndingDuration}\"");
-            else if (Regex.IsMatch(breakDuration.EndingDuration.ToString(), "^[1-9]+$") || Regex.IsMatch(breakDuration.EndingDuration.ToString(), "^[^\\w]+$"))//check starting breakduration is empty or null
-                throw new ValidationException($"StartingDuration should not be null and user supplied value as \"{breakDuration.StartingDuration}\"");
-            else if (breakDuration.StartingDuration > DateTime.Today || breakDuration.StartingDuration.Equals(DateTime.Today))//check ending breakduration is null or empty
+
+            else if (breakDuration.StartingDuration > DateTime.Today || breakDuration.StartingDuration.Equals(DateTime.Today))//check ending breakduration is not tomorrow and today
                 throw new ValidationException($"EndingDuration shoul not be future date and user supplied value as \"{breakDuration.EndingDuration}\"");
             return true;
         }
@@ -193,13 +192,6 @@ namespace PMS_API
                 return true;
             return false;
         }
-        private bool DateOfJoiningValidate(DateTime DateOfJoin)// to check (age>60) 
-        {
-            var age = DateTime.Now.AddYears(-DateOfJoin.Year).Year;
-            if (age > 60)
-                return true;
-            return false;
-        }
-
+       
     }
 }
