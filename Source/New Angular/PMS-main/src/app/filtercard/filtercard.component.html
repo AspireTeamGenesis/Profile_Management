@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <div class="container d-flex justify-content-center">
     <div class="kcard"
-      *ngFor="let item of filterDetails| paginate: {itemsPerPage : 3, currentPage: page,totalItems:filterDetails.length}">
-      <a [routerLink]="['../hrprofile',item.userId]"><img class="card-img-top" src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png"
+      *ngFor="let item of filterDetails| paginate: {itemsPerPage : 4, currentPage: page,totalItems:filterDetails.length}">
+      <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top" src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png"
           alt="Card image cap"></a>
       <div class="status">
         <p>Status: </p>

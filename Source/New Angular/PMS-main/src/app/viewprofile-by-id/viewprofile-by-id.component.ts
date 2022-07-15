@@ -64,7 +64,7 @@ export class ViewprofileByIdComponent implements OnInit {
       next:(data:any)=>{this.userDetails=data,
         // this.profilein=this.profileValueBy.profileId;
         console.warn(this.userDetails)
-        this.createContactInfo()
+        // this.createContactInfo()
       },
     })
   }
