@@ -9,13 +9,13 @@
     <div class="main"> 
         <div class="home">
             <div class="search">
-                <input type="text" name="search" placeholder="search by UserName"  [(ngModel)]="filter.username" >
+                <input type="text" name="search" placeholder="search by User Name"  [(ngModel)]="filter.username" >
                 <label for="search"><i class="fas fa-search"></i></label>
             </div>
             <div class="filters">
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
-                     Designation:<select class="h-100 py-2" name="Designation" [(ngModel)]="filter.designationId" required >
-                        <option value="0">Select Designation</option>
+                     <select class="h-100 py-2" name="Designation" [(ngModel)]="filter.designationId" required >
+                        <option value="0">Select Designation </option>
                         <option *ngFor="let item of designationValue" value={{item.designationId}}>{{item.designationName}}</option>
                         <!-- <option value="CEO">CEO</option>
                         <option value="PM">PM</option>
@@ -34,7 +34,7 @@
                   </div> -->
                 
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
-                    Domain:<select class="h-100 py-2" name="Domain" [(ngModel)]="filter.domainId" required >
+                    <select class="h-100 py-2" name="Domain" [(ngModel)]="filter.domainId" required >
                         <option value="0">Select Domain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
                         <option *ngFor="let item of domainValue" value={{item.domainId}}>{{item.domainName}}</option>
                         <!-- <option value="IT">Data Science</option>
@@ -45,7 +45,7 @@
                 
                 </div>
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
-                    Technology:<select class="h-100 py-2" name="Technology" [(ngModel)]="filter.technologyId" required >
+                    <select class="h-100 py-2" name="Technology" [(ngModel)]="filter.technologyId" required >
                         <option value="0">Select Technology&nbsp;&nbsp;</option>
                         <option *ngFor="let item of technologyValue" value={{item.technologyId}}>{{item.technologyName}}</option>
                         <!-- <option value="NET">DotNet</option>
@@ -57,7 +57,7 @@
                 </div>
                 
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
-                     College:<select class="h-100 py-2" name="College" [(ngModel)]="filter.collegeId" required >
+                     <select class="h-100 py-2" name="College" [(ngModel)]="filter.collegeId" required >
                         <br>
                         <option value="0">Select College&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
                         <option *ngFor="let item of collegeValue" value={{item.collegeId}}>{{item.collegeName}}</option>
@@ -69,13 +69,13 @@
                 
                 </div>
                 
-                <div class="filter py-3 d-flex align-items-center justify-content-between">
+                <!-- <div class="filter py-3 d-flex align-items-center justify-content-between">
                     Experience:
-                    <div class="">
-                         <select class="h-50 py-2 " name="Min" [(ngModel)]="filter.maxExp" required >
+                    <div class=""> -->
+                         <!-- <select class="h-50 py-2 " name="Min" [(ngModel)]="filter.maxExp" required >
                             <option value="0">Max&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
                             <option *ngFor="let exp of experience" [value]="exp">{{ exp }}</option>
-                            <!-- <option value="0">Max</option>
+                            <option value="0">Max</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -95,13 +95,13 @@
                             <option value="large">17</option>
                             <option value="large">18</option>
                             <option value="large">19</option>
-                            <option value="large">20</option> -->
+                            <option value="large">20</option>
 
-                        </select>
-                        <select class="h-50 py-2 mr-2" name="Max" [(ngModel)]="filter.minExp" required >
+                        </select> -->
+                        <!-- <select class="h-50 py-2 mr-2" name="Max" [(ngModel)]="filter.minExp" required >
                             <option value="0">Min&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
                             <option *ngFor="let exp of experience" [value]="exp">{{ exp }}</option>
-                            <!-- <option value="small">1</option>
+                            <option value="small">1</option>
                             <option value="medium">2</option>
                             <option value="large">3</option>
                             <option value="large">4</option>
@@ -120,13 +120,13 @@
                             <option value="large">17</option>
                             <option value="large">18</option>
                             <option value="large">19</option>
-                            <option value="large">20</option> -->
+                            <option value="large">20</option>
                         </select>
-                    
-                    </div>
-                </div>
+                     -->
+                    <!-- </div> -->
+                <!-- </div> -->
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
-                     Profile Status:<select class="h-100 py-2" name="Profile Status" [(ngModel)]="filter.profileStatusId" required >
+                     <select class="h-100 py-2" name="Profile Status" [(ngModel)]="filter.profileStatusId" required >
                         <option value="0">Select Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
                         <option *ngFor="let item of profileValue" value={{item.profileStatusId}}>{{item.profileStatusName}}</option>
                         <!-- <option value="Approved">Approved</option>
@@ -134,14 +134,14 @@
                         <option value="Waiting for Approval">Waiting</option> -->
                     </select>
                     <!-- <button type="button" class="btn btn-info">Info</button> -->
-                
                 </div>
-            </div>
-                <div>
-                    <button id="button7" type="button" (click)="getProfileByFilters()"  (click)="toogletag()" style="background-color:#967bb6;color: white;">Apply</button>
+                <div class="filter py-3 d-flex justify-content-between">
+                    <button class="h-100 py-2"  id="button7" type="button" (click)="getProfileByFilters()"  (click)="toogletag()" style="background-color:#967bb6;color: white; width:150px; border-radius: 5px; margin-left: 2px;">Apply</button>
                 </div>
              <!-- <app-search></app-search>  -->
         </div> 
+                </div>
+            
         <div class="middler">
             <app-filtercard [filterDetails]="filterValue" ></app-filtercard>
         </div>
