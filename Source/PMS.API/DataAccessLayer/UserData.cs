@@ -15,6 +15,7 @@ namespace PMS_API
         bool UpdateUser(User item);
         User LoginCrendentials(string UserName,string Password);
         bool EditPassword(string OldPassword,string NewPassword,string ConfirmPassword,int currentUser);
+        // List<User> GetAllUsersByDesignation(int designationId);
     }
 
     public class UserData : IUserData
@@ -28,11 +29,11 @@ namespace PMS_API
         }
          private UserValidation _validation=UserDataFactory.GetValidationObject();
         //getting all users 
-        public List<User> GetallForCard(int profileStatusId)
+        public List<User> GetallForCard(int profileStatusId,int designationId)
         {
             try
             {
-                return _context.users.Include(user=>user.designation).Include(user=>user.profile).Include(user=>user.profile.profilestatus).Include(user=>user.personalDetails).Where(user=>user.profile!=null).WhereIf(profileStatusId!=0,user=>user.profile.ProfileStatusId==profileStatusId).ToList();
+                return _context.users.Include(user=>user.designation).Include(user=>user.profile).Include(user=>user.profile.profilestatus).Include(user=>user.personalDetails).Where(user=>user.profile!=null).WhereIf(profileStatusId!=0,user=>user.profile.ProfileStatusId==profileStatusId).WhereIf(designationId!=0,user=>user.DesignationId > designationId).ToList();
             }
             
             catch(Exception exception){
@@ -236,6 +237,19 @@ namespace PMS_API
             }
 
 
+        }
+        public List<User> GetAllUsersByDesignation(int designationId)
+        {
+            try
+            {
+                return _context.users.Include(user=>user.designation).Include(user=>user.profile).Include(user=>user.profile.profilestatus).Include(user=>user.personalDetails).Where(user=>user.profile!=null).WhereIf(designationId!=0,user=>user.DesignationId > designationId).ToList();
+            }
+            
+            catch(Exception exception){
+                _logger.LogError($"UserData.cs-GetallUsers()-{exception.Message}");
+                _logger.LogInformation($"UserData.cs-GetallUsersL()-{exception.StackTrace}");
+                throw exception;
+            }
         }
     }
 }
