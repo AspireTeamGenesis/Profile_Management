@@ -40,6 +40,7 @@
       <label for="personaldetails">Nationality</label>
       <input type="text" id="personaldetails" name="nationality" [(ngModel)]="user.nationality"
         style="border-color: black;" placeholder="Enter your nationality" />
+        <small class="text-danger">{{error}}</small>
       <!-- <br>
       <label for="personaldetails">Mail Address</label>
       <input type="text" id="personaldetails" name="mailAddress" [(ngModel)]="user.mailAddress"

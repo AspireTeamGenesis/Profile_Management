@@ -53,8 +53,6 @@ export class ViewprofileByIdComponent implements OnInit {
   })
    this.getUserDetailsByUserId(this.userId);
    this.getProfileIdDetailsByUserId(this.userId);
-   // console.log("happy");
-   // console.log(this.profileId);
    
   
  }
@@ -62,9 +60,8 @@ export class ViewprofileByIdComponent implements OnInit {
  getUserDetailsByUserId(userId:number)
     {this.service.getUserDetailsByUserId(userId).subscribe( {
       next:(data:any)=>{this.userDetails=data,
-        // this.profilein=this.profileValueBy.profileId;
         console.warn(this.userDetails)
-        // this.createContactInfo()
+        this.createContactInfo()
       },
     })
   }
@@ -72,10 +69,12 @@ export class ViewprofileByIdComponent implements OnInit {
   {
     this.service.getProfileIdDetailsByUserId(userId).subscribe( {
       next:(data:any)=>{this.profileIdDetailsInCard=data,
-        // this.profilein=this.profileValueBy.profileId;
         console.warn(this.profileIdDetailsInCard),
         console.warn(this.profileIdDetailsInCard.profileId)
-        // this.createContactInfo(this.profileIdDetailsInCard.profileId)
+        this.getProfileByProfileId(this.profileIdDetailsInCard.profileId)
+        this.getEducationDetailsByProfileId(this.profileIdDetailsInCard.profileId)
+      this.getProjectDetailsByProfileId(this.profileIdDetailsInCard.profileId)
+      this.getSkillDetailsByProfileId(this.profileIdDetailsInCard.profileId)
       },
     })
 
@@ -84,8 +83,8 @@ export class ViewprofileByIdComponent implements OnInit {
  createContactInfo()
  {
    console.log("Welcome");
-   console.log(this.userDetailsValue.mobilenumber,this.userDetailsValue.designation,this.userDetailsValue.email,this.userDetailsValue.name);
-   this.view.createContactInfo(this.userDetailsValue.mobilenumber,this.userDetailsValue.designation,this.userDetailsValue.email,this.userDetailsValue.name);
+   console.log(this.userDetails.mobilenumber,this.userDetails.designation,this.userDetails.email,this.userDetails.name);
+   this.view.createContactInfo(this.userDetails.mobilenumber,this.userDetails.designation,this.userDetails.email,this.userDetails.name);
  }
 //  createpersonalInfo()
 //  {

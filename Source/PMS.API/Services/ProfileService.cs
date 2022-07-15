@@ -64,7 +64,7 @@ namespace PMS_API
         public bool AddPersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null) throw new ArgumentNullException($"Values cannot be null values are {personalDetails}");
-            // _profileValidate.PersonalDetailsvalidate(personalDetails);
+            _profileValidate.PersonalDetailsvalidate(personalDetails);
             try
             {
 
@@ -254,7 +254,7 @@ namespace PMS_API
         public bool AddEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($"Values cannot be null values are {education}");
-            // _profileValidate.Educationdetailvalidation(education);
+            _profileValidate.Educationdetailvalidation(education);
             try
             {
                 // education.Starting = education.Starting;

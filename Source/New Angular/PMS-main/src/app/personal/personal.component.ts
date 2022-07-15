@@ -27,6 +27,7 @@ export class PersonalComponent implements OnInit {
   showMe: boolean = false;
 
   foot:boolean = true;
+  error: string = ""
   
 
 
@@ -198,7 +199,12 @@ personalSubmit()
   console.log(this.user.profileId);
   console.log(this.user.userId); 
   console.log(this.user);
-  this.service.addPersonalDetail(this.user).subscribe(data=>this.user.push(data));
+  this.service.addPersonalDetail(this.user).subscribe({next:data=>this.user.push(data),
+  error: (error: { error: { message: any; }; }) => {
+    this.error = error.error.message;
+  
+  }
+});
 }
 
 Update(){
