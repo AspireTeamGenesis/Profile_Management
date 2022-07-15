@@ -11447,4 +11447,33 @@ div .center{
   .skilldetails{
     cursor: pointer;
   }
-  
+  /* .fa-chevron-down{
+    animation-name: icon;
+    transform: rotate(180deg);
+    transition: 0.2s ease-out;
+  } */
+
+  .card-title{
+    position: relative;
+  }
+
+  .icon-right{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+  }
+  .icon-righ{
+    position: absolute;
+    top: 26px;
+    right: 10px;
+  }
+ 
+  .fa-share-nodes{
+    cursor: pointer;
+  }
+  .fa-pen{
+    cursor: pointer;
+  }
+  .fa-download{
+    cursor: pointer;
+  }
