@@ -67,6 +67,7 @@ export class ViewprofileComponent implements OnInit {
     console.log(this.profileDetails['personaldetails'][0].objective);
     this.view.createpersonalInfo(this.profileDetails['personaldetails'][0].objective);
   }
+  
   toggletag(){
     this.showMe=!this.showMe;
   }
