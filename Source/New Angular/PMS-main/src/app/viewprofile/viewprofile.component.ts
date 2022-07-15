@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../service/userservice.service';
 import { Packer } from "docx";
-
 import { saveAs } from 'file-saver'; 
-// import { experiences,education, skills, achievements } from '../profile-data';
 import { DocumentCreator } from "../profile-generator";
 import {
   AlignmentType,
@@ -57,9 +55,6 @@ export class ViewprofileComponent implements OnInit {
   createContactInfo()
   {
     console.log("Welcome");
-    // console.log(mobilenumber);
-    // console.log(username);
-    // console.log(email);
     this.view.createContactInfo(this.userDetails.mobilenumber,this.userDetails.designation,this.userDetails.email,this.userDetails.name);
   }
   createpersonalInfo()

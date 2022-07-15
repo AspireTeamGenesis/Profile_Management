@@ -92,6 +92,12 @@ export class EducationComponent implements OnInit {
     console.log("hi how");
     console.warn(this.user);
     this.service.addEducation(this.user).subscribe(()=>  {this.child.getEducationByProfileId();console.log('posted')});//data=>this.user.push(data)    
+    setTimeout(
+      () => {
+        location.reload(); // the code to execute after the timeout
+      },
+      1000// the time to sleep to delay for
+    );
   }
   toogletag()
 

@@ -22,8 +22,8 @@ namespace PMS_API
         [HttpGet]
         public IActionResult Getallusers(int profilestatusId){
             try{
-                
-                return Ok(_userServices.GetallUsers(profilestatusId));
+                int currentDesignation = Convert.ToInt32(User.FindFirst("DesignationId").Value) ;
+                return Ok(_userServices.GetallUsers(profilestatusId,currentDesignation));
             }
            catch(Exception exception){
                _logger.LogInformation($"UserController :GetAllUsers()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
@@ -197,6 +197,17 @@ namespace PMS_API
 
 
     }
+    [HttpGet]
+        public IActionResult GetAllUsersByDesignation(){
+            try{
+                int currentDesignation = Convert.ToInt32(User.FindFirst("DesignationId").Value) ;
+                return Ok(_userServices.GetAllUsersByDesignation(currentDesignation));
+            }
+           catch(Exception exception){
+               _logger.LogInformation($"UserController :GetAllUsersByDesignation()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
+               return Problem(exception.Message);
+           }
+        }
 
     }
 }

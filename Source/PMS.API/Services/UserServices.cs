@@ -16,10 +16,10 @@ namespace PMS_API{
             userData=UserDataFactory.GetUserObject(logger);
         }
         private UserValidation _validation=UserDataFactory.GetValidationObject();
-        public object GetallUsers(int profilestatusId)
+        public object GetallUsers(int profilestatusId,int designationId)
         {
             try{
-                return (from  user in userData.GetallForCard(profilestatusId) where user.IsActive==true select user).Select(
+                return (from  user in userData.GetallForCard(profilestatusId,designationId) where user.IsActive==true select user).Select(
                     user => new{
                         UserId=user.UserId,
                         Name=user.Name,
@@ -209,6 +209,27 @@ namespace PMS_API{
         public bool Save()
         {
             return userData.save();
+        }
+    
+    public object GetAllUsersByDesignation(int designationId)
+        {
+            try{
+                return (from  user in userData.GetAllUsersByDesignation(designationId) where user.IsActive==true select user).Select(
+                    user => new{
+                        UserId=user.UserId,
+                        Name=user.Name,
+                        UserDesignation=user.designation.DesignationName,
+                        ReportingPerson=user.ReportingPersonUsername,
+                        UserProfileStatus=user.profile.profilestatus.ProfileStatusName,
+                        UserProfileImage=user.personalDetails!=null?user.personalDetails!.Image:null,
+                        UserProfileId=user.profile.ProfileId
+                    }
+                );
+            }
+            catch(Exception exception){
+                _logger.LogError($"UserServices:GetAll()-{exception.Message}\n{exception.StackTrace}");
+                throw;
+            }
         }
     }
 }

@@ -455,7 +455,7 @@
 
  .pagination {
     position: absolute;
-    top: 90%;
+    bottom: 35px;
     /* bottom: %; */
     place-items: center;
     /* margin-left: 40%; */
