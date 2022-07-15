@@ -117,7 +117,7 @@ namespace PMS_API
             modelBuilder.Entity<ProfileStatus>()
                         .HasData(
                          new ProfileStatus { ProfileStatusId = 1, ProfileStatusName = "Approved", IsActive = true },
-                         new ProfileStatus { ProfileStatusId = 2, ProfileStatusName = "Waiting For Approval", IsActive = true },
+                         new ProfileStatus { ProfileStatusId = 2, ProfileStatusName = "Waiting", IsActive = true },
                          new ProfileStatus { ProfileStatusId = 3, ProfileStatusName = "Declined", IsActive = true }
                         );
             modelBuilder.Entity<CountryCode>()

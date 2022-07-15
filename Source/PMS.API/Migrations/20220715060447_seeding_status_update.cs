@@ -5,166 +5,152 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PMS_API.Migrations
 {
-    public partial class seeding_status_updated : Migration
+    public partial class seeding_status_update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.UpdateData(
-                table: "ProfileStatuss",
-                keyColumn: "ProfileStatusId",
-                keyValue: 2,
-                column: "ProfileStatusName",
-                value: "Waiting For Approval");
-
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 1,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 15, 11, 18, 7, 974, DateTimeKind.Local).AddTicks(8687));
+                value: new DateTime(2022, 7, 15, 11, 34, 46, 495, DateTimeKind.Local).AddTicks(8085));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 2,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 15, 11, 18, 7, 974, DateTimeKind.Local).AddTicks(8698));
+                value: new DateTime(2022, 7, 15, 11, 34, 46, 495, DateTimeKind.Local).AddTicks(8097));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 3,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 15, 11, 18, 7, 974, DateTimeKind.Local).AddTicks(8699));
+                value: new DateTime(2022, 7, 15, 11, 34, 46, 495, DateTimeKind.Local).AddTicks(8098));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 4,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 15, 11, 18, 7, 974, DateTimeKind.Local).AddTicks(8700));
+                value: new DateTime(2022, 7, 15, 11, 34, 46, 495, DateTimeKind.Local).AddTicks(8099));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 5,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 15, 11, 18, 7, 974, DateTimeKind.Local).AddTicks(8701));
+                value: new DateTime(2022, 7, 15, 11, 34, 46, 495, DateTimeKind.Local).AddTicks(8103));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 6,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 15, 11, 18, 7, 974, DateTimeKind.Local).AddTicks(8702));
+                value: new DateTime(2022, 7, 15, 11, 34, 46, 495, DateTimeKind.Local).AddTicks(8103));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 7,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 15, 11, 18, 7, 974, DateTimeKind.Local).AddTicks(8703));
+                value: new DateTime(2022, 7, 15, 11, 34, 46, 495, DateTimeKind.Local).AddTicks(8104));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 8,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 15, 11, 18, 7, 974, DateTimeKind.Local).AddTicks(8704));
+                value: new DateTime(2022, 7, 15, 11, 34, 46, 495, DateTimeKind.Local).AddTicks(8105));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 9,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 15, 11, 18, 7, 974, DateTimeKind.Local).AddTicks(8705));
+                value: new DateTime(2022, 7, 15, 11, 34, 46, 495, DateTimeKind.Local).AddTicks(8106));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 10,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 15, 11, 18, 7, 974, DateTimeKind.Local).AddTicks(8706));
+                value: new DateTime(2022, 7, 15, 11, 34, 46, 495, DateTimeKind.Local).AddTicks(8107));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.UpdateData(
-                table: "ProfileStatuss",
-                keyColumn: "ProfileStatusId",
-                keyValue: 2,
-                column: "ProfileStatusName",
-                value: "Waiting");
-
-            migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 1,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3553));
+                value: new DateTime(2022, 7, 15, 11, 33, 51, 782, DateTimeKind.Local).AddTicks(6659));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 2,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3567));
+                value: new DateTime(2022, 7, 15, 11, 33, 51, 782, DateTimeKind.Local).AddTicks(6671));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 3,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3568));
+                value: new DateTime(2022, 7, 15, 11, 33, 51, 782, DateTimeKind.Local).AddTicks(6672));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 4,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3569));
+                value: new DateTime(2022, 7, 15, 11, 33, 51, 782, DateTimeKind.Local).AddTicks(6677));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 5,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3574));
+                value: new DateTime(2022, 7, 15, 11, 33, 51, 782, DateTimeKind.Local).AddTicks(6678));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 6,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3575));
+                value: new DateTime(2022, 7, 15, 11, 33, 51, 782, DateTimeKind.Local).AddTicks(6679));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 7,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3576));
+                value: new DateTime(2022, 7, 15, 11, 33, 51, 782, DateTimeKind.Local).AddTicks(6680));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 8,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3576));
+                value: new DateTime(2022, 7, 15, 11, 33, 51, 782, DateTimeKind.Local).AddTicks(6681));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 9,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3577));
+                value: new DateTime(2022, 7, 15, 11, 33, 51, 782, DateTimeKind.Local).AddTicks(6681));
 
             migrationBuilder.UpdateData(
                 table: "languages",
                 keyColumn: "LanguageId",
                 keyValue: 10,
                 column: "CreatedOn",
-                value: new DateTime(2022, 7, 13, 0, 10, 43, 745, DateTimeKind.Local).AddTicks(3578));
+                value: new DateTime(2022, 7, 15, 11, 33, 51, 782, DateTimeKind.Local).AddTicks(6682));
         }
     }
 }
