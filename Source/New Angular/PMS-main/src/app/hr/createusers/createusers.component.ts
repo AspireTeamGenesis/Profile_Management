@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { Designation } from 'Models/designation';
 import { Organisation } from 'Models/organisation';
 import { User} from 'Models/user';
@@ -12,6 +13,7 @@ import { UserserviceService } from 'src/app/service/userservice.service';
 })
 export class CreateusersComponent implements OnInit {
   createusers:any;
+  filteredOptions:any;
   Mobilenumber:any;
   Gender:any;
   Organisation:any;
@@ -30,6 +32,10 @@ export class CreateusersComponent implements OnInit {
   OrganisationValue:number= 0;
   DesignationValue:number= 0;
   ReportingPersonUsername:string='';
+  item:any;
+  userForm:FormGroup;
+  formSubmitted: boolean = false;
+  selectedUsername:any;
   //TO get the input from the user
 
 
@@ -47,14 +53,36 @@ export class CreateusersComponent implements OnInit {
   //     ReportingPerson: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
   // });
 
-  constructor(private FB: FormBuilder,private service:UserserviceService,private http: HttpClient) { }
+  constructor(private FB: FormBuilder,private service:UserserviceService,private http: HttpClient) { 
+    this.userForm=this.FB.group({});
+  }
   
  
   
 
   ngOnInit(): void {
+    this.userForm=this.FB.group({
+      Name: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(30)]],
+      MailAddress: ['', [Validators.required,  Validators.pattern("([a-zA-Z0-9-_\.]{5,22})@(aspiresys.com)")]],
+      UserName: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(30),Validators.pattern("^[A-z][a-z|\.|\s]+$")]],
+      Password: ['', [Validators.required,Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$")]],
+      Gender: ['', [Validators.required]],
+      MobileNumber: ['', [Validators.required,Validators.pattern('[0-9]*')]],
+      Organisation: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      Designation: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      ReportingPersonUsername: ['', [Validators.required]],
+    });
     this.getOrganisation();
     this.getDesignation();
+  }
+  onSelectReportingPersonUsername(event:any)
+  {
+    this.selectedUsername = event.option.id;
+    console.log(this.selectedUsername)
+    // this.service.getProfileBytotalStatus(this.selectedUsername).subscribe(data=>{
+    // this.awardeeData=data;
+    // this.isAwardee=1;
+    // console.log(this.awardeeData);
   }
   getDesignation()
   {
@@ -69,6 +97,7 @@ export class CreateusersComponent implements OnInit {
   }
 
   userdata(){
+    this.formSubmitted = true ;
     var userDetails:any={
       "userId":0,
      "name": this.Name,

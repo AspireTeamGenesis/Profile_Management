@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,6 +51,7 @@ import { ViewprofileByIdComponent } from './viewprofile-by-id/viewprofile-by-id.
 import { WaitingprofileComponent } from './waitingprofile/waitingprofile.component';
 import { TotalprofileComponent } from './totalprofile/totalprofile.component';
 import { Dashboard11Component } from './dashboard11/dashboard11.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [		
@@ -99,7 +103,12 @@ import { Dashboard11Component } from './dashboard11/dashboard11.component';
     NgxPaginationModule,
     Ng2SearchPipeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NoopAnimationsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
+    
   ],
   providers: [DocumentCreator],
   // providers: [DatePipe],

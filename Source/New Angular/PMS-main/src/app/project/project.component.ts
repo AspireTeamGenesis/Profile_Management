@@ -3,6 +3,7 @@ import { UserserviceService } from '../service/userservice.service';
 import { Project } from 'Models/project';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { FormBuilder,Validators,FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -12,8 +13,12 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ProjectComponent implements OnInit {
 
-  profileId: number = 0;
-  constructor(private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute) { }
+  profileId:number=0;
+  projectForm:FormGroup;
+  formSubmitted: boolean = false;
+  constructor( private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient,private route: ActivatedRoute) {
+    this.projectForm=this.FB.group({});
+   }
   //  year:any;
   selectedYear: number = 0;
   years: number[] = [];
@@ -38,11 +43,21 @@ export class ProjectComponent implements OnInit {
   }
 
 
-
   showMe: boolean = false;
 
   foot: boolean = true;
   ngOnInit() {
+    this.projectForm=this.FB.group({
+      ProjectName: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
+      ProjectDescription: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
+      StartingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      StartingYear: ['', [Validators.required]],
+      EndingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      EndingYear: ['', [Validators.required]],
+      RolePlayed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+    });
+
     this.getProfileIdByUserId()
     this.selectedYear = new Date().getFullYear();
     for (let year = this.selectedYear; year >= 2000; year--) {

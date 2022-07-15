@@ -7,7 +7,7 @@ import { Language } from 'Models/language';
 import { BreakDuration } from 'Models/breakduration';
 import { SocialMedia } from 'Models/socialMedia';
 import { PersonalDetails } from 'Models/personalDetails';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder,Validators,FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-personal',
   templateUrl: './personal.component.html',
@@ -23,16 +23,29 @@ export class PersonalComponent implements OnInit {
   profileDetails:any;
   profileIdDetails:any;
 
-
+  formSubmitted: boolean = false;
   showMe: boolean = false;
-
+  personalForm:FormGroup;
   foot:boolean = true;
   error: string = ""
   
 
 
-  constructor(private service: UserserviceService, private http: HttpClient) { }
+  constructor(private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient) {
+    this.personalForm=this.FB.group({});
+   }
   ngOnInit(): void {
+    this.personalForm=this.FB.group({
+      ProfilePhoto: ['', [Validators.required]],
+      Objective: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
+      DateofBirth: ['', [Validators.required]],
+      Nationality: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      DateofJoining: ['', [Validators.required]],
+      BreakDuration: ['', [Validators.required]],
+      LanguagesKnown: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      SocialMediaName: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      SocialMediaLink: ['',[Validators.required,Validators.minLength(3),Validators.maxLength(25)]],
+    });
     this.getUserProfile();
     this.getProfileIdByUserId();
   }
@@ -193,6 +206,7 @@ export class PersonalComponent implements OnInit {
 
 personalSubmit()
 {
+  this.formSubmitted=true;
   this.user.profileId=this.profileIdDetails.profileId;
   this.user.userId=this.profileDetails.userid;
   console.log("User ProfileId");
