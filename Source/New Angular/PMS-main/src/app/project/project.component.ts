@@ -12,8 +12,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ProjectComponent implements OnInit {
 
-  profileId:number=0;
-  constructor( private service: UserserviceService, private http: HttpClient,private route: ActivatedRoute) { }
+  profileId: number = 0;
+  constructor(private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute) { }
   //  year:any;
   selectedYear: number = 0;
   years: number[] = [];
@@ -22,7 +22,7 @@ export class ProjectComponent implements OnInit {
   Project: any;
   project: Project[] = [];
   data: any;
-  profileIdDetails:any;
+  profileIdDetails: any;
   projectfield: any = {
     projectId: 0,
     profileId: 0,
@@ -41,7 +41,7 @@ export class ProjectComponent implements OnInit {
 
   showMe: boolean = false;
 
-  foot:boolean = true;
+  foot: boolean = true;
   ngOnInit() {
     this.getProfileIdByUserId()
     this.selectedYear = new Date().getFullYear();
@@ -56,22 +56,22 @@ export class ProjectComponent implements OnInit {
   //   })
   // }
 
-  getProfileIdByUserId()
-  {
+  getProfileIdByUserId() {
     this.service.getProfileIdByUserId().subscribe({
-        next:(data:any)=>{this.profileIdDetails=data,
-        this.profileId=this.profileIdDetails.profileId,
-        console.warn(this.profileId),
-        console.log(this.profileIdDetails)
-  }
+      next: (data: any) => {
+        this.profileIdDetails = data,
+          this.profileId = this.profileIdDetails.profileId,
+          console.warn(this.profileId),
+          console.log(this.profileIdDetails)
+      }
     })
   }
-  
+
 
   OnSubmit() {
 
     console.log("Project Field ");
-    this.projectfield.profileId=this.profileId;
+    this.projectfield.profileId = this.profileId;
     console.log(this.projectfield.profileId);
     console.log(this.projectfield);
     this.service.CreateProjects(this.projectfield).subscribe(data => this.projectfield.push(data));
@@ -85,23 +85,19 @@ export class ProjectComponent implements OnInit {
   // Delete() {
   //   this.data = this.projectfield;
   // }
-  toogletag()
+  toogletag() {
 
-  {
-
-    this.showMe=!this.showMe;
+    this.showMe = !this.showMe;
 
   }
 
 
 
-  footer()
+  footer() {
 
-  {
+    this.foot = !this.foot;
 
-    this.foot=!this.foot;
+    if (this.foot == false) { this.foot = true };
 
-    if(this.foot==false){this.foot=true};
-
-}
+  }
 }
