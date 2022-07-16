@@ -68,6 +68,12 @@ export class SkillsComponent implements OnInit {
     console.log("skill Details");
     console.log(this.skill);
     this.service.submitSkills(this.skill).subscribe();
+    setTimeout(
+      () => {
+        location.reload(); // the code to execute after the timeout
+      },
+      1000// the time to sleep to delay for
+    );
   }
   toogletag()
 

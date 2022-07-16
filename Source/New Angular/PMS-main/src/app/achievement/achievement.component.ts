@@ -57,6 +57,12 @@ export class AchievementComponent implements OnInit {
     console.log(this.achievementTypeValue);
     console.log(this.achievement);
     this.service.addAchievement(this.achievement).subscribe();
+    setTimeout(
+      () => {
+        location.reload(); // the code to execute after the timeout
+      },
+      1000// the time to sleep to delay for
+    );
 
   }
 

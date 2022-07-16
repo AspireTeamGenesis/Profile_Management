@@ -96,7 +96,7 @@ export class EducationComponent implements OnInit {
       () => {
         location.reload(); // the code to execute after the timeout
       },
-      1000// the time to sleep to delay for
+      500// the time to sleep to delay for
     );
   }
   toogletag()
