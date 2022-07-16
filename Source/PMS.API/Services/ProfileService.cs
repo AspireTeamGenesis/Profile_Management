@@ -48,9 +48,9 @@ namespace PMS_API
             if (profile == null) throw new ArgumentNullException($"Values cannot be null values are {profile}");
             try
             {
-                profile.CreatedBy=profile.UserId;
-                profile.CreatedOn=DateTime.Now;
-                profile.IsActive=true;
+                profile.CreatedBy = profile.UserId;
+                profile.CreatedOn = DateTime.Now;
+                profile.IsActive = true;
                 return profileData.AddProfile(profile) ? true : false;
             }
             catch (Exception exception)
@@ -272,7 +272,7 @@ namespace PMS_API
             {
                 _logger.LogInformation($"ProfileService:AddEducation()-{exception.Message}\n{exception.StackTrace}");
                 throw;
-                
+
             }
             return false;
 
@@ -620,8 +620,8 @@ namespace PMS_API
                     skillid = getskilldetails.SkillId,
                     domainname = getskilldetails.domain.DomainName,
                     technologyname = getskilldetails.technology.TechnologyName,
-                    domainId=getskilldetails.DomainId,
-                    technologyId=getskilldetails.TechnologyId
+                    domainId = getskilldetails.DomainId,
+                    technologyId = getskilldetails.TechnologyId
                 };
             }
             catch (Exception exception)
@@ -968,8 +968,8 @@ namespace PMS_API
                 var result = from profile in profileData.GetallProfiles() where profile.IsActive == true select profile;
                 foreach (var item in result)
                 {
-                    if(item.personalDetails!=null)
-                    item.year = calculateExperience(item.personalDetails.PersonalDetailsId);
+                    if (item.personalDetails != null)
+                        item.year = calculateExperience(item.personalDetails.PersonalDetailsId);
 
                 }
                 return result;
@@ -1202,7 +1202,7 @@ namespace PMS_API
                     name = user.Name,
                     designation = user.designation.DesignationName,
                     repotingPerson = user.ReportingPersonUsername,
-                    image = user.personalDetails != null?user.personalDetails.Image:null
+                    image = user.personalDetails != null ? user.personalDetails.Image : null
                 });
             }
             catch (Exception exception)
@@ -1228,6 +1228,48 @@ namespace PMS_API
             catch (Exception exception)
             {
                 _logger.LogError($"ProfileService:AcceptOrRejectProfile()-{exception.Message}\n{exception.StackTrace}");
+                throw;
+            }
+        }
+        // public bool updateProfileStatus(int profileId, int profileStatusId, int userId)
+        // {
+        //     if (profileId <= 0 || profileStatusId <= 0 || userId <= 0)
+        //         throw new ValidationException("profileId is Invalid");
+        //     try
+        //     {
+        //         return profileData.updateProfileStatus(profileId,profileStatusId,userId);
+        //     }
+        //     catch (ValidationException exception)
+        //     {
+        //         _logger.LogInformation($"ProfileController :updateProfileStatus()-{exception.Message}{exception.StackTrace}");
+        //         throw;
+        //     }
+        //     catch (Exception exception)
+        //     {
+        //         _logger.LogInformation($"ProfileController :updateProfileStatus()-{exception.Message}{exception.StackTrace}");
+        //         throw;
+        //     }
+
+        // }
+
+        public bool updateProfileStatus(Profile profile)
+        {
+            if (profile == null)
+                throw new ValidationException("profileId is Invalid");
+            try
+            {
+                Profile result = profileData.GetProfile(profile.ProfileId);
+                if (profile.UserId != result.UserId)
+                    throw new ValidationException("user doesnot exist");
+
+                result.ProfileStatusId = 2;
+                result.UpdatedOn =DateTime.Now;
+
+                return profileData.updateProfileStatus(result) ;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"ProfileService:updateProfileStatus()-{exception.Message}\n{exception.StackTrace}");
                 throw;
             }
         }

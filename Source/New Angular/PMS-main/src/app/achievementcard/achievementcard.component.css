@@ -440,6 +440,7 @@
 
 .fa-trash {
     text-indent: 5rem;
+    cursor: pointer;
 }
 
 .fa-pencil {
@@ -455,7 +456,7 @@
 
  .pagination {
     position: absolute;
-    top: 82%;
+    bottom: 40px;
     /* bottom: %; */
     place-items: center;
     /* margin-left: 40%; */

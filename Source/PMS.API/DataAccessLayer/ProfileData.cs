@@ -76,7 +76,7 @@ namespace PMS_API
         }
         public bool AddProfile(Profile profile)
         {
-            profile.IsActive=true;
+            profile.IsActive = true;
 
 
             if (profile == null)
@@ -84,7 +84,7 @@ namespace PMS_API
 
             try
             {
-                profile.IsActive=true;
+                profile.IsActive = true;
                 _context.profile.Add(profile);
                 _context.SaveChanges();
                 return true;
@@ -1015,6 +1015,48 @@ namespace PMS_API
             }
 
         }
+        public Profile GetProfile(int ProfileId)
+        {
+
+            if (ProfileId <= 0)
+
+                throw new ArgumentNullException("Profile id is not provided to DAL");
+
+            try
+            {
+                return _context.profile.Find(ProfileId);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"ProfileData.cs-GetprofileById()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-GetprofileId()-{exception.StackTrace}");
+                throw exception;
+            }
+        }
+        public bool updateProfileStatus(Profile profile)
+        {
+            if (profile == null || profile.ProfileId <= 0 || profile.UserId <= 0)
+                throw new ValidationException("profileId should not null");
+
+            if (!_context.profile.Any(e => e.ProfileId.Equals(profile.ProfileId)))
+                throw new ValidationException("Profile doesnot exists");
+            try
+            {
+                _context.profile.Update(profile);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError($"ProfileData.cs-AcceptOrRejectProfile()-{exception.Message}");
+                _logger.LogInformation($"ProfileData.cs-AcceptOrRejectProfile()-{exception.StackTrace}");
+                throw exception;
+            }
+        }
+
     }
 
+
 }
+
+

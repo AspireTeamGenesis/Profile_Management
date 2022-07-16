@@ -116,8 +116,8 @@
         <tr>
           <td>
             <label for="course">Languages Known</label>
-            <input type="text" id="personaldetails" name="languageName" [(ngModel)]="user.languageName"
-               style="border-color: black;" placeholder="Enter your Language" [class.is-invalid]="(formSubmitted && personalForm.controls['LanguagesKnown'].invalid )||personalForm.controls['LanguagesKnown'].invalid && personalForm.controls['LanguagesKnown'].touched" id="LanguagesKnown" formControlName="LanguagesKnown" > 
+            <!-- <input type="text" id="personaldetails" name="languageName" [(ngModel)]="user.languageName"
+               style="border-color: black;" placeholder="Enter your Language" [class.is-invalid]="(formSubmitted && personalForm.controls['LanguagesKnown'].invalid )||personalForm.controls['LanguagesKnown'].invalid && personalForm.controls['LanguagesKnown'].touched" id="LanguagesKnown" formControlName="LanguagesKnown" >  -->
             <div  *ngIf="(formSubmitted)||personalForm.controls['LanguagesKnown'].invalid && personalForm.controls['LanguagesKnown'].touched">
               <span class="text-danger" *ngIf="personalForm.controls['LanguagesKnown'].errors?.['required']">LanguagesKnown is required</span>
               <span class="text-danger" *ngIf="personalForm.controls['LanguagesKnown'].errors?.['minlength']">LanguagesKnown is too short</span>
@@ -199,9 +199,9 @@
         <span class="text-danger" *ngIf="personalForm.controls['SocialMediaLink'].errors?.['minlength']">SocialMediaLink is too short</span>
         <span class="text-danger" *ngIf="personalForm.controls['SocialMediaLink'].errors?.['maxlength']">SocialMediaLink is too long</span>
       </div>
-      <div class="button">
+      <!-- <div class="button">
         <a class="btn btn-next width-50 ml-auto" (click)="personalSubmit()" (click)="toogletag()">Submit</a>
-      </div> -->
+      </div> --> 
     </div>
 
 
@@ -209,7 +209,7 @@
         <!--<a [routerLink]="['/createprofile']" class="btn btn-next width-50 ml-auto">Previous</a>-->
         <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 mlr-auto" (click)="personalSubmit()">Save as
           Draft</a>
-        <a [routerLink]="['/education']"  class="btn btn-next width-50 mlr-auto"  (click)="personalSubmit()">Next</a>
+        <a [routerLink]="['/education']"  class="btn  width-50 mlr-auto"  (click)="personalSubmit()">Next</a>
         <!-- (click)="personalSubmit()" -->
       </div>
     </div>

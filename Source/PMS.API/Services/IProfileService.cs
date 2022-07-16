@@ -60,15 +60,15 @@ namespace PMS_API
         public bool AddProfileHistory(ProfileHistory profilehistory);
         public IEnumerable<object> GetProfileHistoryById(int ProfileId);
         public IEnumerable<object> GetallProfileHistories();
-        
+
         // public bool RequestToUpdate()
         // public bool Download(int ProfileId)
 
-        
 
-      public object GetProfileCount();
-      public object GetFilterdProfile(string userName,int designationId,int domainID,int technologyId,int collegeId,int profileStatusId,int maxExperience,int minExperience,int currentdesignation);
-      public bool AcceptOrRejectProfile(int profileId, int response);
+        public object GetProfileCount();
+        public object GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience, int currentdesignation);
+        public bool AcceptOrRejectProfile(int profileId, int response);
 
+        public bool updateProfileStatus(Profile profile);
     }
 }
