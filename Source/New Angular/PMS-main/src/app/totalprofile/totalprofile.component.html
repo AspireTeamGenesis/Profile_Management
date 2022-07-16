@@ -8,8 +8,8 @@
     <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
     <div class="kcard"
       *ngFor="let item of totalProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
-      <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top" src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png"
-          alt="Card image cap"></a>
+      <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded" [src]="'data:image/jpg;base64,'+item.userProfileImage"
+        width="50%" /></a>
       <div class="status">
         <p>Status </p>
         <p class="card-text">{{item.userProfileStatus}}</p>
