@@ -1184,12 +1184,13 @@ namespace PMS_API
 
         }
 
-        public object GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience)
+        public object GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience,int currentdesignation)
         {
+            
             try
             {
                 
-                return profileData.GetFilterdProfile(userName,designationId, domainID, technologyId, collegeId, profileStatusId,maxExperience, minExperience)
+                return profileData.GetFilterdProfile(userName,designationId, domainID, technologyId, collegeId, profileStatusId,maxExperience, minExperience,currentdesignation)
                 // .WhereIf(
                 //     (user=>user.personalDetails!=null &&  maxExperience!=0 && minExperience!=0 ),
                 //     ( minExperience<=calculateExperience(user=>user.personalDetails.PersonalDetailsId) && maxExperience>=calculateExperience(user.personalDetails.PersonalDetailsId))
