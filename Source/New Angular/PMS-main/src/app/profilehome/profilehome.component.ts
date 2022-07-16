@@ -39,9 +39,10 @@ export class ProfilehomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getTechnology();
+    this.dashboardcount();
     this.getDesignation();
     this.getDomain();
+    this.getTechnology();
     this.getCollege();
     this.getProfileStatus();
   }

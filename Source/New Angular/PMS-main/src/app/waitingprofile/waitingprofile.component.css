@@ -5,30 +5,30 @@
     font-family: 'poppins', sans-serif;
 }
 
-.topbar
-{
-    position:fixed;
-    background:#ffff;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.08);
-    width:100%;
-    height:8%;
-    padding:0 20px;
-    display:grid;
-     grid-template-columns: 2fr 40fr 0.4fr 1fr; 
+.topbar {
+    position: fixed;
+    background: #ffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+    width: 100%;
+    height: 8%;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 40fr 0.4fr 1fr;
     align-items: center;
     z-index: 1;
 
 }
-.logo h2{
-    color:#967bb6;
-  
+
+.logo h2 {
+    color: #967bb6;
+
 }
 
 .search {
     position: relative;
     width: 60%;
     padding-left: 20px;
-    padding-top:10px;
+    padding-top: 10px;
     justify-self: center;
 }
 
@@ -47,7 +47,7 @@
 .search i {
     /* padding-right:20px ; */
     position: absolute;
-    padding-left:15px;
+    padding-left: 15px;
     /* padding-top:-70px; */
     /* right: 5px; */
     top: 25px;
@@ -59,64 +59,65 @@
 }
 
 
-.user
-{
-    position:relative;
-    width:50px;
-    height:50px;
+.user {
+    position: relative;
+    width: 50px;
+    height: 50px;
 }
-.user img
-{
-    position:absolute;
-    top:0;
-    left:0;
-    height:100%;
-    width:100%;
-    object-fit:cover;
+
+.user img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
-.profile img
-{
-    margin:15px auto;
-    display:block;
-    width:120px;
-    height:120px;
+
+.profile img {
+    margin: 15px auto;
+    display: block;
+    width: 120px;
+    height: 120px;
     border-radius: 70px;
     /* border:8px solid #967bb6; */
 }
-.profile h1{
-    font-size:34px;
-    margin:0;
-    padding:0;
+
+.profile h1 {
+    font-size: 34px;
+    margin: 0;
+    padding: 0;
     font-weight: 600;
-    -moz-text-align-last:center;
-    text-align-last:center;
-    font-family:"Poppins",sans-serif;
-    color:white;
+    -moz-text-align-last: center;
+    text-align-last: center;
+    font-family: "Poppins", sans-serif;
+    color: white;
 }
-.profile1 .social-links a
-{
-    font-size:18px;
+
+.profile1 .social-links a {
+    font-size: 18px;
     display: inline-block;
     background: #967bb6;
-    color:black;
-    line-height:1;
-    padding:8px 0;
+    color: black;
+    line-height: 1;
+    padding: 8px 0;
     margin-right: 4px;
-    border-radius:50px;
-    text-align:center;
-    width:36px;
-    height:36px;
+    border-radius: 50px;
+    text-align: center;
+    width: 36px;
+    height: 36px;
     transition: 0.3s;
 }
-.profile1 .social-links a:hover
-{
+
+.profile1 .social-links a:hover {
     background: white;
-    color:#967bb6;
+    color: #967bb6;
     text-decoration: none;
 }
-.profile1 h1{
+
+.profile1 h1 {
     padding-top: 450px;
-    font-size:20px;
+    font-size: 20px;
 }
 
 
@@ -128,7 +129,7 @@
     top: 85px;
     width: 260px;
     height: calc(100% - 60px);
-    background:#967bb6;
+    background: #967bb6;
     overflow-x: hidden;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     z-index: 2;
@@ -160,14 +161,14 @@
     align-items: center;
 }
 
-.sidebar ul li a i{
+.sidebar ul li a i {
     min-width: 60px;
     font-size: 24px;
     font-weight: 600;
     text-align: center;
 }
-.sidebar ul li a p
-{
+
+.sidebar ul li a p {
     min-width: 60px;
     font-size: 20px;
     font-weight: 50px;
@@ -186,22 +187,23 @@
     left: 260px;
     background: #f5f5f5;
 }
-.filters
-{
+
+.filters {
     width: 100%;
     padding: 10px 10px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 10px;
 }
-.filters .filter{
-     padding: 5px 10px; 
+
+.filters .filter {
+    padding: 5px 10px;
     /* display: flex; */
     /* align-items: center; */
     /* justify-content: space-between; */
-    background-color:#fff;
-     border-radius: 10px
-     /* box-shadow: 0 70px 25px rgba(0, 0, 0, 0.08);  */
+    background-color: #fff;
+    border-radius: 10px
+        /* box-shadow: 0 70px 25px rgba(0, 0, 0, 0.08);  */
 }
 
 .card1 {
@@ -215,7 +217,8 @@
     grid-gap: 20px;
     background-color: #fff;
 }
-.card1 h4{
+
+.card1 h4 {
     margin-top: 20px;
     padding-right: 650px;
     font-size: 30px;
@@ -238,30 +241,35 @@
     border-radius: 10px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
-.kcard{
-   padding:5px;
-   background-color: white; 
-   border: 1px solid black;
-   width: 15rem;
-   margin-left: 90px;
-   float:left; 
-   margin-top: 100px; 
-   height: auto;
-   border-radius: 10px;
+
+.kcard {
+    padding: 5px;
+    background-color: white;
+    border: 1px solid black;
+    width: 15rem;
+    margin-left: 90px;
+    float: left;
+    margin-top: 100px;
+    height: auto;
+    border-radius: 10px;
 }
-.card-img-top{
-    height:100px;
-    max-width:10px; 
+
+.card-img-top {
+    height: 100px;
+    max-width: 10px;
     clip-path: circle();
 }
 
-.fa-square-pen , .fa-share-nodes, .fa-download{
-    font-size: 25px;;
+.fa-square-pen,
+.fa-share-nodes,
+.fa-download {
+    font-size: 25px;
+    ;
 }
 
-.status{
+.status {
     padding-top: 40px;
-    float:right;
+    float: right;
     padding-right: 30px;
     text-align: center;
 }
@@ -313,6 +321,7 @@
     .sidebar {
         width: 60px;
     }
+
     .main {
         width: calc(100% - 60px);
         left: 60px;
@@ -320,12 +329,14 @@
 }
 
 @media (max-width:880px) {
+
     /* .topbar {
         grid-template-columns: 1.6fr 6fr 0.4fr 1fr;
     } */
     .fa-bell {
         justify-self: left;
     }
+
     .cards {
         width: 100%;
         padding: 35px 20px;
@@ -333,12 +344,15 @@
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 20px;
     }
+
     .charts {
         grid-template-columns: 1fr;
     }
+
     .doughnut-chart {
         padding: 50px;
     }
+
     #doughnut {
         padding: 50px;
     }
@@ -348,27 +362,35 @@
     .topbar {
         grid-template-columns: 1fr 5fr 0.4fr 1fr;
     }
+
     .logo h2 {
         font-size: 20px;
     }
+
     .search {
         width: 80%;
     }
+
     .search input {
         padding: 0 20px;
     }
+
     .fa-bell {
         margin-right: 5px;
     }
+
     .cards {
         grid-template-columns: 1fr;
     }
+
     .doughnut-chart {
         padding: 10px;
     }
+
     #doughnut {
         padding: 0px;
     }
+
     .user {
         width: 40px;
         height: 40px;
@@ -392,36 +414,49 @@
     border-radius: 10px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
-.kcard{
-   padding:5px;background-color: white; border: 1px solid black;width: 15rem;margin-left: 108px;float:left; margin-top: 100px; 
+
+.kcard {
+    padding: 5px;
+    background-color: white;
+    border: 1px solid black;
+    width: 15rem;
+    margin-left: 108px;
+    float: left;
+    margin-top: 100px;
     border-radius: 10px;
 }
-.card-img-top{
-    height:100px;min-width:120px; clip-path: circle();
-}
-.fa-share-nodes{
-    text-indent: 6rem;
-    height:5%;
-}
-.fa-trash{
-    text-indent: 7rem;
-}
-.fa-pen-to-square
-{
-    text-indent:2rem;
-}
-.fa-download
-{
-    text-indent: 3.4rem; 
+
+.card-img-top {
+    height: 100px;
+    min-width: 120px;
+    clip-path: circle();
 }
 
-.status{
+.fa-share-nodes {
+    text-indent: 6rem;
+    height: 5%;
+}
+
+.fa-trash {
+    text-indent: 7rem;
+}
+
+.fa-pen-to-square {
+    text-indent: 2rem;
+}
+
+.fa-download {
+    text-indent: 3.4rem;
+}
+
+.status {
     padding-top: 40px;
-    float:right;
+    float: right;
     padding-right: 30px;
     text-align: center;
 }
-.pagination{
+
+.pagination {
     position: fixed;
     top: 80%;
     /* bottom: %; */
@@ -430,15 +465,33 @@
     margin-top: 100%;
 }
 
-.rounded1{
-    background-color: rgb(11, 166, 11);width:100%;height:30PX;border-radius:20px;
+.rounded1 {
+    background-color: rgb(11, 166, 11);
+    width: 100%;
+    height: 30PX;
+    border-radius: 20px;
 }
-.rounded{
-    background-color: rgb(214, 57, 57);width:100%;height:30px;border-radius:20%;
+
+.rounded {
+    background-color: rgb(214, 57, 57);
+    width: 100%;
+    height: 30px;
+    /* border-radius: 20px; */
+    border-radius: 20px !important;
 }
-.button1{
-    color:white ;text-align:center;
+
+.button1 {
+    color: white;
+    text-align: center;
 }
-.fa-check{
-    height:20PX;
+
+.fa-check {
+    height: 20PX;
+}
+.div1{
+    margin-left:0.5rem;display:inline-block;height:50%;width: 45%;
+
+}
+.card-text1{
+    padding: 0px 10px;
 }

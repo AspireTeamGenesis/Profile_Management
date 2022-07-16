@@ -13,11 +13,11 @@
       <!-- <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top" src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png"
           alt="Card image cap"></a> -->
       <div class="status">
-        <p>Status </p>
+        <p>Status </p>        
         <p class="card-text">{{item.userProfileStatus}}</p>
       </div>
       <div class="card-body">
-        <p class="card-text"><br>{{item.name}} - {{item.userDesignation}}<br>Reporting
+        <p class="card-text1"><br>{{item.name}} - {{item.userDesignation}}<br>Reporting
           Person-{{item.reportingPerson}}</p>
         <br>
         <h2>
@@ -28,8 +28,8 @@
           <!-- <i class="fa fa-trash"></i> -->
         </h2>
         <div class="container">
-          <div style="margin-left:0.5rem;display:inline-block;height:50%;width: 45%;"><a  [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,1)"><button  class="rounded1" ><h2 class ="button1" ><i  class="fa fa-check"></i></h2></button></a></div>
-          <div style="margin-left:0.5rem;display: inline-block;height:50%;width: 45%;"><a [routerLink]="['/waitingprofile']"  (click)="acceptorrejectprofile(item.userProfileId,3)"><button class="rounded"><h2 class ="button1" ><i class="fa fa-xmark"></i></h2></button></a></div>
+          <div  class="div1"><a  [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,1)"><button  class="rounded1" ><h2 class ="button1" ><i  class="fa fa-check"></i></h2></button></a></div>
+          <div class="div1" ><a [routerLink]="['/waitingprofile']"  (click)="acceptorrejectprofile(item.userProfileId,3)"><button class="rounded"><h2 class ="button1" ><i class="fa fa-xmark"></i></h2></button></a></div>
         </div>
 
       </div>

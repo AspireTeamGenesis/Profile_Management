@@ -15,11 +15,11 @@
         <p class="card-text">{{item.userProfileStatus}}</p>
       </div>
       <div class="card-body">
-        <p class="card-text"><br>{{item.name}} - {{item.userDesignation}}<br>Reporting
+        <p class="card-text1"><br>{{item.name}} - {{item.userDesignation}}<br>Reporting
           Person-{{item.reportingPerson}}</p>
         <br>
         <h2>
-          <i class="fa fa-pen-to-square fa-xs"></i><i  class="fa fa-share-nodes"></i>
+          <i class="fa fa-pen-to-square fa-xs"></i><i class="fa fa-share-nodes"></i>
           <!-- <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
           <i class="fa fa-trash"></i> -->
 
@@ -30,6 +30,8 @@
     </div>
   </div>
   <div class="mt-3 pagination">
-    <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+    <pagination-controls class="text-center" (pageChange)="page = $event">
+      
+    </pagination-controls>
   </div>
 </div>

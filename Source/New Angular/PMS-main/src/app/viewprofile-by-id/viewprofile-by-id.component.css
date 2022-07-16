@@ -11448,3 +11448,7 @@ div .center{
     cursor: pointer;
   }
   
+  
+.lang{
+    display: inline-block;
+}

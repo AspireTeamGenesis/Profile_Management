@@ -107,7 +107,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     NoopAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
     
   ],
   providers: [DocumentCreator],
