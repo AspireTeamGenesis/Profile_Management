@@ -52,6 +52,8 @@ import { WaitingprofileComponent } from './waitingprofile/waitingprofile.compone
 import { TotalprofileComponent } from './totalprofile/totalprofile.component';
 import { Dashboard11Component } from './dashboard11/dashboard11.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SnapbarComponent } from './snapbar/snapbar.component';
+import { LanguageComponent } from './language/language.component';
 
 @NgModule({
   declarations: [		
@@ -94,7 +96,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     ViewprofileByIdComponent,
     WaitingprofileComponent,
     TotalprofileComponent,
-      Dashboard11Component
+      Dashboard11Component,
+      SnapbarComponent,
+      LanguageComponent
    ],
   imports: [
     BrowserModule,

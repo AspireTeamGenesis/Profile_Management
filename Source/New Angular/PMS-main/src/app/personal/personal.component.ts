@@ -22,6 +22,7 @@ export class PersonalComponent implements OnInit {
   child: any;
   profileDetails:any;
   profileIdDetails:any;
+  response: string = '';
 
   formSubmitted: boolean = false;
   showMe: boolean = false;
@@ -67,8 +68,11 @@ export class PersonalComponent implements OnInit {
         next:(data:any)=>{this.profileIdDetails=data,
         this.profileId=this.profileIdDetails.profileId,
         console.warn(this.profileId),
-        console.log(this.profileIdDetails)
+        console.log(this.profileIdDetails),
+        this.getPersonalDetailsByProfileId(this.profileId)
+
   }
+  
     })
   }
 
@@ -83,6 +87,7 @@ export class PersonalComponent implements OnInit {
   Personal:any;
   personal:PersonalDetails[]=[];
   data : any;
+  personalDetails:any;
   user:any = {
     personalDetailsId:0,
     profileId:0,
@@ -94,9 +99,26 @@ export class PersonalComponent implements OnInit {
     dateOfJoining:'',
     userId:0
   }
+  
+  breakDuration:any=
+  {
+    breakDuration_Id:0,
+    startingDuration:'',
+    endingDuration:'',
+    personalDetailsId:2010
+  }
   languageDetails:any=
   {
-
+    languageId:0,
+    personalDetailsId:2010,
+    languageName:''
+  }
+  socialMedia:any=
+  {
+    personalDetailsId:2010,
+    socialMedia_Id:0,
+    socialMedia_Name:'',
+    socialMedia_Link:''
   }
 
     // language:any{
@@ -119,7 +141,16 @@ export class PersonalComponent implements OnInit {
     //   socialMedia_Link: '',
     // }
   
-  
+ getPersonalDetailsByProfileId(profileId:number)
+ {
+  this.service.getPersonalDetailByProfileId(profileId).subscribe({
+    next:(data:any)=>{
+      this.personalDetails=data,
+      console.log(this.personalDetails)
+      
+    }
+  });
+ } 
 
   GetAllPersonalDetailsByProfileId(){
     this.service.getPersonalDetailByProfileId(this.profileId).subscribe((res)=>{
@@ -144,87 +175,53 @@ export class PersonalComponent implements OnInit {
     this.foot=!this.foot;
 
     if(this.foot==false){this.foot=true};
-
-   
-
   }
-  // getPersonalDetailsbyId(){
-  //   this.userService.getPersonalDetails(this.personalDetailsId).subscribe((res)=>{
-  //     this.user = res;
-  //     this.user.designation = res.role;
-  //     console.log(this.user);
-  //   })
-  // }
-
-
-  //   // language: Language | null,
-  //   // breakDuration: BreakDuration | null,
-  //   // socialmedia: SocialMedia | null,
-  //   // education: Education[] | null;
-  //   // projects: Projects[] | null;
-  //   // skills: Skills[] | null;
-  //   // users: User | null,
-  //   isActive: true,
-  // }
-
-  // personaldata()
-  // {
-  //   var personalDetails: any={
-  //     "personalDetailsId": 0,
-  //     "name": this.Name,
-  //     "objective": this.Objective,
-  //     "dateOfBirth": this.Dateofbirth,
-  //     "nationality": this.Nationality,
-  //     "mailAddress": this.Email,
-  //     "dateOfJoining": this.Dateofjoining,
-  //     "languageid": this.LanguageValue,
-  //     "breakDurationid": this.BreakdurationValue,
-  //     "socialmediaid": this.SocialmediaValue,
-  //   };
-
-  //   const headers={'content-type':'application/json'}
-  //   console.log(this.personal)
-  //   this.http.post<any>('https://localhost:7021/Profile/AddPersonal',this.personal,{headers:headers})
-  //   .subscribe((data)=>{
-  //     console.log(data)
-  //   });
-  
-
-  // ngOnInit(): void {
-  //   // this.http
-  //   //   .get<any>(this.artsrc)
-  //   //   .subscribe((data) => {
-  //   //     this.data = data;
-  //   //     this.totalLength = data.length;
-  //   //     console.log(data);
-  //   //   });
-  // }
-
-  // public data: PersonalDetails[] = [
-
-  // ];
-
 personalSubmit()
 {
   this.formSubmitted=true;
+  this.error = '';
   this.user.profileId=this.profileIdDetails.profileId;
   this.user.userId=this.profileDetails.userid;
   console.log("User ProfileId");
   console.log(this.user.profileId);
   console.log(this.user.userId); 
   console.log(this.user);
-  this.service.addPersonalDetail(this.user).subscribe({next:data=>this.user.push(data),
-  error: (error: { error: { message: any; }; }) => {
-    this.error = error.error.message;
-  
-  }
-});
+
+    this.service.addPersonalDetail(this.user).subscribe(
+      {
+        next: (data) => this.response = data.message,
+        error: (error) => this.error = error.error.message,
+        complete: () => this.clearInputFields(),
+      }
+    );
+  console.log(this.error);
+  console.log(this.response);
+}
+addLanguage()
+{
+  console.log(this.languageDetails)
+  this.service.addLanguage(this.languageDetails).subscribe();
+}
+addBreakDuration()
+{
+  console.log(this.breakDuration)
+  this.service.addBreakDuration(this.breakDuration).subscribe();
+}
+addSocialMedia()
+{
+  console.log(this.socialMedia)
+  this.service.addSocialMedia(this.socialMedia).subscribe();
+}
+clearInputFields() {
+
+  this.formSubmitted = false;
+  setTimeout(() => {
+    this.response = '';
+    this.personalForm.reset();
+  }, 1000);
+
 }
 
-Update(){
-  this.data = this.user;
-  this.service.updatePersonalDetail(this.data).subscribe(data=>this.data.push(data));
-}
 
   fileChangeEvent(fileInput:any){
      this.imageError="";

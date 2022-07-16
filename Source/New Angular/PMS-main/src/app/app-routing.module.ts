@@ -31,6 +31,7 @@ import { ViewprofileByIdComponent } from './viewprofile-by-id/viewprofile-by-id.
 import { WaitingprofileComponent } from './waitingprofile/waitingprofile.component';
 import { TotalprofileComponent } from './totalprofile/totalprofile.component';
 import { Dashboard11Component } from './dashboard11/dashboard11.component';
+import { SnapbarComponent } from './snapbar/snapbar.component';
 
 
 const routes: Routes = [
@@ -66,6 +67,7 @@ const routes: Routes = [
   {path:"waitingprofile",component:WaitingprofileComponent},
   {path:"totalprofile",component:TotalprofileComponent},
   {path:"dashboard",component:Dashboard11Component},
+  {path:"snapbar",component:SnapbarComponent},
   {path:"",component:LoginComponent}
 ];
 

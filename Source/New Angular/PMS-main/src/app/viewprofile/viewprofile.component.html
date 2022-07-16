@@ -203,7 +203,7 @@
         <h3>
           <div class="footer-icons">
             <i class="mtr-1 fa-solid fa-share-nodes"></i>
-            <i [routerLink]="['/education']" class="fa-solid fa-pen mtr-1"></i>
+            <i [routerLink]="['/education']" (click)="updateProfileStatus()" class="fa-solid fa-pen mtr-1"></i>
             <i (click)="download()" class="fa-solid fa-download mtr-1"></i>
           </div>
 

@@ -241,10 +241,10 @@ export class UserserviceService {
     return this.http.put<any>(`https://localhost:7021/Profile/UpdatePersonalDetail`,personalDetails,{headers:this.headers});
   }
 
-  getPersonalDetailByProfileId(profileId:number)
-  {
-    return this.http.get<any>( `https://localhost:7021/Profile/GetPersonalDetailsByProfileId?Profileid=${profileId}`,{ headers: this.headers });
-  }
+  // getPersonalDetailByProfileId(profileId:number)
+  // {
+  //   return this.http.get<any>( `https://localhost:7021/Profile/GetPersonalDetailsByProfileId?Profileid=${profileId}`,{ headers: this.headers });
+  // }
 
 
   
@@ -340,6 +340,27 @@ acceptorrejectprofile(profileid : number,response : number)
   return this.http.post<any>(`https://localhost:7021/Profile/AcceptOrRejectProfile?profileId=${profileid}&response=${response}`,{headers:this.headers});
 }
 
+updateProfileStatus(profile:any)
+{
+  return this.http.put<any>(`https://localhost:7021/Profile/updateProfileStatus`,profile,{headers:this.headers});
+
+}
+addLanguage(languageDetails:any)
+{
+  return this.http.post<any>(`https://localhost:7021/Profile/AddLanguage`,languageDetails,{headers:this.headers});
+}
+getPersonalDetailByProfileId(profileId:number)
+{
+  return this.http.get<any>(`https://localhost:7021/Profile/GetPersonalDetailsByProfileId?Profileid=${profileId}`,{headers:this.headers})
+}
+addBreakDuration(breakDuration:any)
+{
+  return this.http.post<any>(`https://localhost:7021/Profile/AddBreakDuration`,breakDuration,{headers:this.headers});
+}
+addSocialMedia(socialMedia:any)
+{
+  return this.http.post<any>(`https://localhost:7021/Profile/AddSocialMedia`,socialMedia,{headers:this.headers});
+}
  
 
 }

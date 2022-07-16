@@ -99,6 +99,7 @@ export class ViewprofileComponent implements OnInit {
   getUserDetails()
   {this.service.getUserProfile().subscribe( {
     next:(data:any)=>{this.userDetails=data,console.warn(this.userDetails),
+      console.log(this.userDetails.userid);
       console.log(this.userDetails.mobilenumber);
       console.log(this.userDetails.designation);
       console.log(this.userDetails.email);
@@ -161,6 +162,17 @@ export class ViewprofileComponent implements OnInit {
         this.createpersonalInfo();
     },
   })
+  }
+  updateProfileStatus()
+  {
+    const profile=
+    {
+      userId:this.userDetails.userid,
+      profileId:this.profileIdDetails.profileId,
+      profileStatusId:2
+    }
+    this.service.updateProfileStatus(profile).subscribe();
+
   }
   public download(): void {
     const documentCreator = new DocumentCreator();

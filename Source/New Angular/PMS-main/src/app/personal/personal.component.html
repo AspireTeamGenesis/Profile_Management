@@ -106,7 +106,7 @@
             </td>
             <td>
               <button class="btn" style="background-color:#866ec7; border-radius: 500%;">
-                <i class="fa fa-plus fa-xs"></i></button>
+                <i (click)="addBreakDuration()" class="fa fa-plus fa-xs"></i></button>
             </td>
             <td>
               <button class="btn" style=" background-color:#866ec7; border-radius: 500%;">
@@ -118,15 +118,17 @@
 
         <td style="width: 55%;">
           <label for="personaldetails">From</label>
-          <input type="date" name="starting" [(ngModel)]="user.starting" id="personaldetails"
-            style="border-color: black;" />
+          <input type="date" name="dateofJoining" [(ngModel)]="breakDuration.startingDuration" id="personaldetails"
+          style="border-color: black;">
+          <!-- <input type="date" name="startingDuration" [(ngModel)]="breakDuration.startingDuration" id="personaldetails"
+            style="border-color: black;" /> -->
           <!-- <select name="starting" [(ngModel)]="user.starting" required="" style="border-color: black;" >
         </select> -->
         </td>
 
         <td style="width: 55%;">
           <label for="personaldetails">To</label>
-          <input type="date" name="ending" [(ngModel)]="user.ending" id="personaldetails"
+          <input type="date" name="endingDuration" [(ngModel)]="breakDuration.endingDuration" id="personaldetails"
             style="border-color: black;" />
           <!-- <select name="ending" [(ngModel)]="user.ending" required="" style="border-color: black;" >
         </select> -->
@@ -140,7 +142,20 @@
           <tr>
             <td>
               <label for="course">Languages Known</label>
-              <input type="text" id="personaldetails" name="languageName" [(ngModel)]="user.languageName"
+              
+            </td>
+
+            <td>
+              <button class="btn "  style=" background-color:#866ec7; border-radius: 500%; ">
+                <i (click)="addLanguage()" class="fa fa-plus fa-xs"> </i> </button>
+            </td>
+            <td>
+              <button class="btn " style=" background-color:#866ec7; border-radius: 500%;">
+                <i class="fa-solid fa-trash-can"></i></button>
+            </td>
+          </tr>
+        </table>
+        <input type="text" id="personaldetails" name="languageName" [(ngModel)]="languageDetails.languageName"
                 style="border-color: black;" placeholder="Enter your Language"
                 [class.is-invalid]="(formSubmitted && personalForm.controls['LanguagesKnown'].invalid )||personalForm.controls['LanguagesKnown'].invalid && personalForm.controls['LanguagesKnown'].touched"
                 id="LanguagesKnown" formControlName="LanguagesKnown">
@@ -155,62 +170,28 @@
                   *ngIf="personalForm.controls['LanguagesKnown'].errors?.['maxlength']">LanguagesKnown is too
                   long</span>
               </div>
-            </td>
-
-            <td>
-              <button class="btn " style=" background-color:#866ec7; border-radius: 500%; ">
-                <i class="fa fa-plus fa-xs"> </i> </button>
-            </td>
-            <td>
-              <button class="btn " style=" background-color:#866ec7; border-radius: 500%;">
-                <i class="fa-solid fa-trash-can"></i></button>
-            </td>
-          </tr>
-        </table>
-
-        <tr class="checkBoxChecked">
-          <td>
-            <label for="course">Languages Known</label>
-            <!-- <input type="text" id="personaldetails" name="languageName" [(ngModel)]="user.languageName"
-               style="border-color: black;" placeholder="Enter your Language" [class.is-invalid]="(formSubmitted && personalForm.controls['LanguagesKnown'].invalid )||personalForm.controls['LanguagesKnown'].invalid && personalForm.controls['LanguagesKnown'].touched" id="LanguagesKnown" formControlName="LanguagesKnown" >  -->
-            <div  *ngIf="(formSubmitted)||personalForm.controls['LanguagesKnown'].invalid && personalForm.controls['LanguagesKnown'].touched">
-              <span class="text-danger" *ngIf="personalForm.controls['LanguagesKnown'].errors?.['required']">LanguagesKnown is required</span>
-              <span class="text-danger" *ngIf="personalForm.controls['LanguagesKnown'].errors?.['minlength']">LanguagesKnown is too short</span>
-              <span class="text-danger" *ngIf="personalForm.controls['LanguagesKnown'].errors?.['maxlength']">LanguagesKnown is too long</span>
-            </div> 
-          </td>
-          <td>
-            <div class="custom-control custom-checkbox">
-              <input name="read" type="checkbox" class="custom-control-input" id="checkbox-1" [(ngModel)]="user.read"
-                required="" />
-              <label class="custom-control-label" for="checkbox-1">Read</label>
-            </div>
-          </td>
-          <td>
-            <div class="custom-control custom-checkbox">
-              <input name="write" type="checkbox" class="custom-control-input" id="checkbox-2" [(ngModel)]="user.write"
-                required="" />
-              <label class="custom-control-label" for="checkbox-2">Write&nbsp;&nbsp;</label>
-            </div>
-          </td>
-          <td>
-            <div class="custom-control custom-checkbox">
-              <input name="speak" type="checkbox" class="custom-control-input" id="checkbox-3" [(ngModel)]="user.speak"
-                required="" />
-              <label class="custom-control-label" for="checkbox-3">Speak&nbsp;&nbsp;</label>
-            </div>
-          </td>
-        </tr>
 
         <br>
+       <div *ngFor="let item of personalDetails['language']">
+        <p>{{item.languageName}}</p>
 
+       </div>
         <div class="mt-3 container shadow  bg-body rounded">
-          <!-- *ngFor="let item of location| paginate: { itemsPerPage: 4, currentPage: page,totalItems:totalLength }"> -->
-          <div>
+        <div>
             <div class="card-body">
-              
+                <div class="row rone ">
+                    <div class="col-md-10">
+                        <p>Language</p>
+                    </div>
+
+                    <div class="col-md-1">
+                        <div class="row">
+                            <button  class="btn"><i class="fa fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
         </div>
 
         <table>
@@ -220,7 +201,7 @@
             </td>
             <td>
               <button class="btn  " style="background-color:#866ec7; border-radius: 500%;">
-                <i class="fa fa-plus fa-xs"></i></button>
+                <i (click)="addSocialMedia()" class="fa fa-plus fa-xs"></i></button>
             </td>
 
             <td>
@@ -234,7 +215,7 @@
 
         <label for="personaldetails">Social Media Name</label>
         <input name="socialMedia_Name" type="text" id="personaldetails" placeholder="Enter Social media name"
-          [(ngModel)]="user.socialMedia_Name" required="" style="border-color: black;"
+        [(ngModel)]="socialMedia.socialMedia_Name" required="" style="border-color: black;"
           [class.is-invalid]="(formSubmitted && personalForm.controls['SocialMediaName'].invalid )||personalForm.controls['SocialMediaName'].invalid && personalForm.controls['SocialMediaName'].touched"
           id="SocialMediaName" formControlName="SocialMediaName">
         <div
@@ -249,7 +230,7 @@
         <br>
         <label for="personaldetails">Social Media Link</label>
         <input name="socialMedia_Link" type="text" id="personaldetails" placeholder="Enter Social media link"
-          [(ngModel)]="user.socialMedia_Link" required="" style="border-color: black;"
+        [(ngModel)]="socialMedia.socialMedia_Link" required="" style="border-color: black;"
           [class.is-invalid]="(formSubmitted && personalForm.controls['SocialMediaLink'].invalid )||personalForm.controls['SocialMediaName'].invalid && personalForm.controls['SocialMediaLink'].touched"
           id="SocialMediaLink" formControlName="SocialMediaLink">
         <div
@@ -261,6 +242,9 @@
           <span class="text-danger"
             *ngIf="personalForm.controls['SocialMediaLink'].errors?.['maxlength']">SocialMediaLink is too long</span>
         </div>
+        <div *ngIf="response.length!==0">
+          <app-snapbar snackBarMessage={{response}} snackBarAction="Done"></app-snapbar>
+      </div>
         <div class="button">
           <a class="btn btn-next width-50 ml-auto" (click)="personalSubmit()" (click)="toogletag()">Submit</a>
         </div> -->
