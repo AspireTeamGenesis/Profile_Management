@@ -65,7 +65,7 @@ namespace PMS_API
         // public bool Download(int ProfileId)
 
 
-        public object GetProfileCount();
+       public object GetProfileCount();
         public object GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience, int currentdesignation);
         public bool AcceptOrRejectProfile(int profileId, int response);
 

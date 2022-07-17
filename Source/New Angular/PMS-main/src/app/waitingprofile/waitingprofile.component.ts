@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { UserserviceService } from '../service/userservice.service';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Toaster } from 'ngx-toast-notifications';
 @Component({
   selector: 'app-waitingprofile',
   templateUrl: './waitingprofile.component.html',
@@ -18,7 +19,7 @@ export class WaitingprofileComponent implements OnInit {
   waitingProfiles:any;
   acceptedProfile:any
 
-  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient) { }
+  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private toaster: Toaster) { }
   
   ngOnInit(): void {
     this.getProfileByWaitingStatus();
@@ -39,5 +40,8 @@ export class WaitingprofileComponent implements OnInit {
       })
 
 
+}
+editToUpdate(){
+  this.toaster.open({ text: 'Request to update sent successfully via mail', position: 'top-center', type: 'success' })
 }
 }

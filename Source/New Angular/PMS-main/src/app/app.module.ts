@@ -56,6 +56,7 @@ import { SnapbarComponent } from './snapbar/snapbar.component';
 import { LanguageComponent } from './language/language.component';
 import { SharepageComponent } from './sharepage/sharepage.component';
 
+import { ToastNotificationsModule } from 'ngx-toast-notifications';
 @NgModule({
   declarations: [		
     AppComponent,
@@ -114,7 +115,7 @@ import { SharepageComponent } from './sharepage/sharepage.component';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    
+    ToastNotificationsModule.forRoot({duration: 6000, type: 'primary'}),
   ],
   providers: [DocumentCreator],
   // providers: [DatePipe],

@@ -3,6 +3,7 @@ import { UserserviceService } from '../service/userservice.service';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Toaster } from 'ngx-toast-notifications';
 @Component({
   selector: 'app-filtercard',
   templateUrl: './filtercard.component.html',
@@ -21,7 +22,7 @@ export class FiltercardComponent implements OnInit {
   arraylength:any;
   // profileId=7;
   // hello:100;
-  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient, private route : Router) { }
+  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient, private route : Router,private toaster: Toaster) { }
   
   ngOnInit(): void {
     
@@ -66,6 +67,9 @@ export class FiltercardComponent implements OnInit {
   cancelEducation(educationid:number)
   {
     this.service.cancelEducation(educationid).subscribe(()=>this.getEducationByProfileId());
+  }
+  editToUpdate(){
+    this.toaster.open({ text: 'Request to update sent successfully via mail', position: 'top-center', type: 'success' })
   }
 
 }

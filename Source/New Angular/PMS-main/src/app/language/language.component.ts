@@ -15,6 +15,7 @@ export class LanguageComponent implements OnInit {
   profileIdDetails:any;
   profileId:any;
   personalDetails:any;
+  languageArray:any=[];
   ngOnInit(): void {
     this.getProfileIdByUserId();
   }
@@ -37,6 +38,10 @@ export class LanguageComponent implements OnInit {
     next:(data:any)=>{
       this.personalDetails=data,
       console.log(this.personalDetails)
+      for(var item in this.personalDetails[0]['language']){
+      console.log(this.personalDetails[0]['language'][item]['languageName'])
+      this.languageArray.push(this.personalDetails[0]['language'][item]['languageName'])
+      }
       
     }
   });
