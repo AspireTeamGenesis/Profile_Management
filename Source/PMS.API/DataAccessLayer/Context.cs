@@ -12,7 +12,7 @@ namespace PMS_API
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=ASPLAP1916;database=PMS;trusted_connection=true;");
+            optionsBuilder.UseSqlServer("server=ASPLAP2937\\SQLEXPRESS;database=PMS;trusted_connection=true;");
         }
         public DbSet<User> users { get; set; }
         public DbSet<Profile> profile { get; set; }
