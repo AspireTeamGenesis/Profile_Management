@@ -427,3 +427,6 @@
 .card-text1{
     padding: 0px 10px;
 }
+.card-body h2 i {
+    font-size: 18px;
+}

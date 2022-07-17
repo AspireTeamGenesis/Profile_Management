@@ -488,10 +488,19 @@
 .fa-check {
     height: 20PX;
 }
-.div1{
-    margin-left:0.5rem;display:inline-block;height:50%;width: 45%;
+
+.div1 {
+    margin-left: 0.5rem;
+    display: inline-block;
+    height: 50%;
+    width: 45%;
 
 }
-.card-text1{
+
+.card-text1 {
     padding: 0px 10px;
+}
+
+.card-body h2 i {
+    font-size: 18px;
 }

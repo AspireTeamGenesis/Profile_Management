@@ -103,7 +103,7 @@ img {
     outline: none;
     border: none;
     border-radius: 10px;
-    background: white;
+    background:lavender;
 }
 
 .search i {
@@ -187,15 +187,15 @@ img {
     width: calc(100% - 260px);
     min-height: calc(100vh - 60px);
     left: 260px;
-    background-color: #f6f3f3;
+    background-color: ;
 }
 .filters
 {
     width: 100%;
     padding: 20px 20px;
     display: flex;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .filters .filter{
      padding: 5px 10px; 
@@ -205,6 +205,17 @@ img {
     /* background-color:#ffffff; */
      border-radius: 10px
      /* box-shadow: 0 70px 25px rgba(0, 0, 0, 0.08);  */
+}
+
+.filter select{
+    margin-right: 10px;
+    min-width: 170px;
+    min-height: 30px;
+}
+
+.filter button{
+    min-width: 170px;
+    min-height: 30px;
 }
 
 .card1 {
