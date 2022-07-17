@@ -1,7 +1,7 @@
 <app-topbar></app-topbar>
 <app-hrsidebar></app-hrsidebar>
 <div class="container d-flex justify-content-center table-box">
-  <form  class="form" style="margin-top:110px;">
+  <form  [formGroup]="userForm"class="form" style="margin-top:110px;">
     <div class="progressbar">
       <div class="progress" id="progress"></div>
       <div class="form-step form-step-active">
