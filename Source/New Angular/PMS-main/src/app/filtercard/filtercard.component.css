@@ -269,7 +269,7 @@
 }
 
 .status {
-    padding-top: 40px;
+    padding-top: 10px;
     float: right;
     padding-right: 30px;
     text-align: center;
@@ -451,7 +451,7 @@
 }
 
 .status {
-    padding-top: 40px;
+    padding-top: 20px;
     float: right;
     padding-right: 30px;
     text-align: center;
@@ -470,4 +470,7 @@
 }
 .card-body h2 i {
     font-size: 18px;
+}
+.status p{
+    margin-bottom: 0px;
 }
