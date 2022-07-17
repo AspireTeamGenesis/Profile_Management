@@ -8,6 +8,7 @@ namespace PMS_API
 
         public bool PersonalDetailsvalidate(PersonalDetails personalDetails)
         {
+
             if (string.IsNullOrEmpty(personalDetails.Objective))
                 throw new ValidationException($"Objective not be null user supplied Nationality as \"{personalDetails.Objective}\"");
 
@@ -15,7 +16,7 @@ namespace PMS_API
             if (string.IsNullOrEmpty(personalDetails.Nationality))
                 throw new ValidationException($"Nationality not be null and user supplied Nationality as \"{personalDetails.Nationality}\"");
             else if (!Regex.IsMatch(personalDetails.Nationality, @"[a-zA-Z]{5,15}$"))
-                throw new ValidationException($"Nationality not be null and user supplied Nationality as \"{personalDetails.Nationality}\"");
+                throw new ValidationException($"Nationality is invalid and user supplied Nationality as \"{personalDetails.Nationality}\"");
 
             //Date of Birth Validations
             if (string.IsNullOrEmpty((personalDetails.DateOfBirth).ToString()))
@@ -30,8 +31,10 @@ namespace PMS_API
             //date of joining validations
             if (string.IsNullOrEmpty((personalDetails.DateOfJoining).ToString()))//check Date of joinig is null
                 throw new ValidationException($"DateOfJoin not be null and user supplied DateOfJoin as \"{personalDetails.DateOfJoining}\"");
-            if (personalDetails.DateOfJoining > DateTime.Today) //check DateOfJoining is a future date
+            if (personalDetails.DateOfJoining > DateTime.Today ) //check DateOfJoining is a future date
                 throw new ValidationException($"DateOfJoin not be futureDate and user supplied DateOfJoin as \"{personalDetails.DateOfJoining}\"");
+            if (personalDetails.DateOfJoining <= personalDetails.DateOfBirth ) //check DateOfJoining is before Date of Birth
+                throw new ValidationException($"DateOfJoin is invalid and user supplied DateOfJoin as \"{personalDetails.DateOfJoining}\"");
                 
             //base64 validations
             if (String.IsNullOrEmpty(personalDetails.base64header))
@@ -44,13 +47,13 @@ namespace PMS_API
             if (string.IsNullOrEmpty(education.Degree))//to check string is null or empty
                 throw new ValidationException($"Degree not be null and user supplied Degree as \"{education.Degree}\"");
             // to check degree has letter only
-            else if ((!Regex.IsMatch(education.Degree, "^[a-zA-Z ]{2,}$")))//Regex.IsMatch(education.Degree, "^(?=.*\\d)(?=.*[-+_!@#$%^&*., ?]).+$") 
+            else if ((!Regex.IsMatch(education.Degree, "^[a-zA-Z ]{2,25}$")))//Regex.IsMatch(education.Degree, "^(?=.*\\d)(?=.*[-+_!@#$%^&*., ?]).+$") 
                 throw new ValidationException($"Degree is invalid and user supplied Degree as \"{education.Degree}\"");
 
             //coursee validations
             if (string.IsNullOrEmpty(education.Course))//to check course is null or empty 
                 throw new ValidationException($"Course not be null and user supplied Course as \"{education.Course}\"");
-            else if (!Regex.IsMatch(education.Course, "^[A-Za-z ]{2,}$"))// to check course has string with minimum 2 characters
+            else if (!Regex.IsMatch(education.Course, "^[A-Za-z ]{2,45}$"))// to check course has string with minimum 2 characters
                 throw new ValidationException($"course should not contain specialcharacters,numbers and user supplied Course as \"{education.Course}\"");
 
             if ((education.CollegeId.Equals(0)))
@@ -188,7 +191,7 @@ namespace PMS_API
         private bool DateOfBirthAgeValidate(DateTime DateOfBirth)// to check (age<18) 
         {
             var age = DateTime.Now.AddYears(-DateOfBirth.Year).Year;
-            if (age >= 18)
+            if (age >= 18 && age <=65)
                 return true;
             return false;
         }
