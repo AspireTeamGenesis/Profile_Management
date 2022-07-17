@@ -1,73 +1,75 @@
 <app-topbar></app-topbar>
 <app-hrsidebar></app-hrsidebar>
 <div class="container d-flex justify-content-center table-box">
-  <form  [formGroup]="userForm"class="form" style="margin-top:110px;">
+  <form  class="form" style="margin-top:110px;">
     <div class="progressbar">
       <div class="progress" id="progress"></div>
       <div class="form-step form-step-active">
         <h1 style="margin-top: -35px; text-align: center;">User Creation</h1>
         <div class="input-group">
           <label for="personaldetails">Name</label>
-          <input type="text" name="Name"  id="personaldetails" placeholder="Enter User's name" [class.is-invalid]="(formSubmitted && userForm.controls['Name'].invalid )||userForm.controls['Name'].invalid && userForm.controls['Name'].touched"  formControlName="Name">
-          <div *ngIf="(formSubmitted)||userForm.controls['Name'].invalid && userForm.controls['Name'].touched">
-            <span class="text-danger" *ngIf="userForm.controls['Name'].errors?.['required']">Name is required</span>
-            <span class="text-danger" *ngIf="userForm.controls['Name'].errors?.['minlength']">Name is too short</span>
-            <span class="text-danger" *ngIf="userForm.controls['Name'].errors?.['maxlength']">Name is too long</span>
-          </div>
+          <input type="text" name="Name" [(ngModel)]="Name" id="personaldetails" placeholder="Enter User's name" />
+          <!-- <div *ngIf="registerForm.controls['Name'].invalid && registerForm.controls['Name'].touched">
+            <span class="text-danger" *ngIf="registerForm.controls['Name'].errors?.['required']">Name is
+                required</span>
+            <span class="text-danger" *ngIf="registerForm.controls['Name'].errors?.['pattern']">Name should
+                contain only characters</span>
+        </div>  -->
         </div>
         <div class="input-group">
           <label for="personaldetails">Mail Address</label>
-          <input type="MailAddress" name="MailAddress" [(ngModel)]="Email" id="personaldetails"
-            placeholder="Enter User's mail address" [class.is-invalid]="(formSubmitted && userForm.controls['MailAddress'].invalid )||userForm.controls['MailAddress'].invalid && userForm.controls['MailAddress'].touched"  formControlName="MailAddress" [class.is-invalid]="(formSubmitted && userForm.controls['Email'].invalid)||userForm.controls['Email'].invalid && userForm.controls['Email'].touched" id="Email" formControlName="Email">
-            <div *ngIf="(formSubmitted)||userForm.controls['Email'].invalid && userForm.controls['Email'].touched">
-              <span class="text-danger" *ngIf="userForm.controls['Email'].errors?.['required']">Email
+          <input type="email" name="Email" [(ngModel)]="Email" id="personaldetails"
+            placeholder="Enter User's mail address" />
+            <!-- <div *ngIf="registerForm.controls['Email'].invalid && registerForm.controls['Email'].touched">
+              <span class="text-danger" *ngIf="registerForm.controls['Email'].errors?.['required']">Email
                   is
                   required</span>
-              <span class="text-danger" *ngIf="userForm.controls['Email'].errors?.['pattern']">Please enter a valid email with aspire domain</span>
-          </div>
+              <span class="text-danger" *ngIf="registerForm.controls['Email'].errors?.['pattern']">Email
+                  should
+                  contain only characters</span>
+          </div> -->
         </div>
         <div class="input-group">
           <label for="personaldetails">User Name</label>
-          <input type="text" name="UserName"[(ngModel)]="UserName" id="personaldetails" placeholder="Enter User's user name" [class.is-invalid]="(formSubmitted && userForm.controls['UserName'].invalid )||userForm.controls['UserName'].invalid && userForm.controls['UserName'].touched" id="ACE Number" formControlName="UserName">
-           <div *ngIf="userForm.controls['UserName'].invalid && userForm.controls['UserName'].touched">
-            <span class="text-danger" *ngIf="userForm.controls['UserName'].errors?.['required']">UserName
+          <input type="text" name="UserName"[(ngModel)]="UserName" id="personaldetails" placeholder="Enter User's user name" />
+          <!-- <div *ngIf="registerForm.controls['UserName'].invalid && registerForm.controls['UserName'].touched">
+            <span class="text-danger" *ngIf="registerForm.controls['UserName'].errors?.['required']">UserName
                 is
                 required</span>
-                <span class="text-danger" *ngIf="userForm.controls['UserName'].errors?.['required']">UserName
-                  is
-                  required</span>   
-            <span class="text-danger" *ngIf="userForm.controls['UserName'].errors?.['pattern']">UserName
-                did not match the pattern</span>
-        </div> 
+            <span class="text-danger" *ngIf="registerForm.controls['UserName'].errors?.['pattern']">UserName
+                should
+                contain only characters</span>
+        </div> -->
         </div>
         <div class="input-group">
           <label for="personaldetails">Password</label>
-          <input type="password" name="Password" [(ngModel)]="Password" id="personaldetails" placeholder="Enter User's password" [class.is-invalid]="(formSubmitted && userForm.controls['Password'].invalid)||userForm.controls['Password'].invalid && userForm.controls['Password'].touched"  id="Password" formControlName="Password">
-          <div *ngIf="(formSubmitted ) || userForm.controls['Password'].invalid && userForm.controls['Password'].touched">
-            <span class="text-danger" *ngIf="userForm.controls['Password'].errors?.['required']">Password is required</span>
-            <span class="text-danger" *ngIf="userForm.controls['Password'].errors?.['pattern']">Password should contain only minimum 8 digits with one uppercase and one symbol and one number</span>
-        </div>
+          <input type="password" name="Password" [(ngModel)]="Password" id="personaldetails" placeholder="Enter User's password" />
+          <!-- <div *ngIf="registerForm.controls['Password'].invalid && registerForm.controls['Password'].touched">
+            <span class="text-danger" *ngIf="registerForm.controls['Password'].errors?.['required']">Password
+                is
+                required</span>
+            <span class="text-danger" *ngIf="registerForm.controls['Password'].errors?.['pattern']">Password
+                should
+                contain only characters</span>
+        </div> -->
         </div>
         <div class="x">
           <label for="personaldetails">Gender</label>
-          <select id="personaldetails" name="GenderValue" [(ngModel)]="GenderValue" [class.is-invalid]="(formSubmitted && userForm.controls['Gender'].invalid)||userForm.controls['Gender'].invalid && userForm.controls['Gender'].touched" id="Gender Name" formControlName="Gender">
-            <div
-            *ngIf="(formSubmitted)||userForm.controls['Gender'].invalid && userForm.controls['Gender'].touched">
-            <span class="text-danger" *ngIf="userForm.controls['Gender'].errors?.['required']">Gender is required</span>  
-          </div>
+          <select id="personaldetails" name="GenderValue" [(ngModel)]="GenderValue">
             <option value="0">Select Gender</option>
             <option value="1">Male</option>
             <option value="2">Female</option>
             <option value="3">Other</option>
           </select>
         </div>
+        <br>
         <div class="field">
           <div class="label">
             Mobile Number
           </div>
           <div class="mobilenum1">
             <select style="width:5rem" id="personaldetails" name="CountryCodeValue" [(ngModel)]="CountryCodeValue">
-              <option value="0">Select Country Code</option>
+              <option value="">Select Country Code</option>
                <option value="1">+91</option>
                    <option value="2">+44</option>
                    <option value="3">+213</option>
@@ -77,38 +79,28 @@
             </select>
           </div>
           <div class="mobilenum">
-            <input type="text" name="MobileNumber" [(ngModel)]="MobileNumber" id="personaldetails" placeholder="Enter User's mobile number"  [class.is-invalid]="(formSubmitted && userForm.controls['MobileNumber'].invalid )||userForm.controls['MobileNumber'].invalid && userForm.controls['MobileNumber'].touched" id="Mobile Number" formControlName="MobileNumber">
-            <div
-            *ngIf="(formSubmitted )||userForm.controls['MobileNumber'].invalid && userForm.controls['MobileNumber'].touched">
-            <span class="text-danger" *ngIf="userForm.controls['MobileNumber'].errors?.['required']">Mobile Number
-                is
-                required</span>
-            <span class="text-danger" *ngIf="userForm.controls['MobileNumber'].errors?.['pattern']">Invalid Mobile Number
-              </span>
-          </div> 
+            <input type="text" name="MobileNumber" [(ngModel)]="MobileNumber" id="personaldetails" placeholder="Enter User's mobile number">
+            <!-- <div *ngIf="registerForm.controls['MobileNumber'].invalid && registerForm.controls['MobileNumber'].touched">
+              <span class="text-danger" *ngIf="registerForm.controls['MobileNumber'].errors?.['required']">Mobile Number
+                  is
+                  required</span>
+              <span class="text-danger" *ngIf="registerForm.controls['MobileNumber'].errors?.['pattern']">Mobile Number
+                  should
+                  contain only integers</span>
+          </div> -->
           </div>
         </div>
         <br><br>
         <div class="input-group">
           <label for="personaldetails">Organisation</label>
-          <select id="personaldetails" name="OrganisationValue" [(ngModel)]="OrganisationValue" [class.is-invalid]="(formSubmitted && userForm.controls['Organisation'].invalid )||userForm.controls['Organisation'].invalid && userForm.controls['Organisation'].touched"  formControlName="Organisation">
-            <div *ngIf="(formSubmitted)||userForm.controls['Organisation'].invalid && userForm.controls['Organisation'].touched">
-              <span class="text-danger" *ngIf="userForm.controls['Organisation'].errors?.['required']">Designation is required</span>
-              <span class="text-danger" *ngIf="userForm.controls['Organisation'].errors?.['minlength']">Designation is too short</span>
-              <span class="text-danger" *ngIf="userForm.controls['Organisation'].errors?.['maxlength']">Designation is too long</span>
-            </div>
+          <select id="personaldetails" name="OrganisationValue" [(ngModel)]="OrganisationValue">
             <option value="0">Select organisation</option>
             <option *ngFor="let item of organisationValue" value={{item.organisationId}}>{{item.organisationName}}</option>
           </select>
         </div>
         <div class="input-group">
           <label for="personaldetails">Designation</label>
-          <select id="personaldetails" name="DesignationValue" [(ngModel)]="DesignationValue" [class.is-invalid]="(formSubmitted && userForm.controls['Designation'].invalid )||userForm.controls['Designation'].invalid && userForm.controls['Designation'].touched"  formControlName="Designation">
-            <div *ngIf="(formSubmitted)||userForm.controls['Designation'].invalid && userForm.controls['Designation'].touched">
-              <span class="text-danger" *ngIf="userForm.controls['Designation'].errors?.['required']">Designation is required</span>
-              <span class="text-danger" *ngIf="userForm.controls['Designation'].errors?.['minlength']">Designation is too short</span>
-              <span class="text-danger" *ngIf="userForm.controls['Designation'].errors?.['maxlength']">Designation is too long</span>
-            </div>
+          <select id="personaldetails" name="DesignationValue" [(ngModel)]="DesignationValue">
             <option value="0">Select Designation</option>
             
             <option *ngFor="let item of designationValue" value={{item.designationId}}>
@@ -134,14 +126,7 @@
         <!-- </div> -->
         <div class="input-group">
           <label for="personaldetails">Reporting Person Username</label>
-          <input type="text" name="ReportingPersonUsername" [(ngModel)]="ReportingPersonUsername" id="personaldetails" placeholder="Enter Reporting Person User's name" [class.is-invalid]="(formSubmitted && userForm.controls['ReportingPersonUserName'].invalid )||userForm.controls['ReportingPersonUserName'].invalid && userForm.controls['ReportingPersonUserName'].touched"  formControlName="ReportingPersonUserName" >
-          <div *ngIf="(formSubmitted)||userForm.controls['ReportingPersonUserName'].invalid && userForm.controls['ReportingPersonUserName'].touched">
-            <span class="text-danger" *ngIf="userForm.controls['ReportingPersonUserName'].errors?.['required']">ReportingPersonUserName is required</span>
-          </div>
-          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectReportingPersonUsername($event)">
-            <mat-option *ngFor="let item of filteredOptions | async" [value]="item.username" [id]="item.id">
-              {{item.username}} </mat-option>
-          </mat-autocomplete>
+          <input type="text" name="ReportingPersonUsername" [(ngModel)]="ReportingPersonUsername" id="personaldetails" placeholder="Enter Reporting Person User's name" />
         </div>
         <div class="row btns-group1">         
           <a (click) = "userdata()" routerLink="/search" class="btn">Submit</a>
