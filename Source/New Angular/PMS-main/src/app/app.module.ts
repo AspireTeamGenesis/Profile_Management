@@ -54,6 +54,7 @@ import { Dashboard11Component } from './dashboard11/dashboard11.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SnapbarComponent } from './snapbar/snapbar.component';
 import { LanguageComponent } from './language/language.component';
+import { SharepageComponent } from './sharepage/sharepage.component';
 
 @NgModule({
   declarations: [		
@@ -98,7 +99,8 @@ import { LanguageComponent } from './language/language.component';
     TotalprofileComponent,
       Dashboard11Component,
       SnapbarComponent,
-      LanguageComponent
+      LanguageComponent,
+      SharepageComponent
    ],
   imports: [
     BrowserModule,

@@ -103,8 +103,8 @@ export class PersonalComponent implements OnInit {
   breakDuration:any=
   {
     breakDuration_Id:0,
-    startingDuration:'',
-    endingDuration:'',
+    startingDuration:new Date(),
+    endingDuration: new Date(),
     personalDetailsId:2010
   }
   languageDetails:any=

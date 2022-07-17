@@ -32,6 +32,8 @@ import { WaitingprofileComponent } from './waitingprofile/waitingprofile.compone
 import { TotalprofileComponent } from './totalprofile/totalprofile.component';
 import { Dashboard11Component } from './dashboard11/dashboard11.component';
 import { SnapbarComponent } from './snapbar/snapbar.component';
+import { LanguageComponent } from './language/language.component';
+import { SharepageComponent } from './sharepage/sharepage.component';
 
 
 const routes: Routes = [
@@ -68,6 +70,8 @@ const routes: Routes = [
   {path:"totalprofile",component:TotalprofileComponent},
   {path:"dashboard",component:Dashboard11Component},
   {path:"snapbar",component:SnapbarComponent},
+  {path:"language",component:LanguageComponent},
+  {path:"sharepage",component:SharepageComponent},
   {path:"",component:LoginComponent}
 ];
 
