@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Toaster } from 'ngx-toast-notifications';
 @Component({
   selector: 'app-sharepage',
   templateUrl: './sharepage.component.html',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SharepageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toaster: Toaster) { }
 
   ngOnInit(): void {
   }
+  share(){
+    this.toaster.open({ text: 'Profile has been shared successfully via mail', position: 'top-center', type: 'success' })
 
+}
 }
