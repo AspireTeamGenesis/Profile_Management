@@ -1,18 +1,22 @@
 <script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <div class="container d-flex justify-content-center">
-    <div class="kcard" *ngFor="let item of achievementDetails | paginate: {itemsPerPage : 3, currentPage: page,totalItems:totalLength}       ">
-        <div class="card-body">   
-                <p>
-                    Type : {{item.achievementtype}}
-                </p> 
-                <div class="card-image">
-                    <img [src]="'data:image/jpg;base64,'+ item.achievementimage" width="180" height="120" />
-                </div>
+    <div class="kcard"
+        *ngFor="let item of achievementDetails | paginate: {itemsPerPage : 3, currentPage: page,totalItems:totalLength}       ">
+        <div class="card-body">
+            <p>
+                Type : {{item.achievementtype}}
+            </p>
+            <div class="card-image">
+                <img [src]="'data:image/jpg;base64,'+ item.achievementimage" width="180" height="120" />
+            </div>
             <br>
             <h2>
                 <!-- <i [routerLink]="['../editeducation',item.educationid]" class="fa fa-pencil fa-sm"></i> -->
-                <i (click)="cancelAchievement(item.achievementid)" class="fa fa-trash"></i>
+                <div class="tooltip1">
+                    <i (click)="cancelAchievement(item.achievementid)" class="fa fa-trash"></i>
+                    <span class="tooltip1text">Click here to delete </span>
+                </div>
                 <!-- <i (click)="DeleteEducation(item.educationId)" class="fa fa-trash"></i> -->
             </h2>
         </div>

@@ -19,8 +19,15 @@
           Person-{{item.reportingPersonUsername}}</p>
         <br>
         <h2>
-          <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
-          <i (click)="CancelDrive(item.userId)" class="fa fa-trash"></i>
+
+          <div class="tooltip1">
+            <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
+            <span class="tooltip1text">Click here to edit</span>
+          </div>
+          <div class="tooltip1">
+            <i (click)="CancelDrive(item.userId)" class="fa fa-trash"></i>
+            <span class="tooltip1text">Click here to delete</span>
+          </div>
 
           <!-- <i class="fa fa-trash"></i> -->
         </h2>

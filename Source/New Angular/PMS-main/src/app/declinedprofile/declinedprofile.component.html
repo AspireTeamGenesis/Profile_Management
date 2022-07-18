@@ -20,7 +20,14 @@
           Person-{{item.reportingPerson}}</p>
         <br>
         <h2>
-          <i class="fa fa-pen-to-square fa-xs" (click)="editToUpdate()"></i><i [routerLink]="['/sharepage']" class="fa fa-share-nodes"></i>
+          <div class="tooltip1">
+          <i class="fa fa-pen-to-square fa-xs" (click)="editToUpdate()"></i>
+          <span class="tooltip1text">Click here to edit</span>
+            </div>
+          <div class="tooltip1">
+          <i [routerLink]="['/sharepage']" class="fa fa-share-nodes"></i>
+          <span class="tooltip1text">Click here to share</span>
+            </div>
           <!-- <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
           <i class="fa fa-trash"></i> -->
 

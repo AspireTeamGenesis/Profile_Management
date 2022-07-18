@@ -14,7 +14,12 @@
     </div>
 
     <div class="form-step form-step-active">
-      <h3>Achievements<button class="plus" (click)="toogletag()" (click)="footer()" > + </button></h3>
+      <h3>Achievements
+        <div class="tooltip1">
+          <button class="plus" (click)="toogletag()"> + </button>
+          <span class="tooltip1text">Click here to add achievement details</span>
+        </div>
+      </h3>
       <!-- <h3>Achievements</h3> -->
       <div *ngIf="showMe" >
 

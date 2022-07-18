@@ -9,12 +9,12 @@
     <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
     <div class="kcard"
       *ngFor="let item of waitingProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
-      <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded" [src]="'data:image/jpg;base64,'+item.userProfileImage"
-        width="50%" /></a>
+      <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded"
+          [src]="'data:image/jpg;base64,'+item.userProfileImage" width="50%" /></a>
       <!-- <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top" src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png"
           alt="Card image cap"></a> -->
       <div class="status">
-        <p>Status </p>        
+        <p>Status </p>
         <p class="card-text">{{item.userProfileStatus}}</p>
       </div>
       <div class="card-body">
@@ -22,15 +22,44 @@
           Person-{{item.reportingPerson}}</p>
         <br>
         <h2>
-          <i [routerLink]="['/sharepage']" class="fa fa-pen-to-square fa-xs" (click)="editToUpdate()"></i><i  class="fa fa-share-nodes "></i>
+          <div class="tooltip1">
+            <i [routerLink]="['/sharepage']" class="fa fa-pen-to-square fa-xs" (click)="editToUpdate()"></i>
+            <span class="tooltip1text">Click here to edit</span>
+          </div>
+          <div class="tooltip1">
+            <i class="fa fa-share-nodes "></i>
+            <span class="tooltip1text">Click here to share</span>
+          </div>
           <!-- <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
           <i class="fa fa-trash"></i> -->
 
           <!-- <i class="fa fa-trash"></i> -->
         </h2>
         <div class="container">
-          <div  class="div1"><a  [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,1)"><button  class="rounded1" ><h2 class ="button1" ><i  class="fa fa-check"></i></h2></button></a></div>
-          <div class="div1" ><a [routerLink]="['/waitingprofile']"  (click)="acceptorrejectprofile(item.userProfileId,3)"><button class="rounded"><h2 class ="button1" ><i class="fa fa-xmark"></i></h2></button></a></div>
+          <div class="div1">
+            <a [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,1)">
+              <button class="rounded1">
+                <h2 class="button1">
+                  <div class="tooltip1">
+                    <i class="fa fa-check"></i>
+                    <span class="tooltip1text">Click here to approve</span>
+                  </div>
+                </h2>
+              </button>
+            </a>
+          </div>
+          <div class="div1">
+            <a [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,3)">
+              <button class="rounded">
+                <h2 class="button1">
+                  <div class="tooltip1">
+                    <i class="fa fa-xmark"></i>
+                    <span class="tooltip1text">Click here to decline</span>
+                  </div>
+                </h2>
+              </button>
+            </a>
+          </div>
         </div>
 
       </div>

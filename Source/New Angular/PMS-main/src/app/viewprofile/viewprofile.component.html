@@ -39,7 +39,7 @@
 
             <hr />
             <!-- <div *ngIf="profileDetails['achievementdetails'].achievementtype== 'Certificates'"> -->
-            <div  class="card-title">
+            <div class="card-title">
               <h2 style="display: inline-block;" (click)="toggletag3()"><i
                   class="fas fa-solid fa-stamp mr-2"></i>&nbsp;Achievements <span class="pull-right up-icon icon-right"><i
                     class="fa fa-chevron-down"></i></span></h2>
@@ -80,9 +80,8 @@
 
 
             <div class="card-title" (click)="toggletag4()">
-              <h2 style="display: inline-block;" ><i
-                  class="fas fa-globe mr-3 mt-3 mb-4"></i>Language</h2><span class="pull-right up-icon icon-righ"><i
-                    class="fa fa-chevron-down"></i></span>
+              <h2 style="display: inline-block;"><i class="fas fa-globe mr-3 mt-3 mb-4"></i>Language</h2><span
+                class="pull-right up-icon icon-righ"><i class="fa fa-chevron-down"></i></span>
 
               <div *ngIf="showMe4">
                 <ul class="list-unstyled">
@@ -112,11 +111,10 @@
           <div class="card-body shadow-sm">
             <div class="card-title">
               <div (click)="toggletag()">
-              <h2 style="display: inline-block;" >
-                <i class="fas fa-cogs" name="skilldetails"></i>&nbsp;Skills
-              </h2><span class="pull-right up-icon icon-right"><i
-              class="fa fa-chevron-down"></i></span>
-            </div>
+                <h2 style="display: inline-block;">
+                  <i class="fas fa-cogs" name="skilldetails"></i>&nbsp;Skills
+                </h2><span class="pull-right up-icon icon-right"><i class="fa fa-chevron-down"></i></span>
+              </div>
               <div *ngIf="showMe">
                 <h3>Domain</h3>
                 <div *ngFor="let item of profileDetails['skilldetails']">
@@ -131,10 +129,9 @@
           </div>
           <div class="n-card mt-4">
             <div class="card-body shadow-sm ">
-              <div class="card-title"  (click)="toggletag1()" >
-                <h2 style="display: inline-block;"  class="mb-2"> <i 
-                    class="fas fa-certificate"></i>&nbsp;Education</h2> <span class="pull-right up-icon icon-right"><i
-                      class="fa fa-chevron-down"></i></span>
+              <div class="card-title" (click)="toggletag1()">
+                <h2 style="display: inline-block;" class="mb-2"> <i class="fas fa-certificate"></i>&nbsp;Education</h2>
+                <span class="pull-right up-icon icon-right"><i class="fa fa-chevron-down"></i></span>
               </div>
               <div *ngIf="showMe1">
                 <div>
@@ -157,11 +154,11 @@
 
           <div class="n-card shadow-sm">
             <div class="card-body">
-              <div class="card-title"  (click)="toggletag2()">
+              <div class="card-title" (click)="toggletag2()">
                 <h2 style="display: inline-block;">
-                  <i class="fas fa-suitcase mb-2 mr-2"></i>Project Details</h2> <span class="pull-right up-icon icon-right"><i
-                    class="fa fa-chevron-down"></i></span>
-                
+                  <i class="fas fa-suitcase mb-2 mr-2"></i>Project Details
+                </h2> <span class="pull-right up-icon icon-right"><i class="fa fa-chevron-down"></i></span>
+
               </div>
               <div *ngIf="showMe2">
                 <div *ngFor="let item of profileDetails['projectdetails']">
@@ -202,11 +199,19 @@
       <div class="text-right col-lg-5 col-md-5 col-12 col-xl-5 col-xxl-5 plr-2">
         <h3>
           <div class="footer-icons">
-            <i [routerLink]="['/sharepage']" class="mtr-1 fa-solid fa-share-nodes"></i>
-            <i [routerLink]="['/education']" (click)="updateProfileStatus()" class="fa-solid fa-pen mtr-1"></i>
-            <i (click)="download()" class="fa-solid fa-download mtr-1"></i>
+            <div class="tooltip1">
+              <i [routerLink]="['/sharepage']" class="mtr-1 fa-solid fa-share-nodes"></i>
+              <span class="tooltip1text">Click here to share</span>
+            </div>
+            <div class="tooltip1">
+              <i [routerLink]="['/education']" (click)="updateProfileStatus()" class="fa-solid fa-pen mtr-1"></i>
+              <span class="tooltip1text">Click here to edit</span>
+            </div>
+            <div class="tooltip1">
+              <i (click)="download()" class="fa-solid fa-download mtr-1"></i>
+              <span class="tooltip1text">Click here to download</span>
+            </div>
           </div>
-
         </h3>
       </div>
     </div>

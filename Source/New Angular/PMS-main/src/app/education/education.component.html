@@ -17,7 +17,14 @@
     </div>
 
     <div class="form-step form-step-active">
-      <h3>Education Details <button class="plus" (click)="toogletag()" (click)="footer()" > + </button></h3>
+      <h3>Education Details 
+      
+      <div class="tooltip1"> 
+
+      <button class="plus" (click)="toogletag()"  > + </button>
+      <span class="tooltip1text">Click here to add educational details</span>
+      </div>
+    </h3>
       <!-- <button (click)="toogletag()" (click)="footer()" > + </button> -->
       <div *ngIf="showMe" >
       <div class="input-group">

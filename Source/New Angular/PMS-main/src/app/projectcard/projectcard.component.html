@@ -12,8 +12,15 @@
             </p>
             <br>
             <h2>
+                <div class="tooltip1">
                 <i routerLink="/editproject/{{item.projectid}}" class="fa fa-pencil fa-sm"></i>
+                <span class="tooltip1text">Click here to edit</span>
+            </div>
+
+            <div class="tooltip1">
                 <i (click)="cancelProject(item.projectid)" class="fa fa-trash"></i>
+                <span class="tooltip1text">Click here to delete</span>
+            </div>
                 <!-- <i (click)="DeleteEducation(item.educationId)" class="fa fa-trash"></i> -->
             </h2>
         </div>
