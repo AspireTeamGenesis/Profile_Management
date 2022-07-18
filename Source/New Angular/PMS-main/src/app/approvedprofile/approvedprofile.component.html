@@ -5,6 +5,7 @@
 
 <div class="container d-flex justify-content-center table-box">
   <div class="main">
+    <h1 class="heading1">Approved Profile</h1>
     <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
     <div class="kcard"
       *ngFor="let item of approvedProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">

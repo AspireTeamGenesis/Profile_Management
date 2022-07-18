@@ -9,6 +9,7 @@ import { UserserviceService } from '../service/userservice.service';
 })
 export class ProfilehomeComponent implements OnInit {
   showMe: boolean = true;
+  showMe1: boolean = false;
 
   dashboard:any;
   designationValue:any;
@@ -126,6 +127,12 @@ export class ProfilehomeComponent implements OnInit {
 
     !this.showMe==this.showMe;
     if(this.showMe==true){this.showMe=false};
+
+  }
+  toogletag1()
+
+  {
+    this.showMe1=!this.showMe1;
 
   }
 

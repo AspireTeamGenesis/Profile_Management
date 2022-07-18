@@ -93,12 +93,26 @@ img {
     padding-top:80px;
     justify-self: center;
 }
-
+.filtericon
+{
+      padding-left: 132%;  
+     
+    
+}
+.fa-filter::before
+{
+    font-size: 20px;
+    background:#967bb6;;
+    padding: 8.1px;
+    color:#fff;
+    border-radius:2px ;
+}
 .search input {
-    width: 150%;
+    width: 130%;
     /* min-width: 128px; */
     height: 40px;
-    padding: 0 40px;
+    /* padding: 0 40px; */
+    padding-left:40px; ;
     font-size: 16px;
     outline: none;
     border: none;
@@ -358,7 +372,7 @@ img {
         width: 80%;
     }
     .search input {
-        padding: 0 20px;
+        /* padding: 0 20px; */
     }
     .fa-bell {
         margin-right: 5px;

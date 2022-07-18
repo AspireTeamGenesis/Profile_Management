@@ -17,8 +17,8 @@
 
     <!-- Steps -->
     <div class="form-step form-step-active">
-      <h3>Personal Details <button  class="plus" (click)="toogletag()" (click)="footer()" > + </button></h3>
-      <div *ngIf="showMe" >
+      <h3>Personal Details</h3>
+      <div  >
 
       <label for="personaldetails">Profile Photo</label>
       <input type="file" (change)="fileChangeEvent($event)" name="personaldetails" id="personaldetails" placeholder="Upload your Photo"
@@ -276,7 +276,7 @@
 
     <div class="row">
       <!--<a [routerLink]="['/createprofile']" class="btn btn-next width-50 ml-auto">Previous</a>-->
-      <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 mlr-auto" (click)="personalSubmit()">Save as
+      <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 mlr-auto" style="text-color:white;" (click)="personalSubmit()">Save as
         Draft</a>
       <a [routerLink]="['/education']" class="btn  width-50 mlr-auto" (click)="personalSubmit()">Next</a>
       <!-- (click)="personalSubmit()" -->

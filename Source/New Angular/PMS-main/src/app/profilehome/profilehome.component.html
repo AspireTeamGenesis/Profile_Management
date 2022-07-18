@@ -9,10 +9,16 @@
     <div class="main"> 
         <div class="home">
             <div class="search">
-                <input type="text" name="search" placeholder="search by User Name"  [(ngModel)]="filter.username" >
-                <label for="search"><i class="fas fa-search"></i></label>
+                <input type="text" name="search" placeholder="search by User Name"  [(ngModel)]="filter.username"  (onclick)="getProfileByFilters()">
+                
+                <label for="search"><i class="fas fa-search"> </i></label> 
+                <div class="filtericon">
+                    <i class="fa fa-filter" (click)="toogletag1()"></i>
+                    
+                </div>
             </div>
-            <div class="filters">
+            
+            <div class="filters" *ngIf="showMe1">
                 <div class="filter py-3 d-flex align-items-center justify-content-between">
                      <select class="h-100 py-2" name="Designation" [(ngModel)]="filter.designationId" required >
                         <option value="0">Select Designation </option>
