@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   loginForm = this.formBuilder.group({
     UserName: ['', [Validators.required, Validators.pattern("^[A-z][a-z|\.|\s]+$")]],
-    Password: ['', [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$")]]
+    Password: ['', [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$")]]
   });
 
   // employeeDetails: any;
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     console.log(this.loginForm.valid)
-    if(!this.loginForm.valid){
+    if(this.loginForm.valid){
       console.warn("1");
       this.loading = true
       const user = {
