@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from 'src/app/service/userservice.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 // import { DatePipe } from '@angular/common';
+import { Toaster } from 'ngx-toast-notifications';
 
 
 import { Language } from 'Models/language';
@@ -19,6 +20,7 @@ import { DatePipe } from '@angular/common';
 })
 export class EditpersonalComponent implements OnInit {
 
+  error:string;  
   profileId :number=0;
   imageError: string="";
   cardImageBase64: string = "";
@@ -34,7 +36,7 @@ export class EditpersonalComponent implements OnInit {
   
 
 
-  constructor(private service: UserserviceService, private http: HttpClient,public datepipe:DatePipe) { }
+  constructor(private service: UserserviceService, private http: HttpClient,public datepipe:DatePipe, private toaster:Toaster) { }
   ngOnInit(): void {
     // this.getUserProfile();
     this.getProfileIdByUserId();
@@ -206,6 +208,11 @@ updatePersonal(){
   this.data = this.user;
   this.service.updatePersonalDetail(this.data).subscribe(data=>this.data.push(data));
 }
+// {//   error: (error) => { this.error = error.error.message },
+//   complete: () => {
+//     this.toaster.open({ text: 'Achievement added successfully', position: 'top-center', type: 'success' });
+//   }
+// }
 
   fileChangeEvent(fileInput:any){
      this.imageError="";

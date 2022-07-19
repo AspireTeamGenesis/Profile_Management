@@ -39,6 +39,7 @@ export class CreateusersComponent implements OnInit {
   userForm:FormGroup;
   formSubmitted: boolean = false;
   selectedUsername:any;
+  // error: any;
   //TO get the input from the user
 
 
@@ -127,7 +128,7 @@ export class CreateusersComponent implements OnInit {
     },
     
     complete:()=>{
-      this.toaster.open({ text: 'Profile has been shared successfully via mail', position: 'top-center', type: 'success' })
+      this.toaster.open({ text: 'User has been created successfully', position: 'top-center', type: 'success' })
     }
     });//data=>this.user.push(data)
     console.error(this.userValue);

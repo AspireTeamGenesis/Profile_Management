@@ -4,6 +4,7 @@ import { Project } from 'Models/project';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FormBuilder,Validators,FormGroup } from '@angular/forms';
+import { Toast } from 'ngx-toast-notifications';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ProjectComponent implements OnInit {
   profileId:number=0;
   projectForm:FormGroup;
   formSubmitted: boolean = false;
-  constructor( private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient,private route: ActivatedRoute) {
+  constructor( private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient,private route: ActivatedRoute,private toaster:Toast) {
     this.projectForm=this.FB.group({});
    }
   //  year:any;
@@ -90,6 +91,11 @@ export class ProjectComponent implements OnInit {
     console.log(this.projectfield.profileId);
     console.log(this.projectfield);
     this.service.CreateProjects(this.projectfield).subscribe(data => this.projectfield.push(data));
+    // submit()
+    // {
+    //   this.toaster. open({ text: 'Profile has been shared successfully via mail', position: 'top-center', type: 'success' })
+    // }
+    
     setTimeout(
       () => {
         location.reload(); // the code to execute after the timeout

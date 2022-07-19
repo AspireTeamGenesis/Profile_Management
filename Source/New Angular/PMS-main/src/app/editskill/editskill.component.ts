@@ -3,6 +3,7 @@ import { UserserviceService } from '../service/userservice.service';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Toaster } from 'ngx-toast-notifications';
 
 @Component({
   selector: 'app-editskill',
@@ -10,8 +11,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./editskill.component.css']
 })
 export class EditskillComponent implements OnInit {
+  error: any;
 
-  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private route: ActivatedRoute) { }
+  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private route: ActivatedRoute,private toaster:Toaster) { }
   domainValue:any;
   technologyValue:any;
   skillid:number=0;
@@ -92,7 +94,14 @@ export class EditskillComponent implements OnInit {
 
     }
     console.log(skills);
-    this.service.updateSkills(skills).subscribe();
+    this.service.updateSkills(skills).subscribe({
+      error: (error) => { this.error = error.error.message },
+      complete: () => {
+        this.toaster.open({ text: 'Skills edited successfully', position: 'top-center', type: 'success' });
+      }
+    }
+      
+    );
   }
 
   toogletag()

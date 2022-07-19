@@ -3,6 +3,7 @@ import { UserserviceService } from '../service/userservice.service';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Toaster } from 'ngx-toast-notifications';
 
 
 @Component({
@@ -11,8 +12,10 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
-
-  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private route: ActivatedRoute) { }
+  error: any;
+  formSubmitted: boolean = false;
+  skillForm: FormGroup;
+  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private route: ActivatedRoute,private toaster: Toaster) { }
   domainValue:any;
   technologyValue:any;
   profileId:number=0;
@@ -23,14 +26,18 @@ export class SkillsComponent implements OnInit {
 
   foot:boolean = true;
 
-  skill:any={
+  skill:any={ 
     skillId:0,
     profileId:0,
-    domainId:0,
-    technologyId:0
+    domainId:null,
+    technologyId:null
   }
 
   ngOnInit(): void {
+    this.skillForm = this.FB.group({
+      domainType:['',[Validators.required]],
+      technologyType: ['',[Validators.required]]
+    })
     this.getDomain();
     this.getTechnology();
     this.getProfileIdByUserId();
@@ -67,13 +74,20 @@ export class SkillsComponent implements OnInit {
     this.skill.profileId=this.profileId;
     console.log("skill Details");
     console.log(this.skill);
-    this.service.submitSkills(this.skill).subscribe();
-    setTimeout(
-      () => {
-        location.reload(); // the code to execute after the timeout
-      },
-      1000// the time to sleep to delay for
-    );
+    console.log(this.skillForm)
+    this.service.submitSkills(this.skill).subscribe({
+      next: (data) => { },
+      error: (error) => { this.error = error.error.message },
+      complete: () => {
+        this.toaster.open({ text: 'skills added successfully', position: 'top-center', type: 'success' });
+      }
+    });
+    // setTimeout(
+    //   () => {
+    //     location.reload(); // the code to execute after the timeout
+    //   },
+    //   1000// the time to sleep to delay for
+    // );
   }
   toogletag()
 

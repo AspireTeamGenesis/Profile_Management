@@ -592,7 +592,7 @@ namespace PMS_API
         public bool AddSkills(Skills skill)
         {
             if (skill == null) throw new ArgumentNullException($"Values cannot be null values are {skill}");
-            // _profileValidate.SkillDetailValidation(skill);
+            _profileValidate.SkillDetailValidation(skill);
             try
             {
                 skill.CreatedBy = skill.ProfileId;
@@ -844,6 +844,7 @@ namespace PMS_API
         }
 
 
+
         public object GetTechnologyById(int Technologyid)
         {
             if (Technologyid <= 0)
@@ -883,7 +884,7 @@ namespace PMS_API
         public bool AddAchievements(Achievements achievement)
         {
             if (achievement == null) throw new ArgumentNullException($"Values cannot be null values are {achievement}");
-            // _profileValidate.AchievementValidation(achievement);
+            _profileValidate.AchievementValidation(achievement);
             try
             {
                 string Imagedate = "";

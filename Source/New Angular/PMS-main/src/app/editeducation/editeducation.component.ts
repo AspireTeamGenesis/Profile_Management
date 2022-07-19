@@ -4,6 +4,7 @@ import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { College } from 'Models/college';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Toaster } from 'ngx-toast-notifications';
 
 
 @Component({
@@ -14,7 +15,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class EditeducationComponent implements OnInit {
   selectedYear: number=0;
   years: number[] = [];
-  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute) {
+  error: string;
+  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute,private toaster: Toaster) {
     this.selectedYear = new Date().getFullYear();
   for (let year = this.selectedYear; year >= 2000; year--) {
     this.years.push(year);
@@ -85,7 +87,12 @@ export class EditeducationComponent implements OnInit {
       }
         console.log("update");
         console.log(education);
-        this.service.updateEducation(education).subscribe();
+        this.service.updateEducation(education).subscribe({
+          error: (error) => { this.error = error.error.message },
+          complete: () => {
+            this.toaster.open({ text: 'Education updated successfully', position: 'top-center', type: 'success' });
+          }
+        });
     
       }
       toogletag()

@@ -8,6 +8,7 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 import { User } from 'Models/user';
 // import { ConnectionService } from 'src/services/connection.service';
 import { UserserviceService } from 'src/app/service/userservice.service';
+import { Toaster } from 'ngx-toast-notifications';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
   // employeeACENumber: any;
   constructor(private formBuilder: FormBuilder,
     private http: HttpClient, private route: Router,
-    private service: UserserviceService) { 
+    private service: UserserviceService,private toaster: Toaster) { 
       this.onChanges();
     }
   user: any = {
@@ -96,6 +97,7 @@ export class LoginComponent implements OnInit {
         },
         complete: () => {
           console.warn("4")
+          this.toaster.open({ text: 'Logged in successfully', position: 'top-center', type: 'success' });
           return this.loading = false;
         }
       });

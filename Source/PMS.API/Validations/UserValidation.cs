@@ -12,8 +12,8 @@ namespace PMS_API
                 throw new ValidationException($"Name must not contain any special character or numbers or no more repeated character more than 2times and user supplied name is {user.Name}");
             if(user.Name.Length<4)
                 throw new ValidationException($"Length cannot less than 4 and user supplied name is {user.Name}");
-            if(user.Name.Length>30)
-                throw new ValidationException($"Length cannot greater than 30 and user supplied name is {user.Name}");
+            if(user.Name.Length>15)
+                throw new ValidationException($"Length cannot greater than 15   s and user supplied name is {user.Name}");
             if(string.IsNullOrEmpty(user.Email))
                 throw new ValidationException($"Email not be null and user supplied Email is {user.Email}");
             if(!Regex.IsMatch(user.Email,@"^([0-9a-zA-Z.]){3,}@[a-zA-z]{3,}(.[a-zA-Z]{2,}[a-zA-Z]*){0,}$"))

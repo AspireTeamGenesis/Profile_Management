@@ -55,7 +55,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SnapbarComponent } from './snapbar/snapbar.component';
 import { LanguageComponent } from './language/language.component';
 import { SharepageComponent } from './sharepage/sharepage.component';
-
 import { ToastNotificationsModule } from 'ngx-toast-notifications';
 import { LanguageandsocialComponent } from './languageandsocial/languageandsocial.component';
 @NgModule({
