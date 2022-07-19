@@ -90,12 +90,12 @@ export class ProjectComponent implements OnInit {
     console.log(this.projectfield.profileId);
     console.log(this.projectfield);
     this.service.CreateProjects(this.projectfield).subscribe(data => this.projectfield.push(data));
-    // setTimeout(
-    //   () => {
-    //     location.reload(); // the code to execute after the timeout
-    //   },
-    //   1000// the time to sleep to delay for
-    // );
+    setTimeout(
+      () => {
+        location.reload(); // the code to execute after the timeout
+      },
+      1000// the time to sleep to delay for
+    );
   }
 
   // Update() {

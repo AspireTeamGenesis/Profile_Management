@@ -68,8 +68,7 @@ export class PersonalComponent implements OnInit {
         next:(data:any)=>{this.profileIdDetails=data,
         this.profileId=this.profileIdDetails.profileId,
         console.warn(this.profileId),
-        console.log(this.profileIdDetails),
-        this.getPersonalDetailsByProfileId(this.profileId)
+        console.log(this.profileIdDetails)
 
   }
   
@@ -100,64 +99,14 @@ export class PersonalComponent implements OnInit {
     userId:0
   }
   
-  breakDuration:any=
-  {
-    breakDuration_Id:0,
-    startingDuration:new Date(),
-    endingDuration: new Date(),
-    personalDetailsId:2010
-  }
-  languageDetails:any=
-  {
-    languageId:0,
-    personalDetailsId:2010,
-    languageName:''
-  }
-  socialMedia:any=
-  {
-    personalDetailsId:2010,
-    socialMedia_Id:0,
-    socialMedia_Name:'',
-    socialMedia_Link:''
-  }
-
-    // language:any{
-    //   languageId: 0,
-    //   languageName: '',
-    //   read: '',
-    //   write: '',
-    //   speak: '',
-    // }
-
-    // breakDuration : {
-    //   breakDuration_Id: 0,
-    //   starting:'',
-    //   ending: '',
-    // },
-    
-    // socialmedia : {
-    //   socialMedia_Id: 0,
-    //   socialMedia_Name: '',
-    //   socialMedia_Link: '',
-    // }
   
- getPersonalDetailsByProfileId(profileId:number)
- {
-  this.service.getPersonalDetailByProfileId(profileId).subscribe({
-    next:(data:any)=>{
-      this.personalDetails=data,
-      console.log(this.personalDetails)
-      
-    }
-  });
- } 
+  
 
-  GetAllPersonalDetailsByProfileId(){
-    this.service.getPersonalDetailByProfileId(this.profileId).subscribe((res)=>{
-      this.user = res;
-      console.log(this.data);
-  })
-  }
+   
+  
+
+
+ 
   toogletag()
 
   {
@@ -197,21 +146,8 @@ personalSubmit()
   console.log(this.error);
   console.log(this.response);
 }
-addLanguage()
-{
-  console.log(this.languageDetails)
-  this.service.addLanguage(this.languageDetails).subscribe();
-}
-addBreakDuration()
-{
-  console.log(this.breakDuration)
-  this.service.addBreakDuration(this.breakDuration).subscribe();
-}
-addSocialMedia()
-{
-  console.log(this.socialMedia)
-  this.service.addSocialMedia(this.socialMedia).subscribe();
-}
+
+
 clearInputFields() {
 
   this.formSubmitted = false;
