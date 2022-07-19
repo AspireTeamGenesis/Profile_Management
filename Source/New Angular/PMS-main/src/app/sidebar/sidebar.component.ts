@@ -44,73 +44,44 @@ import { animate, animateChild, query, style, transition, trigger } from '@angul
 
 export class SidebarComponent implements OnInit {
 
-  profileId:any;
-  userId:number;
-  profileDetails:any;
-  profileIdDetails:any;
-  constructor(private service:UserserviceService,private route: ActivatedRoute,private servicer:AuthenticationService,private router: Router) { }
+  profileId: any;
+  userId: number;
+  profileDetails: any;
+  profileIdDetails: any;
+  constructor(private service: UserserviceService, private route: ActivatedRoute, private servicer: AuthenticationService, private router: Router) { }
   ngOnInit(): void {
     this.getUserProfile();
     // this.getProfileIdByUserId();
   }
-  getUserProfile(){
-    this.service.getUserProfile().subscribe( {
-      next:(data)=>{this.profileDetails=data,
-      console.log(this.profileDetails)}
-      
+  getUserProfile() {
+    console.warn("1")
+    this.service.getUserProfile().subscribe({
+      next: (data) => {
+        this.profileDetails = data,
+          console.log(this.profileDetails)
+      }
+
     })
-    console.log(this.profileDetails.userId);
   }
-  getProfileIdByUserId(){
-    this.service.getProfileIdByUserId().subscribe((data)=>{
-      this.profileIdDetails=data;
-      this.profileId=this.profileIdDetails.profileId;
-      console.log('professor '+this.profileId);
-      if(this.profileId==0)
-    {
+  getProfileIdByUserId() {
+    console.warn("2")
+    this.service.getProfileIdByUserId().subscribe((data) => {
+      this.profileIdDetails = data;
+      this.profileId = this.profileIdDetails.profileId;
+      console.log('professor ' + this.profileId);
+      if (this.profileId == 0) {
         this.router.navigateByUrl("/createprofile");
-    }
-    else
-    {
+      }
+      else {
         this.router.navigateByUrl("/viewprofile");
-
-    }
-      
-
-
+      }
     })
-    // console.log('prof '+this.profileId);
-    // if(this.profileId==undefined)
-    // {
-    //     this.router.navigateByUrl("/createprofile");
-    // }
-    // else
-    // {
-    //     this.router.navigateByUrl("/viewprofile");
 
-    // }
-   
   }
 
-//   {this.profileIdDetails=data;
-//     console.log("Chitru"),
-//   console.log(this.profileIdDetails),
-//     console.log(this.profileIdDetails.profileId),
-//       if(this.profileIdDetails.profileId == 0)
-//       {
-//         this.router.navigateByUrl("/createprofile");
-//       }
-//       else
-//       {
-//         this.router.navigateByUrl("/viewprofile");
-//       }
-//     }
-  
-// })
-// console.log(this.profileIdDetails.profileid);
-  
-  logout()
-  {
+
+
+  logout() {
     this.servicer.ClearToken();
   }
   isShowDivIf = false;
