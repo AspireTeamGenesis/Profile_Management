@@ -1,0 +1,109 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div class="container d-flex justify-content-center table-box">
+    <form action="#" class="form" style="margin-top:110px; width: 60%;border-radius: 2px; border-color: black;">
+
+        <div class="progressbar">
+            <div class="progress" id="progress"></div>
+
+            <div [routerLink]="['/personal']" class="progress-step " data-title="Personal"></div>
+            <div [routerLink]="['/education']" class="progress-step progress-step-active" data-title="Language"></div>
+            <div [routerLink]="['/education']" class="progress-step " data-title="Education"></div>
+            <div [routerLink]="['/project']" class="progress-step " data-title="Project"></div>
+            <div [routerLink]="['/skill']" class="progress-step " data-title="Skills"></div>
+            <div [routerLink]="['/achievement']" class="progress-step " data-title="Achievements"></div>
+        </div>
+        <div class="form-step form-step-active">
+            <h3>Language</h3>
+            <table>
+                <tr>
+                  <td>
+                    <label for="course">Languages Known</label>
+      
+                  </td>
+      
+                  <td>
+                    <button class="btn " style=" background-color:#866ec7; border-radius: 500%; ">
+                      <i (click)="addLanguage()" class="fa fa-plus fa-xs"> </i> </button>
+                  </td>
+                  
+                </tr>
+              </table>
+              <input type="text" id="personaldetails" name="languageName" [(ngModel)]="languageDetails.languageName"
+                style="border-color: black;" placeholder="Enter your Language" value="{{languageDetails.languageName}}"
+                id="LanguagesKnown">
+      
+              <br>
+              
+              <div class="mt-3 container shadow  bg-body rounded" *ngFor="let item of personalDetails[0]['language']">
+                <div>
+                    <div class="card-body">
+                        <div class="row rone ">
+                            <div class="col-md-10">
+                                <p>{{item.languageName}}</p>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="row">
+                                    <button class="btn"><i class="fa fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <br>
+      
+              <table>
+                <tr>
+                  <td>
+                    <label for="personaldetails">Social Media</label>
+                  </td>
+                  <td>
+                    <button class="btn  " style="background-color:#866ec7; border-radius: 500%;">
+                      <i (click)="addSocialMedia()" class="fa fa-plus fa-xs"></i></button>
+                  </td>
+                </tr>
+              </table>
+      
+      
+      
+              <label for="personaldetails">Social Media Name</label>
+              <input name="socialMedia_Name" type="text" id="personaldetails" placeholder="Enter Social media name"
+                [(ngModel)]="socialMedia.socialMedia_Name" required="" style="border-color: black;">
+      
+              <br>
+              <label for="personaldetails">Social Media Link</label>
+              <input name="socialMedia_Link" type="text" id="personaldetails" placeholder="Enter Social media link"
+                [(ngModel)]="socialMedia.socialMedia_Link" required="" style="border-color: black;">
+            </div>
+            <div class="mt-3 container shadow  bg-body rounded" *ngFor="let item of personalDetails[0]['socialmedia']">
+              <div class>
+                  <div class="card-body" >
+                      <div class="row rone ">
+                          <div class="col-md-5 ">
+                            <p>{{item.socialMedia_Name}}</p>
+                          </div>
+                          <div class="col-md-5 ">
+                            <p>{{item.socialMedia_Link}}</p>
+                          </div>
+      
+                          <div class="col-md-1 ">
+                              <div class="row">
+                                  <button (click)="disableSocialMedia(item.socialMedia_Id)" class="btn"><i class="fa fa-solid fa-trash"></i></button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+        </div>
+        <br>
+        <div class="row">
+            <a [routerLink]="['/personal']" class="btn btn-next width-50 ml-auto">Previous</a>
+    
+            <a [routerLink]="['/viewprofile']" (click)="addLanguage()" (click)="addSocialMedia()" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+    
+            <a [routerLink]="['/education']" (click)="addLanguage()" (click)="addSocialMedia()" class="btn btn-next width-50 ml-auto">Next</a>
+    
+          </div>
+    </form>
+</div>
