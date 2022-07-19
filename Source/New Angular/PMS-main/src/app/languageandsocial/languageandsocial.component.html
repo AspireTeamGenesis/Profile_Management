@@ -44,7 +44,7 @@
                             </div>
                             <div class="col-md-1">
                                 <div class="row">
-                                    <button class="btn"><i class="fa fa-solid fa-trash"></i></button>
+                                    <button class="btn"><i  (click)="disableLanguage(item.languageId)" class="fa fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -100,9 +100,9 @@
         <div class="row">
             <a [routerLink]="['/personal']" class="btn btn-next width-50 ml-auto">Previous</a>
     
-            <a [routerLink]="['/viewprofile']" (click)="addLanguage()" (click)="addSocialMedia()" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+            <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
     
-            <a [routerLink]="['/education']" (click)="addLanguage()" (click)="addSocialMedia()" class="btn btn-next width-50 ml-auto">Next</a>
+            <a [routerLink]="['/education']"  class="btn btn-next width-50 ml-auto">Next</a>
     
           </div>
     </form>

@@ -14,7 +14,6 @@ import { FormBuilder,Validators,FormGroup } from '@angular/forms';
   styleUrls: ['./personal.component.css']
 })
 export class PersonalComponent implements OnInit {
-languagename:string="";
   profileId :number;
   imageError: string="";
   cardImageBase64: string = "";
@@ -28,7 +27,18 @@ languagename:string="";
   showMe: boolean = false;
   personalForm:FormGroup;
   foot:boolean = true;
-  error: string = ""
+  error: string = "";
+  user:any = {
+    personalDetailsId:0,
+    profileId:0,
+    base64header:'',
+    image:null,
+    objective: '',
+    dateOfBirth: '',
+    nationality: '',
+    dateOfJoining:'',
+    userId:0
+  }
   
 
 
@@ -74,38 +84,6 @@ languagename:string="";
   
     })
   }
-
-  languageValue:Language[]=[];
-  language:number=0;
-  breakdurationValue:BreakDuration[]=[];
-  breakduration:number=0;
-  socialmediaValue:SocialMedia[]=[];
-  socialmedia:number=0;
-  
-  // personalDetailsId : number = 2;
-  Personal:any;
-  personal:PersonalDetails[]=[];
-  data : any;
-  languageArray:any=[];
-  personalDetails:any;
-  user:any = {
-    personalDetailsId:0,
-    profileId:0,
-    base64header:'',
-    image:null,
-    objective: '',
-    dateOfBirth: '',
-    nationality: '',
-    dateOfJoining:'',
-    userId:0
-  }
-  
-  
-  
-
-   
-  
-
 
  
   toogletag()
@@ -200,10 +178,6 @@ clearInputFields() {
     } return false;
     
   }
-  disableSocialMedia(socialMediaId:number)
-  {
-    this.service.disableSocialMedia(socialMediaId).subscribe();
-
-  }
+ 
 
 }

@@ -58,6 +58,7 @@ import { SharepageComponent } from './sharepage/sharepage.component';
 
 import { ToastNotificationsModule } from 'ngx-toast-notifications';
 import { LanguageandsocialComponent } from './languageandsocial/languageandsocial.component';
+import { EditoriginalpersonalComponent } from './editoriginalpersonal/editoriginalpersonal.component';
 @NgModule({
   declarations: [		
     AppComponent,
@@ -103,7 +104,8 @@ import { LanguageandsocialComponent } from './languageandsocial/languageandsocia
       SnapbarComponent,
       LanguageComponent,
       SharepageComponent,
-      LanguageandsocialComponent
+      LanguageandsocialComponent,
+      EditoriginalpersonalComponent
    ],
   imports: [
     BrowserModule,
