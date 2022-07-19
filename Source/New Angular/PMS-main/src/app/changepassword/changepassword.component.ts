@@ -39,6 +39,7 @@ export class ChangepasswordComponent implements OnInit {
   }
   onSubmit()
   {
+    this.formSubmitted=true;
     console.log(this.user);
     this.service.onSubmit(this.user).subscribe( {
       next: (data) => { },

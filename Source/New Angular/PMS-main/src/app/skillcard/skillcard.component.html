@@ -5,7 +5,7 @@
     <div class="kcard" *ngFor="let item of skillDetails | paginate: {itemsPerPage : 3, currentPage: page,totalItems:totalLength}
         ">
         <div class="card-body">
-            <p class="card-text" style="text-align: center; font-size: 15px;" >
+            <p class="card-text" style="text-align: left; font-size: 15px;" >
                 <br><strong>Domain</strong> : {{item.domainname}}
                 <br><strong>Technology</strong> : {{item.technologyname}}
             </p>

@@ -50,13 +50,13 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     this.projectForm=this.FB.group({
       ProjectName: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
-      ProjectDescription: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
+      ProjectDescription: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(500)]],
       StartingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
       StartingYear: ['', [Validators.required]],
       EndingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
       EndingYear: ['', [Validators.required]],
-      RolePlayed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
-      ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      RolePlayed: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(100)]],
+      ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(300)]],
     });
 
     this.getProfileIdByUserId()

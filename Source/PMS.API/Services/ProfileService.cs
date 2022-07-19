@@ -163,7 +163,10 @@ namespace PMS_API
         {
             foreach (var item in languages)
             {
-                item.personalDetails = null;
+                if(item.IsActive==true){
+                    item.personalDetails = null;
+                }
+                
             }
             return languages;
         }
@@ -213,10 +216,15 @@ namespace PMS_API
                     Profile.DateOfJoining = personalDetails.DateOfJoining;
                 if (Profile.Nationality != personalDetails.Nationality)
                     Profile.Nationality = personalDetails.Nationality;
-                if (Profile.base64header != personalDetails.base64header)
-                    Profile.base64header = personalDetails.base64header;
-                if (Profile.Image != personalDetails.Image)
-                    Profile.Image = personalDetails.Image;
+                
+                string Imagedate = "";
+                Imagedate = ImageService.Getbase64String(personalDetails.base64header);
+
+                Profile.base64header = ImageService.Getbase64Header(personalDetails.base64header);
+
+                Profile.Image = System.Convert.FromBase64String(Imagedate);
+                // if (Profile.Image != personalDetails.Image)
+                //     Profile.Image = personalDetails.Image;
 
                 Profile.UpdatedBy = personalDetails.CreatedBy;
                 Profile.UpdatedOn = DateTime.Now;
@@ -1185,13 +1193,13 @@ namespace PMS_API
 
         }
 
-        public object GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience,int currentdesignation)
+        public object GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience, int currentdesignation)
         {
-            
+
             try
             {
-                
-                return profileData.GetFilterdProfile(userName,designationId, domainID, technologyId, collegeId, profileStatusId,maxExperience, minExperience,currentdesignation)
+
+                return profileData.GetFilterdProfile(userName, designationId, domainID, technologyId, collegeId, profileStatusId, maxExperience, minExperience, currentdesignation)
                 // .WhereIf(
                 //     (user=>user.personalDetails!=null &&  maxExperience!=0 && minExperience!=0 ),
                 //     ( minExperience<=calculateExperience(user=>user.personalDetails.PersonalDetailsId) && maxExperience>=calculateExperience(user.personalDetails.PersonalDetailsId))
@@ -1264,9 +1272,9 @@ namespace PMS_API
                     throw new ValidationException("user doesnot exist");
 
                 result.ProfileStatusId = 2;
-                result.UpdatedOn =DateTime.Now;
+                result.UpdatedOn = DateTime.Now;
 
-                return profileData.updateProfileStatus(result) ;
+                return profileData.updateProfileStatus(result);
             }
             catch (Exception exception)
             {

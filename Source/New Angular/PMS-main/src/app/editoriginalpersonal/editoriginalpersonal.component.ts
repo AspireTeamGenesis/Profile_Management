@@ -8,13 +8,12 @@ import { BreakDuration } from 'Models/breakduration';
 import { SocialMedia } from 'Models/socialMedia';
 import { PersonalDetails } from 'Models/personalDetails';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Toaster } from 'ngx-toast-notifications';
 @Component({
-  selector: 'app-personal',
-  templateUrl: './personal.component.html',
-  styleUrls: ['./personal.component.css']
+  selector: 'app-editoriginalpersonal',
+  templateUrl: './editoriginalpersonal.component.html',
+  styleUrls: ['./editoriginalpersonal.component.css']
 })
-export class PersonalComponent implements OnInit {
+export class EditoriginalpersonalComponent implements OnInit {
 
   profileId: number;
   imageError: string = "";
@@ -27,31 +26,31 @@ export class PersonalComponent implements OnInit {
 
   formSubmitted: boolean = false;
   showMe: boolean = false;
-  personalForm:FormGroup;
-  foot:boolean = true;
+  personalForm: FormGroup;
+  foot: boolean = true;
   error: string = "";
-  user:any = {
-    personalDetailsId:0,
-    profileId:0,
-    base64header:'',
-    image:null,
+  personalDetails:any;
+  user: any = {
+    personalDetailsId: 0,
+    profileId: 0,
+    base64header: '',
+    image: null,
     objective: '',
     dateOfBirth: '',
     nationality: '',
-    dateOfJoining:'',
-    userId:0
+    dateOfJoining: '',
+    userId: 0
   }
-  
 
 
 
-  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private toaster: Toaster) {
+  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient) {
     this.personalForm = this.FB.group({});
   }
   ngOnInit(): void {
     this.personalForm = this.FB.group({
       ProfilePhoto: ['', [Validators.required]],
-      Objective: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(200)]],
+      Objective: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       DateofBirth: ['', [Validators.required]],
       Nationality: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
       DateofJoining: ['', [Validators.required]],
@@ -60,82 +59,47 @@ export class PersonalComponent implements OnInit {
       SocialMediaName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
       SocialMediaLink: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     });
-    this.getUserProfile();
     this.getProfileIdByUserId();
   }
 
-  getUserProfile() {
-    this.service.getUserProfile().subscribe({
-      next: (data) => {
-        this.profileDetails = data,
-          console.log(this.profileDetails),
-          console.log(this.profileDetails.userid);
-      }
 
-
-    })
-
-  }
   getProfileIdByUserId() {
     this.service.getProfileIdByUserId().subscribe({
       next: (data: any) => {
         this.profileIdDetails = data,
-          this.profileId = this.profileIdDetails.profileId,
-          console.warn(this.profileId),
-          console.log(this.profileIdDetails)
+        this.profileId = this.profileIdDetails.profileId,
+        console.warn(this.profileId),
+        console.log(this.profileIdDetails),
+        this.getPersonalDetailsByProfileId(this.profileIdDetails.profileId)
 
       }
 
     })
   }
-
- 
- 
-
-
-
-
-
-
-
-  toogletag() {
-
-    this.showMe = !this.showMe;
-
-  }
-
-
-
-  footer() {
-
-    this.foot = !this.foot;
-
-    if (this.foot == false) { this.foot = true };
-  }
-personalSubmit()
-{
-  
-  this.user.profileId=this.profileIdDetails.profileId;
-  this.user.userId=this.profileDetails.userid;
-  console.log("User ProfileId");
-  console.log(this.user.profileId);
-  console.log(this.user.userId); 
-  console.log(this.user);
-
-    this.service.addPersonalDetail(this.user).subscribe(
-      {
-        next: (data) => this.response = data.message,
-        error: (error) => this.error = error.error,
-        complete: () => {
-          this.clearInputFields(),
-          this.toaster.open({ text: 'Profile has been shared successfully via mail', position: 'top-center', type: 'success' })
-        }
+  getPersonalDetailsByProfileId(ProfileId:number)
+  {
+    this.service.getPersonalDetailByProfileId(ProfileId).subscribe({
+      next:(data:any)=>{
+        this.personalDetails=data;
+        console.log(this.personalDetails)
       }
-    );
-    console.log(this.error);
-    console.log(this.response);
+    })
   }
 
+  
+updatePersonal(){
+  const personal={
+    personalDetailsId:this.personalDetails[0].personaldetailsid,
+    profileId:this.profileIdDetails.profileId,
+    objective:this.personalDetails[0].objective,
+    nationality:this.personalDetails[0].nationality,
+    dateOfBirth:this.personalDetails[0].dateofbirth,
+    dateOfJoining:this.personalDetails[0].dateofjoining,
+    base64header:this.cardImageBase64,
+  }
+  console.log(personal);
+  this.service.updatePersonalDetail(personal).subscribe();
+}
 
   clearInputFields() {
 

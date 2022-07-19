@@ -141,6 +141,12 @@ addLanguage()
       error:(error)=>this.error=error.error 
     }
   );
+  setTimeout(
+    () => {
+      location.reload(); // the code to execute after the timeout
+    },
+    1000// the time to sleep to delay for
+  );
 
 }
 addSocialMedia()
@@ -153,10 +159,22 @@ addSocialMedia()
         next:(data)=>{this.response=data.message,this.getPersonalDetailsByProfileId(this.profileIdDetails.profileId)},
         error:(error)=>this.error=error.error     
       
-    }
+    },
+    
+  );
+  setTimeout(
+    () => {
+      location.reload(); // the code to execute after the timeout
+    },
+    1000// the time to sleep to delay for
   );
 }
 
+disableLanguage(languageId:number)
+  {
+    this.service.disableLanguage(languageId).subscribe();
+
+  }
 
 
   

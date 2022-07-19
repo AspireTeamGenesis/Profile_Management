@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
             this.route.navigateByUrl("/search");
           }
           else {
-            this.route.navigateByUrl("/dashboard");
+            this.route.navigateByUrl("/profilehome");
           }
           console.log(data)
 

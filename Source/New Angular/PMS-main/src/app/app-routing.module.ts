@@ -35,6 +35,7 @@ import { SnapbarComponent } from './snapbar/snapbar.component';
 import { LanguageComponent } from './language/language.component';
 import { SharepageComponent } from './sharepage/sharepage.component';
 import { LanguageandsocialComponent } from './languageandsocial/languageandsocial.component';
+import { EditoriginalpersonalComponent } from './editoriginalpersonal/editoriginalpersonal.component';
 
 
 const routes: Routes = [
@@ -74,6 +75,7 @@ const routes: Routes = [
   {path:"language",component:LanguageComponent},
   {path:"sharepage",component:SharepageComponent},
   {path:"languagesocial",component:LanguageandsocialComponent},
+  {path:"editoriginalpersonal",component:EditoriginalpersonalComponent},
   {path:"",component:LoginComponent}
 ];
 

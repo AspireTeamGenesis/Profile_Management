@@ -14,9 +14,11 @@ import { Toaster } from 'ngx-toast-notifications';
 export class EditprojectComponent implements OnInit {
   selectedYear: number=0;
   years: number[] = [];
+  projectForm:FormGroup;
   error: any;
 
   constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute,private toaster:Toaster) {
+    this.projectForm=this.FB.group({});
     this.selectedYear = new Date().getFullYear();
   for (let year = this.selectedYear; year >= 2000; year--) {
     this.years.push(year);
@@ -26,10 +28,34 @@ export class EditprojectComponent implements OnInit {
    projectid:number=0;
    profileId:number=0;
    showMe: boolean = false;
-
+   formSubmitted: boolean = false;
     foot:boolean = true;
+    projectfield: any = {
+      projectId: 0,
+      profileId: 0,
+      projectName: '',
+      projectDescription: '',
+      startingMonth: '',
+      startingYear: 0,
+      endingMonth: '',
+      endingYear: 0,
+      designation: '',
+      toolsUsed: '',
+  
+    }
+  
 
   ngOnInit(): void {
+    this.projectForm=this.FB.group({
+      ProjectName: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
+      ProjectDescription: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(500)]],
+      StartingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      StartingYear: ['', [Validators.required]],
+      EndingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      EndingYear: ['', Validators.required],
+      RolePlayed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
+      ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(300)]],
+    });
     this.route.params.subscribe(params => {
       this.projectid = params['projectid'];
       this.profileId=params['profileId'];
@@ -47,6 +73,7 @@ export class EditprojectComponent implements OnInit {
   }
   updateproject()
   {
+    this.formSubmitted=true;
     const project = {
       projectId: this.projectid,
       profileId: 7,

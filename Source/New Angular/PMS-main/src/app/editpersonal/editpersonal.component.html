@@ -3,7 +3,7 @@
 
 <div class="container d-flex justify-content-center table-box">
  <!-- <form action="#" class="form" (ngSubmit)="personaldata()" style="margin-top:110px; border:2px solid black; margin-bottom:5%; width: 60%; border-radius: 15px;"> -->
-    <form action="#" class="form" style="margin-top:110px; border:2px solid black; margin-bottom:5%; width: 60%; border-radius: 15px;">
+    <form [formGroup]="personalForm" class="form" style="margin-top:110px; border:2px solid black; margin-bottom:5%; width: 60%; border-radius: 15px;">
 
     <div class="progressbar">
       <div class="progress" id="progress"></div>
@@ -21,25 +21,60 @@
       <div *ngIf="showMe" >
 
       <label for="personaldetails">Profile Photo</label>
-      <input type="file" (change)="fileChangeEvent($event)" name="personaldetails" id="personaldetails" placeholder="Upload your Photo"
-        style="border-color: black;" />
+      <input type="file" (change)="fileChangeEvent($event)" name="personaldetails" id="personaldetails"
+          placeholder="Upload your Photo" style="border-color: black;"
+          [class.is-invalid]="(formSubmitted && personalForm.controls['ProfilePhoto'].invalid )||personalForm.controls['ProfilePhoto'].invalid && personalForm.controls['ProfilePhoto'].touched"
+          formControlName="ProfilePhoto">
+        <div
+          *ngIf="(formSubmitted)||personalForm.controls['ProfilePhoto'].invalid && personalForm.controls['ProfilePhoto'].touched">
+          <span class="text-danger" *ngIf="personalForm.controls['ProfilePhoto'].errors?.['required']">Upload your
+            Photo</span>
+        </div>
       <label class="text-error"> {{imageError}}</label>
 
       <label for="personaldetails">Objective</label>
-      <textarea name="objective" id="Prodes" rows="4" cols="80"
-        placeholder="  Enter Objective" [(ngModel)]="user[0].objective" style="width: 100%; border-color: black;"></textarea>
+      <textarea name="objective" id="Prodes" rows="4" cols="80" placeholder="  Enter Objective"
+      [(ngModel)]="user[0].objective" style="width: 100%; border-color: black;"
+      [class.is-invalid]="(formSubmitted && personalForm.controls['Objective'].invalid )||personalForm.controls['Objective'].invalid && personalForm.controls['Objective'].touched"
+      formControlName="Objective"></textarea>
+    <div *ngIf="(formSubmitted)||personalForm.controls['Objective'].invalid && personalForm.controls['Objective'].touched">
+      <span class="text-danger" *ngIf="personalForm.controls['Objective'].errors?.['required']">Objective is
+        required</span>
+      <span class="text-danger" *ngIf="personalForm.controls['Objective'].errors?.['minlength']">Objective is too
+        short</span>
+      <span class="text-danger" *ngIf="personalForm.controls['Objective'].errors?.['maxlength']">Objective is too
+        long</span>
+    </div>
       <br>
       <!-- <label for="personaldetails">Name</label>
       <input type="text" name="name" [(ngModel)]="user.name" id="personaldetails" placeholder="Enter your name" [(ngModel)]="user.name"
         style="border-color: black;" /> -->
       <br>
       <label for="personaldetails">Date of Birth</label>
-      <input type="date" name="dateofBirth" [(ngModel)]="user[0].dateofbirth" id="personaldetails"
-        style="border-color: black;" />
+      <input type="date" name="dateofBirth" [(ngModel)]="user[0].dateOfbirth" id="personaldetails"
+          style="border-color: black;"
+          [class.is-invalid]="(formSubmitted && personalForm.controls['DateofBirth'].invalid)||personalForm.controls['DateofBirth'].invalid && personalForm.controls['DateofBirth'].touched"
+          name="  DateofBirth" id="DateofBirth" class="form-select" name="DateofBirth" formControlName="DateofBirth">
+        <div
+          *ngIf="(formSubmitted)||personalForm.controls['DateofBirth'].invalid && personalForm.controls['DateofBirth'].touched">
+          <span class="text-danger" *ngIf="personalForm.controls['DateofBirth'].errors?.['required']">Date of Birth is
+            required</span>
+        </div>
       <br>
       <label for="personaldetails">Nationality</label>
       <input type="text" id="personaldetails" name="nationality" [(ngModel)]="user[0].nationality"
-        style="border-color: black;" placeholder="Enter your nationality" />
+          style="border-color: black;" placeholder="Enter your nationality"
+          [class.is-invalid]="(formSubmitted && personalForm.controls['Nationality'].invalid )||personalForm.controls['Nationality'].invalid && personalForm.controls['Nationality'].touched"
+          id="Nationality" formControlName="Nationality">
+        <div
+          *ngIf="(formSubmitted)||personalForm.controls['Nationality'].invalid && personalForm.controls['Nationality'].touched">
+          <span class="text-danger" *ngIf="personalForm.controls['Nationality'].errors?.['required']">Nationality is
+            required</span>
+          <span class="text-danger" *ngIf="personalForm.controls['Nationality'].errors?.['minlength']">Nationality is
+            too short</span>
+          <span class="text-danger" *ngIf="personalForm.controls['Nationality'].errors?.['maxlength']">Nationality is
+            too long</span>
+        </div>
       <!-- <br>
       <label for="personaldetails">Mail Address</label>
       <input type="text" id="personaldetails" name="mailAddress" [(ngModel)]="user.mailAddress"
@@ -49,128 +84,28 @@
 
 
       <label for="personaldetails">Date of Joining</label>
-      <input type="date" name="dateofJoining" [(ngModel)]="user[0].dateofjoining" id="personaldetails"
-        style="border-color: black;" />
+      <input type="date" name="dateofJoining" [(ngModel)]="user[0].dateOfjoining" id="personaldetails"
+          style="border-color: black;"
+          [class.is-invalid]="(formSubmitted && personalForm.controls['DateofJoining'].invalid)||personalForm.controls['DateofJoining'].invalid && personalForm.controls['DateofJoining'].touched"
+          name="  DateofJoining" id="DateofJoining" class="form-select" name="DateofJoining"
+          formControlName="DateofJoining">
+        <div
+          *ngIf="(formSubmitted)||personalForm.controls['DateofJoining'].invalid && personalForm.controls['DateofJoining'].touched">
+          <span class="text-danger" *ngIf="personalForm.controls['DateofJoining'].errors?.['required']">Date of Joining
+            is required</span>
+        </div>
       <br>
 
-      <table>
-        <tr>
-          <td>
-            <label for="personaldetails">Break Duration</label>
-          </td>
-          <td>
-            <button class="btn" style="background-color:#866ec7; border-radius: 500%;">
-              <i class="fa fa-plus fa-xs"></i></button>
-          </td>
-          <td>
-            <button class="btn" style=" background-color:#866ec7; border-radius: 500%;">
-              <i class="fa-solid fa-trash-can"></i></button>
-          </td>
-
-        </tr>
-      </table>
-
-      <td style="width: 55%;">
-        <label for="personaldetails">From</label>
-        <input type="date" name="starting" [value]='user.starting | date:"yyyy-MM-dd"' [(ngModel)]='user.starting' id="personaldetails"
-        style="border-color: black;" />
-        <!-- <select name="starting" [(ngModel)]="user.starting" required="" style="border-color: black;" >
-        </select> -->
-      </td>
-
-      <td style="width: 55%;">
-        <label for="personaldetails">To</label>
-        <input type="date" name="ending" [(ngModel)]="user.ending" id="personaldetails"
-        style="border-color: black;" />
-        <!-- <select name="ending" [(ngModel)]="user.ending" required="" style="border-color: black;" >
-        </select> -->
-      </td>
-
-
-
-      <br>
-
-      <table>
-        <tr>
-          <td>
-            <label for="course">Languages Known</label>
-          </td>
-
-          <td>
-            <button class="btn " style=" background-color:#866ec7; border-radius: 500%; ">
-              <i class="fa fa-plus fa-xs"> </i> </button>
-          </td>
-          <td>
-            <button class="btn " style=" background-color:#866ec7; border-radius: 500%;">
-              <i class="fa-solid fa-trash-can"></i></button>
-          </td>
-        </tr>
-      </table>
-
-      <tr class="checkBoxChecked">
-        <td>
-          <div class="Language">
-            <input name="languageName" type="text" id="personaldetails" class="extend" [(ngModel)]="user.languageName" required="" placeholder="Enter Language"
-              style="border-color: black;" />
-          </div>
-        </td>
-        <td>
-          <div class="custom-control custom-checkbox">
-            <input name="read" type="checkbox" class="custom-control-input" id="checkbox-1" [(ngModel)]="user.read" required=""/>
-            <label class="custom-control-label" for="checkbox-1">Read</label>
-          </div>
-        </td>
-        <td>
-          <div class="custom-control custom-checkbox">
-            <input name="write" type="checkbox" class="custom-control-input" id="checkbox-2" [(ngModel)]="user.write" required=""/>
-            <label class="custom-control-label" for="checkbox-2">Write&nbsp;&nbsp;</label>
-          </div>
-        </td>
-        <td>
-          <div class="custom-control custom-checkbox">
-            <input name="speak" type="checkbox" class="custom-control-input" id="checkbox-3" [(ngModel)]="user.speak" required=""/>
-            <label class="custom-control-label" for="checkbox-3">Speak&nbsp;&nbsp;</label>
-          </div>
-        </td>
-      </tr>
-
-      <br>
-
-      <table>
-        <tr>
-          <td>
-            <label for="personaldetails">Social Media</label>
-          </td>
-          <td>
-            <button class="btn  " style="background-color:#866ec7; border-radius: 500%;">
-              <i class="fa fa-plus fa-xs"></i></button>
-          </td>
-
-          <td>
-            <button class="btn " style=" background-color:#866ec7; border-radius: 500%;">
-              <i class="fa-solid fa-trash-can"></i></button>
-          </td>
-        </tr>
-      </table>
-
-
-
-      <label for="personaldetails">Social Media Name</label>
-      <input name="socialMedia_Name" type="text" id="personaldetails" placeholder="Enter Social media name" [(ngModel)]="user.socialMedia_Name" required="" style="border-color: black;" />
-      <br>
-      <label for="personaldetails">Social Media Link</label>
-      <input name="socialMedia_Link" type="text" id="personaldetails" placeholder="Enter Social media link" [(ngModel)]="user.socialMedia_Link" required=""style="border-color: black;" />
-      <div class="button">
+            <div class="button">
         <a class="btn btn-next width-50 ml-auto" (click)="updatePersonal()" (click)="toogletag()">Update</a>
       </div>
     </div>
 
 
       <div class="row">
-        <a [routerLink]="['/createprofile']" class="btn btn-next width-50 ml-auto">Previous</a>
-        <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as
+        <a [routerLink]="['/viewprofile']" (click)="updatePersonal()" class="btn btn-next width-50 ml-auto">Save as
           Draft</a>
-        <a [routerLink]="['/education']"  class="btn btn-next width-50 ml-auto">Next</a>
+        <a [routerLink]="['/education']" (click)="updatePersonal()"  class="btn btn-next width-50 ml-auto">Next</a>
         <!-- (click)="personalSubmit()" -->
       </div>
     </div>

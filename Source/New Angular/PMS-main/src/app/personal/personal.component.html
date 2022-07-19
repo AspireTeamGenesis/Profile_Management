@@ -20,30 +20,78 @@
       <div  >
 
       <label for="personaldetails">Profile Photo</label>
-      <input type="file" (change)="fileChangeEvent($event)" name="personaldetails" id="personaldetails" placeholder="Upload your Photo"
-        style="border-color: black;" />
+      <input type="file" (change)="fileChangeEvent($event)" name="personaldetails" id="personaldetails"
+          placeholder="Upload your Photo" style="border-color: black;"
+          [class.is-invalid]="(formSubmitted && personalForm.controls['ProfilePhoto'].invalid )||personalForm.controls['ProfilePhoto'].invalid && personalForm.controls['ProfilePhoto'].touched"
+          formControlName="ProfilePhoto">
+        <div
+          *ngIf="(formSubmitted)||personalForm.controls['ProfilePhoto'].invalid && personalForm.controls['ProfilePhoto'].touched">
+          <span class="text-danger" *ngIf="personalForm.controls['ProfilePhoto'].errors?.['required']">Upload your
+            Photo</span>
+        </div>
       <label class="text-error"> {{imageError}}</label>
 
       <label for="personaldetails">Objective</label>
-      <textarea name="objective" id="Prodes" rows="4" cols="80"
-        placeholder="  Enter Objective" [(ngModel)]="user.objective" style="width: 100%; border-color: black;"></textarea>
+       <textarea name="objective" id="Prodes" rows="4" cols="80" placeholder="  Enter Objective"
+      [(ngModel)]="user.objective" style="width: 100%; border-color: black;"
+      [class.is-invalid]="(formSubmitted && personalForm.controls['Objective'].invalid )||personalForm.controls['Objective'].invalid && personalForm.controls['Objective'].touched"
+      formControlName="Objective"></textarea>
+    <div *ngIf="(formSubmitted)||personalForm.controls['Objective'].invalid && personalForm.controls['Objective'].touched">
+      <span class="text-danger" *ngIf="personalForm.controls['Objective'].errors?.['required']">Objective is
+        required</span>
+      <span class="text-danger" *ngIf="personalForm.controls['Objective'].errors?.['minlength']">Objective is too
+        short</span>
+      <span class="text-danger" *ngIf="personalForm.controls['Objective'].errors?.['maxlength']">Objective is too
+        long</span>
+    </div>
       <br>
       <label for="personaldetails">Date of Birth</label>
       <input type="date" name="dateofBirth" [(ngModel)]="user.dateOfBirth" id="personaldetails"
-        style="border-color: black;" />
+          style="border-color: black;"
+          [class.is-invalid]="(formSubmitted && personalForm.controls['DateofBirth'].invalid)||personalForm.controls['DateofBirth'].invalid && personalForm.controls['DateofBirth'].touched"
+          name="  DateofBirth" id="DateofBirth" class="form-select" name="DateofBirth" formControlName="DateofBirth">
+        <div
+          *ngIf="(formSubmitted)||personalForm.controls['DateofBirth'].invalid && personalForm.controls['DateofBirth'].touched">
+          <span class="text-danger" *ngIf="personalForm.controls['DateofBirth'].errors?.['required']">Date of Birth is
+            required</span>
+        </div>
       <br>
       <label for="personaldetails">Nationality</label>
       <input type="text" id="personaldetails" name="nationality" [(ngModel)]="user.nationality"
-        style="border-color: black;" placeholder="Enter your nationality" />
+          style="border-color: black;" placeholder="Enter your nationality"
+          [class.is-invalid]="(formSubmitted && personalForm.controls['Nationality'].invalid )||personalForm.controls['Nationality'].invalid && personalForm.controls['Nationality'].touched"
+          id="Nationality" formControlName="Nationality">
+        <div
+          *ngIf="(formSubmitted)||personalForm.controls['Nationality'].invalid && personalForm.controls['Nationality'].touched">
+          <span class="text-danger" *ngIf="personalForm.controls['Nationality'].errors?.['required']">Nationality is
+            required</span>
+          <span class="text-danger" *ngIf="personalForm.controls['Nationality'].errors?.['minlength']">Nationality is
+            too short</span>
+          <span class="text-danger" *ngIf="personalForm.controls['Nationality'].errors?.['maxlength']">Nationality is
+            too long</span>
+        </div>
+      <!-- <br>
+      <label for="personaldetails">Mail Address</label>
+      <input type="text" id="personaldetails" name="mailAddress" [(ngModel)]="user.mailAddress"
+        style="border-color: black;" placeholder="Enter your mail address" /> -->
 
 
       <br>
 
       <label for="personaldetails">Date of Joining</label>
       <input type="date" name="dateofJoining" [(ngModel)]="user.dateOfJoining" id="personaldetails"
-        style="border-color: black;" />
-      <br> 
+          style="border-color: black;"
+          [class.is-invalid]="(formSubmitted && personalForm.controls['DateofJoining'].invalid)||personalForm.controls['DateofJoining'].invalid && personalForm.controls['DateofJoining'].touched"
+          name="  DateofJoining" id="DateofJoining" class="form-select" name="DateofJoining"
+          formControlName="DateofJoining">
+        <div
+          *ngIf="(formSubmitted)||personalForm.controls['DateofJoining'].invalid && personalForm.controls['DateofJoining'].touched">
+          <span class="text-danger" *ngIf="personalForm.controls['DateofJoining'].errors?.['required']">Date of Joining
+            is required</span>
+        </div>
+      <br>
     </div>
+     
 
 
     <div class="row">
