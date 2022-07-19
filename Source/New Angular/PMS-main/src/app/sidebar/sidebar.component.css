@@ -7425,6 +7425,9 @@ button.bg-dark:focus {
     border-radius: 0.3rem !important;
 }
 
+.fa-circle-{
+    cursor: pointer;
+}
 .rounded-circle {
     border-radius: 50% !important;
 }
@@ -11054,6 +11057,7 @@ h5,
 #sidebar ul li a {
     padding: 10px 0;
     display: block;
+    cursor: pointer;
     color: rgba(255, 255, 255, 0.8);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
