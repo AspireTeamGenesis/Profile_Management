@@ -14,6 +14,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class EditeducationComponent implements OnInit {
   selectedYear: number=0;
   years: number[] = [];
+  educationForm:FormGroup;
+  formSubmitted: boolean = false;
+
   constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute) {
     this.selectedYear = new Date().getFullYear();
   for (let year = this.selectedYear; year >= 2000; year--) {
@@ -33,6 +36,15 @@ export class EditeducationComponent implements OnInit {
   user:any;
   
   ngOnInit(): void {
+    this.educationForm=this.FB.group({
+      Degree: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(38),Validators.pattern("^[A-Za-z]+$")]],
+      Course: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(50),Validators.pattern("^[A-Za-z ]+$")]],
+      College: ['', [Validators.required]],
+      From: ['', [Validators.required]],
+      To: ['', [Validators.required]],
+      Percentage : ['', [Validators.required,Validators.minLength(1),Validators.maxLength(3),Validators.pattern("([1-9]|[1-9][0-9]|100)")]],
+
+      });
     this.route.params.subscribe(params => {
       this.educationid = params['educationid'];
       console.log('Education id : ' + this.educationid);
