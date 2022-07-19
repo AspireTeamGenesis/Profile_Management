@@ -58,6 +58,8 @@ import { SharepageComponent } from './sharepage/sharepage.component';
 import { ToastNotificationsModule } from 'ngx-toast-notifications';
 import { LanguageandsocialComponent } from './languageandsocial/languageandsocial.component';
 import { EditoriginalpersonalComponent } from './editoriginalpersonal/editoriginalpersonal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 @NgModule({
   declarations: [		
     AppComponent,
@@ -104,7 +106,8 @@ import { EditoriginalpersonalComponent } from './editoriginalpersonal/editorigin
       LanguageComponent,
       SharepageComponent,
       LanguageandsocialComponent,
-      EditoriginalpersonalComponent
+      EditoriginalpersonalComponent,
+      DialogBoxComponent
    ],
   imports: [
     BrowserModule,
@@ -119,6 +122,7 @@ import { EditoriginalpersonalComponent } from './editoriginalpersonal/editorigin
     MatFormFieldModule,
     MatInputModule,
     ToastNotificationsModule.forRoot({duration: 6000, type: 'primary'}),
+    MatDialogModule
   ],
   providers: [DocumentCreator],
   // providers: [DatePipe],

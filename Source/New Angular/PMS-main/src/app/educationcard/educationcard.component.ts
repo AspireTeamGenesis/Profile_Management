@@ -3,6 +3,7 @@ import { UserserviceService } from '../service/userservice.service';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { DialogueboxService } from '../service/dialoguebox.service';
 
 @Component({
   selector: 'app-educationcard',
@@ -18,7 +19,7 @@ export class EducationcardComponent implements OnInit {
   profileIdDetails:any;
   // profileId=7;
   // hello:100;
-  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient, private route : Router) { }
+  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient, private route : Router,private dialogueService:DialogueboxService) { }
   
   ngOnInit(): void {
     this.getProfileIdByUserId();   
@@ -50,9 +51,18 @@ export class EducationcardComponent implements OnInit {
   //   this.route.navigate(['/editeducation/this.educationDetails.educationId/this.profileId'])
   // }
 
-  cancelEducation(educationid:number)
-  {
-    this.service.cancelEducation(educationid).subscribe(()=>this.getEducationByProfileId());
+  // cancelEducation(educationid:number)
+  // {
+  //   this.service.cancelEducation(educationid).subscribe(()=>this.getEducationByProfileId());
+  // }
+  async cancelEducation(educationid: number) {
+
+  
+    await this.dialogueService.IsDeleteConfirmed().then((value)=> {
+
+      if(value)
+      this.service.cancelEducation(educationid).subscribe(()=>this.getEducationByProfileId());    
+    });
   }
 
 }
