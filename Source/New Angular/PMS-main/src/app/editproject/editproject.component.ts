@@ -46,13 +46,13 @@ export class EditprojectComponent implements OnInit {
   ngOnInit(): void {
     this.projectForm=this.FB.group({
       ProjectName: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
-      ProjectDescription: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(50)]],
+      ProjectDescription: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(500)]],
       StartingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
       StartingYear: ['', [Validators.required]],
       EndingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
       EndingYear: ['', [Validators.required]],
-      RolePlayed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
-      ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      RolePlayed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
+      ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(300)]],
     });
     this.route.params.subscribe(params => {
       this.projectid = params['projectid'];

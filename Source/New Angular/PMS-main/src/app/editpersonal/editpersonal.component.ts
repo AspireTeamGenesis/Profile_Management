@@ -9,7 +9,7 @@ import { Language } from 'Models/language';
 import { BreakDuration } from 'Models/breakduration';
 import { SocialMedia } from 'Models/socialMedia';
 import { PersonalDetails } from 'Models/personalDetails';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -26,7 +26,8 @@ export class EditpersonalComponent implements OnInit {
   child: any;
   profileDetails:any;
   profileIdDetails:any;
-
+  formSubmitted: boolean = false;
+  personalForm:FormGroup;
 
   showMe: boolean = false;
 
@@ -34,8 +35,17 @@ export class EditpersonalComponent implements OnInit {
   
 
 
-  constructor(private service: UserserviceService, private http: HttpClient,public datepipe:DatePipe) { }
+  constructor(private FB:FormBuilder,private service: UserserviceService, private http: HttpClient,public datepipe:DatePipe) { 
+    this.personalForm=this.FB.group({});
+  }
   ngOnInit(): void {
+    this.personalForm=this.FB.group({
+      ProfilePhoto: ['', [Validators.required]],
+      Objective: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(500)]],
+      DateofBirth: ['', [Validators.required]],
+      Nationality: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      DateofJoining: ['', [Validators.required]],
+    })
     // this.getUserProfile();
     this.getProfileIdByUserId();
     
@@ -66,12 +76,7 @@ export class EditpersonalComponent implements OnInit {
     })
   }
 
-  languageValue:Language[]=[];
-  language:number=0;
-  breakdurationValue:BreakDuration[]=[];
-  breakduration:number=0;
-  socialmediaValue:SocialMedia[]=[];
-  socialmedia:number=0;
+ 
   
   // personalDetailsId : number = 2;
   Personal:any;
@@ -193,6 +198,7 @@ export class EditpersonalComponent implements OnInit {
 
 personalSubmit()
 {
+  this.formSubmitted=true;
   this.user.profileId=this.profileIdDetails.profileId;
   this.user.userId=this.profileDetails.userid;
   console.log("User ProfileId");
