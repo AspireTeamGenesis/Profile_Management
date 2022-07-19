@@ -130,6 +130,12 @@ export class CreateusersComponent implements OnInit {
       this.toaster.open({ text: 'Profile has been shared successfully via mail', position: 'top-center', type: 'success' })
     }
     });//data=>this.user.push(data)
+    setTimeout(
+      () => {
+        location.reload(); // the code to execute after the timeout
+      },
+      1000// the time to sleep to delay for
+    );
     console.error(this.userValue);
     
 

@@ -365,7 +365,10 @@ disableSocialMedia(socialMediaId:number)
 {
   return this.http.delete<any>(`https://localhost:7021/Profile/DisableSocialMedia?SocialMedia_Id=${socialMediaId}`,{headers : this.headers})
 }
-
+disableLanguage(languageId:number)
+{
+  return this.http.delete<any>(`https://localhost:7021/Profile/DisableLanguage?Language_Id=${languageId}`,{headers : this.headers})
+}
 
  
 
