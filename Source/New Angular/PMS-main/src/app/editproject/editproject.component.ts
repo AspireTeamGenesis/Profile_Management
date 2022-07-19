@@ -50,7 +50,7 @@ export class EditprojectComponent implements OnInit {
       StartingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
       StartingYear: ['', [Validators.required]],
       EndingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
-      EndingYear: ['', [Validators.required]],
+      EndingYear: ['', Validators.required],
       RolePlayed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
       ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(300)]],
     });

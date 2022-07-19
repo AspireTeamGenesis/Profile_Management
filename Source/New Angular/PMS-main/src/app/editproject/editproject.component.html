@@ -46,7 +46,8 @@
       <br>
       <label for="personaldetails">Staring Year</label>
       <select [class.is-invalid]="(formSubmitted && projectForm.controls['StartingYear'].invalid)||projectForm.controls['StartingYear'].invalid && projectForm.controls['StartingYear'].touched" name="  StartingYear" id="StartingYear" formControlName="StartingYear" [(ngModel)]="projectDetails.startingYear" required="">
-        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        <option value="" selected>Select Starting Year</option>
+       <option *ngFor="let year of years" [value]="year">{{ year }}</option>
       </select>
       <div *ngIf="(formSubmitted)||projectForm.controls['StartingYear'].invalid && projectForm.controls['StartingYear'].touched">
         <span class="text-danger" *ngIf="projectForm.controls['StartingYear'].errors?.['required']">Starting Year is required</span>
@@ -71,6 +72,7 @@
 
       <label for="personaldetails">Ending Year</label>
       <select [class.is-invalid]="(formSubmitted && projectForm.controls['EndingYear'].invalid)||projectForm.controls['EndingYear'].invalid && projectForm.controls['EndingYear'].touched" name="  EndingYear" id="EndingYear"  formControlName="EndingYear" [(ngModel)]="projectDetails.endingYear" required="">
+        <option value="" selected>Select Ending Year</option>
         <option *ngFor="let year of years" [value]="year">{{ year }}</option>
       </select>
       <div *ngIf="(formSubmitted)||projectForm.controls['EndingYear'].invalid && projectForm.controls['EndingYear'].touched">
