@@ -4,8 +4,8 @@
     <div class="kcard"
         *ngFor="let item of achievementDetails | paginate: {itemsPerPage : 3, currentPage: page,totalItems:totalLength}       ">
         <div class="card-body">
-            <p>
-                Type : {{item.achievementtype}}
+            <p class="card-text" style="text-align: center; font-size: 15px;">
+                <strong>Type</strong>: {{item.achievementtype}}
             </p>
             <div class="card-image">
                 <img [src]="'data:image/jpg;base64,'+ item.achievementimage" width="180" height="120" />
