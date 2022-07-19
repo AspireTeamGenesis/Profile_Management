@@ -127,7 +127,7 @@ export class CreateusersComponent implements OnInit {
     },
     
     complete:()=>{
-      this.toaster.open({ text: 'Profile has been shared successfully via mail', position: 'top-center', type: 'success' })
+      this.toaster.open({ text: 'User has been created successfully', position: 'top-center', type: 'success' })
     }
     });//data=>this.user.push(data)
     setTimeout(

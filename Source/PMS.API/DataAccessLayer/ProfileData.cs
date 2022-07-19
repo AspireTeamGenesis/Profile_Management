@@ -644,7 +644,7 @@ namespace PMS_API
 
             try
             {
-
+                language.IsActive=true;
                 _context.languages.Add(language);
                 _context.SaveChanges();
                 return true;
@@ -696,7 +696,7 @@ namespace PMS_API
                 throw new ArgumentNullException("social media details object is not provided to DAL");
             try
             {
-
+                media.IsActive=true;
                 _context.SocialMedias.Add(media);
                 _context.SaveChanges();
                 return true;

@@ -48,7 +48,7 @@ export class PersonalComponent implements OnInit {
   ngOnInit(): void {
     this.personalForm=this.FB.group({
       ProfilePhoto: ['', [Validators.required]],
-      Objective: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
+      Objective: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(200)]],
       DateofBirth: ['', [Validators.required]],
       Nationality: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
       DateofJoining: ['', [Validators.required]],
@@ -106,8 +106,7 @@ export class PersonalComponent implements OnInit {
   }
 personalSubmit()
 {
-  this.formSubmitted=true;
-  this.error = '';
+  
   this.user.profileId=this.profileIdDetails.profileId;
   this.user.userId=this.profileDetails.userid;
   console.log("User ProfileId");

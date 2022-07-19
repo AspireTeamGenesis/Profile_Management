@@ -4,7 +4,7 @@
     <div class="kcard"
         *ngFor="let item of educationDetails | paginate: {itemsPerPage : 3, currentPage: page,totalItems:totalLength}       ">
         <div class="card-body">
-            <p class="card-text" style="text-align: center; font-size: 15px;">
+            <p class="card-text" style="text-align: left; font-size: 15px;">
                 <br><strong>Course</strong>: {{item.course}}
                 <br><strong>Degree</strong>: {{item.degree}}
                 <br><strong>College </strong>: {{item.college}}

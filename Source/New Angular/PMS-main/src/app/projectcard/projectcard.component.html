@@ -3,7 +3,7 @@
 <div class="container d-flex justify-content-center">
     <div class="kcard" *ngFor="let item of projectDetails | paginate: {itemsPerPage : 3, currentPage: page,totalItems:totalLength}       ">
         <div class="card-body">
-            <p class="card-text" style="text-align: center; font-size: 15px;">
+            <p class="card-text" style="text-align: left; font-size: 15px;">
                 <br><strong>Project name</strong>: {{item.projectname}}
                 <br><strong>Description</strong>: {{item.projectdescription}}
                 <br><strong>Duration</strong>: {{item.startingMonth}} {{item.startingYear}} - {{item.endingMonth}} {{item.endingYear}}

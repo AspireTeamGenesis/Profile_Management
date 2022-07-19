@@ -163,7 +163,10 @@ namespace PMS_API
         {
             foreach (var item in languages)
             {
-                item.personalDetails = null;
+                if(item.IsActive==true){
+                    item.personalDetails = null;
+                }
+                
             }
             return languages;
         }
