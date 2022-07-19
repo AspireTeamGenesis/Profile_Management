@@ -2,20 +2,19 @@
 <app-sidebar></app-sidebar>
 
 <div class="container d-flex justify-content-center table-box">
-  <!-- <form action="#" class="form" (ngSubmit)="personaldata()" style="margin-top:110px; border:2px solid black; margin-bottom:5%; width: 60%; border-radius: 15px;"> -->
   <form [formGroup]="personalForm" class="form form-border">
 
     <div class="progressbar">
       <div class="progress" id="progress"></div>
 
-      <div class="progress-step progress-step-active" data-title="Personal"></div>
-      <div class="progress-step" data-title="Education"></div>
-      <div class="progress-step" data-title="Project"></div>
-      <div class="progress-step" data-title="Skills"></div>
-      <div class="progress-step" data-title="Achievements"></div>
+      <div [routerLink]="['/personal']" class="progress-step progress-step-active" data-title="Personal"></div>
+      <div [routerLink]="['/languagesocial']" class="progress-step " data-title="Language"></div>
+      <div [routerLink]="['/education']" class="progress-step " data-title="Education"></div>
+      <div [routerLink]="['/project']" class="progress-step " data-title="Project"></div>
+      <div [routerLink]="['/skill']" class="progress-step " data-title="Skills"></div>
+      <div [routerLink]="['/achievement']" class="progress-step " data-title="Achievements"></div>
     </div>
 
-    <!-- Steps -->
     <div class="form-step form-step-active">
       <h3>Personal Details</h3>
       <div  >
@@ -40,7 +39,6 @@
 
       <br>
 
-
       <label for="personaldetails">Date of Joining</label>
       <input type="date" name="dateofJoining" [(ngModel)]="user.dateOfJoining" id="personaldetails"
         style="border-color: black;" />
@@ -52,7 +50,7 @@
       <!--<a [routerLink]="['/createprofile']" class="btn btn-next width-50 ml-auto">Previous</a>-->
       <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 mlr-auto" style="text-color:white;" (click)="personalSubmit()">Save as
         Draft</a>
-      <a [routerLink]="['/education']" class="btn  width-50 mlr-auto" (click)="personalSubmit()">Next</a>
+      <a [routerLink]="['/languagesocial']" class="btn  width-50 mlr-auto" (click)="personalSubmit()">Next</a>
       <!-- (click)="personalSubmit()" -->
     </div>
     </div>
