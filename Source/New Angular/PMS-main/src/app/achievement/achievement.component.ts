@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../service/userservice.service';
-import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Toaster } from 'ngx-toast-notifications';
 
 
 @Component({
@@ -12,58 +13,75 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class AchievementComponent implements OnInit {
 
+  error: any;
   showMe: boolean = false;
-
-  foot:boolean = true;
-
+  formSubmitted: boolean = false;
+  foot: boolean = true;
+  achievementForm: FormGroup;
   imageError: string = "";
-  profileIdDetails:any;
+  profileIdDetails: any;
   isImageSaved: boolean = false;
-  cardImageBase64: string = "";
-  achievementTypeValue:number=0;
-  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute) { }
-  profileId:number=0;
-  achievement:any={
-    achievementId:0,
-    profileId:0,
-    achievementTypeId:0,
-    base64header:'',
-    achievementImage:'',
+  cardImageBase64: any;
+  achievementTypeValue:any;
+
+
+  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute, private toaster: Toaster) { }
+
+  profileId: number = 0;
+  achievement: any = {
+    achievementId: 0,
+    profileId: 0,
+    achievementTypeId: 0,
+    base64header: '',
+    achievementImage: '',
 
     // achievementImage:this.cardImageBase64,
   }
-  
+
   ngOnInit(): void {
+    this.achievementForm = this.FB.group({
+      AchievementPhoto: ['', [Validators.required]],
+      AchievementType: ['', [Validators.required]]
+    })
     this.getProfileIdByUserId();
 
   }
 
-  getProfileIdByUserId()
-  {
+  getProfileIdByUserId() {
     this.service.getProfileIdByUserId().subscribe({
-        next:(data:any)=>{this.profileIdDetails=data,
-        this.profileId=this.profileIdDetails.profileId,
-        console.warn(this.profileId),
-        console.log(this.profileIdDetails)
-  }
+      next: (data: any) => {
+        this.profileIdDetails = data,
+          this.profileId = this.profileIdDetails.profileId,
+          console.warn(this.profileId),
+          console.log(this.profileIdDetails)
+      }
     })
   }
 
 
-  submitAchievement()
-  {
-    this.achievement.achievementTypeId=this.achievementTypeValue;
-    this.achievement.profileId=this.profileId;
+  submitAchievement() {
+    this.formSubmitted = true;
+    this.achievement.achievementTypeId = this.achievementTypeValue;
+    this.achievement.profileId = this.profileId;
     console.log(this.achievementTypeValue);
     console.log(this.achievement);
-    this.service.addAchievement(this.achievement).subscribe();
-    setTimeout(
-      () => {
-        location.reload(); // the code to execute after the timeout
-      },
-      1000// the time to sleep to delay for
+    console.log(this.error)
+    console.log(this.achievementForm)
+    this.service.addAchievement(this.achievement).subscribe(
+      {
+        next: (data) => { },
+        error: (error) => { this.error = error.error.message },
+        complete: () => {
+          this.toaster.open({ text: 'Achievement added successfully', position: 'top-center', type: 'success' });
+        }
+      }
     );
-
+    // setTimeout(
+    //   () => {
+    //     location.reload(); // the code to execute after the timeout
+    //   },
+    //1000 the time to sleep to delay for
+    //);
   }
 
   fileChangeEvent(fileInput: any) {
@@ -97,25 +115,25 @@ export class AchievementComponent implements OnInit {
       reader.readAsDataURL(fileInput.target.files[0]);
     } return false
   }
-  toogletag()
+  toogletag() {
 
+    this.showMe = !this.showMe;
+
+  }
+  submit()
   {
-
-    this.showMe=!this.showMe;
-
+    this.toaster.open({ text: 'Form submitted successfully', position: 'top-center', type: 'success' });
   }
 
 
 
-  footer()
+  footer() {
 
-  {
+    this.foot = !this.foot;
 
-    this.foot=!this.foot;
+    if (this.foot == false) { this.foot = true };
 
-    if(this.foot==false){this.foot=true};
 
-   
 
   }
 

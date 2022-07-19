@@ -39,6 +39,7 @@ export class CreateusersComponent implements OnInit {
   userForm:FormGroup;
   formSubmitted: boolean = false;
   selectedUsername:any;
+  // error: any;
   //TO get the input from the user
 
 

@@ -1,17 +1,18 @@
 <app-topbar></app-topbar>
 <app-sidebar></app-sidebar>
 <div class="container d-flex justify-content-center table-box">
-  <form action="#" class="form" style="margin-top:110px; width: 60%;border-radius: 2px; border-color: black;">
+  <form action="#" class="form" [formGroup]="skillForm" (ngsubmit)="skillForm.invalid && submitSkills() "
+    style="margin-top:110px; width: 60%;border-radius: 2px; border-color: black;">
 
     <div class="progressbar">
       <div class="progress" id="progress"></div>
 
       <div [routerLink]="['/personal']" class="progress-step " data-title="Personal"></div>
-            <div [routerLink]="['/languagesocial']" class="progress-step " data-title="Language"></div>
-            <div [routerLink]="['/education']" class="progress-step " data-title="Education"></div>
-            <div [routerLink]="['/project']" class="progress-step   " data-title="Project"></div>
-            <div  class="progress-step progress-step-active " data-title="Skills"></div>
-            <div [routerLink]="['/achievement']" class="progress-step " data-title="Achievements"></div>
+      <div [routerLink]="['/languagesocial']" class="progress-step " data-title="Language"></div>
+      <div [routerLink]="['/education']" class="progress-step " data-title="Education"></div>
+      <div [routerLink]="['/project']" class="progress-step   " data-title="Project"></div>
+      <div class="progress-step progress-step-active " data-title="Skills"></div>
+      <div [routerLink]="['/achievement']" class="progress-step " data-title="Achievements"></div>
     </div>
 
     <div class="form-step form-step-active">
@@ -22,26 +23,51 @@
         </div>
       </h3>
       <!-- <h3>Skills</h3> -->
-<div *ngIf="showMe" >
-      <div class="input-group">
-        <label for="personaldetails">Domain</label>
-        <select id="personaldetails" name="domainValue" [(ngModel)]="skill.domainId">
-          <option value="0">Select Domain</option>
-          <option *ngFor="let item of domainValue"  value={{item.domainId}}>{{item.domainName}}</option>
-        </select>
+      <div *ngIf="showMe">
+        <div class="input-group">
+          <label for="personaldetails">Domain</label>
+          <select id="personaldetails" name="domainId" [(ngModel)]="skill.domainId" formControlName="domainType"
+            [class.is-invalid]="(formSubmitted && skillForm.controls['domainType'].invalid )|| skillForm.controls['domainType'].invalid && skillForm.controls['domainType'].touched||skillForm.controls['domainType'].untouched"
+            required>
+            <option value="0" hidden>Select Domain</option>
+            <option *ngFor="let item of domainValue" value={{item.domainId}}>{{item.domainName}}</option>
+          </select>
+          <div
+            *ngIf="formSubmitted || (skillForm.controls['domainType'].invalid && skillForm.controls['domainType'].touched)">
+            <span class="text-danger" *ngIf="skillForm.controls['domainType'].errors?.['required']">
+              select the Domain</span>
+          </div>
+        </div>
+        
+
+        <div>
+          <h5 class="text-center text-danger">{{error}}</h5>
+        </div>
+
+
+        <br>
+        <div class="input-group">
+          <label for="personaldetails">Technology</label>
+          <select id="personaldetails" name="technologyId" [(ngModel)]="skill.technologyId"
+            [class.is-invalid]="(formSubmitted && skillForm.controls['technologyType'].invalid )|| skillForm.controls['technologyType'].invalid && skillForm.controls['technologyType'].touched||skillForm.controls['technologyType'].untouched"
+            formControlName="technologyType" required>
+            <option value="0" hidden>Select Technology</option>
+            <option *ngFor="let item of technologyValue" value={{item.technologyId}}>{{item.technologyName}}</option>
+          </select>
+        </div>
+        <div>
+          <h5 class="text-center text-danger">{{error}}</h5>
+        </div>
+        <div
+          *ngIf="formSubmitted || (skillForm.controls['technologyType'].invalid && skillForm.controls['technologyType'].touched) ">
+          <span class="text-danger" *ngIf="skillForm.controls['technologyType'].errors?.['required']">
+            Select the Technology</span>
+        </div>
+        <div class="button">
+
+          <button class="btn btn-next width-50 ml-auto" [disabled]="!skillForm.valid" (click)="submitSkills()">Add</button>
+        </div>
       </div>
-      <br>
-      <div class="input-group">
-        <label for="personaldetails">Technology</label>
-        <select id="personaldetails" name="technologyValue" [(ngModel)]="skill.technologyId">
-          <option value="0">Select Technology</option>
-          <option *ngFor="let item of technologyValue" value={{item.technologyId}}>{{item.technologyName}}</option>
-        </select>
-      </div>     
-      <div class="button">
-        <a class="btn btn-next width-50 ml-auto" (click)="submitSkills()" (click)="toogletag()">Add</a>
-      </div>
-</div>
       <br>
       <app-skillcard [profileId]="profileId"></app-skillcard>
       <div class="row">

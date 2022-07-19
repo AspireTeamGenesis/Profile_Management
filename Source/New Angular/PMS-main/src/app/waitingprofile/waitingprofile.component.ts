@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserserviceService } from '../service/userservice.service';
-import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Toaster } from 'ngx-toast-notifications';
 @Component({
@@ -10,38 +10,44 @@ import { Toaster } from 'ngx-toast-notifications';
 })
 export class WaitingprofileComponent implements OnInit {
 
-  profileIdDetails:any;
+  profileIdDetails: any;
 
-  totalLength:any;
-  page:number=1;
-  achievementDetails:any;
-  profileId:number;
-  waitingProfiles:any;
-  acceptedProfile:any
+  totalLength: any;
+  page: number = 1;
+  achievementDetails: any;
+  profileId: number;
+  waitingProfiles: any;
+  acceptedProfile: any
 
-  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private toaster: Toaster) { }
-  
+  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private toaster: Toaster) { }
+
   ngOnInit(): void {
     this.getProfileByWaitingStatus();
   }
-  getProfileByWaitingStatus()
-  {
+  getProfileByWaitingStatus() {
     this.service.getProfileByWaitingStatus().subscribe({
-      next:(data:any)=>{this.waitingProfiles=data,
-      console.log(this.waitingProfiles)
-        }
-  })
+      next: (data: any) => {
+        this.waitingProfiles = data,
+          console.log(this.waitingProfiles)
+      }
+    })
   }
-  acceptorrejectprofile(profileid : number,response : number){
-    this.service.acceptorrejectprofile(profileid,response).subscribe({
-      next:(data:any)=>{this.acceptedProfile=data,
-      console.log(this.acceptedProfile)
+  acceptorrejectprofile(profileid: number, response: number) {
+    this.service.acceptorrejectprofile(profileid, response).subscribe
+      ({
+        next: (data: any) => {
+          this.acceptedProfile = data,
+            console.log(this.acceptedProfile)
+        },
+        complete: () => {
+          this.toaster.open({ text: 'updated successfully', position: 'top-center', type: 'success' });
         }
-      })
+
+});
 
 
-}
-editToUpdate(){
+  }
+editToUpdate() {
   this.toaster.open({ text: 'Request to update sent successfully via mail', position: 'top-center', type: 'success' })
 }
 }

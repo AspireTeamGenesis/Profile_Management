@@ -6,6 +6,7 @@ import { Organisation } from 'Models/organisation';
 import { User } from 'Models/user';
 import { UserserviceService } from 'src/app/service/userservice.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Toaster } from 'ngx-toast-notifications';
 
 
 @Component({
@@ -59,9 +60,10 @@ export class EdituserComponent implements OnInit {
 
 
   userEmployeeId: number = 0;
+  error: any;
 
 
-  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute) { }
+  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute,private toaster:Toaster) { }
 
 
    userDetails: any;
@@ -132,7 +134,12 @@ export class EdituserComponent implements OnInit {
     }
     console.log("update");
     console.log(userDetailsProfile);
-    this.service.updateUser(userDetailsProfile).subscribe();
+    this.service.updateUser(userDetailsProfile).subscribe({
+      error: (error) => { this.error = error.error.message },
+      complete: () => {
+        this.toaster.open({ text: 'Updated user successfully', position: 'top-center', type: 'success' });
+      }
+    });
 
   }
 

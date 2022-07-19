@@ -98,11 +98,13 @@ namespace PMS_API
             //ProjectName validation
             if (string.IsNullOrEmpty(project.ProjectName))//check project name is null or empty
                 throw new ValidationException($"ProjectName not be null and user supplied ProjectName as \"{project.ProjectName}\"");
-            else if (!Regex.IsMatch(project.ProjectName, "^[A-Za-z ]{3,}$"))//check project name contains special characters only
+            else if (!Regex.IsMatch(project.ProjectName, "^[A-Za-z ]{3,100}$"))//check project name contains special characters only
                 throw new ValidationException($"ProjectName not contain SpecialCharacters, numbers and user supplied ProjectName as \"{project.ProjectName}\"");
 
             //project description
             if (string.IsNullOrEmpty(project.ProjectDescription))//check project description is null or empty
+                throw new ValidationException($"project_Description not be null and user supplied project_Description as \"{project.ProjectDescription}\"");
+            else if (!Regex.IsMatch(project.ProjectDescription,"^[A-Za-z ]{3,500}$"))//check project description is null or empty
                 throw new ValidationException($"project_Description not be null and user supplied project_Description as \"{project.ProjectDescription}\"");
 
             //project Designation
@@ -110,7 +112,7 @@ namespace PMS_API
             //     throw new ValidationException($"Designation should not be numbers alone and user supplied Designation as \"{project.Designation}\"");
             // if (Regex.IsMatch(project.Designation, "^[^\\w]+$"))//check Designation only contains specialcharacters
             //     throw new ValidationException($"Designation should not be specialcharacters and user supplied Designation as \"{project.Designation}\"");
-            if (!Regex.IsMatch(project.Designation, "^[A-za-z ]+$"))//check Designation only contains specialcharacters
+            if (!Regex.IsMatch(project.Designation, "^[A-za-z]{2,40}$"))//check Designation only contains specialcharacters
                 throw new ValidationException($"Designation should not contain specialcharacters, numbers and user supplied Designation as \"{project.Designation}\"");
 
 

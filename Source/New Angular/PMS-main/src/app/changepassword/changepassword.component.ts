@@ -4,6 +4,7 @@ import { AuthenticationService } from '../service/authentication.service';
 //import { User } from 'Models/user';
 import {  AbstractControl,FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserserviceService } from '../service/userservice.service';
+import { Toaster } from 'ngx-toast-notifications';
 
 @Component({
   selector: 'app-changepassword',
@@ -13,10 +14,12 @@ import { UserserviceService } from '../service/userservice.service';
 export class ChangepasswordComponent implements OnInit {
 
   //userValue: User[] = [];
+  error: string  ;
   changepasswordForm:FormGroup;
   formSubmitted: boolean = false;
+  
 
-  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient) 
+  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private toaster: Toaster) 
   { this.changepasswordForm=this.FB.group({});}
   user: any = {
 
@@ -38,7 +41,13 @@ export class ChangepasswordComponent implements OnInit {
   {
     this.formSubmitted=true;
     console.log(this.user);
-    this.service.onSubmit(this.user).subscribe();
+    this.service.onSubmit(this.user).subscribe( {
+      next: (data) => { },
+      error: (error) => { this.error = error.error.message },
+      complete: () => {
+        this.toaster.open({ text: 'Password changed successfully', position: 'top-center', type: 'success' });
+      }
+    });
     console.log('on submit works') 
   }
 

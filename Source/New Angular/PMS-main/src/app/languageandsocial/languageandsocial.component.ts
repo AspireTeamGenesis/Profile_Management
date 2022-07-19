@@ -8,6 +8,8 @@ import { BreakDuration } from 'Models/breakduration';
 import { SocialMedia } from 'Models/socialMedia';
 import { PersonalDetails } from 'Models/personalDetails';
 import { FormBuilder,Validators,FormGroup } from '@angular/forms';
+import { ToastContentDirective } from 'ngx-toast-notifications/toast-content/toast-content.directive';
+import { Toast } from 'ngx-toast-notifications';
 @Component({
   selector: 'app-languageandsocial',
   templateUrl: './languageandsocial.component.html',
@@ -27,7 +29,7 @@ export class LanguageandsocialComponent implements OnInit {
 
 
 
-  constructor(private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient) {
+  constructor(private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient, private toaster :Toast) {
    }
   ngOnInit(): void {
     this.getProfileIdByUserId();
@@ -136,7 +138,7 @@ addLanguage()
   this.service.addLanguage(this.languageDetails).subscribe(
     {
       next:(data)=>{this.response=data.message,this.getPersonalDetailsByProfileId(this.profileIdDetails.profileId)},
-      error:(error)=>this.error=error.error     
+      error:(error)=>this.error=error.error 
     }
   );
   setTimeout(

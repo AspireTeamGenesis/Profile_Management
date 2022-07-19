@@ -4,6 +4,7 @@ import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { College } from 'Models/college';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Toaster } from 'ngx-toast-notifications';
 
 @Component({
   selector: 'app-editproject',
@@ -14,8 +15,9 @@ export class EditprojectComponent implements OnInit {
   selectedYear: number=0;
   years: number[] = [];
   projectForm:FormGroup;
+  error: any;
 
-  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute,private toaster:Toaster) {
     this.projectForm=this.FB.group({});
     this.selectedYear = new Date().getFullYear();
   for (let year = this.selectedYear; year >= 2000; year--) {
@@ -86,7 +88,12 @@ export class EditprojectComponent implements OnInit {
     }
       console.log("updateProject");
       console.log(project);
-      this.service.updateproject(project).subscribe();
+      this.service.updateproject(project).subscribe({
+        error: (error) => { this.error = error.error.message },
+        complete: () => {
+          this.toaster.open({ text: 'Project edited successfully', position: 'top-center', type: 'success' });
+        }
+      });
 
   }
 
