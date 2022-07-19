@@ -24,7 +24,10 @@ export class ViewprofileComponent implements OnInit {
 
   constructor(private service:UserserviceService,private view:DocumentCreator) { }
   profileId:number;
-   profileIdDetails:any;
+   profileIdDetails={
+    profileId:0,
+    profilestatus:''
+   };
    name:any;
    mobilenumber:any;
    designation:any;

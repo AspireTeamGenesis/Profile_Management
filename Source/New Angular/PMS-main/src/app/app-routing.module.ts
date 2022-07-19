@@ -34,6 +34,7 @@ import { Dashboard11Component } from './dashboard11/dashboard11.component';
 import { SnapbarComponent } from './snapbar/snapbar.component';
 import { LanguageComponent } from './language/language.component';
 import { SharepageComponent } from './sharepage/sharepage.component';
+import { LanguageandsocialComponent } from './languageandsocial/languageandsocial.component';
 
 
 const routes: Routes = [
@@ -72,6 +73,7 @@ const routes: Routes = [
   {path:"snapbar",component:SnapbarComponent},
   {path:"language",component:LanguageComponent},
   {path:"sharepage",component:SharepageComponent},
+  {path:"languagesocial",component:LanguageandsocialComponent},
   {path:"",component:LoginComponent}
 ];
 

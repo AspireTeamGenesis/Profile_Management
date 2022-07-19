@@ -5,6 +5,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { Designation } from 'Models/designation';
 import { Organisation } from 'Models/organisation';
 import { User} from 'Models/user';
+import { Toaster } from 'ngx-toast-notifications';
 import { UserserviceService } from 'src/app/service/userservice.service';
 @Component({
   selector: 'app-createusers',
@@ -12,6 +13,8 @@ import { UserserviceService } from 'src/app/service/userservice.service';
   styleUrls: ['./createusers.component.css']
 })
 export class CreateusersComponent implements OnInit {
+  IsLoading:boolean=false;
+  error:string=""
   createusers:any;
   filteredOptions:any;
   Mobilenumber:any;
@@ -53,7 +56,7 @@ export class CreateusersComponent implements OnInit {
   //     ReportingPerson: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
   // });
 
-  constructor(private FB: FormBuilder,private service:UserserviceService,private http: HttpClient) { 
+  constructor(private FB: FormBuilder,private service:UserserviceService,private http: HttpClient,private toaster: Toaster) { 
     this.userForm=this.FB.group({});
   }
   
@@ -97,6 +100,7 @@ export class CreateusersComponent implements OnInit {
   }
 
   userdata(){
+    this.IsLoading=true
     this.formSubmitted = true ;
     var userDetails:any={
       "userId":0,
@@ -115,8 +119,20 @@ export class CreateusersComponent implements OnInit {
  
 
      console.log(userDetails);
-    this.service.addEmployee(userDetails).subscribe(data=>this.userValue.push(data));//data=>this.user.push(data)
+    this.service.addEmployee(userDetails).subscribe({next:(data)=>{},
+    error:(error)=>{
+      this.error=error.error;
+      console.log(this.error);
+      this.IsLoading=false;
+    },
+    
+    complete:()=>{
+      this.toaster.open({ text: 'Profile has been shared successfully via mail', position: 'top-center', type: 'success' })
+    }
+    });//data=>this.user.push(data)
     console.error(this.userValue);
+    
+
    }
 
 

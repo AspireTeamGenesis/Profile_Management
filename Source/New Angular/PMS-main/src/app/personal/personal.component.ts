@@ -14,7 +14,7 @@ import { FormBuilder,Validators,FormGroup } from '@angular/forms';
   styleUrls: ['./personal.component.css']
 })
 export class PersonalComponent implements OnInit {
-
+languagename:string="";
   profileId :number;
   imageError: string="";
   cardImageBase64: string = "";
@@ -86,6 +86,7 @@ export class PersonalComponent implements OnInit {
   Personal:any;
   personal:PersonalDetails[]=[];
   data : any;
+  languageArray:any=[];
   personalDetails:any;
   user:any = {
     personalDetailsId:0,
@@ -139,7 +140,7 @@ personalSubmit()
     this.service.addPersonalDetail(this.user).subscribe(
       {
         next: (data) => this.response = data.message,
-        error: (error) => this.error = error.error.message,
+        error: (error) => this.error = error.error,
         complete: () => this.clearInputFields(),
       }
     );
@@ -198,6 +199,11 @@ clearInputFields() {
       reader.readAsDataURL(fileInput.target.files[0]);
     } return false;
     
+  }
+  disableSocialMedia(socialMediaId:number)
+  {
+    this.service.disableSocialMedia(socialMediaId).subscribe();
+
   }
 
 }
