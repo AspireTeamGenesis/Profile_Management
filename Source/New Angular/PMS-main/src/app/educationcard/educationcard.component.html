@@ -4,12 +4,12 @@
     <div class="kcard"
         *ngFor="let item of educationDetails | paginate: {itemsPerPage : 3, currentPage: page,totalItems:totalLength}       ">
         <div class="card-body">
-            <p class="card-text">
-                <br>Course : {{item.course}}
-                <br>Degree : {{item.degree}}
-                <br>College : {{item.college}}
-                <br>Year : {{item.startingyear}} - {{item.endingyear}}
-                <br>Percentage : {{item.percentage}}
+            <p class="card-text" style="text-align: center; font-size: 15px;">
+                <br><strong>Course</strong>: {{item.course}}
+                <br><strong>Degree</strong>: {{item.degree}}
+                <br><strong>College </strong>: {{item.college}}
+                <br><strong>Year</strong>: {{item.startingyear}} - {{item.endingyear}}
+                <br><strong>Percentage</strong>: {{item.percentage}}
             </p>
             <br>
             <h2>

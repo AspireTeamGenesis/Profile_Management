@@ -5,14 +5,14 @@
     <div class="kcard" *ngFor="let item of skillDetails | paginate: {itemsPerPage : 3, currentPage: page,totalItems:totalLength}
         ">
         <div class="card-body">
-            <p class="card-text">
-                <br>Domain : {{item.domainname}}
-                <br>Technology : {{item.technologyname}}
+            <p class="card-text" style="text-align: center; font-size: 15px;" >
+                <br><strong>Domain</strong> : {{item.domainname}}
+                <br><strong>Technology</strong> : {{item.technologyname}}
             </p>
             <br>
             <h2>
                 <div class="tooltip1">
-                <i [routerLink]="['../editskill',item.skillid]" class="fa fa-pencil fa-sm"></i>
+                <i [routerLink]="['../editskill',item.skillid]" class="fa fa-pencil"></i>
                 <span class="tooltip1text">Click here to edit</span>
             </div>
                 <!-- <i routerLink="/editskill/{{item.skillid}}" class="fa fa-pencil fa-sm"></i> -->
