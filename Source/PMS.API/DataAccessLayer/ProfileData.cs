@@ -59,7 +59,7 @@ namespace PMS_API
 
         public List<ProfileHistory> GetallProfileHistories();
         public ProfileStatus GetProfileStatusByProfileId(int Profileid);
-        public List<User> GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience,int currentdesignation);
+        public List<User> GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int currentdesignation);
 
 
     }
@@ -853,7 +853,7 @@ namespace PMS_API
             try
             {
 
-                var result = _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").Include(e => e.profilestatus).ToList();
+                var result = _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").Include(e => e.profilestatus).Include("user").ToList();
                 // foreach (var item in result)
                 // {
                 //     item.user = item.user;
@@ -966,23 +966,34 @@ namespace PMS_API
             }
         }
 
-        public List<User> GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience,int currentdesignation)
+        public List<User> GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId,int currentdesignation)
         {
             try
             {
+                if(String.IsNullOrEmpty(userName) == true && designationId==0 && domainID==0 && technologyId==0 && collegeId==0 && profileStatusId==0){
+                    return _context.users
+                    .Include(e => e.designation)
+                   .Include(e => e.profile)
+                   .Include(e => e.profile.personalDetails)
+                   .Include(e => e.profile.profilestatus)
+                   .Where(users => users.DesignationId > currentdesignation)
+                   .ToList();
+                }
+                else{
                 return _context.users
                    .Include(e => e.designation)
                    .Include(e => e.profile)
                    .Include(e => e.profile.personalDetails)
                    .Include(e => e.profile.profilestatus)
                    .Where(user => user.profile != null && user.personalDetails != null)
-                   .WhereIf(String.IsNullOrEmpty(userName) == false, users => users.UserName.Contains(userName) == true)
+                   .WhereIf(String.IsNullOrEmpty(userName) == false, users =>users.DesignationId > currentdesignation && users.UserName.Contains(userName) == true)
                    .WhereIf(designationId != 0,users => users.DesignationId > currentdesignation && users.DesignationId == designationId)
                    .WhereIf(domainID != 0, users => users.DesignationId > currentdesignation && users.profile.skills.Any(s => s.DomainId == domainID) == true)
                    .WhereIf(technologyId != 0, users => users.DesignationId > currentdesignation && users.profile.skills.Any(s => s.TechnologyId == technologyId) == true)
                    .WhereIf(collegeId != 0, users => users.DesignationId > currentdesignation && users.profile.education.Any(s => s.CollegeId == collegeId) == true)
                    .WhereIf(profileStatusId != 0, users => users.DesignationId > currentdesignation && users.profile.ProfileStatusId == profileStatusId)
                    .ToList(); // users.DesignationId > currentdesignation && 
+                }
             }
 
             catch (Exception exception)

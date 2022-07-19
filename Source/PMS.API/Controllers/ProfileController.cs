@@ -1015,7 +1015,8 @@ namespace PMS_API
         {
             try
             {
-                return Ok(_profileService.GetProfileCount());
+                int currentdesignation = Convert.ToInt32(User.FindFirst("DesignationId")?.Value) ;
+                return Ok(_profileService.GetProfileCount(currentdesignation));
 
             }
             catch (Exception exception)
@@ -1032,7 +1033,7 @@ namespace PMS_API
             try
             {
                 int currentdesignation = Convert.ToInt32(User.FindFirst("DesignationId")?.Value) ;
-                return Ok(_profileService.GetFilterdProfile(filterValues.UserName!,filterValues.DesignationId, filterValues.DomainID, filterValues.TechnologyId, filterValues.CollegeId, filterValues.ProfileStatusId,filterValues.MaxExperience, filterValues.MinExperience,currentdesignation));
+                return Ok(_profileService.GetFilterdProfile(filterValues.UserName!,filterValues.DesignationId, filterValues.DomainID, filterValues.TechnologyId, filterValues.CollegeId, filterValues.ProfileStatusId,currentdesignation));
             }
             catch (Exception exception)
             {

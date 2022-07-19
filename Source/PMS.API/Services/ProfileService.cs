@@ -147,7 +147,7 @@ namespace PMS_API
                      dateofjoining = item.DateOfJoining,
                      language = removeAdditionalDetailsExceptLanguage(item.language),
                      socialmedia = removeAdditionalDetailsExceptSocialMedia(item.socialmedia),
-                     breakduration = removeAdditionalDetailsExceptBreakDuration(item.breakDuration),
+                     
 
 
 
@@ -166,23 +166,24 @@ namespace PMS_API
                 if(item.IsActive==true){
                     item.personalDetails = null;
                 }
+                else{
+                    languages.Remove(item);
+                }
                 
             }
             return languages;
         }
-        private ICollection<BreakDuration> removeAdditionalDetailsExceptBreakDuration(ICollection<BreakDuration> breakDurations)
-        {
-            foreach (var item in breakDurations)
-            {
-                item.personalDetails = null;
-            }
-            return breakDurations;
-        }
+       
         private ICollection<SocialMedia> removeAdditionalDetailsExceptSocialMedia(ICollection<SocialMedia> socialMedias)
         {
             foreach (var item in socialMedias)
             {
+                if(item.IsActive==true){
                 item.personalDetails = null;
+                }
+                else{
+                    socialMedias.Remove(item);
+                }
             }
             return socialMedias;
         }
@@ -974,12 +975,6 @@ namespace PMS_API
             try
             {
                 var result = from profile in profileData.GetallProfiles() where profile.IsActive == true select profile;
-                foreach (var item in result)
-                {
-                    if (item.personalDetails != null)
-                        item.year = calculateExperience(item.personalDetails.PersonalDetailsId);
-
-                }
                 return result;
 
 
@@ -1167,15 +1162,16 @@ namespace PMS_API
             }
         }
 
-        public object GetProfileCount()
+        public object GetProfileCount(int currentdesignation)
         {
             try
             {
                 var profile = GetallProfiles();
-                var Approved = profile.Where(p => p.ProfileStatusId == 1).Count();
-                var Rejected = profile.Where(p => p.ProfileStatusId == 3).Count();
-                var Waiting = profile.Where(p => p.ProfileStatusId == 2).Count();
-                var total = profile.Count();
+                User user=new User();
+                var Approved = profile.Where(p => p.ProfileStatusId == 1 && p.user.DesignationId>currentdesignation).Count();
+                var Rejected = profile.Where(p => p.ProfileStatusId == 3  && p.user.DesignationId>currentdesignation).Count();
+                var Waiting = profile.Where(p => p.ProfileStatusId == 2  && p.user.DesignationId>currentdesignation).Count();
+                var total = profile.Where(p => p.user.DesignationId>currentdesignation).Count();
                 var result = new Dictionary<string, int>();
                 result.Add("Approved Profiles", Approved);
                 result.Add("Rejected Profiles", Rejected);
@@ -1192,13 +1188,13 @@ namespace PMS_API
 
         }
 
-        public object GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int maxExperience, int minExperience, int currentdesignation)
+        public object GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId,int currentdesignation)
         {
 
             try
             {
-
-                return profileData.GetFilterdProfile(userName, designationId, domainID, technologyId, collegeId, profileStatusId, maxExperience, minExperience, currentdesignation)
+                
+                return profileData.GetFilterdProfile(userName,designationId, domainID, technologyId, collegeId, profileStatusId,currentdesignation)
                 // .WhereIf(
                 //     (user=>user.personalDetails!=null &&  maxExperience!=0 && minExperience!=0 ),
                 //     ( minExperience<=calculateExperience(user=>user.personalDetails.PersonalDetailsId) && maxExperience>=calculateExperience(user.personalDetails.PersonalDetailsId))
