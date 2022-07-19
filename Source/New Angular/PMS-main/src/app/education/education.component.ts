@@ -64,7 +64,7 @@ export class EducationComponent implements OnInit {
     this.getCollege();
     this.getProfileIdByUserId();
     this.educationForm=this.FB.group({
-      Degree: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(38),Validators.pattern("^[A-Za-z]+$")]],
+      Degree: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(38),Validators.pattern("^[A-Za-z ]+$")]],
       Course: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(50),Validators.pattern("^[A-Za-z ]+$")]],
       College: ['', [Validators.required]],
       From: ['', [Validators.required]],
@@ -110,12 +110,12 @@ export class EducationComponent implements OnInit {
     console.log("hi how");
     console.warn(this.user);
     this.service.addEducation(this.user).subscribe(()=>  {this.child.getEducationByProfileId();console.log('posted')});//data=>this.user.push(data)    
-    // setTimeout(
-    //   () => {
-    //     location.reload(); // the code to execute after the timeout
-    //   },
-    //   500// the time to sleep to delay for
-    // );
+     setTimeout(
+      () => {
+        location.reload(); // the code to execute after the timeout
+      },
+      500// the time to sleep to delay for
+     );
   }
   toogletag()
 

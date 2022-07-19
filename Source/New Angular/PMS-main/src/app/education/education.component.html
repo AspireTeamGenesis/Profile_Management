@@ -116,7 +116,7 @@
           </div>
       </div>
       <div class="button">
-        <button  class="btn btn-next width-50 ml-auto"  (click)="educationSubmit()" >Add</button>
+        <button  class="btn btn-next width-50 ml-auto" [disabled]="!educationForm.valid" (click)="educationSubmit()" >Add</button>
       </div>
     </div>
       <br>
@@ -128,7 +128,7 @@
 
         <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
 
-        <button  [routerLink]="['/Project']" class="btn btn-next width-50 ml-auto" >Next</button>
+        <button  [routerLink]="['/project']" class="btn btn-next width-50 ml-auto" >Next</button>
 
       </div>
     </div>
