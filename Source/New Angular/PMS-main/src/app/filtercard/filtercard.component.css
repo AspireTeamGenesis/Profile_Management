@@ -434,16 +434,19 @@
 }
 
 .fa-share-nodes {
-    text-indent: 6rem;
+ margin-left: 6rem;
     height: 5%;
+    cursor: pointer;
 }
 
 .fa-trash {
     text-indent: 5rem;
+
 }
 
 .fa-pen-to-square {
-    text-indent: 2rem;
+    margin-left: 2rem;   
+    cursor: pointer;
 }
 .fa-download
 {
