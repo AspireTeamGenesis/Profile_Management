@@ -12,6 +12,7 @@ import { Toaster } from 'ngx-toast-notifications';
 })
 export class EditskillComponent implements OnInit {
   error: any;
+  formSubmitted: boolean = false;
 
   constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private route: ActivatedRoute,private toaster:Toaster) { }
   domainValue:any;
@@ -19,12 +20,17 @@ export class EditskillComponent implements OnInit {
   skillid:number=0;
   profileId:number=0;
   profileIdDetails:any;
+  skillForm:FormGroup;
   showMe: boolean = false;
   foot:boolean = true;
 
   skill:any;
 
   ngOnInit(): void {
+    this.skillForm = this.FB.group({
+      domainType:['',[Validators.required]],
+      technologyType:['',[Validators.required]]
+    })
     this.route.params.subscribe(params => {     
       this.skillid = params['skillid'];
       // this.profileId= params['profileId'];
@@ -97,7 +103,7 @@ export class EditskillComponent implements OnInit {
     this.service.updateSkills(skills).subscribe({
       error: (error) => { this.error = error.error.message },
       complete: () => {
-        this.toaster.open({ text: 'Skills edited successfully', position: 'top-center', type: 'success' });
+        this.toaster.open({ text: 'Skills Updated successfully', position: 'top-center', type: 'success' });
       }
     }
       

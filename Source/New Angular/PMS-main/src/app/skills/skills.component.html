@@ -1,8 +1,8 @@
 <app-topbar></app-topbar>
 <app-sidebar></app-sidebar>
 <div class="container d-flex justify-content-center table-box">
-  <form action="#" class="form form-border" [formGroup]="skillForm" (ngsubmit)="skillForm.invalid && submitSkills() "
-    >
+  <form action="#" class="form form-border" [formGroup]="skillForm" (ngsubmit)="skillForm.invalid"
+   >
 
     <div class="progressbar">
       <div class="progress" id="progress"></div>
@@ -32,11 +32,7 @@
             <option value="0" hidden>Select Domain</option>
             <option *ngFor="let item of domainValue" value={{item.domainId}}>{{item.domainName}}</option>
           </select>
-          <div
-            *ngIf="formSubmitted || (skillForm.controls['domainType'].invalid && skillForm.controls['domainType'].touched)">
-            <span class="text-danger" *ngIf="skillForm.controls['domainType'].errors?.['required']">
-              select the Domain</span>
-          </div>
+          
         </div>
         
 
@@ -65,7 +61,7 @@
         </div>
         <div class="button">
 
-          <button class="btn btn-next width-50 ml-auto" [disabled]="!skillForm.valid" (click)="submitSkills()">Add</button>
+          <button class="btn btn-next width-50 ml-auto" [disabled]="!skillForm.valid" (click)="submitSkills()" (click)="toogletag()">Add</button>
         </div>
       </div>
       <br>

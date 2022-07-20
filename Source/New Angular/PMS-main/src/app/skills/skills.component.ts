@@ -3,7 +3,7 @@ import { UserserviceService } from '../service/userservice.service';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-// import { Toaster } from 'ngx-toast-notifications';
+import { Toaster } from 'ngx-toast-notifications';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class SkillsComponent implements OnInit {
   error: any;
   formSubmitted: boolean = false;
   skillForm: FormGroup;
-  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private route: ActivatedRoute) { }
+  constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private route: ActivatedRoute,private toaster: Toaster) { }
   domainValue:any;
   technologyValue:any;
   profileId:number=0;
@@ -78,9 +78,9 @@ export class SkillsComponent implements OnInit {
     this.service.submitSkills(this.skill).subscribe({
       next: (data) => { },
       error: (error) => { this.error = error.error.message },
-      // complete: () => {
-      //   this.toaster.open({ text: 'skills added successfully', position: 'top-center', type: 'success' });
-      // }
+      complete: () => {
+        this.toaster.open({ text: 'skills added successfully', position: 'top-center', type: 'success' });
+      }
     });
     setTimeout(
       () => {
