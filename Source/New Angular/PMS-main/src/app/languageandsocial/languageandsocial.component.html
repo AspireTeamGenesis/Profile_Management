@@ -14,7 +14,7 @@
             <div [routerLink]="['/achievement']" class="progress-step " data-title="Achievements"></div>
         </div>
         <div class="form-step form-step-active">
-            <h3>Language</h3>
+            <h3>Language & SocialMedia</h3>
             <table>
                 <tr>
                     <td>
@@ -66,9 +66,10 @@
                         <label for="personaldetails">Social Media &nbsp;&nbsp;</label>
                     </td>
                     <td>
-                        <button class="btn  " style="background-color:#866ec7; border-radius: 500%;">
-                            <i (click)="addSocialMedia()" class="fa fa-plus fa-xs"></i></button>
-                    </td>
+                        <!-- <button class="btn  " style="background-color:#866ec7; border-radius: 500%;">
+                            <i (click)="addSocialMedia()" class="fa fa-plus fa-xs"></i></button> -->
+                            <button class="plus1" (click)="addLanguage()"  > + </button>
+                        </td>
                 </tr>
             </table>
 
