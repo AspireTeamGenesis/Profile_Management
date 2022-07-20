@@ -67,13 +67,7 @@ export class LanguageandsocialComponent implements OnInit {
   personalDetails:any;
 
   
-  breakDuration:any=
-  {
-    breakDuration_Id:0,
-    startingDuration:new Date(),
-    endingDuration: new Date(),
-    personalDetailsId:2010
-  }
+ 
   languageDetails:any=
   {
     languageId:0,
@@ -147,6 +141,12 @@ addLanguage()
       error:(error)=>this.error=error.error 
     }
   );
+  // setTimeout(
+  //   () => {
+  //     location.reload(); // the code to execute after the timeout
+  //   },
+  //   1000// the time to sleep to delay for
+  // );
 
 }
 addSocialMedia()
@@ -162,6 +162,12 @@ addSocialMedia()
     },
     
   );
+  // setTimeout(
+  //   () => {
+  //     location.reload(); // the code to execute after the timeout
+  //   },
+  //   1000// the time to sleep to delay for
+  // );
 }
 
 disableLanguage(languageId:number)
