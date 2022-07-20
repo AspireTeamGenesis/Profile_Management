@@ -11340,6 +11340,9 @@ body {
   /* Rounded border for profile image */
   .n-round {
     border-radius: 50%;
+    height:100px;
+    max-width:10px; 
+    clip-path: circle();
   }
 
   /* media query for footer maximum width: 768 */
@@ -11518,3 +11521,8 @@ div .center{
     visibility: visible;
     opacity: 1;
   }
+  .card-img-top1{
+    height:100px;
+    max-width:10px; 
+    clip-path: circle();
+}

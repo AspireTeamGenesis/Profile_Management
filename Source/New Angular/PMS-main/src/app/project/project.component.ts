@@ -4,7 +4,7 @@ import { Project } from 'Models/project';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FormBuilder,Validators,FormGroup } from '@angular/forms';
-import { Toast } from 'ngx-toast-notifications';
+// import { Toast } from 'ngx-toast-notifications';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class ProjectComponent implements OnInit {
   profileId:number=0;
   projectForm:FormGroup;
   formSubmitted: boolean = false;
-  constructor( private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient,private route: ActivatedRoute,private toaster:Toast) {
+  constructor( private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient,private route: ActivatedRoute) {
     this.projectForm=this.FB.group({});
    }
   //  year:any;
