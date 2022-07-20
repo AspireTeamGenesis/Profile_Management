@@ -1,7 +1,7 @@
 <app-topbar></app-topbar>
 <app-sidebar></app-sidebar>
 <div class="container d-flex justify-content-center table-box">
-    <form action="#" class="form" style="margin-top:110px; width: 60%;border-radius: 2px; border-color: black;">
+    <form [formGroup]="langsocialForm" class="form" style="margin-top:110px; width: 60%;border-radius: 2px; border-color: black;">
 
         <div class="progressbar">
             <div class="progress" id="progress"></div>
@@ -31,9 +31,17 @@
             </table>
             <input type="text" id="personaldetails" name="languageName" [(ngModel)]="languageDetails.languageName"
                 style="border-color: black;" placeholder="Enter your Language" value="{{languageDetails.languageName}}"
-                id="LanguagesKnown">
-
-            <br>
+                id="LanguagesKnown" [class.is-invalid]="(formSubmitted && langsocialForm.controls['LanguageName'].invalid )||langsocialForm.controls['LanguageName'].invalid && langsocialForm.controls['LanguageName'].touched"
+                formControlName="LanguageName">
+                <div
+                *ngIf="(formSubmitted)||langsocialForm.controls['LanguageName'].invalid && langsocialForm.controls['LanguageName'].touched">
+                <span class="text-danger" *ngIf="langsocialForm.controls['LanguageName'].errors?.['required']">Language Name is
+                  required</span>
+                <span class="text-danger" *ngIf="langsocialForm.controls['LanguageName'].errors?.['minlength']">Language Name is
+                  too short</span>
+                <span class="text-danger" *ngIf="langsocialForm.controls['LanguageName'].errors?.['maxlength']">Language Name is
+                  too long</span>
+              </div>    
 
             <div class="mt-3 container shadow  bg-body rounded" *ngFor="let item of personalDetails[0]['language']">
                 <div>
@@ -43,7 +51,7 @@
                                 <p>{{item.languageName}}</p>
                             </div>
                             <div class="col-md-1">
-                                <button class="btn mx-4"><i class="fa fa-solid fa-trash"></i></button>
+                                <button class="btn mx-4"><i (click)="disableLanguage(item.languageId)" class="fa fa-solid fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -67,12 +75,33 @@
 
             <label for="personaldetails">Social Media Name</label>
             <input name="socialMedia_Name" type="text" id="personaldetails" placeholder="Enter Social media name"
-                [(ngModel)]="socialMedia.socialMedia_Name" required="" style="border-color: black;">
+                [(ngModel)]="socialMedia.socialMedia_Name" required="" style="border-color: black;" [class.is-invalid]="(formSubmitted && langsocialForm.controls['SocialMediaName'].invalid )||langsocialForm.controls['SocialMediaName'].invalid && langsocialForm.controls['SocialMediaName'].touched"
+                formControlName="SocialMediaName">
+                <div
+                *ngIf="(formSubmitted)||langsocialForm.controls['SocialMediaName'].invalid && langsocialForm.controls['SocialMediaName'].touched">
+                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaName'].errors?.['required']">Social Media Name is
+                  required</span>
+                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaName'].errors?.['minlength']">Social Media Name is
+                  too short</span>
+                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaName'].errors?.['maxlength']">Social Media Name is
+                  too long</span>
+              </div>   
 
             <br>
             <label for="personaldetails">Social Media Link</label>
             <input name="socialMedia_Link" type="text" id="personaldetails" placeholder="Enter Social media link"
-                [(ngModel)]="socialMedia.socialMedia_Link" required="" style="border-color: black;">
+                [(ngModel)]="socialMedia.socialMedia_Link" required="" style="border-color: black;" [class.is-invalid]="(formSubmitted && langsocialForm.controls['SocialMediaLink'].invalid )||langsocialForm.controls['SocialMediaLink'].invalid && langsocialForm.controls['SocialMediaLink'].touched"
+                formControlName="SocialMediaLink">
+                <div
+                *ngIf="(formSubmitted)||langsocialForm.controls['SocialMediaLink'].invalid && langsocialForm.controls['SocialMediaLink'].touched">
+                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaLink'].errors?.['required']">Social Media Link is
+                  required</span>
+                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaLink'].errors?.['minlength']">Social Media Link is
+                  too short</span>
+                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaLink'].errors?.['maxlength']">Social Media Link is
+                  too long</span>
+              </div>   
+                
         </div>
         <div class="mt-3 container shadow border bg-body rounded" *ngFor="let item of personalDetails[0]['socialmedia']">
             <div>
