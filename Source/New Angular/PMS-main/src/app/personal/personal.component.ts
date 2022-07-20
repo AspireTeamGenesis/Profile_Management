@@ -51,15 +51,11 @@ export class PersonalComponent implements OnInit {
   ngOnInit(): void {
     this.personalForm = this.FB.group({
       ProfilePhoto: ['', [Validators.required]],
-      Objective: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(200)]],
+      Objective: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(500)]],
       DateofBirth: ['', [Validators.required]],
       Nationality: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
       DateofJoining: ['', [Validators.required]],
-      BreakDuration: ['', [Validators.required]],
-      LanguagesKnown: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-      SocialMediaName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-      SocialMediaLink: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
-    });
+      });
     this.getUserProfile();
     this.getProfileIdByUserId();
   }
@@ -89,6 +85,31 @@ export class PersonalComponent implements OnInit {
     })
   }
 
+  
+  // personalDetailsId : number = 2;
+  Personal:any;
+  personal:PersonalDetails[]=[];
+  data : any;
+  languageArray:any=[];
+  personalDetails:any;
+  // user:any = {
+  //   personalDetailsId:0,
+  //   profileId:0,
+  //   base64header:'',
+  //   image:null,
+  //   objective: '',
+  //   dateOfBirth: '',
+  //   nationality: '',
+  //   dateOfJoining:'',
+  //   userId:0
+  // }
+  
+  
+
+   
+  
+
+
  
  
 
@@ -115,7 +136,7 @@ export class PersonalComponent implements OnInit {
 personalSubmit()
 {
   
-  this.user.profileId=this.profileIdDetails.profileId;
+  this.user.profileId=this.profileId;
   this.user.userId=this.profileDetails.userid;
   console.log("User ProfileId");
   console.log(this.user.profileId);
@@ -128,7 +149,7 @@ personalSubmit()
         error: (error) => this.error = error.error,
         complete: () => {
           this.clearInputFields(),
-          this.toaster.open({ text: 'Profile has been shared successfully via mail', position: 'top-center', type: 'success' })
+          this.toaster.open({ text: 'Personal Details has been created Successfully', position: 'top-center', type: 'success' })
         }
       }
     );
