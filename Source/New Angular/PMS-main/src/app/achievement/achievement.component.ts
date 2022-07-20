@@ -76,12 +76,12 @@ export class AchievementComponent implements OnInit {
         }
       }
     );
-    setTimeout(
-      () => {
-        location.reload(); // the code to execute after the timeout
-      },
-    1000 
-    );
+    // setTimeout(
+    //   () => {
+    //     location.reload(); // the code to execute after the timeout
+    //   },
+    //1000 the time to sleep to delay for
+    //);
   }
 
   fileChangeEvent(fileInput: any) {

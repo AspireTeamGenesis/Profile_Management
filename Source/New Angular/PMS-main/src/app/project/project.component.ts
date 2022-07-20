@@ -4,6 +4,7 @@ import { Project } from 'Models/project';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FormBuilder,Validators,FormGroup } from '@angular/forms';
+import { Toast } from 'ngx-toast-notifications';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ProjectComponent implements OnInit {
   profileId:number=0;
   projectForm:FormGroup;
   formSubmitted: boolean = false;
-  constructor( private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient,private route: ActivatedRoute) {
+  constructor( private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient,private route: ActivatedRoute,private toaster:Toast) {
     this.projectForm=this.FB.group({});
    }
   //  year:any;
@@ -50,9 +51,9 @@ export class ProjectComponent implements OnInit {
     this.projectForm=this.FB.group({
       ProjectName: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
       ProjectDescription: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(500)]],
-      StartingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      StartingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(9)]],
       StartingYear: ['', [Validators.required]],
-      EndingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      EndingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(9)]],
       EndingYear: ['', [Validators.required]],
       RolePlayed: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(100)]],
       ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(300)]],
