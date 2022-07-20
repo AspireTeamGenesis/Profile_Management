@@ -1,7 +1,7 @@
 <app-topbar></app-topbar>
 <app-sidebar></app-sidebar>
 <div class="container d-flex justify-content-center table-box">
-    <form [formGroup]="langsocialForm" class="form" style="margin-top:110px; width: 60%;border-radius: 2px; border-color: black;">
+    <form [formGroup]="langsocialForm" class="form form-border">
 
         <div class="progressbar">
             <div class="progress" id="progress"></div>
@@ -127,7 +127,7 @@
         </div>
         <br>
         <div class="row">
-            <a [routerLink]="['/personal']" class="btn btn-next width-50 ml-auto">Previous</a>
+            <a [routerLink]="['/editoriginalpersonal']" class="btn btn-next width-50 ml-auto">Previous</a>
     
             <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
     

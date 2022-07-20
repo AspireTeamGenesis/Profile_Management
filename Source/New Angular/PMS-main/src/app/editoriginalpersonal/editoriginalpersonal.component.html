@@ -3,7 +3,7 @@
 
 <div class="container d-flex justify-content-center table-box">
  <!-- <form action="#" class="form" (ngSubmit)="personaldata()" style="margin-top:110px; border:2px solid black; margin-bottom:5%; width: 60%; border-radius: 15px;"> -->
-    <form action="#" class="form" style="margin-top:110px; border:2px solid black; margin-bottom:5%; width: 60%; border-radius: 15px;">
+    <form action="#" class="form form-border" >
 
     <div class="progressbar">
       <div class="progress" id="progress"></div>
@@ -35,11 +35,11 @@
       <br>
       <label for="personaldetails">Date of Birth</label>
       <input type="date" name="dateofBirth" [(ngModel)]="personalDetails[0].dateofbirth" id="personaldetails"
-        style="border-color: black;" />
+         />
       <br>
       <label for="personaldetails">Nationality</label>
       <input type="text" id="personaldetails" name="nationality" [(ngModel)]="personalDetails[0].nationality"
-        style="border-color: black;" placeholder="Enter your nationality" />
+        placeholder="Enter your nationality" />
       
 
       <br>

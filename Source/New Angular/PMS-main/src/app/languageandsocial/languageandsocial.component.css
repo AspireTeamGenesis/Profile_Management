@@ -11676,3 +11676,9 @@ div .center{
    
 
   }
+  .form-border {
+    margin-top: 110px;
+    width: 70%;
+    border-radius: 2px;
+    border-color: black;
+}

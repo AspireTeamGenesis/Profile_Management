@@ -11713,3 +11713,9 @@ input {
   visibility: visible;
   opacity: 1;
 }
+.form-border {
+  margin-top: 110px;
+  width: 70%;
+  border-radius: 2px;
+  border-color: black;
+}
