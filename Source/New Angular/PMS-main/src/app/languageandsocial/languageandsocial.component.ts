@@ -9,6 +9,7 @@ import { SocialMedia } from 'Models/socialMedia';
 import { PersonalDetails } from 'Models/personalDetails';
 import { FormBuilder,Validators,FormGroup } from '@angular/forms';
 import { ToastContentDirective } from 'ngx-toast-notifications/toast-content/toast-content.directive';
+// import { Toaster } from 'ngx-toast-notifications';
 @Component({
   selector: 'app-languageandsocial',
   templateUrl: './languageandsocial.component.html',

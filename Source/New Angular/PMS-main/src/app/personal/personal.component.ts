@@ -45,7 +45,7 @@ export class PersonalComponent implements OnInit {
 
 
 
-  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private toaster: Toaster) {
+  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private toaster:Toaster) {
     this.personalForm = this.FB.group({});
   }
   ngOnInit(): void {

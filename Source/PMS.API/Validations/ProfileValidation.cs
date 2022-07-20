@@ -11,11 +11,13 @@ namespace PMS_API
 
             if (string.IsNullOrEmpty(personalDetails.Objective))
                 throw new ValidationException($"Objective not be null user supplied Nationality as \"{personalDetails.Objective}\"");
+             else if (!Regex.IsMatch(personalDetails.Objective, @"[a-zA-Z]{3,500}$"))
+                throw new ValidationException($"Objective is invalid and user supplied Objective as \"{personalDetails.Objective}\"");
 
             //nationality validations              
             if (string.IsNullOrEmpty(personalDetails.Nationality))
                 throw new ValidationException($"Nationality not be null and user supplied Nationality as \"{personalDetails.Nationality}\"");
-            else if (!Regex.IsMatch(personalDetails.Nationality, @"[a-zA-Z]{5,15}$"))
+            else if (!Regex.IsMatch(personalDetails.Nationality, @"[a-zA-Z]{3,40}$"))
                 throw new ValidationException($"Nationality is invalid and user supplied Nationality as \"{personalDetails.Nationality}\"");
 
             //Date of Birth Validations
@@ -47,13 +49,13 @@ namespace PMS_API
             if (string.IsNullOrEmpty(education.Degree))//to check string is null or empty
                 throw new ValidationException($"Degree not be null and user supplied Degree as \"{education.Degree}\"");
             // to check degree has letter only
-            else if ((!Regex.IsMatch(education.Degree, "^[a-zA-Z ]{2,25}$")))//Regex.IsMatch(education.Degree, "^(?=.*\\d)(?=.*[-+_!@#$%^&*., ?]).+$") 
+            else if ((!Regex.IsMatch(education.Degree, "^[a-zA-Z ]{2,30}$")))//Regex.IsMatch(education.Degree, "^(?=.*\\d)(?=.*[-+_!@#$%^&*., ?]).+$") 
                 throw new ValidationException($"Degree is invalid and user supplied Degree as \"{education.Degree}\"");
 
             //coursee validations
             if (string.IsNullOrEmpty(education.Course))//to check course is null or empty 
                 throw new ValidationException($"Course not be null and user supplied Course as \"{education.Course}\"");
-            else if (!Regex.IsMatch(education.Course, "^[A-Za-z ]{2,45}$"))// to check course has string with minimum 2 characters
+            else if (!Regex.IsMatch(education.Course, "^[A-Za-z ]{2,50}$"))// to check course has string with minimum 2 characters
                 throw new ValidationException($"course should not contain specialcharacters,numbers and user supplied Course as \"{education.Course}\"");
 
             if ((education.CollegeId.Equals(0)))
@@ -98,13 +100,13 @@ namespace PMS_API
             //ProjectName validation
             if (string.IsNullOrEmpty(project.ProjectName))//check project name is null or empty
                 throw new ValidationException($"ProjectName not be null and user supplied ProjectName as \"{project.ProjectName}\"");
-            else if (!Regex.IsMatch(project.ProjectName, "^[A-Za-z ]{3,100}$"))//check project name contains special characters only
+            if (!Regex.IsMatch(project.ProjectName, "^[A-Za-z ]{3,100}$"))//check project name contains special characters only
                 throw new ValidationException($"ProjectName not contain SpecialCharacters, numbers and user supplied ProjectName as \"{project.ProjectName}\"");
 
             //project description
             if (string.IsNullOrEmpty(project.ProjectDescription))//check project description is null or empty
                 throw new ValidationException($"project_Description not be null and user supplied project_Description as \"{project.ProjectDescription}\"");
-            else if (!Regex.IsMatch(project.ProjectDescription,"^[A-Za-z ]{3,500}$"))//check project description is null or empty
+            if (!Regex.IsMatch(project.ProjectDescription,"^[A-Za-z ]{3,500}$"))//check project description is null or empty
                 throw new ValidationException($"project_Description not be null and user supplied project_Description as \"{project.ProjectDescription}\"");
 
             //project Designation
@@ -112,24 +114,28 @@ namespace PMS_API
             //     throw new ValidationException($"Designation should not be numbers alone and user supplied Designation as \"{project.Designation}\"");
             // if (Regex.IsMatch(project.Designation, "^[^\\w]+$"))//check Designation only contains specialcharacters
             //     throw new ValidationException($"Designation should not be specialcharacters and user supplied Designation as \"{project.Designation}\"");
-            if (!Regex.IsMatch(project.Designation, "^[A-za-z]{2,40}$"))//check Designation only contains specialcharacters
+            if (!Regex.IsMatch(project.Designation, "^[A-za-z]{2,100}$"))//check Designation only contains specialcharacters
                 throw new ValidationException($"Designation should not contain specialcharacters, numbers and user supplied Designation as \"{project.Designation}\"");
 
 
             //tool used
             if (string.IsNullOrEmpty(project.ToolsUsed))
                 throw new ValidationException($"ToolsUsed not be null and user supplied ToolsUsed as \"{project.ToolsUsed}\"");
-            if (!Regex.IsMatch(project.ToolsUsed, "^[a-zA-z]+$"))//check Toolsused only contains string only
+            if (!Regex.IsMatch(project.ToolsUsed, "^[a-zA-z]{3,300}$"))//check Toolsused only contains string only
                 throw new ValidationException($"Designation should not be specialcharacters and user supplied Designation as \"{project.Designation}\"");
 
             //Project starting month
             if (string.IsNullOrEmpty((project.StartingMonth).ToString()))
                 throw new ValidationException($"StartingMonth not be empty and user supplied StartingMonth as \"{project.StartingMonth}\"");
-            
+            if (!Regex.IsMatch(project.StartingMonth, "^[A-za-z]{3,9}$"))
+                throw new ValidationException($"Starting month is Invalid \"{project.StartingMonth}\"");
+
 
             //Project Ending Month
             if (string.IsNullOrEmpty((project.EndingMonth).ToString()))
                 throw new ValidationException($"EndingMonth not be empty and user supplied EndingMonth as \"{project.EndingMonth}\"");
+            if (!Regex.IsMatch(project.EndingMonth, "^[A-za-z]{3,9}$"))
+                throw new ValidationException($"Ending month is Invalid \"{project.EndingMonth}\"");
             
             //project StartingYear validation
             if (string.IsNullOrEmpty((project.StartingYear).ToString())||(project.StartingYear.Equals(0)))
@@ -147,33 +153,20 @@ namespace PMS_API
         {
             if (string.IsNullOrEmpty(socialmedia.SocialMedia_Name))
                 throw new ValidationException($"SocialMedia_Name not be null and user supplied SocialMedia_Name as \"{socialmedia.SocialMedia_Name}\"");
+            if (!Regex.IsMatch(socialmedia.SocialMedia_Name, "^[A-za-z]{3,40}$"))
+                throw new ValidationException($"Social Media name is Invalid \"{socialmedia.SocialMedia_Name}\"");
             if (string.IsNullOrEmpty(socialmedia.SocialMedia_Link))
                 throw new ValidationException($"SocialMedia_Link not be null and user supplied SocialMedia_Link as \"{socialmedia.SocialMedia_Link}\"");
-            else if (Regex.IsMatch(socialmedia.SocialMedia_Link, "^[^\\w]+$") || Regex.IsMatch(socialmedia.SocialMedia_Link, "^[1-9]+$"))
+            else if (Regex.IsMatch(socialmedia.SocialMedia_Link, "^[^\\w]+$") || Regex.IsMatch(socialmedia.SocialMedia_Link, "^[1-9]{3,100}+$"))
                 throw new ValidationException($"socialmedia link is invalid and user supplied SocialMedia_Link as \"{socialmedia.SocialMedia_Link} \"");
             return true;
         }
-        public bool BreakDurationValidation(BreakDuration breakDuration)
-        {
-            //starting breakduration validations
-            if (string.IsNullOrEmpty(breakDuration.StartingDuration.ToString()))//check starting breakduration is empty or null
-                throw new ValidationException($"StartingDuration should not be null and user supplied value as \"{breakDuration.StartingDuration}\"");
-            else if (breakDuration.StartingDuration.Equals(DateTime.Today) && breakDuration.StartingDuration > DateTime.Today)//check starting breakduration is not tomorrow and today
-                throw new ValidationException($"StartingDuration shoudld not be today,future date and user supplied value as \"{breakDuration.StartingDuration}\"");
-
-            //ending breakduration validations
-            if (string.IsNullOrEmpty(breakDuration.EndingDuration.ToString()))//check ending breakduration is null or empty
-                throw new ValidationException($"EndingDuration shoul not be null and user supplied value as \"{breakDuration.EndingDuration}\"");
-
-            else if (breakDuration.StartingDuration > DateTime.Today || breakDuration.StartingDuration.Equals(DateTime.Today))//check ending breakduration is not tomorrow and today
-                throw new ValidationException($"EndingDuration shoul not be future date and user supplied value as \"{breakDuration.EndingDuration}\"");
-            return true;
-        }
+        
         public bool languageValidation(Language language)
         {
             if (string.IsNullOrEmpty(language.LanguageName))
                 throw new ValidationException($"LanguageName Should not be null and user supplied language as \"{language.LanguageName}\"");
-            else if (!Regex.IsMatch(language.LanguageName, "^[A-Za-z]{4,10}"))// to check language contains String alone untill 11 characters
+            else if (!Regex.IsMatch(language.LanguageName, "^[A-Za-z]{3,15}"))// to check language contains String alone untill 11 characters
                 throw new ValidationException($"LanguageName is Invalid and user spplied language as \"{language.LanguageName}\"");
 
             if (string.IsNullOrEmpty(language.Read.ToString()))

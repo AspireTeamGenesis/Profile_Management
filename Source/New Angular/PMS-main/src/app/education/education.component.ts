@@ -6,7 +6,7 @@ import { College } from 'Models/college';
 import { EducationcardComponent } from '../educationcard/educationcard.component';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { compileClassMetadata } from '@angular/compiler';
-import { Toast } from 'ngx-toast-notifications';
+// import { Toast } from 'ngx-toast-notifications';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class EducationComponent implements OnInit {
   formSubmitted: boolean = false;
   I:number=0;
 
-  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute, private toaster: Toast) {
+  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute,) {
     this.selectedYear = new Date().getFullYear();
   for (let year = this.selectedYear; year >= 1990; year--) {
     this.I == year;

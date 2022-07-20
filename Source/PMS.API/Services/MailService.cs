@@ -76,7 +76,7 @@ namespace PMS_API
         public async Task RequestToUpdateFile(int profileId)
         {            
             string userName = _mailDataAccessLayer.GetUserNameWithProfileId(profileId);
-            string path = @"C:\Users\prithvi.palani\Documents\Workspace-Prithvi";
+            string path = @"C:\Users\harini.rajkumar.ASPIRESYS\Documents\PMS_Mail_Service";
             string fileName = "User"+userName+System.DateTime.Now.Ticks+".txt";
             string emailContent = $"Hi, {userName}.\n\n You have't updated your profile for the past 6 months.\n Kindly update your profile \n\nThank you - Team Genesis \n\nFor any queries contact : teamgenesis@gmail.com";
             using StreamWriter file = File.CreateText(Path.Combine(path, fileName));
@@ -85,7 +85,7 @@ namespace PMS_API
         public async Task ShareProfile(string profileUrl,int profileId,string toEmailName)
         {            
             string userName = _mailDataAccessLayer.GetUserNameWithProfileId(profileId);
-            string path = @"C:\Users\prithvi.palani\Documents\Workspace-Prithvi";
+            string path = @"C:\Users\harini.rajkumar.ASPIRESYS\Documents\PMS_Mail_Service";
             string fileName = "Profile"+userName+System.DateTime.Now.Ticks+".txt";
             string emailContent = $"Hi, {toEmailName}.\n\n I have attached {userName}'s profile\n\n Click here for profile : {profileUrl}\n\n Thank you - Team Genesis\n\nFor any queries contact : teamgenesis@gmail.com";
             using StreamWriter file = File.CreateText(Path.Combine(path, fileName));
