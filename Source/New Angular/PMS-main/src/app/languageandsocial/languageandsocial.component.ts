@@ -9,7 +9,6 @@ import { SocialMedia } from 'Models/socialMedia';
 import { PersonalDetails } from 'Models/personalDetails';
 import { FormBuilder,Validators,FormGroup } from '@angular/forms';
 import { ToastContentDirective } from 'ngx-toast-notifications/toast-content/toast-content.directive';
-import { Toast } from 'ngx-toast-notifications';
 @Component({
   selector: 'app-languageandsocial',
   templateUrl: './languageandsocial.component.html',
@@ -29,7 +28,7 @@ export class LanguageandsocialComponent implements OnInit {
 
 
 
-  constructor(private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient, private toaster :Toast) {
+  constructor(private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient) {
    }
   ngOnInit(): void {
     this.getProfileIdByUserId();
@@ -61,13 +60,7 @@ export class LanguageandsocialComponent implements OnInit {
   personalDetails:any;
 
   
-  breakDuration:any=
-  {
-    breakDuration_Id:0,
-    startingDuration:new Date(),
-    endingDuration: new Date(),
-    personalDetailsId:2010
-  }
+ 
   languageDetails:any=
   {
     languageId:0,
@@ -141,12 +134,12 @@ addLanguage()
       error:(error)=>this.error=error.error 
     }
   );
-  setTimeout(
-    () => {
-      location.reload(); // the code to execute after the timeout
-    },
-    1000// the time to sleep to delay for
-  );
+  // setTimeout(
+  //   () => {
+  //     location.reload(); // the code to execute after the timeout
+  //   },
+  //   1000// the time to sleep to delay for
+  // );
 
 }
 addSocialMedia()
@@ -162,12 +155,12 @@ addSocialMedia()
     },
     
   );
-  setTimeout(
-    () => {
-      location.reload(); // the code to execute after the timeout
-    },
-    1000// the time to sleep to delay for
-  );
+  // setTimeout(
+  //   () => {
+  //     location.reload(); // the code to execute after the timeout
+  //   },
+  //   1000// the time to sleep to delay for
+  // );
 }
 
 disableLanguage(languageId:number)

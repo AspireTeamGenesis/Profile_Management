@@ -82,12 +82,12 @@ export class SkillsComponent implements OnInit {
         this.toaster.open({ text: 'skills added successfully', position: 'top-center', type: 'success' });
       }
     });
-    // setTimeout(
-    //   () => {
-    //     location.reload(); // the code to execute after the timeout
-    //   },
-    //   1000// the time to sleep to delay for
-    // );
+    setTimeout(
+      () => {
+        location.reload(); // the code to execute after the timeout
+      },
+      1000// the time to sleep to delay for
+    );
   }
   toogletag()
 

@@ -44,6 +44,12 @@ export class WaitingprofileComponent implements OnInit {
         }
 
 });
+setTimeout(
+  () => {
+    location.reload(); // the code to execute after the timeout
+  },
+1000 
+);
 
 
   }
