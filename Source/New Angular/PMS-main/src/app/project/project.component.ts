@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../service/userservice.service';
-import { Project } from 'Models/project';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FormBuilder,Validators,FormGroup } from '@angular/forms';
-// import { Toast } from 'ngx-toast-notifications';
+import { Toaster } from 'ngx-toast-notifications';
 
 
 @Component({
@@ -17,7 +16,8 @@ export class ProjectComponent implements OnInit {
   profileId:number=0;
   projectForm:FormGroup;
   formSubmitted: boolean = false;
-  constructor( private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient,private route: ActivatedRoute) {
+  error=''
+  constructor( private FB:FormBuilder ,private service: UserserviceService, private http: HttpClient,private route: ActivatedRoute, private toaster:Toaster) {
     this.projectForm=this.FB.group({});
    }
   //  year:any;
@@ -25,9 +25,9 @@ export class ProjectComponent implements OnInit {
   years: number[] = [];
   // projectId: number = 0;
   // profileId : number = 0;
-  Project: any;
-  project: Project[] = [];
-  data: any;
+  // Project: any;
+  // project: Project[] = [];
+  // data: any;
   profileIdDetails: any;
   projectfield: any = {
     projectId: 0,
@@ -42,10 +42,7 @@ export class ProjectComponent implements OnInit {
     toolsUsed: '',
 
   }
-
-
   showMe: boolean = false;
-
   foot: boolean = true;
   ngOnInit() {
     this.projectForm=this.FB.group({
@@ -65,16 +62,9 @@ export class ProjectComponent implements OnInit {
       this.years.push(year);
     }
   }
-  // GetAllProjectDetailsByProfileId() {
-  //   this.service.getProjectDetailByProfileID(this.profileId).subscribe((res) => {
-  //     this.projectfield = res;
-  //     console.log(this.data);
-  //   })
-  // }
-
   getProfileIdByUserId() {
     this.service.getProfileIdByUserId().subscribe({
-      next: (data: any) => {
+      next: (data) => {
         this.profileIdDetails = data,
           this.profileId = this.profileIdDetails.profileId,
           console.warn(this.profileId),
@@ -82,44 +72,31 @@ export class ProjectComponent implements OnInit {
       }
     })
   }
-
-
   OnSubmit() {
 
     console.log("Project Field ");
     this.projectfield.profileId = this.profileId;
     console.log(this.projectfield.profileId);
     console.log(this.projectfield);
-    this.service.CreateProjects(this.projectfield).subscribe(data => this.projectfield.push(data));
-    // submit()
-    // {
-    //   this.toaster. open({ text: 'Profile has been shared successfully via mail', position: 'top-center', type: 'success' })
-    // }
-    
+    this.service.CreateProjects(this.projectfield).subscribe({
+      next: (data) => { },
+      error: (error) => { this.error = error.error.message },
+      complete: () => {
+        this.toaster.open({ text: 'Project details added successfully', position: 'top-center', type: 'success' });
+      }
+    });
     setTimeout(
       () => {
         location.reload(); // the code to execute after the timeout
       },
-      600// the time to sleep to delay for
+      1000// the time to sleep to delay for
     );
   }
-
-  // Update() {
-  //   this.data = this.projectfield;
-  //   this.service.UpdateProjects(this.data).subscribe(data => this.data.push(data));
-  // }
-
-  // Delete() {
-  //   this.data = this.projectfield;
-  // }
   toogletag() {
 
     this.showMe = !this.showMe;
 
   }
-
-
-
   footer() {
 
     this.foot = !this.foot;

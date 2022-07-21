@@ -28,21 +28,21 @@
 
         <!-- <h3>Project Details</h3> -->
         <label for="Proname">Project Name</label>
-        <input type="text" [(ngModel)]="projectfield.projectName" name="projectname" id="Projectname"
+        <input type="text" name="projectname" id="Projectname"
           placeholder="Enter Project name"
           [class.is-invalid]="(formSubmitted && projectForm.controls['ProjectName'].invalid )||projectForm.controls['ProjectName'].invalid && projectForm.controls['ProjectName'].touched"
           formControlName="ProjectName">
         <div
           *ngIf="(formSubmitted)||projectForm.controls['ProjectName'].invalid && projectForm.controls['ProjectName'].touched">
-          <span class="text-danger" *ngIf="projectForm.controls['ProjectName'].errors?.['required']">ProjectName is
+          <span class="text-danger" *ngIf="projectForm.controls['ProjectName'].errors?.['required']">Project Name is
             required</span>
-          <span class="text-danger" *ngIf="projectForm.controls['ProjectName'].errors?.['minlength']">ProjectName is too
+          <span class="text-danger" *ngIf="projectForm.controls['ProjectName'].errors?.['minlength']">Project Name is too
             short</span>
-          <span class="text-danger" *ngIf="projectForm.controls['ProjectName'].errors?.['maxlength']">ProjectName is too
+          <span class="text-danger" *ngIf="projectForm.controls['ProjectName'].errors?.['maxlength']">Project Name is too
             long</span>
           </div>
           <label for="Prodes">Project Description</label>
-          <textarea [(ngModel)]="projectfield.projectDescription" name="Description" id="Prodes" rows="4" cols="80"
+          <textarea name="Description" id="Prodes" rows="4" cols="80"
             placeholder="Enter Project description" style="width:100%;" [class.is-invalid]="(formSubmitted && projectForm.controls['ProjectDescription'].invalid )||projectForm.controls['ProjectDescription'].invalid && projectForm.controls['ProjectDescription'].touched"  formControlName="ProjectDescription"></textarea>
             <div *ngIf="(formSubmitted)||projectForm.controls['ProjectDescription'].invalid && projectForm.controls['ProjectDescription'].touched">
               <span class="text-danger" *ngIf="projectForm.controls['ProjectDescription'].errors?.['required']">Project Description is required</span>
@@ -51,7 +51,7 @@
             </div>  
       <div>
         <label for="personaldetails">Starting Month</label>
-        <input type="text" [(ngModel)]="projectfield.startingMonth" name="startingMonth" id="projectdetails" placeholder="Enter StartingMonth" [class.is-invalid]="(formSubmitted && projectForm.controls['StartingMonth'].invalid )||projectForm.controls['StartingMonth'].invalid && projectForm.controls['StartingMonth'].touched" id="StartingMonth"  formControlName="StartingMonth">
+        <input type="text" name="startingMonth" id="projectdetails" placeholder="Enter StartingMonth" [class.is-invalid]="(formSubmitted && projectForm.controls['StartingMonth'].invalid )||projectForm.controls['StartingMonth'].invalid && projectForm.controls['StartingMonth'].touched" id="StartingMonth"  formControlName="StartingMonth">
            <div  *ngIf="(formSubmitted)||projectForm.controls['StartingMonth'].invalid && projectForm.controls['StartingMonth'].touched">
             <span class="text-danger" *ngIf="projectForm.controls['StartingMonth'].errors?.['required']">Starting Month is required</span>
             <span class="text-danger" *ngIf="projectForm.controls['StartingMonth'].errors?.['minlength']">Starting Month is too short</span>
@@ -60,23 +60,17 @@
       </div>
       <br>
       <label for="personaldetails">Staring Year</label>
-      <select placeholder="Enter StartingYear" [class.is-invalid]="(formSubmitted && projectForm.controls['StartingYear'].invalid)||projectForm.controls['StartingYear'].invalid && projectForm.controls['StartingYear'].touched" name="StartingYear" id="StartingYear" formControlName="StartingYear" [(ngModel)]="projectfield.startingYear" required="">
+      <select placeholder="Enter StartingYear" [class.is-invalid]="(formSubmitted && projectForm.controls['StartingYear'].invalid)||projectForm.controls['StartingYear'].invalid && projectForm.controls['StartingYear'].touched" name="StartingYear" id="StartingYear" formControlName="StartingYear"  required="">
         <option value="" selected>Select Starting Year</option>
         <option *ngFor="let year of years" [value]="year">{{ year }}</option>
       </select>
       <div *ngIf="(formSubmitted)||projectForm.controls['StartingYear'].invalid && projectForm.controls['StartingYear'].touched">
         <span class="text-danger" *ngIf="projectForm.controls['StartingYear'].errors?.['required']">Starting Year is required</span>
       </div>
-
-        <!-- <select [(ngModel)]="projectfield.startingYear" name="Startyear" required="" style="border-color: black;">
-
-        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-
-      </select> -->
       <br>
       <div>
         <label for="personaldetails">Ending Month</label>
-        <input type="text" [(ngModel)]="projectfield.endingMonth" name="Endmonth" id="projectdetails" placeholder="Enter EndingMonth" [class.is-invalid]="(formSubmitted && projectForm.controls['EndingMonth'].invalid )||projectForm.controls['EndingMonth'].invalid && projectForm.controls['EndingMonth'].touched" id="EndingMonth"  formControlName="EndingMonth">
+        <input type="text" name="Endmonth" id="projectdetails" placeholder="Enter EndingMonth" [class.is-invalid]="(formSubmitted && projectForm.controls['EndingMonth'].invalid )||projectForm.controls['EndingMonth'].invalid && projectForm.controls['EndingMonth'].touched" id="EndingMonth"  formControlName="EndingMonth">
         <div  *ngIf="(formSubmitted)||projectForm.controls['EndingMonth'].invalid && projectForm.controls['EndingMonth'].touched">
           <span class="text-danger" *ngIf="projectForm.controls['EndingMonth'].errors?.['required']">Ending Month is required</span>
           <span class="text-danger" *ngIf="projectForm.controls['EndingMonth'].errors?.['minlength']">Ending Month is too short</span>
@@ -85,22 +79,16 @@
         <br>
       </div>
       <label for="personaldetails">Ending Year</label>
-      <select placeholder="Enter EndingYear" [class.is-invalid]="(formSubmitted && projectForm.controls['EndingYear'].invalid)||projectForm.controls['EndingYear'].invalid && projectForm.controls['EndingYear'].touched||projectForm.controls['EndingYear'].untouched" name="EndingYear" id="EndingYear" formControlName="EndingYear" [(ngModel)]="projectfield.endingYear" required="">
+      <select placeholder="Enter EndingYear" [class.is-invalid]="(formSubmitted && projectForm.controls['EndingYear'].invalid)||projectForm.controls['EndingYear'].invalid && projectForm.controls['EndingYear'].touched||projectForm.controls['EndingYear'].untouched" name="EndingYear" id="EndingYear" formControlName="EndingYear"  required="">
         <option value="" selected>Select Ending Year</option>
         <option *ngFor="let year of years" [value]="year">{{ year }}</option>
       </select>
       <div *ngIf="(formSubmitted)||projectForm.controls['EndingYear'].invalid && projectForm.controls['EndingYear'].touched">
         <span class="text-danger" *ngIf="projectForm.controls['EndingYear'].errors?.['required']">Ending Year is required</span>
       </div>
-
-        <!-- <select [(ngModel)]="projectfield.endingYear" name="Endyear" required="" style="border-color: black;">
-
-        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-
-      </select> -->
         <br>
         <label for="Role">Role Played</label>
-        <input type="text" name="Role" id="Role" [(ngModel)]="projectfield.designation" placeholder="Enter Role played"
+        <input type="text" name="Role" id="Role"  placeholder="Enter Role played"
           [class.is-invalid]="(formSubmitted && projectForm.controls['RolePlayed'].invalid )||projectForm.controls['RolePlayed'].invalid && projectForm.controls['RolePlayed'].touched"
           id="RolePlayed" formControlName="RolePlayed">
         <div
@@ -114,7 +102,7 @@
         </div>
         <br>
         <label for="Tools">Tools Used</label>
-        <input type="text" name="Tools" id="Tools" [(ngModel)]="projectfield.toolsused" placeholder="Enter Tools used"
+        <input type="text" name="Tools" id="Tools" placeholder="Enter Tools used"
           [class.is-invalid]="(formSubmitted && projectForm.controls['ToolsUsed'].invalid )|| projectForm.controls['ToolsUsed'].invalid && projectForm.controls['ToolsUsed'].touched"
           id="ToolsUsed" formControlName="ToolsUsed">
         <div
@@ -138,7 +126,7 @@
 
         <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
 
-        <a [routerLink]="['/skill']" class="btn btn-next width-50 ml-auto">Next</a>
+        <a [routerLink]="['/skill']" class="btn btn-next width-50 ml-auto" >Next</a>
 
       </div>
   </form>

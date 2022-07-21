@@ -79,7 +79,7 @@ export class SkillsComponent implements OnInit {
       next: (data) => { },
       error: (error) => { this.error = error.error.message },
       complete: () => {
-        this.toaster.open({ text: 'skills added successfully', position: 'top-center', type: 'success' });
+        this.toaster.open({ text: 'Skills added successfully', position: 'top-center', type: 'success' });
       }
     });
     setTimeout(
