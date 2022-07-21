@@ -264,7 +264,7 @@
 .fa-share-nodes,
 .fa-download {
     font-size: 25px;
-    ;
+    cursor: pointer; ;
 }
 
 .status {
@@ -433,20 +433,20 @@
 }
 
 .fa-share-nodes {
-    text-indent: 6rem;
+    margin-left: 6rem;
     height: 5%;
 }
 
 .fa-trash {
-    text-indent: 7rem;
+    margin-left: 7rem;
 }
 
 .fa-pen-to-square {
-    text-indent: 2rem;
+    padding-left: 2rem;
 }
 
 .fa-download {
-    text-indent: 3.4rem;
+    margin-left: 3.4rem;
 }
 
 .status {
