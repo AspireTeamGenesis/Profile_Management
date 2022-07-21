@@ -1,6 +1,6 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from 'src/app/service/userservice.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { PersonalDetails } from 'Models/personalDetails';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Toaster } from 'ngx-toast-notifications';

@@ -11,8 +11,8 @@ namespace PMS_API
 
             if (string.IsNullOrEmpty(personalDetails.Objective))
                 throw new ValidationException($"Objective not be null user supplied Nationality as \"{personalDetails.Objective}\"");
-             else if (!Regex.IsMatch(personalDetails.Objective, @"[a-zA-Z]{3,500}$"))
-                throw new ValidationException($"Objective is invalid and user supplied Objective as \"{personalDetails.Objective}\"");
+            //  else if (!Regex.IsMatch(personalDetails.Objective, @"[a-zA-Z]{3,500}$"))
+            //     throw new ValidationException($"Objective is invalid and user supplied Objective as \"{personalDetails.Objective}\"");
 
             //nationality validations              
             if (string.IsNullOrEmpty(personalDetails.Nationality))

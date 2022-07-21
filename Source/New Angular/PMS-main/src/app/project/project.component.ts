@@ -100,7 +100,7 @@ export class ProjectComponent implements OnInit {
       () => {
         location.reload(); // the code to execute after the timeout
       },
-      1000// the time to sleep to delay for
+      600// the time to sleep to delay for
     );
   }
 

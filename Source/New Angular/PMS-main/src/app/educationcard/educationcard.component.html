@@ -4,6 +4,7 @@
     <div class="kcard"
         *ngFor="let item of educationDetails | paginate: {itemsPerPage : 3, currentPage: page,totalItems:totalLength}       ">
         <div class="card-body">
+            <div>
             <p class="card-text" style="text-align: left; font-size: 15px;">
                 <br><strong>Course</strong>: {{item.course}}
                 <br><strong>Degree</strong>: {{item.degree}}
@@ -12,6 +13,7 @@
                 <br><strong>Percentage</strong>: {{item.percentage}}
             </p>
             <br>
+            </div>
             <h2>
                 <div class="tooltip1">
                     <i [routerLink]="['../editeducation',item.educationid]" class="fa fa-pencil fa-sm"></i>

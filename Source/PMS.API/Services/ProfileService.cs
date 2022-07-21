@@ -1167,18 +1167,21 @@ namespace PMS_API
         {
             try
             {
-                var profile = GetallProfiles();
-                User user=new User();
-                var Approved = profile.Where(p => p.ProfileStatusId == 1 && p.user.DesignationId>currentdesignation).Count();
-                var Rejected = profile.Where(p => p.ProfileStatusId == 3  && p.user.DesignationId>currentdesignation).Count();
-                var Waiting = profile.Where(p => p.ProfileStatusId == 2  && p.user.DesignationId>currentdesignation).Count();
-                var total = profile.Where(p => p.user.DesignationId>currentdesignation).Count();
-                var result = new Dictionary<string, int>();
-                result.Add("Approved Profiles", Approved);
-                result.Add("Rejected Profiles", Rejected);
-                result.Add("Waiting Profiles", Waiting);
-                result.Add("Total Profiles", total);
+                var result = profileData.GetProfileCount(currentdesignation) ;
                 return result;
+
+                // var profile = GetallProfiles();
+                // User user=new User();
+                // var Approved = profile.Where(p => p.ProfileStatusId == 1 && p.user.DesignationId>currentdesignation).Count();
+                // var Rejected = profile.Where(p => p.ProfileStatusId == 3  && p.user.DesignationId>currentdesignation).Count();
+                // var Waiting = profile.Where(p => p.ProfileStatusId == 2  && p.user.DesignationId>currentdesignation).Count();
+                // var total = profile.Where(p => p.user.DesignationId>currentdesignation).Count();
+                // var result = new Dictionary<string, int>();
+                // result.Add("Approved Profiles", Approved);
+                // result.Add("Rejected Profiles", Rejected);
+                // result.Add("Waiting Profiles", Waiting);
+                // result.Add("Total Profiles", total);
+                // return result;
             }
             catch (Exception exception)
             {
