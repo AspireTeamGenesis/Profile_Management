@@ -22,7 +22,7 @@ export class EducationComponent implements OnInit {
 
   constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient,private route: ActivatedRoute) {
     this.selectedYear = new Date().getFullYear();
-  for (let year = this.selectedYear; year >= 2000; year--) {
+  for (let year = this.selectedYear; year >= 1990; year--) {
     this.years.push(year);
   }
     }

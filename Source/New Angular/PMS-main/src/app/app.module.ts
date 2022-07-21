@@ -60,6 +60,7 @@ import { LanguageandsocialComponent } from './languageandsocial/languageandsocia
 import { EditoriginalpersonalComponent } from './editoriginalpersonal/editoriginalpersonal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import { HomecardComponent } from './homecard/homecard.component';
 @NgModule({
   declarations: [		
     AppComponent,
@@ -107,7 +108,8 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
       SharepageComponent,
       LanguageandsocialComponent,
       EditoriginalpersonalComponent,
-      DialogBoxComponent
+      DialogBoxComponent,
+      HomecardComponent
    ],
   imports: [
     BrowserModule,

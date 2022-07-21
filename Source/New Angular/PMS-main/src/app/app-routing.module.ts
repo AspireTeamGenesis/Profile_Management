@@ -36,6 +36,7 @@ import { LanguageComponent } from './language/language.component';
 import { SharepageComponent } from './sharepage/sharepage.component';
 import { LanguageandsocialComponent } from './languageandsocial/languageandsocial.component';
 import { EditoriginalpersonalComponent } from './editoriginalpersonal/editoriginalpersonal.component';
+import { HomecardComponent } from './homecard/homecard.component';
 
 
 const routes: Routes = [
@@ -76,6 +77,7 @@ const routes: Routes = [
   {path:"sharepage",component:SharepageComponent},
   {path:"languagesocial",component:LanguageandsocialComponent},
   {path:"editoriginalpersonal",component:EditoriginalpersonalComponent},
+  {path:"homecard",component:HomecardComponent},
   {path:"",component:LoginComponent}
 ];
 

@@ -21,7 +21,7 @@ export class EditeducationComponent implements OnInit {
 
   constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute,private toaster:Toaster) {
     this.selectedYear = new Date().getFullYear();
-  for (let year = this.selectedYear; year >= 2000; year--) {
+  for (let year = this.selectedYear; year >= 1990; year--) {
     this.years.push(year);
   }
     }
