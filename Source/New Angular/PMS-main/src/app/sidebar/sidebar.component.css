@@ -11325,3 +11325,28 @@ button {
     transition: 1.0s;
 
 }
+
+
+/* sidebar component */
+
+.sidebar-image{
+    margin-left:0.8rem;
+    width:11rem;
+    height:10rem;
+    border-radius:100px
+}
+
+.sidebar-h4
+{
+    margin-left: 1.5%;
+}
+
+.sidebar-dashboard
+{
+    margin-right:2rem;
+}
+
+.sidebar-changepassword
+{
+    margin-right:1.8rem;
+}
