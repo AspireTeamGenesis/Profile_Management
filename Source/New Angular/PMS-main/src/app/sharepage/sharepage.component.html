@@ -2,25 +2,45 @@
 <button type="button" class="close">×</button> -->
 <app-topbar></app-topbar>
 <app-sidebar></app-sidebar>
-<div class="container "  style="padding-top:5%;">
+<div class="container "  style="padding-top:13%;">
     <div class="hello">
     <div class="modal-header">
-        <h3>Compose Email</h3>
-        <button type="button" class="close">×</button>
+        <h3>Share Profile</h3>
+        <button type="button" class="close"></button>
     </div>
     <div class="modal-body">
-        <form style="border-radius: 2px; border-color: black;">
-            <h5>From:arasu@gmail.com</h5>
-            <input type="text" placeholder="To" style="width:95%;"><br />
-            <!-- <input type="text" placeholder="Subject" style="width:95%;"><br /> -->
-            <!-- <textarea style="width:95%;" rows="10"></textarea> -->
+        <form [formGroup]="shareForm" style="border-radius: 2px; border-color: black;">
+            <!-- <h5>From:arasu@gmail.com</h5> -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-between">
+                        <div class="col-0" style="padding-top: 3.5%;">
+                            <h6>TO</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" placeholder="Enter Mail" style="width:95%;" [class.is-invalid]="(formSubmitted && shareForm.controls['To'].invalid )||shareForm.controls['To'].invalid && shareForm.controls['To'].touched"
+                            formControlName="To">
+                            <div
+                *ngIf="(formSubmitted) || shareForm.controls['To'].invalid && shareForm.controls['To'].touched">
+                <span class="text-danger" *ngIf="shareForm.controls['To'].errors?.['required']">Mail Id is
+                  required</span>
+                <span class="text-danger" *ngIf="shareForm.controls['To'].errors?.['pattern']">Mail Id is Incorrect</span>
+                </div>    
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <input type="text" placeholder="To" style="width:95%;"><br /> -->
+             <!-- <input type="text" placeholder="Subject" style="width:95%;"><br />  -->
+            <!-- <textarea style="width:95%;" rows="10"></textarea> 
             <h4>Profile Link</h4>
             <p>Hi,</p>
             <p>Greeting,</p>
             <p>I have attached the Vijay's Profile link. </p>
             <p>http://localhost:4200/viewprofilebycard/1009</p>
             <p>Thank you,</p>
-            <p>Chitrarasu</p>
+            <p>Chitrarasu</p>-->
 
         </form>
     </div>
