@@ -43,7 +43,14 @@ export class WaitingprofileComponent implements OnInit {
           this.toaster.open({ text: 'updated successfully', position: 'top-center', type: 'success' });
         }
 
+
 });
+setTimeout(
+  () => {
+    location.reload(); // the code to execute after the timeout
+  },
+  1000// the time to sleep to delay for
+);
 
 
   }
