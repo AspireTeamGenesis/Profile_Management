@@ -19,26 +19,6 @@ namespace PMS_API
             _logger = logger;
             _mailService = mailService;
         }
-        [HttpGet]
-        public IActionResult CalculateExperience(int personaldetailsid)
-        {
-
-            if (personaldetailsid == 0)
-            {
-                _logger.LogError("ProfileController:CalculateExperience():personaldetailsId is invalid");
-                return BadRequest(new { message = "PersonaldetailId is Invalid" });
-            }
-            try
-            {
-                var year = _profileService.calculateExperience(personaldetailsid);
-                return Ok(new { year });
-            }
-            catch (Exception exception)
-            {
-                _logger.LogInformation($"UserController :GetAllUsers()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-                return Problem(exception.Message);
-            }
-        }
         [HttpPost]
         public IActionResult AddProfile(Profile profile)
         {
@@ -62,7 +42,6 @@ namespace PMS_API
                 return Problem("Sorry Internal error occured");
             }
         }
-
         [HttpPost]
         public IActionResult AddPersonalDetail(PersonalDetails personalDetails)
         {
@@ -250,8 +229,6 @@ namespace PMS_API
                 _logger.LogInformation($"ProfileController :GetallEducationDetails()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
                 return Problem(exception.Message);
             }
-
-
         }
         [HttpGet]
         public IActionResult GetEducationDetailsById(int Educationid)
@@ -374,8 +351,6 @@ namespace PMS_API
             }
 
         }
-
-
         [HttpGet]
         public IActionResult GetallProjectDetails()
         {
@@ -624,59 +599,6 @@ namespace PMS_API
 
         }
         [HttpPost]
-        public IActionResult AddBreakDuration(BreakDuration duration)
-        {
-            if (duration == null)
-            {
-                _logger.LogError("ProfileController:AddBreakDuration():user tries to enter null values");
-                return BadRequest(new { message = "BreakDuration details not be null" });
-            }
-            try
-            {
-                return _profileService.AddBreakDuration(duration) ? Ok(new { message = "BreakDuration details added" }) : Problem("Some internal Error occured");
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogInformation($"ProfileController:AddBreakDuration()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-            catch (ArgumentNullException exception)
-            {
-                _logger.LogInformation($"ProfileController :AddBreakDuration()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-            catch (Exception exception)
-            {
-                _logger.LogInformation($"ProfileController:AddBreakDuration()-{exception.Message}{exception.StackTrace}");
-                return Problem("Sorry Internal error occured");
-            }
-
-        }
-
-        [HttpDelete]
-        public IActionResult DisableBreakDuration(int BreakDurationId)
-        {
-            if (BreakDurationId <= 0)
-                return BadRequest(new { message = "BreakDurationId can't be null or negative" });
-
-
-            try
-            {
-                return _profileService.DisableBreakDuration(BreakDurationId) ? Ok(new { message = "BreakDuration Removed Successfully" }) : Problem("Sorry internal error occured");
-            }
-            catch (ArgumentNullException exception)
-            {
-                _logger.LogInformation($"ProfileController :DisableBreakDuration()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-            catch (Exception exception)
-            {
-                _logger.LogInformation($"ProfileController : DisableBreakDuration() throwed an exception : {exception}");
-                return Problem("Sorry some internal error occured");
-            }
-
-        }
-        [HttpPost]
         public IActionResult AddLanguage(Language language)
         {
             if (language == null)
@@ -911,13 +833,12 @@ namespace PMS_API
         {
             try
             {
-                // int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
                 return Ok(_profileService.GetProfileIdByUserId(userId));
             }
             catch (ValidationException exception)
             {
 
-                _logger.LogInformation($"User Service :ChangePassword(string OldPassword,string NewPassword,string ConfirmPassword): {exception.Message}");
+                _logger.LogInformation($"ProfileController: GetProfileIdByGivenUserId() {exception.Message}{exception.StackTrace}");
 
                 return BadRequest(exception.Message);
 
@@ -932,82 +853,15 @@ namespace PMS_API
                 int currentUser = Convert.ToInt32(User.FindFirst("UserId")?.Value);
                 return Ok(_profileService.GetProfileIdByUserId(currentUser)) ;
             }
-            catch (ValidationException exception)
-            {
-
-                _logger.LogInformation($"User Service :ChangePassword(string OldPassword,string NewPassword,string ConfirmPassword): {exception.Message}");
-
-                return BadRequest(exception.Message);
-
-            }
-
-        }
-        [HttpPost]
-        public IActionResult AddProfileHistory(ProfileHistory profilehistory)
-        {
-            if (profilehistory == null)
-            {
-                _logger.LogError("ProfileController:AddProfileHistory():User tries to enter null values");
-                return BadRequest(new { message = "ProfileHistory not be null" });
-            }
-
-            try
-            {
-                return _profileService.AddProfileHistory(profilehistory) ? Ok(new { message = "ProfileHistory added" }) : Problem("Some internal error occured");
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogInformation($"ProfileController:AddProfileHistory()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-            catch (ArgumentNullException exception)
-            {
-                _logger.LogInformation($"ProfileController :AddProfileHistory()-{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
             catch (Exception exception)
             {
-                _logger.LogInformation($"ProfileController:AddProfileHistory()-{exception.Message}{exception.StackTrace}");
-                return Problem("Sorry Internal error occured");
-            }
-        }
-        [HttpGet]
-        public IActionResult GetallProfileHistories()
-        {
-            try
-            {
 
-                return Ok(_profileService.GetallProfileHistories());
-            }
-            catch (Exception exception)
-            {
-                _logger.LogInformation($"ProfileController :GetallProfileHistories()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-                return BadRequest(exception.Message);
-            }
-        }
-        [HttpGet]
-        public IActionResult GetProfileHistoryById(int Profileid)
-        {
-            if (Profileid <= 0)
-            {
-                _logger.LogError("ProfileController:GetProfileHistoryById():User tries to enter invalid Profile id");
-                return BadRequest(new { message = "Profile Id should not be null or negative" });
-            }
-            try
-            {
+                _logger.LogInformation($"ProfileController: GetProfileIdByUserId() {exception.Message}{exception.StackTrace}");
 
-                return Ok(_profileService.GetProfileHistoryById(Profileid));
-            }
-            catch (ArgumentNullException exception)
-            {
-                _logger.LogInformation($"ProfileController :GetProfileHistoryById()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
+
             }
-            catch (Exception exception)
-            {
-                _logger.LogInformation($"ProfileController :GetProfileHistoryById()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
-                return Problem(exception.Message);
-            }
+
         }
         [AllowAnonymous]
         [HttpGet]
@@ -1024,20 +878,18 @@ namespace PMS_API
                 _logger.LogInformation($"ProfileController :GetProfileCount()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
                 return Problem(exception.Message);
             }
-
-
         }
         [HttpPost]
-        public IActionResult GetFilterdProfile(CascadeFilter filterValues)
+        public IActionResult GetFilteredProfile(CascadeFilter filterValues)
         {
             try
             {
                 int currentdesignation = Convert.ToInt32(User.FindFirst("DesignationId")?.Value) ;
-                return Ok(_profileService.GetFilterdProfile(filterValues.UserName!,filterValues.DesignationId, filterValues.DomainID, filterValues.TechnologyId, filterValues.CollegeId, filterValues.ProfileStatusId,currentdesignation));
+                return Ok(_profileService.GetFilteredProfile(filterValues.UserName!,filterValues.DesignationId, filterValues.DomainID, filterValues.TechnologyId, filterValues.CollegeId, filterValues.ProfileStatusId,currentdesignation));
             }
             catch (Exception exception)
             {
-                _logger.LogError($"ProfileController :GetFilterdProfile()- {exception.Message}{exception.StackTrace}");
+                _logger.LogError($"ProfileController :GetFilteredProfile()- {exception.Message}{exception.StackTrace}");
                 return Problem(exception.Message);
             }
         }
@@ -1047,7 +899,7 @@ namespace PMS_API
             if (profileId <= 0)
             {
                 _logger.LogError("ProfileController:():AcceptOrRejectProfile() ProfileId is not valid");
-                return BadRequest(new { message = "Profile not be null" });
+                return BadRequest(new { message = "Profile Id cannot be null" });
             }
             try
             {
@@ -1070,22 +922,22 @@ namespace PMS_API
         {
             if (profileId <= 0)
             {
-                _logger.LogError("ProfileController:():AcceptOrRejectProfile() ProfileId is not valid");
-                return BadRequest(new { message = "Profile not be null" });
+                _logger.LogError("ProfileController:():RequestToUpdate() ProfileId is not valid");
+                return BadRequest(new { message = "Profile Id cannot be null" });
             }
             try
             {
                 _mailService.RequestToUpdateFile(profileId);
-                return Ok("Requst to update has been sent sucessfully via mail");
+                return Ok(new { message ="Requst to update has been sent sucessfully via mail"});
             }
             catch (ValidationException exception)
             {
-                _logger.LogInformation($"ProfileController :AcceptOrRejectProfile()-{exception.Message}{exception.StackTrace}");
+                _logger.LogInformation($"ProfileController :RequestToUpdate()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
             catch (Exception exception)
             {
-                _logger.LogInformation($"ProfileController :AcceptOrRejectProfile()-{exception.Message}{exception.StackTrace}");
+                _logger.LogInformation($"ProfileController :RequestToUpdate()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
             }
         }
@@ -1094,8 +946,8 @@ namespace PMS_API
         {
             if (String.IsNullOrEmpty(profileUrl))
             {
-                _logger.LogError("ProfileController:():AcceptOrRejectProfile() ProfileId is not valid");
-                return BadRequest(new { message = "Profile not be null" });
+                _logger.LogError("ProfileController:():ShareProfile() ProfileId is not valid");
+                return BadRequest(new { message = "Profile Id cannot be null" });
             }
             try
             {
@@ -1104,12 +956,12 @@ namespace PMS_API
             }
             catch (ValidationException exception)
             {
-                _logger.LogInformation($"ProfileController :AcceptOrRejectProfile()-{exception.Message}{exception.StackTrace}");
+                _logger.LogInformation($"ProfileController :ShareProfile()-{exception.Message}{exception.StackTrace}");
                 return BadRequest(exception.Message);
             }
             catch (Exception exception)
             {
-                _logger.LogInformation($"ProfileController :AcceptOrRejectProfile()-{exception.Message}{exception.StackTrace}");
+                _logger.LogInformation($"ProfileController :ShareProfile()-{exception.Message}{exception.StackTrace}");
                 return Problem("Sorry Internal error occured");
             }
         }
@@ -1119,11 +971,11 @@ namespace PMS_API
             if (profile.Equals(null))
             {
                 _logger.LogError("ProfileController : updateProfileStatus() Profile is not valid");
-                return BadRequest(new { message = "Profile not be null" });
+                return BadRequest(new { message = "Profile cannot be null" });
             }
             try
             {
-                return _profileService.updateProfileStatus(profile)? Ok("changed to waiting for approval"): Problem("sorry Internal error occured");
+                return _profileService.updateProfileStatus(profile)? Ok(new{message="changed to waiting for approval"}): Problem("sorry Internal error occured");
                 
             }
             catch (ValidationException exception)

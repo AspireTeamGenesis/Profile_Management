@@ -1,7 +1,8 @@
 <app-topbar></app-topbar>
 <app-sidebar></app-sidebar>
 <div class="container d-flex justify-content-center table-box">
-  <form action="#" class="form form-border" [formGroup]="skillForm" (ngsubmit)="skillForm.invalid">
+  <form action="#" class="form form-border" [formGroup]="skillForm" (ngsubmit)="skillForm.valid"
+   >
 
     <div class="progressbar">
       <div class="progress" id="progress"></div>

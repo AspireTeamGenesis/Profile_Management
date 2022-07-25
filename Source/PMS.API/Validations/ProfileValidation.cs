@@ -121,7 +121,7 @@ namespace PMS_API
             //tool used
             if (string.IsNullOrEmpty(project.ToolsUsed))
                 throw new ValidationException($"ToolsUsed not be null and user supplied ToolsUsed as \"{project.ToolsUsed}\"");
-            if (!Regex.IsMatch(project.ToolsUsed, "^[a-zA-z]{3,300}$"))//check Toolsused only contains string only
+            if (!Regex.IsMatch(project.ToolsUsed, "^[a-zA-z]{2,600}$"))//check Toolsused only contains string only
                 throw new ValidationException($"Designation should not be specialcharacters and user supplied Designation as \"{project.Designation}\"");
 
             //Project starting month

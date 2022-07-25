@@ -28,7 +28,7 @@
 
         <!-- <h3>Project Details</h3> -->
         <label for="Proname">Project Name</label>
-        <input type="text" name="projectname" id="Projectname"
+        <input type="text" name="ProjectName" id="ProjectName"
           placeholder="Enter Project name"
           [class.is-invalid]="(formSubmitted && projectForm.controls['ProjectName'].invalid )||projectForm.controls['ProjectName'].invalid && projectForm.controls['ProjectName'].touched"
           formControlName="ProjectName">
@@ -120,8 +120,9 @@
       </div>
       </div>
       <br>
-      <div><app-projectcard></app-projectcard></div>
+     
       <div class="row">
+        <app-projectcard></app-projectcard>
         <a [routerLink]="['/education']" class="btn btn-next width-50 ml-auto">Previous</a>
 
         <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>

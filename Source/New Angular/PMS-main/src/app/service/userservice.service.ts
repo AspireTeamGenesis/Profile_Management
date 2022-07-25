@@ -266,7 +266,7 @@ export class UserserviceService {
 
   getProfileByFilters(filter:any)
   {
-    return this.http.post<any>(`https://localhost:7021/Profile/GetFilterdProfile`,filter,{headers:this.headers});
+    return this.http.post<any>(`https://localhost:7021/Profile/GetFilteredProfile`,filter,{headers:this.headers});
   }
 
   getProfileByApprovedStaus()

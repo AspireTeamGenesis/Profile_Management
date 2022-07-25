@@ -59,10 +59,13 @@ export class SidebarComponent implements OnInit {
 
   getProfileIdByUserId()
   {
+    console.log("1");
     this.service.getProfileIdByUserId().subscribe({
       next:(data)=> {
         this.profileIdDetails=data,
+        console.log(this.profileIdDetails);
         this.profileId = this.profileIdDetails.profileId
+        console.log(this.profileId);
         if (this.profileId == 0) {
           this.router.navigateByUrl("/createprofile");
         }

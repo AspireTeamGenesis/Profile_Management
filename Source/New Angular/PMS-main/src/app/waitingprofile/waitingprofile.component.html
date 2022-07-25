@@ -10,7 +10,9 @@
     <div class="kcard"
       *ngFor="let item of waitingProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
       <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded"
-          [src]="'data:image/jpg;base64,'+item.userProfileImage" width="50%" /></a>
+          [src]="'data:image/jpg;base64,'+item.userProfileImage" 
+          style="border-radius:50%;width:45%;height:45%"
+          width="50%" /></a>
       <!-- <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top" src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png"
           alt="Card image cap"></a> -->
       <div class="status">

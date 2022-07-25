@@ -13,7 +13,5 @@ namespace PMS_API
         public int TechnologyId { get; set; }=0;
         public int CollegeId { get; set; }=0;
         public int ProfileStatusId { get; set; }=0;
-        public int MaxExperience { get; set; }=0;
-        public int MinExperience { get; set; }=0;
     }
 }

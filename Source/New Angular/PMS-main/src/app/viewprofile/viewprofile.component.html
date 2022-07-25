@@ -1,8 +1,6 @@
 <app-topbar></app-topbar>
 <app-sidebar></app-sidebar>
 <div class="container justify-content-center n-table-box">
-  <!-- Write your contents here -->
-  <!-- End of content -->
   <div class="row ">
     <div class="text-right col-lg-7 col-md-5 col-12 col-xl-7 col-xxl-7 plr-2">
       <h1>My Profile</h1>
@@ -34,11 +32,8 @@
             <div *ngFor="let item of profileDetails['personaldetails'][0].socialmedia">
               <h6><i class="fas fa fa-twitter mtr-1"></i>{{item.socialMedia_Link}}</h6>
             </div>
-            <!-- <h6><i class="fas fa fa-twitter mtr-1"></i>{{profileDetails['personaldetails'][0].socialmedia[0].socialMedia_Link}}</h6> -->
-            <!-- <h6><i class="fas fa fa-linkedin mtr-1"></i>https://www.linkedin.com/naga?_l=en_US</h6> -->
 
             <hr />
-            <!-- <div *ngIf="profileDetails['achievementdetails'].achievementtype== 'Certificates'"> -->
             <div class="card-title">
               <h2 style="display: inline-block;" (click)="toggletag3()"><i
                   class="fas fa-solid fa-stamp mr-2"></i>&nbsp;Achievements </h2><span class="pull-right up-icon icon-right"><i
@@ -53,32 +48,8 @@
                   </div>
                 </div>
               </div>
-              <!-- <div class="plr-2">
-                <img class="img" src="../image/certificate1.png  " width="80%" />
-                <img class="img" src="../image/certificate2.png  " width="80%" />
-              </div> -->
             </div>
-
             <hr>
-
-
-
-
-
-            <!-- <h3><i class="fa fa-paper-plane mr-2"></i><b>Awards</b></h3>
-            <div class="n-card  shadow-sm plr-2 ">
-
-              <div *ngFor="let item of profileDetails['achievementdetails']">
-                <div *ngIf="item.achievementtype== 'Awards'">
-                <div class="plr-2">
-                  <img class="img" [src]="'data:image/jpg;base64,'+item.achievementimage" width="80%" />
-                </div>
-                </div>
-              </div>
-
-            </div> -->
-
-
             <div class="card-title" (click)="toggletag4()">
               <h2 style="display: inline-block;"><i class="fas fa-globe mr-3 mt-3 mb-4"></i>Language</h2><span
                 class="pull-right up-icon icon-righ"><i class="fa fa-chevron-down"></i></span>
@@ -90,8 +61,6 @@
                   </div>
                 </ul>
               </div>
-
-
             </div>
           </div>
         </div>
@@ -137,8 +106,6 @@
                 <div>
                   <hr />
                   <div *ngFor="let item of profileDetails['educationdetails']">
-                    <!-- <h6><i class="fas fa fa-twitter mtr-1"></i>{{item.socialMedia_Link}}</h6> -->
-
                     <h5 class="mt-4">{{item.college}}</h5>
                     <h6><i class="fas fa-calendar my-2 mr-2"></i> {{item.startingyear}} - {{item.endingyear}}</h6>
                     <h6>{{item.degree}}({{item.course}})</h6>
@@ -193,7 +160,7 @@
     <hr>
     <div class="row mt-3 mb-2 footer ">
       <div class="text-right col-lg-6 col-md-6 col-12 col-xl-6 col-xxl-6 plr-2">
-        <h5>Last Updated Date : 20-07-2022</h5>
+        <h5>Last Updated Date : 25/07/2022</h5>
         <!-- {{profileDetails['personaldetails'][0].updateddate|date:'yyyy/MM/dd'}} -->
       </div>
       <div class="text-right col-lg-5 col-md-5 col-12 col-xl-5 col-xxl-5 plr-2">

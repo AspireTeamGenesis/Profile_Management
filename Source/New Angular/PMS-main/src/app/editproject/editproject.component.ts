@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../service/userservice.service';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { College } from 'Models/college';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Toaster } from 'ngx-toast-notifications';
 
@@ -53,8 +52,8 @@ export class EditprojectComponent implements OnInit {
       StartingYear: ['', [Validators.required]],
       EndingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
       EndingYear: ['', Validators.required],
-      RolePlayed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
-      ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(300)]],
+      RolePlayed: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(100)]],
+      ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(600)]],
     });
     this.route.params.subscribe(params => {
       this.projectid = params['projectid'];

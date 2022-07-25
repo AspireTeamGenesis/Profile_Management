@@ -33,8 +33,6 @@ export class ProfilehomeComponent implements OnInit {
     domainId:0,
     technologyId:0,
     collegeId:0,
-    maxExp:0,
-    minExp:0,
     profileStatusId:0,
     username:''
   }

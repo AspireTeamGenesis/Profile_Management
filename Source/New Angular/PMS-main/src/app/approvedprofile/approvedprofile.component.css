@@ -238,17 +238,6 @@
     border-radius: 10px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
-.kcard{
-   padding:5px;
-   background-color: white; 
-   border: 1px solid black;
-   width: 15rem;
-   margin-left: 90px;
-   float:left; 
-   margin-top: 100px; 
-   height: auto;
-   border-radius: 10px;
-}
 .card-img-top{
     height:100px;
     max-width:10px; 
@@ -393,16 +382,21 @@
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
 .kcard{
-   padding:5px;background-color: white; border: 1px solid black;width: 15rem;margin-left: 108px;float:left; margin-top: 100px; 
+   padding:5px;background-color: white; border: 1px solid black;width: 16rem;margin-left: 50px;float:left; margin-top: 100px; 
     border-radius: 10px;
 }
 .card-img-top{
     height:100px;min-width:120px; clip-path: circle();
 }
-.fa-share-nodes{
+/* .fa-share-nodes{
     text-indent: 6rem;
     height:5%;
-}
+} */
+.fa-share-nodes {
+    margin-left: 8.5rem;
+       height: 5%;
+       cursor: pointer;
+   }
 .fa-trash{
     text-indent: 7rem;
 }

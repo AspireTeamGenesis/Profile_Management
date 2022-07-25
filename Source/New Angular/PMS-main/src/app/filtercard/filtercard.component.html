@@ -4,14 +4,16 @@
     <div class="kcard"
       *ngFor="let item of filterDetails| paginate: {itemsPerPage : 4, currentPage: page,totalItems:filterDetails.length}">
       <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded" [src]="'data:image/jpg;base64,'+item.image"
+        style="border-radius:50%;width:45%;height:45%"
         width="50%" /></a>
       <div class="status">
         <p>Status </p>
         <p class="card-text">{{item.profileStatus}}</p>
+        <p>{{item.userid}}</p>
       </div>
       <div class="card-body">
-        <p class="card-text1"><br>{{item.name}} - {{item.designation}}<br>Reporting
-          Person-{{item.repotingPerson}}</p>
+        <p class="card-text1"><br>{{item.name}}&nbsp;-&nbsp;{{item.designation}}<br>Reporting
+          Person&nbsp;-&nbsp;{{item.repotingPerson}}</p>
         <br>
         <h2>
           <i  class="fa fa-pen-to-square fa-xs" (click)="editToUpdate()"></i><i [routerLink]="['/sharepage']" class="fa fa-share-nodes"></i>

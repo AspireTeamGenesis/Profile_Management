@@ -4,7 +4,6 @@ namespace PMS_API
 {
     public interface IProfileService
     {
-        public double calculateExperience(int id);
         bool AddProfile(Profile profile);
         bool AddPersonalDetail(PersonalDetails personalDetails);
         IEnumerable<PersonalDetails> GetAllPersonalDetails();
@@ -35,10 +34,6 @@ namespace PMS_API
         IEnumerable<Achievements> GetallAchievements();
 
         bool DisableAchievement(int AchievementId);
-
-        bool AddBreakDuration(BreakDuration duration);
-        bool DisableBreakDuration(int BreakDurationid);
-
         bool AddLanguage(Language language);
         bool DisableLanguage(int Languageid);
 
@@ -56,17 +51,8 @@ namespace PMS_API
         object GetProfileById(int Profileid);
         object GetProfileIdByUserId(int Userid);
         public IEnumerable<Profile> GetallProfiles();
-
-        public bool AddProfileHistory(ProfileHistory profilehistory);
-        public IEnumerable<object> GetProfileHistoryById(int ProfileId);
-        public IEnumerable<object> GetallProfileHistories();
-
-        // public bool RequestToUpdate()
-        // public bool Download(int ProfileId)
-
-
-       public object GetProfileCount(int currentdesignation);
-        public object GetFilterdProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int currentdesignation);
+        public object GetProfileCount(int currentdesignation);
+        public object GetFilteredProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId, int currentdesignation);
         public bool AcceptOrRejectProfile(int profileId, int response);
 
         public bool updateProfileStatus(Profile profile);

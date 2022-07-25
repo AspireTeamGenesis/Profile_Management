@@ -29,19 +29,7 @@ export class ProjectComponent implements OnInit {
   // project: Project[] = [];
   // data: any;
   profileIdDetails: any;
-  projectfield: any = {
-    projectId: 0,
-    profileId: 0,
-    projectName: '',
-    projectDescription: '',
-    startingMonth: '',
-    startingYear: 0,
-    endingMonth: '',
-    endingYear: 0,
-    designation: '',
-    toolsUsed: '',
-
-  }
+ 
   showMe: boolean = false;
   foot: boolean = true;
   ngOnInit() {
@@ -53,7 +41,7 @@ export class ProjectComponent implements OnInit {
       EndingMonth: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(9)]],
       EndingYear: ['', [Validators.required]],
       RolePlayed: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(100)]],
-      ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(300)]],
+      ToolsUsed: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(600)]],
     });
 
     this.getProfileIdByUserId()
@@ -73,12 +61,21 @@ export class ProjectComponent implements OnInit {
     })
   }
   OnSubmit() {
-
+    const projectDetails={
+        projectId: 0,
+        profileId: this.profileId,
+        projectName:this.projectForm.value['ProjectName'],
+        projectDescription: this.projectForm.value['ProjectDescription'],
+        startingMonth: this.projectForm.value['StartingMonth'],
+        startingYear: this.projectForm.value['StartingYear'],
+        endingMonth: this.projectForm.value['EndingMonth'],
+        endingYear: this.projectForm.value['EndingYear'],
+        designation: this.projectForm.value['RolePlayed'],
+        toolsUsed: this.projectForm.value['ToolsUsed'],
+    }
+    console.log(projectDetails);
     console.log("Project Field ");
-    this.projectfield.profileId = this.profileId;
-    console.log(this.projectfield.profileId);
-    console.log(this.projectfield);
-    this.service.CreateProjects(this.projectfield).subscribe({
+    this.service.CreateProjects(projectDetails).subscribe({
       next: (data) => { },
       error: (error) => { this.error = error.error.message },
       complete: () => {
