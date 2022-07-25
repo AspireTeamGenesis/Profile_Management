@@ -3,10 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/service/authentication.service';
-//import { AuthenticationService } from 'src/services/authentication.service';
-
 import { User } from 'Models/user';
-// import { ConnectionService } from 'src/services/connection.service';
 import { UserserviceService } from 'src/app/service/userservice.service';
 import { Toaster } from 'ngx-toast-notifications';
 
@@ -108,29 +105,8 @@ export class LoginComponent implements OnInit {
       if (this.loginForm.valid) {
         console.warn("Valid");
       } else {
-        console.warn("Valid");
+        console.warn("InValid");
       }
       });
   }
-
-  // export class LoginComponent implements OnInit {
-  //   @Input() artsrc: string = " ";
-  //   //data: any;
-  //   totalLength: any;
-
-  //   constructor(private http: HttpClient) { }
-
-  //   ngOnInit(): void {
-  //     this.http
-  //       .get<any>(this.artsrc)
-  //       .subscribe((data) => {
-  //         this.data = data;
-  //         this.totalLength = data.length;
-  //         console.log(data);
-  //       });
-  //   }
-
-  //   public data: LoginComponent[] = [
-
-  //   ];
 }

@@ -16,19 +16,10 @@ export class PersonalDetails {
     languageid: number=0;
     breakDurationid: number=0;
     socialmediaid: number=0;
-
-    
-    // createdOn: string | null;
-    // createdBy: number | null;
-    // updatedOn: string | null;
-    // updatedBy: number | null;
     userId!: number;
     language!: Language | null;
     breakDuration!: BreakDuration | null;
     socialmedia!: SocialMedia | null;
-    // education: Education[] | null;
-    // projects: Projects[] | null;
-    // skills: Skills[] | null;
     users!: User | null;
     isActive: boolean=true;
 }

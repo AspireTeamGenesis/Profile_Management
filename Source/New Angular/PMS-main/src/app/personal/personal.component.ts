@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from 'src/app/service/userservice.service';
 import { HttpClient } from '@angular/common/http';
 import { PersonalDetails } from 'Models/personalDetails';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Toaster } from 'ngx-toast-notifications';
 @Component({
   selector: 'app-personal',
@@ -15,52 +15,47 @@ export class PersonalComponent implements OnInit {
   imageError: string = "";
   cardImageBase64: string = "";
   isImageSaved: boolean = false;
-  profileDetails: any;
+  profileDetails:any={
+    userid:0
+  };
   profileIdDetails: any;
   response: string = '';
 
   formSubmitted: boolean = false;
   showMe: boolean = false;
-  personalForm: FormGroup;
   foot: boolean = true;
   error: string = "";
-  user: any = {
-    personalDetailsId: 0,
-    profileId: 0,
-    base64header: '',
-    image: null,
-    objective: '',
-    dateOfBirth: '',
-    nationality: '',
-    dateOfJoining: '',
-    userId: 0
-  }
-  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private toaster: Toaster) {
-    this.personalForm = this.FB.group({});
-  }
+  maxDate:any;
+  base64header:any;
+  // user: any = {
+  //   personalDetailsId: 0,
+  //   profileId: 0,
+  //   base64header: '',
+  //   image: null,
+  //   objective: '',
+  //   dateOfBirth: '',
+  //   nationality: '',
+  //   dateOfJoining: '',
+  //   userId: 0
+  // }
+
+  personalForm = this.FB.group({
+    profilePhoto: ['', [Validators.required]],
+    objective: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(500), Validators.pattern("^(?!.*([ ])\\1)(?!.*([A-Za-z])\\2{2})\\w[a-zA-Z\\s]*$")]],
+    dateofBirth: ['', [Validators.required]],
+    nationality: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40),, Validators.pattern("^(?!.*([ ])\\1)(?!.*([A-Za-z])\\2{2})\\w[a-zA-Z\\s]*$")]],
+    dateofJoining: ['', [Validators.required]],
+  });
+  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private toaster: Toaster) {}
   ngOnInit(): void {
-    this.personalForm = this.FB.group({
-      ProfilePhoto: ['', [Validators.required]],
-      Objective: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(500)]],
-      DateofBirth: ['', [Validators.required]],
-      Nationality: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-      DateofJoining: ['', [Validators.required]],
-    });
-    this.getUserProfile();
+    this.dateValidation();
     this.getProfileIdByUserId();
+    this.getUserProfile();
   }
-  getUserProfile() {
-    this.service.getUserProfile().subscribe({
-      next: (data) => {
-        this.profileDetails = data,
-          console.log(this.profileDetails),
-          console.log(this.profileDetails.userid);
-      }
-    })
-  }
+
   getProfileIdByUserId() {
     this.service.getProfileIdByUserId().subscribe({
-      next: (data: any) => {
+      next: (data) => {
         this.profileIdDetails = data,
           this.profileId = this.profileIdDetails.profileId,
           console.warn(this.profileId),
@@ -71,23 +66,36 @@ export class PersonalComponent implements OnInit {
   Personal: any;
   personal: PersonalDetails[] = [];
   data: any;
+  year: number = 0;
   languageArray: any = [];
   personalDetails: any;
   toogletag() {
-
     this.showMe = !this.showMe;
-
   }
   footer() {
     this.foot = !this.foot;
     if (this.foot == false) { this.foot = true };
   }
+  getUserProfile() {
+    this.service.getUserProfile().subscribe({
+      next: (data) => {
+        this.profileDetails = data
+      }
+    })
+  }
   personalSubmit() {
-
-    this.user.profileId = this.profileId;
-    this.user.userId = this.profileDetails.userid;
-    console.log(this.user);
-    this.service.addPersonalDetail(this.user).subscribe(
+    const personalDetails={
+      personalDetailsId:0,
+      profileId:this.profileId,
+      base64header: this.cardImageBase64,
+      userId:this.profileDetails.userid,
+      objective:this.personalForm.value['objective'],
+      nationality:this.personalForm.value['nationality'],
+      dateofBirth:this.personalForm.value['dateofBirth'],
+      dateofJoining:this.personalForm.value['dateofJoining']
+    }   
+    console.log(personalDetails);
+    this.service.addPersonalDetail(personalDetails).subscribe(
       {
         next: (data) => this.response = data.message,
         error: (error) => this.error = error.error,
@@ -100,6 +108,35 @@ export class PersonalComponent implements OnInit {
     console.log(this.error);
     console.log(this.response);
   }
+
+  dateValidation() {
+    var date: any = new Date();
+    var toDate: any = date.getDate();
+    if (toDate < 10) {
+      toDate = "0" + toDate;
+    }
+    var month = date.getMonth() + 1;
+    if (month < 10) {
+      month = '0' + month;
+    }
+    var year = date.getFullYear(); 
+    this.maxDate = year + "-" + month + "-" + toDate;
+    console.log(this.maxDate);
+    return true;
+  }
+
+  validateDateOfBirth() {
+    this.year = parseInt(this.personalForm.value['dateofBirth']);
+    if (((new Date().getFullYear() - this.year) <= 18))
+     {
+      return true;
+    }
+    if((new Date().getFullYear() - this.year) >= 60){
+      return true;
+    }
+    return false;
+  }
+
   clearInputFields()
    {
     this.formSubmitted = false;
@@ -107,8 +144,8 @@ export class PersonalComponent implements OnInit {
       this.response = '';
       this.personalForm.reset();
     }, 1000);
-
   }
+
   fileChangeEvent(fileInput: any) {
     this.imageError = "";
     if (fileInput.target.files && fileInput.target.files[0]) {
@@ -133,7 +170,7 @@ export class PersonalComponent implements OnInit {
           this.cardImageBase64 = this.cardImageBase64.replace("data:image/png;base64,", "");
           this.cardImageBase64 = this.cardImageBase64.replace("data:image/jpg;base64,", "");
           this.cardImageBase64 = this.cardImageBase64.replace("data:image/jpeg;base64,", "");
-          this.user.base64header = this.cardImageBase64;
+          this.base64header = this.cardImageBase64;
           this.isImageSaved = true;
         }
       };

@@ -8,8 +8,8 @@
     <div *ngIf="!isShowDivIf" class="p-4 pt-5">
         <div >
             <a href="#" class="img logo rounded-circle mb-6"><img src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png" alt="Admin Logo" class="sidebar-image"></a>
+            <h4 class="text-light admin-text mt-3 sidebar-h4">{{profileDetails.username}}</h4>
         </div>
-        <h4 class="text-light admin-text mt-5 sidebar-h4">{{profileDetails.username}}</h4>
         <ul class="list-unstyled components mb-5 sidebar-items">
             <li>
                 <a [routerLink]="['/dashboard']" ><i class="fa-solid fa-person ml-4 sidebar-dashboard"></i>Dashboard</a>

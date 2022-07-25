@@ -25,7 +25,6 @@ export class CreateprofileComponent implements OnInit {
       next:(data)=>{this.profileDetails=data,
       console.log(this.profileDetails)}      
     })
-    console.log(this.profileDetails.userId);
   }
   createProfile()
   {
