@@ -12505,6 +12505,10 @@ input {
     border-radius: 2px;
     border-color: black;
 }
+.textbox-border{
+    border-color: black;
+}
+
 
 .plus{
 

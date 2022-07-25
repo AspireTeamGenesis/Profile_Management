@@ -19,15 +19,17 @@ export class AchievementComponent implements OnInit {
   foot: boolean = true;
   achievementForm: FormGroup;
   imageError: string = "";
-  profileIdDetails: any;
+  profileIdDetails: any ={
+    profileId :0
+  }
   isImageSaved: boolean = false;
   cardImageBase64: any;
-  achievementTypeValue:any;
+  // achievementTypeValue: any;
 
 
   constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute, private toaster: Toaster) { }
 
-  profileId: number = 0;
+  // profileId: number = 0;
   achievement: any = {
     achievementId: 0,
     profileId: 0,
@@ -50,10 +52,8 @@ export class AchievementComponent implements OnInit {
   getProfileIdByUserId() {
     this.service.getProfileIdByUserId().subscribe({
       next: (data: any) => {
-        this.profileIdDetails = data,
-          this.profileId = this.profileIdDetails.profileId,
-          console.warn(this.profileId),
-          console.log(this.profileIdDetails)
+        this.profileIdDetails = data
+        
       }
     })
   }
@@ -61,12 +61,9 @@ export class AchievementComponent implements OnInit {
 
   submitAchievement() {
     this.formSubmitted = true;
-    this.achievement.achievementTypeId = this.achievementTypeValue;
-    this.achievement.profileId = this.profileId;
-    console.log(this.achievementTypeValue);
-    console.log(this.achievement);
-    console.log(this.error)
-    console.log(this.achievementForm)
+    this.achievement.achievementTypeId = this.achievementForm.value['AchievementType'];
+    this.achievement.profileId = this.profileIdDetails.profileId,
+  
     this.service.addAchievement(this.achievement).subscribe(
       {
         next: (data) => { },
@@ -80,7 +77,7 @@ export class AchievementComponent implements OnInit {
       () => {
         location.reload(); // the code to execute after the timeout
       },
-    1000 
+      1000
     );
   }
 
@@ -120,8 +117,7 @@ export class AchievementComponent implements OnInit {
     this.showMe = !this.showMe;
 
   }
-  submit()
-  {
+  submit() {
     this.toaster.open({ text: 'Form submitted successfully', position: 'top-center', type: 'success' });
   }
 

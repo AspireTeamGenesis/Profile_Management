@@ -35,33 +35,21 @@ export class EditskillComponent implements OnInit {
       this.skillid = params['skillid'];
       // this.profileId= params['profileId'];
       console.log('Skill Id : ' + this.skillid);
-      // console.log ('id'+this.profileId);
+      console.log ('id : '+this.profileId);
     })
     this.getDomain();
     this.getTechnology();
-    this.getSkillDetailsBySkillId(this.skillid);
     this.getProfileIdByUserId();
-    
+    this.getSkillDetailsBySkillId(this.skillid);    
   }
-  // getProfileIdByUserId()
-  // {
-  //   this.service.getProfileIdByUserId().subscribe({
-  //       next:(data:any)=>{this.profileIdDetails=data,
-  //       this.profileId=this.profileIdDetails.profileId,
-  //       console.warn(this.profileId),
-  //       console.log(this.profileIdDetails)
-  //       }
-  
-  //   })
-  // }
 
   getProfileIdByUserId()
   {
     this.service.getProfileIdByUserId().subscribe({
         next:(data:any)=>{this.profileIdDetails=data,
-        this.profileId=this.profileIdDetails.profileId,
-        console.warn(this.profileId),
-        console.log(this.profileIdDetails)
+        this.profileId=this.profileIdDetails.profileId
+        // console.warn(this.profileId),
+        // console.log(this.profileIdDetails)
         }
   
     })
@@ -92,11 +80,12 @@ export class EditskillComponent implements OnInit {
 
   updateSkills()
   {
+    this.formSubmitted =true;
     const skills = {
       skillId:this.skillid,
-      domainId:this.skill.domainId,
-      technologyId:this.skill.technologyId,
-      // profileId:this.profileIdDetails.profileId
+      domainId:this.skillForm.value['domainType'],
+      technologyId:this.skillForm.value['technologyType'],
+      profileId:this.profileIdDetails.profileId
 
     }
     console.log(skills);
