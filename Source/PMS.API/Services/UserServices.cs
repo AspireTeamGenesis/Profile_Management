@@ -45,7 +45,7 @@ namespace PMS_API
         {
             try
             {
-                return (from user in userData.GetallUsers() select user).ToList()
+                return (from user in userData.GetallUsers() where user.IsActive== true select user).ToList()
                 .Select(var => new
                 {
                     Name = var.Name,
