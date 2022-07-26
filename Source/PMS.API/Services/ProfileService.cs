@@ -1012,6 +1012,7 @@ namespace PMS_API
                     profileStatus = user.profile.profilestatus.ProfileStatusName,
                     name = user.Name,
                     designation = user.designation.DesignationName,
+                    userId=user.UserId,
                     repotingPerson = user.ReportingPersonUsername,
                     image = user.personalDetails != null ? user.personalDetails.Image : null
                 });

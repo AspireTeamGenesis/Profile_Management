@@ -41,9 +41,9 @@ export class PersonalComponent implements OnInit {
 
   personalForm = this.FB.group({
     profilePhoto: ['', [Validators.required]],
-    objective: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(500), Validators.pattern("^(?!.*([ ])\\1)(?!.*([A-Za-z])\\2{2})\\w[a-zA-Z\\s]*$")]],
+    objective: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(500)]],
     dateofBirth: ['', [Validators.required]],
-    nationality: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40),, Validators.pattern("^(?!.*([ ])\\1)(?!.*([A-Za-z])\\2{2})\\w[a-zA-Z\\s]*$")]],
+    nationality: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
     dateofJoining: ['', [Validators.required]],
   });
   constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private toaster: Toaster) {}

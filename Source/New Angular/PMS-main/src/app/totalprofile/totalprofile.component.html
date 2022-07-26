@@ -8,15 +8,33 @@
   <div class="main">
     <h1 class="heading1">Total Profiles</h1>
     <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
-    <div class="kcard"
+    <div class="kcard" 
       *ngFor="let item of totalProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
       
-      <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded" [src]="'data:image/jpg;base64,'+item.userProfileImage"
+      <!-- <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded" [src]="'data:image/jpg;base64,'+item.userProfileImage"
         style="border-radius:50%;width:45%;height:45%"
         width="50%" /></a>
       <div class="status">
         <p>Status </p>
         <p class="card-text">{{item.userProfileStatus}}</p>
+      </div> -->
+      <div class="card-body">
+        <div class="row rone ">
+          <div class="col-md-8">
+            <div *ngIf="item.userProfileImage!=''&&item.userProfileImage!=null">
+              <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded"
+                  [src]="'data:image/jpg;base64,'+item.userProfileImage" width="60%" /></a>
+            </div>
+            <div *ngIf="item.userProfileImage==null||item.userProfileImage==''">
+              <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top"
+                  src="./assets/img/profile.jpg" alt="Card image cap" width="50%"></a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <p>Status </p>
+            <p>{{item.userProfileStatus}}</p>
+          </div>
+        </div>
       </div>
       <div class="card-body">
         <p class="card-text"><br>{{item.name}}&nbsp;- &nbsp;{{item.userDesignation}}<br>Reporting
@@ -31,12 +49,7 @@
             <i [routerLink]="['/sharepage']" class="fa fa-share-nodes"  ></i>
             <span class="tooltip1text">Click here to share</span>
           </div>
-          <!-- <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
-          <i class="fa fa-trash"></i> -->
-
-          <!-- <i class="fa fa-trash"></i> -->
         </h2>
-
       </div>
     </div>
   </div>

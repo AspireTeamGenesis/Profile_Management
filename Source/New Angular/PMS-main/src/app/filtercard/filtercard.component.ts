@@ -26,17 +26,6 @@ export class FiltercardComponent implements OnInit {
   
   ngOnInit(): void {
     
-    // this.totalLength=this.filterDetails.length;
-    // console.log(this.totalLength);
-    // console.log("Welcome"+this.filterDetails.length);
-
-    // console.log();
-    // this.getProfileIdByUserId(); 
-    // console.log(this.filterDetails);  
-    // console.error(this.filterDetails.length);  
-    // this.totalLength=this.filterDetails.length;
-    // console.log(this.totalLength);
-    // console.warn(this.profileId);
   }
 
   getProfileIdByUserId()
@@ -59,10 +48,6 @@ export class FiltercardComponent implements OnInit {
        console.warn(this.educationDetails);
      })
   }
-
-  // navigate(){
-  //   this.route.navigate(['/editeducation/this.educationDetails.educationId/this.profileId'])
-  // }
 
   cancelEducation(educationid:number)
   {

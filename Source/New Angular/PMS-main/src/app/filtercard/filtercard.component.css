@@ -243,15 +243,16 @@
 }
 
 .kcard {
-    padding: 5px;
+    /* padding: 5px; */
+    height: 150%;
+    /* display: flex; */
     background-color: white;
     border: 1px solid black;
     width: 16rem;
-    margin-left: 20px;
+    margin-left: 40px;
     /* float: left; */
-    margin-bottom: 10%;
+    /* margin-bottom: 10%; */
     /* margin-top: 100px; */
-    height: auto;
     border-radius: 10px;
 }
 
