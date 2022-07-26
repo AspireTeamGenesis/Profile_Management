@@ -5136,6 +5136,7 @@ input[type="button"].btn-block {
   
 
 .card-title {
+    position: relative;
     margin-bottom: 0.75rem;
 }
 
@@ -11452,4 +11453,33 @@ div .center{
 .lang{
     display: inline-block;
 }
+.icon-right{
+    position: absolute;
+    right: 0px !important;
+    top: 15px;
+  }
 
+.footer .row{
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.footer .row h5{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+}
+#status{
+    margin-right: 25px;
+    /* padding-top: 17px; */
+}
+#status1{
+    /* margin-right: 25px; */
+    padding-top: 16px;
+}
+.footer{
+    bottom:0;
+}
+.fa-download,.fa-pen,.fa-share-nodes{
+    cursor: pointer;
+}

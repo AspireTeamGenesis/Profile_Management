@@ -31,7 +31,7 @@
                   src="./assets/img/profile.jpg" alt="Card image cap" width="50%"></a>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 pt-4">
             <p>Status </p>
             <p>{{item.userProfileStatus}}</p>
           </div>
@@ -43,7 +43,8 @@
         <br>
         <h2>
           <div class="tooltip1">
-            <i [routerLink]="['/sharepage']" class="fa fa-pen-to-square fa-xs" (click)="editToUpdate()"></i>
+            <i [routerLink]="['/sharepage']" class="fa fa-paper-plane" (click)="editToUpdate()"></i>
+            
             <span class="tooltip1text">Click here to edit</span>
           </div>
           <div class="tooltip1">

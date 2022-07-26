@@ -30,19 +30,22 @@
                   src="./assets/img/profile.jpg" alt="Card image cap" width="50%"></a>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 pt-4">
             <p>Status </p>
             <p>{{item.userProfileStatus}}</p>
           </div>
         </div>
       </div>
       <div class="card-body">
-        <p class="card-text"><br>{{item.name}}&nbsp;- &nbsp;{{item.userDesignation}}<br>Reporting
+        <div></div>
+        <p class="card-text" id="status"><br>{{item.name}}&nbsp;- &nbsp;{{item.userDesignation}}<br>Reporting
           Person&nbsp;-&nbsp;{{item.reportingPerson}}</p>
         <br>
         <h2>
           <div class="tooltip1">
-            <i class="fa fa-pen-to-square fa-xs" (click)="editToUpdate()"></i>
+            <!-- <i class="fa fa-pen-to-square fa-xs" (click)="editToUpdate()"></i> -->
+            
+            <i class="fa fa-paper-plane" (click)="editToUpdate()"></i>
             <span class="tooltip1text">Click here to request to update</span>
           </div>
           <div class="tooltip1">

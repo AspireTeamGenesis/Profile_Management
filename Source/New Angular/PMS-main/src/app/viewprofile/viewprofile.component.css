@@ -11526,3 +11526,18 @@ div .center{
     max-width:10px; 
     clip-path: circle();
 }
+#status{
+    margin-right: 25px;
+    /* padding-top: 17px; */
+}
+#status1{
+    /* margin-right: 25px; */
+    padding-top: 16px;
+}
+#last{
+    float:right;
+    margin-top: 11px;
+}
+.footer{
+    bottom: 0;
+}

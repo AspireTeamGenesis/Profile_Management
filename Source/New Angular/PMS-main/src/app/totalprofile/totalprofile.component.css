@@ -203,6 +203,9 @@
      border-radius: 10px
      /* box-shadow: 0 70px 25px rgba(0, 0, 0, 0.08);  */
 }
+/* #person{
+    margin: 0 10px;
+} */
 
 .card1 {
     /* width: 100%;
@@ -219,6 +222,9 @@
     margin-top: 20px;
     padding-right: 650px;
     font-size: 30px;
+}
+#status{
+    padding: 0px 10px;
 }
 
 .cards {
@@ -244,7 +250,7 @@
     clip-path: circle();
 }
 
-.fa-square-pen , .fa-share-nodes, .fa-download{
+.fa-square-pen , .fa-share-nodes, .fa-download,.fa-paper-plane{
     font-size: 25px;;
 }
 
@@ -403,7 +409,7 @@
 .fa-trash{
     text-indent: 7rem;
 }
-.fa-pen-to-square
+.fa-paper-plane
 {
     margin-left: 2rem;
     height:1%;

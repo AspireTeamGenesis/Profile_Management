@@ -245,7 +245,7 @@
     clip-path: circle();
 }
 
-.fa-square-pen , .fa-share-nodes, .fa-download{
+.fa-square-pen , .fa-share-nodes, .fa-download,.fa-paper-plane{
     font-size: 25px;;
 }
 
@@ -401,7 +401,7 @@
 .fa-trash{
     text-indent: 7rem;
 }
-.fa-pen-to-square
+.fa-paper-plane
 {
     text-indent:2rem;
 }

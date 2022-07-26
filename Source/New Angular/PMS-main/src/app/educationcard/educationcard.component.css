@@ -23,6 +23,9 @@
     color: #967bb6;
 
 }
+h2{
+    bottom: 2px;
+}
 
 .search {
     position: relative;
@@ -439,11 +442,12 @@
 }
 
 .fa-trash {
-    text-indent: 5rem;
+    text-indent: 6.5rem;
 }
 
 .fa-pencil {
     text-indent: 1rem;
+    bottom:1px;
 }
 
 .status {

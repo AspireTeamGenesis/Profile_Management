@@ -262,7 +262,7 @@
     clip-path: circle();
 }
 
-.fa-square-pen,
+.fa-paper-plane,
 .fa-share-nodes,
 .fa-download {
     font-size: 25px;
@@ -445,7 +445,7 @@
 
 }
 
-.fa-pen-to-square {
+.fa-paper-plane{
     margin-left: 2rem;   
     cursor: pointer;
 }
