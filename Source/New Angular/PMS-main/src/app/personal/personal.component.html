@@ -42,8 +42,6 @@
           short</span>
         <span class="text-danger" *ngIf="personalForm.controls['objective'].errors?.['maxlength']">Objective is too
           long</span>
-        <span class="text-danger" *ngIf="personalForm.controls['objective'].errors?.['pattern']">Objective must
-          contain only characters and it should not repeat</span>
       </div>
       <br><br>
 
@@ -73,8 +71,6 @@
           too short</span>
         <span class="text-danger" *ngIf="personalForm.controls['nationality'].errors?.['maxlength']">Nationality is
           too long</span>
-        <span class="text-danger" *ngIf="personalForm.controls['nationality'].errors?.['pattern']">Nationality must
-          contain only characters</span>
       </div>
       <br>
 

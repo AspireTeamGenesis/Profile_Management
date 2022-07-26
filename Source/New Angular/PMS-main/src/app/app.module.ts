@@ -61,6 +61,7 @@ import { EditoriginalpersonalComponent } from './editoriginalpersonal/editorigin
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { HomecardComponent } from './homecard/homecard.component';
+import { MyInfoComponent } from './my-info/my-info.component';
 @NgModule({
   declarations: [		
     AppComponent,
@@ -109,7 +110,8 @@ import { HomecardComponent } from './homecard/homecard.component';
       LanguageandsocialComponent,
       EditoriginalpersonalComponent,
       DialogBoxComponent,
-      HomecardComponent
+      HomecardComponent,
+      MyInfoComponent
    ],
   imports: [
     BrowserModule,

@@ -37,6 +37,7 @@ import { SharepageComponent } from './sharepage/sharepage.component';
 import { LanguageandsocialComponent } from './languageandsocial/languageandsocial.component';
 import { EditoriginalpersonalComponent } from './editoriginalpersonal/editoriginalpersonal.component';
 import { HomecardComponent } from './homecard/homecard.component';
+import { MyInfoComponent } from './my-info/my-info.component';
 
 
 const routes: Routes = [
@@ -74,10 +75,11 @@ const routes: Routes = [
   {path:"dashboard",component:Dashboard11Component},
   {path:"snapbar",component:SnapbarComponent},
   {path:"language",component:LanguageComponent},
-  {path:"sharepage",component:SharepageComponent},
+  {path:"sharepage/:name",component:SharepageComponent},
   {path:"languagesocial",component:LanguageandsocialComponent},
   {path:"editoriginalpersonal",component:EditoriginalpersonalComponent},
   {path:"homecard",component:HomecardComponent},
+  {path: "myinfo",component:MyInfoComponent},
   {path:"",component:LoginComponent}
 ];
 

@@ -227,7 +227,7 @@ namespace PMS_API
         public bool AddEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($"Values cannot be null values are {education}");
-            _profileValidate.Educationdetailvalidation(education);
+            // _profileValidate.Educationdetailvalidation(education);
             try
             {
                 education.CreatedBy = education.ProfileId;
@@ -735,10 +735,15 @@ namespace PMS_API
                 media.CreatedOn = DateTime.Now;
                 return profileData.AddSocialMedia(media) ? true : false;
             }
+            catch (ValidationException exception)
+            {
+                _logger.LogInformation($"ProfileController:AddSocialMedia()-{exception.Message}{exception.StackTrace}");
+                throw;
+            }
             catch (Exception exception)
             {
                 _logger.LogInformation($"ProfileService:AddSocialMedia()-{exception.Message}\n{exception.StackTrace}");
-                return false;
+                throw;
             }
 
 

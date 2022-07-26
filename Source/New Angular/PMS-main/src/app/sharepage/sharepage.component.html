@@ -5,7 +5,7 @@
 <div class="container "  style="padding-top:13%;">
     <div class="hello">
     <div class="modal-header">
-        <h3>Share Profile</h3>
+        <h3>Share {{this.Name}}'s Profile</h3>
         <button type="button" class="close"></button>
     </div>
     <div class="modal-body">
@@ -31,22 +31,13 @@
                     </div>
                 </div>
             </div>
-            <!-- <input type="text" placeholder="To" style="width:95%;"><br /> -->
-             <!-- <input type="text" placeholder="Subject" style="width:95%;"><br />  -->
-            <!-- <textarea style="width:95%;" rows="10"></textarea> 
-            <h4>Profile Link</h4>
-            <p>Hi,</p>
-            <p>Greeting,</p>
-            <p>I have attached the Vijay's Profile link. </p>
-            <p>http://localhost:4200/viewprofilebycard/1009</p>
-            <p>Thank you,</p>
-            <p>Chitrarasu</p>-->
+            
 
         </form>
     </div>
     <div class="modal-footer">
         <!-- <a href="#" class="btn">Close</a> -->
-        <a class="btn btn-primary" (click)="share()">Send</a>
+        <a [routerLink]="['/dashboard']" class="btn btn-primary" (click)="share()">Send</a>
     </div>
     </div>
 </div>

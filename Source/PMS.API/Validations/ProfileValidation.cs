@@ -82,7 +82,7 @@ namespace PMS_API
                 throw new ValidationException($"Percentage not be empty  and user supplied Percentage as \"{education.Percentage}\"");
             else if (1 >= education.Percentage || education.Percentage > 100)//check if percentage lies in the range of(1, 100) 
                 throw new ValidationException($"Percentage should be between 1 to 100  and user supplied Percentage as \"{education.Percentage}\"");
-            else if (Regex.IsMatch(education.Percentage.ToString(), "[A-za-z]+[\\W]"))
+            else if (Regex.IsMatch(education.Percentage.ToString(), "[A-Za-z]+[\\W]"))
                 throw new ValidationException("Percentage sholud be in decimals");
             return true;
 
@@ -114,27 +114,27 @@ namespace PMS_API
             //     throw new ValidationException($"Designation should not be numbers alone and user supplied Designation as \"{project.Designation}\"");
             // if (Regex.IsMatch(project.Designation, "^[^\\w]+$"))//check Designation only contains specialcharacters
             //     throw new ValidationException($"Designation should not be specialcharacters and user supplied Designation as \"{project.Designation}\"");
-            if (!Regex.IsMatch(project.Designation, "^[A-za-z]{2,100}$"))//check Designation only contains specialcharacters
-                throw new ValidationException($"Designation should not contain specialcharacters, numbers and user supplied Designation as \"{project.Designation}\"");
+            if (!Regex.IsMatch(project.Designation, "^[A-Za-z ]{2,100}$"))//check Designation only contains specialcharacters
+                throw new ValidationException($"Designation should not contain special characters, numbers and user supplied Designation as \"{project.Designation}\"");
 
 
             //tool used
             if (string.IsNullOrEmpty(project.ToolsUsed))
                 throw new ValidationException($"ToolsUsed not be null and user supplied ToolsUsed as \"{project.ToolsUsed}\"");
-            if (!Regex.IsMatch(project.ToolsUsed, "^[a-zA-z]{2,600}$"))//check Toolsused only contains string only
-                throw new ValidationException($"Designation should not be specialcharacters and user supplied Designation as \"{project.Designation}\"");
+            if (!Regex.IsMatch(project.ToolsUsed, "^[a-zA-Z, ]{2,600}$"))//check Toolsused only contains string only
+                throw new ValidationException($"Tools should not be special characters and user supplied Designation as \"{project.ToolsUsed}\"");
 
             //Project starting month
             if (string.IsNullOrEmpty((project.StartingMonth).ToString()))
                 throw new ValidationException($"StartingMonth not be empty and user supplied StartingMonth as \"{project.StartingMonth}\"");
-            if (!Regex.IsMatch(project.StartingMonth, "^[A-za-z]{3,9}$"))
+            if (!Regex.IsMatch(project.StartingMonth, "^[A-Za-z]{3,9}$"))
                 throw new ValidationException($"Starting month is Invalid \"{project.StartingMonth}\"");
 
 
             //Project Ending Month
             if (string.IsNullOrEmpty((project.EndingMonth).ToString()))
                 throw new ValidationException($"EndingMonth not be empty and user supplied EndingMonth as \"{project.EndingMonth}\"");
-            if (!Regex.IsMatch(project.EndingMonth, "^[A-za-z]{3,9}$"))
+            if (!Regex.IsMatch(project.EndingMonth, "^[A-Za-z]{3,9}$"))
                 throw new ValidationException($"Ending month is Invalid \"{project.EndingMonth}\"");
             
             //project StartingYear validation
@@ -153,11 +153,11 @@ namespace PMS_API
         {
             if (string.IsNullOrEmpty(socialmedia.SocialMedia_Name))
                 throw new ValidationException($"SocialMedia_Name not be null and user supplied SocialMedia_Name as \"{socialmedia.SocialMedia_Name}\"");
-            if (!Regex.IsMatch(socialmedia.SocialMedia_Name, "^[A-za-z]{3,40}$"))
+            if (!Regex.IsMatch(socialmedia.SocialMedia_Name, "^[A-Za-z ]{3,40}$"))
                 throw new ValidationException($"Social Media name is Invalid \"{socialmedia.SocialMedia_Name}\"");
             if (string.IsNullOrEmpty(socialmedia.SocialMedia_Link))
                 throw new ValidationException($"SocialMedia_Link not be null and user supplied SocialMedia_Link as \"{socialmedia.SocialMedia_Link}\"");
-            else if (Regex.IsMatch(socialmedia.SocialMedia_Link, "^[^\\w]+$") || Regex.IsMatch(socialmedia.SocialMedia_Link, "^[1-9]{3,100}+$"))
+            else if (Regex.IsMatch(socialmedia.SocialMedia_Link, "^[A-Za-z0-9!@#$%^&*()_-+=]+$"))
                 throw new ValidationException($"socialmedia link is invalid and user supplied SocialMedia_Link as \"{socialmedia.SocialMedia_Link} \"");
             return true;
         }
