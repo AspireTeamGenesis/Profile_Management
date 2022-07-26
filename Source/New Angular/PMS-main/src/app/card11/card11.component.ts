@@ -9,7 +9,7 @@ import { UserserviceService } from '../service/userservice.service';
   styleUrls: ['./card11.component.css']
 })
 export class Card11Component implements OnInit {
-  @Input() artsrc: string="https://localhost:7021/User/Getallusers";
+  @Input() artsrc: string="https://localhost:7021/User/GetSpecificUserDetails";
   // @Input() artsrc: string="https://localhost:7021/User/GetSpecificUserDetails";
 
   totalLength:any;
